@@ -6,7 +6,7 @@
   "scripts": {
     "test": "start"
   },
-  "author": "Derick Warshaw",
+  "author": "Mad Mobile",
   "license": "ISC",
   "dependencies": {
     "chai": "^3.4.1",

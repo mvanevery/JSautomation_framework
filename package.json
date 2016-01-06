@@ -1,0 +1,16 @@
+{
+  "name": "archon",
+  "version": "1.0.0",
+  "description": "Selenium Testing",
+  "main": "test.js",
+  "scripts": {
+    "test": "start"
+  },
+  "author": "Derick Warshaw",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^3.4.1",
+    "mocha": "^2.3.4",
+    "webdriverio": "^3.4.0"
+  }
+}

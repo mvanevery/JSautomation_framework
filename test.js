@@ -1,7 +1,9 @@
 var webdriverio = require('webdriverio');
 var options = {
 	desiredCapabilities: {
-		browserName: 'firefox'
+		browserName: 'firefox',
+		width: 375,
+		height: 650
 	}
 };
 webdriverio
@@ -11,4 +13,4 @@ webdriverio
 	.title(function(err, res) {
 		console.log(res.value);
 	})
-	.end();
+//	.end();

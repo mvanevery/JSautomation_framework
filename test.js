@@ -21,13 +21,11 @@ webdriverio
 		console.log(res.value);
 	})
 //this step is waiting for an element to render and then click the menu icon to open the hamburger menu
-	.waitForVisible('div.slider-container > a > img',5000).then(function(store){
-		store.click('a.menu-trigger > i.icon');
-	})
+	.waitForVisible('div.slider-container > a > img',5000).click('a.menu-trigger > i.icon')
 //this step clicks the first menu option. Women
 	.click('li > a > i.icon')
 //this step verifies that the Women section of the menu is open by getting the text from the Women category link
-	.getText('a.title').then(function(text){
+	.getText('span.back-text').then(function(text){
 		console.log(text);
 	})
 

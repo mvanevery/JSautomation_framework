@@ -2,7 +2,7 @@
   "name": "archon",
   "version": "1.0.0",
   "description": "Selenium Testing",
-  "main": "test.js",
+  "main": "/core/client.js",
   "scripts": {
     "test": "start"
   },

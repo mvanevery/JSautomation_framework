@@ -1,10 +1,10 @@
 {
   "name": "archon",
   "version": "1.0.0",
-  "description": "Selenium Testing",
+  "description": "Mad Mobile Automated Testing Framework",
   "main": "/core/client.js",
   "scripts": {
-    "test": "start"
+    "test": "mocha -t 50000"
   },
   "author": "Mad Mobile",
   "license": "ISC",

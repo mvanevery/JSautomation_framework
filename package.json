@@ -5,7 +5,7 @@
 	"main": "/core/client.js",
 	"scripts": {
 		"test": "mocha -t 50000",
-		"start":"./node_modules/selenium-standalone/bin/selenium-standalone start"
+		"start":"selenium-standalone start"
 	},
 	"author": "Mad Mobile",
 	"license": "ISC",
@@ -13,7 +13,6 @@
 		"chai": "^3.4.1",
 		"mocha": "^2.3.4",
 		"webdriverio": "^3.4.0",
-		"selenium-standalone": "^4.9.0",
-		"webdriverio-selenium-harness": "^1.1.0"
+		"selenium-standalone": "^4.9.0"
 	}
 }

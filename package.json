@@ -5,7 +5,7 @@
 	"main": "/core/client.js",
 	"scripts": {
 		"test": "mocha -t 50000",
-		"start":"node setup.js",
+		"start":"node node_modules/.bin/selenium-standalone start",
 		"stop": "node teardown.js"
 	},
 	"author": "Mad Mobile",

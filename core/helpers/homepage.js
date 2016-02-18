@@ -26,14 +26,17 @@ module.exports = {
 
 	verifyPageUrl: function (callback) {
 		client.getUrl().then(function (url) {
-				console.log(url);
-				expect(url).to.have.string(page.mobileUrl || page.tabletUrl);
-				callback();
-			});
+			console.log(url);
+			expect(url).to.have.string(page.mobileUrl || page.tabletUrl);
+			callback();
+		});
 	},
 
 	end: function (done) {
-		client.end();
-		done();
+		client.url('http://localhost:4444/selenium-server/driver?cmd=shutDownSeleniumServer')
+			.getUrl().then(function () {
+				client.end();
+				done();
+			});
 	}
 };

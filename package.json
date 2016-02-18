@@ -5,7 +5,8 @@
 	"main": "/core/client.js",
 	"scripts": {
 		"test": "mocha -t 50000",
-		"start":"selenium-standalone install"
+		"start":"node setup.js",
+		"stop": "node teardown.js"
 	},
 	"author": "Mad Mobile",
 	"license": "ISC",

@@ -15,6 +15,7 @@ describe('Testing Home Page', function () {
 		it('should see the correct title', function (done) {
 			homepage.getPageTitle(done);
 		});
+
 	});
 
 	after(function (done) {

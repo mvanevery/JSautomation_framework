@@ -4,8 +4,10 @@
 	"description": "Mad Mobile Automated Testing Framework",
 	"main": "/core/client.js",
 	"scripts": {
-		"test-local":"node node_modules/.bin/gulp test-local",
-		"test-bamboo":"node node_modules/.bin/gulp test-bamboo"
+		"test": "mocha -t 50000",
+		"test": "mocha -t 50000",
+		"start":"node node_modules/.bin/selenium-standalone",
+		"stop": "node teardown.js"
 	},
 	"author": "Mad Mobile",
 	"license": "ISC",

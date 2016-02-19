@@ -55,7 +55,7 @@ gulp.task('integration-bamboo', ['serve:test', 'selenium'], function () {
 	return gulp.src('test/*.js', {read: false})
 		.pipe(mocha({
 			timeout: '50000',
-			reporter: 'bamboo'
+			reporter: 'mocha-bamboo-reporter'
 		}));
 });
 
@@ -67,7 +67,7 @@ gulp.task('local-integration', ['serve:test', 'selenium-start'], function () {
 	return gulp.src('test/*.js', {read: false})
 		.pipe(mocha({
 			timeout: '50000',
-			reporter: 'bamboo'
+			reporter: 'mocha-bamboo-reporter'
 		}));
 });
 

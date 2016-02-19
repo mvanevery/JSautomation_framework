@@ -17,6 +17,7 @@
 		"selenium-standalone": "^4.9.0",
 		"browser-sync":"^2.11.1",
 		"gulp":"^3.9.1",
-		"gulp-mocha":"^2.2.0"
+		"gulp-mocha":"^2.2.0",
+		"phantomjs": "~2.1.1"
 	}
 }

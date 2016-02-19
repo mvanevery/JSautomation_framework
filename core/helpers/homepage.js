@@ -33,10 +33,7 @@ module.exports = {
 	},
 
 	end: function (done) {
-		client.url('http://localhost:4444/selenium-server/driver?cmd=shutDownSeleniumServer')
-			.getUrl().then(function () {
 				client.end();
 				done();
-			});
 	}
 };

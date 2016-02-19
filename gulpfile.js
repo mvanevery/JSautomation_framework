@@ -22,11 +22,31 @@ gulp.task('serve:test', function (done) {
 
 gulp.task('selenium', function (done) {
 	selenium.install({
+		drivers: {
+			drivers: {
+				chrome: {
+					installPath: 'C:\\Users\\ci\\AppData\\Roaming\\npm\\node_modules\\selenium-standalone\\.selenium\\chromedriver\\2.21-x64-chromedriver'
+				},
+				ie: {
+					installPath: 'C:\\Users\\ci\\AppData\\Roaming\\npm\\node_modules\\selenium-standalone\\.selenium\\iedriver\\2.50.0-x64-IEDriverServer.exe'
+				}
+			}
+		},
 		logger: function (message) { }
 	}, function (err) {
 		if (err) return done(err);
 
-		selenium.start(function (err, child) {
+		selenium.start({
+				drivers: {
+					chrome: {
+						installPath: 'C:\\Users\\ci\\AppData\\Roaming\\npm\\node_modules\\selenium-standalone\\.selenium\\chromedriver\\2.21-x64-chromedriver'
+					},
+					ie: {
+						installPath: 'C:\\Users\\ci\\AppData\\Roaming\\npm\\node_modules\\selenium-standalone\\.selenium\\iedriver\\2.50.0-x64-IEDriverServer.exe'
+					}
+				}
+			},
+			function (err, child) {
 			if (err) return done(err);
 			selenium.child = child;
 			done();

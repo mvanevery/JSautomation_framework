@@ -65,11 +65,24 @@ gulp.task('selenium', function (done) {
  */
 
 gulp.task('selenium-start', function (done) {
-	selenium.start(function (err, child) {
-		if (err) return done(err);
-		selenium.child = child;
-		done();
-	});
+	selenium.start({
+			drivers: {
+				chrome: {
+					installPath: 'C:\\Users\\ci\\AppData\\Roaming\\npm\\node_modules\\selenium-standalone\\.selenium\\chromedriver\\2.21-x64-chromedriver'
+				},
+				ie: {
+					installPath: 'C:\\Users\\ci\\AppData\\Roaming\\npm\\node_modules\\selenium-standalone\\.selenium\\iedriver\\2.50.0-x64-IEDriverServer.exe'
+				}
+			},
+			selenium: {
+				installPath: 'C:\\Users\\ci\\AppData\\Roaming\\npm\\node_modules\\selenium-standalone\\lib\\install.js'
+			}
+		},
+		function (err, child) {
+			if (err) return done(err);
+			selenium.child = child;
+			done();
+		});
 });
 
 /**

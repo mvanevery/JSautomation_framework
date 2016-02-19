@@ -5,8 +5,7 @@
 	"main": "/core/client.js",
 	"scripts": {
 		"test": "mocha -t 50000",
-		"test": "mocha -t 50000",
-		"start":"node node_modules/.bin/selenium-standalone",
+		"start":"gulp test-bamboo",
 		"stop": "node teardown.js"
 	},
 	"author": "Mad Mobile",

@@ -16,6 +16,10 @@ gulp.task('serve:test', function (done) {
 	}, done);
 });
 
+/**
+ * Task that will install and start server - good for CI and first time running the project
+ */
+
 gulp.task('selenium', function (done) {
 	selenium.install({
 		logger: function (message) { }
@@ -30,6 +34,10 @@ gulp.task('selenium', function (done) {
 	});
 });
 
+/**
+ *  Task that will only start the server - used when you already have server installed
+ */
+
 gulp.task('selenium-start', function (done) {
 	selenium.start(function (err, child) {
 		if (err) return done(err);
@@ -38,28 +46,42 @@ gulp.task('selenium-start', function (done) {
 	});
 });
 
-gulp.task('integration', ['serve:test', 'selenium'], function () {
+/**
+ *  Used in CI
+ */
+
+gulp.task('integration-bamboo', ['serve:test', 'selenium'], function () {
 	return gulp.src('test/*.js', {read: false})
 		.pipe(mocha({
 			timeout: '50000'
 		}));
 });
 
-gulp.task('no-install-integration', ['serve:test', 'selenium-start'], function () {
+/**
+ *  Used locally
+ */
+
+gulp.task('local-integration', ['serve:test', 'selenium-start'], function () {
 	return gulp.src('test/*.js', {read: false})
 		.pipe(mocha({
 			timeout: '50000'
 		}));
 });
 
+/**
+ *  Use 'npm run test-bamboo'
+ */
 
-
-gulp.task('test', ['integration'], function () {
+gulp.task('test-bamboo', ['integration'], function () {
 	selenium.child.kill();
 	browserSync.exit();
 });
 
-gulp.task('test-no-install', ['no-install-integration'], function () {
+/**
+ *  Use 'npm run test-local'
+ */
+
+gulp.task('test-local', ['local-integration'], function () {
 	selenium.child.kill();
 	browserSync.exit();
 });

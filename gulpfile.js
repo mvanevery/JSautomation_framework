@@ -32,6 +32,9 @@ gulp.task('selenium', function (done) {
 				}
 			}
 		},
+		selenium: {
+			installPath: 'C:\\Users\\ci\\AppData\\Roaming\\npm\\node_modules\\selenium-standalone\\lib\\install.js'
+		},
 		logger: function (message) { }
 	}, function (err) {
 		if (err) return done(err);
@@ -44,6 +47,9 @@ gulp.task('selenium', function (done) {
 					ie: {
 						installPath: 'C:\\Users\\ci\\AppData\\Roaming\\npm\\node_modules\\selenium-standalone\\.selenium\\iedriver\\2.50.0-x64-IEDriverServer.exe'
 					}
+				},
+				selenium: {
+					installPath: 'C:\\Users\\ci\\AppData\\Roaming\\npm\\node_modules\\selenium-standalone\\lib\\install.js'
 				}
 			},
 			function (err, child) {

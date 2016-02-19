@@ -18,7 +18,6 @@ module.exports = {
 			});
 		} else {
 			client.getTitle(function (err, title) {
-				console.log('Was not visible but here is the title now: ' + title);
 				done();
 			})
 		}
@@ -26,14 +25,13 @@ module.exports = {
 
 	verifyPageUrl: function (callback) {
 		client.getUrl().then(function (url) {
-			console.log(url);
 			expect(url).to.have.string(page.mobileUrl || page.tabletUrl);
 			callback();
 		});
 	},
 
 	end: function (done) {
-				client.end();
-				done();
+		client.end();
+		done();
 	}
 };

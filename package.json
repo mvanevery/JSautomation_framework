@@ -5,8 +5,7 @@
 	"main": "/core/client.js",
 	"scripts": {
 		"test": "mocha -t 50000",
-		"start":"gulp test-bamboo",
-		"stop": "node teardown.js"
+		"start":"gulp test-local"
 	},
 	"author": "Mad Mobile",
 	"license": "ISC",

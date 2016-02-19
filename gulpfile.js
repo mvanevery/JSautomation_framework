@@ -22,7 +22,8 @@ gulp.task('serve:test', function (done) {
 
 gulp.task('selenium', function (done) {
 	selenium.install({
-		logger: function (message) { }
+		logger: function (message) {
+		}
 	}, function (err) {
 		if (err) return done(err);
 
@@ -53,7 +54,8 @@ gulp.task('selenium-start', function (done) {
 gulp.task('integration-bamboo', ['serve:test', 'selenium'], function () {
 	return gulp.src('test/*.js', {read: false})
 		.pipe(mocha({
-			timeout: '50000'
+			timeout: '50000',
+			reporter: 'bamboo'
 		}));
 });
 
@@ -64,7 +66,8 @@ gulp.task('integration-bamboo', ['serve:test', 'selenium'], function () {
 gulp.task('local-integration', ['serve:test', 'selenium-start'], function () {
 	return gulp.src('test/*.js', {read: false})
 		.pipe(mocha({
-			timeout: '50000'
+			timeout: '50000',
+			reporter: 'bamboo'
 		}));
 });
 

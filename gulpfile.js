@@ -72,7 +72,7 @@ gulp.task('local-integration', ['serve:test', 'selenium-start'], function () {
  *  Use 'npm run test-bamboo'
  */
 
-gulp.task('test-bamboo', ['integration'], function () {
+gulp.task('test-bamboo', ['integration-bamboo'], function () {
 	selenium.child.kill();
 	browserSync.exit();
 });

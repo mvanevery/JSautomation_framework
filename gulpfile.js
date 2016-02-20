@@ -3,11 +3,6 @@ var browserSync = require('browser-sync');
 var selenium = require('selenium-standalone');
 var mocha = require('gulp-mocha');
 
-function handleError(err) {
-	console.log(err.toString());
-	this.emit('end');
-}
-
 gulp.task('serve:test', function (done) {
 	browserSync({
 		logLevel: 'silent',
@@ -59,9 +54,8 @@ gulp.task('selenium-start', function (done) {
 gulp.task('integration-bamboo', ['serve:test', 'selenium'], function () {
 	return gulp.src('test/*.js', {read: false})
 		.pipe(mocha({
-			timeout: '50000',
-			reporter: 'mocha-bamboo-reporter'
-		}).on("error", handleError));
+			timeout: '50000'
+		}));
 });
 
 /**
@@ -71,9 +65,8 @@ gulp.task('integration-bamboo', ['serve:test', 'selenium'], function () {
 gulp.task('local-integration', ['serve:test', 'selenium-start'], function () {
 	return gulp.src('test/*.js', {read: false})
 		.pipe(mocha({
-			timeout: '50000',
-			reporter: 'mocha-bamboo-reporter'
-		}).on("error", handleError));
+			timeout: '50000'
+		}));
 });
 
 /**

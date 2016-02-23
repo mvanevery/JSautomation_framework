@@ -8,6 +8,7 @@ module.exports = {
 
 	goTo: function (done) {
 		client.init().url(config.routes.baseUrl, done);
+		client.init().viewport(config.devices.nexus5, done);
 	},
 
 	getPageTitle: function (done) {

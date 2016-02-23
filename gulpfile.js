@@ -58,7 +58,7 @@ gulp.task('integration-bamboo', ['serve:test', 'selenium'], function () {
 		}));
 });
 
-gulp.task('menu-integration', ['serve:test', 'selenium'], function () {
+gulp.task('menu-integration', ['serve:test', 'selenium-start'], function () {
 	return gulp.src('test/Menu.js', {read: false})
 		.pipe(mocha({
 			timeout: '50000'
@@ -104,3 +104,8 @@ gulp.task('test-no-install', ['no-install-integration'], function () {
 		selenium.child.kill();
 		browserSync.exit();
 	});
+
+gulp.task('menu', ['menu-integration'], function () {
+	selenium.child.kill();
+	browserSync.exit();
+});

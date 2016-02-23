@@ -65,10 +65,15 @@ gulp.task('menu-integration', ['serve:test', 'selenium'], function () {
 		}));
 });
 
-gulp.task('no-install-integration', ['serve:test', 'selenium-start'], function () {
 /**
  *  Used locally
  */
+gulp.task('no-install-integration', ['serve:test', 'selenium-start'], function () {
+	return gulp.src('test/*.js', {read: false})
+		.pipe(mocha({
+			timeout: '50000'
+		}));
+});
 
 gulp.task('local-integration', ['serve:test', 'selenium-start'], function () {
 	return gulp.src('test/*.js', {read: false})
@@ -91,12 +96,11 @@ gulp.task('test-no-install', ['no-install-integration'], function () {
 	browserSync.exit();
 });
 
-gulp.task('menu', ['menu-integration'], function () {
-/**
- *  Use 'npm run test-local'
- */
+	/**
+	 *  Use 'npm run test-local'
+	 */
 
-gulp.task('test-local', ['local-integration'], function () {
-	selenium.child.kill();
-	browserSync.exit();
-});
+	gulp.task('test-local', ['local-integration'], function () {
+		selenium.child.kill();
+		browserSync.exit();
+	});

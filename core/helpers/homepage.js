@@ -7,7 +7,10 @@ var expect = require('chai').expect;
 module.exports = {
 
 	mobileView: function (done) {
-		client.viewportSize = (height = 350, width = 250)
+		client.setViewportSize({
+			height: 350,
+			width: 250
+		}, true).then(done);
 	},
 
 	goTo: function (done) {
@@ -54,4 +57,4 @@ module.exports = {
 		client.end();
 		done();
 	}
-};;
+};

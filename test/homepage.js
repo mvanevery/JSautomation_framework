@@ -11,13 +11,6 @@ describe('Testing Home Page', function () {
 		})
 	});
 
-	describe('The Home Page Title', function () {
-		it('should see the correct title', function (done) {
-			homepage.getPageTitle(done);
-		});
-
-	});
-
 	after(function (done) {
 		homepage.end(done);
 	});

@@ -58,9 +58,22 @@ gulp.task('integration-bamboo', ['serve:test', 'selenium'], function () {
 		}));
 });
 
+gulp.task('menu-integration', ['serve:test', 'selenium'], function () {
+	return gulp.src('test/Menu.js', {read: false})
+		.pipe(mocha({
+			timeout: '50000'
+		}));
+});
+
 /**
  *  Used locally
  */
+gulp.task('no-install-integration', ['serve:test', 'selenium-start'], function () {
+	return gulp.src('test/*.js', {read: false})
+		.pipe(mocha({
+			timeout: '50000'
+		}));
+});
 
 gulp.task('local-integration', ['serve:test', 'selenium-start'], function () {
 	return gulp.src('test/*.js', {read: false})
@@ -78,11 +91,16 @@ gulp.task('test-bamboo', ['integration-bamboo'], function () {
 	browserSync.exit();
 });
 
-/**
- *  Use 'npm run test-local'
- */
-
-gulp.task('test-local', ['local-integration'], function () {
+gulp.task('test-no-install', ['no-install-integration'], function () {
 	selenium.child.kill();
 	browserSync.exit();
 });
+
+	/**
+	 *  Use 'npm run test-local'
+	 */
+
+	gulp.task('test-local', ['local-integration'], function () {
+		selenium.child.kill();
+		browserSync.exit();
+	});

@@ -32,11 +32,22 @@ module.exports = {
 		});
 	},
 
+	openMenu: function (done) {
+		if (client.isVisible('div.slider-container > a > img', done)) {
+			client.click('a.menu-trigger > i.icon', done);
+		} else {
+			console.log('Menu not available');
+		}
+	},
+
 	end: function (done) {
-		client.url('http://localhost:4444/selenium-server/driver?cmd=shutDownSeleniumServer')
-			.getUrl().then(function () {
-				client.end();
-				done();
-			});
+		//	client.url('http://localhost:4444/selenium-server/driver?cmd=shutDownSeleniumServer')
+		//		.getUrl().then(function () {
+		//			client.end();
+		//			done();
+		//		});
+		//}
+		client.end();
+		done();
 	}
 };

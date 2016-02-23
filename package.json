@@ -1,16 +1,23 @@
 {
-  "name": "archon",
-  "version": "1.0.0",
-  "description": "Selenium Testing",
-  "main": "test.js",
-  "scripts": {
-    "test": "start"
-  },
-  "author": "Mad Mobile",
-  "license": "ISC",
-  "dependencies": {
-    "chai": "^3.4.1",
-    "mocha": "^2.3.4",
-    "webdriverio": "^3.4.0"
-  }
+	"name": "archon",
+	"version": "1.0.0",
+	"description": "Mad Mobile Automated Testing Framework",
+	"main": "/core/client.js",
+	"scripts": {
+		"test": "mocha -t 50000",
+		"start":"gulp test-local"
+	},
+	"author": "Mad Mobile",
+	"license": "ISC",
+	"dependencies": {
+		"chai": "^3.4.1",
+		"mocha": "^2.3.4",
+		"webdriverio": "^3.4.0",
+		"selenium-standalone": "^4.9.0",
+		"browser-sync":"^2.11.1",
+		"gulp":"^3.9.1",
+		"gulp-mocha":"^2.2.0",
+		"phantomjs": "~2.1.1",
+		"mocha-bamboo-reporter":"*"
+	}
 }

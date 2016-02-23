@@ -6,9 +6,12 @@ var expect = require('chai').expect;
 
 module.exports = {
 
+	mobileView: function (done) {
+		client.viewportSize = (height = 350, width = 250)
+	},
+
 	goTo: function (done) {
 		client.init().url(config.routes.baseUrl, done);
-		client.init().viewport(config.devices.nexus5, done);
 	},
 
 	getPageTitle: function (done) {
@@ -51,4 +54,4 @@ module.exports = {
 		client.end();
 		done();
 	}
-};
+};;

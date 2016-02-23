@@ -9,6 +9,11 @@ describe('Testing Home Page', function () {
         homepage.goTo(done);
     });
 
+    describe('Setting viewport size', function () {
+        it('should launch in mobile view', function (done) {
+            homepage.mobileView(done);
+        });
+    });
     describe('The Home Page Menu', function () {
         it('should see the menu open', function (done) {
             homepage.openMenu(done);

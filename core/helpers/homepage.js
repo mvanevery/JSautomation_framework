@@ -8,8 +8,8 @@ module.exports = {
 
 	mobileView: function (done) {
 		client.setViewportSize({
-			height: 350,
-			width: 250
+			height: 559,
+			width: 375
 		}, true).then(done);
 	},
 

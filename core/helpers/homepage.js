@@ -46,6 +46,17 @@ module.exports = {
 			console.log('Menu not available');
 		}
 	},
+	menuVerify: function (done) {
+		if (client.isVisible('ul.expandable > li.footer-container > div.app-menu-footer > div.app-menu-footer-container > ul.footer-links > li.my-bag > a.cart > h5', done)) {
+			client.getText('ul.expandable > li.footer-container > div.app-menu-footer > div.app-menu-footer-container > ul.footer-links > li.my-bag > a.cart > h5').then(function(err, text){
+				expect(text).to.equal('My Bag');
+				done();
+			})
+		}
+
+	},
+
+
 
 	end: function (done) {
 		//	client.url('http://localhost:4444/selenium-server/driver?cmd=shutDownSeleniumServer')

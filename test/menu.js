@@ -20,6 +20,12 @@ describe('Testing Home Page', function () {
         })
     });
 
+    describe('Verifying menu open and getting text', function () {
+        it('should confirm open menu and bag text', function (done){
+            homepage.menuVerify(done);
+        })
+    });
+
     after(function (done) {
         homepage.end(done);
     });

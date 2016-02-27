@@ -1,3 +1,11 @@
+/**
+ * From command line type gulp test-local --archon:PROJECTNAME (example: gulp test-local --archon:payless)
+ *
+ * Using arguments will set a variable in the project that tells it which project you want to run tests for
+ *
+ **/
+
+
 var gulp = require('gulp');
 var browserSync = require('browser-sync');
 var selenium = require('selenium-standalone');

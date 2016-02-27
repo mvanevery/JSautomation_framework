@@ -8,7 +8,12 @@ var expect = require('chai').expect;
 module.exports = {
 
 	goTo: function (done) {
-		client.init().url(config.routes.baseUrl, done);
+		client.init().url(config.routes.baseUrl).then(function() {
+			client.setViewportSize({
+				height: 559,
+				width: 375
+			}, true).then(done);
+		});
 	},
 
 	getPageTitle: function (done) {

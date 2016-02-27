@@ -101,11 +101,11 @@ gulp.task('test-no-install', ['no-install-integration'], function () {
 	browserSync.exit();
 });
 
-	/**
-	 *  Use 'npm run test-local'
-	 */
+/**
+ *  Use 'npm run test-local'
+ */
 
-	gulp.task('test-local', ['local-integration'], function () {
-		selenium.child.kill();
-		browserSync.exit();
-	});
+gulp.task('test-local', ['local-integration'], function () {
+	selenium.child.kill();
+	browserSync.exit();
+});

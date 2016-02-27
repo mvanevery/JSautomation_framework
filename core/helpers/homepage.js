@@ -1,6 +1,7 @@
 var client = require('../../core/client').client;
-var config = require('../projects/payless/config');
-var page = require('../projects/payless/config.homepage');
+var project = require('../projects/config').project;
+var config = require('../projects/' + project + '/config');
+var page = require('../projects/' + project + '/config.homepage');
 var expect = require('chai').expect;
 
 
@@ -26,7 +27,6 @@ module.exports = {
 
 	verifyPageUrl: function (callback) {
 		client.getUrl().then(function (url) {
-			console.log(url);
 			expect(url).to.have.string(page.mobileUrl || page.tabletUrl);
 			callback();
 		});
@@ -41,12 +41,6 @@ module.exports = {
 	},
 
 	end: function (done) {
-		//	client.url('http://localhost:4444/selenium-server/driver?cmd=shutDownSeleniumServer')
-		//		.getUrl().then(function () {
-		//			client.end();
-		//			done();
-		//		});
-		//}
 		client.end();
 		done();
 	}

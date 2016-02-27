@@ -8,7 +8,7 @@
 		"start":"gulp test-local"
 	},
 	"author": "Mad Mobile",
-	"license": "ISC",
+	"license": "unlicensed",
 	"dependencies": {
 		"chai": "^3.4.1",
 		"mocha": "^2.3.4",

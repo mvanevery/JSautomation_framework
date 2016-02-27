@@ -10,4 +10,3 @@ exports.client = require('webdriverio').remote({
 		}
 	}
 });
-

@@ -1,7 +1,20 @@
+/**
+ * From command line type gulp test-local --archon:PROJECTNAME (example: gulp test-local --archon:payless)
+ *
+ * Using arguments will set a variable in the project that tells it which project you want to run tests for
+ *
+ **/
+
+
 var gulp = require('gulp');
 var browserSync = require('browser-sync');
 var selenium = require('selenium-standalone');
 var mocha = require('gulp-mocha');
+
+function handleError(err) {
+	console.log(err.toString());
+	this.emit('end');
+}
 
 gulp.task('serve:test', function (done) {
 	browserSync({
@@ -55,10 +68,10 @@ gulp.task('integration-bamboo', ['serve:test', 'selenium'], function () {
 	return gulp.src('test/*.js', {read: false})
 		.pipe(mocha({
 			timeout: '50000'
-		}));
+		}).on("error", handleError));
 });
 
-gulp.task('menu-integration', ['serve:test', 'selenium-start'], function () {
+gulp.task('menu-integration', ['serve:test', 'selenium'], function () {
 	return gulp.src('test/Menu.js', {read: false})
 		.pipe(mocha({
 			timeout: '50000'
@@ -79,7 +92,7 @@ gulp.task('local-integration', ['serve:test', 'selenium-start'], function () {
 	return gulp.src('test/*.js', {read: false})
 		.pipe(mocha({
 			timeout: '50000'
-		}));
+		}).on("error", handleError));
 });
 
 /**
@@ -101,11 +114,6 @@ gulp.task('test-no-install', ['no-install-integration'], function () {
  */
 
 gulp.task('test-local', ['local-integration'], function () {
-	selenium.child.kill();
-	browserSync.exit();
-});
-
-gulp.task('menu', ['menu-integration'], function () {
 	selenium.child.kill();
 	browserSync.exit();
 });

@@ -1,14 +1,12 @@
-var config = require('./projects/payless/config');
+var config = require('./browser/config');
 
 exports.client = require('webdriverio').remote({
 	desiredCapabilities: {
-		browserName: 'chrome',
-		//'phantomjs.binary.path': require('phantomjs').path,
+		browserName: 'phantomjs',
 		page: {
 			settings: {
-				userAgent: config.userAgents.mobile
+				userAgent: config.userAgent.mobile
 			}
 		}
 	}
 });
-

@@ -8,7 +8,7 @@
 		"start":"gulp test-local"
 	},
 	"author": "Mad Mobile",
-	"license": "ISC",
+	"license": "unlicensed",
 	"dependencies": {
 		"chai": "^3.4.1",
 		"mocha": "^2.3.4",
@@ -17,7 +17,6 @@
 		"browser-sync":"^2.11.1",
 		"gulp":"^3.9.1",
 		"gulp-mocha":"^2.2.0",
-		"phantomjs": "~2.1.1",
-		"mocha-bamboo-reporter":"*"
+		"phantomjs": "~2.1.1"
 	}
 }

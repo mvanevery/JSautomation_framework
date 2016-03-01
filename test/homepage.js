@@ -1,17 +1,17 @@
-var homepage = require('../core/helpers/homepage');
+var common = require('../core/helpers/common');
 
 describe('Testing Home Page', function () {
 	before(function (done) {
-		homepage.goTo(done);
+		common.goTo(done);
 	});
 
 	describe('The Home Page', function () {
 		it('should have the homepage url', function (done) {
-			homepage.verifyPageUrl(done);
+			common.verifyPageUrl(done);
 		})
 	});
 
 	after(function (done) {
-		homepage.end(done);
+		common.end(done);
 	});
 });

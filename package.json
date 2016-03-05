@@ -11,6 +11,8 @@
 	"license": "unlicensed",
 	"dependencies": {
 		"chai": "^3.4.1",
-		"mocha": "^2.3.4"
+		"mocha": "^2.3.4",
+		"browser-sync":"^2.11.1",
+		"phantomjs": "~2.1.1"
 	}
 }

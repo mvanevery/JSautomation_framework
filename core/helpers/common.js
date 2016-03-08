@@ -46,7 +46,7 @@ module.exports = {
 
 	openMenu: function (done) {
 		if (client.isVisible('div.slider-container > a > img', done)) {
-			client.click('a.menu-trigger > i.icon', done);
+			client.click('a.menu-trigger > i.icon');
 		} else {
 			console.log('Menu not available');
 		}
@@ -61,6 +61,29 @@ module.exports = {
 
 	},
 
+	closeMenu: function (done) {
+		if (client.isVisible('a.close > i.icon', done)) {
+			client.click('a.close > i.icon', done);
+		} else {
+			console.log('Menu not open');
+		}
+	},
+	pickCategory: function(done) {
+		if (client.isVisible('a.close > i.icon', done))  {
+			client.click('a href=" /mens-shoes/"', done);
+		} else {
+			console.log('Menu not open');
+		}
+	},
+	pickStyle: function(done) {
+		if (client.isVisible('li.active.active-leaf > a.title', done))  {
+			client.getText('=casual', function(err, text) {
+				client.click(text);
+			});
+		} else {
+			console.log('Menu not open');
+		}
+	},
 
 
 	end: function (done) {

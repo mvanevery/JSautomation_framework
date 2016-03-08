@@ -95,6 +95,13 @@ gulp.task('local-integration', ['serve:test', 'selenium-start'], function () {
 		}).on("error", handleError));
 });
 
+gulp.task('menu', ['serve:test', 'selenium-start'], function () {
+	return gulp.src('test/menu.js', {read: false})
+		.pipe(mocha({
+			timeout: '50000'
+		}).on("error", handleError));
+});
+
 /**
  *  Use 'npm run test-bamboo'
  */

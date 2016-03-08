@@ -1,13 +1,13 @@
 {
 	"name": "archon",
-	"version": "1.0.0",
+	"version": "0.1.0",
 	"description": "Mad Mobile Automated Testing Framework",
 	"main": "/core/client.js",
 	"scripts": {
-		"test": "mocha -t 50000",
-		"start":"gulp test-local"
+		"test-local":"gulp test-local",
+		"test-ci": "gulp test-ci"
 	},
-	"author": "Mad Mobile",
+	"author": "Derick Warshaw",
 	"license": "unlicensed",
 	"dependencies": {
 		"chai": "^3.4.1",
@@ -17,6 +17,6 @@
 		"browser-sync":"^2.11.1",
 		"gulp":"^3.9.1",
 		"gulp-mocha":"^2.2.0",
-		"phantomjs": "~2.1.1"
+		"phantomjs-prebuilt": "~2.1.4"
 	}
 }

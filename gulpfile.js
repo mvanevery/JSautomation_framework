@@ -64,7 +64,7 @@ gulp.task('selenium-start', function (done) {
  *  Used in CI
  */
 
-gulp.task('integration-bamboo', ['serve:test', 'selenium'], function () {
+gulp.task('integration-ci', ['serve:test', 'selenium'], function () {
 	return gulp.src('test/*.js', {read: false})
 		.pipe(mocha({
 			timeout: '50000'
@@ -73,16 +73,6 @@ gulp.task('integration-bamboo', ['serve:test', 'selenium'], function () {
 
 gulp.task('menu-integration', ['serve:test', 'selenium'], function () {
 	return gulp.src('test/Menu.js', {read: false})
-		.pipe(mocha({
-			timeout: '50000'
-		}));
-});
-
-/**
- *  Used locally
- */
-gulp.task('no-install-integration', ['serve:test', 'selenium-start'], function () {
-	return gulp.src('test/*.js', {read: false})
 		.pipe(mocha({
 			timeout: '50000'
 		}));
@@ -106,12 +96,7 @@ gulp.task('menu', ['serve:test', 'selenium-start'], function () {
  *  Use 'npm run test-bamboo'
  */
 
-gulp.task('test-bamboo', ['integration-bamboo'], function () {
-	selenium.child.kill();
-	browserSync.exit();
-});
-
-gulp.task('test-no-install', ['no-install-integration'], function () {
+gulp.task('test-ci', ['integration-ci'], function () {
 	selenium.child.kill();
 	browserSync.exit();
 });

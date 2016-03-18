@@ -1,5 +1,5 @@
 module.exports = {
 	routes: {
-		baseUrl: 'https://m.payless.com/'
+		baseUrl: 'https://madmobile-staging.payless.com/'
 	}
 };

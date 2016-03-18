@@ -70,20 +70,29 @@ module.exports = {
 	},
 	pickCategory: function(done) {
 		if (client.isVisible('a.close > i.icon', done))  {
-			client.click('a href=" /mens-shoes/"', done);
-		} else {
-			console.log('Menu not open');
-		}
-	},
-	pickStyle: function(done) {
-		if (client.isVisible('li.active.active-leaf > a.title', done))  {
-			client.getText('=casual', function(err, text) {
-				client.click(text);
+			client.click('/men-shoes/').then(function () {
+				client.open(page.mobileUrl + '/mens-shoes/')
 			});
 		} else {
 			console.log('Menu not open');
 		}
 	},
+
+	pickStyle: function(done) {
+		if (client.isVisible('li.active.active-leaf > a.title', done))  {
+			console.log('Styles are open');
+		} else {
+			console.log('Menu not open');
+		}
+	},
+	pickItem: function(done) {
+		if (client.isVisible('div.brand-notice > span', done)) {
+			client.click('=/womens-karmen-pump');
+		} else {
+			console.log('Karmen Pumps not displayed');
+		}
+	},
+
 
 
 	end: function (done) {

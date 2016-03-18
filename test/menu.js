@@ -9,11 +9,11 @@ describe('Testing Home Page', function () {
         common.goTo(done);
     });
 
-    describe('Setting viewport size', function () {
-        it('should launch in mobile view', function (done) {
-            common.mobileView(done);
-        });
-    });
+    //describe('Setting viewport size', function () {
+    //    it('should launch in mobile view', function (done) {
+    //        common.mobileView(done);
+    //    });
+    //});
     describe('Open Menu', function () {
         it('should see the menu open', function (done) {
             common.openMenu(done);

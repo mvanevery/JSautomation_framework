@@ -70,9 +70,7 @@ module.exports = {
 	},
 	pickCategory: function(done) {
 		if (client.isVisible('a.close > i.icon', done))  {
-			client.click('/men-shoes/').then(function () {
-				client.open(page.mobileUrl + '/mens-shoes/')
-			});
+			client.click(config.helpers.men);
 		} else {
 			console.log('Menu not open');
 		}
@@ -80,16 +78,16 @@ module.exports = {
 
 	pickStyle: function(done) {
 		if (client.isVisible('li.active.active-leaf > a.title', done))  {
-			console.log('Styles are open');
+			client.click('//a[@href="/mens/casual-shoes/"]');
 		} else {
 			console.log('Menu not open');
 		}
 	},
 	pickItem: function(done) {
-		if (client.isVisible('div.brand-notice > span', done)) {
-			client.click('=/womens-karmen-pump');
+		if (client.waitForVisible('div.brand-notice > span', done)) {
+			client.click('=/mens-benton-boat');
 		} else {
-			console.log('Karmen Pumps not displayed');
+			console.log('Shoes not displayed');
 		}
 	},
 

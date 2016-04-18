@@ -30,11 +30,16 @@ describe('Testing Home Page', function () {
             common.pickCategory(done);
         })
     });
-    //describe('Selecting Style', function () {
-    //    it('should pick a style', function (done) {
-    //        common.pickStyle(done);
-    //    })
-    //});
+    describe('Selecting Style', function () {
+        it('should pick a style', function (done) {
+            common.pickStyle(done);
+        })
+    });
+    describe('Selecting Item', function() {
+        it('should pick an item', function(done) {
+            common.pickItem(done);
+        })
+    });
 })
 //    after(function (done) {
 //        common.end(done);

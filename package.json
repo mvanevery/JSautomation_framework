@@ -1,22 +1,23 @@
 {
-	"name": "archon",
-	"version": "0.1.0",
-	"description": "Mad Mobile Automated Testing Framework",
-	"main": "/core/client.js",
-	"scripts": {
-		"test-local":"gulp test-local",
-		"test-ci": "gulp test-ci"
-	},
-	"author": "Derick Warshaw",
-	"license": "unlicensed",
-	"dependencies": {
-		"chai": "^3.4.1",
-		"mocha": "^2.3.4",
-		"webdriverio": "^3.4.0",
-		"selenium-standalone": "^4.9.0",
-		"browser-sync":"^2.11.1",
-		"gulp":"^3.9.1",
-		"gulp-mocha":"^2.2.0",
-		"phantomjs-prebuilt": "~2.1.4"
-	}
+  "name": "archon",
+  "version": "0.1.0",
+  "description": "Mad Mobile Automated Testing Framework",
+  "main": "/core/client.js",
+  "scripts": {
+    "test-local": "gulp test-local",
+    "test-ci": "gulp test-ci"
+  },
+  "author": "Derick Warshaw",
+  "license": "unlicensed",
+  "dependencies": {
+    "browser-sync": "^2.11.1",
+    "chai": "^3.4.1",
+    "gulp": "^3.9.1",
+    "gulp-mocha": "^2.2.0",
+    "jquery": "^2.2.3",
+    "mocha": "^2.3.4",
+    "phantomjs-prebuilt": "~2.1.4",
+    "selenium-standalone": "^4.9.0",
+    "webdriverio": "^3.4.0"
+  }
 }

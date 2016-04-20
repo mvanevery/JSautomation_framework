@@ -39,9 +39,10 @@ describe('Testing Home Page', function () {
         it('should pick an item', function(done) {
             common.pickItem(done);
         })
-    });
-})
-//    after(function (done) {
-//        common.end(done);
-//    });
-//});
+    })
+//})
+//  after(function (done) {
+//     common.end(done);
+//   });
+
+});

@@ -3,6 +3,7 @@ var project = require('../projects/config').project;
 var config = require('../projects/' + project + '/config');
 var page = require('../projects/' + project + '/config.homepage');
 var expect = require('chai').expect;
+var $ = require('jQuery');
 
 
 module.exports = {
@@ -53,7 +54,7 @@ module.exports = {
 	},
 	menuVerify: function (done) {
 		if (client.isVisible('ul.expandable > li.footer-container > div.app-menu-footer > div.app-menu-footer-container > ul.footer-links > li.my-bag > a.cart > h5', done)) {
-			client.getText('ul.expandable > li.footer-container > div.app-menu-footer > div.app-menu-footer-container > ul.footer-links > li.my-bag > a.cart > h5').then(function(err, text){
+			client.getText('ul.expandable > li.footer-container > div.app-menu-footer > div.app-menu-footer-container > ul.footer-links > li.my-bag > a.cart > h5').then(function (err, text) {
 				expect(text).to.equal('My Bag');
 				//done();
 			})
@@ -68,33 +69,30 @@ module.exports = {
 			console.log('Menu not open');
 		}
 	},
-	pickCategory: function(done) {
-		if (client.isVisible('a.close > i.icon', done))  {
+	pickCategory: function (done) {
+		if (client.isVisible('a.close > i.icon', done)) {
 			client.click(config.helpers.men);
 		} else {
 			console.log('Menu not open');
 		}
 	},
 
-	pickStyle: function(done) {
-		if (client.isVisible('li.active.active-leaf > a.title', done))  {
+	pickStyle: function (done) {
+		if (client.isVisible('li.active.active-leaf > a.title', done)) {
 			client.click('//a[@href="/mens/casual-shoes/"]');
 		} else {
 			console.log('Menu not open');
 		}
 	},
-	pickItem: function(done) {
-		if (client.waitForVisible('div.brand-notice > span', done)) {
-			client.click('=/mens-benton-boat');
-		} else {
-			console.log('Shoes not displayed');
-		}
+	pickItem: function (done) {
+		client.waitForVisible('div.mobile-brand > a.name > h3', 30000, done)
+			.then(function () {
+			$('a[href*="/mens-benton-boat-slip-on/"]').trigger('click');
+			});
 	},
-
-
 
 	end: function (done) {
 		client.end();
 		done();
 	}
-};
+}

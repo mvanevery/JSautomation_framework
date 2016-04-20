@@ -3,6 +3,6 @@ module.exports = {
 		baseUrl: 'https://madmobile-staging.payless.com/'
 	},
 	helpers: {
-		men: '//a[@href="/mens-shoes/"]'
+		men: '//a[@href="/mens-shoes/"]',
 	}
 };

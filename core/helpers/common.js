@@ -85,10 +85,12 @@ module.exports = {
 		}
 	},
 	pickItem: function (done) {
-		client.waitForVisible('div.mobile-brand > a.name > h3', 30000, done)
+		client.waitForVisible('div.details > div.mobile-brand > a.name > h3', 30000, done)
 			.then(function () {
-			$('a[href*="/mens-benton-boat-slip-on/"]').trigger('click');
-			});
+			client.click('div.details > div.mobile-brand > a.name > h3'); // function(err, linktext) {
+			//console.log(linktext);
+		});
+		//($('a[href*="/mens-benton-boat-slip-on/"]').trigger('click');}
 	},
 
 	end: function (done) {

@@ -39,7 +39,27 @@ describe('Testing Home Page', function () {
         it('should pick an item', function(done) {
             common.pickItem(done);
         })
-    })
+    });
+    describe('Selecting a Size', function() {
+        it('should select a size', function(done) {
+            common.selectSize(done);
+        })
+    });
+    //describe('Adding item to Bag', function() {
+    //    it('should add item to bag', function(done) {
+    //        common.addToBag(done)
+    //    })
+    //});
+    //describe('Proceed to Cart', function() {
+    //    it('should click Proceed to Cart on the modal', function(done) {
+    //        common.proceedToCartModal(done);
+    //    })
+    //});
+    //describe('Proceed to Checkout', function() {
+    //    it('should proceed to Checkout from Cart', function(done) {
+    //        common.proceedToCheckoutCart(done)
+    //    })
+    //});
 //})
 //  after(function (done) {
 //     common.end(done);

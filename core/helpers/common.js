@@ -97,16 +97,16 @@ module.exports = {
 				client.scroll('tbody > tr > td.size-button > span')
 				//client.waitForEnabled('tbody > tr > td.size-button > span', 5000, done)
 					.then(function() {
-						client.click('tbody > tr > td.size-button > span');
+						client.click('span=9');
 					})
 			});
 	},
-	//addToBag: function (done) {
-	//	client.waitForEnabled('button.add-to-cart', 15000, done)
-	//		.then(function() {
-	//			client.click('button.add-to-cart');
-	//	});
-	//},
+	addToBag: function (done) {
+		client.waitForEnabled('button.add-to-cart', 15000, done)
+			.then(function() {
+				client.click('button.add-to-cart');
+		});
+	},
 	//proceedToCartModal: function(done) {
 	//	client.waitForVisible('button.btn-checkout', 15000, done)
 	//		.then(function() {

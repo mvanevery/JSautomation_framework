@@ -45,11 +45,11 @@ describe('Testing Home Page', function () {
             common.selectSize(done);
         })
     });
-    //describe('Adding item to Bag', function() {
-    //    it('should add item to bag', function(done) {
-    //        common.addToBag(done)
-    //    })
-    //});
+    describe('Adding item to Bag', function() {
+        it('should add item to bag', function(done) {
+            common.addToBag(done)
+        })
+    });
     //describe('Proceed to Cart', function() {
     //    it('should click Proceed to Cart on the modal', function(done) {
     //        common.proceedToCartModal(done);

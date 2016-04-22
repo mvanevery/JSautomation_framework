@@ -7,7 +7,7 @@ describe('Testing Home Page', function () {
 
 	describe('The Home Page', function () {
 		it('should have the homepage url', function (done) {
-			common.verifyPageUrl(done);
+			common.getPageTitle(done);
 		})
 	});
 

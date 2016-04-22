@@ -85,12 +85,14 @@ gulp.task('local-integration', ['serve:test', 'selenium-start'], function () {
 		}).on("error", handleError));
 });
 
-gulp.task('menu', ['serve:test', 'selenium-start'], function () {
-	return gulp.src('test/menu.js', {read: false})
+gulp.task('endToEnd', ['serve:test', 'selenium-start'], function () {
+	return gulp.src('test/endToEnd.js', {read: false})
 		.pipe(mocha({
 			timeout: '50000'
 		}).on("error", handleError));
 });
+
+
 
 /**
  *  Use 'npm run test-bamboo'
@@ -108,4 +110,11 @@ gulp.task('test-ci', ['integration-ci'], function () {
 gulp.task('test-local', ['local-integration'], function () {
 	selenium.child.kill();
 	browserSync.exit();
+});
+
+gulp.task('homepage', ['serve:test', 'selenium-start'], function () {
+	return gulp.src('test/homepage.js', {read: false})
+		.pipe(mocha({
+			timeout: '50000'
+		}).on("error", handleError));
 });

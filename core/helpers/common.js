@@ -190,9 +190,9 @@ module.exports = {
 				})
 	},
 	useTypedAddress: function(done) {
-		client.waitForVisible('js-prediction-confirm', 10000, done)
+		client.waitForVisible('#js-prediction-confirm', 10000, done)
 			.then(function () {
-				client.click('js-prediction-confirm');
+				client.click('#js-prediction-confirm');
 			})
 	},
 

@@ -109,3 +109,17 @@ gulp.task('test-local', ['local-integration'], function () {
 	selenium.child.kill();
 	browserSync.exit();
 });
+
+gulp.task('_module_launch_homepage', ['serve:test', 'selenium-start'], function () {
+	return gulp.src('test_Concierge/_module_launch_homepage.js', {read: false})
+		.pipe(mocha({
+			timeout: '50000'
+		}).on("error", handleError));
+});
+
+gulp.task('_module_provision_talbots', ['serve:test', 'selenium-start'], function () {
+	return gulp.src('test_Concierge/_module_provision_talbots.js', {read: false})
+		.pipe(mocha({
+			timeout: '50000'
+		}).on("error", handleError));
+});

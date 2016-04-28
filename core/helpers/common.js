@@ -3,8 +3,10 @@ var project = require('../projects/config').project;
 var config = require('../projects/' + project + '/config');
 var page = require('../projects/' + project + '/config.homepage');
 var expect = require('chai').expect;
+var assert = require('chai').assert;
 var $ = require('jQuery');
 var mobileTitle = page.mobileTitle;
+var shipinfo = config.helpers.shipInfo;
 
 
 module.exports = {
@@ -23,6 +25,9 @@ module.exports = {
 				width: 375
 			}, true).then(done);
 		});
+	},
+	pause: function (done) {
+		client.pause(15000, done);
 	},
 
 	getPageTitle: function (done) {
@@ -195,10 +200,74 @@ module.exports = {
 				client.click('#js-prediction-confirm');
 			})
 	},
+	addCCName: function(done) {
+		client.waitForVisible('input[name="dwfrm_billing_paymentMethods_creditCard_owner"]', 10000, done)
+			.then(function () {
+				client.setValue('//input[@name="dwfrm_billing_paymentMethods_creditCard_owner"]', config.helpers.CCName);
+			})
+	},
+	addCCNumber: function(done) {
+		client.waitForVisible('input[name="dwfrm_billing_paymentMethods_creditCard_number"]', 10000, done)
+			.then(function () {
+				client.setValue('//input[@name="dwfrm_billing_paymentMethods_creditCard_number"]', config.helpers.CCNumber);
+			})
+	},
+	addCCExpMonth: function(done) {
+		client.waitForVisible('//select[@name="dwfrm_billing_paymentMethods_creditCard_month"]', 10000, done)
+			.then(function () {
+				client.selectByValue('//select[@name="dwfrm_billing_paymentMethods_creditCard_month"]', config.helpers.CCExpMonth);
+			})
+	},
+	addCCExpYear: function(done) {
+		client.waitForVisible('//select[@name="dwfrm_billing_paymentMethods_creditCard_year"]', 10000, done)
+			.then(function () {
+				client.selectByValue('//select[@name="dwfrm_billing_paymentMethods_creditCard_year"]', config.helpers.CCExpYear);
+			})
+	},
+	addCCSecurity: function(done) {
+		client.waitForVisible('input[name="dwfrm_billing_paymentMethods_creditCard_cvn"]', 10000, done)
+			.then(function () {
+				client.setValue('//input[@name="dwfrm_billing_paymentMethods_creditCard_cvn"]', config.helpers.CCSecurity);
+			})
+	},
+	reviewOrder: function(done) {
+		client.waitForVisible('#js-submit-payment-btn', 10000, done)
+			.then(function () {
+				client.click('#js-submit-payment-btn');
+			})
+	},
+	verifyShippingTitle: function(done) {
+		client.waitForVisible('div.box-section.select-shipping-method > div.title-bar > h3', 10000, done)
+			.then(function() {
+				client.getText('div.box-section.select-shipping-method > div.title-bar > h3')
+					.then(function (text) {
+						if (text == config.helpers.shipTitle) {
+							console.log('Shipping title - PASS');
+						} else {
+							console.log('Shipping title - FAIL');
+						}
+					});
+			})
+	},
+		verifyShippingInfo: function(done) {
+			client.waitForVisible('div.box-section.payment-method > div.title-bar > h3', 10000, done)
+				.then(function () {
+					client.getText('div#js-shipping-summary-body.checkout-step.shipping-summary')
+						.then(function (text) {
+							//if (text == config.helpers.shipInfo) {
+									console.log(text.length);
+									console.log(shipinfo.length);
+							//	console.log('Shipping info - PASS');
+							//} else {
+							//	console.log('Shipping info - FAIL');
+							//}
+						})
+				});
+		},
 
 
-	end: function (done) {
-		client.end();
-		done();
-	}
-};
+	//end: function (done) {
+	//	client.end();
+	//	done();
+	//}
+}

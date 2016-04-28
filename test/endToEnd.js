@@ -115,9 +115,53 @@ describe('Testing Home Page', function () {
             common.useTypedAddress(done);
         })
     });
+    describe('Add Credit Card Owner', function () {
+        it('should add credit card owner name', function (done) {
+            common.addCCName(done);
+        })
+    });
+    describe('Add Credit Card Number', function () {
+        it('should add credit card number', function (done) {
+            common.addCCNumber(done);
+        })
+    });
+    describe('Add Credit Card Expiration Month', function () {
+        it('should add expiration month', function (done) {
+            common.addCCExpMonth(done);
+        })
+    });
+    describe('Add Credit Card Expiration Year', function () {
+        it('should add expiration year', function (done) {
+            common.addCCExpYear(done);
+        })
+    });
+    describe('Add Credit Card Security Code', function () {
+        it('should add credit card security code', function (done) {
+            common.addCCSecurity(done);
+        })
+    });
+    describe('Click the Review Order button', function () {
+        it('should proceed to the Review Order page', function (done) {
+            common.reviewOrder(done);
+        })
+    });
+    describe('pausing', function()  {
+        it('should pause the test', function(done)  {
+            common.pause(done);
+        })
+    });
+    describe('Verify Shipping Header', function () {
+        it('should verify Shipping header is correct', function (done) {
+            common.verifyShippingTitle(done);
+        })
+    });
+    describe('Verify Shipping Info', function () {
+        it('should verify Shipping information is correct', function (done) {
+            common.verifyShippingInfo(done);
+        })
+    });
 
-//  after(
-//  after(function (done) {
-//     common.end(done);
-//      })
+    //after(function (done) {
+    //    common.end(done);
+    //});
 })

@@ -13,6 +13,20 @@ module.exports = {
 		Zipcode: '33607',
 		Phone: '8134001976',
 		Email: 'mve.payless@gmail.com',
+		CCName: 'Mad Mobile',
+		CCNumber: '4100630020577750',
+		CCExpMonth:'09',
+		CCExpYear: '2018',
+		CCSecurity: '171',
+		shipTitle: 'SHIPPING',
+		shipInfo:'Ship to: mad mobile' +
+		'2701 North Rocky Point Dr' +
+		'Suite 500' +
+		'Tampa, FL 33607' +
+		'813-400-1976' +
+		'mve.payless@gmail.com' +
+		'Rewards Member Recognize' +
+		'Shipping Method: Standard Delivery'
 
 	}
 };

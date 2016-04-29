@@ -160,6 +160,36 @@ describe('Testing Home Page', function () {
             common.verifyShippingInfo(done);
         })
     });
+    describe('Verify Card Owner', function () {
+        it('should verify Card Owner is correct', function (done) {
+            common.verifyPaymentName(done);
+        })
+    });
+    describe('Verify Payment Type', function () {
+        it('should verify Payment Type is correct', function (done) {
+            common.verifyPaymentType(done);
+        })
+    });
+    describe('Verify Card Number', function () {
+        it('should verify Card Number is correct', function (done) {
+            common.verifyPaymentNumber(done);
+        })
+    });
+    describe('Verify Card Expiration', function () {
+        it('should verify Card Expiration is correct', function (done) {
+            common.verifyPaymentExpire(done);
+        })
+    });
+    describe('Verify Billing Info', function () {
+        it('should verify Billing information is correct', function (done) {
+            common.verifyBillingInfo(done);
+        })
+    });
+    describe('Submit Payment', function () {
+        it('should click the Place Your Order button', function (done) {
+            common.submitPayment(done);
+        })
+    });
 
     //after(function (done) {
     //    common.end(done);

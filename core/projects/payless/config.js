@@ -2,6 +2,7 @@ module.exports = {
 	routes: {
 		baseUrl: 'https://madmobile-staging.payless.com/'
 	},
+
 	helpers: {
 		men: '//a[@href="/mens-shoes/"]',
 		FirstName: 'mad',
@@ -19,14 +20,22 @@ module.exports = {
 		CCExpYear: '2018',
 		CCSecurity: '171',
 		shipTitle: 'SHIPPING',
-		shipInfo:'Ship to: mad mobile' +
-		'2701 North Rocky Point Dr' +
-		'Suite 500' +
-		'Tampa, FL 33607' +
-		'813-400-1976' +
-		'mve.payless@gmail.com' +
-		'Rewards Member Recognize' +
-		'Shipping Method: Standard Delivery'
+		shipInfo:[ 'Ship to: mad mobile',
+			'2701 North Rocky Point Dr',
+			'Suite 500',
+			'Tampa, FL 33607',
+			'813-400-1976',
+			'mve.payless@gmail.com',
+			'Shipping Method: Standard' ],
+		payName: 'Mad Mobile',
+		payType: 'Visa',
+		payNumber: '************7750',
+		payExpires: 'Exp. September 2018',
+		billingInfo: [ 'mad mobile',
+		'2701 North Rocky Point Dr',
+		'Suite 500',
+		'Tampa, FL 33607',
+		'813-400-1976' ]
 
-	}
+}
 };

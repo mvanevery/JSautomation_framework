@@ -185,6 +185,11 @@ describe('Testing Home Page', function () {
             common.verifyBillingInfo(done);
         })
     });
+    describe('pausing', function()  {
+        it('should pause the test', function(done)  {
+            common.pause(done);
+        })
+    });
     describe('Submit Payment', function () {
         it('should click the Place Your Order button', function (done) {
             common.submitPayment(done);

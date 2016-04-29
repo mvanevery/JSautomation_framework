@@ -16,7 +16,7 @@ module.exports = {
 		Email: 'mve.payless@gmail.com',
 		CCName: 'Mad Mobile',
 		CCNumber: '4100630020577750',
-		CCExpMonth:'09',
+		CCExpMonth:'07',
 		CCExpYear: '2018',
 		CCSecurity: '171',
 		shipTitle: 'SHIPPING',

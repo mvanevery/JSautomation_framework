@@ -119,7 +119,6 @@ module.exports = {
 		client.waitForVisible('tbody > tr > td.size-button > span', 10000, done)
 			.then(function () {
 				client.scroll('tbody > tr > td.size-button > span')
-					//client.waitForEnabled('tbody > tr > td.size-button > span', 5000, done)
 					.then(function () {
 						client.click('span=9');
 					})
@@ -350,14 +349,32 @@ module.exports = {
 			.then(function () {
 				client.scroll('#js-submit-payment-btn')
 					.then(function () {
-						client.click('#js-submit-payment-btn');
+						client.click('//button[@id="js-submit-final-btn"]');
+					})
+			})
+	},
+	verifyConfirmOrder: function(done) {
+		client.waitForVisible('//div.order > div.check-mark > i.icon', 10000, done)
+			.then(function () {
+				console.log('Checkmark is visible')
+					.then(function() {
+						client.getText('//div.modal.order-confirmation > div.body > div.order > span.success')
+							.then(function(success) {
+								console.log(success + ' = Order Status')
+									.then(function(){
+										client.getText('//div.modal.order-confirmation > div.body > div.order > span.order-number')
+											.then(function(ordernumber){
+												console.log(ordernumber);
+											})
+									})
+							})
 					})
 			})
 	},
 
 
+
 	//end: function (done) {
-	//	client.end();
-	//	done();
+	//	client.end();	//	done();
 	//}
 }

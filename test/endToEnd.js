@@ -2,7 +2,7 @@
  * Created by mvanevery on 2/23/2016.
  */
 
-var common = require('../../core/helpers/payless-node/common');
+var common = require('../core/helpers/common');
 
 describe('Testing Home Page', function () {
     before(function (done) {
@@ -189,8 +189,7 @@ describe('Testing Home Page', function () {
         it('should pause the test', function(done)  {
             common.pause(done);
         })
-    });
-    describe('Submit Payment', function () {
+    });  describe('Submit Payment', function () {
         it('should click the Place Your Order button', function (done) {
             common.submitPayment(done);
         })

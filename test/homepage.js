@@ -1,4 +1,4 @@
-var common = require('../core/helpers/common');
+var common = require('../core/helpers/payless-node/common');
 
 describe('Testing Home Page', function () {
 	before(function (done) {

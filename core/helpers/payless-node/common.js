@@ -1,5 +1,5 @@
-var client = require('../../core/client').client;
-var project = require('../projects/config').project;
+var client = require('../../client').client;
+var project = require('../../projects/config').project;
 var config = require('../projects/' + project + '/config');
 var page = require('../projects/' + project + '/config.homepage');
 var expect = require('chai').expect;

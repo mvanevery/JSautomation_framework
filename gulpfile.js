@@ -91,6 +91,19 @@ gulp.task('endToEnd', ['serve:test', 'selenium-start'], function () {
 			timeout: '50000'
 		}).on("error", handleError));
 });
+gulp.task('openMenu', ['serve:test', 'selenium-start'], function () {
+	return gulp.src('test/openMenu.js', {read: false})
+		.pipe(mocha({
+			timeout: '50000'
+		}).on("error", handleError));
+});
+gulp.task('e2e-prod', ['serve:test', 'selenium-start'], function () {
+	return gulp.src('test/end2end-prod.js', {read: false})
+		.pipe(mocha({
+			timeout: '50000'
+		}).on("error", handleError));
+});
+
 
 
 

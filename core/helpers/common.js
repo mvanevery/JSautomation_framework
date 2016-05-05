@@ -7,6 +7,8 @@ var assert = require('chai').assert;
 var $ = require('jQuery');
 var mobileTitle = page.mobileTitle;
 var shipinfo = config.helpers.shipInfo;
+var date = new Date();
+var current = date.getMonth() + "-" + date.getDate() + "-" + date.getFullYear() + "-" + date.getHours() + "-" + date.getMinutes();
 var comparisonTestPass = function (array1, array2) {
 	// Test lengths first
 	if (array1.length !== array2.length) {
@@ -103,7 +105,7 @@ module.exports = {
 
 	pickStyle: function (done) {
 		if (client.isVisible('li.active.active-leaf > a.title', done)) {
-			client.click('//a[@href="/mens/casual-shoes/"]');
+			client.click(config.helpers.catWomenAcc);
 		} else {
 			console.log('Menu not open');
 		}
@@ -116,19 +118,26 @@ module.exports = {
 	},
 
 	selectSize: function (done) {
-		client.waitForVisible('tbody > tr > td.size-button > span', 10000, done)
-			.then(function () {
-				client.scroll('tbody > tr > td.size-button > span')
-					.then(function () {
-						client.click('span=9');
-					})
-			});
+		if(client.isVisible('tbody > tr > td.size-button > span', done)) {
+			client.scroll('tbody > tr > td.size-button > span')
+				.then(function () {
+					client.click('span=9');
+				});
+		} else {
+			client.scroll('button.add-to-cart');
+		};
+
 	},
+
 	addToBag: function (done) {
-		client.waitForEnabled('button.add-to-cart', 30000, done)
-			.then(function () {
-				client.click('button.add-to-cart');
-			});
+		if (client.isVisible('button.add-to-cart', done)) {
+			client.scroll('button.add-to-cart')
+				.then(function () {
+					client.click('button.add-to-cart');
+				})
+		} else {
+			client.pause(5000);
+		}
 	},
 	proceedToCartModal: function (done) {
 		client.waitForVisible('button.btn-checkout', 15000, done)
@@ -245,7 +254,7 @@ module.exports = {
 			})
 	},
 	reviewOrder: function(done) {
-		client.waitForVisible('#js-submit-payment-btn', 10000, done)
+		client.scroll('#js-submit-payment-btn', done)
 			.then(function () {
 				client.click('#js-submit-payment-btn');
 			})
@@ -268,7 +277,7 @@ module.exports = {
 				.then(function () {
 					client.getText('div#js-shipping-summary-body.checkout-step.shipping-summary > p.summary-line.address-line')
 						.then(function (text) {
-							if (comparisonTestPass(text, config.helpers.shipInfo)) {
+							if (comparisonTestPass(text, config.helpers.shipInfoReal)) {
 							//		console.log(text);
 							//		console.log(shipinfo);
 								console.log('Shipping info - PASS');
@@ -345,36 +354,61 @@ module.exports = {
 			});
 	},
 	submitPayment: function(done) {
-		client.waitForVisible('#js-submit-payment-btn', 10000, done)
-			.then(function () {
-				client.scroll('#js-submit-payment-btn')
+		//client.waitForVisible('#js-submit-payment-btn', 10000, done)
+		//	.then(function () {
+				client.scroll('#js-submit-final-btn',done)
 					.then(function () {
 						client.click('//button[@id="js-submit-final-btn"]');
 					})
-			})
+			//})
 	},
 	verifyConfirmOrder: function(done) {
 		client.waitForVisible('//div.order > div.check-mark > i.icon', 10000, done)
 			.then(function () {
-				console.log('Checkmark is visible')
-					.then(function() {
-						client.getText('//div.modal.order-confirmation > div.body > div.order > span.success')
-							.then(function(success) {
-								console.log(success + ' = Order Status')
-									.then(function(){
-										client.getText('//div.modal.order-confirmation > div.body > div.order > span.order-number')
-											.then(function(ordernumber){
-												console.log(ordernumber);
-											})
-									})
-							})
-					})
+				console.log('Checkmark is visible');
+					client.getText('//div.modal.order-confirmation > div.body > div.order > span.success')
+						.then(function (status) {
+							if (status == 'SUCCESS!') {
+								console.log(status + ' = Order Status');
+							} else {
+								console.log('Did not complete');
+							}
+						})
 			})
 	},
+	verifyOrderError: function(done) {
+		if (client.isVisible('div.left-column > div.checkout-error', done)) {
+			client.scroll('div.left-column > div.checkout-error')
+				.then(function () {
+					client.getText('div.left-column > div.checkout-error')
+						.then(function (error) {
+							if (error == config.helpers.orderError) {
+								console.log(error + ' Order Failed!');
+							} else {
+								console.log('There was no error');
+							}
+						})
+				})
+		} else {
+			console.log('There was no error');
+		}
+	},
 
+//	if (status == 'SUCCESS!') {
+//	client.getText('//div.modal.order-confirmation > div.body > div.order > span.order-number')
+//		.then(function(ordernumber) {
+//			console.log(ordernumber);
+//		} else {
+//		console.log('No Order');
+//	}
+//}
+//})
+	getScreenshot: function(done) {
+		client.saveScreenshot('C:/Users/mvanevery/Pictures/Work images/Payless/Test Results/checkOutPass ' + current + '.png', done);
+	},
 
 
 	//end: function (done) {
 	//	client.end();	//	done();
 	//}
-}
+};

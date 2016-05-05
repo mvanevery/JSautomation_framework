@@ -9,6 +9,7 @@ var mobileTitle = page.mobileTitle;
 var shipinfo = config.helpers.shipInfo;
 var date = new Date();
 var current = date.getMonth() + "-" + date.getDate() + "-" + date.getFullYear() + "-" + date.getHours() + "-" + date.getMinutes();
+var utcDate = date.toUTCString();
 var comparisonTestPass = function (array1, array2) {
 	// Test lengths first
 	if (array1.length !== array2.length) {
@@ -404,7 +405,7 @@ module.exports = {
 //}
 //})
 	getScreenshot: function(done) {
-		client.saveScreenshot('C:/Users/mvanevery/Pictures/Work images/Payless/Test Results/checkOutPass ' + current + '.png', done);
+		client.saveScreenshot('C:/Users/mvanevery/Pictures/Work images/Payless/Test Results/checkOutPass ' + utcDate + '.png', done);
 	},
 
 

@@ -85,12 +85,6 @@ gulp.task('local-integration', ['serve:test', 'selenium-start'], function () {
 		}).on("error", handleError));
 });
 
-gulp.task('menu', ['serve:test', 'selenium-start'], function () {
-	return gulp.src('test/menu.js', {read: false})
-		.pipe(mocha({
-			timeout: '50000'
-		}).on("error", handleError));
-});
 
 /**
  *  Use 'npm run test-bamboo'
@@ -113,13 +107,41 @@ gulp.task('test-local', ['local-integration'], function () {
 gulp.task('_module_launch_homepage', ['serve:test', 'selenium-start'], function () {
 	return gulp.src('test_Concierge/_module_launch_homepage.js', {read: false})
 		.pipe(mocha({
-			timeout: '50000'
+			timeout: '20000'
 		}).on("error", handleError));
 });
 
-gulp.task('_module_provision_talbots', ['serve:test', 'selenium-start'], function () {
-	return gulp.src('test_Concierge/_module_provision_talbots.js', {read: false})
+gulp.task('provision_talbots', ['serve:test', 'selenium-start'], function () {
+	return gulp.src('test_Concierge/provision_talbots.js', {read: false})
 		.pipe(mocha({
-			timeout: '50000'
+			timeout: '20000'
+		}).on("error", handleError));
+});
+
+gulp.task('provision_burberry', ['serve:test', 'selenium-start'], function () {
+	return gulp.src('test_Concierge/provision_burberry.js', {read: false})
+		.pipe(mocha({
+			timeout: '20000'
+		}).on("error", handleError));
+});
+
+gulp.task('login_ssales', ['serve:test', 'selenium-start'], function () {
+	return gulp.src('test_Concierge/login_ssales.js', {read: false})
+		.pipe(mocha({
+			timeout: '20000'
+		}).on("error", handleError));
+});
+
+gulp.task('_smoke_customer_search', ['serve:test', 'selenium-start'], function () {
+	return gulp.src('test_Concierge/_smoke_customer_search.js', {read: false})
+		.pipe(mocha({
+			timeout: '20000'
+		}).on("error", handleError));
+});
+
+gulp.task('_smoke_add_appointment', ['serve:test', 'selenium-start'], function () {
+	return gulp.src('test_Concierge/_smoke_add_appointment.js', {read: false})
+		.pipe(mocha({
+			timeout: '20000'
 		}).on("error", handleError));
 });

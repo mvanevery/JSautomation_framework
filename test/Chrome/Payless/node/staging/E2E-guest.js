@@ -1,12 +1,8 @@
 /**
- * Created by mvanevery on 5/5/2016.
- */
-/**
  * Created by mvanevery on 2/23/2016.
  */
 
-var common = require('../core/helpers/common');
-var prod = require('../core/helpers/common-production');
+var common = require('../../../../../core/helpers/common');
 
 describe('Testing Home Page', function () {
     before(function (done) {
@@ -66,24 +62,24 @@ describe('Testing Home Page', function () {
     });
     describe('Add First Name (shipping)', function () {
         it('should add first name to shipping', function (done) {
-            prod.addShipFirstName(done);
+            common.addShipFirstName(done);
         })
     });
     describe('Add Last Name (shipping)', function () {
         it('should add last name to shipping', function (done) {
-            prod.addShipLastName(done);
+            common.addShipLastName(done);
         })
     });
     describe('Add Address 1 (shipping)', function () {
         it('should add address 1 to shipping', function (done) {
-            prod.addShipAddress(done);
+            common.addShipAddress(done);
         })
     });
-    //describe('Add Address 2 (shipping)', function () {
-    //    it('should add address 2 to shipping', function (done) {
-    //        common.addShipAddress2(done);
-    //    })
-    //});
+    describe('Add Address 2 (shipping)', function () {
+        it('should add address 2 to shipping', function (done) {
+            common.addShipAddress2(done);
+        })
+    });
     describe('Add City (shipping)', function () {
         it('should add City to shipping', function (done) {
             common.addShipCity(done);
@@ -101,12 +97,12 @@ describe('Testing Home Page', function () {
     });
     describe('Add Phone (shipping)', function () {
         it('should add Phone to shipping', function (done) {
-            prod.addShipPhone(done);
+            common.addShipPhone(done);
         })
     });
     describe('Add Email (shipping)', function () {
         it('should add Email to shipping', function (done) {
-            prod.addShipEmail(done);
+            common.addShipEmail(done);
         })
     });
     describe('Click Continue to Payment', function () {
@@ -121,27 +117,27 @@ describe('Testing Home Page', function () {
     });
     describe('Add Credit Card Owner', function () {
         it('should add credit card owner name', function (done) {
-            prod.addCCName(done);
+            common.addCCName(done);
         })
     });
     describe('Add Credit Card Number', function () {
         it('should add credit card number', function (done) {
-            prod.addCCNumber(done);
+            common.addCCNumber(done);
         })
     });
     describe('Add Credit Card Expiration Month', function () {
         it('should add expiration month', function (done) {
-            prod.addCCExpMonth(done);
+            common.addCCExpMonth(done);
         })
     });
     describe('Add Credit Card Expiration Year', function () {
         it('should add expiration year', function (done) {
-            prod.addCCExpYear(done);
+            common.addCCExpYear(done);
         })
     });
     describe('Add Credit Card Security Code', function () {
         it('should add credit card security code', function (done) {
-            prod.addCCSecurity(done);
+            common.addCCSecurity(done);
         })
     });
     describe('Click the Review Order button', function () {
@@ -161,32 +157,32 @@ describe('Testing Home Page', function () {
     });
     describe('Verify Shipping Info', function () {
         it('should verify Shipping information is correct', function (done) {
-            prod.verifyShippingInfo(done);
+            common.verifyShippingInfo(done);
         })
     });
     describe('Verify Card Owner', function () {
         it('should verify Card Owner is correct', function (done) {
-            prod.verifyPaymentName(done);
+            common.verifyPaymentName(done);
         })
     });
     describe('Verify Payment Type', function () {
         it('should verify Payment Type is correct', function (done) {
-            prod.verifyPaymentType(done);
+            common.verifyPaymentType(done);
         })
     });
     describe('Verify Card Number', function () {
         it('should verify Card Number is correct', function (done) {
-            prod.verifyPaymentNumber(done);
+            common.verifyPaymentNumber(done);
         })
     });
     describe('Verify Card Expiration', function () {
         it('should verify Card Expiration is correct', function (done) {
-            prod.verifyPaymentExpire(done);
+            common.verifyPaymentExpire(done);
         })
     });
     describe('Verify Billing Info', function () {
         it('should verify Billing information is correct', function (done) {
-            prod.verifyBillingInfo(done);
+            common.verifyBillingInfo(done);
         })
     });
     describe('pausing', function()  {
@@ -204,9 +200,9 @@ describe('Testing Home Page', function () {
             common.pause(done);
         })
     });
-    describe('Confirm Order Error', function () {
-        it('should confirm an Order error is displayed', function (done) {
-            common.verifyOrderError(done);
+    describe('Confirm Order', function () {
+        it('should confirm an Order was placed', function (done) {
+            common.verifyConfirmOrder(done);
         })
     });
     describe('Get Screenshot', function() {

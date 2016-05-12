@@ -2,7 +2,7 @@
  * Created by mvanevery on 5/2/2016.
  */
 
-var common = require('../core/helpers/common-legacy');
+var common = require('../../../../../core/helpers/common-legacy');
 
 describe('Testing Home Page', function () {
     before(function (done) {

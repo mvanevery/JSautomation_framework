@@ -4,12 +4,11 @@ var config = require('../projects/' + project + '/config');
 var page = require('../projects/' + project + '/config.homepage');
 var expect = require('chai').expect;
 var assert = require('chai').assert;
+var should = require('chai').should();
 var $ = require('jQuery');
 var mobileTitle = page.mobileTitle;
-var shipinfo = config.helpers.shipInfo;
 var date = new Date();
-var current = date.getMonth() + "-" + date.getDate() + "-" + date.getFullYear() + "-" + date.getHours() + "-" + date.getMinutes();
-var utcDate = date.toUTCString();
+var current = date.getMonth() + "-" + date.getDate() + "-" + date.getFullYear() + "-" + date.getHours() + "-" + date.getMinutes() + "-" + date.getSeconds();
 var comparisonTestPass = function (array1, array2) {
 	// Test lengths first
 	if (array1.length !== array2.length) {
@@ -71,7 +70,8 @@ module.exports = {
 			callback();
 		});
 	},
-
+// 										HOMEPAGE/MENU FUNCTIONALITY										 //
+	
 	openMenu: function (done) {
 		if (client.isVisible('div.slider-container > a > img', done)) {
 			client.click('a.menu-trigger > i.icon');
@@ -96,6 +96,18 @@ module.exports = {
 			console.log('Menu not open');
 		}
 	},
+	searchItem: function (search, done) {
+		client.waitForVisible('div.app-sub-header > form#search-form div.input > input',10000,done)
+				.then(function () {
+				client.click('//form[@id="search-form"]/div/input')
+					.then(function () {
+						client.setValue('//form[@id="search-form"]/div/input', (search || config.helpers.search))
+							.then(function() {
+								client.click('button[type="submit"]')
+							})
+						})
+					})
+	},
 	pickCategory: function (done) {
 		if (client.isVisible('a.close > i.icon', done)) {
 			client.click(config.helpers.men);
@@ -111,13 +123,45 @@ module.exports = {
 			console.log('Menu not open');
 		}
 	},
+
+// 										FIND A STORE FUNCTIONALITY									//
+
+	openFindAStore: function (done) {
+		if (client.isVisible('div.slider-container > a > img', done)) {
+			client.click('a.location > i.icon');
+		} else {
+			console.log('Find A Store not available');
+		}
+	},
+	clickGeolocation: function(done) {
+		if(client.isVisible('button.geo-submit', done)) {
+			client.click('button.geo-submit');
+		} else {
+			console.log('Geolocation not available')
+		}
+	},
+	verifyStoreAddress: function(done) {
+		if(client.isVisible('button.map', done)) {
+			client.getText('div.store-locator-results div.left-column div.store span.address')
+				.then(function(text) {
+					console.log(text);
+				})
+		} else {
+			console.log('nothing to show');
+		}
+	},
+
+//										PLP FUNCTIONALITY 											//
+	
 	pickItem: function (done) {
 		client.waitForVisible('div.details > div.mobile-brand > a.name > h3', 20000, done)
 			.then(function () {
 				client.click('div.details > div.mobile-brand > a.name > h3');
 			});
 	},
-
+	
+//										PDP FUNCTIONALITY												//
+	
 	selectSize: function (done) {
 		if(client.isVisible('tbody > tr > td.size-button > span', done)) {
 			client.scroll('tbody > tr > td.size-button > span')
@@ -127,86 +171,119 @@ module.exports = {
 		} else {
 			client.scroll('button.add-to-cart');
 		};
-
 	},
 
 	addToBag: function (done) {
-		if (client.isVisible('button.add-to-cart', done)) {
-			client.scroll('button.add-to-cart')
-				.then(function () {
-					client.click('button.add-to-cart');
+		client.waitForVisible('button.add-to-cart', 10000, done)
+			.then(function () {
+				client.scroll('button.add-to-cart')
+					.then(function () {
+						client.click('button.add-to-cart');
 				})
-		} else {
-			client.pause(5000);
-		}
+		});
 	},
 	proceedToCartModal: function (done) {
-		client.waitForVisible('button.btn-checkout', 15000, done)
+		client.waitForVisible('button.btn-checkout', 10000, done)
 			.then(function () {
-				client.click('button.btn-checkout');
+				client.scroll('button.btn-checkout')
+					.then(function () {
+						client.click('button.btn-checkout');
+						})
+					});
+	},
+	verifyItemTitle: function (expected, done) {
+		client.waitForVisible('h1.title', 10000, done)
+			.then(function () {
+				client.getText('h1.title')
+					.then(function (title) {
+						if(title == expected) {
+							console.log('Title Matches')
+						} else {
+							console.log('Titles do not match. Should be this ' + title)
+						}
+					})
 			})
 	},
+	verifyItemNumber: function (expected, done) {
+		client.waitForVisible('h1.title', 10000, done)
+			.then(function () {
+				client.getText('div.number')
+					.then(function (number) {
+						if(number == expected) {
+							console.log('Number Matches')
+						} else {
+							console.log('Number do not match. Should be this ' + number)
+						}
+					})
+			})
+	},
+	
+// 											CART FUNCTIONALITY 											//
+	
 	proceedToCheckoutCart: function (done) {
 		client.waitForVisible('button.checkout-proceed', 10000, done)
 			.then(function () {
-				client.waitForEnabled('button.checkout-proceed', 5000)
+				client.scroll('button.checkout-proceed')
 					.then(function () {
 						client.click('button.checkout-proceed');
 					})
 			});
 	},
-	addShipFirstName: function (done) {
+	
+// 											CHECKOUT FUNCTIONALITY										 //	
+	
+	addShipFirstName: function (first, done) {
 		client.waitForVisible('//input[@id="firstName"]', 10000, done)
 			.then(function () {
-				client.setValue('//input[@id="firstName"]', config.helpers.FirstName);
+				client.setValue('//input[@id="firstName"]', (first || config.helpers.firstName));
 			});
 	},
-	addShipLastName: function (done) {
+	addShipLastName: function (last, done) {
 		client.waitForVisible('//input[@id="lastName"]', 10000, done)
 			.then(function () {
-				client.setValue('//input[@id="lastName"]', config.helpers.LastName);
+				client.setValue('//input[@id="lastName"]', last || config.helpers.lastName);
 			});
 	},
-	addShipAddress: function (done) {
+	addShipAddress: function (addln1, done) {
 		client.waitForVisible('//input[@id="street_number"]', 10000, done)
 			.then(function () {
-				client.setValue('//input[@id="street_number"]', config.helpers.Address);
+				client.setValue('//input[@id="street_number"]', addln1 || config.helpers.address1);
 			});
 	},
-	addShipAddress2: function(done) {
+	addShipAddress2: function(addln2, done) {
 		client.waitForVisible('//input[@id="address2"]', 10000, done)
 			.then(function() {
-				client.setValue('//input[@id="address2"]', config.helpers.Address2);
+				client.setValue('//input[@id="address2"]',addln2 || config.helpers.address2);
 			})
 	},
-	addShipCity: function(done) {
+	addShipCity: function(city, done) {
 		client.waitForVisible('//input[@id="locality"]', 10000, done)
 			.then(function() {
-				client.setValue('//input[@id="locality"]', config.helpers.City);
+				client.setValue('//input[@id="locality"]', city || config.helpers.city);
 			})
 	},
-	addShipState: function(done) {
+	addShipState: function(state, done) {
 		client.waitForVisible('//select[@id="administrative_area_level_1"]', 10000, done)
 			.then(function() {
-				client.selectByValue('//select[@id="administrative_area_level_1"]', config.helpers.State);
+				client.selectByValue('//select[@id="administrative_area_level_1"]', state || config.helpers.state);
 			})
 	},
-	addShipZipcode: function(done) {
+	addShipZipcode: function(zipcode, done) {
 		client.waitForVisible('//input[@id="postal_code"]', 10000, done)
 			.then(function() {
-				client.setValue('//input[@id="postal_code"]', config.helpers.Zipcode);
+				client.setValue('//input[@id="postal_code"]', zipcode || config.helpers.zipcode);
 			})
 	},
-	addShipPhone: function(done) {
+	addShipPhone: function(phone, done) {
 		client.waitForVisible('//input[@name="dwfrm_singleshipping_shippingAddress_addressFields_phone"]', 10000, done)
 			.then(function() {
-				client.setValue('//input[@name="dwfrm_singleshipping_shippingAddress_addressFields_phone"]', config.helpers.Phone);
+				client.setValue('//input[@name="dwfrm_singleshipping_shippingAddress_addressFields_phone"]', phone || config.helpers.phone);
 				})
 	},
-	addShipEmail: function(done) {
+	addShipEmail: function(email, done) {
 		client.waitForVisible('//input[@id="shipping-email"]', 10000, done)
 			.then(function() {
-				client.setValue('//input[@id="shipping-email"]', config.helpers.Email);
+				client.setValue('//input[@id="shipping-email"]', email || config.helpers.email);
 			})
 	},
 	proceedToPayment: function(done) {
@@ -224,34 +301,34 @@ module.exports = {
 				client.click('#js-prediction-confirm');
 			})
 	},
-	addCCName: function(done) {
+	addCCName: function(ccname, done) {
 		client.waitForVisible('input[name="dwfrm_billing_paymentMethods_creditCard_owner"]', 10000, done)
 			.then(function () {
-				client.setValue('//input[@name="dwfrm_billing_paymentMethods_creditCard_owner"]', config.helpers.CCName);
+				client.setValue('//input[@name="dwfrm_billing_paymentMethods_creditCard_owner"]', ccname || config.helpers.ccName);
 			})
 	},
-	addCCNumber: function(done) {
+	addCCNumber: function(ccnumber, done) {
 		client.waitForVisible('input[name="dwfrm_billing_paymentMethods_creditCard_number"]', 10000, done)
 			.then(function () {
-				client.setValue('//input[@name="dwfrm_billing_paymentMethods_creditCard_number"]', config.helpers.CCNumber);
+				client.setValue('//input[@name="dwfrm_billing_paymentMethods_creditCard_number"]', ccnumber || config.helpers.ccNumber);
 			})
 	},
-	addCCExpMonth: function(done) {
+	addCCExpMonth: function(ccmonth, done) {
 		client.waitForVisible('//select[@name="dwfrm_billing_paymentMethods_creditCard_month"]', 10000, done)
 			.then(function () {
-				client.selectByValue('//select[@name="dwfrm_billing_paymentMethods_creditCard_month"]', config.helpers.CCExpMonth);
+				client.selectByValue('//select[@name="dwfrm_billing_paymentMethods_creditCard_month"]', ccmonth || config.helpers.ccExpMonth);
 			})
 	},
-	addCCExpYear: function(done) {
+	addCCExpYear: function(ccyear, done) {
 		client.waitForVisible('//select[@name="dwfrm_billing_paymentMethods_creditCard_year"]', 10000, done)
 			.then(function () {
-				client.selectByValue('//select[@name="dwfrm_billing_paymentMethods_creditCard_year"]', config.helpers.CCExpYear);
+				client.selectByValue('//select[@name="dwfrm_billing_paymentMethods_creditCard_year"]', ccyear || config.helpers.ccExpYear);
 			})
 	},
-	addCCSecurity: function(done) {
+	addCCSecurity: function(ccsecurity, done) {
 		client.waitForVisible('input[name="dwfrm_billing_paymentMethods_creditCard_cvn"]', 10000, done)
 			.then(function () {
-				client.setValue('//input[@name="dwfrm_billing_paymentMethods_creditCard_cvn"]', config.helpers.CCSecurity);
+				client.setValue('//input[@name="dwfrm_billing_paymentMethods_creditCard_cvn"]', ccsecurity || config.helpers.ccSecurity);
 			})
 	},
 	reviewOrder: function(done) {
@@ -404,8 +481,11 @@ module.exports = {
 //	}
 //}
 //})
+	
+//														REPORTING											 //
+	
 	getScreenshot: function(done) {
-		client.saveScreenshot('C:/Users/mvanevery/Pictures/Work images/Payless/Test Results/checkOutPass ' + utcDate + '.png', done);
+		client.saveScreenshot('C:/Users/mvanevery/Pictures/Work images/Payless/Test Results/checkOutPass ' + current + '.png', done);
 	},
 
 

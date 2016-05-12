@@ -85,24 +85,6 @@ gulp.task('local-integration', ['serve:test', 'selenium-start'], function () {
 		}).on("error", handleError));
 });
 
-gulp.task('endToEnd', ['serve:test', 'selenium-start'], function () {
-	return gulp.src('test/endToEnd.js', {read: false})
-		.pipe(mocha({
-			timeout: '50000'
-		}).on("error", handleError));
-});
-gulp.task('openMenu', ['serve:test', 'selenium-start'], function () {
-	return gulp.src('test/openMenu.js', {read: false})
-		.pipe(mocha({
-			timeout: '50000'
-		}).on("error", handleError));
-});
-gulp.task('e2e-prod', ['serve:test', 'selenium-start'], function () {
-	return gulp.src('test/end2end-prod.js', {read: false})
-		.pipe(mocha({
-			timeout: '50000'
-		}).on("error", handleError));
-});
 
 
 
@@ -127,6 +109,47 @@ gulp.task('test-local', ['local-integration'], function () {
 
 gulp.task('homepage', ['serve:test', 'selenium-start'], function () {
 	return gulp.src('test/homepage.js', {read: false})
+		.pipe(mocha({
+			timeout: '50000'
+		}).on("error", handleError));
+});
+
+/**
+ *  Use 'gulp "test" name'
+ */
+
+gulp.task('e2e-guest', ['serve:test', 'selenium-start'], function () {
+	return gulp.src('test/Chrome/Payless/node/staging/E2E-guest.js', {read: false})
+		.pipe(mocha({
+			timeout: '50000'
+		}).on("error", handleError));
+});
+gulp.task('openMenu', ['serve:test', 'selenium-start'], function () {
+	return gulp.src('test/Chrome/Payless/legacy/staging/openMenu.js', {read: false})
+		.pipe(mocha({
+			timeout: '50000'
+		}).on("error", handleError));
+});
+gulp.task('e2e-prod', ['serve:test', 'selenium-start'], function () {
+	return gulp.src('test/Chrome/Payless/node/production/end2end-prod.js', {read: false})
+		.pipe(mocha({
+			timeout: '50000'
+		}).on("error", handleError));
+});
+gulp.task('e2e-return', ['serve:test', 'selenium-start'], function () {
+	return gulp.src('test/Chrome/Payless/node/staging/E2E-returning-user.js', {read: false})
+		.pipe(mocha({
+			timeout: '50000'
+		}).on("error", handleError));
+});
+gulp.task('findItem', ['serve:test', 'selenium-start'], function () {
+	return gulp.src('test/Chrome/Payless/node/staging/findProduct.js', {read: false})
+		.pipe(mocha({
+			timeout: '50000'
+		}).on("error", handleError));
+});
+gulp.task('findStore', ['serve:test', 'selenium-start'], function () {
+	return gulp.src('test/Chrome/Payless/node/staging/findStore.js', {read: false})
 		.pipe(mocha({
 			timeout: '50000'
 		}).on("error", handleError));

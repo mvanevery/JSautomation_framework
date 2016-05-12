@@ -96,12 +96,14 @@ module.exports = {
 			console.log('Menu not open');
 		}
 	},
-	searchItem: function (search, done) {
+	// make sure the test has the arguments matching the test function//
+	searchItem: function (done, search) {
+		var searchData = (search || config.helpers.search);
 		client.waitForVisible('div.app-sub-header > form#search-form div.input > input',10000,done)
 				.then(function () {
 				client.click('//form[@id="search-form"]/div/input')
 					.then(function () {
-						client.setValue('//form[@id="search-form"]/div/input', (search || config.helpers.search))
+						client.setValue('//form[@id="search-form"]/div/input', searchData)
 							.then(function() {
 								client.click('button[type="submit"]')
 							})
@@ -142,7 +144,7 @@ module.exports = {
 	},
 	verifyStoreAddress: function(done) {
 		if(client.isVisible('button.map', done)) {
-			client.getText('div.store-locator-results div.left-column div.store span.address')
+			client.getText('//div[@id="locations-results"]/div/div/div/div/span[2]')
 				.then(function(text) {
 					console.log(text);
 				})
@@ -232,55 +234,55 @@ module.exports = {
 	
 // 											CHECKOUT FUNCTIONALITY										 //	
 	
-	addShipFirstName: function (first, done) {
+	addShipFirstName: function (done, first) {
 		client.waitForVisible('//input[@id="firstName"]', 10000, done)
 			.then(function () {
 				client.setValue('//input[@id="firstName"]', (first || config.helpers.firstName));
 			});
 	},
-	addShipLastName: function (last, done) {
+	addShipLastName: function (done, last) {
 		client.waitForVisible('//input[@id="lastName"]', 10000, done)
 			.then(function () {
 				client.setValue('//input[@id="lastName"]', last || config.helpers.lastName);
 			});
 	},
-	addShipAddress: function (addln1, done) {
+	addShipAddress: function (done, addln1) {
 		client.waitForVisible('//input[@id="street_number"]', 10000, done)
 			.then(function () {
 				client.setValue('//input[@id="street_number"]', addln1 || config.helpers.address1);
 			});
 	},
-	addShipAddress2: function(addln2, done) {
+	addShipAddress2: function(done, addln2) {
 		client.waitForVisible('//input[@id="address2"]', 10000, done)
 			.then(function() {
 				client.setValue('//input[@id="address2"]',addln2 || config.helpers.address2);
 			})
 	},
-	addShipCity: function(city, done) {
+	addShipCity: function(done, city) {
 		client.waitForVisible('//input[@id="locality"]', 10000, done)
 			.then(function() {
 				client.setValue('//input[@id="locality"]', city || config.helpers.city);
 			})
 	},
-	addShipState: function(state, done) {
+	addShipState: function(done, state) {
 		client.waitForVisible('//select[@id="administrative_area_level_1"]', 10000, done)
 			.then(function() {
 				client.selectByValue('//select[@id="administrative_area_level_1"]', state || config.helpers.state);
 			})
 	},
-	addShipZipcode: function(zipcode, done) {
+	addShipZipcode: function(done, zipcode) {
 		client.waitForVisible('//input[@id="postal_code"]', 10000, done)
 			.then(function() {
 				client.setValue('//input[@id="postal_code"]', zipcode || config.helpers.zipcode);
 			})
 	},
-	addShipPhone: function(phone, done) {
+	addShipPhone: function(done, phone) {
 		client.waitForVisible('//input[@name="dwfrm_singleshipping_shippingAddress_addressFields_phone"]', 10000, done)
 			.then(function() {
 				client.setValue('//input[@name="dwfrm_singleshipping_shippingAddress_addressFields_phone"]', phone || config.helpers.phone);
 				})
 	},
-	addShipEmail: function(email, done) {
+	addShipEmail: function(done, email) {
 		client.waitForVisible('//input[@id="shipping-email"]', 10000, done)
 			.then(function() {
 				client.setValue('//input[@id="shipping-email"]', email || config.helpers.email);
@@ -301,31 +303,31 @@ module.exports = {
 				client.click('#js-prediction-confirm');
 			})
 	},
-	addCCName: function(ccname, done) {
+	addCCName: function(done, ccname) {
 		client.waitForVisible('input[name="dwfrm_billing_paymentMethods_creditCard_owner"]', 10000, done)
 			.then(function () {
 				client.setValue('//input[@name="dwfrm_billing_paymentMethods_creditCard_owner"]', ccname || config.helpers.ccName);
 			})
 	},
-	addCCNumber: function(ccnumber, done) {
+	addCCNumber: function(done, ccnumber) {
 		client.waitForVisible('input[name="dwfrm_billing_paymentMethods_creditCard_number"]', 10000, done)
 			.then(function () {
 				client.setValue('//input[@name="dwfrm_billing_paymentMethods_creditCard_number"]', ccnumber || config.helpers.ccNumber);
 			})
 	},
-	addCCExpMonth: function(ccmonth, done) {
+	addCCExpMonth: function(done, ccmonth) {
 		client.waitForVisible('//select[@name="dwfrm_billing_paymentMethods_creditCard_month"]', 10000, done)
 			.then(function () {
 				client.selectByValue('//select[@name="dwfrm_billing_paymentMethods_creditCard_month"]', ccmonth || config.helpers.ccExpMonth);
 			})
 	},
-	addCCExpYear: function(ccyear, done) {
+	addCCExpYear: function(done, ccyear) {
 		client.waitForVisible('//select[@name="dwfrm_billing_paymentMethods_creditCard_year"]', 10000, done)
 			.then(function () {
 				client.selectByValue('//select[@name="dwfrm_billing_paymentMethods_creditCard_year"]', ccyear || config.helpers.ccExpYear);
 			})
 	},
-	addCCSecurity: function(ccsecurity, done) {
+	addCCSecurity: function(done, ccsecurity) {
 		client.waitForVisible('input[name="dwfrm_billing_paymentMethods_creditCard_cvn"]', 10000, done)
 			.then(function () {
 				client.setValue('//input[@name="dwfrm_billing_paymentMethods_creditCard_cvn"]', ccsecurity || config.helpers.ccSecurity);

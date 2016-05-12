@@ -4,7 +4,7 @@
 
 var common = require('../../../../../core/helpers/common');
 
-describe('Testing Find A Produce', function () {
+describe('Testing Find A Product', function () {
     before(function (done) {
         common.goTo(done);
     });
@@ -21,7 +21,7 @@ describe('Testing Find A Produce', function () {
     });
     describe('Searching for an Item', function () {
         it('should search for an item', function (done) {
-            common.searchItem('142898', done);
+            common.searchItem(done);
         })
     });
     describe('pausing', function () {

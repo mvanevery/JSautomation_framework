@@ -4,7 +4,7 @@ var binPath = phantomjs.path;
 
 exports.client = require('webdriverio').remote({
 	desiredCapabilities: {
-		browserName: 'chrome',
+		browserName: 'phantomjs',
 			page: {
 				settings: {
 					userAgent: config.userAgent.mobile

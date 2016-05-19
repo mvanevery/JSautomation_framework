@@ -43,8 +43,8 @@ module.exports = {
 			}, true).then(done);
 		});
 	},
-	pause: function (done) {
-		client.pause(15000, done);
+	pause: function (pauseTime, done) {
+		client.pause(pauseTime, done);
 	},
 
 	getPageTitle: function (done) {
@@ -144,7 +144,7 @@ module.exports = {
 	},
 	verifyStoreAddress: function(done) {
 		if(client.isVisible('button.map', done)) {
-			client.getText('//div[@id="locations-results"]/div/div/div/div/span[2]')
+			client.getText('div > div.locations-page > div#locations-results > div > div.store-locator-results > div.left-column > div.store > span.address')
 				.then(function(text) {
 					console.log(text);
 				})
@@ -233,8 +233,27 @@ module.exports = {
 	},
 	
 // 											CHECKOUT FUNCTIONALITY										 //	
-	
-	addShipFirstName: function (done, first) {
+	loginButton: function(done, username, password) {
+		if (client.isVisible('#activate-login', done)) {
+		client.click('#activate-login')
+		} else {
+			console.log('login not possible');
+		}
+	},
+	addLoginInfo: function(done, username, password) {
+		client.waitForVisible('//form[@id="login-form"]/div[2]/div/div/input', 10000, done)
+			.then(function () {
+				client.setValue('//form[@id="login-form"]/div[2]/div/div/input', username || config.helpers.username)
+					.then(function () {
+						client.setValue('//form[@id="login-form"]/div[2]/div/div[2]/input', password || config.helpers.password)
+							.then(function () {
+								client.click('#submit');
+							})
+					})
+			})
+	},
+
+	addShipFirstName: function(done, first) {
 		client.waitForVisible('//input[@id="firstName"]', 10000, done)
 			.then(function () {
 				client.setValue('//input[@id="firstName"]', (first || config.helpers.firstName));

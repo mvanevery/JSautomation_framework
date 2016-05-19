@@ -6,9 +6,12 @@ module.exports = {
 	},
 
 	helpers: {
+		pause: '15000',
 		search: '142898',
 		men: '//a[@href="/accessories/"]',
 		catWomenAcc: '//a[@href="/accessories/womens-shoe-care/"]',
+		username: 'mve.payless@gmail.com',
+		password: 'Password1',
 		firstName: 'mad',
 		lastName: 'mobile',
 		address1: '2701 North Rocky Point Dr',

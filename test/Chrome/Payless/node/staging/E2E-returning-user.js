@@ -24,36 +24,61 @@ describe('Testing End to End - Returning User: CC', function () {
             common.searchItem(done);
            })
         });
-    //describe('pausing', function () {
-    //    it('should pause the test', function (done) {
-    //        common.pause(done);
-    //         })
-    //    });
-    //    describe('Selecting a Size', function () {
-    //        it('should select a size', function (done) {
-    //            common.selectSize(done);
-    //        })
-    //    });
-    //    describe('Adding item to Bag', function () {
-    //        it('should add item to bag', function (done) {
-    //            common.addToBag(done)
-    //        })
-    //    });
-    //    describe('Proceed to Cart', function () {
-    //        it('should click Proceed to Cart on the modal', function (done) {
-    //            common.proceedToCartModal(done);
-    //        })
-    //    });
-    //    describe('Proceed to Checkout', function () {
-    //        it('should proceed to Checkout from Cart', function (done) {
-    //            common.proceedToCheckoutCart(done);
-    //        })
-    //    });
-    //describe('Add First Name (shipping)', function () {
-    //    it('should add first name to shipping', function (done) {
-    //        common.addShipFirstName(done);
-    //    })
-    //});
+    describe('pausing', function () {
+        it('should pause the test', function (done) {
+            common.pause(7500, done);
+             })
+        });
+        describe('Selecting a Size', function () {
+            it('should select a size', function (done) {
+                common.selectSize(done);
+            })
+        });
+        describe('Adding item to Bag', function () {
+            it('should add item to bag', function (done) {
+                common.addToBag(done)
+            })
+        });
+        describe('Proceed to Cart', function () {
+            it('should click Proceed to Cart on the modal', function (done) {
+                common.proceedToCartModal(done);
+            })
+        });
+        describe('Proceed to Checkout', function () {
+            it('should proceed to Checkout from Cart', function (done) {
+                common.proceedToCheckoutCart(done);
+            })
+        });
+    describe('pausing', function () {
+        it('should pause the test', function (done) {
+            common.pause(5000, done);
+        })
+    });
+    describe('Log in to Account', function () {
+        it('should log in to your account', function (done) {
+            common.loginButton(done);
+        })
+    });
+    describe('pausing', function () {
+        it('should pause the test', function (done) {
+            common.pause(5000, done);
+        })
+    });
+    describe('Add Login info', function () {
+        it('should add login info and log in to your account', function (done) {
+            common.addLoginInfo(done);
+        })
+    });
+    describe('pausing', function () {
+        it('should pause the test', function (done) {
+            common.pause(5000, done);
+        })
+    });
+    describe('Add First Name (shipping)', function () {
+        it('should add first name to shipping', function (done) {
+            common.addShipFirstName(done);
+        })
+    });
     //describe('Add Last Name (shipping)', function () {
     //    it('should add last name to shipping', function (done) {
     //        common.addShipLastName(done);

@@ -71,12 +71,27 @@ describe('Testing End to End - Returning User: CC', function () {
     });
     describe('pausing', function () {
         it('should pause the test', function (done) {
+            common.pause(15000, done);
+        })
+    });
+    describe('refresh the page', function () {
+        it('should refresh the page', function (done) {
+            common.refreshPage(done);
+        })
+    })
+    describe('pausing', function () {
+        it('should pause the test', function (done) {
             common.pause(5000, done);
         })
     });
-    describe('Add First Name (shipping)', function () {
-        it('should add first name to shipping', function (done) {
-            common.addShipFirstName(done);
+    describe('ship to store', function () {
+        it('should add login info and log in to your account', function (done) {
+            common.shipToStore(done);
+        })
+    });
+    describe('Selects Shipping Address Dropdown', function () {
+        it('should pick a saved address from the dropdown', function (done) {
+            common.clickGeolocation(done);
         })
     });
     //describe('Add Last Name (shipping)', function () {

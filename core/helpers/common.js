@@ -9,6 +9,7 @@ var $ = require('jQuery');
 var mobileTitle = page.mobileTitle;
 var date = new Date();
 var current = date.getMonth() + "-" + date.getDate() + "-" + date.getFullYear() + "-" + date.getHours() + "-" + date.getMinutes() + "-" + date.getSeconds();
+
 var comparisonTestPass = function (array1, array2) {
 	// Test lengths first
 	if (array1.length !== array2.length) {
@@ -43,10 +44,6 @@ module.exports = {
 			}, true).then(done);
 		});
 	},
-	pause: function (pauseTime, done) {
-		client.pause(pauseTime, done);
-	},
-
 	getPageTitle: function (done) {
 		if (client.isVisible('div', done)) {
 			client.getTitle(function (err, title) {
@@ -70,6 +67,26 @@ module.exports = {
 			callback();
 		});
 	},
+//												MULTI-PAGE FUNCTIONS												//
+	pause: function (pauseTime, done) {
+		client.pause(pauseTime, done);
+	},
+	refreshPage: function (done) {
+		client.refresh(done);
+	},
+	clickGeolocation: function(done) {
+		if(client.isVisible('button.geo-submit', done)) {
+			client.click('button.geo-submit');
+		} else {
+			if(client.isVisble('#js-geo-submit', done)) {
+				client.click('#js-geo-submit');
+			} else {
+				console.log('no geolocation available');
+			}
+		}
+	},
+
+
 // 										HOMEPAGE/MENU FUNCTIONALITY										 //
 	
 	openMenu: function (done) {
@@ -88,7 +105,6 @@ module.exports = {
 		}
 
 	},
-
 	closeMenu: function (done) {
 		if (client.isVisible('a.close > i.icon', done)) {
 			client.click('a.close > i.icon', done);
@@ -126,7 +142,7 @@ module.exports = {
 		}
 	},
 
-// 										FIND A STORE FUNCTIONALITY									//
+// 										FIND A STORE/FIND IN STORE FUNCTIONALITY									//
 
 	openFindAStore: function (done) {
 		if (client.isVisible('div.slider-container > a > img', done)) {
@@ -135,13 +151,14 @@ module.exports = {
 			console.log('Find A Store not available');
 		}
 	},
-	clickGeolocation: function(done) {
-		if(client.isVisible('button.geo-submit', done)) {
-			client.click('button.geo-submit');
+	openFindInStore: function () {
+		if (client.isEnabled('button.add-to-cart', done)) {
+			client.click('li.mobile-locate.js-findinstore > a > h5');
 		} else {
-			console.log('Geolocation not available')
+			console.log('select a size to enable Find In Store')
 		}
 	},
+
 	verifyStoreAddress: function(done) {
 		if(client.isVisible('button.map', done)) {
 			client.getText('div > div.locations-page > div#locations-results > div > div.store-locator-results > div.left-column > div.store > span.address')
@@ -152,6 +169,7 @@ module.exports = {
 			console.log('nothing to show');
 		}
 	},
+
 
 //										PLP FUNCTIONALITY 											//
 	
@@ -233,7 +251,7 @@ module.exports = {
 	},
 	
 // 											CHECKOUT FUNCTIONALITY										 //	
-	loginButton: function(done, username, password) {
+	loginButton: function(done) {
 		if (client.isVisible('#activate-login', done)) {
 		client.click('#activate-login')
 		} else {
@@ -252,7 +270,7 @@ module.exports = {
 					})
 			})
 	},
-
+//										SHIPPING SECTION												//
 	addShipFirstName: function(done, first) {
 		client.waitForVisible('//input[@id="firstName"]', 10000, done)
 			.then(function () {
@@ -322,6 +340,19 @@ module.exports = {
 				client.click('#js-prediction-confirm');
 			})
 	},
+	useShipDropdown: function(done, label) {
+		client.waitForVisible('//select[@name="dwfrm_singleshipping_addressList"]', 10000, done)
+			.then(function() {
+				client.selectByValue('//select[@name="dwfrm_singleshipping_addressList"]', label || config.helpers.shipLabel);
+			})
+	},
+	shipToStore: function (done) {
+		client.waitForVisible('a.ship-to-store', 10000, done)
+			.then(function () {
+				client.click('a.ship-to-store');
+			})
+	},
+	//												PAYMENT SECTION												//
 	addCCName: function(done, ccname) {
 		client.waitForVisible('input[name="dwfrm_billing_paymentMethods_creditCard_owner"]', 10000, done)
 			.then(function () {

@@ -16,7 +16,7 @@ describe('Testing Find A Product', function () {
     });
     describe('pausing', function () {
         it('should pause the test', function (done) {
-            common.pause(done);
+            common.pause(5000, done);
         })
     });
     describe('Searching for an Item', function () {
@@ -29,9 +29,14 @@ describe('Testing Find A Product', function () {
             common.pause(done);
         })
     });
-    describe('Verifying Item Title', function () {
-        it('should verify item title', function (done) {
-            common.verifyItemTitle('SAFE STEP SOLE PADS', done);
+    //describe('Verifying Item Title', function () {
+    //    it('should verify item title', function (done) {
+    //        common.verifyItemTitle('SAFE STEP SOLE PADS', done);
+    //    })
+    //});
+    describe('Verifying Item Number', function () {
+        it('should verify item number', function (done) {
+            common.verifyItemNumber('Item No: 142898', done);
         })
     });
     describe('Verifying Item Number', function () {

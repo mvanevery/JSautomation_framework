@@ -165,7 +165,11 @@ module.exports = {
 				.then(function () {
 					client.getText('div > div.locations-page > div#locations-results > div > div.store-locator-results > div.left-column > div.store > span.address')
 						.then(function(text) {
+							var response = text.join(',').includes('346 WESTSHORE PLAZA,SPACE A12,TAMPA, FL 33609-1813');
+							console.log(response); // this will be a boolean value (true/false) that tell us whether this string is in the array
 							console.log(text);
+
+
 				})
 			})
 		} else {

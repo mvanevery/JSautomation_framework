@@ -151,7 +151,7 @@ module.exports = {
 			console.log('Find A Store not available');
 		}
 	},
-	openFindInStore: function () {
+	openFindInStore: function (done) {
 		if (client.isEnabled('button.add-to-cart', done)) {
 			client.click('li.mobile-locate.js-findinstore > a > h5');
 		} else {
@@ -161,10 +161,13 @@ module.exports = {
 
 	verifyStoreAddress: function(done) {
 		if(client.isVisible('button.map', done)) {
-			client.getText('div > div.locations-page > div#locations-results > div > div.store-locator-results > div.left-column > div.store > span.address')
-				.then(function(text) {
-					console.log(text);
+			client.scroll('button.map')
+				.then(function () {
+					client.getText('div > div.locations-page > div#locations-results > div > div.store-locator-results > div.left-column > div.store > span.address')
+						.then(function(text) {
+							console.log(text);
 				})
+			})
 		} else {
 			console.log('nothing to show');
 		}

@@ -8,8 +8,8 @@ module.exports = {
 	helpers: {
 		pause: '15000',
 		search: '142898',
-		men: '//a[@href="/accessories/"]',
-		catWomenAcc: '//a[@href="/mens/boots"]',
+		men: '//a[@href="/mens-shoes/"]',
+		catWomenAcc: '//a[@href="/mens/boots/"]',
 		username: 'mve.payless@gmail.com',
 		password: 'Password1',
 		firstName: 'mad',

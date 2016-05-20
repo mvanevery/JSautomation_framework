@@ -89,51 +89,26 @@ describe('Testing End to End - Returning User: CC', function () {
             common.shipToStore(done);
         })
     });
+    describe('pausing', function () {
+        it('should pause the test', function (done) {
+            common.pause(3000, done);
+        })
+    });
     describe('Selects Shipping Address Dropdown', function () {
         it('should pick a saved address from the dropdown', function (done) {
             common.clickGeolocation(done);
         })
     });
-    //describe('Add Last Name (shipping)', function () {
-    //    it('should add last name to shipping', function (done) {
-    //        common.addShipLastName(done);
-    //    })
-    //});
-    //describe('Add Address 1 (shipping)', function () {
-    //    it('should add address 1 to shipping', function (done) {
-    //        common.addShipAddress(done);
-    //    })
-    //});
-    //describe('Add Address 2 (shipping)', function () {
-    //    it('should add address 2 to shipping', function (done) {
-    //        common.addShipAddress2(done);
-    //    })
-    //});
-    //describe('Add City (shipping)', function () {
-    //    it('should add City to shipping', function (done) {
-    //        common.addShipCity(done);
-    //    })
-    //});
-    //describe('Add State (shipping)', function () {
-    //    it('should add State to shipping', function (done) {
-    //        common.addShipState(done);
-    //    })
-    //});
-    //describe('Add Zipcode (shipping)', function () {
-    //    it('should add Zipcode to shipping', function (done) {
-    //        common.addShipZipcode(done);
-    //    })
-    //});
-    //describe('Add Phone (shipping)', function () {
-    //    it('should add Phone to shipping', function (done) {
-    //        common.addShipPhone(done);
-    //    })
-    //});
-    //describe('Add Email (shipping)', function () {
-    //    it('should add Email to shipping', function (done) {
-    //        common.addShipEmail(done);
-    //    })
-    //});
+    describe('pausing', function () {
+        it('should pause the test', function (done) {
+            common.pause(15000, done);
+        })
+    });
+    describe('Selects Store to Ship To', function () {
+        it('should pick a store from the list of stores', function (done) {
+            common.selectStore(done);
+        })
+    });
     //describe('Click Continue to Payment', function () {
     //    it('proceed to payment section', function (done) {
     //        common.proceedToPayment(done);

@@ -286,6 +286,23 @@ module.exports = {
 			})
 	},
 //										SHIPPING SECTION												//
+	selectStore: function (done) {
+		if(client.isVisible('#js-store-6641', done)) {
+			client.getText('div#js-store-6641.store > div.store-main-details > span.address')
+				.then(function (text) {
+					console.log(text);
+					//if (comparisonTestPass(text, config.helpers.shipInfoReal)) {
+					//	//		console.log(text);
+					//	//		console.log(shipinfo);
+					//	console.log('Shipping info - PASS');
+					//} else {
+					//	console.log('Shipping info - FAIL');
+					//}
+				})
+		} else {
+			console.log('Nothing to Select');
+		}
+	},
 	addShipFirstName: function(done, first) {
 		client.waitForVisible('//input[@id="firstName"]', 10000, done)
 			.then(function () {

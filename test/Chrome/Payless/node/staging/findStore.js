@@ -39,10 +39,13 @@ describe('Testing Find A Store', function () {
             common.pause(10000, done);
         })
     });
-    describe('Verify Store Address', function () {
+    describe('Verify Store Address (this may take a while)', function () {
         it('should verify the store address', function (done) {
             common.verifyStoreAddress(done);
         });
     });
+    //after(function (done) {
+    //    common.end(done);
+    //});
 
 });

@@ -161,16 +161,24 @@ module.exports = {
 
 	verifyStoreAddress: function(done) {
 		if(client.isVisible('button.map', done)) {
-			client.scroll('button.map')
+			client.scroll('span.mobile-distance')
 				.then(function () {
 					client.getText('div > div.locations-page > div#locations-results > div > div.store-locator-results > div.left-column > div.store > span.address')
 						.then(function(text) {
-							var response = text.join(',').includes('346 WESTSHORE PLAZA,SPACE A12,TAMPA, FL 33609-1813');
-							console.log(response); // this will be a boolean value (true/false) that tell us whether this string is in the array
-							console.log(text);
-
-
-				})
+							var response = text.join(',').includes(config.helpers.storeAddress);
+							console.log(response)// this will be a boolean value (true/false) that tell us whether this string is in the array
+								.then(function () {
+									if(response == 'true', done) {
+										console.log("Matching Address Found");
+									} else {
+										if(response == 'false', done) {
+											console.log('Matching Address NOT Found');
+										} else {
+											console.log('Nothing to Show');
+										}
+									}
+								})
+						})
 			})
 		} else {
 			console.log('nothing to show');
@@ -548,7 +556,7 @@ module.exports = {
 	},
 
 
-	//end: function (done) {
-	//	client.end();	//	done();
-	//}
+	end: function (done) {
+		client.end();	//	done();
+	}
 };

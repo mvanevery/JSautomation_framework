@@ -61,4 +61,14 @@ describe('Testing Find A Store', function () {
             common.openFindInStore(done);
         })
     });
+    describe('pausing', function () {
+        it('should pause the test', function (done) {
+            common.pause(10000, done);
+        })
+    });
+    describe('Verify Store Address', function () {
+        it('should verify the store address (this may take a while)', function (done) {
+            common.verifyStoreAddress(done);
+        });
+    });
 })

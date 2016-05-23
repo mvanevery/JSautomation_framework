@@ -26,7 +26,7 @@ describe('Testing Find A Product', function () {
     });
     describe('pausing', function () {
         it('should pause the test', function (done) {
-            common.pause(done);
+            common.pause(5000, done);
         })
     });
     //describe('Verifying Item Title', function () {
@@ -39,9 +39,9 @@ describe('Testing Find A Product', function () {
             common.verifyItemNumber('Item No: 142898', done);
         })
     });
-    describe('Verifying Item Number', function () {
-        it('should verify item number', function (done) {
-            common.verifyItemNumber('Item No: 142898', done);
-        })
-    })
+    //describe('Verifying Item Number', function () {
+    //    it('should verify item number', function (done) {
+    //        common.verifyItemNumber('Item No: 142898', done);
+    //    })
+    //})
 })

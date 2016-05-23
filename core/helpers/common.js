@@ -244,8 +244,7 @@ module.exports = {
 			.then(function () {
 				client.getText('div.number')
 					.then(function (number) {
-						if(number == expected) {
-							console.log('Number Matches')
+						if(assert.equal(number, expected, 'Number Matches')) {
 						} else {
 							console.log('Number do not match. Should be this ' + number)
 						}

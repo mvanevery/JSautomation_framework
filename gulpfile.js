@@ -151,6 +151,7 @@ gulp.task('findItem', ['serve:test', 'selenium'], function () {
 gulp.task('findStore', ['serve:test', 'selenium'], function () {
 	return gulp.src('test/Chrome/Payless/node/staging/findStore.js', {read: false})
 		.pipe(mocha({
-			timeout: '50000'
+			timeout: '50000',
+			reporter: 'mocha-junit-reporter'
 		}).on("error", handleError));
 });

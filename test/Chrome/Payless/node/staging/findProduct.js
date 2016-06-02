@@ -36,7 +36,7 @@ describe('Testing Find A Product', function () {
     //});
     describe('Verifying Item Number', function () {
         it('should verify item number', function (done) {
-            common.verifyItemNumber('Item No: 142898', done);
+            common.verifyItemNumber('142899', done);
         })
     });
     //describe('Verifying Item Number', function () {
@@ -45,3 +45,4 @@ describe('Testing Find A Product', function () {
     //    })
     //})
 })
+

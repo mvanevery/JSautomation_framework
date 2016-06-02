@@ -489,7 +489,7 @@ module.exports = {
 	},
 
 
-	//end: function (done) {
-	//	client.end();	//	done();
-	//}
+	end: function (done) {
+		client.end(done);
+	}
 };

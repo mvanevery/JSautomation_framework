@@ -44,5 +44,8 @@ describe('Testing Find A Store', function () {
             common.verifyStoreAddress(done);
         });
     });
+	after(function (done) {
+		common.end(done);
+	})
 
 })

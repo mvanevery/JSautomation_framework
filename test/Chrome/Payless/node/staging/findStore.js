@@ -46,6 +46,6 @@ describe('Testing Find A Store', function () {
     });
 	after(function (done) {
 		common.end(done);
-	})
+	});
 
-})
+});

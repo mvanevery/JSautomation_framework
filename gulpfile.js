@@ -154,3 +154,8 @@ gulp.task('findStore', ['serve:test', 'selenium'], function () {
 			timeout: '50000'
 		}).on("error", handleError));
 });
+
+gulp.task('test-awesome', ['findStore'], function () {
+	selenium.child.kill();
+	browserSync.exit();
+});

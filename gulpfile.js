@@ -148,7 +148,7 @@ gulp.task('findItem', ['serve:test', 'selenium'], function () {
 			timeout: '50000'
 		}).on("error", handleError));
 });
-gulp.task('findStore', ['serve:test', 'selenium-start'], function () {
+gulp.task('findStore', ['serve:test', 'selenium'], function () {
 	return gulp.src('test/Chrome/Payless/node/staging/findStore.js', {read: false})
 		.pipe(mocha({
 			timeout: '50000',

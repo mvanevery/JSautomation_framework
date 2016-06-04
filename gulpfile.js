@@ -10,6 +10,9 @@ var gulp = require('gulp');
 var browserSync = require('browser-sync');
 var selenium = require('selenium-standalone');
 var mocha = require('gulp-mocha');
+var parseString = require('xml2js').parseString;
+var fs = require('fs');
+var util = require('util');
 
 function handleError(err) {
 	console.log(err.toString());
@@ -86,9 +89,6 @@ gulp.task('local-integration', ['serve:test', 'selenium-start'], function () {
 });
 
 
-
-
-
 /**
  *  Use 'npm run test-bamboo'
  */
@@ -148,13 +148,26 @@ gulp.task('findItem', ['serve:test', 'selenium'], function () {
 			timeout: '50000'
 		}).on("error", handleError));
 });
-gulp.task('findStore', ['serve:test', 'selenium'], function () {
+gulp.task('findStore', ['serve:test', 'selenium-start'], function () {
 	return gulp.src('test/Chrome/Payless/node/staging/findStore.js', {read: false})
 		.pipe(mocha({
-			reporter: 'json',
-			dest: 'test/mocha.json',
-			timeout: '50000'
+			timeout: '50000',
+			reporter: 'mocha-junit-reporter',
+			dest: 'test/test-results'
 		}).on("error", handleError));
+});
+
+gulp.task('handle-results', function () {
+	fs.readFile(__dirname + '/test-results.xml', function (err, data) {
+		parseString(data, function (err, result) {
+			fs.open('test-results.json', 'a');
+			fs.writeFile('test-results.json', JSON.stringify(result), function (err) {
+				if (err) {
+					console.log(err);
+				}
+			});
+		});
+	});
 });
 
 gulp.task('test-awesome', ['findStore'], function () {

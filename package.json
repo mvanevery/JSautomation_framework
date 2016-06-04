@@ -17,7 +17,8 @@
     "mocha": "^2.3.4",
     "phantomjs-prebuilt": "~2.1.4",
     "selenium-standalone": "^4.9.0",
-    "webdriverio": "^3.4.0"
+    "webdriverio": "^3.4.0",
+    "xml2js": "^0.4.16"
   },
   "devDependencies": {
     "mocha-junit-reporter": "^1.11.1"

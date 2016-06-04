@@ -152,6 +152,7 @@ gulp.task('findStore', ['serve:test', 'selenium'], function () {
 	return gulp.src('test/Chrome/Payless/node/staging/findStore.js', {read: false})
 		.pipe(mocha({
 			reporter: 'json',
+			dest: 'test/mocha.json',
 			timeout: '50000'
 		}).on("error", handleError));
 });

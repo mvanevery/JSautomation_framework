@@ -160,7 +160,11 @@ gulp.task('findStore', ['serve:test', 'selenium'], function () {
 gulp.task('handle-results', function () {
 	fs.readFile(__dirname + '/test-results.xml', function (err, data) {
 		parseString(data, function (err, result) {
-			fs.open('test-results.json', 'a');
+			fs.open('test-results.json', 'a', function (err) {
+				if (err) {
+					console.log(err);
+				}
+			});
 			fs.writeFile('test-results.json', JSON.stringify(result), function (err) {
 				if (err) {
 					console.log(err);

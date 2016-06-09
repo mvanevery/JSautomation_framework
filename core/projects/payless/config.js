@@ -10,7 +10,7 @@ module.exports = {
 		search: '142898',
 		men: '//a[@href="/mens-shoes/"]',
 		catWomenAcc: '//a[@href="/mens/boots/"]',
-		storeAddress: '346 WESTSHORE PLAZA,SPACE A12,TAMPA, FL 33609-1813',
+		storeAddress: '346 WESTSHORE PLAZA,SPACE A12,TAMPA, FL 33609-1814',
 		username: 'mve.payless@gmail.com',
 		password: 'Password1',
 		firstName: 'mad',

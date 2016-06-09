@@ -241,15 +241,22 @@ module.exports = {
 	},
 	verifyItemNumber: function (expected, done) {
 		client.waitForVisible('h1.title', 10000, done)
-			.then(function () {
+			.then(function (text) {
 				client.getText('div.number > span')
-					.then(function (err, number) {
-						if(assert.equal(number,expected, 'number matches')) {
-							console.log('Number Matches');
-						} else {
-						console.log('Numbers do not match. Should be this ' + number);
-						}
-					})
+				//		.then(function (err, number) {
+				//			if(assert.equal(number,expected, 'number matches')) {
+				//				console.log('Number Matches');
+				//			} else {
+				//			console.log('Numbers do not match. Should be this ' + number);
+				//			}
+				//		})
+				//})
+				try {
+					assert.equal(expected, text, 'The expected value was not equal to the text');
+					done();
+				} catch (err) {
+					done(err);
+				}
 			})
 	},
 	

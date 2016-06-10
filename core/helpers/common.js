@@ -240,24 +240,25 @@ module.exports = {
 			})
 	},
 	verifyItemNumber: function (expected, done) {
-		client.waitForVisible('h1.title', 10000, done)
-				client.getText('div.number > span')
-					.then(function (text) {
-				//		.then(function (err, number) {
-				//			if(assert.equal(number,expected, 'number matches')) {
-				//				console.log('Number Matches');
-				//			} else {
-				//			console.log('Numbers do not match. Should be this ' + number);
-				//			}
-				//		})
-				//})
-				try {
-					assert.equal(expected, text, 'The expected value was not equal to the text');
-					done();
-				} catch (err) {
-					done(err);
-				}
-			})
+		client.waitForVisible('h1.title', 10000, function () {
+			client.getText('div.number > span')
+				.then(function (text) {
+					//		.then(function (err, number) {
+					//			if(assert.equal(number,expected, 'number matches')) {
+					//				console.log('Number Matches');
+					//			} else {
+					//			console.log('Numbers do not match. Should be this ' + number);
+					//			}
+					//		})
+					//})
+					try {
+						assert.equal(expected, text, 'The expected value was not equal to the text');
+						done();
+					} catch (err) {
+						done(err);
+					}
+				})
+		})
 	},
 	
 // 											CART FUNCTIONALITY 											//

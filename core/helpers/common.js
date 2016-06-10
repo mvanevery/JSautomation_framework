@@ -241,8 +241,8 @@ module.exports = {
 	},
 	verifyItemNumber: function (expected, done) {
 		client.waitForVisible('h1.title', 10000, done)
-			.then(function (text) {
 				client.getText('div.number > span')
+					.then(function (text) {
 				//		.then(function (err, number) {
 				//			if(assert.equal(number,expected, 'number matches')) {
 				//				console.log('Number Matches');

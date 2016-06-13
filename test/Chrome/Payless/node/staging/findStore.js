@@ -44,6 +44,11 @@ describe('Testing Find A Store', function () {
             common.verifyStoreAddress(done);
         });
     });
+    describe('gathering results', function () {
+        it('should be gathering results', function (done) {
+            common.pause(10000, done);
+        })
+    });
     //after(function (done) {
     //    common.end(done);
     //});

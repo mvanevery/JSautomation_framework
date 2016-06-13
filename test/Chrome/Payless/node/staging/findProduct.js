@@ -29,20 +29,24 @@ describe('Testing Find A Product', function () {
             common.pause(5000, done);
         })
     });
-    //describe('Verifying Item Title', function () {
-    //    it('should verify item title', function (done) {
-    //        common.verifyItemTitle('SAFE STEP SOLE PADS', done);
-    //    })
-    //});
+    describe('Verifying Item Title', function () {
+        it('should verify item title', function (done) {
+            common.verifyItemTitle('SAFE STEP SOLE PADS', done);
+        })
+    });
     describe('Verifying Item Number', function () {
         it('should verify item number', function (done) {
             common.verifyItemNumber('142898', done);
         })
     });
+    after(function (done) {
+        common.end(done);
+    });
+
     //describe('Verifying Item Number', function () {
     //    it('should verify item number', function (done) {
     //        common.verifyItemNumber('Item No: 142898', done);
     //    })
     //})
-})
+});
 

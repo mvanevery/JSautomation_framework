@@ -160,29 +160,31 @@ module.exports = {
 	},
 
 	verifyStoreAddress: function(done) {
-		if(client.isVisible('button.map', done)) {
-			client.scroll('span.mobile-distance')
-				.then(function () {
-					client.getText('div > div.locations-page > div#locations-results > div > div.store-locator-results > div.left-column > div.store > span.address')
-						.then(function(text) {
-							var response = text.join(',').includes(config.helpers.storeAddress);
-							console.log(response)// this will be a boolean value (true/false) that tell us whether this string is in the array
-								.then(function () {
-									if(response == 'true', done) {
-										console.log("Matching Address Found");
-									} else {
-										if(response == 'false', done) {
-											console.log('Matching Address NOT Found');
-										} else {
-											console.log('Nothing to Show');
-										}
-									}
-								})
-						})
-			})
-		} else {
-			console.log('nothing to show');
-		}
+		client.waitForVisible('button.map', 10000, done).then(function () {
+			client.scroll('span.mobile-distance');
+			client.getText('div > div.locations-page > div#locations-results > div > div.store-locator-results > div.left-column > div.store > span.address')
+				.then(function (text) {
+					var response = text.join(',').includes(config.helpers.storeAddress);
+					console.log(response)// this will be a boolean value (true/false) that tell us whether this string is in the array
+						try {
+							assert.isTrue(response, 'The expected value was not equal to the text');
+							done();
+						} catch (err) {
+							done(err);
+						}
+						//.then(function () {
+						//	if (response == 'true', done) {
+						//		console.log("Matching Address Found");
+						//	} else {
+						//		if (response == 'false', done) {
+						//			console.log('Matching Address NOT Found');
+						//		} else {
+						//			console.log('Nothing to Show');
+						//		}
+						//	}
+						//})
+				})
+		})
 	},
 
 
@@ -227,15 +229,19 @@ module.exports = {
 					});
 	},
 	verifyItemTitle: function (expected, done) {
-		client.waitForVisible('h1.title', 10000, done)
-			.then(function () {
-				client.getText('h1.title')
-					.then(function (title) {
-						if(title == expected) {
-							console.log('Title Matches')
-						} else {
-							console.log('Titles do not match. Should be this ' + title)
-						}
+		client.waitForVisible('h1.title', 10000, function () {
+				client.getText('h1.title').then(function (title) {
+				try {
+					assert.equal(expected, title, 'The expected value was not equal to the text');
+					done();
+				} catch (err) {
+					done(err);
+				}
+					//.then(function (title) {
+					//	if(title == expected) {
+					//		console.log('Title Matches')
+					//	} else {
+					//		console.log('Titles do not match. Should be this ' + title)
 					})
 			})
 	},
@@ -430,95 +436,136 @@ module.exports = {
 			})
 	},
 	verifyShippingTitle: function(done) {
-		client.waitForVisible('div.box-section.select-shipping-method > div.title-bar > h3', 10000, done)
-			.then(function() {
+		client.waitForVisible('div.box-section.select-shipping-method > div.title-bar > h3', 10000, function () {
 				client.getText('div.box-section.select-shipping-method > div.title-bar > h3')
 					.then(function (text) {
-						if (text == config.helpers.shipTitle) {
-							console.log('Shipping title - PASS');
-						} else {
-							console.log('Shipping title - FAIL');
+						//if (text == config.helpers.shipTitle) {
+						//	console.log('Shipping title - PASS');
+						//} else {
+						//	console.log('Shipping title - FAIL');
+						//}
+						try {
+							assert.equal(config.helpers.shipTitle, text, 'The expected value was not equal to the text');
+							done();
+						} catch (err) {
+							done(err);
 						}
 					});
 			})
 	},
 		verifyShippingInfo: function(done) {
-			client.waitForVisible('div.box-section.payment-method > div.title-bar > h3', 10000, done)
-				.then(function () {
+			client.waitForVisible('div.box-section.payment-method > div.title-bar > h3', 10000, function() {
+				//.then(function () {
 					client.getText('div#js-shipping-summary-body.checkout-step.shipping-summary > p.summary-line.address-line')
 						.then(function (text) {
-							if (comparisonTestPass(text, config.helpers.shipInfoReal)) {
-							//		console.log(text);
-							//		console.log(shipinfo);
-								console.log('Shipping info - PASS');
-							} else {
-								console.log('Shipping info - FAIL');
+							//if (comparisonTestPass(text, config.helpers.shipInfoReal)) {
+							////		console.log(text);
+							////		console.log(shipinfo);
+							//	console.log('Shipping info - PASS');
+							//} else {
+							//	console.log('Shipping info - FAIL');
+							//}
+							try {
+								assert.equal(config.helpers.shipInfoReal, text, 'The expected value was not equal to the text');
+								done();
+							} catch (err) {
+								done(err);
 							}
 						})
 				});
 		},
 
 	verifyPaymentName: function(done) {
-		client.waitForVisible('div.box-section.payment-method > div.title-bar > h3', 10000, done)
-			.then(function () {
+		client.waitForVisible('div.box-section.payment-method > div.title-bar > h3', 10000, function () {
+			//.then(function () {
 				client.getText('div#js-payment-summary-body.checkout-step.payment-summary > div.payment-method p.name')
 					.then(function (text) {
-						if (text == config.helpers.payName) {
-							console.log('Payment Name - PASS');
-						} else {
-							console.log('Payment Name - FAIL');
+						//if (text == config.helpers.payName) {
+						//	console.log('Payment Name - PASS');
+						//} else {
+						//	console.log('Payment Name - FAIL');
+						//}
+						try {
+							assert.equal(config.helpers.payName, text, 'The expected value was not equal to the text');
+							done();
+						} catch (err) {
+							done(err);
 						}
 					})
 			});
 	},
 	verifyPaymentType: function(done) {
-		client.waitForVisible('div.box-section.payment-method > div.title-bar > h3', 10000, done)
-			.then(function() {
+		client.waitForVisible('div.box-section.payment-method > div.title-bar > h3', 10000, function () {
+ 			//.then(function() {
 				client.getText('div#js-payment-summary-body.checkout-step.payment-summary > div.payment-method p.type')
 					.then(function (text) {
-						if (text == config.helpers.payType) {
-							console.log('Payment Type - PASS');
-						} else {
-							console.log('Payment Type - FAIL');
+						//if (text == config.helpers.payType) {
+						//	console.log('Payment Type - PASS');
+						//} else {
+						//	console.log('Payment Type - FAIL');
+						//}
+						try {
+							assert.equal(config.helpers.payType, text, 'The expected value was not equal to the text');
+							done();
+						} catch (err) {
+							done(err);
 						}
 					})
 			});
 	},
 	verifyPaymentNumber: function(done) {
-		client.waitForVisible('div.box-section.payment-method > div.title-bar > h3', 10000, done)
-			.then(function() {
+		client.waitForVisible('div.box-section.payment-method > div.title-bar > h3', 10000, function () {
+			//.then(function() {
 				client.getText('div#js-payment-summary-body.checkout-step.payment-summary > div.payment-method p.number')
 					.then(function (text) {
-						if (text == config.helpers.payNumber) {
-							console.log('Payment Number - PASS');
-						} else {
-							console.log('Payment Number - FAIL');
+						//if (text == config.helpers.payNumber) {
+						//	console.log('Payment Number - PASS');
+						//} else {
+						//	console.log('Payment Number - FAIL');
+						//}
+						try {
+							assert.equal(config.helpers.payNumber, text, 'The expected value was not equal to the text');
+							done();
+						} catch (err) {
+							done(err);
 						}
 					})
 			});
 	},
 	verifyPaymentExpire: function(done) {
-		client.waitForVisible('div.box-section.payment-method > div.title-bar > h3', 10000, done)
-			.then(function() {
+		client.waitForVisible('div.box-section.payment-method > div.title-bar > h3', 10000, function () {
+			//.then(function() {
 				client.getText('div#js-payment-summary-body.checkout-step.payment-summary > div.payment-method p.expire')
 					.then(function (text) {
-						if (text == config.helpers.payExpires) {
-							console.log('Payment Expire - PASS');
-						} else {
-							console.log('Payment Expire - FAIL');
+						//if (text == config.helpers.payExpires) {
+						//	console.log('Payment Expire - PASS');
+						//} else {
+						//	console.log('Payment Expire - FAIL');
+						//}
+						try {
+							assert.equal(config.helpers.payExpires, text, 'The expected value was not equal to the text');
+							done();
+						} catch (err) {
+							done(err);
 						}
 					})
 			});
 	},
 	verifyBillingInfo: function(done) {
-		client.waitForVisible('div.box-section.payment-method > div.title-bar > h3', 10000, done)
-			.then(function() {
+		client.waitForVisible('div.box-section.payment-method > div.title-bar > h3', 10000, function () {
+			//.then(function() {
 				client.getText('div#js-billing-summary-body.checkout-step.billing-summary p.summary-line.address-line')
 					.then(function (text) {
-							if (comparisonTestPass(text, config.helpers.billingInfo)) {
-							console.log('Billing info - PASS');
-						} else {
-							console.log('Billing info - FAIL');
+						//	if (comparisonTestPass(text, config.helpers.billingInfo)) {
+						//	console.log('Billing info - PASS');
+						//} else {
+						//	console.log('Billing info - FAIL');
+						//}
+						try {
+							assert.equal(config.helpers.billingInfo, text, 'The expected value was not equal to the text');
+							done();
+						} catch (err) {
+							done(err);
 						}
 					})
 			});

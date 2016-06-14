@@ -42,30 +42,7 @@ module.exports = {
 			}, true).then(done);
 		});
 	},
-	getPageTitle: function (done) {
-		if (client.isVisible('div', done)) {
-			client.getTitle(function (err, title) {
-				console.log(title);
-				assert.isString(mobileTitle, "Matched")
-				//expect(title).to.be.string(page.mobileUrl || page.tabletUrl);
-				//done();
-			})
-		} else {
-			client.getTitle(function (err, title) {
-				assert.isNotString(mobileTitle, "unMatched");
-				//expect(title).to.be.string(page.mobileUrl || page.tabletUrl);
-				//done();
-			})
-		}
-	},
-
-	verifyPageUrl: function (callback) {
-		client.getUrl().then(function (url) {
-			expect(url).to.have.string(page.mobileUrl || page.tabletUrl);
-			callback();
-		});
-	},
-//												MULTI-PAGE FUNCTIONS												//
+// MULTI-PAGE FUNCTIONS
 	pause: function (pauseTime, done) {
 		client.pause(pauseTime, done);
 	},
@@ -85,7 +62,7 @@ module.exports = {
 	},
 
 
-// 										HOMEPAGE/MENU FUNCTIONALITY										 //
+// HOMEPAGE/MENU FUNCTIONALITY
 
 	openMenu: function (done) {
 		if (client.isVisible('div.slider-container > a > img', done)) {
@@ -98,7 +75,7 @@ module.exports = {
 		if (client.isVisible('ul.expandable > li.footer-container > div.app-menu-footer > div.app-menu-footer-container > ul.footer-links > li.my-bag > a.cart > h5', done)) {
 			client.getText('ul.expandable > li.footer-container > div.app-menu-footer > div.app-menu-footer-container > ul.footer-links > li.my-bag > a.cart > h5').then(function (err, text) {
 				expect(text).to.equal('My Bag');
-				//done();
+				done();
 			})
 		}
 
@@ -110,7 +87,6 @@ module.exports = {
 			console.log('Menu not open');
 		}
 	},
-	// make sure the test has the arguments matching the test function//
 	searchItem: function (done, search) {
 		var searchData = (search || config.helpers.search);
 		client.waitForVisible('div.app-sub-header > form#search-form div.input > input', 10000, done)
@@ -140,7 +116,7 @@ module.exports = {
 		}
 	},
 
-// 										FIND A STORE/FIND IN STORE FUNCTIONALITY									//
+// FIND A STORE/FIND IN STORE FUNCTIONALITY
 
 	openFindAStore: function (done) {
 		if (client.isVisible('div.slider-container > a > img', done)) {
@@ -186,7 +162,7 @@ module.exports = {
 	},
 
 
-//										PLP FUNCTIONALITY 											//
+// PLP FUNCTIONALITY
 
 	pickItem: function (done) {
 		client.waitForVisible('div.details > div.mobile-brand > a.name > h3', 20000, done)
@@ -195,7 +171,7 @@ module.exports = {
 			});
 	},
 
-//										PDP FUNCTIONALITY												//
+// PDP FUNCTIONALITY
 
 	selectSize: function (done) {
 		if (client.isVisible('tbody > tr > td.size-button > span', done)) {
@@ -266,7 +242,7 @@ module.exports = {
 		})
 	},
 
-// 											CART FUNCTIONALITY 											//
+// CART FUNCTIONALITY
 
 	proceedToCheckoutCart: function (done) {
 		client.waitForVisible('button.checkout-proceed', 10000, done)
@@ -278,7 +254,7 @@ module.exports = {
 			});
 	},
 
-// 											CHECKOUT FUNCTIONALITY										 //	
+// CHECKOUT FUNCTIONALITY
 	loginButton: function (done) {
 		if (client.isVisible('#activate-login', done)) {
 			client.click('#activate-login')
@@ -298,7 +274,7 @@ module.exports = {
 					})
 			})
 	},
-//										SHIPPING SECTION												//
+// SHIPPING SECTION
 	selectStore: function (done) {
 		if (client.isVisible('#js-store-6641', done)) {
 			client.getText('div#js-store-6641.store > div.store-main-details > span.address')
@@ -397,7 +373,7 @@ module.exports = {
 				client.click('a.ship-to-store');
 			})
 	},
-	//												PAYMENT SECTION												//
+	// PAYMENT SECTION
 	addCCName: function (done, ccname) {
 		client.waitForVisible('input[name="dwfrm_billing_paymentMethods_creditCard_owner"]', 10000, done)
 			.then(function () {
@@ -473,7 +449,6 @@ module.exports = {
 				})
 		});
 	},
-
 	verifyPaymentName: function (done) {
 		client.waitForVisible('div.box-section.payment-method > div.title-bar > h3', 10000, function () {
 			//.then(function () {
@@ -575,7 +550,7 @@ module.exports = {
 		client.scroll('#js-submit-final-btn', done)
 			.then(function () {
 				client.click('//button[@id="js-submit-final-btn"]');
-			})
+			});
 		//})
 	},
 	verifyConfirmOrder: function (done) {
@@ -620,13 +595,12 @@ module.exports = {
 //}
 //})
 
-//														REPORTING											 //
+// REPORTING
 
 	getScreenshot: function (done) {
 		client.saveScreenshot('C:/Users/mvanevery/Pictures/Work images/Payless/Test Results/checkOutPass ' + current + '.png', done);
 	},
-
-
+	
 	end: function (done) {
 		client.end(done);
 	}

@@ -74,13 +74,6 @@ gulp.task('integration-ci', ['serve:test', 'selenium'], function () {
 		}).on("error", handleError));
 });
 
-gulp.task('menu-integration', ['serve:test', 'selenium'], function () {
-	return gulp.src('test/Menu.js', {read: false})
-		.pipe(mocha({
-			timeout: '50000'
-		}));
-});
-
 gulp.task('local-integration', ['serve:test', 'selenium-start'], function () {
 	return gulp.src('test/*.js', {read: false})
 		.pipe(mocha({
@@ -88,64 +81,74 @@ gulp.task('local-integration', ['serve:test', 'selenium-start'], function () {
 		}).on("error", handleError));
 });
 
-
-/**
- *  Use 'npm run test-bamboo'
- */
-
 gulp.task('test-ci', ['integration-ci'], function () {
 	selenium.child.kill();
 	browserSync.exit();
 });
-
-/**
- *  Use 'npm run test-local'
- */
 
 gulp.task('test-local', ['local-integration'], function () {
 	selenium.child.kill();
 	browserSync.exit();
 });
 
-gulp.task('homepage', ['serve:test', 'selenium-start'], function () {
-	return gulp.src('test/homepage.js', {read: false})
-		.pipe(mocha({
-			timeout: '50000'
-		}).on("error", handleError));
-});
-
-/**
- *  Use 'gulp "test" name'
- */
-
 gulp.task('e2e-guest', ['serve:test', 'selenium-start'], function () {
 	return gulp.src('test/Chrome/Payless/node/staging/E2E-guest.js', {read: false})
 		.pipe(mocha({
-			timeout: '50000'
+			timeout: '50000',
+			reporterOptions: {
+				reportDir: 'test',
+				reportName: 'report',
+				reportTitle: 'awesome',
+				inlineAssets: true
+			}
 		}).on("error", handleError));
 });
 gulp.task('openMenu', ['serve:test', 'selenium-start'], function () {
 	return gulp.src('test/Chrome/Payless/legacy/staging/openMenu.js', {read: false})
 		.pipe(mocha({
-			timeout: '50000'
+			timeout: '50000',
+			reporterOptions: {
+				reportDir: 'test',
+				reportName: 'report',
+				reportTitle: 'awesome',
+				inlineAssets: true
+			}
 		}).on("error", handleError));
 });
 gulp.task('e2e-prod', ['serve:test', 'selenium-start'], function () {
 	return gulp.src('test/Chrome/Payless/node/production/end2end-prod.js', {read: false})
 		.pipe(mocha({
-			timeout: '50000'
+			timeout: '50000',
+			reporterOptions: {
+				reportDir: 'test',
+				reportName: 'report',
+				reportTitle: 'awesome',
+				inlineAssets: true
+			}
 		}).on("error", handleError));
 });
 gulp.task('e2e-return', ['serve:test', 'selenium-start'], function () {
 	return gulp.src('test/Chrome/Payless/node/staging/E2E-returning-user.js', {read: false})
 		.pipe(mocha({
-			timeout: '50000'
+			timeout: '50000',
+			reporterOptions: {
+				reportDir: 'test',
+				reportName: 'report',
+				reportTitle: 'awesome',
+				inlineAssets: true
+			}
 		}).on("error", handleError));
 });
 gulp.task('findItem', ['serve:test', 'selenium'], function () {
 	return gulp.src('test/Chrome/Payless/node/staging/findProduct.js', {read: false})
 		.pipe(mocha({
-			timeout: '50000'
+			timeout: '50000',
+			reporterOptions: {
+				reportDir: 'test',
+				reportName: 'report',
+				reportTitle: 'awesome',
+				inlineAssets: true
+			}
 		}).on("error", handleError));
 });
 gulp.task('findStore', ['serve:test', 'selenium'], function () {

@@ -6,9 +6,13 @@ module.exports = {
 	},
 
 	helpers: {
+		pause: '15000',
 		search: '142898',
-		men: '//a[@href="/accessories/"]',
-		catWomenAcc: '//a[@href="/accessories/womens-shoe-care/"]',
+		men: '//a[@href="/mens-shoes/"]',
+		catWomenAcc: '//a[@href="/mens/boots/"]',
+		storeAddress: '346 WESTSHORE PLAZA,SPACE A12,TAMPA, FL 33609-1814',
+		username: 'mve.payless@gmail.com',
+		password: 'Password1',
 		firstName: 'mad',
 		lastName: 'mobile',
 		address1: '2701 North Rocky Point Dr',
@@ -32,6 +36,7 @@ module.exports = {
 			'mve.payless@gmail.com',
 			'Rewards Member Recognized',
 			'Shipping Method: Standard Delivery' ],
+		shipLabel: 'tampa-1',
 		payName: 'Mad Mobile',
 		payType: 'Visa',
 		payNumber: '************7750',

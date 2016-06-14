@@ -16,7 +16,7 @@ describe('Testing Find A Store', function () {
     });
     describe('pausing', function () {
         it('should pause the test', function (done) {
-            common.pause(done);
+            common.pause(5000, done);
         })
     });
     describe('Opening Find A Store', function () {
@@ -26,7 +26,7 @@ describe('Testing Find A Store', function () {
     });
     describe('pausing', function () {
         it('should pause the test', function (done) {
-            common.pause(done);
+            common.pause(5000, done);
         })
     });
     describe('Click Geolocation Button', function () {
@@ -36,14 +36,15 @@ describe('Testing Find A Store', function () {
     });
     describe('pausing', function () {
         it('should pause the test', function (done) {
-            common.pause(done);
+            common.pause(10000, done);
         })
     });
-    describe('Verify Store Address', function () {
+    describe('Verify Store Address (this may take a while)', function () {
         it('should verify the store address', function (done) {
             common.verifyStoreAddress(done);
         });
     });
+	
 	after(function (done) {
 		common.end(done);
 	});

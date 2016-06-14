@@ -4,15 +4,10 @@
  * Using arguments will set a variable in the project that tells it which project you want to run tests for
  *
  **/
-
-
 var gulp = require('gulp');
 var browserSync = require('browser-sync');
 var selenium = require('selenium-standalone');
 var mocha = require('gulp-mocha');
-var parseString = require('xml2js').parseString;
-var fs = require('fs');
-var util = require('util');
 
 function handleError(err) {
 	console.log(err.toString());

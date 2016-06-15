@@ -5,12 +5,12 @@ var binPath = phantomjs.path;
 exports.client = require('webdriverio').remote({
 	desiredCapabilities: {
 		browserName: 'phantomjs',
-			page: {
-				settings: {
-					userAgent: config.userAgent.mobile
+		page: {
+			settings: {
+				userAgent: config.userAgent.mobile
 
-				}
-			},
-			'phantomjs.binary.path': binPath,
-		}
+			}
+		},
+		'phantomjs.binary.path': binPath,
+	}
 });

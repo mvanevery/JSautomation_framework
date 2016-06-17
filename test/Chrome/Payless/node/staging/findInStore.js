@@ -1,77 +1,72 @@
-/**
- * Created by mvanevery on 5/20/2016.
- */
+const common = require('../../../../../core/helpers/common');
 
-var common = require('../../../../../core/helpers/common');
-
-
-describe('Testing Find A Store', function () {
-  before(function (done) {
+describe('Testing Find A Store', () => {
+  before((done) => {
     common.goTo(done);
   });
 
-  describe('Setting viewport size', function () {
-    it('should launch in mobile view', function (done) {
+  describe('Setting viewport size', () => {
+    it('should launch in mobile view', (done) => {
       common.mobileView(done);
     });
   });
-  describe('Open Menu', function () {
-    it('should see the menu open', function (done) {
+  describe('Open Menu', () => {
+    it('should see the menu open', (done) => {
       common.openMenu(done);
     });
   });
 
-  describe('Verifying menu open and getting text', function () {
-    it('should confirm open menu and bag text', function (done) {
+  describe('Verifying menu open and getting text', () => {
+    it('should confirm open menu and bag text', (done) => {
       common.menuVerify(done);
     });
   });
-  describe('Selecting category', function () {
-    it('should pick a category', function (done) {
+  describe('Selecting category', () => {
+    it('should pick a category', (done) => {
       common.pickCategory(done);
     });
   });
-  describe('Selecting Style', function () {
-    it('should pick a style', function (done) {
+  describe('Selecting Style', () => {
+    it('should pick a style', (done) => {
       common.pickStyle(done);
     });
   });
-  describe('Selecting Item', function () {
-    it('should pick an item', function (done) {
+  describe('Selecting Item', () => {
+    it('should pick an item', (done) => {
       common.pickItem(done);
     });
   });
-  describe('pausing', function () {
-    it('should pause the test', function (done) {
+  describe('pausing', () => {
+    it('should pause the test', (done) => {
       common.pause(15000, done);
     });
   });
-  describe('Selecting a Size', function () {
-    it('should select a size', function (done) {
+  describe('Selecting a Size', () => {
+    it('should select a size', (done) => {
       common.selectSize(done);
     });
   });
-  describe('pausing', function () {
-    it('should pause the test', function (done) {
+  describe('pausing', () => {
+    it('should pause the test', (done) => {
       common.pause(5000, done);
     });
   });
-  describe('find in store', function () {
-    it('should select a size', function (done) {
+  describe('find in store', () => {
+    it('should select a size', (done) => {
       common.openFindInStore(done);
     });
   });
-  describe('pausing', function () {
-    it('should pause the test', function (done) {
+  describe('pausing', () => {
+    it('should pause the test', (done) => {
       common.pause(10000, done);
     });
   });
-  describe('Verify Store Address', function () {
-    it('should verify the store address (this may take a while)', function (done) {
+  describe('Verify Store Address', () => {
+    it('should verify the store address (this may take a while)', (done) => {
       common.verifyStoreAddress(done);
     });
   });
-  after(function (done) {
+  after((done) => {
     common.end(done);
   });
 });

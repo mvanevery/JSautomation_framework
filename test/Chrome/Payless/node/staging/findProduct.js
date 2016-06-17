@@ -1,44 +1,40 @@
-/**
- * Created by mvanevery on 5/12/2016.
- */
+const common = require('../../../../../core/helpers/common');
 
-var common = require('../../../../../core/helpers/common');
-
-describe('Testing Find A Product', function () {
-  before(function (done) {
+describe('Testing Find A Product', () => {
+  before((done) => {
     common.goTo(done);
   });
-  describe('Setting viewport size', function () {
-    it('should launch in mobile view', function (done) {
+  describe('Setting viewport size', () => {
+    it('should launch in mobile view', (done) => {
       common.mobileView(done);
     });
   });
-  describe('pausing', function () {
-    it('should pause the test', function (done) {
+  describe('pausing', () => {
+    it('should pause the test', (done) => {
       common.pause(5000, done);
     });
   });
-  describe('Searching for an Item', function () {
-    it('should search for an item', function (done) {
+  describe('Searching for an Item', () => {
+    it('should search for an item', (done) => {
       common.searchItem(done);
     });
   });
-  describe('pausing', function () {
-    it('should pause the test', function (done) {
+  describe('pausing', () => {
+    it('should pause the test', (done) => {
       common.pause(5000, done);
     });
   });
-  describe('Verifying Item Title', function () {
-    it('should verify item title', function (done) {
+  describe('Verifying Item Title', () => {
+    it('should verify item title', (done) => {
       common.verifyItemTitle('SAFE STEP SOLE PADS', done);
     });
   });
-  describe('Verifying Item Number', function () {
-    it('should verify item number', function (done) {
+  describe('Verifying Item Number', () => {
+    it('should verify item number', (done) => {
       common.verifyItemNumber('142898', done);
     });
   });
-  after(function (done) {
+  after((done) => {
     common.end(done);
   });
 });

@@ -1,39 +1,36 @@
-/**
- * Created by mvanevery on 5/2/2016.
- */
+const common = require('../../../../../core/helpers/common-legacy');
 
-var common = require('../../../../../core/helpers/common-legacy');
-
-describe('Testing Home Page', function () {
-  before(function (done) {
+describe('Testing Home Page', () => {
+  before((done) => {
     common.goTo(done);
   });
 
-  describe('Setting viewport size', function () {
-    it('should launch in mobile view', function (done) {
+  describe('Setting viewport size', () => {
+    it('should launch in mobile view', (done) => {
       common.mobileView(done);
     });
   });
-  describe('pausing', function () {
-    it('should pause the test', function (done) {
+  describe('pausing', () => {
+    it('should pause the test', (done) => {
       common.pause(done);
     });
   });
-  describe('Refresh the page', function () {
-    it('should refresh the page to view mobile', function (done) {
+  describe('Refresh the page', () => {
+    it('should refresh the page to view mobile', (done) => {
       common.refresh(done);
     });
   });
-  describe('pausing', function () {
-    it('should pause the test', function (done) {
+  describe('pausing', () => {
+    it('should pause the test', (done) => {
       common.pause(done);
     });
   });
-  describe('Open Menu', function () {
-    it('should see the menu open', function (done) {
+  describe('Open Menu', () => {
+    it('should see the menu open', (done) => {
       common.openMenu(done);
     });
   });
-
-
+  after((done) => {
+    common.end(done);
+  });
 });

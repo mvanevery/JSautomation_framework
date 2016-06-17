@@ -1,6 +1,6 @@
-var config = require('./browser/config');
-var phantomjs = require('phantomjs-prebuilt');
-var binPath = phantomjs.path;
+const config = require('./browser/config');
+const phantomjs = require('phantomjs-prebuilt');
+const binPath = phantomjs.path;
 
 exports.client = require('webdriverio').remote({
   desiredCapabilities: {

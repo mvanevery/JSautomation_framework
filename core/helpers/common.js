@@ -1,14 +1,14 @@
-var client = require('../../core/client').client;
-var project = require('../projects/config').project;
-var config = require('../projects/' + project + '/config');
-var page = require('../projects/' + project + '/config.homepage');
-var expect = require('chai').expect;
-var assert = require('chai').assert;
-var mobileTitle = page.mobileTitle;
-var date = new Date();
-var current = date.getMonth() + '-' + date.getDate() + '-' + date.getFullYear() + '-' + date.getHours() + '-' + date.getMinutes() + '-' + date.getSeconds();
+const client = require('../../core/client').client;
+const project = require('../projects/config').project;
+const config = require('../projects/' + project + '/config');
+const page = require('../projects/' + project + '/config.homepage');
+const expect = require('chai').expect;
+const assert = require('chai').assert;
+const mobileTitle = page.mobileTitle;
+const date = new Date();
+const current = date.getMonth() + '-' + date.getDate() + '-' + date.getFullYear() + '-' + date.getHours() + '-' + date.getMinutes() + '-' + date.getSeconds();
 
-var comparisonTestPass = function (array1, array2) {
+const comparisonTestPass = (array1, array2) => {
   // Test lengths first
   if (array1.length !== array2.length) {
     return false;
@@ -27,15 +27,15 @@ var comparisonTestPass = function (array1, array2) {
 
 module.exports = {
 
-  mobileView: function (done) {
+  mobileView: (done) => {
     client.setViewportSize({
       height: 559,
       width: 375
     }, true).then(done);
   },
 
-  goTo: function (done) {
-    client.init().url(config.routes.baseUrl).then(function () {
+  goTo: (done) => {
+    client.init().url(config.routes.baseUrl).then(() => {
       client.setViewportSize({
         height: 559,
         width: 375
@@ -43,13 +43,13 @@ module.exports = {
     });
   },
 // MULTI-PAGE FUNCTIONS
-  pause: function (pauseTime, done) {
+  pause: (pauseTime, done) => {
     client.pause(pauseTime, done);
   },
-  refreshPage: function (done) {
+  refreshPage: (done) => {
     client.refresh(done);
   },
-  clickGeolocation: function (done) {
+  clickGeolocation: (done) => {
     if (client.isVisible('button.geo-submit', done)) {
       client.click('button.geo-submit');
     } else if (client.isVisble('#js-geo-submit', done)) {
@@ -62,14 +62,14 @@ module.exports = {
 
 // HOMEPAGE/MENU FUNCTIONALITY
 
-  openMenu: function (done) {
+  openMenu: (done) => {
     if (client.isVisible('div.slider-container > a > img', done)) {
       client.click('a.menu-trigger > i.icon');
     } else {
       console.log('Menu not available');
     }
   },
-  menuVerify: function (done) {
+  menuVerify: (done) => {
     if (client.isVisible('ul.expandable > li.footer-container > div.app-menu-footer > div.app-menu-footer-container > ul.footer-links > li.my-bag > a.cart > h5', done)) {
       client.getText('ul.expandable > li.footer-container > div.app-menu-footer > div.app-menu-footer-container > ul.footer-links > li.my-bag > a.cart > h5').then(function (err, text) {
         expect(text).to.equal('My Bag');
@@ -78,27 +78,27 @@ module.exports = {
     }
 
   },
-  closeMenu: function (done) {
+  closeMenu: (done) => {
     if (client.isVisible('a.close > i.icon', done)) {
       client.click('a.close > i.icon', done);
     } else {
       console.log('Menu not open');
     }
   },
-  searchItem: function (done, search) {
+  searchItem: (done, search) => {
     var searchData = (search || config.helpers.search);
     client.waitForVisible('div.app-sub-header > form#search-form div.input > input', 10000, done)
-      .then(function () {
+      .then(() => {
         client.click('//form[@id="search-form"]/div/input')
-          .then(function () {
+          .then(() => {
             client.setValue('//form[@id="search-form"]/div/input', searchData)
-              .then(function () {
+              .then(() => {
                 client.click('button[type="submit"]');
               });
           });
       });
   },
-  pickCategory: function (done) {
+  pickCategory: (done) => {
     if (client.isVisible('a.close > i.icon', done)) {
       client.click(config.helpers.men);
     } else {
@@ -106,7 +106,7 @@ module.exports = {
     }
   },
 
-  pickStyle: function (done) {
+  pickStyle: (done) => {
     if (client.isVisible('li.active.active-leaf > a.title', done)) {
       client.click(config.helpers.catWomenAcc);
     } else {
@@ -116,14 +116,14 @@ module.exports = {
 
 // FIND A STORE/FIND IN STORE FUNCTIONALITY
 
-  openFindAStore: function (done) {
+  openFindAStore: (done) => {
     if (client.isVisible('div.slider-container > a > img', done)) {
       client.click('a.location > i.icon');
     } else {
       console.log('Find A Store not available');
     }
   },
-  openFindInStore: function (done) {
+  openFindInStore: (done) => {
     if (client.isEnabled('button.add-to-cart', done)) {
       client.click('li.mobile-locate.js-findinstore > a > h5');
     } else {
@@ -131,11 +131,11 @@ module.exports = {
     }
   },
 
-  verifyStoreAddress: function (done) {
-    client.waitForVisible('button.map', 10000, done).then(function () {
+  verifyStoreAddress: (done) => {
+    client.waitForVisible('button.map', 10000, done).then(() => {
       client.scroll('span.mobile-distance');
       client.getText('div > div.locations-page > div#locations-results > div > div.store-locator-results > div.left-column > div.store > span.address')
-        .then(function (text) {
+        .then((text) => {
           var response = text.join(',').includes(config.helpers.storeAddress);
           console.log(response);// this will be a boolean value (true/false) that tell us whether this string is in the array
           try {
@@ -162,19 +162,19 @@ module.exports = {
 
 // PLP FUNCTIONALITY
 
-  pickItem: function (done) {
+  pickItem: (done) => {
     client.waitForVisible('div.details > div.mobile-brand > a.name > h3', 20000, done)
-      .then(function () {
+      .then(() => {
         client.click('div.details > div.mobile-brand > a.name > h3');
       });
   },
 
 // PDP FUNCTIONALITY
 
-  selectSize: function (done) {
+  selectSize: (done) => {
     if (client.isVisible('tbody > tr > td.size-button > span', done)) {
       client.scroll('tbody > tr > td.size-button > span')
-        .then(function () {
+        .then(() => {
           client.click('span=9');
         });
     } else {
@@ -182,27 +182,27 @@ module.exports = {
     }
   },
 
-  addToBag: function (done) {
+  addToBag: (done) => {
     client.waitForVisible('button.add-to-cart', 10000, done)
-      .then(function () {
+      .then(() => {
         client.scroll('button.add-to-cart')
-          .then(function () {
+          .then(() => {
             client.click('button.add-to-cart');
           });
       });
   },
-  proceedToCartModal: function (done) {
+  proceedToCartModal: (done) => {
     client.waitForVisible('button.btn-checkout', 10000, done)
-      .then(function () {
+      .then(() => {
         client.scroll('button.btn-checkout')
-          .then(function () {
+          .then(() => {
             client.click('button.btn-checkout');
           });
       });
   },
-  verifyItemTitle: function (expected, done) {
-    client.waitForVisible('h1.title', 10000, function () {
-      client.getText('h1.title').then(function (title) {
+  verifyItemTitle: (expected, done) => {
+    client.waitForVisible('h1.title', 10000, () => {
+      client.getText('h1.title').then((title) => {
         try {
           assert.equal(expected, title, 'The expected value was not equal to the text');
           done();
@@ -217,10 +217,10 @@ module.exports = {
       });
     });
   },
-  verifyItemNumber: function (expected, done) {
-    client.waitForVisible('h1.title', 10000, function () {
+  verifyItemNumber: (expected, done) => {
+    client.waitForVisible('h1.title', 10000, () => {
       client.getText('div.number > span')
-        .then(function (text) {
+        .then((text) => {
           //		.then(function (err, number) {
           //			if(assert.equal(number,expected, 'number matches')) {
           //				console.log('Number Matches');
@@ -241,41 +241,41 @@ module.exports = {
 
 // CART FUNCTIONALITY
 
-  proceedToCheckoutCart: function (done) {
+  proceedToCheckoutCart: (done) => {
     client.waitForVisible('button.checkout-proceed', 10000, done)
-      .then(function () {
+      .then(() => {
         client.scroll('button.checkout-proceed')
-          .then(function () {
+          .then(() => {
             client.click('button.checkout-proceed');
           });
       });
   },
 
 // CHECKOUT FUNCTIONALITY
-  loginButton: function (done) {
+  loginButton: (done) => {
     if (client.isVisible('#activate-login', done)) {
       client.click('#activate-login');
     } else {
       console.log('login not possible');
     }
   },
-  addLoginInfo: function (done, username, password) {
+  addLoginInfo: (done, username, password) => {
     client.waitForVisible('//form[@id="login-form"]/div[2]/div/div/input', 10000, done)
-      .then(function () {
+      .then(() => {
         client.setValue('//form[@id="login-form"]/div[2]/div/div/input', username || config.helpers.username)
-          .then(function () {
+          .then(() => {
             client.setValue('//form[@id="login-form"]/div[2]/div/div[2]/input', password || config.helpers.password)
-              .then(function () {
+              .then(() => {
                 client.click('#submit');
               });
           });
       });
   },
 // SHIPPING SECTION
-  selectStore: function (done) {
+  selectStore: (done) => {
     if (client.isVisible('#js-store-6641', done)) {
       client.getText('div#js-store-6641.store > div.store-main-details > span.address')
-        .then(function (text) {
+        .then((text) => {
           console.log(text);
           // if (comparisonTestPass(text, config.helpers.shipInfoReal)) {
           //	//		console.log(text);
@@ -289,128 +289,128 @@ module.exports = {
       console.log('Nothing to Select');
     }
   },
-  addShipFirstName: function (done, first) {
+  addShipFirstName: (done, first) => {
     client.waitForVisible('//input[@id="firstName"]', 10000, done)
-      .then(function () {
+      .then(() => {
         client.setValue('//input[@id="firstName"]', (first || config.helpers.firstName));
       });
   },
-  addShipLastName: function (done, last) {
+  addShipLastName: (done, last) => {
     client.waitForVisible('//input[@id="lastName"]', 10000, done)
-      .then(function () {
+      .then(() => {
         client.setValue('//input[@id="lastName"]', last || config.helpers.lastName);
       });
   },
-  addShipAddress: function (done, addln1) {
+  addShipAddress: (done, addln1) => {
     client.waitForVisible('//input[@id="street_number"]', 10000, done)
-      .then(function () {
+      .then(() => {
         client.setValue('//input[@id="street_number"]', addln1 || config.helpers.address1);
       });
   },
-  addShipAddress2: function (done, addln2) {
+  addShipAddress2: (done, addln2) => {
     client.waitForVisible('//input[@id="address2"]', 10000, done)
-      .then(function () {
+      .then(() => {
         client.setValue('//input[@id="address2"]', addln2 || config.helpers.address2);
       });
   },
-  addShipCity: function (done, city) {
+  addShipCity: (done, city) => {
     client.waitForVisible('//input[@id="locality"]', 10000, done)
-      .then(function () {
+      .then(() => {
         client.setValue('//input[@id="locality"]', city || config.helpers.city);
       });
   },
-  addShipState: function (done, state) {
+  addShipState: (done, state) => {
     client.waitForVisible('//select[@id="administrative_area_level_1"]', 10000, done)
-      .then(function () {
+      .then(() => {
         client.selectByValue('//select[@id="administrative_area_level_1"]', state || config.helpers.state);
       });
   },
-  addShipZipcode: function (done, zipcode) {
+  addShipZipcode: (done, zipcode) => {
     client.waitForVisible('//input[@id="postal_code"]', 10000, done)
-      .then(function () {
+      .then(() => {
         client.setValue('//input[@id="postal_code"]', zipcode || config.helpers.zipcode);
       });
   },
-  addShipPhone: function (done, phone) {
+  addShipPhone: (done, phone) => {
     client.waitForVisible('//input[@name="dwfrm_singleshipping_shippingAddress_addressFields_phone"]', 10000, done)
-      .then(function () {
+      .then(() => {
         client.setValue('//input[@name="dwfrm_singleshipping_shippingAddress_addressFields_phone"]', phone || config.helpers.phone);
       });
   },
-  addShipEmail: function (done, email) {
+  addShipEmail: (done, email) => {
     client.waitForVisible('//input[@id="shipping-email"]', 10000, done)
-      .then(function () {
+      .then(() => {
         client.setValue('//input[@id="shipping-email"]', email || config.helpers.email);
       });
   },
-  proceedToPayment: function (done) {
+  proceedToPayment: (done) => {
     client.waitForVisible('#js-submit-shipping-btn', 10000, done)
-      .then(function () {
+      .then(() => {
         client.scroll('#js-submit-shipping-btn')
-          .then(function () {
+          .then(() => {
             client.click('#js-submit-shipping-btn');
           });
       });
   },
-  useTypedAddress: function (done) {
+  useTypedAddress: (done) => {
     client.waitForVisible('#js-prediction-confirm', 10000, done)
-      .then(function () {
+      .then(() => {
         client.click('#js-prediction-confirm');
       });
   },
-  useShipDropdown: function (done, label) {
+  useShipDropdown: (done, label) => {
     client.waitForVisible('//select[@name="dwfrm_singleshipping_addressList"]', 10000, done)
-      .then(function () {
+      .then(() => {
         client.selectByValue('//select[@name="dwfrm_singleshipping_addressList"]', label || config.helpers.shipLabel);
       });
   },
-  shipToStore: function (done) {
+  shipToStore: (done) => {
     client.waitForVisible('a.ship-to-store', 10000, done)
-      .then(function () {
+      .then(() => {
         client.click('a.ship-to-store');
       });
   },
   // PAYMENT SECTION
-  addCCName: function (done, ccname) {
+  addCCName: (done, ccname) => {
     client.waitForVisible('input[name="dwfrm_billing_paymentMethods_creditCard_owner"]', 10000, done)
-      .then(function () {
+      .then(() => {
         client.setValue('//input[@name="dwfrm_billing_paymentMethods_creditCard_owner"]', ccname || config.helpers.ccName);
       });
   },
-  addCCNumber: function (done, ccnumber) {
+  addCCNumber: (done, ccnumber) => {
     client.waitForVisible('input[name="dwfrm_billing_paymentMethods_creditCard_number"]', 10000, done)
-      .then(function () {
+      .then(() => {
         client.setValue('//input[@name="dwfrm_billing_paymentMethods_creditCard_number"]', ccnumber || config.helpers.ccNumber);
       });
   },
-  addCCExpMonth: function (done, ccmonth) {
+  addCCExpMonth: (done, ccmonth) => {
     client.waitForVisible('//select[@name="dwfrm_billing_paymentMethods_creditCard_month"]', 10000, done)
-      .then(function () {
+      .then(() => {
         client.selectByValue('//select[@name="dwfrm_billing_paymentMethods_creditCard_month"]', ccmonth || config.helpers.ccExpMonth);
       });
   },
-  addCCExpYear: function (done, ccyear) {
+  addCCExpYear: (done, ccyear) => {
     client.waitForVisible('//select[@name="dwfrm_billing_paymentMethods_creditCard_year"]', 10000, done)
-      .then(function () {
+      .then(() => {
         client.selectByValue('//select[@name="dwfrm_billing_paymentMethods_creditCard_year"]', ccyear || config.helpers.ccExpYear);
       });
   },
-  addCCSecurity: function (done, ccsecurity) {
+  addCCSecurity: (done, ccsecurity) => {
     client.waitForVisible('input[name="dwfrm_billing_paymentMethods_creditCard_cvn"]', 10000, done)
-      .then(function () {
+      .then(() => {
         client.setValue('//input[@name="dwfrm_billing_paymentMethods_creditCard_cvn"]', ccsecurity || config.helpers.ccSecurity);
       });
   },
-  reviewOrder: function (done) {
+  reviewOrder: (done) => {
     client.scroll('#js-submit-payment-btn', done)
-      .then(function () {
+      .then(() => {
         client.click('#js-submit-payment-btn');
       });
   },
-  verifyShippingTitle: function (done) {
-    client.waitForVisible('div.box-section.select-shipping-method > div.title-bar > h3', 10000, function () {
+  verifyShippingTitle: (done) => {
+    client.waitForVisible('div.box-section.select-shipping-method > div.title-bar > h3', 10000, () => {
       client.getText('div.box-section.select-shipping-method > div.title-bar > h3')
-        .then(function (text) {
+        .then((text) => {
           // if (text == config.helpers.shipTitle) {
           //	console.log('Shipping title - PASS');
           // } else {
@@ -425,11 +425,11 @@ module.exports = {
         });
     });
   },
-  verifyShippingInfo: function (done) {
-    client.waitForVisible('div.box-section.payment-method > div.title-bar > h3', 10000, function () {
+  verifyShippingInfo: (done) => {
+    client.waitForVisible('div.box-section.payment-method > div.title-bar > h3', 10000, () => {
       // .then(function () {
       client.getText('div#js-shipping-summary-body.checkout-step.shipping-summary > p.summary-line.address-line')
-        .then(function (text) {
+        .then((text) => {
           // if (comparisonTestPass(text, config.helpers.shipInfoReal)) {
           // //		console.log(text);
           // //		console.log(shipinfo);
@@ -446,11 +446,11 @@ module.exports = {
         });
     });
   },
-  verifyPaymentName: function (done) {
-    client.waitForVisible('div.box-section.payment-method > div.title-bar > h3', 10000, function () {
+  verifyPaymentName: (done) => {
+    client.waitForVisible('div.box-section.payment-method > div.title-bar > h3', 10000, () => {
       // .then(function () {
       client.getText('div#js-payment-summary-body.checkout-step.payment-summary > div.payment-method p.name')
-        .then(function (text) {
+        .then((text) => {
           // if (text == config.helpers.payName) {
           //	console.log('Payment Name - PASS');
           // } else {
@@ -465,11 +465,11 @@ module.exports = {
         });
     });
   },
-  verifyPaymentType: function (done) {
-    client.waitForVisible('div.box-section.payment-method > div.title-bar > h3', 10000, function () {
+  verifyPaymentType: (done) => {
+    client.waitForVisible('div.box-section.payment-method > div.title-bar > h3', 10000, () => {
       // .then(function() {
       client.getText('div#js-payment-summary-body.checkout-step.payment-summary > div.payment-method p.type')
-        .then(function (text) {
+        .then((text) => {
           // if (text == config.helpers.payType) {
           //	console.log('Payment Type - PASS');
           // } else {
@@ -484,11 +484,11 @@ module.exports = {
         });
     });
   },
-  verifyPaymentNumber: function (done) {
-    client.waitForVisible('div.box-section.payment-method > div.title-bar > h3', 10000, function () {
+  verifyPaymentNumber: (done) => {
+    client.waitForVisible('div.box-section.payment-method > div.title-bar > h3', 10000, () => {
       // .then(function() {
       client.getText('div#js-payment-summary-body.checkout-step.payment-summary > div.payment-method p.number')
-        .then(function (text) {
+        .then((text) => {
           // if (text == config.helpers.payNumber) {
           //	console.log('Payment Number - PASS');
           // } else {
@@ -503,11 +503,11 @@ module.exports = {
         });
     });
   },
-  verifyPaymentExpire: function (done) {
-    client.waitForVisible('div.box-section.payment-method > div.title-bar > h3', 10000, function () {
+  verifyPaymentExpire: (done) => {
+    client.waitForVisible('div.box-section.payment-method > div.title-bar > h3', 10000, () => {
       // .then(function() {
       client.getText('div#js-payment-summary-body.checkout-step.payment-summary > div.payment-method p.expire')
-        .then(function (text) {
+        .then((text) => {
           // if (text == config.helpers.payExpires) {
           //	console.log('Payment Expire - PASS');
           // } else {
@@ -522,11 +522,11 @@ module.exports = {
         });
     });
   },
-  verifyBillingInfo: function (done) {
-    client.waitForVisible('div.box-section.payment-method > div.title-bar > h3', 10000, function () {
+  verifyBillingInfo: (done) => {
+    client.waitForVisible('div.box-section.payment-method > div.title-bar > h3', 10000, () => {
       // .then(function() {
       client.getText('div#js-billing-summary-body.checkout-step.billing-summary p.summary-line.address-line')
-        .then(function (text) {
+        .then((text) => {
           //	if (comparisonTestPass(text, config.helpers.billingInfo)) {
           //	console.log('Billing info - PASS');
           // } else {
@@ -541,21 +541,21 @@ module.exports = {
         });
     });
   },
-  submitPayment: function (done) {
+  submitPayment: (done) => {
     // client.waitForVisible('#js-submit-payment-btn', 10000, done)
     //	.then(function () {
     client.scroll('#js-submit-final-btn', done)
-      .then(function () {
+      .then(() => {
         client.click('//button[@id="js-submit-final-btn"]');
       });
     // })
   },
-  verifyConfirmOrder: function (done) {
+  verifyConfirmOrder: (done) => {
     client.waitForVisible('//div.order > div.check-mark > i.icon', 10000, done)
-      .then(function () {
+      .then(() => {
         console.log('Checkmark is visible');
         client.getText('//div.modal.order-confirmation > div.body > div.order > span.success')
-          .then(function (status) {
+          .then((status) => {
             if (status == 'SUCCESS!') {
               console.log(status + ' = Order Status');
             } else {
@@ -564,12 +564,12 @@ module.exports = {
           });
       });
   },
-  verifyOrderError: function (done) {
+  verifyOrderError: (done) => {
     if (client.isVisible('div.left-column > div.checkout-error', done)) {
       client.scroll('div.left-column > div.checkout-error')
-        .then(function () {
+        .then(() => {
           client.getText('div.left-column > div.checkout-error')
-            .then(function (error) {
+            .then((error) => {
               if (error == config.helpers.orderError) {
                 console.log(error + ' Order Failed!');
               } else {
@@ -594,11 +594,11 @@ module.exports = {
 
 // REPORTING
 
-  getScreenshot: function (done) {
+  getScreenshot: (done) => {
     client.saveScreenshot('C:/Users/mvanevery/Pictures/Work images/Payless/Test Results/checkOutPass ' + current + '.png', done);
   },
 
-  end: function (done) {
+  end: (done) => {
     client.end(done);
   }
 };

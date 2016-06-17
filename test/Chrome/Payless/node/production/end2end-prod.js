@@ -5,7 +5,6 @@ describe('Testing Home Page', () => {
   before((done) => {
     common.goTo(done);
   });
-
   describe('Setting viewport size', () => {
     it('should launch in mobile view', (done) => {
       common.mobileView(done);
@@ -16,7 +15,6 @@ describe('Testing Home Page', () => {
       common.openMenu(done);
     });
   });
-
   describe('Verifying menu open and getting text', () => {
     it('should confirm open menu and bag text', (done) => {
       common.menuVerify(done);
@@ -72,11 +70,6 @@ describe('Testing Home Page', () => {
       prod.addShipAddress(done);
     });
   });
-  // describe('Add Address 2 (shipping)', function () {
-  //    it('should add address 2 to shipping', function (done) {
-  //        common.addShipAddress2(done);
-  //    })
-  // });
   describe('Add City (shipping)', () => {
     it('should add City to shipping', (done) => {
       common.addShipCity(done);

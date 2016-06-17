@@ -598,7 +598,7 @@ module.exports = {
 
 // REPORTING
   getScreenshot: (done) => {
-    client.saveScreenshot(`C:/Users/mvanevery/Pictures/Work images/payless/Test Results/checkOutPass${current}.png`, done);
+    client.saveScreenshot(`checkout${current}.png`, done);
   },
 
   end: (done) => {

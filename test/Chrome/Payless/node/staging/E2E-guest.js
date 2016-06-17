@@ -49,8 +49,7 @@ describe('Testing Home Page', () => {
       common.proceedToCartModal(done);
     });
   }
-  )
-  ;
+  );
   describe('Proceed to Checkout', () => {
     it('should proceed to Checkout from Cart', (done) => {
       common.proceedToCheckoutCart(done);
@@ -190,9 +189,7 @@ describe('Testing Home Page', () => {
     it('should click the Place Your Order button', (done) => {
       common.submitPayment(done);
     });
-  }
-  )
-  ;
+  });
   describe('pausing', () => {
     it('should pause the test', (done) => {
       common.pause(done);

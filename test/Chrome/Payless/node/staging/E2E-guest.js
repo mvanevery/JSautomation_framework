@@ -8,7 +8,6 @@ describe('Testing Home Page', function () {
 	before(function (done) {
 		common.goTo(done);
 	});
-
 	describe('Setting viewport size', function () {
 		it('should launch in mobile view', function (done) {
 			common.mobileView(done);
@@ -19,7 +18,6 @@ describe('Testing Home Page', function () {
 			common.openMenu(done);
 		})
 	});
-
 	describe('Verifying menu open and getting text', function () {
 		it('should confirm open menu and bag text', function (done) {
 			common.menuVerify(done);
@@ -210,8 +208,7 @@ describe('Testing Home Page', function () {
 			common.getScreenshot(done);
 		})
 	});
-
-	//after(function (done) {
-	//    common.end(done);
-	//});
-})
+	after(function (done) {
+	   common.end(done);
+	});
+});

@@ -52,12 +52,10 @@ module.exports = {
 	clickGeolocation: function (done) {
 		if (client.isVisible('button.geo-submit', done)) {
 			client.click('button.geo-submit');
+		} else if (client.isVisble('#js-geo-submit', done)) {
+			client.click('#js-geo-submit');
 		} else {
-			if (client.isVisble('#js-geo-submit', done)) {
-				client.click('#js-geo-submit');
-			} else {
-				console.log('no geolocation available');
-			}
+			console.log('no geolocation available');
 		}
 	},
 
@@ -182,7 +180,6 @@ module.exports = {
 		} else {
 			client.scroll('button.add-to-cart');
 		}
-		;
 	},
 
 	addToBag: function (done) {
@@ -600,7 +597,7 @@ module.exports = {
 	getScreenshot: function (done) {
 		client.saveScreenshot('C:/Users/mvanevery/Pictures/Work images/Payless/Test Results/checkOutPass ' + current + '.png', done);
 	},
-	
+
 	end: function (done) {
 		client.end(done);
 	}

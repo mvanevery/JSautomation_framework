@@ -214,8 +214,7 @@ describe('Testing Home Page', function () {
 			common.getScreenshot(done);
 		})
 	});
-
-	//after(function (done) {
-	//    common.end(done);
-	//});
-})
+	after(function (done) {
+	   common.end(done);
+	});
+});

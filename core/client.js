@@ -11,6 +11,6 @@ exports.client = require('webdriverio').remote({
 
 			}
 		},
-		'phantomjs.binary.path': binPath,
+		'phantomjs.binary.path': binPath
 	}
 });

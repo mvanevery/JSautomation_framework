@@ -8,7 +8,6 @@ describe('Testing Find A Store', function () {
 	before(function (done) {
 		common.goTo(done);
 	});
-
 	describe('Setting viewport size', function () {
 		it('should launch in mobile view', function (done) {
 			common.mobileView(done);
@@ -44,9 +43,7 @@ describe('Testing Find A Store', function () {
 			common.verifyStoreAddress(done);
 		});
 	});
-
 	after(function (done) {
 		common.end(done);
 	});
-
 });

@@ -1,48 +1,45 @@
-/**
- * Created by mvanevery on 5/12/2016.
- */
+const common = require('../../../../../core/helpers/common');
 
-var common = require('../../../../../core/helpers/common');
-
-describe('Testing Find A Store', function () {
-    before(function (done) {
-        common.goTo(done);
+describe('Testing Find A Store', () => {
+  before((done) => {
+    common.goTo(done);
+  });
+  describe('Setting viewport size', () => {
+    it('should launch in mobile view', (done) => {
+      common.mobileView(done);
     });
-
-    describe('Setting viewport size', function () {
-        it('should launch in mobile view', function (done) {
-            common.mobileView(done);
-        });
+  });
+  describe('pausing', () => {
+    it('should pause the test', (done) => {
+      common.pause(5000, done);
     });
-    describe('pausing', function () {
-        it('should pause the test', function (done) {
-            common.pause(done);
-        })
+  });
+  describe('Opening Find A Store', () => {
+    it('should go to the Find A Store page', (done) => {
+      common.openFindAStore(done);
     });
-    describe('Opening Find A Store', function () {
-        it('should go to the Find A Store page', function (done) {
-            common.openFindAStore(done);
-        });
+  });
+  describe('pausing', () => {
+    it('should pause the test', (done) => {
+      common.pause(5000, done);
     });
-    describe('pausing', function () {
-        it('should pause the test', function (done) {
-            common.pause(done);
-        })
+  });
+  describe('Click Geolocation Button', () => {
+    it('should click the geolocation button', (done) => {
+      common.clickGeolocation(done);
     });
-    describe('Click Geolocation Button', function () {
-        it('should click the geolocation button', function (done) {
-            common.clickGeolocation(done);
-        });
+  });
+  describe('pausing', () => {
+    it('should pause the test', (done) => {
+      common.pause(10000, done);
     });
-    describe('pausing', function () {
-        it('should pause the test', function (done) {
-            common.pause(done);
-        })
+  });
+  describe('Verify Store Address (this may take a while)', () => {
+    it('should verify the store address', (done) => {
+      common.verifyStoreAddress(done);
     });
-    describe('Verify Store Address', function () {
-        it('should verify the store address', function (done) {
-            common.verifyStoreAddress(done);
-        });
-    });
-
-})
+  });
+  after((done) => {
+    common.end(done);
+  });
+});

@@ -1,16 +1,14 @@
-var config = require('./browser/config');
-var phantomjs = require('phantomjs-prebuilt');
-var binPath = phantomjs.path;
+const phantomjs = require('phantomjs-prebuilt');
+const binPath = phantomjs.path;
 
 exports.client = require('webdriverio').remote({
-	desiredCapabilities: {
-		browserName: 'chrome',
-			page: {
-				settings: {
-					userAgent: config.userAgent.mobile
-
-				}
-			},
-			'phantomjs.binary.path': binPath,
-		}
+  desiredCapabilities: {
+    browserName: 'phantomjs',
+    'phantomjs.binary.path': binPath,
+    chromeOptions: {
+      mobileEmulation: {
+        deviceName: 'Apple iPhone 6'
+      }
+    }
+  }
 });

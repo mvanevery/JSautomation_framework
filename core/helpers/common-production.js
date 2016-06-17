@@ -218,7 +218,7 @@ module.exports = {
 //}
 //})
     getScreenshot: function(done) {
-        client.saveScreenshot('C:/Users/mvanevery/Pictures/Work images/Payless/Test Results/checkOutPass.png', done);
+        client.saveScreenshot('C:/Users/mvanevery/Pictures/Work images/payless/Test Results/checkOutPass.png', done);
     },
 
 

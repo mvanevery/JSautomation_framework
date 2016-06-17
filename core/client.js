@@ -5,12 +5,17 @@ var binPath = phantomjs.path;
 exports.client = require('webdriverio').remote({
 	desiredCapabilities: {
 		browserName: 'chrome',
-			page: {
-				settings: {
-					userAgent: config.userAgent.mobile
-
-				}
-			},
-			'phantomjs.binary.path': binPath,
+		//page: {
+		//	settings: {
+		//		userAgent: config.userAgent.mobile
+        //
+		//	}
+		//},
+		'phantomjs.binary.path': binPath,
+		chromeOptions: {
+			'mobileEmulation': {
+				'deviceName': 'Apple iPhone 6'
+			}
 		}
+	}
 });

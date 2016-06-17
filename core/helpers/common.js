@@ -37,10 +37,11 @@ module.exports = {
 	},
 
 	goTo: function (done) {
-		client.init().url(config.routes.baseUrl).then(function () {
+		client.init().url(config.routes.baseUrl)
+			.then(function () {
 			client.setViewportSize({
-				height: 559,
-				width: 375
+				height: 625,
+				width: 285
 			}, true).then(done);
 		});
 	},
@@ -85,7 +86,23 @@ module.exports = {
 			}
 		}
 	},
-
+	searchZipcode: function(zipcode, done) {
+		if(client.isVisible('#js-find-store-input', done)) {
+			client.setValue('#js-find-store-input', zipcode)
+				.then (function() {
+				client.click('#js-find-store-button');
+			})
+		} else {
+			if(client.isVisible('#zip', done)) {
+				client.setValue('#zip', zipcode)
+					.then (function() {
+					client.click('button.find-stores');
+				})
+			} else {
+				console.log('no zipcode search available')
+			}
+		}
+	},
 
 // 										HOMEPAGE/MENU FUNCTIONALITY										 //
 	
@@ -172,17 +189,6 @@ module.exports = {
 						} catch (err) {
 							done(err);
 						}
-						//.then(function () {
-						//	if (response == 'true', done) {
-						//		console.log("Matching Address Found");
-						//	} else {
-						//		if (response == 'false', done) {
-						//			console.log('Matching Address NOT Found');
-						//		} else {
-						//			console.log('Nothing to Show');
-						//		}
-						//	}
-						//})
 				})
 		})
 	},
@@ -237,11 +243,6 @@ module.exports = {
 				} catch (err) {
 					done(err);
 				}
-					//.then(function (title) {
-					//	if(title == expected) {
-					//		console.log('Title Matches')
-					//	} else {
-					//		console.log('Titles do not match. Should be this ' + title)
 					})
 			})
 	},
@@ -249,14 +250,6 @@ module.exports = {
 		client.waitForVisible('h1.title', 10000, function () {
 			client.getText('div.number > span')
 				.then(function (text) {
-					//		.then(function (err, number) {
-					//			if(assert.equal(number,expected, 'number matches')) {
-					//				console.log('Number Matches');
-					//			} else {
-					//			console.log('Numbers do not match. Should be this ' + number);
-					//			}
-					//		})
-					//})
 					try {
 						assert.equal(expected, text, 'The expected value was not equal to the text');
 						done();
@@ -299,23 +292,26 @@ module.exports = {
 					})
 			})
 	},
-//										SHIPPING SECTION												//
+//---------------------------------------------------------SHIPPING SECTION----------------------------------------------------------//
+
 	selectStore: function (done) {
 		if(client.isVisible('#js-store-6641', done)) {
-			client.getText('div#js-store-6641.store > div.store-main-details > span.address')
-				.then(function (text) {
-					console.log(text);
-					//if (comparisonTestPass(text, config.helpers.shipInfoReal)) {
-					//	//		console.log(text);
-					//	//		console.log(shipinfo);
-					//	console.log('Shipping info - PASS');
-					//} else {
-					//	console.log('Shipping info - FAIL');
-					//}
-				})
+			client.scroll('button.select-store')
+				.then (function() {
+				client.click('button.select-store')
+				});
 		} else {
 			console.log('Nothing to Select');
 		}
+	},
+	proceedToBilling_ShipToStore: function(done) {
+		client.waitForVisible('button.geo-submit', 10000, done)
+			.then(function () {
+				client.scroll('#js-submit-shipping-btn-mobile')
+					.then(function() {
+						client.click('#js-submit-shipping-btn-mobile');
+					})
+			})
 	},
 	addShipFirstName: function(done, first) {
 		client.waitForVisible('//input[@id="firstName"]', 10000, done)
@@ -371,15 +367,7 @@ module.exports = {
 				client.setValue('//input[@id="shipping-email"]', email || config.helpers.email);
 			})
 	},
-	proceedToPayment: function(done) {
-		client.waitForVisible('#js-submit-shipping-btn', 10000, done)
-			.then(function () {
-				client.scroll('#js-submit-shipping-btn')
-					.then(function() {
-						client.click('#js-submit-shipping-btn');
-					})
-				})
-	},
+
 	useTypedAddress: function(done) {
 		client.waitForVisible('#js-prediction-confirm', 10000, done)
 			.then(function () {
@@ -398,7 +386,8 @@ module.exports = {
 				client.click('a.ship-to-store');
 			})
 	},
-	//												PAYMENT SECTION												//
+	//-------------------------------------------------------PAYMENT SECTION-----------------------------------------------------//
+
 	addCCName: function(done, ccname) {
 		client.waitForVisible('input[name="dwfrm_billing_paymentMethods_creditCard_owner"]', 10000, done)
 			.then(function () {
@@ -430,20 +419,84 @@ module.exports = {
 			})
 	},
 	reviewOrder: function(done) {
-		client.scroll('#js-submit-payment-btn', done)
+		client.scroll('#js-submit-payment-btn-mobile', done)
 			.then(function () {
-				client.click('#js-submit-payment-btn');
+				client.click('#js-submit-payment-btn-mobile');
 			})
 	},
+
+//	----------------------------------------------------------BILLING SECTION -------------------------------------------------------//
+
+	addBillFirstName: function(done, first) {
+		client.waitForVisible('//input[@id="firstName"]', 10000, done)
+			.then(function () {
+				client.setValue('//input[@id="firstName"]', (first || config.helpers.firstName));
+			});
+	},
+	addBillLastName: function (done, last) {
+		client.waitForVisible('//input[@id="lastName"]', 10000, done)
+			.then(function () {
+				client.setValue('//input[@id="lastName"]', last || config.helpers.lastName);
+			});
+	},
+	addBillAddress: function (done, addln1) {
+		client.waitForVisible('//input[@id="street_number"]', 10000, done)
+			.then(function () {
+				client.setValue('//input[@id="street_number"]', addln1 || config.helpers.address1);
+			});
+	},
+	addBillAddress2: function(done, addln2) {
+		client.waitForVisible('//input[@id="address2"]', 10000, done)
+			.then(function() {
+				client.setValue('//input[@id="address2"]',addln2 || config.helpers.address2);
+			})
+	},
+	addBillCity: function(done, city) {
+		client.waitForVisible('//input[@id="locality"]', 10000, done)
+			.then(function() {
+				client.setValue('//input[@id="locality"]', city || config.helpers.city);
+			})
+	},
+	addBillState: function(done, state) {
+		client.waitForVisible('//select[@id="administrative_area_level_1"]', 10000, done)
+			.then(function() {
+				client.selectByValue('//select[@id="administrative_area_level_1"]', state || config.helpers.state);
+			})
+	},
+	addBillZipcode: function(done, zipcode) {
+		client.waitForVisible('//input[@id="postal_code"]', 10000, done)
+			.then(function() {
+				client.setValue('//input[@id="postal_code"]', zipcode || config.helpers.zipcode);
+			})
+	},
+	addBillPhone: function(done, phone) {
+		client.waitForVisible('//input[@name="dwfrm_billing_billingAddress_addressFields_phone"]', 10000, done)
+			.then(function() {
+				client.setValue('//input[@name="dwfrm_billing_billingAddress_addressFields_phone"]', phone || config.helpers.phone);
+			})
+	},
+	addBillEmail: function(done, email) {
+		client.waitForVisible('//input[@id="shipping-email"]', 10000, done)
+			.then(function() {
+				client.setValue('//input[@id="shipping-email"]', email || config.helpers.email);
+			})
+	},
+	proceedToPayment: function(done) {
+		client.waitForVisible('#js-submit-billing-btn-mobile', 10000, done)
+			.then(function () {
+				client.scroll('#js-submit-billing-btn-mobile')
+					.then(function() {
+						client.click('#js-submit-billing-btn-mobile');
+					})
+			})
+	},
+
+// -------------------------------------------------------------REVIEW ORDER ----------------------------------------------------------//
+
 	verifyShippingTitle: function(done) {
 		client.waitForVisible('div.box-section.select-shipping-method > div.title-bar > h3', 10000, function () {
 				client.getText('div.box-section.select-shipping-method > div.title-bar > h3')
 					.then(function (text) {
-						//if (text == config.helpers.shipTitle) {
-						//	console.log('Shipping title - PASS');
-						//} else {
-						//	console.log('Shipping title - FAIL');
-						//}
 						try {
 							assert.equal(config.helpers.shipTitle, text, 'The expected value was not equal to the text');
 							done();
@@ -453,20 +506,12 @@ module.exports = {
 					});
 			})
 	},
-		verifyShippingInfo: function(done) {
-			client.waitForVisible('div.box-section.payment-method > div.title-bar > h3', 10000, function() {
-				//.then(function () {
-					client.getText('div#js-shipping-summary-body.checkout-step.shipping-summary > p.summary-line.address-line')
+		verifyShipToStore: function(done) {
+			client.waitForVisible('#summary-shipping-subheader', 10000, function() {
+					client.getText('#js-shipping-summary-body > ul')
 						.then(function (text) {
-							//if (comparisonTestPass(text, config.helpers.shipInfoReal)) {
-							////		console.log(text);
-							////		console.log(shipinfo);
-							//	console.log('Shipping info - PASS');
-							//} else {
-							//	console.log('Shipping info - FAIL');
-							//}
 							try {
-								assert.equal(config.helpers.shipInfoReal, text, 'The expected value was not equal to the text');
+								assert.sameMembers(config.helpers.shipToStoreAddress, text.split('\n'), 'The expected value was not equal to the text');
 								done();
 							} catch (err) {
 								done(err);
@@ -474,17 +519,37 @@ module.exports = {
 						})
 				});
 		},
+	verifyShipToAddress: function(done) {
+		client.waitForVisible('#summary-shipping-subheader', 10000, function() {
+			client.getText('#js-shipping-summary-body > ul')
+				.then(function (text) {
 
+					try {
+						assert.sameMembers(config.helpers.shipInfoReal, text.split('\n'), 'The expected value was not equal to the text');
+						done();
+					} catch (err) {
+						done(err);
+					}
+				})
+		});
+	},
+	verifyPaymentInfo: function(done) {
+		client.waitForVisible('#summary-payment-subheader', 10000, function () {
+			client.getText('#js-payment-summary-body > ul.payment-method')
+				.then(function (text) {
+					try {
+						assert.sameMembers(config.helpers.payInfo, text.split('\n'), 'The expected value was not equal to the text');
+						done();
+					} catch (err) {
+						done(err);
+					}
+				})
+		});
+	},
 	verifyPaymentName: function(done) {
-		client.waitForVisible('div.box-section.payment-method > div.title-bar > h3', 10000, function () {
-			//.then(function () {
-				client.getText('div#js-payment-summary-body.checkout-step.payment-summary > div.payment-method p.name')
+		client.waitForVisible('#summary-payment-subheader', 10000, function () {
+				client.getText('#js-payment-summary-body > ul.payment-method')
 					.then(function (text) {
-						//if (text == config.helpers.payName) {
-						//	console.log('Payment Name - PASS');
-						//} else {
-						//	console.log('Payment Name - FAIL');
-						//}
 						try {
 							assert.equal(config.helpers.payName, text, 'The expected value was not equal to the text');
 							done();
@@ -496,14 +561,8 @@ module.exports = {
 	},
 	verifyPaymentType: function(done) {
 		client.waitForVisible('div.box-section.payment-method > div.title-bar > h3', 10000, function () {
- 			//.then(function() {
 				client.getText('div#js-payment-summary-body.checkout-step.payment-summary > div.payment-method p.type')
 					.then(function (text) {
-						//if (text == config.helpers.payType) {
-						//	console.log('Payment Type - PASS');
-						//} else {
-						//	console.log('Payment Type - FAIL');
-						//}
 						try {
 							assert.equal(config.helpers.payType, text, 'The expected value was not equal to the text');
 							done();
@@ -515,14 +574,8 @@ module.exports = {
 	},
 	verifyPaymentNumber: function(done) {
 		client.waitForVisible('div.box-section.payment-method > div.title-bar > h3', 10000, function () {
-			//.then(function() {
 				client.getText('div#js-payment-summary-body.checkout-step.payment-summary > div.payment-method p.number')
 					.then(function (text) {
-						//if (text == config.helpers.payNumber) {
-						//	console.log('Payment Number - PASS');
-						//} else {
-						//	console.log('Payment Number - FAIL');
-						//}
 						try {
 							assert.equal(config.helpers.payNumber, text, 'The expected value was not equal to the text');
 							done();
@@ -534,14 +587,8 @@ module.exports = {
 	},
 	verifyPaymentExpire: function(done) {
 		client.waitForVisible('div.box-section.payment-method > div.title-bar > h3', 10000, function () {
-			//.then(function() {
 				client.getText('div#js-payment-summary-body.checkout-step.payment-summary > div.payment-method p.expire')
 					.then(function (text) {
-						//if (text == config.helpers.payExpires) {
-						//	console.log('Payment Expire - PASS');
-						//} else {
-						//	console.log('Payment Expire - FAIL');
-						//}
 						try {
 							assert.equal(config.helpers.payExpires, text, 'The expected value was not equal to the text');
 							done();
@@ -551,18 +598,12 @@ module.exports = {
 					})
 			});
 	},
-	verifyBillingInfo: function(done) {
-		client.waitForVisible('div.box-section.payment-method > div.title-bar > h3', 10000, function () {
-			//.then(function() {
-				client.getText('div#js-billing-summary-body.checkout-step.billing-summary p.summary-line.address-line')
+	verifyBillInfoSTS: function(done) {
+		client.waitForVisible('#summary-billing-subheader', 10000, function () {
+				client.getText('#js-billing-summary-body > ul')
 					.then(function (text) {
-						//	if (comparisonTestPass(text, config.helpers.billingInfo)) {
-						//	console.log('Billing info - PASS');
-						//} else {
-						//	console.log('Billing info - FAIL');
-						//}
 						try {
-							assert.equal(config.helpers.billingInfo, text, 'The expected value was not equal to the text');
+							assert.sameMembers(config.helpers.billInfoSTS, text.split('\n'), 'The expected value was not equal to the text');
 							done();
 						} catch (err) {
 							done(err);
@@ -570,12 +611,25 @@ module.exports = {
 					})
 			});
 	},
+	verifyBillInfoSTA: function(done) {
+		client.waitForVisible('#summary-billing-subheader', 10000, function () {
+			client.getText('#js-billing-summary-body > ul')
+				.then(function (text) {
+					try {
+						assert.sameMembers(config.helpers.billInfoSTA, text.split('\n'), 'The expected value was not equal to the text');
+						done();
+					} catch (err) {
+						done(err);
+					}
+				})
+		});
+	},
 	submitPayment: function(done) {
 		//client.waitForVisible('#js-submit-payment-btn', 10000, done)
 		//	.then(function () {
-				client.scroll('#js-submit-final-btn',done)
+				client.scroll('#js-submit-final-btn-mobile',done)
 					.then(function () {
-						client.click('//button[@id="js-submit-final-btn"]');
+						client.click('//button[@id="js-submit-final-btn-mobile"]');
 					})
 			//})
 	},
@@ -611,20 +665,11 @@ module.exports = {
 		}
 	},
 
-//	if (status == 'SUCCESS!') {
-//	client.getText('//div.modal.order-confirmation > div.body > div.order > span.order-number')
-//		.then(function(ordernumber) {
-//			console.log(ordernumber);
-//		} else {
-//		console.log('No Order');
-//	}
-//}
-//})
 	
 //														REPORTING											 //
 	
 	getScreenshot: function(done) {
-		client.saveScreenshot('C:/Users/mvanevery/Pictures/Work images/Payless/Test Results/checkOutPass ' + current + '.png', done);
+		client.saveScreenshot('C:/Users/mvanevery/Pictures/Work images/payless/Test Results/checkOutPass ' + current + '.png', done);
 	},
 
 

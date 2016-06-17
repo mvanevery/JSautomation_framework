@@ -5,14 +5,10 @@
  *
  **/
 
-
-var gulp = require('gulp');
-var browserSync = require('browser-sync');
-var selenium = require('selenium-standalone');
-var mocha = require('gulp-mocha');
-var parseString = require('xml2js').parseString;
-var fs = require('fs');
-var util = require('util');
+const gulp = require('gulp');
+const browserSync = require('browser-sync');
+const selenium = require('selenium-standalone');
+const mocha = require('gulp-mocha');
 
 function handleError(err) {
   console.log(err.toString());

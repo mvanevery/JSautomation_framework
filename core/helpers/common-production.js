@@ -1,23 +1,15 @@
-/**
- * Created by mvanevery on 5/5/2016.
- */
-var client = require('../../core/client').client;
-var project = require('../projects/config').project;
-var config = require('../projects/' + project + '/config');
-var page = require('../projects/' + project + '/config.homepage');
-var expect = require('chai').expect;
-var assert = require('chai').assert;
-var $ = require('jQuery');
-var mobileTitle = page.mobileTitle;
-var shipinfo = config.helpers.shipInfo;
-var comparisonTestPass = function (array1, array2) {
+const client = require('../../core/client').client;
+const project = require('../projects/config').project;
+const config = require(`../projects/${project}/config`);
+
+const comparisonTestPass = (array1, array2) => {
   // Test lengths first
   if (array1.length !== array2.length) {
     return false;
   }
 
   // Test that entries match
-  for (var i = 0; i < array1.length; i++) {
+  for (let i = 0; i < array1.length; i++) {
     if (array1[i] !== array2[i]) {
       return false;
     }
@@ -27,96 +19,95 @@ var comparisonTestPass = function (array1, array2) {
 };
 
 module.exports = {
-
-  addShipFirstName: function (done) {
+  addShipFirstName: (done) => {
     client.waitForVisible('//input[@id="firstName"]', 10000, done)
-      .then(function () {
+      .then(() => {
         client.setValue('//input[@id="firstName"]', config.helpers.FirstNameFake);
       });
   },
-  addShipLastName: function (done) {
+  addShipLastName: (done) => {
     client.waitForVisible('//input[@id="lastName"]', 10000, done)
-      .then(function () {
+      .then(() => {
         client.setValue('//input[@id="lastName"]', config.helpers.LastNameFake);
       });
   },
-  addShipAddress: function (done) {
+  addShipAddress: (done) => {
     client.waitForVisible('//input[@id="street_number"]', 10000, done)
-      .then(function () {
+      .then(() => {
         client.setValue('//input[@id="street_number"]', config.helpers.AddressFake);
       });
   },
-  addShipAddress2: function (done) {
+  addShipAddress2: (done) => {
     client.waitForVisible('//input[@id="address2"]', 10000, done)
-      .then(function () {
+      .then(() => {
         client.setValue('//input[@id="address2"]', config.helpers.Address2);
       });
   },
-  addShipCity: function (done) {
+  addShipCity: (done) => {
     client.waitForVisible('//input[@id="locality"]', 10000, done)
-      .then(function () {
+      .then(() => {
         client.setValue('//input[@id="locality"]', config.helpers.City);
       });
   },
-  addShipState: function (done) {
+  addShipState: (done) => {
     client.waitForVisible('//select[@id="administrative_area_level_1"]', 10000, done)
-      .then(function () {
+      .then(() => {
         client.selectByValue('//select[@id="administrative_area_level_1"]', config.helpers.State);
       });
   },
-  addShipZipcode: function (done) {
+  addShipZipcode: (done) => {
     client.waitForVisible('//input[@id="postal_code"]', 10000, done)
-      .then(function () {
+      .then(() => {
         client.setValue('//input[@id="postal_code"]', config.helpers.Zipcode);
       });
   },
-  addShipPhone: function (done) {
+  addShipPhone: (done) => {
     client.waitForVisible('//input[@name="dwfrm_singleshipping_shippingAddress_addressFields_phone"]', 10000, done)
-      .then(function () {
+      .then(() => {
         client.setValue('//input[@name="dwfrm_singleshipping_shippingAddress_addressFields_phone"]', config.helpers.PhoneFake);
       });
   },
-  addShipEmail: function (done) {
+  addShipEmail: (done) => {
     client.waitForVisible('//input[@id="shipping-email"]', 10000, done)
-      .then(function () {
+      .then(() => {
         client.setValue('//input[@id="shipping-email"]', config.helpers.EmailFake);
       });
   },
-  addCCName: function (done) {
+  addCCName: (done) => {
     client.waitForVisible('input[name="dwfrm_billing_paymentMethods_creditCard_owner"]', 10000, done)
-      .then(function () {
+      .then(() => {
         client.setValue('//input[@name="dwfrm_billing_paymentMethods_creditCard_owner"]', config.helpers.CCNameFake);
       });
   },
-  addCCNumber: function (done) {
+  addCCNumber: (done) => {
     client.waitForVisible('input[name="dwfrm_billing_paymentMethods_creditCard_number"]', 10000, done)
-      .then(function () {
+      .then(() => {
         client.setValue('//input[@name="dwfrm_billing_paymentMethods_creditCard_number"]', config.helpers.CCNumberFake);
       });
   },
-  addCCExpMonth: function (done) {
+  addCCExpMonth: (done) => {
     client.waitForVisible('//select[@name="dwfrm_billing_paymentMethods_creditCard_month"]', 10000, done)
-      .then(function () {
+      .then(() => {
         client.selectByValue('//select[@name="dwfrm_billing_paymentMethods_creditCard_month"]', config.helpers.CCExpMonthFake);
       });
   },
-  addCCExpYear: function (done) {
+  addCCExpYear: (done) => {
     client.waitForVisible('//select[@name="dwfrm_billing_paymentMethods_creditCard_year"]', 10000, done)
-      .then(function () {
+      .then(() => {
         client.selectByValue('//select[@name="dwfrm_billing_paymentMethods_creditCard_year"]', config.helpers.CCExpYearFake);
       });
   },
-  addCCSecurity: function (done) {
+  addCCSecurity: (done) => {
     client.waitForVisible('input[name="dwfrm_billing_paymentMethods_creditCard_cvn"]', 10000, done)
-      .then(function () {
+      .then(() => {
         client.setValue('//input[@name="dwfrm_billing_paymentMethods_creditCard_cvn"]', config.helpers.CCSecurityFake);
       });
   },
-  verifyShippingInfo: function (done) {
+  verifyShippingInfo: (done) => {
     client.waitForVisible('div.box-section.payment-method > div.title-bar > h3', 10000, done)
-      .then(function () {
+      .then(() => {
         client.getText('div#js-shipping-summary-body.checkout-step.shipping-summary > p.summary-line.address-line')
-          .then(function (text) {
+          .then((text) => {
             if (comparisonTestPass(text, config.helpers.shipInfoFake)) {
               //		console.log(text);
               //		console.log(shipinfo);
@@ -128,12 +119,12 @@ module.exports = {
       });
   },
 
-  verifyPaymentName: function (done) {
+  verifyPaymentName: (done) => {
     client.waitForVisible('div.box-section.payment-method > div.title-bar > h3', 10000, done)
-      .then(function () {
+      .then(() => {
         client.getText('div#js-payment-summary-body.checkout-step.payment-summary > div.payment-method p.name')
-          .then(function (text) {
-            if (text == config.helpers.payNameFake) {
+          .then((text) => {
+            if (text === config.helpers.payNameFake) {
               console.log('Payment Name - PASS');
             } else {
               console.log('Payment Name - FAIL');
@@ -141,12 +132,12 @@ module.exports = {
           });
       });
   },
-  verifyPaymentType: function (done) {
+  verifyPaymentType: (done) => {
     client.waitForVisible('div.box-section.payment-method > div.title-bar > h3', 10000, done)
-      .then(function () {
+      .then(() => {
         client.getText('div#js-payment-summary-body.checkout-step.payment-summary > div.payment-method p.type')
-          .then(function (text) {
-            if (text == config.helpers.payTypeFake) {
+          .then((text) => {
+            if (text === config.helpers.payTypeFake) {
               console.log('Payment Type - PASS');
             } else {
               console.log('Payment Type - FAIL');
@@ -154,12 +145,12 @@ module.exports = {
           });
       });
   },
-  verifyPaymentNumber: function (done) {
+  verifyPaymentNumber: (done) => {
     client.waitForVisible('div.box-section.payment-method > div.title-bar > h3', 10000, done)
-      .then(function () {
+      .then(() => {
         client.getText('div#js-payment-summary-body.checkout-step.payment-summary > div.payment-method p.number')
-          .then(function (text) {
-            if (text == config.helpers.payNumberFake) {
+          .then((text) => {
+            if (text === config.helpers.payNumberFake) {
               console.log('Payment Number - PASS');
             } else {
               console.log('Payment Number - FAIL');
@@ -167,12 +158,12 @@ module.exports = {
           });
       });
   },
-  verifyPaymentExpire: function (done) {
+  verifyPaymentExpire: (done) => {
     client.waitForVisible('div.box-section.payment-method > div.title-bar > h3', 10000, done)
-      .then(function () {
+      .then(() => {
         client.getText('div#js-payment-summary-body.checkout-step.payment-summary > div.payment-method p.expire')
-          .then(function (text) {
-            if (text == config.helpers.payExpiresFake) {
+          .then((text) => {
+            if (text === config.helpers.payExpiresFake) {
               console.log('Payment Expire - PASS');
             } else {
               console.log('Payment Expire - FAIL');
@@ -180,11 +171,11 @@ module.exports = {
           });
       });
   },
-  verifyBillingInfo: function (done) {
+  verifyBillingInfo: (done) => {
     client.waitForVisible('div.box-section.payment-method > div.title-bar > h3', 10000, done)
-      .then(function () {
+      .then(() => {
         client.getText('div#js-billing-summary-body.checkout-step.billing-summary p.summary-line.address-line')
-          .then(function (text) {
+          .then((text) => {
             if (comparisonTestPass(text, config.helpers.billingInfoFake)) {
               console.log('Billing info - PASS');
             } else {
@@ -193,14 +184,14 @@ module.exports = {
           });
       });
   },
-  verifyConfirmOrder: function (done) {
+  verifyConfirmOrder: (done) => {
     client.waitForVisible('//div.order > div.check-mark > i.icon', 10000, done)
-      .then(function () {
+      .then(() => {
         console.log('Checkmark is visible');
         client.getText('//div.modal.order-confirmation > div.body > div.order > span.success')
-          .then(function (status) {
-            if (status == 'SUCCESS!') {
-              console.log(status + ' = Order Status');
+          .then((status) => {
+            if (status === 'SUCCESS!') {
+              console.log(`${status} = Order Status`);
             } else {
               console.log('Did not complete');
             }
@@ -217,7 +208,7 @@ module.exports = {
 //	}
 // }
 // })
-  getScreenshot: function (done) {
+  getScreenshot: (done) => {
     client.saveScreenshot('C:/Users/mvanevery/Pictures/Work images/Payless/Test Results/checkOutPass.png', done);
   },
 

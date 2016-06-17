@@ -1,32 +1,12 @@
 const client = require('../../core/client').client;
 const project = require('../projects/config').project;
-const config = require('../projects/' + project + '/config');
-const page = require('../projects/' + project + '/config.homepage');
+const config = require(`../projects/${project}/config`);
 const expect = require('chai').expect;
 const assert = require('chai').assert;
-const mobileTitle = page.mobileTitle;
 const date = new Date();
-const current = date.getMonth() + '-' + date.getDate() + '-' + date.getFullYear() + '-' + date.getHours() + '-' + date.getMinutes() + '-' + date.getSeconds();
-
-const comparisonTestPass = (array1, array2) => {
-  // Test lengths first
-  if (array1.length !== array2.length) {
-    return false;
-  }
-
-  // Test that entries match
-  for (var i = 0; i < array1.length; i++) {
-    if (array1[i] !== array2[i]) {
-      return false;
-    }
-  }
-
-  return true;
-};
-
+const current = `${date.getMonth()}-${date.getDate()}-${date.getFullYear()}-${date.getHours()}-${date.getMinutes()}-${date.getSeconds()}`;
 
 module.exports = {
-
   mobileView: (done) => {
     client.setViewportSize({
       height: 559,
@@ -71,7 +51,7 @@ module.exports = {
   },
   menuVerify: (done) => {
     if (client.isVisible('ul.expandable > li.footer-container > div.app-menu-footer > div.app-menu-footer-container > ul.footer-links > li.my-bag > a.cart > h5', done)) {
-      client.getText('ul.expandable > li.footer-container > div.app-menu-footer > div.app-menu-footer-container > ul.footer-links > li.my-bag > a.cart > h5').then(function (err, text) {
+      client.getText('ul.expandable > li.footer-container > div.app-menu-footer > div.app-menu-footer-container > ul.footer-links > li.my-bag > a.cart > h5').then((err, text) => {
         expect(text).to.equal('My Bag');
         done();
       });
@@ -86,7 +66,7 @@ module.exports = {
     }
   },
   searchItem: (done, search) => {
-    var searchData = (search || config.helpers.search);
+    const searchData = (search || config.helpers.search);
     client.waitForVisible('div.app-sub-header > form#search-form div.input > input', 10000, done)
       .then(() => {
         client.click('//form[@id="search-form"]/div/input')
@@ -136,7 +116,7 @@ module.exports = {
       client.scroll('span.mobile-distance');
       client.getText('div > div.locations-page > div#locations-results > div > div.store-locator-results > div.left-column > div.store > span.address')
         .then((text) => {
-          var response = text.join(',').includes(config.helpers.storeAddress);
+          const response = text.join(',').includes(config.helpers.storeAddress);
           console.log(response);// this will be a boolean value (true/false) that tell us whether this string is in the array
           try {
             assert.isTrue(response, 'The expected value was not equal to the text');
@@ -556,8 +536,8 @@ module.exports = {
         console.log('Checkmark is visible');
         client.getText('//div.modal.order-confirmation > div.body > div.order > span.success')
           .then((status) => {
-            if (status == 'SUCCESS!') {
-              console.log(status + ' = Order Status');
+            if (status === 'SUCCESS!') {
+              console.log(`${status} = Order Status`);
             } else {
               console.log('Did not complete');
             }
@@ -570,8 +550,8 @@ module.exports = {
         .then(() => {
           client.getText('div.left-column > div.checkout-error')
             .then((error) => {
-              if (error == config.helpers.orderError) {
-                console.log(error + ' Order Failed!');
+              if (error === config.helpers.orderError) {
+                console.log(`${error} Order Failed!`);
               } else {
                 console.log('There was no error');
               }
@@ -595,7 +575,7 @@ module.exports = {
 // REPORTING
 
   getScreenshot: (done) => {
-    client.saveScreenshot('C:/Users/mvanevery/Pictures/Work images/Payless/Test Results/checkOutPass ' + current + '.png', done);
+    client.saveScreenshot(`C:/Users/mvanevery/Pictures/Work images/Payless/Test Results/checkOutPass${current}.png`, done);
   },
 
   end: (done) => {

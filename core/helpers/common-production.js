@@ -50,67 +50,67 @@ module.exports = {
     client.waitForVisible('//input[@id="address2"]', 10000, done)
       .then(function () {
         client.setValue('//input[@id="address2"]', config.helpers.Address2);
-      })
+      });
   },
   addShipCity: function (done) {
     client.waitForVisible('//input[@id="locality"]', 10000, done)
       .then(function () {
         client.setValue('//input[@id="locality"]', config.helpers.City);
-      })
+      });
   },
   addShipState: function (done) {
     client.waitForVisible('//select[@id="administrative_area_level_1"]', 10000, done)
       .then(function () {
         client.selectByValue('//select[@id="administrative_area_level_1"]', config.helpers.State);
-      })
+      });
   },
   addShipZipcode: function (done) {
     client.waitForVisible('//input[@id="postal_code"]', 10000, done)
       .then(function () {
         client.setValue('//input[@id="postal_code"]', config.helpers.Zipcode);
-      })
+      });
   },
   addShipPhone: function (done) {
     client.waitForVisible('//input[@name="dwfrm_singleshipping_shippingAddress_addressFields_phone"]', 10000, done)
       .then(function () {
         client.setValue('//input[@name="dwfrm_singleshipping_shippingAddress_addressFields_phone"]', config.helpers.PhoneFake);
-      })
+      });
   },
   addShipEmail: function (done) {
     client.waitForVisible('//input[@id="shipping-email"]', 10000, done)
       .then(function () {
         client.setValue('//input[@id="shipping-email"]', config.helpers.EmailFake);
-      })
+      });
   },
   addCCName: function (done) {
     client.waitForVisible('input[name="dwfrm_billing_paymentMethods_creditCard_owner"]', 10000, done)
       .then(function () {
         client.setValue('//input[@name="dwfrm_billing_paymentMethods_creditCard_owner"]', config.helpers.CCNameFake);
-      })
+      });
   },
   addCCNumber: function (done) {
     client.waitForVisible('input[name="dwfrm_billing_paymentMethods_creditCard_number"]', 10000, done)
       .then(function () {
         client.setValue('//input[@name="dwfrm_billing_paymentMethods_creditCard_number"]', config.helpers.CCNumberFake);
-      })
+      });
   },
   addCCExpMonth: function (done) {
     client.waitForVisible('//select[@name="dwfrm_billing_paymentMethods_creditCard_month"]', 10000, done)
       .then(function () {
         client.selectByValue('//select[@name="dwfrm_billing_paymentMethods_creditCard_month"]', config.helpers.CCExpMonthFake);
-      })
+      });
   },
   addCCExpYear: function (done) {
     client.waitForVisible('//select[@name="dwfrm_billing_paymentMethods_creditCard_year"]', 10000, done)
       .then(function () {
         client.selectByValue('//select[@name="dwfrm_billing_paymentMethods_creditCard_year"]', config.helpers.CCExpYearFake);
-      })
+      });
   },
   addCCSecurity: function (done) {
     client.waitForVisible('input[name="dwfrm_billing_paymentMethods_creditCard_cvn"]', 10000, done)
       .then(function () {
         client.setValue('//input[@name="dwfrm_billing_paymentMethods_creditCard_cvn"]', config.helpers.CCSecurityFake);
-      })
+      });
   },
   verifyShippingInfo: function (done) {
     client.waitForVisible('div.box-section.payment-method > div.title-bar > h3', 10000, done)
@@ -124,7 +124,7 @@ module.exports = {
             } else {
               console.log('Shipping info - FAIL');
             }
-          })
+          });
       });
   },
 
@@ -138,7 +138,7 @@ module.exports = {
             } else {
               console.log('Payment Name - FAIL');
             }
-          })
+          });
       });
   },
   verifyPaymentType: function (done) {
@@ -151,7 +151,7 @@ module.exports = {
             } else {
               console.log('Payment Type - FAIL');
             }
-          })
+          });
       });
   },
   verifyPaymentNumber: function (done) {
@@ -164,7 +164,7 @@ module.exports = {
             } else {
               console.log('Payment Number - FAIL');
             }
-          })
+          });
       });
   },
   verifyPaymentExpire: function (done) {
@@ -177,7 +177,7 @@ module.exports = {
             } else {
               console.log('Payment Expire - FAIL');
             }
-          })
+          });
       });
   },
   verifyBillingInfo: function (done) {
@@ -190,7 +190,7 @@ module.exports = {
             } else {
               console.log('Billing info - FAIL');
             }
-          })
+          });
       });
   },
   verifyConfirmOrder: function (done) {
@@ -204,8 +204,8 @@ module.exports = {
             } else {
               console.log('Did not complete');
             }
-          })
-      })
+          });
+      });
   },
 
 //	if (status == 'SUCCESS!') {
@@ -215,8 +215,8 @@ module.exports = {
 //		} else {
 //		console.log('No Order');
 //	}
-//}
-//})
+// }
+// })
   getScreenshot: function (done) {
     client.saveScreenshot('C:/Users/mvanevery/Pictures/Work images/Payless/Test Results/checkOutPass.png', done);
   },

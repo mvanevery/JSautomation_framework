@@ -6,7 +6,7 @@ var expect = require('chai').expect;
 var assert = require('chai').assert;
 var mobileTitle = page.mobileTitle;
 var date = new Date();
-var current = date.getMonth() + "-" + date.getDate() + "-" + date.getFullYear() + "-" + date.getHours() + "-" + date.getMinutes() + "-" + date.getSeconds();
+var current = date.getMonth() + '-' + date.getDate() + '-' + date.getFullYear() + '-' + date.getHours() + '-' + date.getMinutes() + '-' + date.getSeconds();
 
 var comparisonTestPass = function (array1, array2) {
   // Test lengths first
@@ -74,7 +74,7 @@ module.exports = {
       client.getText('ul.expandable > li.footer-container > div.app-menu-footer > div.app-menu-footer-container > ul.footer-links > li.my-bag > a.cart > h5').then(function (err, text) {
         expect(text).to.equal('My Bag');
         done();
-      })
+      });
     }
 
   },
@@ -93,10 +93,10 @@ module.exports = {
           .then(function () {
             client.setValue('//form[@id="search-form"]/div/input', searchData)
               .then(function () {
-                client.click('button[type="submit"]')
-              })
-          })
-      })
+                client.click('button[type="submit"]');
+              });
+          });
+      });
   },
   pickCategory: function (done) {
     if (client.isVisible('a.close > i.icon', done)) {
@@ -127,7 +127,7 @@ module.exports = {
     if (client.isEnabled('button.add-to-cart', done)) {
       client.click('li.mobile-locate.js-findinstore > a > h5');
     } else {
-      console.log('select a size to enable Find In Store')
+      console.log('select a size to enable Find In Store');
     }
   },
 
@@ -137,14 +137,14 @@ module.exports = {
       client.getText('div > div.locations-page > div#locations-results > div > div.store-locator-results > div.left-column > div.store > span.address')
         .then(function (text) {
           var response = text.join(',').includes(config.helpers.storeAddress);
-          console.log(response)// this will be a boolean value (true/false) that tell us whether this string is in the array
+          console.log(response);// this will be a boolean value (true/false) that tell us whether this string is in the array
           try {
             assert.isTrue(response, 'The expected value was not equal to the text');
             done();
           } catch (err) {
             done(err);
           }
-          //.then(function () {
+          // .then(function () {
           //	if (response == 'true', done) {
           //		console.log("Matching Address Found");
           //	} else {
@@ -154,9 +154,9 @@ module.exports = {
           //			console.log('Nothing to Show');
           //		}
           //	}
-          //})
-        })
-    })
+          // })
+        });
+    });
   },
 
 
@@ -188,7 +188,7 @@ module.exports = {
         client.scroll('button.add-to-cart')
           .then(function () {
             client.click('button.add-to-cart');
-          })
+          });
       });
   },
   proceedToCartModal: function (done) {
@@ -197,7 +197,7 @@ module.exports = {
         client.scroll('button.btn-checkout')
           .then(function () {
             client.click('button.btn-checkout');
-          })
+          });
       });
   },
   verifyItemTitle: function (expected, done) {
@@ -209,13 +209,13 @@ module.exports = {
         } catch (err) {
           done(err);
         }
-        //.then(function (title) {
+        // .then(function (title) {
         //	if(title == expected) {
         //		console.log('Title Matches')
         //	} else {
         //		console.log('Titles do not match. Should be this ' + title)
-      })
-    })
+      });
+    });
   },
   verifyItemNumber: function (expected, done) {
     client.waitForVisible('h1.title', 10000, function () {
@@ -228,15 +228,15 @@ module.exports = {
           //			console.log('Numbers do not match. Should be this ' + number);
           //			}
           //		})
-          //})
+          // })
           try {
             assert.equal(expected, text, 'The expected value was not equal to the text');
             done();
           } catch (err) {
             done(err);
           }
-        })
-    })
+        });
+    });
   },
 
 // CART FUNCTIONALITY
@@ -247,14 +247,14 @@ module.exports = {
         client.scroll('button.checkout-proceed')
           .then(function () {
             client.click('button.checkout-proceed');
-          })
+          });
       });
   },
 
 // CHECKOUT FUNCTIONALITY
   loginButton: function (done) {
     if (client.isVisible('#activate-login', done)) {
-      client.click('#activate-login')
+      client.click('#activate-login');
     } else {
       console.log('login not possible');
     }
@@ -267,9 +267,9 @@ module.exports = {
             client.setValue('//form[@id="login-form"]/div[2]/div/div[2]/input', password || config.helpers.password)
               .then(function () {
                 client.click('#submit');
-              })
-          })
-      })
+              });
+          });
+      });
   },
 // SHIPPING SECTION
   selectStore: function (done) {
@@ -277,14 +277,14 @@ module.exports = {
       client.getText('div#js-store-6641.store > div.store-main-details > span.address')
         .then(function (text) {
           console.log(text);
-          //if (comparisonTestPass(text, config.helpers.shipInfoReal)) {
+          // if (comparisonTestPass(text, config.helpers.shipInfoReal)) {
           //	//		console.log(text);
           //	//		console.log(shipinfo);
           //	console.log('Shipping info - PASS');
-          //} else {
+          // } else {
           //	console.log('Shipping info - FAIL');
-          //}
-        })
+          // }
+        });
     } else {
       console.log('Nothing to Select');
     }
@@ -311,37 +311,37 @@ module.exports = {
     client.waitForVisible('//input[@id="address2"]', 10000, done)
       .then(function () {
         client.setValue('//input[@id="address2"]', addln2 || config.helpers.address2);
-      })
+      });
   },
   addShipCity: function (done, city) {
     client.waitForVisible('//input[@id="locality"]', 10000, done)
       .then(function () {
         client.setValue('//input[@id="locality"]', city || config.helpers.city);
-      })
+      });
   },
   addShipState: function (done, state) {
     client.waitForVisible('//select[@id="administrative_area_level_1"]', 10000, done)
       .then(function () {
         client.selectByValue('//select[@id="administrative_area_level_1"]', state || config.helpers.state);
-      })
+      });
   },
   addShipZipcode: function (done, zipcode) {
     client.waitForVisible('//input[@id="postal_code"]', 10000, done)
       .then(function () {
         client.setValue('//input[@id="postal_code"]', zipcode || config.helpers.zipcode);
-      })
+      });
   },
   addShipPhone: function (done, phone) {
     client.waitForVisible('//input[@name="dwfrm_singleshipping_shippingAddress_addressFields_phone"]', 10000, done)
       .then(function () {
         client.setValue('//input[@name="dwfrm_singleshipping_shippingAddress_addressFields_phone"]', phone || config.helpers.phone);
-      })
+      });
   },
   addShipEmail: function (done, email) {
     client.waitForVisible('//input[@id="shipping-email"]', 10000, done)
       .then(function () {
         client.setValue('//input[@id="shipping-email"]', email || config.helpers.email);
-      })
+      });
   },
   proceedToPayment: function (done) {
     client.waitForVisible('#js-submit-shipping-btn', 10000, done)
@@ -349,73 +349,73 @@ module.exports = {
         client.scroll('#js-submit-shipping-btn')
           .then(function () {
             client.click('#js-submit-shipping-btn');
-          })
-      })
+          });
+      });
   },
   useTypedAddress: function (done) {
     client.waitForVisible('#js-prediction-confirm', 10000, done)
       .then(function () {
         client.click('#js-prediction-confirm');
-      })
+      });
   },
   useShipDropdown: function (done, label) {
     client.waitForVisible('//select[@name="dwfrm_singleshipping_addressList"]', 10000, done)
       .then(function () {
         client.selectByValue('//select[@name="dwfrm_singleshipping_addressList"]', label || config.helpers.shipLabel);
-      })
+      });
   },
   shipToStore: function (done) {
     client.waitForVisible('a.ship-to-store', 10000, done)
       .then(function () {
         client.click('a.ship-to-store');
-      })
+      });
   },
   // PAYMENT SECTION
   addCCName: function (done, ccname) {
     client.waitForVisible('input[name="dwfrm_billing_paymentMethods_creditCard_owner"]', 10000, done)
       .then(function () {
         client.setValue('//input[@name="dwfrm_billing_paymentMethods_creditCard_owner"]', ccname || config.helpers.ccName);
-      })
+      });
   },
   addCCNumber: function (done, ccnumber) {
     client.waitForVisible('input[name="dwfrm_billing_paymentMethods_creditCard_number"]', 10000, done)
       .then(function () {
         client.setValue('//input[@name="dwfrm_billing_paymentMethods_creditCard_number"]', ccnumber || config.helpers.ccNumber);
-      })
+      });
   },
   addCCExpMonth: function (done, ccmonth) {
     client.waitForVisible('//select[@name="dwfrm_billing_paymentMethods_creditCard_month"]', 10000, done)
       .then(function () {
         client.selectByValue('//select[@name="dwfrm_billing_paymentMethods_creditCard_month"]', ccmonth || config.helpers.ccExpMonth);
-      })
+      });
   },
   addCCExpYear: function (done, ccyear) {
     client.waitForVisible('//select[@name="dwfrm_billing_paymentMethods_creditCard_year"]', 10000, done)
       .then(function () {
         client.selectByValue('//select[@name="dwfrm_billing_paymentMethods_creditCard_year"]', ccyear || config.helpers.ccExpYear);
-      })
+      });
   },
   addCCSecurity: function (done, ccsecurity) {
     client.waitForVisible('input[name="dwfrm_billing_paymentMethods_creditCard_cvn"]', 10000, done)
       .then(function () {
         client.setValue('//input[@name="dwfrm_billing_paymentMethods_creditCard_cvn"]', ccsecurity || config.helpers.ccSecurity);
-      })
+      });
   },
   reviewOrder: function (done) {
     client.scroll('#js-submit-payment-btn', done)
       .then(function () {
         client.click('#js-submit-payment-btn');
-      })
+      });
   },
   verifyShippingTitle: function (done) {
     client.waitForVisible('div.box-section.select-shipping-method > div.title-bar > h3', 10000, function () {
       client.getText('div.box-section.select-shipping-method > div.title-bar > h3')
         .then(function (text) {
-          //if (text == config.helpers.shipTitle) {
+          // if (text == config.helpers.shipTitle) {
           //	console.log('Shipping title - PASS');
-          //} else {
+          // } else {
           //	console.log('Shipping title - FAIL');
-          //}
+          // }
           try {
             assert.equal(config.helpers.shipTitle, text, 'The expected value was not equal to the text');
             done();
@@ -423,132 +423,132 @@ module.exports = {
             done(err);
           }
         });
-    })
+    });
   },
   verifyShippingInfo: function (done) {
     client.waitForVisible('div.box-section.payment-method > div.title-bar > h3', 10000, function () {
-      //.then(function () {
+      // .then(function () {
       client.getText('div#js-shipping-summary-body.checkout-step.shipping-summary > p.summary-line.address-line')
         .then(function (text) {
-          //if (comparisonTestPass(text, config.helpers.shipInfoReal)) {
-          ////		console.log(text);
-          ////		console.log(shipinfo);
+          // if (comparisonTestPass(text, config.helpers.shipInfoReal)) {
+          // //		console.log(text);
+          // //		console.log(shipinfo);
           //	console.log('Shipping info - PASS');
-          //} else {
+          // } else {
           //	console.log('Shipping info - FAIL');
-          //}
+          // }
           try {
             assert.equal(config.helpers.shipInfoReal, text, 'The expected value was not equal to the text');
             done();
           } catch (err) {
             done(err);
           }
-        })
+        });
     });
   },
   verifyPaymentName: function (done) {
     client.waitForVisible('div.box-section.payment-method > div.title-bar > h3', 10000, function () {
-      //.then(function () {
+      // .then(function () {
       client.getText('div#js-payment-summary-body.checkout-step.payment-summary > div.payment-method p.name')
         .then(function (text) {
-          //if (text == config.helpers.payName) {
+          // if (text == config.helpers.payName) {
           //	console.log('Payment Name - PASS');
-          //} else {
+          // } else {
           //	console.log('Payment Name - FAIL');
-          //}
+          // }
           try {
             assert.equal(config.helpers.payName, text, 'The expected value was not equal to the text');
             done();
           } catch (err) {
             done(err);
           }
-        })
+        });
     });
   },
   verifyPaymentType: function (done) {
     client.waitForVisible('div.box-section.payment-method > div.title-bar > h3', 10000, function () {
-      //.then(function() {
+      // .then(function() {
       client.getText('div#js-payment-summary-body.checkout-step.payment-summary > div.payment-method p.type')
         .then(function (text) {
-          //if (text == config.helpers.payType) {
+          // if (text == config.helpers.payType) {
           //	console.log('Payment Type - PASS');
-          //} else {
+          // } else {
           //	console.log('Payment Type - FAIL');
-          //}
+          // }
           try {
             assert.equal(config.helpers.payType, text, 'The expected value was not equal to the text');
             done();
           } catch (err) {
             done(err);
           }
-        })
+        });
     });
   },
   verifyPaymentNumber: function (done) {
     client.waitForVisible('div.box-section.payment-method > div.title-bar > h3', 10000, function () {
-      //.then(function() {
+      // .then(function() {
       client.getText('div#js-payment-summary-body.checkout-step.payment-summary > div.payment-method p.number')
         .then(function (text) {
-          //if (text == config.helpers.payNumber) {
+          // if (text == config.helpers.payNumber) {
           //	console.log('Payment Number - PASS');
-          //} else {
+          // } else {
           //	console.log('Payment Number - FAIL');
-          //}
+          // }
           try {
             assert.equal(config.helpers.payNumber, text, 'The expected value was not equal to the text');
             done();
           } catch (err) {
             done(err);
           }
-        })
+        });
     });
   },
   verifyPaymentExpire: function (done) {
     client.waitForVisible('div.box-section.payment-method > div.title-bar > h3', 10000, function () {
-      //.then(function() {
+      // .then(function() {
       client.getText('div#js-payment-summary-body.checkout-step.payment-summary > div.payment-method p.expire')
         .then(function (text) {
-          //if (text == config.helpers.payExpires) {
+          // if (text == config.helpers.payExpires) {
           //	console.log('Payment Expire - PASS');
-          //} else {
+          // } else {
           //	console.log('Payment Expire - FAIL');
-          //}
+          // }
           try {
             assert.equal(config.helpers.payExpires, text, 'The expected value was not equal to the text');
             done();
           } catch (err) {
             done(err);
           }
-        })
+        });
     });
   },
   verifyBillingInfo: function (done) {
     client.waitForVisible('div.box-section.payment-method > div.title-bar > h3', 10000, function () {
-      //.then(function() {
+      // .then(function() {
       client.getText('div#js-billing-summary-body.checkout-step.billing-summary p.summary-line.address-line')
         .then(function (text) {
           //	if (comparisonTestPass(text, config.helpers.billingInfo)) {
           //	console.log('Billing info - PASS');
-          //} else {
+          // } else {
           //	console.log('Billing info - FAIL');
-          //}
+          // }
           try {
             assert.equal(config.helpers.billingInfo, text, 'The expected value was not equal to the text');
             done();
           } catch (err) {
             done(err);
           }
-        })
+        });
     });
   },
   submitPayment: function (done) {
-    //client.waitForVisible('#js-submit-payment-btn', 10000, done)
+    // client.waitForVisible('#js-submit-payment-btn', 10000, done)
     //	.then(function () {
     client.scroll('#js-submit-final-btn', done)
       .then(function () {
         client.click('//button[@id="js-submit-final-btn"]');
       });
-    //})
+    // })
   },
   verifyConfirmOrder: function (done) {
     client.waitForVisible('//div.order > div.check-mark > i.icon', 10000, done)
@@ -561,8 +561,8 @@ module.exports = {
             } else {
               console.log('Did not complete');
             }
-          })
-      })
+          });
+      });
   },
   verifyOrderError: function (done) {
     if (client.isVisible('div.left-column > div.checkout-error', done)) {
@@ -575,8 +575,8 @@ module.exports = {
               } else {
                 console.log('There was no error');
               }
-            })
-        })
+            });
+        });
     } else {
       console.log('There was no error');
     }
@@ -589,8 +589,8 @@ module.exports = {
 //		} else {
 //		console.log('No Order');
 //	}
-//}
-//})
+// }
+// })
 
 // REPORTING
 

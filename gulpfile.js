@@ -125,7 +125,27 @@ gulp.task('findStore', ['serve:test', 'selenium'], function () {
     }).on("error", handleError));
 });
 
-gulp.task('test-awesome', ['findStore'], function () {
+gulp.task('find-store', ['findStore'], function () {
+  selenium.child.kill();
+  browserSync.exit();
+});
+gulp.task('find-item', ['findProduct'], function () {
+  selenium.child.kill();
+  browserSync.exit();
+});
+gulp.task('find-in-store', ['findInStore'], function () {
+  selenium.child.kill();
+  browserSync.exit();
+});
+gulp.task('e2e-return-user', ['e2e-return'], function () {
+  selenium.child.kill();
+  browserSync.exit();
+});
+gulp.task('e2e-guest-user', ['e2e-guest'], function () {
+  selenium.child.kill();
+  browserSync.exit();
+});
+gulp.task('e2e-prod-test', ['e2e-prod'], function () {
   selenium.child.kill();
   browserSync.exit();
 });

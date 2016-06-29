@@ -4,11 +4,6 @@ describe('Testing Find A Product', () => {
   before((done) => {
     common.goTo(done);
   });
-  describe('Setting viewport size', () => {
-    it('should launch in mobile view', (done) => {
-      common.mobileView(done);
-    });
-  });
   describe('pausing', () => {
     it('should pause the test', (done) => {
       common.pause(5000, done);
@@ -20,22 +15,27 @@ describe('Testing Find A Product', () => {
     });
   });
   describe('pausing', () => {
-    it('should pause the test', (done) => {
+    it('should pause thte test', (done) => {
       common.pause(5000, done);
     });
   });
   describe('Verifying Item Title', () => {
     it('should verify item title', (done) => {
-      common.verifyItemTitle('SAFE STEP SOLE PADS', done);
+      common.verifyItemTitle(done, 'SAFE STEP SOLE PADS');
+    });
+  });
+  describe('pausing', () => {
+    it('should pause thte test', (done) => {
+      common.pause(2000, done);
     });
   });
   describe('Verifying Item Number', () => {
     it('should verify item number', (done) => {
-      common.verifyItemNumber('142898', done);
+      common.verifyItemNumber(done, '142899');
     });
   });
-  after((done) => {
-    common.end(done);
-  });
+  //after((done) => {
+  //  common.end(done);
+  //});
 });
 

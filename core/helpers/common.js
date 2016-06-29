@@ -30,15 +30,25 @@ module.exports = {
       console.log('no geolocation available');
     }
   },
-
+  searchZipcode: (done, zipcode) => {
+    if (client.isVisible('#js-find-store-input', done)) {
+      client.setValue('#js-find-store-input', zipcode)
+        .then(() => {
+          client.click('#js-find-store-button');
+        });
+    } else {
+      if (client.isVisible('#zip', done)) {
+        client.setValue('#zip', zipcode)
+          .then(() => {
+            client.click('button.find-stores');
+          });
+      } else {
+        console.log('no zipcode search available');
+      }
+    }
+  },
   goTo: (done) => {
-    client.init().url(config.routes.baseUrl)
-      .then(() => {
-        client.setViewportSize({
-          height: 625,
-          width: 285
-        }, true).then(done);
-      });
+    client.init().url(config.routes.baseUrl, done);
   },
 
 // HOMEPAGE/MENU FUNCTIONALITY
@@ -66,18 +76,20 @@ module.exports = {
       console.log('Menu not open');
     }
   },
-  searchItem: (done, search) => {
+  searchItem: (done, pauseTime, search) => {
     const searchData = (search || config.helpers.search);
-    client.waitForVisible('div.app-sub-header > form#search-form div.input > input', 10000, done)
-      .then(() => {
-        client.click('//form[@id="search-form"]/div/input')
-          .then(() => {
-            client.setValue('//form[@id="search-form"]/div/input', searchData)
-              .then(() => {
-                client.click('button[type="submit"]');
-              });
-          });
-      });
+    if(client.isVisible('div.app-sub-header > form#search-form div.input > input', done)) {
+      client.click('//form[@id="search-form"]/div/input')
+        .then(() => {
+          client.setValue('//form[@id="search-form"]/div/input', searchData)
+            .then(() => {
+              client.click('button[type="submit"]');
+              // .then (() => {
+              //  pause(pauseTime)
+              // });
+            });
+        });
+    }
   },
   pickCategory: (done) => {
     if (client.isVisible('a.close > i.icon', done)) {
@@ -105,7 +117,7 @@ module.exports = {
     }
   },
   openFindInStore: (done) => {
-    if (client.isEnabled('button.add-to-cart', done)) {
+    if (client.isVisible('button.add-to-cart', done)) {
       client.click('li.mobile-locate.js-findinstore > a > h5');
     } else {
       console.log('select a size to enable Find In Store');
@@ -113,11 +125,12 @@ module.exports = {
   },
 
   verifyStoreAddress: (done) => {
-    client.waitForVisible('button.map', 10000, done).then(() => {
+    if (client.isVisible('button.map')) {
       client.scroll('span.mobile-distance');
-      client.getText('div > div.locations-page > div#locations-results > div > div.store-locator-results > div.left-column > div.store > span.address')
+      client.getText('span.address')
         .then((text) => {
           const response = text.join(',').includes(config.helpers.storeAddress);
+          // console.log(response); // This will be a boolean value (true/false) that will tell us whether this string is in the array
           try {
             assert.isTrue(response, 'The expected value was not equal to the text');
             done();
@@ -125,17 +138,16 @@ module.exports = {
             done(err);
           }
         });
-    });
+    }
   },
 
 
 // PLP FUNCTIONALITY
 
   pickItem: (done) => {
-    client.waitForVisible('div.details > div.mobile-brand > a.name > h3', 20000, done)
-      .then(() => {
-        client.click('div.details > div.mobile-brand > a.name > h3');
-      });
+    if (client.isVisible('div.details > div.mobile-brand > a.name > h3', done)) {
+      client.click('div.details > div.mobile-brand > a.name');
+    }
   },
 
 // PDP FUNCTIONALITY
@@ -152,25 +164,37 @@ module.exports = {
   },
 
   addToBag: (done) => {
-    client.waitForVisible('button.add-to-cart', 10000, done)
-      .then(() => {
-        client.scroll('button.add-to-cart')
-          .then(() => {
-            client.click('button.add-to-cart');
-          });
-      });
+    if (client.isVisible('button.add-to-cart', done)) {
+      client.scroll('button.add-to-cart')
+        .then(() => {
+          client.click('button.add-to-cart');
+        });
+    }
   },
-  proceedToCartModal: (done) => {
-    client.waitForVisible('button.btn-checkout', 10000, done)
-      .then(() => {
-        client.scroll('button.btn-checkout')
-          .then(() => {
-            client.click('button.btn-checkout');
-          });
-      });
+  proceedToCartModal: (done, pauseTime) => {
+    if (client.isVisible('button.btn-checkout', done)) {
+      client.scroll('button.btn-checkout')
+        .then(() => {
+          client.click('button.btn-checkout');
+        });
+    }
   },
-  verifyItemTitle: (expected, done) => {
-    client.waitForVisible('h1.title', 10000, () => {
+  verifyCheckoutCTA: (done) => {
+    if (client.isVisible('#js-submit-final-btn-top', done)) {
+      console.log('The button is visible');
+      client.getText('h1.title').then((title) => {
+        try {
+          assert.equal(expected, title, 'The expected value was not equal to the text');
+          done();
+        } catch (err) {
+          done(err);
+        }
+      })
+    }
+  },
+
+  verifyItemTitle: (done, expected) => {
+    if (client.isVisible('h1.title')) {
       client.getText('h1.title').then((title) => {
         try {
           assert.equal(expected, title, 'The expected value was not equal to the text');
@@ -179,32 +203,30 @@ module.exports = {
           done(err);
         }
       });
-    });
+    }
   },
-  verifyItemNumber: (expected, done) => {
-    client.waitForVisible('h1.title', 10000, () => {
-      client.getText('div.number > span')
-        .then((text) => {
-          try {
-            assert.equal(expected, text, 'The expected value was not equal to the text');
-            done();
-          } catch (err) {
-            done(err);
-          }
-        });
-    });
+  verifyItemNumber: (done, expected) => {
+    if (client.isVisible('h1.title')) {
+      client.getText('div.number > span').then((text) => {
+        try {
+          assert.equal(expected, text, 'The expected value was not equal to the text');
+          done();
+        } catch (err) {
+          done(err);
+        }
+      });
+    }
   },
 
 // CART FUNCTIONALITY
 
   proceedToCheckoutCart: (done) => {
-    client.waitForVisible('button.checkout-proceed', 10000, done)
-      .then(() => {
-        client.scroll('button.checkout-proceed')
-          .then(() => {
-            client.click('button.checkout-proceed');
-          });
-      });
+    if (client.isVisible('button.checkout-proceed', done)) {
+      client.scroll('button.checkout-proceed')
+        .then(() => {
+          client.click('button.checkout-proceed');
+        });
+    }
   },
 
 // CHECKOUT FUNCTIONALITY
@@ -216,19 +238,25 @@ module.exports = {
     }
   },
   addLoginInfo: (done, username, password) => {
-    client.waitForVisible('//form[@id="login-form"]/div[2]/div/div/input', 10000, done)
-      .then(() => {
-        client.setValue('//form[@id="login-form"]/div[2]/div/div/input', username || config.helpers.username)
-          .then(() => {
-            client.setValue('//form[@id="login-form"]/div[2]/div/div[2]/input', password || config.helpers.password)
-              .then(() => {
-                client.click('#submit');
-              });
-          });
-      });
+    if (client.isVisible('#submit', done)) {
+      client.setValue('//form[@id="login-form"]/div[2]/div/div/input', username || config.helpers.username)
+        .then(() => {
+          client.setValue('input[name="dwfrm_login_password"]', password || config.helpers.password)
+            .then(() => {
+              client.click('#submit');
+            });
+        });
+    } else {
+      console.log('Login area not displayed');
+    }
   },
 // SHIPPING SECTION
 
+  shipToStore: (done) => {
+    if (client.isVisible('a.ship-to-store', done)) {
+      client.click('a.ship-to-store');
+    }
+  },
   selectStore: (done) => {
     if (client.isVisible('#js-store-6641', done)) {
       client.scroll('button.select-store')
@@ -239,197 +267,180 @@ module.exports = {
       console.log('Nothing to Select');
     }
   },
-  proceedToBilling_ShipToStore: (done) => {
-    client.waitForVisible('button.geo-submit', 10000, done)
-      .then(() => {
-        client.scroll('#js-submit-shipping-btn-mobile')
-          .then(() => {
-            client.click('#js-submit-shipping-btn-mobile');
-          });
-      });
+  proceedToBilling: (done) => {
+    if (client.isVisible('#js-geo-submit', done)) {
+      client.scroll('#js-submit-shipping-btn-mobile')
+        .then(() => {
+          client.click('#js-submit-shipping-btn-mobile');
+        });
+    } else {
+      if (client.isVisible('//input[@id="firstName"]', done)) {
+        client.click('#js-submit-shipping-btn-mobile');
+      }
+    }
   },
   addShipFirstName: (done, first) => {
-    client.waitForVisible('//input[@id="firstName"]', 10000, done)
-      .then(() => {
-        client.setValue('//input[@id="firstName"]', (first || config.helpers.firstName));
-      });
+    if (client.isVisible('//input[@id="firstName"]', done)) {
+      client.setValue('//input[@id="firstName"]', (first || config.helpers.firstName));
+    }
   },
   addShipLastName: (done, last) => {
-    client.waitForVisible('//input[@id="lastName"]', 10000, done)
-      .then(() => {
-        client.setValue('//input[@id="lastName"]', last || config.helpers.lastName);
-      });
+    if (client.isVisible('//input[@id="lastName"]', done)) {
+      client.setValue('//input[@id="lastName"]', last || config.helpers.lastName);
+    }
   },
   addShipAddress: (done, addln1) => {
-    client.waitForVisible('//input[@id="street_number"]', 10000, done)
-      .then(() => {
-        client.setValue('//input[@id="street_number"]', addln1 || config.helpers.address1);
-      });
+    if (client.isVisible('//input[@id="street_number"]', done)) {
+      client.setValue('//input[@id="street_number"]', addln1 || config.helpers.address1);
+    }
   },
   addShipAddress2: (done, addln2) => {
-    client.waitForVisible('//input[@id="address2"]', 10000, done)
-      .then(() => {
-        client.setValue('//input[@id="address2"]', addln2 || config.helpers.address2);
-      });
+    if (client.isVisible('//input[@id="address2"]', done)) {
+      client.setValue('//input[@id="address2"]', addln2 || config.helpers.address2);
+    }
   },
   addShipCity: (done, city) => {
-    client.waitForVisible('//input[@id="locality"]', 10000, done)
-      .then(() => {
-        client.setValue('//input[@id="locality"]', city || config.helpers.city);
-      });
+    if (client.isVisible('//input[@id="locality"]', done)) {
+      client.setValue('//input[@id="locality"]', city || config.helpers.city);
+    }
   },
   addShipState: (done, state) => {
-    client.waitForVisible('//select[@id="administrative_area_level_1"]', 10000, done)
-      .then(() => {
-        client.selectByValue('//select[@id="administrative_area_level_1"]', state || config.helpers.state);
-      });
+    if (client.isVisible('//select[@id="administrative_area_level_1"]', done)) {
+      client.selectByValue('//select[@id="administrative_area_level_1"]', state || config.helpers.stateLabel);
+    }
   },
   addShipZipcode: (done, zipcode) => {
-    client.waitForVisible('//input[@id="postal_code"]', 10000, done)
-      .then(() => {
-        client.setValue('//input[@id="postal_code"]', zipcode || config.helpers.zipcode);
-      });
+    if (client.isVisible('//input[@id="postal_code"]', done)) {
+      client.setValue('//input[@id="postal_code"]', zipcode || config.helpers.zipcode);
+    }
   },
   addShipPhone: (done, phone) => {
-    client.waitForVisible('//input[@name="dwfrm_singleshipping_shippingAddress_addressFields_phone"]', 10000, done)
-      .then(() => {
-        client.setValue('//input[@name="dwfrm_singleshipping_shippingAddress_addressFields_phone"]', phone || config.helpers.phone);
-      });
+    if (client.waitForVisible('//input[@name="dwfrm_singleshipping_shippingAddress_addressFields_phone"]', done)) {
+      client.setValue('//input[@name="dwfrm_singleshipping_shippingAddress_addressFields_phone"]', phone || config.helpers.phone);
+    }
   },
   addShipEmail: (done, email) => {
-    client.waitForVisible('//input[@id="shipping-email"]', 10000, done)
-      .then(() => {
-        client.setValue('//input[@id="shipping-email"]', email || config.helpers.email);
-      });
+    if (client.isVisible('//input[@id="shipping-email"]', done)) {
+      client.setValue('//input[@id="shipping-email"]', email || config.helpers.email);
+    }
   },
-
   useTypedAddress: (done) => {
-    client.waitForVisible('#js-prediction-confirm', 10000, done)
-      .then(() => {
-        client.click('#js-prediction-confirm');
-      });
+    if (client.isVisible('#js-prediction-confirm', done)) {
+      client.click('#js-prediction-confirm');
+    }
   },
   useShipDropdown: (done, label) => {
-    client.waitForVisible('//select[@name="dwfrm_singleshipping_addressList"]', 10000, done)
-      .then(() => {
-        client.selectByValue('//select[@name="dwfrm_singleshipping_addressList"]', label || config.helpers.shipLabel);
-      });
-  },
-  shipToStore: (done) => {
-    client.waitForVisible('a.ship-to-store', 10000, done)
-      .then(() => {
-        client.click('a.ship-to-store');
-      });
+    if (client.isVisible('//select[@name="dwfrm_singleshipping_addressList"]', done)) {
+      client.selectByValue('//select[@name="dwfrm_singleshipping_addressList"]', label || config.helpers.shipLabel);
+    }
   },
   // PAYMENT SECTION
-
+  useCCDropdown: (done, ccCard) => {
+    if (client.isVisible('//select[@name="dwfrm_billing_paymentMethods_creditCardList"]', done)) {
+      client.click('//select[@name="dwfrm_billing_paymentMethods_creditCardList"]/option[@value="376e1f0bc3952689f86f1865df"]');
+    }
+  },
   addCCName: (done, ccname) => {
-    client.waitForVisible('input[name="dwfrm_billing_paymentMethods_creditCard_owner"]', 10000, done)
-      .then(() => {
-        client.setValue('//input[@name="dwfrm_billing_paymentMethods_creditCard_owner"]', ccname || config.helpers.ccName);
-      });
+    if(client.isVisible('input[name="dwfrm_billing_paymentMethods_creditCard_owner"]', done)) {
+      client.setValue('//input[@name="dwfrm_billing_paymentMethods_creditCard_owner"]', ccname || config.helpers.ccName);
+    }
   },
   addCCNumber: (done, ccnumber) => {
-    client.waitForVisible('input[name="dwfrm_billing_paymentMethods_creditCard_number"]', 10000, done)
-      .then(() => {
-        client.setValue('//input[@name="dwfrm_billing_paymentMethods_creditCard_number"]', ccnumber || config.helpers.ccNumber);
-      });
+    if(client.isVisible('input[name="dwfrm_billing_paymentMethods_creditCard_number"]', done)) {
+      client.setValue('//input[@name="dwfrm_billing_paymentMethods_creditCard_number"]', ccnumber || config.helpers.ccNumber);
+    }
   },
   addCCExpMonth: (done, ccmonth) => {
-    client.waitForVisible('//select[@name="dwfrm_billing_paymentMethods_creditCard_month"]', 10000, done)
-      .then(() => {
-        client.selectByValue('//select[@name="dwfrm_billing_paymentMethods_creditCard_month"]', ccmonth || config.helpers.ccExpMonth);
-      });
+    if(client.isVisible('//select[@name="dwfrm_billing_paymentMethods_creditCard_month"]', done)) {
+      client.selectByValue('//select[@name="dwfrm_billing_paymentMethods_creditCard_month"]', ccmonth || config.helpers.ccExpMonth);
+    }
   },
   addCCExpYear: (done, ccyear) => {
-    client.waitForVisible('//select[@name="dwfrm_billing_paymentMethods_creditCard_year"]', 10000, done)
-      .then(() => {
-        client.selectByValue('//select[@name="dwfrm_billing_paymentMethods_creditCard_year"]', ccyear || config.helpers.ccExpYear);
-      });
+    if(client.isVisible('//select[@name="dwfrm_billing_paymentMethods_creditCard_year"]', done)) {
+      client.selectByValue('//select[@name="dwfrm_billing_paymentMethods_creditCard_year"]', ccyear || config.helpers.ccExpYear);
+    }
   },
   addCCSecurity: (done, ccsecurity) => {
-    client.waitForVisible('input[name="dwfrm_billing_paymentMethods_creditCard_cvn"]', 10000, done)
-      .then(() => {
-        client.setValue('//input[@name="dwfrm_billing_paymentMethods_creditCard_cvn"]', ccsecurity || config.helpers.ccSecurity);
-      });
+    if(client.isVisible('input[name="dwfrm_billing_paymentMethods_creditCard_cvn"]', done)) {
+      client.setValue('//input[@name="dwfrm_billing_paymentMethods_creditCard_cvn"]', ccsecurity || config.helpers.ccSecurity);
+    }
   },
   reviewOrder: (done) => {
-    client.scroll('#js-submit-payment-btn-mobile', done)
-      .then(() => {
-        client.click('#js-submit-payment-btn-mobile');
-      });
+    if (client.isVisible('#js-submit-payment-btn-mobile', done)) {
+      client.scroll('#js-submit-payment-btn-mobile')
+        .then(() => {
+          client.click('#js-submit-payment-btn-mobile');
+        });
+    }
   },
 
 //	BILLING SECTION
+  useBillDropdown: (done) => {
+    if (client.isVisible('//select[@name="dwfrm_billing_addressList"]', done)) {
+      client.click('//select[@name="dwfrm_billing_addressList"]/option[@value="Office"]');
+    } else {
+      console.log('nothing here');
+    }
+  },
 
   addBillFirstName: (done, first) => {
-    client.waitForVisible('//input[@id="firstName"]', 10000, done)
-      .then(() => {
-        client.setValue('//input[@id="firstName"]', (first || config.helpers.firstName));
-      });
+    if (client.isVisible('//input[@id="firstName"]', done)) {
+      client.setValue('//input[@id="firstName"]', (first || config.helpers.firstName));
+    }
   },
   addBillLastName: (done, last) => {
-    client.waitForVisible('//input[@id="lastName"]', 10000, done)
-      .then(() => {
-        client.setValue('//input[@id="lastName"]', last || config.helpers.lastName);
-      });
+    if(client.isVisible('//input[@id="lastName"]', done)) {
+      client.setValue('//input[@id="lastName"]', last || config.helpers.lastName);
+    }
   },
   addBillAddress: (done, addln1) => {
-    client.waitForVisible('//input[@id="street_number"]', 10000, done)
-      .then(() => {
-        client.setValue('//input[@id="street_number"]', addln1 || config.helpers.address1);
-      });
+    if (client.isVisible('//input[@id="street_number"]', done)) {
+      client.setValue('//input[@id="street_number"]', addln1 || config.helpers.address1);
+    }
   },
   addBillAddress2: (done, addln2) => {
-    client.waitForVisible('//input[@id="address2"]', 10000, done)
-      .then(() => {
-        client.setValue('//input[@id="address2"]', addln2 || config.helpers.address2);
-      });
+    if (client.isVisible('//input[@id="address2"]', done)) {
+      client.setValue('//input[@id="address2"]', addln2 || config.helpers.address2);
+    }
   },
   addBillCity: (done, city) => {
-    client.waitForVisible('//input[@id="locality"]', 10000, done)
-      .then(() => {
-        client.setValue('//input[@id="locality"]', city || config.helpers.city);
-      });
+    if(client.isVisible('//input[@id="locality"]', done)) {
+      client.setValue('//input[@id="locality"]', city || config.helpers.city);
+    }
   },
   addBillState: (done, state) => {
-    client.waitForVisible('//select[@id="administrative_area_level_1"]', 10000, done)
-      .then(() => {
-        client.selectByValue('//select[@id="administrative_area_level_1"]', state || config.helpers.state);
-      });
+    if(client.isVisible('//select[@id="administrative_area_level_1"]', done)) {
+      client.selectByValue('//select[@id="administrative_area_level_1"]', state || config.helpers.state);
+    }
   },
   addBillZipcode: (done, zipcode) => {
-    client.waitForVisible('//input[@id="postal_code"]', 10000, done)
-      .then(() => {
-        client.setValue('//input[@id="postal_code"]', zipcode || config.helpers.zipcode);
-      });
+    if(client.isVisible('//input[@id="postal_code"]', done)) {
+      client.setValue('//input[@id="postal_code"]', zipcode || config.helpers.zipcode);
+    }
   },
   addBillPhone: (done, phone) => {
-    client.waitForVisible('//input[@name="dwfrm_billing_billingAddress_addressFields_phone"]', 10000, done)
-      .then(() => {
-        client.setValue('//input[@name="dwfrm_billing_billingAddress_addressFields_phone"]', phone || config.helpers.phone);
-      });
+    if(client.isVisible('//input[@name="dwfrm_billing_billingAddress_addressFields_phone"]', done)) {
+      client.setValue('//input[@name="dwfrm_billing_billingAddress_addressFields_phone"]', phone || config.helpers.phone);
+    }
   },
   addBillEmail: (done, email) => {
-    client.waitForVisible('//input[@id="shipping-email"]', 10000, done)
-      .then(() => {
-        client.setValue('//input[@id="shipping-email"]', email || config.helpers.email);
-      });
+    if(client.isVisible('//input[@id="shipping-email"]', done)) {
+      client.setValue('//input[@id="shipping-email"]', email || config.helpers.email);
+    }
   },
   proceedToPayment: (done) => {
-    client.waitForVisible('#js-submit-billing-btn-mobile', 10000, done)
-      .then(() => {
-        client.scroll('#js-submit-billing-btn-mobile')
-          .then(() => {
-            client.click('#js-submit-billing-btn-mobile');
-          });
-      });
+    if (client.isVisible('#js-submit-billing-btn-mobile', done)) {
+      client.scroll('#js-submit-billing-btn-mobile')
+        .then(() => {
+          client.click('#js-submit-billing-btn-mobile');
+        });
+    }
   },
 
 // REVIEW ORDER
 
   verifyShippingTitle: (done) => {
-    client.waitForVisible('div.box-section.select-shipping-method > div.title-bar > h3', 10000, () => {
+    if(client.isVisible('div.box-section.select-shipping-method > div.title-bar > h3', done)) {
       client.getText('div.box-section.select-shipping-method > div.title-bar > h3')
         .then((text) => {
           try {
@@ -439,10 +450,10 @@ module.exports = {
             done(err);
           }
         });
-    });
+    }
   },
   verifyShipToStore: (done) => {
-    client.waitForVisible('#summary-shipping-subheader', 10000, () => {
+    if(client.isVisible('#summary-shipping-subheader', done)) {
       client.getText('#js-shipping-summary-body > ul')
         .then((text) => {
           try {
@@ -452,10 +463,10 @@ module.exports = {
             done(err);
           }
         });
-    });
+    }
   },
   verifyShipToAddress: (done) => {
-    client.waitForVisible('#summary-shipping-subheader', 10000, () => {
+    if(client.isVisible('#summary-shipping-subheader', done)) {
       client.getText('#js-shipping-summary-body > ul')
         .then((text) => {
           try {
@@ -465,10 +476,10 @@ module.exports = {
             done(err);
           }
         });
-    });
+    }
   },
   verifyPaymentInfo: (done) => {
-    client.waitForVisible('#summary-payment-subheader', 10000, () => {
+    if(client.isVisible('#summary-payment-subheader', done)) {
       client.getText('#js-payment-summary-body > ul.payment-method')
         .then((text) => {
           try {
@@ -478,10 +489,10 @@ module.exports = {
             done(err);
           }
         });
-    });
+    }
   },
   verifyPaymentName: (done) => {
-    client.waitForVisible('#summary-payment-subheader', 10000, () => {
+    if(client.isVisible('#summary-payment-subheader', done)) {
       client.getText('#js-payment-summary-body > ul.payment-method')
         .then((text) => {
           try {
@@ -491,10 +502,10 @@ module.exports = {
             done(err);
           }
         });
-    });
+    }
   },
   verifyPaymentType: (done) => {
-    client.waitForVisible('div.box-section.payment-method > div.title-bar > h3', 10000, () => {
+    if(client.isVisible('div.box-section.payment-method > div.title-bar > h3', done)) {
       client.getText('div#js-payment-summary-body.checkout-step.payment-summary > div.payment-method p.type')
         .then((text) => {
           try {
@@ -504,10 +515,10 @@ module.exports = {
             done(err);
           }
         });
-    });
+    }
   },
   verifyPaymentNumber: (done) => {
-    client.waitForVisible('div.box-section.payment-method > div.title-bar > h3', 10000, () => {
+    if(client.isVisible('div.box-section.payment-method > div.title-bar > h3', done)) {
       client.getText('div#js-payment-summary-body.checkout-step.payment-summary > div.payment-method p.number')
         .then((text) => {
           try {
@@ -517,10 +528,10 @@ module.exports = {
             done(err);
           }
         });
-    });
+    }
   },
   verifyPaymentExpire: (done) => {
-    client.waitForVisible('div.box-section.payment-method > div.title-bar > h3', 10000, () => {
+    if(client.isVisible('div.box-section.payment-method > div.title-bar > h3', done)) {
       client.getText('div#js-payment-summary-body.checkout-step.payment-summary > div.payment-method p.expire')
         .then((text) => {
           try {
@@ -530,10 +541,10 @@ module.exports = {
             done(err);
           }
         });
-    });
+    }
   },
   verifyBillInfoSTS: (done) => {
-    client.waitForVisible('#summary-billing-subheader', 10000, () => {
+    if(client.isVisible('#summary-billing-subheader', done)) {
       client.getText('#js-billing-summary-body > ul')
         .then((text) => {
           try {
@@ -543,10 +554,10 @@ module.exports = {
             done(err);
           }
         });
-    });
+    }
   },
   verifyBillInfoSTA: (done) => {
-    client.waitForVisible('#summary-billing-subheader', 10000, () => {
+    if(client.isVisible('#summary-billing-subheader', done)) {
       client.getText('#js-billing-summary-body > ul')
         .then((text) => {
           try {
@@ -556,18 +567,17 @@ module.exports = {
             done(err);
           }
         });
-    });
+    }
   },
   submitPayment: (done) => {
-    client.scroll('#js-submit-final-btn-mobile', done)
+    client.scroll('#js-submit-final-btn', done)
       .then(() => {
-        client.click('//button[@id="js-submit-final-btn-mobile"]');
+        client.click('#js-submit-final-btn');
       });
   },
   verifyConfirmOrder: (done) => {
-    client.waitForVisible('//div.order > div.check-mark > i.icon', 10000, done)
-      .then(() => {
-        console.log('Checkmark is visible');
+    if(client.isVisible('//div.order > div.check-mark > i.icon', done)) {
+      then(() => {
         client.getText('//div.modal.order-confirmation > div.body > div.order > span.success')
           .then((status) => {
             if (status === 'SUCCESS!') {
@@ -575,8 +585,9 @@ module.exports = {
             } else {
               console.log('Did not complete');
             }
-          });
-      });
+          })
+      })
+    }
   },
   verifyOrderError: (done) => {
     if (client.isVisible('div.left-column > div.checkout-error', done)) {

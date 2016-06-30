@@ -21,6 +21,11 @@ const mochaOptions = {
   }
 };
 
+function terminateProcess() {
+  selenium.child.kill();
+  browserSync.exit();
+}
+
 function handleError(err) {
   console.log(err.toString());
   this.emit('end');
@@ -72,55 +77,19 @@ gulp.task('selenium-start', function (done) {
 
 gulp.task('e2e-guest', ['serve:test', 'selenium'], function () {
   return gulp.src('test/Chrome/Payless/node/staging/E2E-guest.js', {read: false})
-    .pipe(mocha({
-      timeout: '50000',
-      reporter: 'mochawesome',
-      reporterOptions: {
-        reportDir: 'test',
-        reportName: 'report',
-        reportTitle: 'awesome',
-        inlineAssets: true
-      }
-    }).on("error", handleError));
+    .pipe(mocha(mochaOptions).on("error", handleError));
 });
 gulp.task('e2e-prod', ['serve:test', 'selenium'], function () {
   return gulp.src('test/Chrome/Payless/node/production/end2end-prod.js', {read: false})
-    .pipe(mocha({
-      timeout: '50000',
-      reporter: 'mochawesome',
-      reporterOptions: {
-        reportDir: 'test',
-        reportName: 'report',
-        reportTitle: 'awesome',
-        inlineAssets: true
-      }
-    }).on("error", handleError));
+    .pipe(mocha(mochaOptions).on("error", handleError));
 });
 gulp.task('e2e-return', ['serve:test', 'selenium'], function () {
   return gulp.src('test/Chrome/Payless/node/staging/E2E-returning-user.js', {read: false})
-    .pipe(mocha({
-      timeout: '50000',
-      reporter: 'mochawesome',
-      reporterOptions: {
-        reportDir: 'test',
-        reportName: 'report',
-        reportTitle: 'awesome',
-        inlineAssets: true
-      }
-    }).on("error", handleError));
+    .pipe(mocha(mochaOptions).on("error", handleError));
 });
 gulp.task('findItem', ['serve:test', 'selenium'], function () {
   return gulp.src('test/Chrome/Payless/node/staging/findProduct.js', {read: false})
-    .pipe(mocha({
-      timeout: '50000',
-      reporter: 'mochawesome',
-      reporterOptions: {
-        reportDir: 'test',
-        reportName: 'report',
-        reportTitle: 'awesome',
-        inlineAssets: true
-      }
-    }).on("error", handleError));
+    .pipe(mocha(mochaOptions).on("error", handleError));
 });
 gulp.task('findStore', ['serve:test', 'selenium'], function () {
   return gulp.src('test/Chrome/Payless/node/staging/findStore.js', {read: false})
@@ -128,39 +97,24 @@ gulp.task('findStore', ['serve:test', 'selenium'], function () {
 });
 gulp.task('findInStore', ['serve:test', 'selenium'], function () {
   return gulp.src('test/Chrome/Payless/node/staging/findInStore.js', {read: false})
-    .pipe(mocha({
-      timeout: '50000',
-      reporter: 'mochawesome',
-      reporterOptions: {
-        reportDir: 'test',
-        reportName: 'report',
-        reportTitle: 'awesome',
-        inlineAssets: true
-      }
-    }).on("error", handleError));
+    .pipe(mocha(mochaOptions).on("error", handleError));
 });
 
 gulp.task('find-a-store', ['findStore'], function () {
-  selenium.child.kill();
-  browserSync.exit();
+  this.terminateProcess();
 });
 gulp.task('find-item', ['findItem'], function () {
-  selenium.child.kill();
-  browserSync.exit();
+  this.terminateProcess();
 });
 gulp.task('find-in-store', ['findInStore'], function () {
-  selenium.child.kill();
-  browserSync.exit();
+  this.terminateProcess();
 });
 gulp.task('e2e-return-user', ['e2e-return'], function () {
-  selenium.child.kill();
-  browserSync.exit();
+  this.terminateProcess();
 });
 gulp.task('e2e-guest-user', ['e2e-guest'], function () {
-  selenium.child.kill();
-  browserSync.exit();
+  this.terminateProcess();
 });
 gulp.task('e2e-prod-test', ['e2e-prod'], function () {
-  selenium.child.kill();
-  browserSync.exit();
+  this.terminateProcess();
 });

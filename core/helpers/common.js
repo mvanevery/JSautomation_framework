@@ -78,7 +78,7 @@ module.exports = {
   },
   searchItem: (done, pauseTime, search) => {
     const searchData = (search || config.helpers.search);
-    if(client.isVisible('div.app-sub-header > form#search-form div.input > input', done)) {
+    if (client.isVisible('div.app-sub-header > form#search-form div.input > input', done)) {
       client.click('//form[@id="search-form"]/div/input')
         .then(() => {
           client.setValue('//form[@id="search-form"]/div/input', searchData)
@@ -170,7 +170,7 @@ module.exports = {
         });
     }
   },
-  proceedToCartModal: (done, pauseTime) => {
+  proceedToCartModal: (done) => {
     if (client.isVisible('button.btn-checkout', done)) {
       client.scroll('button.btn-checkout')
         .then(() => {
@@ -178,7 +178,7 @@ module.exports = {
         });
     }
   },
-  verifyCheckoutCTA: (done) => {
+  verifyCheckoutCTA: (done, expected) => {
     if (client.isVisible('#js-submit-final-btn-top', done)) {
       console.log('The button is visible');
       client.getText('h1.title').then((title) => {
@@ -188,7 +188,7 @@ module.exports = {
         } catch (err) {
           done(err);
         }
-      })
+      });
     }
   },
 
@@ -334,33 +334,33 @@ module.exports = {
     }
   },
   // PAYMENT SECTION
-  useCCDropdown: (done, ccCard) => {
+  useCCDropdown: (done) => {
     if (client.isVisible('//select[@name="dwfrm_billing_paymentMethods_creditCardList"]', done)) {
       client.click('//select[@name="dwfrm_billing_paymentMethods_creditCardList"]/option[@value="376e1f0bc3952689f86f1865df"]');
     }
   },
   addCCName: (done, ccname) => {
-    if(client.isVisible('input[name="dwfrm_billing_paymentMethods_creditCard_owner"]', done)) {
+    if (client.isVisible('input[name="dwfrm_billing_paymentMethods_creditCard_owner"]', done)) {
       client.setValue('//input[@name="dwfrm_billing_paymentMethods_creditCard_owner"]', ccname || config.helpers.ccName);
     }
   },
   addCCNumber: (done, ccnumber) => {
-    if(client.isVisible('input[name="dwfrm_billing_paymentMethods_creditCard_number"]', done)) {
+    if (client.isVisible('input[name="dwfrm_billing_paymentMethods_creditCard_number"]', done)) {
       client.setValue('//input[@name="dwfrm_billing_paymentMethods_creditCard_number"]', ccnumber || config.helpers.ccNumber);
     }
   },
   addCCExpMonth: (done, ccmonth) => {
-    if(client.isVisible('//select[@name="dwfrm_billing_paymentMethods_creditCard_month"]', done)) {
+    if (client.isVisible('//select[@name="dwfrm_billing_paymentMethods_creditCard_month"]', done)) {
       client.selectByValue('//select[@name="dwfrm_billing_paymentMethods_creditCard_month"]', ccmonth || config.helpers.ccExpMonth);
     }
   },
   addCCExpYear: (done, ccyear) => {
-    if(client.isVisible('//select[@name="dwfrm_billing_paymentMethods_creditCard_year"]', done)) {
+    if (client.isVisible('//select[@name="dwfrm_billing_paymentMethods_creditCard_year"]', done)) {
       client.selectByValue('//select[@name="dwfrm_billing_paymentMethods_creditCard_year"]', ccyear || config.helpers.ccExpYear);
     }
   },
   addCCSecurity: (done, ccsecurity) => {
-    if(client.isVisible('input[name="dwfrm_billing_paymentMethods_creditCard_cvn"]', done)) {
+    if (client.isVisible('input[name="dwfrm_billing_paymentMethods_creditCard_cvn"]', done)) {
       client.setValue('//input[@name="dwfrm_billing_paymentMethods_creditCard_cvn"]', ccsecurity || config.helpers.ccSecurity);
     }
   },
@@ -388,7 +388,7 @@ module.exports = {
     }
   },
   addBillLastName: (done, last) => {
-    if(client.isVisible('//input[@id="lastName"]', done)) {
+    if (client.isVisible('//input[@id="lastName"]', done)) {
       client.setValue('//input[@id="lastName"]', last || config.helpers.lastName);
     }
   },
@@ -403,27 +403,27 @@ module.exports = {
     }
   },
   addBillCity: (done, city) => {
-    if(client.isVisible('//input[@id="locality"]', done)) {
+    if (client.isVisible('//input[@id="locality"]', done)) {
       client.setValue('//input[@id="locality"]', city || config.helpers.city);
     }
   },
   addBillState: (done, state) => {
-    if(client.isVisible('//select[@id="administrative_area_level_1"]', done)) {
+    if (client.isVisible('//select[@id="administrative_area_level_1"]', done)) {
       client.selectByValue('//select[@id="administrative_area_level_1"]', state || config.helpers.state);
     }
   },
   addBillZipcode: (done, zipcode) => {
-    if(client.isVisible('//input[@id="postal_code"]', done)) {
+    if (client.isVisible('//input[@id="postal_code"]', done)) {
       client.setValue('//input[@id="postal_code"]', zipcode || config.helpers.zipcode);
     }
   },
   addBillPhone: (done, phone) => {
-    if(client.isVisible('//input[@name="dwfrm_billing_billingAddress_addressFields_phone"]', done)) {
+    if (client.isVisible('//input[@name="dwfrm_billing_billingAddress_addressFields_phone"]', done)) {
       client.setValue('//input[@name="dwfrm_billing_billingAddress_addressFields_phone"]', phone || config.helpers.phone);
     }
   },
   addBillEmail: (done, email) => {
-    if(client.isVisible('//input[@id="shipping-email"]', done)) {
+    if (client.isVisible('//input[@id="shipping-email"]', done)) {
       client.setValue('//input[@id="shipping-email"]', email || config.helpers.email);
     }
   },
@@ -439,7 +439,7 @@ module.exports = {
 // REVIEW ORDER
 
   verifyShippingTitle: (done) => {
-    if(client.isVisible('div.box-section.select-shipping-method > div.title-bar > h3', done)) {
+    if (client.isVisible('div.box-section.select-shipping-method > div.title-bar > h3', done)) {
       client.getText('div.box-section.select-shipping-method > div.title-bar > h3')
         .then((text) => {
           try {
@@ -452,7 +452,7 @@ module.exports = {
     }
   },
   verifyShipToStore: (done) => {
-    if(client.isVisible('#summary-shipping-subheader', done)) {
+    if (client.isVisible('#summary-shipping-subheader', done)) {
       client.getText('#js-shipping-summary-body > ul')
         .then((text) => {
           try {
@@ -465,7 +465,7 @@ module.exports = {
     }
   },
   verifyShipToAddress: (done) => {
-    if(client.isVisible('#summary-shipping-subheader', done)) {
+    if (client.isVisible('#summary-shipping-subheader', done)) {
       client.getText('#js-shipping-summary-body > ul')
         .then((text) => {
           try {
@@ -478,7 +478,7 @@ module.exports = {
     }
   },
   verifyPaymentInfo: (done) => {
-    if(client.isVisible('#summary-payment-subheader', done)) {
+    if (client.isVisible('#summary-payment-subheader', done)) {
       client.getText('#js-payment-summary-body > ul.payment-method')
         .then((text) => {
           try {
@@ -491,7 +491,7 @@ module.exports = {
     }
   },
   verifyPaymentName: (done) => {
-    if(client.isVisible('#summary-payment-subheader', done)) {
+    if (client.isVisible('#summary-payment-subheader', done)) {
       client.getText('#js-payment-summary-body > ul.payment-method')
         .then((text) => {
           try {
@@ -504,7 +504,7 @@ module.exports = {
     }
   },
   verifyPaymentType: (done) => {
-    if(client.isVisible('div.box-section.payment-method > div.title-bar > h3', done)) {
+    if (client.isVisible('div.box-section.payment-method > div.title-bar > h3', done)) {
       client.getText('div#js-payment-summary-body.checkout-step.payment-summary > div.payment-method p.type')
         .then((text) => {
           try {
@@ -517,7 +517,7 @@ module.exports = {
     }
   },
   verifyPaymentNumber: (done) => {
-    if(client.isVisible('div.box-section.payment-method > div.title-bar > h3', done)) {
+    if (client.isVisible('div.box-section.payment-method > div.title-bar > h3', done)) {
       client.getText('div#js-payment-summary-body.checkout-step.payment-summary > div.payment-method p.number')
         .then((text) => {
           try {
@@ -530,7 +530,7 @@ module.exports = {
     }
   },
   verifyPaymentExpire: (done) => {
-    if(client.isVisible('div.box-section.payment-method > div.title-bar > h3', done)) {
+    if (client.isVisible('div.box-section.payment-method > div.title-bar > h3', done)) {
       client.getText('div#js-payment-summary-body.checkout-step.payment-summary > div.payment-method p.expire')
         .then((text) => {
           try {
@@ -543,7 +543,7 @@ module.exports = {
     }
   },
   verifyBillInfoSTS: (done) => {
-    if(client.isVisible('#summary-billing-subheader', done)) {
+    if (client.isVisible('#summary-billing-subheader', done)) {
       client.getText('#js-billing-summary-body > ul')
         .then((text) => {
           try {
@@ -556,7 +556,7 @@ module.exports = {
     }
   },
   verifyBillInfoSTA: (done) => {
-    if(client.isVisible('#summary-billing-subheader', done)) {
+    if (client.isVisible('#summary-billing-subheader', done)) {
       client.getText('#js-billing-summary-body > ul')
         .then((text) => {
           try {
@@ -569,23 +569,23 @@ module.exports = {
     }
   },
   submitPayment: (done) => {
-    client.scroll('#js-submit-final-btn', done)
-      .then(() => {
-        client.click('#js-submit-final-btn');
-      });
+    if(client.isVisible('#js-submit-final-btn', done)) {
+      client.scroll('#js-submit-final-btn')
+        .then(() => {
+          client.click('#js-submit-final-btn');
+        });
+    }
   },
   verifyConfirmOrder: (done) => {
-    if(client.isVisible('//div.order > div.check-mark > i.icon', done)) {
-      then(() => {
-        client.getText('//div.modal.order-confirmation > div.body > div.order > span.success')
-          .then((status) => {
-            if (status === 'SUCCESS!') {
-              console.log(`${status} = Order Status`);
-            } else {
-              console.log('Did not complete');
-            }
-          })
-      })
+    if (client.isVisible('//div.order > div.check-mark > i.icon', done)) {
+      client.getText('//div.modal.order-confirmation > div.body > div.order > span.success')
+        .then((status) => {
+          if (status === 'SUCCESS!') {
+            console.log(`${status} = Order Status`);
+          } else {
+            console.log('Did not complete');
+          }
+        });
     }
   },
   verifyOrderError: (done) => {

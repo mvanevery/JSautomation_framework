@@ -1,5 +1,5 @@
-const common = require('../../../../../core/helpers/common');
-const prod  = require('../../../../../core/helpers/common-production');
+const common = require('../../../../core/helpers/common');
+const prod = require('../../../../core/helpers/common-production');
 
 describe('Testing Home Page', () => {
   before((done) => {
@@ -113,6 +113,11 @@ describe('Testing Home Page', () => {
   describe('Add Zipcode (shipping)', () => {
     it('should add Zipcode to shipping', (done) => {
       prod.addShipZipcode(done);
+    });
+  });
+  describe('pausing', () => {
+    it('should pause the test', (done) => {
+      common.pause(2000, done);
     });
   });
   describe('Add Phone (shipping)', () => {

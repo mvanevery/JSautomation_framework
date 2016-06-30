@@ -101,20 +101,20 @@ gulp.task('findInStore', ['serve:test', 'selenium'], function () {
 });
 
 gulp.task('find-a-store', ['findStore'], function () {
-  this.terminateProcess();
+  terminateProcess();
 });
 gulp.task('find-item', ['findItem'], function () {
-  this.terminateProcess();
+  terminateProcess();
 });
 gulp.task('find-in-store', ['findInStore'], function () {
-  this.terminateProcess();
+  terminateProcess();
 });
 gulp.task('e2e-return-user', ['e2e-return'], function () {
-  this.terminateProcess();
+  terminateProcess();
 });
 gulp.task('e2e-guest-user', ['e2e-guest'], function () {
-  this.terminateProcess();
+  terminateProcess();
 });
 gulp.task('e2e-prod-test', ['e2e-prod'], function () {
-  this.terminateProcess();
+  terminateProcess();
 });

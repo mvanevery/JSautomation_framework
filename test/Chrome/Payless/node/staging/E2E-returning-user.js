@@ -4,6 +4,11 @@ describe('Testing End to End - Returning User: CC', () => {
   before((done) => {
     common.goTo(done);
   });
+  describe('Setting up the site', () => {
+    it('should set up the site to test', (done) => {
+      common.pause(2500, done);
+    });
+  });
   describe('Searching for an Item', () => {
     it('should search for an item', (done) => {
       common.searchItem(done);

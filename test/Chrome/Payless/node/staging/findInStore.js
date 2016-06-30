@@ -4,19 +4,29 @@ describe('Testing Find A Store', () => {
   before((done) => {
     common.goTo(done);
   });
+  describe('Setting up the site', () => {
+    it('should set up the site to test', (done) => {
+      common.pause(2500, done);
+    });
+  });
   describe('Open Menu', () => {
     it('should see the menu open', (done) => {
       common.openMenu(done);
     });
   });
-  describe('Verifying menu open and getting text', () => {
-    it('should confirm open menu and bag text', (done) => {
-      common.menuVerify(done);
+  describe('pausing', () => {
+    it('should pause the test', (done) => {
+      common.pause(2500, done);
     });
   });
   describe('Selecting category', () => {
     it('should pick a category', (done) => {
       common.pickCategory(done);
+    });
+  });
+  describe('pausing', () => {
+    it('should pause the test', (done) => {
+      common.pause(2500, done);
     });
   });
   describe('Selecting Style', () => {

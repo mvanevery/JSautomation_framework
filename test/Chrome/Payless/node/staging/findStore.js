@@ -4,9 +4,9 @@ describe('Testing Find A Store', () => {
   before((done) => {
     common.goTo(done);
   });
-  describe('pausing', () => {
-    it('should pause the test', (done) => {
-      common.pause(5000, done);
+  describe('Setting up the site', () => {
+    it('should set up the site to test', (done) => {
+      common.pause(2500, done);
     });
   });
   describe('Opening Find A Store', () => {

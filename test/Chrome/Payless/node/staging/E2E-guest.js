@@ -4,6 +4,11 @@ describe('Testing Home Page', () => {
   before((done) => {
     common.goTo(done);
   });
+  describe('Setting up the site', () => {
+    it('should set up the site to test', (done) => {
+      common.pause(2500, done);
+    });
+  });
   describe('Open Menu', () => {
     it('should see the menu open', (done) => {
       common.openMenu(done);

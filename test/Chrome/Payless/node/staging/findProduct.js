@@ -4,9 +4,9 @@ describe('Testing Find A Product', () => {
   before((done) => {
     common.goTo(done);
   });
-  describe('pausing', () => {
-    it('should pause the test', (done) => {
-      common.pause(5000, done);
+  describe('Setting up the site', () => {
+    it('should set up the site to test', (done) => {
+      common.pause(2500, done);
     });
   });
   describe('Searching for an Item', () => {
@@ -31,7 +31,7 @@ describe('Testing Find A Product', () => {
   });
   describe('Verifying Item Number', () => {
     it('should verify item number', (done) => {
-      common.verifyItemNumber(done, '142899');
+      common.verifyItemNumber(done, '142898');
     });
   });
   //after((done) => {

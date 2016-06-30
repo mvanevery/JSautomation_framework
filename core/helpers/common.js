@@ -125,7 +125,7 @@ module.exports = {
   },
 
   verifyStoreAddress: (done) => {
-    if (client.isVisible('button.map')) {
+    if (client.isVisible('button.map', done)) {
       client.scroll('span.mobile-distance');
       client.getText('span.address')
         .then((text) => {
@@ -133,7 +133,6 @@ module.exports = {
           // console.log(response); // This will be a boolean value (true/false) that will tell us whether this string is in the array
           try {
             assert.isTrue(response, 'The expected value was not equal to the text');
-            done();
           } catch (err) {
             done(err);
           }
@@ -146,7 +145,7 @@ module.exports = {
 
   pickItem: (done) => {
     if (client.isVisible('div.details > div.mobile-brand > a.name > h3', done)) {
-      client.click('div.details > div.mobile-brand > a.name');
+      client.click('div.details > div.mobile-brand > a.name > h3');
     }
   },
 

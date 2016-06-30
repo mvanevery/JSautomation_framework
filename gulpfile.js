@@ -124,12 +124,25 @@ gulp.task('findStore', ['serve:test', 'selenium'], function () {
       }
     }).on("error", handleError));
 });
+gulp.task('findInStore', ['serve:test', 'selenium'], function () {
+  return gulp.src('test/Chrome/Payless/node/staging/findInStore.js', {read: false})
+    .pipe(mocha({
+      timeout: '50000',
+      reporter: 'mochawesome',
+      reporterOptions: {
+        reportDir: 'test',
+        reportName: 'report',
+        reportTitle: 'awesome',
+        inlineAssets: true
+      }
+    }).on("error", handleError));
+});
 
-gulp.task('find-store', ['findStore'], function () {
+gulp.task('find-a-store', ['findStore'], function () {
   selenium.child.kill();
   browserSync.exit();
 });
-gulp.task('find-item', ['findProduct'], function () {
+gulp.task('find-item', ['findItem'], function () {
   selenium.child.kill();
   browserSync.exit();
 });

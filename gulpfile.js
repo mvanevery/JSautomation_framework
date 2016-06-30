@@ -10,6 +10,17 @@ const browserSync = require('browser-sync');
 const selenium = require('selenium-standalone');
 const mocha = require('gulp-mocha');
 
+const mochaOptions = {
+  timeout: '50000',
+  reporter: 'mochawesome',
+  reporterOptions: {
+    reportDir: 'test',
+    reportName: 'report',
+    reportTitle: 'awesome',
+    inlineAssets: true
+  }
+};
+
 function handleError(err) {
   console.log(err.toString());
   this.emit('end');
@@ -113,16 +124,7 @@ gulp.task('findItem', ['serve:test', 'selenium'], function () {
 });
 gulp.task('findStore', ['serve:test', 'selenium'], function () {
   return gulp.src('test/Chrome/Payless/node/staging/findStore.js', {read: false})
-    .pipe(mocha({
-      timeout: '50000',
-      reporter: 'mochawesome',
-      reporterOptions: {
-        reportDir: 'test',
-        reportName: 'report',
-        reportTitle: 'awesome',
-        inlineAssets: true
-      }
-    }).on("error", handleError));
+    .pipe(mocha(mochaOptions).on("error", handleError));
 });
 gulp.task('findInStore', ['serve:test', 'selenium'], function () {
   return gulp.src('test/Chrome/Payless/node/staging/findInStore.js', {read: false})

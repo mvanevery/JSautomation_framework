@@ -267,7 +267,7 @@ module.exports = {
     }
   },
   submitPayment: (done) => {
-    if(client.isVisible('#js-submit-final-btn', done)) {
+    if (client.isVisible('#js-submit-final-btn', done)) {
       client.scroll('#js-submit-final-btn')
         .then(() => {
           client.click('#js-submit-final-btn');

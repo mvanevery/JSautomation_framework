@@ -1,5 +1,5 @@
-const common = require('../../../../../core/helpers/common');
-const prod = require('../../../../../core/helpers/common-production');
+const common = require('../../../../core/helpers/common');
+const prod = require('../../../../core/helpers/common-production');
 
 describe('Testing Home Page', () => {
   before((done) => {

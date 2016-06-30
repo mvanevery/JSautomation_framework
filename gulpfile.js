@@ -76,11 +76,11 @@ gulp.task('selenium-start', function (done) {
 });
 
 gulp.task('e2e-guest', ['serve:test', 'selenium'], function () {
-  return gulp.src('test/Chrome/Payless/node/staging/E2E-guest.js', {read: false})
+  return gulp.src('test/payless/node/staging/E2E-guest.js', {read: false})
     .pipe(mocha(mochaOptions).on("error", handleError));
 });
 gulp.task('e2e-prod', ['serve:test', 'selenium'], function () {
-  return gulp.src('test/Chrome/Payless/node/production/end2end-prod.js', {read: false})
+  return gulp.src('test/payless/node/production/end2end-prod.js', {read: false})
     .pipe(mocha(mochaOptions).on("error", handleError));
 });
 gulp.task('e2e-return', ['serve:test', 'selenium'], function () {
@@ -88,15 +88,15 @@ gulp.task('e2e-return', ['serve:test', 'selenium'], function () {
     .pipe(mocha(mochaOptions).on("error", handleError));
 });
 gulp.task('findItem', ['serve:test', 'selenium'], function () {
-  return gulp.src('test/Chrome/Payless/node/staging/findProduct.js', {read: false})
+  return gulp.src('test/payless/node/staging/findProduct.js', {read: false})
     .pipe(mocha(mochaOptions).on("error", handleError));
 });
 gulp.task('findStore', ['serve:test', 'selenium'], function () {
-  return gulp.src('test/Chrome/Payless/node/staging/findStore.js', {read: false})
+  return gulp.src('test/payless/node/staging/findStore.js', {read: false})
     .pipe(mocha(mochaOptions).on("error", handleError));
 });
 gulp.task('findInStore', ['serve:test', 'selenium'], function () {
-  return gulp.src('test/Chrome/Payless/node/staging/findInStore.js', {read: false})
+  return gulp.src('test/payless/node/staging/findInStore.js', {read: false})
     .pipe(mocha(mochaOptions).on("error", handleError));
 });
 

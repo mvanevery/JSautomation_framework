@@ -1,4 +1,4 @@
-const common = require('../../../../../core/helpers/common');
+const common = require('../../../../core/helpers/common');
 
 describe('Testing Home Page', () => {
   before((done) => {

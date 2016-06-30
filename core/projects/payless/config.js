@@ -35,7 +35,7 @@ module.exports = {
     lastNameFake: 'Test',
     addressFake: '123 Main St',
     phoneFake: '8134002000',
-    zipcodeFake: '33619',
+    zipcodeFake: '33607',
     emailFake: 'test@madmobile.com',
     ccNameFake: 'Test Test',
     ccNumberFake: '4111111111111111',
@@ -73,8 +73,8 @@ module.exports = {
       'Exp. January 2018'],
     payInfoFake: ['Test Test',
       'Visa',
-      '************7750',
-      'Exp. September 2018'],
+      '************1111',
+      'Exp. January 2018'],
     billInfoSTA: ['mad mobile',
       '2701 N Rocky Point Dr',
       'suite 500',
@@ -89,12 +89,7 @@ module.exports = {
     billInfoSTAFake: ['Test Test',
       '123 Main St',
       'Tampa, FL 33607',
-      '813-400-2000'],
-    billInfoSTSFake: ['Test Test',
-      '123 Main St',
-      'Tampa, FL 33619',
-      '813-400-2000',
-      'test@madmobile.com']
+      '813-400-2000']
 
   }
 };

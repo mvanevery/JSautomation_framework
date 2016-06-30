@@ -1,13 +1,13 @@
-const common = require('../../../../core/helpers/common');
-const prod = require('../../../../core/helpers/common-production');
+const common = require('../../../../../core/helpers/common');
+const prod  = require('../../../../../core/helpers/common-production');
 
 describe('Testing Home Page', () => {
   before((done) => {
     common.goTo(done);
   });
-  describe('Setting viewport size', () => {
-    it('should launch in mobile view', (done) => {
-      common.mobileView(done);
+  describe('Setting up the site', () => {
+    it('should set up the site to test', (done) => {
+      common.pause(2500, done);
     });
   });
   describe('Open Menu', () => {
@@ -15,9 +15,9 @@ describe('Testing Home Page', () => {
       common.openMenu(done);
     });
   });
-  describe('Verifying menu open and getting text', () => {
-    it('should confirm open menu and bag text', (done) => {
-      common.menuVerify(done);
+  describe('pausing', () => {
+    it('should pause the test', (done) => {
+      common.pause(2000, done);
     });
   });
   describe('Selecting category', () => {
@@ -30,9 +30,19 @@ describe('Testing Home Page', () => {
       common.pickStyle(done);
     });
   });
+  describe('pausing', () => {
+    it('should pause the test', (done) => {
+      common.pause(5000, done);
+    });
+  });
   describe('Selecting Item', () => {
     it('should pick an item', (done) => {
       common.pickItem(done);
+    });
+  });
+  describe('pausing', () => {
+    it('should pause the test', (done) => {
+      common.pause(2000, done);
     });
   });
   describe('Selecting a Size', () => {
@@ -40,9 +50,19 @@ describe('Testing Home Page', () => {
       common.selectSize(done);
     });
   });
+  describe('pausing', () => {
+    it('should pause the test', (done) => {
+      common.pause(2000, done);
+    });
+  });
   describe('Adding item to Bag', () => {
     it('should add item to bag', (done) => {
       common.addToBag(done);
+    });
+  });
+  describe('pausing', () => {
+    it('should pause the test', (done) => {
+      common.pause(2000, done);
     });
   });
   describe('Proceed to Cart', () => {
@@ -50,9 +70,19 @@ describe('Testing Home Page', () => {
       common.proceedToCartModal(done);
     });
   });
+  describe('pausing', () => {
+    it('should pause the test', (done) => {
+      common.pause(5000, done);
+    });
+  });
   describe('Proceed to Checkout', () => {
     it('should proceed to Checkout from Cart', (done) => {
       common.proceedToCheckoutCart(done);
+    });
+  });
+  describe('pausing', () => {
+    it('should pause the test', (done) => {
+      common.pause(3000, done);
     });
   });
   describe('Add First Name (shipping)', () => {
@@ -82,7 +112,7 @@ describe('Testing Home Page', () => {
   });
   describe('Add Zipcode (shipping)', () => {
     it('should add Zipcode to shipping', (done) => {
-      common.addShipZipcode(done);
+      prod.addShipZipcode(done);
     });
   });
   describe('Add Phone (shipping)', () => {
@@ -95,14 +125,24 @@ describe('Testing Home Page', () => {
       prod.addShipEmail(done);
     });
   });
-  describe('Click Continue to Payment', () => {
-    it('proceed to payment section', (done) => {
-      common.proceedToPayment(done);
+  describe('Click Continue to Billing', () => {
+    it('proceed to Billing section', (done) => {
+      common.proceedToBilling(done);
+    });
+  });
+  describe('pausing', () => {
+    it('should pause the test', (done) => {
+      common.pause(2000, done);
     });
   });
   describe('Confirm typed Shipping Address', () => {
     it('should confirm Shipping Address', (done) => {
       common.useTypedAddress(done);
+    });
+  });
+  describe('pausing', () => {
+    it('should pause the test', (done) => {
+      common.pause(5000, done);
     });
   });
   describe('Add Credit Card Owner', () => {
@@ -137,47 +177,27 @@ describe('Testing Home Page', () => {
   });
   describe('pausing', () => {
     it('should pause the test', (done) => {
-      common.pause(done);
-    });
-  });
-  describe('Verify Shipping Header', () => {
-    it('should verify Shipping header is correct', (done) => {
-      common.verifyShippingTitle(done);
+      common.pause(5000, done);
     });
   });
   describe('Verify Shipping Info', () => {
     it('should verify Shipping information is correct', (done) => {
-      prod.verifyShippingInfo(done);
+      prod.verifyShipToAddress(done);
     });
   });
-  describe('Verify Card Owner', () => {
-    it('should verify Card Owner is correct', (done) => {
-      prod.verifyPaymentName(done);
-    });
-  });
-  describe('Verify Payment Type', () => {
-    it('should verify Payment Type is correct', (done) => {
-      prod.verifyPaymentType(done);
-    });
-  });
-  describe('Verify Card Number', () => {
-    it('should verify Card Number is correct', (done) => {
-      prod.verifyPaymentNumber(done);
-    });
-  });
-  describe('Verify Card Expiration', () => {
-    it('should verify Card Expiration is correct', (done) => {
-      prod.verifyPaymentExpire(done);
+  describe('Verify Payment Info', () => {
+    it('should verify Payment information is correct', (done) => {
+      prod.verifyPaymentInfo(done);
     });
   });
   describe('Verify Billing Info', () => {
     it('should verify Billing information is correct', (done) => {
-      prod.verifyBillingInfo(done);
+      prod.verifyBillInfoSTA(done);
     });
   });
   describe('pausing', () => {
     it('should pause the test', (done) => {
-      common.pause(done);
+      common.pause(1000, done);
     });
   });
   describe('Submit Payment', () => {
@@ -187,17 +207,12 @@ describe('Testing Home Page', () => {
   });
   describe('pausing', () => {
     it('should pause the test', (done) => {
-      common.pause(done);
+      common.pause(7500, done);
     });
   });
-  describe('Confirm Order Error', () => {
-    it('should confirm an Order error is displayed', (done) => {
-      common.verifyOrderError(done);
-    });
-  });
-  describe('Get Screenshot', () => {
-    it('should take a screenshot of the confirm page', (done) => {
-      common.getScreenshot(done);
+  describe('Confirm Order', () => {
+    it('should confirm an Order was placed', (done) => {
+      prod.verifyOrderError(done);
     });
   });
   after((done) => {

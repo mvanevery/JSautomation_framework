@@ -607,8 +607,8 @@ module.exports = {
   },
 
 // REPORTING
-  getScreenshot: (done) => {
-    client.saveScreenshot(`checkout${current}.png`, done);
+  getScreenshot: (done, name) => {
+    client.saveScreenshot(`test/payless/screens/${name}_${current}.png`, done);
   },
 
   end: (done) => {

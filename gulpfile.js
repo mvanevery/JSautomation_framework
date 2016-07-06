@@ -1,7 +1,8 @@
 /**
- * From command line type gulp test-local --archon:PROJECTNAME (example: gulp test-local --archon:payless)
+ * From command line type gulp test-local --archon:PROJECTNAME --test:TESTNAME (example: gulp init-findInStore --archon:payless --test:findInStore)
  *
- * Using arguments will set a variable in the project that tells it which project you want to run tests for
+ * Using arguments will set a variable in the project that tells it which project you want to run tests for and which
+ * test to run
  *
  **/
 
@@ -10,6 +11,7 @@ const browserSync = require('browser-sync');
 const selenium = require('selenium-standalone');
 const mocha = require('gulp-mocha');
 const project = require('./core/projects/config').project;
+const test = require('./core/projects/config').test;
 
 const getTask = function (task) {
    return require(`./gulp-tasks/${project}/${task}`)(gulp, mocha);
@@ -64,49 +66,8 @@ gulp.task('selenium-start', function (done) {
   });
 });
 
-gulp.task('findInStore', ['serve:test', 'selenium'], getTask('findInStore'));
-gulp.task('findStore', ['serve:test', 'selenium'], getTask('findStore'));
-gulp.task('findItem', ['serve:test', 'selenium'], getTask('findItem'));
-gulp.task('e2e-guest', ['serve:test', 'selenium'], getTask('e2e-guest'));
-gulp.task('e2e-prod', ['serve:test', 'selenium'], getTask('e2e-prod'));
-gulp.task('e2e-return', ['serve:test', 'selenium'], getTask('e2e-return'));
+gulp.task(`${test}`, ['serve:test', 'selenium'], getTask(`${test}`));
 
-gulp.task('initiate-find-in-store', ['findInStore'], function () {
-  terminateProcess();
-});
-
-gulp.task('init-find-store', ['findInStore'], function () {
-  terminateProcess();
-});
-
-gulp.task('init-find-item', ['findItem'], function () {
-  terminateProcess();
-});
-
-gulp.task('init-find-a-store', ['findStore'], function () {
-  terminateProcess();
-});
-
-gulp.task('init-find-item', ['findItem'], function () {
-  terminateProcess();
-});
-
-gulp.task('init-find-in-store', ['findInStore'], function () {
-  terminateProcess();
-});
-
-gulp.task('init-e2e-return-user', ['e2e-return'], function () {
-  terminateProcess();
-});
-
-gulp.task('init-e2e-guest-user', ['e2e-guest'], function () {
-  terminateProcess();
-});
-
-gulp.task('init-e2e-prod-test', ['e2e-prod'], function () {
-  terminateProcess();
-});
-
-gulp.task('init-e2e-return', ['e2e-return'], function () {
+gulp.task(`initiate-${test}`, [`${test}`], function () {
   terminateProcess();
 });

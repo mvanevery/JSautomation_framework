@@ -1,4 +1,4 @@
-const common = require('../core/projects/concierge/helpers/common');
+const common = require('../../core/projects/concierge/helpers/common');
 
 // common.closeBrowser();
 

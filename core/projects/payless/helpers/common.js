@@ -1,5 +1,5 @@
-const client = require('../../core/client').client;
-const project = require('../projects/config').project;
+const client = require('../../../../core/client').client;
+const project = require('../../../projects/config').project;
 const config = require(`../projects/${project}/config`);
 const expect = require('chai').expect;
 const assert = require('chai').assert;

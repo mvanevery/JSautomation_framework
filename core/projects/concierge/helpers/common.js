@@ -1,5 +1,5 @@
-const client = require('../../core/client').client;
-const project = require('../../projects/config').project;
+const client = require('../../../../core/client').client;
+const project = require('../../../projects/config').project;
 const config = require(`../projects/${project}/config`);
 
 module.exports = {
@@ -75,6 +75,7 @@ module.exports = {
 
   verifyLoginScreen(done) {
     if (client.isVisible(config.helpers.img_logo, done)) {
+      console.log('Not sure what this should do here');
     } else {
       console.log('ERROR: The provision failed to reach the Login screen.');
     }

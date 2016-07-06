@@ -1,4 +1,4 @@
-const common = require('../core/projects/concierge/helpers/common');
+const common = require('../../core/projects/concierge/helpers/common');
 
 describe('Smoke Test: Provisioning', () => {
   before((done) => {
@@ -11,7 +11,7 @@ describe('Smoke Test: Provisioning', () => {
       common.enterProvisionTalbots(done);
     });
   });
-  describe('Pausing', (done) => {
+  describe('Pausing', () => {
     it('Should pause the test for 5 seconds', (done) => {
       common.pause(done);
     });

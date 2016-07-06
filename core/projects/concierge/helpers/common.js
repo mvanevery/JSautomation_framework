@@ -1,18 +1,18 @@
-const client = require('../../client').client;
+const client = require('../../core/client').client;
 const project = require('../../projects/config').project;
-const config = require(`../../projects/${project}/config`);
+const config = require(`../projects/${project}/config`);
 
 module.exports = {
 
-  mobileView: function (done) {
+  mobileView(done) {
     client.setViewportSize({
       height: 768,
       width: 1024
     }, true).then(done);
   },
 
-  openBrowser: function (done) {
-    client.init().url(config.routes.baseUrl).then(function () {
+  openBrowser(done) {
+    client.init().url(config.routes.baseUrl).then(() => {
       client.setViewportSize({
         height: 768,
         width: 1024
@@ -20,40 +20,40 @@ module.exports = {
     });
   },
 
-  closeBrowser: function (done) {
+  closeBrowser(done) {
     if (client.exists) {
       client.closeBrowser(done);
     }
   },
 
-  pause: function (done) {
+  pause(done) {
     client.pause(5000, done);
   },
 
-  enterProvisionBurberry: function (done) {
+  enterProvisionBurberry(done) {
     if (client.isVisible(config.helpers.fld_provision, done)) {
       client.setValue(config.helpers.fld_provision, config.helpers.txt_provisionKey_burberry)
-        .then(function() {
+        .then(() => {
           client.click(config.helpers.btn_send);
-        })
+        });
     } else {
       console.log('Provision Key field is not available.');
     }
   },
 
-  enterProvisionTalbots: function (done) {
+  enterProvisionTalbots(done) {
     if (client.isVisible(config.helpers.fld_provision, done)) {
       client.setValue(config.helpers.fld_provision, config.helpers.txt_provisionKey_talbots)
-        .then(function() {
+        .then(() => {
           client.click(config.helpers.btn_send);
-        })
+        });
     } else {
       console.log('ERROR: Provision Key field is not available.');
     }
   },
 
-  deprovision: function (done) {
-    client.url("localhost:3000/provision");
+  deprovision(done) {
+    client.url('localhost:3000/provision');
     // client.waitForVisible(config.helpers.lnk_deprovision, 5000);
     // if (client.isVisible(config.helpers.lnk_deprovision)) {
     // 	client.click(config.helpers.lnk_deprovision);
@@ -63,7 +63,7 @@ module.exports = {
     done();
   },
 
-  verifyProvisionScreen: function (done) {
+  verifyProvisionScreen(done) {
     // expect(config.helpers.txt_title_blackbook).to.exist;
     // chai.expect('return config.helpers.img_nav_logo').exec.to.exist;
     // if (client.isVisible(config.helpers.fld_provision)) {
@@ -73,38 +73,38 @@ module.exports = {
     done();
   },
 
-  verifyLoginScreen: function (done) {
+  verifyLoginScreen(done) {
     if (client.isVisible(config.helpers.img_logo, done)) {
     } else {
       console.log('ERROR: The provision failed to reach the Login screen.');
     }
   },
 
-  loginSsales: function (done) {
+  loginSsales(done) {
     if (client.isVisible('basic-form-input-email', done)) {
       client.setValue(config.helpers.fld_user, config.helpers.txt_ssales_user)
-        .then(function() {
+        .then(() => {
           client.setValue(config.helpers.fld_password, config.helpers.txt_ssales_pass)
-            .then(function () {
+            .then(() => {
               client.click(config.helpers.btn_signIn);
-            })
-        })
+            });
+        });
     } else {
       console.log('	ERROR: Login page is not available.');
     }
   },
 
-  verifyConciergeScreen: function (done) {
+  verifyConciergeScreen(done) {
     client.waitForVisible(config.helpers.img_nav_logo, 5000, done);
     if (client.isVisible(config.helpers.img_nav_logo)) {
-      console.log('	PASS: The Concierge screen is visible.')
+      console.log('	PASS: The Concierge screen is visible.');
     } else {
       console.log('	ERROR: The user failed to reach the Concierge screen.');
     }
     done();
   },
 
-  navDashboard: function (done) {
+  navDashboard(done) {
     client.waitForVisible(config.helpers.img_nav_dashboard, 5000);
     if (client.isVisible(config.helpers.img_nav_dashboard)) {
       client.click(config.helpers.img_nav_dashboard);
@@ -120,7 +120,7 @@ module.exports = {
     done();
   },
 
-  navPlanner: function (done) {
+  navPlanner(done) {
     client.waitForVisible(config.helpers.img_nav_planner, 5000);
     if (client.isVisible(config.helpers.img_nav_planner)) {
       client.click(config.helpers.img_nav_planner);
@@ -136,7 +136,7 @@ module.exports = {
     done();
   },
 
-  navBlackbook: function (done) {
+  navBlackbook(done) {
     client.waitForVisible(config.helpers.img_nav_blackbook, 5000);
     if (client.isVisible(config.helpers.img_nav_blackbook)) {
       client.click(config.helpers.img_nav_blackbook);
@@ -152,19 +152,19 @@ module.exports = {
     done();
   },
 
-  searchCustomer: function (done) {
+  searchCustomer(done) {
     client.waitForVisible(config.helpers.fld_lastName, 5000);
     if (client.isVisible(config.helpers.fld_lastName, done)) {
       client.click(config.helpers.fld_lastName)
-        .then(function() {
-          client.setValue(config.helpers.fld_lastName, 'McClellan')
+        .then(() => {
+          client.setValue(config.helpers.fld_lastName, 'McClellan');
         });
     } else {
       console.log('	ERROR: Last Name field is not available.');
     }
   },
 
-  selectCustomer: function (done) {
+  selectCustomer(done) {
     client.waitForVisible(config.helpers.txt_Customer_Ryan, 5000);
     if (client.isVisible(config.helpers.txt_Customer_Ryan)) {
       client.click(config.helpers.txt_Customer_Ryan);
@@ -181,7 +181,7 @@ module.exports = {
   },
 
 
-  addAppointmentForm_fromPlanner: function (done) {
+  addAppointmentForm_fromPlanner(done) {
     client.waitForVisible(config.helpers.img_nav_planner, 5000);
     if (client.isVisible(config.helpers.btn_create)) {
       client.click(config.helpers.btn_create);
@@ -197,25 +197,25 @@ module.exports = {
     done();
   },
 
-  addAppointment_05012016: function (done) {
+  addAppointment_05012016(done) {
     client.click(config.helpers.cmb_type)
-      .then(function() {
-        client.setValue(config.helpers.cmb_type, 'Appointment')
+      .then(() => {
+        client.setValue(config.helpers.cmb_type, 'Appointment');
       });
     client.pause(2000);
     client.click(config.helpers.txt_subject)
-      .then(function() {
-        client.setValue(config.helpers.txt_subject, 'Test Appointment for 05/01/2016.')
+      .then(() => {
+        client.setValue(config.helpers.txt_subject, 'Test Appointment for 05/01/2016.');
       });
     client.pause(2000);
     client.click(config.helpers.date_start)
-      .then(function() {
-        client.setValue(config.helpers.date_start, '05012016')
+      .then(() => {
+        client.setValue(config.helpers.date_start, '05012016');
       });
     client.pause(2000);
     client.click(config.helpers.date_end)
-      .then(function() {
-        client.setValue(config.helpers.date_start, '05012016')
+      .then(() => {
+        client.setValue(config.helpers.date_start, '05012016');
       });
     client.pause(2000);
     // client.click(config.helpers.cmb_status)
@@ -224,8 +224,8 @@ module.exports = {
     // 	});
     // client.pause(2000);
     client.click(config.helpers.cmb_priority)
-      .then(function() {
-        client.selectByValue(config.helpers.cmb_priority, 'High')
+      .then(() => {
+        client.selectByValue(config.helpers.cmb_priority, 'High');
       });
     client.pause(2000);
     client.click(config.helpers.btn_save);
@@ -233,7 +233,7 @@ module.exports = {
     done();
   },
 
-  end: function (done) {
+  end(done) {
     client.end();
     done();
   }

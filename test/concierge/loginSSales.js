@@ -1,3 +1,11 @@
+/**
+ * ios_webkit_debug_proxy -c dff8ad9bb716a56766d98b2232c3f541ba9bb796:27753 -d (start proxy)
+ *
+ * appium (start server)
+ *
+ * run test with appium flag for client
+ */
+
 const common = require('../../core/projects/concierge/helpers/common');
 
 describe('Smoke Test: Login as "ssales"', () => {

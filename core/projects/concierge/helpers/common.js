@@ -1,7 +1,7 @@
 const clientType = require('../../../projects/config').client;
 const client = require(`../../../../core/clients/${clientType}`).client;
 const project = require('../../../projects/config').project;
-const config = require(`../projects/${project}/config`);
+const config = require(`../../../projects/${project}/config`);
 
 module.exports = {
 
@@ -13,12 +13,7 @@ module.exports = {
   },
 
   openBrowser(done) {
-    client.init().url(config.routes.baseUrl).then(() => {
-      client.setViewportSize({
-        height: 768,
-        width: 1024
-      }, true).then(done);
-    });
+    client.init(done);
   },
 
   closeBrowser(done) {

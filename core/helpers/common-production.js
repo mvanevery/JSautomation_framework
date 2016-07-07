@@ -292,15 +292,14 @@ module.exports = {
         .then(() => {
           client.getText('div.left-column > div.checkout-error')
             .then((error) => {
-              if (error === config.helpers.orderError) {
-                console.log(`${error} Order Failed!`);
-              } else {
-                console.log('There was no error');
+              try {
+                assert.equal(config.helpers.orderError, error, 'The expected value was not equal to the text');
+                done();
+              } catch (err) {
+                done(err);
               }
             });
         });
-    } else {
-      console.log('There was no error');
     }
   },
 

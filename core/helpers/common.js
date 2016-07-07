@@ -31,20 +31,33 @@ module.exports = {
     }
   },
   searchZipcode: (done, zipcode) => {
-    if (client.isVisible('#js-find-store-input', done)) {
-      client.setValue('#js-find-store-input', zipcode)
+    if (client.isVisible('//input[@id="js-find-store-input"]', done)) {
+      client.setValue('//input[@id="js-find-store-input"]', zipcode)
         .then(() => {
           client.click('#js-find-store-button');
         });
     } else {
-      if (client.isVisible('#zip', done)) {
-        client.setValue('#zip', zipcode)
-          .then(() => {
-            client.click('button.find-stores');
-          });
+      console.log('no zipcode search available');
+    }
+  },
+  searchZipcodeFAS: (done, zipcode) => {
+    if (client.isVisible('input#zip', done)) {
+      client.setValue('input#zip', zipcode)
+        .then(() => {
+          client.click('button.find-stores');
+        });
       } else {
-        console.log('no zipcode search available');
+        console.log('No button to click');
       }
+  },
+  searchZipcodeFIS: (done, zipcode) => {
+    if (client.isVisible('input#zip', done)) {
+      client.setValue('input#zip', zipcode)
+        .then(() => {
+          client.click('#find-in-stores');
+        });
+    } else {
+      console.log('No button to click');
     }
   },
   goTo: (done) => {
@@ -129,8 +142,9 @@ module.exports = {
       client.scroll('span.mobile-distance');
       client.getText('span.address')
         .then((text) => {
+          //console.log('test');
           const response = text.join(',').includes(config.helpers.storeAddress);
-          // console.log(response); // This will be a boolean value (true/false) that will tell us whether this string is in the array
+           //console.log(response); // This will be a boolean value (true/false) that will tell us whether this string is in the array
           try {
             assert.isTrue(response, 'The expected value was not equal to the text');
           } catch (err) {
@@ -163,10 +177,10 @@ module.exports = {
   },
 
   addToBag: (done) => {
-    if (client.isVisible('button.add-to-cart', done)) {
-      client.scroll('button.add-to-cart')
+    if (client.isVisible('#js-addtocart-upper', done)) {
+      client.scroll('#js-addtocart-upper')
         .then(() => {
-          client.click('button.add-to-cart');
+          client.click('#js-addtocart-upper');
         });
     }
   },

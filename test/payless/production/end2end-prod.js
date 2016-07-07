@@ -220,7 +220,17 @@ describe('Testing Home Page', () => {
       prod.verifyOrderError(done);
     });
   });
-  after((done) => {
-    common.end(done);
+  describe('pausing', () => {
+    it('should pause the test', (done) => {
+      common.pause(10000, done);
+    });
   });
+  describe('Screenshot the results', () => {
+    it('should take a screenshot of the results', (done) => {
+      common.getScreenshot(done, 'test');
+    });
+  });
+  //after((done) => {
+  //  common.end(done);
+  //});
 });

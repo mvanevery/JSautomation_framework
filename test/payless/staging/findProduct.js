@@ -34,6 +34,16 @@ describe('Testing Find A Product', () => {
       common.verifyItemNumber(done, '142898');
     });
   });
+  describe('pausing', () => {
+    it('should pause the test', (done) => {
+      common.pause(1000, done);
+    });
+  });
+  describe('Screenshot the results', () => {
+    it('should take a screenshot of the results', (done) => {
+      common.getScreenshot(done, 'test');
+    });
+  });
   // after((done) => {
   //  common.end(done);
   // });

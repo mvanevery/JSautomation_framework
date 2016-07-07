@@ -69,9 +69,19 @@ describe('Testing Find A Store', () => {
       common.pause(3000, done);
     });
   });
-  describe('Click Geolocation Button', () => {
-    it('should click the geolocation button', (done) => {
-      common.clickGeolocation(done);
+  describe('Search for Store using zipcode', () => {
+    it('should search for stores via Zipcode', (done) => {
+      common.searchZipcodeFIS(done, 33759);
+    });
+  });
+  describe('pausing', () => {
+    it('should pause the test', (done) => {
+      common.pause(10000, done);
+    });
+  });
+  describe('Verify Store Address', () => {
+    it('should verify the store address (this may take a while)', (done) => {
+      common.verifyStoreAddress(done);
     });
   });
   describe('pausing', () => {
@@ -79,9 +89,9 @@ describe('Testing Find A Store', () => {
       common.pause(5000, done);
     });
   });
-  describe('Verify Store Address', () => {
-    it('should verify the store address (this may take a while)', (done) => {
-      common.verifyStoreAddress(done);
+  describe('Screenshot the results', () => {
+    it('should take a screenshot of the results', (done) => {
+      common.getScreenshot(done, 'test');
     });
   });
   after((done) => {

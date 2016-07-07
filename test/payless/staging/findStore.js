@@ -19,14 +19,14 @@ describe('Testing Find A Store', () => {
       common.pause(5000, done);
     });
   });
-  describe('Click Geolocation Button', () => {
-    it('should click the geolocation button', (done) => {
-      common.clickGeolocation(done);
+  describe('Search for Store using zipcode', () => {
+    it('should search for stores via Zipcode', (done) => {
+      common.searchZipcodeFAS(done, 33759);
     });
   });
   describe('pausing', () => {
     it('should pause the test', (done) => {
-      common.pause(7500, done);
+      common.pause(3000, done);
     });
   });
   describe('Verify Store Address (this may take a while)', () => {

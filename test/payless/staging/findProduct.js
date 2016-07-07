@@ -1,4 +1,4 @@
-const common = require('../../../core/helpers/common');
+const common = require('../../../core/projects/payless/helpers/common');
 
 describe('Testing Find A Product', () => {
   before((done) => {
@@ -44,8 +44,8 @@ describe('Testing Find A Product', () => {
       common.getScreenshot(done, 'test');
     });
   });
-  // after((done) => {
-  //  common.end(done);
-  // });
+   after((done) => {
+    common.end(done);
+   });
 });
 

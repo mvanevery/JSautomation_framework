@@ -1,4 +1,4 @@
-const common = require('../../../core/helpers/common');
+const common = require('../../../core/projects/payless/helpers/common');
 
 describe('Testing End to End - Returning User: CC', () => {
   before((done) => {

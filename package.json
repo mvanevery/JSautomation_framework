@@ -2,9 +2,12 @@
   "name": "archon",
   "version": "0.1.0",
   "description": "Mad Mobile Automated Testing Framework",
-  "main": "/core/client.js",
+  "main": "/src/core/client.js",
   "scripts": {
-    "lint": "eslint core test --ext .js --ignore-path .gitignore --fix"
+    "lint": "eslint core test --ext .js --ignore-path .gitignore --fix",
+    "docs": "npm run create-docs && open docs/index.html",
+    "create-docs": "esdoc -c esdoc.json",
+    "create-tutorials": ""
   },
   "author": "Derick Warshaw",
   "license": "unlicensed",
@@ -12,6 +15,7 @@
     "appium": "^1.5.3",
     "browser-sync": "^2.11.1",
     "chai": "^3.4.1",
+    "esdoc": "^0.4.6",
     "eslint": "^2.12.0",
     "eslint-config-airbnb": "^9.0.1",
     "gulp": "^3.9.1",

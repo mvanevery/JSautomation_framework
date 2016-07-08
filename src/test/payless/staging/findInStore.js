@@ -1,6 +1,6 @@
 const common = require('../../../core/projects/payless/helpers/common');
 
-describe('Testing Find A Store', () => {
+describe('Testing Find In Store', () => {
   before((done) => {
     common.goTo(done);
   });

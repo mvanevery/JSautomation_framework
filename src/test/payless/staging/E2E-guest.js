@@ -1,7 +1,6 @@
 const common = require('../../../core/projects/payless/helpers/common');
-const prod = require('../../../core/projects/payless/helpers/common-production');
 
-describe('Testing Home Page', () => {
+describe('Testing End to End Guest', () => {
   before((done) => {
     common.goTo(done);
   });
@@ -87,17 +86,22 @@ describe('Testing Home Page', () => {
   });
   describe('Add First Name (shipping)', () => {
     it('should add first name to shipping', (done) => {
-      prod.addShipFirstName(done);
+      common.addShipFirstName(done);
     });
   });
   describe('Add Last Name (shipping)', () => {
     it('should add last name to shipping', (done) => {
-      prod.addShipLastName(done);
+      common.addShipLastName(done);
     });
   });
   describe('Add Address 1 (shipping)', () => {
     it('should add address 1 to shipping', (done) => {
-      prod.addShipAddress(done);
+      common.addShipAddress(done);
+    });
+  });
+  describe('Add Address 2 (shipping)', () => {
+    it('should add address 2 to shipping', (done) => {
+      common.addShipAddress2(done);
     });
   });
   describe('Add City (shipping)', () => {
@@ -112,22 +116,17 @@ describe('Testing Home Page', () => {
   });
   describe('Add Zipcode (shipping)', () => {
     it('should add Zipcode to shipping', (done) => {
-      prod.addShipZipcode(done);
-    });
-  });
-  describe('pausing', () => {
-    it('should pause the test', (done) => {
-      common.pause(2000, done);
+      common.addShipZipcode(done);
     });
   });
   describe('Add Phone (shipping)', () => {
     it('should add Phone to shipping', (done) => {
-      prod.addShipPhone(done);
+      common.addShipPhone(done);
     });
   });
   describe('Add Email (shipping)', () => {
     it('should add Email to shipping', (done) => {
-      prod.addShipEmail(done);
+      common.addShipEmail(done);
     });
   });
   describe('Click Continue to Billing', () => {
@@ -152,27 +151,27 @@ describe('Testing Home Page', () => {
   });
   describe('Add Credit Card Owner', () => {
     it('should add credit card owner name', (done) => {
-      prod.addCCName(done);
+      common.addCCName(done);
     });
   });
   describe('Add Credit Card Number', () => {
     it('should add credit card number', (done) => {
-      prod.addCCNumber(done);
+      common.addCCNumber(done);
     });
   });
   describe('Add Credit Card Expiration Month', () => {
     it('should add expiration month', (done) => {
-      prod.addCCExpMonth(done);
+      common.addCCExpMonth(done);
     });
   });
   describe('Add Credit Card Expiration Year', () => {
     it('should add expiration year', (done) => {
-      prod.addCCExpYear(done);
+      common.addCCExpYear(done);
     });
   });
   describe('Add Credit Card Security Code', () => {
     it('should add credit card security code', (done) => {
-      prod.addCCSecurity(done);
+      common.addCCSecurity(done);
     });
   });
   describe('Click the Review Order button', () => {
@@ -187,17 +186,17 @@ describe('Testing Home Page', () => {
   });
   describe('Verify Shipping Info', () => {
     it('should verify Shipping information is correct', (done) => {
-      prod.verifyShipToAddress(done);
+      common.verifyShipToAddress(done);
     });
   });
   describe('Verify Payment Info', () => {
     it('should verify Payment information is correct', (done) => {
-      prod.verifyPaymentInfo(done);
+      common.verifyPaymentInfo(done);
     });
   });
   describe('Verify Billing Info', () => {
     it('should verify Billing information is correct', (done) => {
-      prod.verifyBillInfoSTA(done);
+      common.verifyBillInfoSTA(done);
     });
   });
   describe('pausing', () => {
@@ -217,12 +216,7 @@ describe('Testing Home Page', () => {
   });
   describe('Confirm Order', () => {
     it('should confirm an Order was placed', (done) => {
-      prod.verifyOrderError(done);
-    });
-  });
-  describe('pausing', () => {
-    it('should pause the test', (done) => {
-      common.pause(10000, done);
+      common.verifyConfirmOrder(done);
     });
   });
   describe('Screenshot the results', () => {
@@ -230,7 +224,7 @@ describe('Testing Home Page', () => {
       common.getScreenshot(done, 'test');
     });
   });
-  //after((done) => {
-  //  common.end(done);
-  //});
+  after((done) => {
+    common.end(done);
+  });
 });

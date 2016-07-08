@@ -62,7 +62,7 @@ describe('Testing End to End Production', () => {
   });
   describe('pausing', () => {
     it('should pause the test', (done) => {
-      common.pause(2000, done);
+      common.pause(5000, done);
     });
   });
   describe('Proceed to Cart', () => {
@@ -147,7 +147,7 @@ describe('Testing End to End Production', () => {
   });
   describe('pausing', () => {
     it('should pause the test', (done) => {
-      common.pause(5000, done);
+      common.pause(7500, done);
     });
   });
   describe('Add Credit Card Owner', () => {
@@ -215,9 +215,14 @@ describe('Testing End to End Production', () => {
       common.pause(7500, done);
     });
   });
+  //describe('Confirm Order', () => {
+  //  it('should confirm an Order was placed', (done) => {
+  //    prod.verifyOrderError(done);
+  //  });
+  //});
   describe('Confirm Order', () => {
-    it('should confirm an Order was placed', (done) => {
-      prod.verifyOrderError(done);
+    it('should confirm atn Order was placed', (done) => {
+      common.verifyConfirmOrder(done);
     });
   });
   describe('pausing', () => {

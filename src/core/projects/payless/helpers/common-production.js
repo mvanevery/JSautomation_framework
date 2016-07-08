@@ -156,7 +156,6 @@ module.exports = {
         .then((text) => {
           try {
             assert.sameMembers(config.helpers.shipToStoreAddress, text.split('\n'), 'The expected value was not equal to the text');
-            done();
           } catch (err) {
             done(err);
           }
@@ -169,7 +168,6 @@ module.exports = {
         .then((text) => {
           try {
             assert.sameMembers(config.helpers.shipInfoFake, text.split('\n'), 'The expected value was not equal to the text');
-            done();
           } catch (err) {
             done(err);
           }
@@ -182,7 +180,6 @@ module.exports = {
         .then((text) => {
           try {
             assert.sameMembers(config.helpers.payInfoFake, text.split('\n'), 'The expected value was not equal to the text');
-            done();
           } catch (err) {
             done(err);
           }
@@ -247,7 +244,6 @@ module.exports = {
         .then((text) => {
           try {
             assert.sameMembers(config.helpers.billInfoSTSFake, text.split('\n'), 'The expected value was not equal to the text');
-            done();
           } catch (err) {
             done(err);
           }
@@ -260,7 +256,6 @@ module.exports = {
         .then((text) => {
           try {
             assert.sameMembers(config.helpers.billInfoSTAFake, text.split('\n'), 'The expected value was not equal to the text');
-            done();
           } catch (err) {
             done(err);
           }
@@ -276,8 +271,8 @@ module.exports = {
     }
   },
   verifyConfirmOrder: (done) => {
-    if (client.isVisible('//div.order > div.check-mark > i.icon', done)) {
-      client.getText('//div.modal.order-confirmation > div.body > div.order > span.success')
+    if (client.isVisible('//div.modal.order-confirmation > div.body > div.order > div.check-mark > i.icon', done)) {
+      client.getText('//div.modal.order-confirmation > div.body > div.order > span.text')
         .then((status) => {
           if (status === 'SUCCESS!') {
             console.log(`${status} = Order Status`);

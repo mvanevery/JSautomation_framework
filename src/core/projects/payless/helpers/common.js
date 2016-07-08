@@ -178,10 +178,10 @@ module.exports = {
   },
 
   addToBag: (done) => {
-    if (client.isVisible('#js-addtocart-upper', done)) {
-      client.scroll('#js-addtocart-upper')
+    if (client.isVisible('button.add-to-cart', done)) {
+      client.scroll('button.add-to-cart')
         .then(() => {
-          client.click('#js-addtocart-upper');
+          client.click('button.add-to-cart');
         });
     }
   },
@@ -472,7 +472,6 @@ module.exports = {
         .then((text) => {
           try {
             assert.sameMembers(config.helpers.shipToStoreAddress, text.split('\n'), 'The expected value was not equal to the text');
-            done();
           } catch (err) {
             done(err);
           }
@@ -485,7 +484,6 @@ module.exports = {
         .then((text) => {
           try {
             assert.sameMembers(config.helpers.shipInfoReal, text.split('\n'), 'The expected value was not equal to the text');
-            done();
           } catch (err) {
             done(err);
           }
@@ -498,7 +496,6 @@ module.exports = {
         .then((text) => {
           try {
             assert.sameMembers(config.helpers.payInfo, text.split('\n'), 'The expected value was not equal to the text');
-            done();
           } catch (err) {
             done(err);
           }
@@ -550,7 +547,6 @@ module.exports = {
         .then((text) => {
           try {
             assert.equal(config.helpers.payExpires, text, 'The expected value was not equal to the text');
-            done();
           } catch (err) {
             done(err);
           }
@@ -563,7 +559,6 @@ module.exports = {
         .then((text) => {
           try {
             assert.sameMembers(config.helpers.billInfoSTS, text.split('\n'), 'The expected value was not equal to the text');
-            done();
           } catch (err) {
             done(err);
           }
@@ -592,13 +587,13 @@ module.exports = {
     }
   },
   verifyConfirmOrder: (done) => {
-    if (client.isVisible('//div.order > div.check-mark > i.icon', done)) {
-      client.getText('//div.modal.order-confirmation > div.body > div.order > span.success')
+    if (client.isVisible('//div.modal.order-confirmation > div.body > div.order > div.check-mark > i.icon', done)) {
+      client.getText('//div.modal.order-confirmation > div.body > div.order > span.text')
         .then((status) => {
-          if (status === 'SUCCESS!') {
-            console.log(`${status} = Order Status`);
-          } else {
-            console.log('Did not complete');
+          try {
+            assert.equal(status, config.helpers.orderText, 'The expected value was not equal to the text');
+          } catch (err) {
+            done(err);
           }
         });
     }
@@ -609,10 +604,11 @@ module.exports = {
         .then(() => {
           client.getText('div.left-column > div.checkout-error')
             .then((error) => {
-              if (error === config.helpers.orderError) {
-                console.log(`${error} Order Failed!`);
-              } else {
-                console.log('There was no error');
+              try {
+                assert.equal(error, config.helpers.orderError, 'The expected value was not equal to the text');
+                done();
+              } catch (err) {
+                done(err);
               }
             });
         });

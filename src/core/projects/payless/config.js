@@ -46,6 +46,7 @@ module.exports = {
     payTypeFake: 'Visa',
     payNumberFake: '************1111',
     payExpiresFake: 'Exp. January 2018',
+    orderText: 'Your order has been placed',
     orderError: 'Please verify your payment information and try again. (CS:481)',
     shipToStoreAddress: ['Pick Up Your Items at:',
       '346 WESTSHORE PLAZA',

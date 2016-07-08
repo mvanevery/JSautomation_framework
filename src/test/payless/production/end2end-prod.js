@@ -1,7 +1,7 @@
 const common = require('../../../core/projects/payless/helpers/common');
 const prod = require('../../../core/projects/payless/helpers/common-production');
 
-describe('Testing Home Page', () => {
+describe('Testing End to End Production', () => {
   before((done) => {
     common.goTo(done);
   });

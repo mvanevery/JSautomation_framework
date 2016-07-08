@@ -72,12 +72,22 @@ describe('Testing End to End Production', () => {
   });
   describe('pausing', () => {
     it('should pause the test', (done) => {
-      common.pause(5000, done);
+      common.pause(10000, done);
     });
   });
   describe('Proceed to Checkout', () => {
     it('should proceed to Checkout from Cart', (done) => {
       common.proceedToCheckoutCart(done);
+    });
+  });
+  describe('pausing', () => {
+    it('should pause the test', (done) => {
+      common.pause(3000, done);
+    });
+  });
+  describe('Screenshot the results', () => {
+    it('should take a screenshot of the results', (done) => {
+      common.getScreenshot(done, 'test');
     });
   });
   describe('pausing', () => {
@@ -232,10 +242,10 @@ describe('Testing End to End Production', () => {
   });
   describe('Screenshot the results', () => {
     it('should take a screenshot of the results', (done) => {
-      common.getScreenshot(done, 'test');
+      common.getScreenshot(done, 'tested');
     });
   });
-  //after((done) => {
-  //  common.end(done);
-  //});
+  after((done) => {
+    common.end(done);
+  });
 });

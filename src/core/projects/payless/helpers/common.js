@@ -2,6 +2,7 @@ const clientType = require('../../../projects/config').client;
 const client = require(`../../../../core/clients/${clientType}`).client;
 const project = require('../../../projects/config').project;
 const config = require(`../../../projects/${project}/config`);
+const home = require(`../../../projects/${project}/helpers/home`);
 const expect = require('chai').expect;
 const assert = require('chai').assert;
 const date = new Date();
@@ -47,9 +48,9 @@ module.exports = {
         .then(() => {
           client.click('button.find-stores');
         });
-      } else {
-        console.log('No button to click');
-      }
+    } else {
+      console.log('No button to click');
+    }
   },
   searchZipcodeFIS: (done, zipcode) => {
     if (client.isVisible('input#zip', done)) {
@@ -68,8 +69,8 @@ module.exports = {
 // HOMEPAGE/MENU FUNCTIONALITY
 
   openMenu: (done) => {
-    if (client.isVisible('div.slider-container > a > img', done)) {
-      client.click('a.menu-trigger > i.icon');
+    if (client.isVisible(home.helpers.menu, done)) {
+      client.click(home.helpers.menu);
     } else {
       console.log('Menu not available');
     }
@@ -84,20 +85,20 @@ module.exports = {
 
   },
   closeMenu: (done) => {
-    if (client.isVisible('a.close > i.icon', done)) {
-      client.click('a.close > i.icon', done);
+    if (client.isVisible(home.helpers.menuClose, done)) {
+      client.click(home.helpers.menuClose, done);
     } else {
       console.log('Menu not open');
     }
   },
   searchItem: (done, pauseTime, search) => {
-    const searchData = (search || config.helpers.search);
-    if (client.isVisible('div.app-sub-header > form#search-form div.input > input', done)) {
-      client.click('//form[@id="search-form"]/div/input')
+    const searchData = (search || home.helpers.searchInfo);
+    if (client.isVisible(home.helpers.searchField, done)) {
+      client.click(home.helpers.searchBox)
         .then(() => {
-          client.setValue('//form[@id="search-form"]/div/input', searchData)
+          client.setValue(home.helpers.searchBox, searchData)
             .then(() => {
-              client.click('button[type="submit"]');
+              client.click(home.helpers.searchButton);
               // .then (() => {
               //  pause(pauseTime)
               // });
@@ -106,7 +107,7 @@ module.exports = {
     }
   },
   pickCategory: (done) => {
-    if (client.isVisible('a.close > i.icon', done)) {
+    if (client.isVisible(home.helpers.menuClose, done)) {
       client.click(config.helpers.men);
     } else {
       console.log('Menu not open');
@@ -114,7 +115,7 @@ module.exports = {
   },
 
   pickStyle: (done) => {
-    if (client.isVisible('li.active.active-leaf > a.title', done)) {
+    if (client.isVisible(home.helpers.stylesTitle, done)) {
       client.click(config.helpers.catWomenAcc);
     } else {
       console.log('Menu not open');
@@ -124,8 +125,8 @@ module.exports = {
 // FIND A STORE/FIND IN STORE FUNCTIONALITY
 
   openFindAStore: (done) => {
-    if (client.isVisible('div.slider-container > a > img', done)) {
-      client.click('a.location > i.icon');
+    if (client.isVisible(home.helpers.heroBanner, done)) {
+      client.click(home.helpers.locationIcon);
     } else {
       console.log('Find A Store not available');
     }
@@ -145,7 +146,7 @@ module.exports = {
         .then((text) => {
           //console.log('test');
           const response = text.join(',').includes(config.helpers.storeAddress);
-           //console.log(response); // This will be a boolean value (true/false) that will tell us whether this string is in the array
+          //console.log(response); // This will be a boolean value (true/false) that will tell us whether this string is in the array
           try {
             assert.isTrue(response, 'The expected value was not equal to the text');
           } catch (err) {
@@ -587,8 +588,8 @@ module.exports = {
     }
   },
   verifyConfirmOrder: (done) => {
-    if (client.isVisible('//div.modal.order-confirmation > div.body > div.order > div.check-mark > i.icon', done)) {
-      client.getText('//div.modal.order-confirmation > div.body > div.order > span.text')
+    if (client.isVisible('/html/body/div[1]/div/div/div[2]/div/div/div/div/div[1]/div/span[2]', done)) {
+      client.getText('/html/body/div[1]/div/div/div[2]/div/div/div/div/div[1]/div/span[2]')
         .then((status) => {
           try {
             assert.equal(status, config.helpers.orderText, 'The expected value was not equal to the text');

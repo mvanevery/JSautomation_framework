@@ -1,6 +1,6 @@
 const common = require('../../../core/projects/payless/helpers/common');
 
-describe('Testing Home Page', () => {
+describe('Testing End to End Guest', () => {
   before((done) => {
     common.goTo(done);
   });

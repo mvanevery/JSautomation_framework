@@ -2,9 +2,9 @@ const mochaOptions = {
   timeout: '50000',
   reporter: 'mochawesome',
   reporterOptions: {
-    reportDir: 'test',
+    reportDir: './src/test/payless/reports',
     reportName: 'report',
-    reportTitle: 'awesome',
+    reportTitle: 'Find Item',
     inlineAssets: true
   }
 };
@@ -16,7 +16,7 @@ function handleError(err) {
 
 module.exports = function (gulp, mocha) {
   return function () {
-    return gulp.src('test/payless/staging/findProduct.js', {read: false})
+    return gulp.src('./src/test/payless/staging/findProduct.js', {read: false})
       .pipe(mocha(mochaOptions).on("error", handleError));
   }
 };

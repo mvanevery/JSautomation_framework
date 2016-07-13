@@ -3,10 +3,14 @@ const client = require(`../../../../core/clients/${clientType}`).client;
 const project = require('../../../projects/config').project;
 const config = require(`../../../projects/${project}/config`);
 const home = require(`../../../projects/${project}/helpers/home`);
+const pdp = require(`../../../projects/${project}/helpers/pdp`);
+const plp = require(`../../../projects/${project}/helpers/plp`);
+const store = require(`../../../projects/${project}/helpers/store-locator`);
 const expect = require('chai').expect;
 const assert = require('chai').assert;
 const date = new Date();
 const current = `${date.getMonth()}-${date.getDate()}-${date.getFullYear()}-${date.getHours()}-${date.getMinutes()}-${date.getSeconds()}`;
+
 
 module.exports = {
   mobileView: (done) => {
@@ -32,7 +36,7 @@ module.exports = {
       console.log('no geolocation available');
     }
   },
-  searchZipcode: (done, zipcode) => {
+  searchZipcodeCheckout: (done, zipcode) => {
     if (client.isVisible('//input[@id="js-find-store-input"]', done)) {
       client.setValue('//input[@id="js-find-store-input"]', zipcode)
         .then(() => {
@@ -43,20 +47,20 @@ module.exports = {
     }
   },
   searchZipcodeFAS: (done, zipcode) => {
-    if (client.isVisible('input#zip', done)) {
-      client.setValue('input#zip', zipcode)
+    if (client.isVisible(store.helpers.findStoreZipcode, done)) {
+      client.setValue(store.helpers.findStoreZipcode, zipcode)
         .then(() => {
-          client.click('button.find-stores');
+          client.click(store.helpers.zipcodeFASButton);
         });
     } else {
       console.log('No button to click');
     }
   },
   searchZipcodeFIS: (done, zipcode) => {
-    if (client.isVisible('input#zip', done)) {
-      client.setValue('input#zip', zipcode)
+    if (client.isVisible(store.helpers.findStoreZipcode, done)) {
+      client.setValue(store.helpers.findStoreZipcode, zipcode)
         .then(() => {
-          client.click('#find-in-stores');
+          client.click(store.helpers.zipcodeFISButton);
         });
     } else {
       console.log('No button to click');
@@ -132,17 +136,17 @@ module.exports = {
     }
   },
   openFindInStore: (done) => {
-    if (client.isVisible('button.add-to-cart', done)) {
-      client.click('li.mobile-locate.js-findinstore > a > h5');
+    if (client.isVisible(pdp.helpers.addItem, done)) {
+      client.click(store.helpers.openFIS);
     } else {
       console.log('select a size to enable Find In Store');
     }
   },
 
   verifyStoreAddress: (done) => {
-    if (client.isVisible('button.map', done)) {
-      client.scroll('span.mobile-distance');
-      client.getText('span.address')
+    if (client.isVisible(store.helpers.locationMap, done)) {
+      client.scroll(store.helpers.locationDistance);
+      client.getText(store.helpers.locationAddress)
         .then((text) => {
           //console.log('test');
           const response = text.join(',').includes(config.helpers.storeAddress);
@@ -164,33 +168,42 @@ module.exports = {
       client.click('div.details > div.mobile-brand > a.name > h3');
     }
   },
+  //filterItems:
+
+  //sortItems:
+
+  //clickImage:
+
+  //clickColorSwatch:
+
+
 
 // PDP FUNCTIONALITY
 
-  selectSize: (done) => {
-    if (client.isVisible('tbody > tr > td.size-button > span', done)) {
-      client.scroll('tbody > tr > td.size-button > span')
+  selectSize: (done, size) => {
+    if (client.isVisible(pdp.helpers.sizeGrid, done)) {
+      client.scroll(pdp.helpers.sizeGrid)
         .then(() => {
-          client.click('span=9');
+          client.click(`${pdp.helpers.actualSize}${size}`);
         });
     } else {
-      client.scroll('button.add-to-cart');
+      client.scroll(pdp.helpers.addItem);
     }
   },
 
   addToBag: (done) => {
-    if (client.isVisible('button.add-to-cart', done)) {
-      client.scroll('button.add-to-cart')
+    if (client.isVisible(pdp.helpers.addItem, done)) {
+      client.scroll(pdp.helpers.addItem)
         .then(() => {
-          client.click('button.add-to-cart');
+          client.click(pdp.helpers.addItem);
         });
     }
   },
   proceedToCartModal: (done) => {
-    if (client.isVisible('button.btn-checkout', done)) {
-      client.scroll('button.btn-checkout')
+    if (client.isVisible(pdp.helpers.gotoCheckout, done)) {
+      client.scroll(pdp.helpers.gotoCheckout)
         .then(() => {
-          client.click('button.btn-checkout');
+          client.click(pdp.helpers.gotoCheckout);
         });
     }
   },
@@ -209,11 +222,10 @@ module.exports = {
   },
 
   verifyItemTitle: (done, expected) => {
-    if (client.isVisible('h1.title')) {
-      client.getText('h1.title').then((title) => {
+    if (client.isVisible(pdp.helpers.itemTitle, done)) {
+      client.getText(pdp.helpers.itemTitle).then((title) => {
         try {
           assert.equal(expected, title, 'The expected value was not equal to the text');
-          done();
         } catch (err) {
           done(err);
         }
@@ -221,11 +233,10 @@ module.exports = {
     }
   },
   verifyItemNumber: (done, expected) => {
-    if (client.isVisible('h1.title')) {
-      client.getText('div.number > span').then((text) => {
+    if (client.isVisible(pdp.helpers.itemTitle, done)) {
+      client.getText(pdp.helpers.itemNumber).then((text) => {
         try {
           assert.equal(expected, text, 'The expected value was not equal to the text');
-          done();
         } catch (err) {
           done(err);
         }
@@ -620,7 +631,7 @@ module.exports = {
 
 // REPORTING
   getScreenshot: (done, name) => {
-    client.saveScreenshot(`test/payless/screens/${name}_${current}.png`, done);
+    client.saveScreenshot(`src/test/payless/screens/${name}_${current}.png`, done);
   },
 
   end: (done) => {

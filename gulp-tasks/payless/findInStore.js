@@ -16,7 +16,7 @@ function handleError(err) {
 
 module.exports = function (gulp, mocha) {
   return function () {
-    return gulp.src('./src/test/payless/staging/findStore.js', {read: false})
+    return gulp.src('./src/test/payless/staging/findInStore.js', {read: false})
       .pipe(mocha(mochaOptions).on("error", handleError));
   }
 };

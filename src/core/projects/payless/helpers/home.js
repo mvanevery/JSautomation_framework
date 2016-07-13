@@ -2,11 +2,6 @@
  * Created by mvanevery on 7/8/2016.
  */
 module.exports = {
-  routes: {
-    baseUrl: 'https://madmobile-staging.payless.com/',
-    legBaseUrl: 'http://whatsmyuseragent.com',
-    prodBaseUrl: 'm.payless.com'
-  },
 
   helpers: {
     heroBanner: 'div.slider-container > a > img',
@@ -21,5 +16,5 @@ module.exports = {
     stylesTitle: 'li.active.active-leaf > a.title',
     locationIcon: 'a.location > i.icon'
   }
-}
+};
 

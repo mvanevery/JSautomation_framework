@@ -86,7 +86,7 @@ describe('Testing End to End - Returning User: CC', () => {
   });
   describe('Search for Store using zipcode', () => {
     it('should search for stores via Zipcode', (done) => {
-      common.searchZipcode(done, 33607);
+      common.searchZipcodeCheckout(done, 33607);
     });
   });
   describe('pausing', () => {

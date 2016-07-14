@@ -9,7 +9,8 @@ module.exports ={
     addItem: 'button.add-to-cart',
     gotoCheckout: 'button.btn-checkout',
     itemTitle: 'h1.title',
-    itemNumber: 'div.number > span'
+    itemNumber: 'div.number > span',
+    closeModal: 'div.modal.cart-add a.close i.icon'
 
   }
 

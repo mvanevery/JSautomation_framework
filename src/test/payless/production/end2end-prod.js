@@ -47,7 +47,7 @@ describe('Testing End to End Production', () => {
   });
   describe('Selecting a Size', () => {
     it('should select a size', (done) => {
-      common.selectSize(done);
+      common.selectSize(done, '9');
     });
   });
   describe('pausing', () => {
@@ -85,11 +85,11 @@ describe('Testing End to End Production', () => {
       common.pause(3000, done);
     });
   });
-  describe('Screenshot the results', () => {
-    it('should take a screenshot of the results', (done) => {
-      common.getScreenshot(done, 'test');
-    });
-  });
+  //describe('Screenshot the results', () => {
+  //  it('should take a screenshot of the results', (done) => {
+  //    common.getScreenshot(done, 'test');
+  //  });
+  //});
   describe('pausing', () => {
     it('should pause the test', (done) => {
       common.pause(3000, done);
@@ -225,26 +225,21 @@ describe('Testing End to End Production', () => {
       common.pause(7500, done);
     });
   });
-  //describe('Confirm Order', () => {
-  //  it('should confirm an Order was placed', (done) => {
-  //    prod.verifyOrderError(done);
+  describe('Confirm Order Error', () => {
+    it('should confirm an Order Error was displayed', (done) => {
+      prod.verifyOrderError(done);
+    });
+  });
+  //describe('pausing', () => {
+  //  it('should pause the test', (done) => {
+  //    common.pause(10000, done);
   //  });
   //});
-  describe('Confirm Order', () => {
-    it('should confirm atn Order was placed', (done) => {
-      common.verifyConfirmOrder(done);
-    });
-  });
-  describe('pausing', () => {
-    it('should pause the test', (done) => {
-      common.pause(10000, done);
-    });
-  });
-  describe('Screenshot the results', () => {
-    it('should take a screenshot of the results', (done) => {
-      common.getScreenshot(done, 'tested');
-    });
-  });
+  //describe('Screenshot the results', () => {
+  //  it('should take a screenshot of the results', (done) => {
+  //    common.getScreenshot(done, 'tested');
+  //  });
+  //});
   after((done) => {
     common.end(done);
   });

@@ -21,8 +21,12 @@ module.exports = {
   },
 
 // MULTI-PAGE FUNCTIONS
+  gotoHomepage: (done) => {
+    client.click(home.helpers.homepage, done);
+  },
+
   pause: (pauseTime, done) => {
-    client.pause(pauseTime, done);
+    client.pause(done, pauseTime);
   },
   refreshPage: (done) => {
     client.refresh(done);
@@ -123,6 +127,14 @@ module.exports = {
       client.click(config.helpers.catWomenAcc);
     } else {
       console.log('Menu not open');
+    }
+  },
+
+  gotoCart: (done) => {
+  if (client.isVisible(home.helpers.cartIcon, done)) {
+      client.click(home.helpers.cartIcon);
+    } else {
+      console.log('Icon not visible');
     }
   },
 
@@ -241,6 +253,13 @@ module.exports = {
           done(err);
         }
       });
+    }
+  },
+  closeModal: (done) => {
+    if (client.isVisible(pdp.helpers.gotoCheckout, done)) {
+      client.click(pdp.helpers.closeModal);
+    } else {
+      console.log('modal not open');
     }
   },
 
@@ -631,6 +650,7 @@ module.exports = {
 
 // REPORTING
   getScreenshot: (done, name) => {
+    if(client.isVisible())
     client.saveScreenshot(`src/test/payless/screens/${name}_${current}.png`, done);
   },
 

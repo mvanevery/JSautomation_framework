@@ -1,12 +1,6 @@
 module.exports = {
   routes: {
-    baseUrl: 'https://madmobile-staging.payless.com/',
-    legBaseUrl: 'http://whatsmyuseragent.com',
-    prodBaseUrl: 'm.payless.com'
+    baseUrl: 'http://localhost:3001'
   },
-
-  login: {
-
-
-  }
+  login: {}
 };

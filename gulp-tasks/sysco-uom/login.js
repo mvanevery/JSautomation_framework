@@ -2,7 +2,7 @@ const mochaOptions = {
   timeout: '50000',
   reporter: 'mochawesome',
   reporterOptions: {
-    reportDir: './src/test/payless/reports',
+    reportDir: './src/test/sysco-uom/reports',
     reportName: 'report',
     reportTitle: 'Login',
     inlineAssets: true

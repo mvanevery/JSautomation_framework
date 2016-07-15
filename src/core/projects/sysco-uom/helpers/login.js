@@ -24,7 +24,7 @@ module.exports = {
     if (client.isVisible('body', done)) {
       client.click('#username-input')
         .then(() => {
-          client.setValue('//input[@id="username-input"]', username)
+          client.setValue('#username-input', 'K')
         //    .then(() => {
         //      client.keys('//input[@id="password-input"]', password)
         //        .then(() => {

@@ -6,12 +6,12 @@ describe('Sysco UOM Stuffs', () => {
   });
   describe('Setting up the site', () => {
     it('should set up the site to test', (done) => {
-      common.pause(2500, done);
+      common.pause(done, 5000);
     });
   });
   describe('Be a thing', () => {
     it('should be a thing', (done) => {
-      common.login(done, 'squomnorm42', 'welcome1');
+      common.login(done);
     });
   });
   after((done) => {

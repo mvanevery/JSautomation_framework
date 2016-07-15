@@ -16,22 +16,20 @@ module.exports = {
   },
 
 // MULTI-PAGE FUNCTIONS
-  pause: (pauseTime, done) => {
+  pause: (done, pauseTime) => {
     client.pause(pauseTime, done);
   },
-  login: (done, username, password) => {
-
-    if (client.isVisible('body', done)) {
-      client.click('//form[@id="username-input"]')
+  login: (done) => {
+    if (client.isVisible('input', done)) {
+      client.setValue("//input[@id='username-input']", 'USERNAME')
         .then(() => {
-          client.setValue('//form[@id="username-input"]', username)
+          client.setValue("//input[@id='password-input']", 'PASSWORD')
             .then(() => {
-              client.setValue('//form[@id="password-input"]', password)
-                .then(() => {
-                  client.click('button[type="submit"]');
-              });
+              client.click("//button[@id='login-button']");
             });
         });
+    } else {
+      console.log('	ERROR: Login page is not available.');
     }
   },
   refreshPage: (done) => {

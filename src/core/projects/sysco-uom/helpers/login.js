@@ -22,15 +22,15 @@ module.exports = {
   login: (done, username, password) => {
 
     if (client.isVisible('body', done)) {
-      client.click('//form[@id="username-input"]')
+      client.click('#username-input')
         .then(() => {
-          client.setValue('//form[@id="username-input"]', username)
-            .then(() => {
-              client.setValue('//form[@id="password-input"]', password)
-                .then(() => {
-                  client.click('button[type="submit"]');
-              });
-            });
+          client.setValue('//input[@id="username-input"]', username)
+        //    .then(() => {
+        //      client.keys('//input[@id="password-input"]', password)
+        //        .then(() => {
+        //          client.click('#login-button"]');
+        //      });
+        //    });
         });
     }
   },

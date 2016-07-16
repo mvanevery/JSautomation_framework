@@ -24,13 +24,13 @@ module.exports = {
     if (client.isVisible('body', done)) {
       client.click('#username-input')
         .then(() => {
-          client.setValue('#username-input', 'K')
-        //    .then(() => {
-        //      client.keys('//input[@id="password-input"]', password)
-        //        .then(() => {
-        //          client.click('#login-button"]');
-        //      });
-        //    });
+          client.setValue('//input[@id="username-input"]', username)
+            .then(() => {
+              client.setValue('//input[@id="password-input"]', password)
+                .then(() => {
+                  client.click('#login-button"]');
+              });
+            });
         });
     }
   },
@@ -38,7 +38,7 @@ module.exports = {
     client.refresh(done);
   },
   goTo: (done) => {
-    client.init().url(config.routes.baseUrl, done);
+    client.init(done);
   },
 
 // REPORTING

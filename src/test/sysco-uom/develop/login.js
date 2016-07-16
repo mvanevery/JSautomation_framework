@@ -14,7 +14,7 @@ describe('Sysco UOM Stuffs', () => {
       common.login(done, 'squomnorm42', 'welcome1');
     });
   });
-  //after((done) => {
-  //  common.end(done);
-  //});
+  after((done) => {
+    common.end(done);
+  });
 });

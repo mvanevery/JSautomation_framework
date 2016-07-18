@@ -16,7 +16,7 @@ module.exports = {
   },
 
 // MULTI-PAGE FUNCTIONS
-  pause: (pauseTime, done) => {
+  pause: (done, pauseTime) => {
     client.pause(pauseTime, done);
   },
   login: (done, username, password) => {

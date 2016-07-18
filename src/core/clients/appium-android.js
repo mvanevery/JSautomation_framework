@@ -8,7 +8,7 @@ exports.client = require('webdriverio').remote({
   port: 4723,
   desiredCapabilities: {
     app:'C:/appDir/UOMMM_QA-debug.apk',
-    browserName: 'Chrome',
+    browserName: '',
     //setWebContentsDebuggingEnabled: true,
     'appium-version': '1.3.7',
     platformName: 'Android',

@@ -34,6 +34,16 @@ describe('Testing Find A Store', () => {
       common.verifyStoreAddress(done);
     });
   });
+  describe('pausing', () => {
+    it('should pause thte test', (done) => {
+      common.pause(2000, done);
+    });
+  })
+  describe('Screenshot the results', () => {
+    it('should take a screenshot of the results', (done) => {
+      common.getScreenshot(done, 'test');
+    });
+  });
   after((done) => {
     common.end(done);
   });

@@ -82,7 +82,7 @@ module.exports = {
     if (client.isVisible('div.app-sub-header > form#search-form div.input > input', done)) {
       client.click('//form[@id="search-form"]/div/input')
         .then(() => {
-          client.setValue('//form[@id="search-form"]/div/input', searchData)
+          client.keys(searchData)
             .then(() => {
               client.click('button[type="submit"]');
               // .then (() => {

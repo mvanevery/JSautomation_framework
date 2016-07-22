@@ -138,6 +138,16 @@ module.exports = {
     }
   },
 
+  verifyPromo: (done) => {
+    if (client.isVisible(home.helpers.promoHeader, done)) {
+      client.getText(home.helpers.promoHeader)
+        .then((header) => {
+          console.log(header);
+        })
+    }
+  },
+
+
 // FIND A STORE/FIND IN STORE FUNCTIONALITY
 
   openFindAStore: (done) => {

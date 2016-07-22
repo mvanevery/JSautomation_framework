@@ -90,7 +90,7 @@ module.exports = {
     billInfoSTAFake: ['Test Test',
       '123 Main St',
       'Tampa, FL 33607',
-      '813-400-2000']
-
+      '813-400-2000'],
+    appDir: 'C:/appDir/chrome.apk'
   }
 };

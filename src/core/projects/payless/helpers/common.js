@@ -160,9 +160,8 @@ module.exports = {
       client.scroll(store.helpers.locationDistance);
       client.getText(store.helpers.locationAddress)
         .then((text) => {
-          //console.log('test');
           const response = text.join(',').includes(config.helpers.storeAddress);
-          //console.log(response); // This will be a boolean value (true/false) that will tell us whether this string is in the array
+          // console.log(response); // This will be a boolean value (true/false) that will tell us whether this string is in the array
           try {
             assert.isTrue(response, 'The expected value was not equal to the text');
           } catch (err) {

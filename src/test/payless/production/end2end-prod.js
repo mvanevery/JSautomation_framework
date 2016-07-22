@@ -47,7 +47,7 @@ describe('Testing End to End Production', () => {
   });
   describe('Selecting a Size', () => {
     it('should select a size', (done) => {
-      common.selectSize(done);
+      common.selectSize(done, '9');
     });
   });
   describe('pausing', () => {
@@ -62,7 +62,7 @@ describe('Testing End to End Production', () => {
   });
   describe('pausing', () => {
     it('should pause the test', (done) => {
-      common.pause(2000, done);
+      common.pause(5000, done);
     });
   });
   describe('Proceed to Cart', () => {
@@ -72,7 +72,7 @@ describe('Testing End to End Production', () => {
   });
   describe('pausing', () => {
     it('should pause the test', (done) => {
-      common.pause(5000, done);
+      common.pause(10000, done);
     });
   });
   describe('Proceed to Checkout', () => {
@@ -80,6 +80,16 @@ describe('Testing End to End Production', () => {
       common.proceedToCheckoutCart(done);
     });
   });
+  describe('pausing', () => {
+    it('should pause the test', (done) => {
+      common.pause(3000, done);
+    });
+  });
+  //describe('Screenshot the results', () => {
+  //  it('should take a screenshot of the results', (done) => {
+  //    common.getScreenshot(done, 'test');
+  //  });
+  //});
   describe('pausing', () => {
     it('should pause the test', (done) => {
       common.pause(3000, done);
@@ -147,7 +157,7 @@ describe('Testing End to End Production', () => {
   });
   describe('pausing', () => {
     it('should pause the test', (done) => {
-      common.pause(5000, done);
+      common.pause(7500, done);
     });
   });
   describe('Add Credit Card Owner', () => {
@@ -215,9 +225,19 @@ describe('Testing End to End Production', () => {
       common.pause(7500, done);
     });
   });
-  describe('Confirm Order', () => {
-    it('should confirm an Order was placed', (done) => {
+  describe('Confirm Order Error', () => {
+    it('should confirm an Order Error was displayed', (done) => {
       prod.verifyOrderError(done);
+    });
+  });
+  describe('pausing', () => {
+    it('should pause the test', (done) => {
+      common.pause(10000, done);
+    });
+  });
+  describe('Screenshot the results', () => {
+    it('should take a screenshot of the results', (done) => {
+      common.getScreenshot(done, 'tested');
     });
   });
   after((done) => {

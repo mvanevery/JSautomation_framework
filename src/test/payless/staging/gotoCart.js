@@ -1,12 +1,16 @@
+/**
+ * Created by mvanevery on 7/14/2016.
+ */
 const common = require('../../../core/projects/payless/helpers/common');
+const prod = require('../../../core/projects/payless/helpers/common-production');
 
-describe('Testing Find In Store', () => {
+describe('Testing End to End Production', () => {
   before((done) => {
     common.goTo(done);
   });
   describe('Setting up the site', () => {
     it('should set up the site to test', (done) => {
-      common.pause(2500, done);
+      common.pause(done, 2500);
     });
   });
   describe('Open Menu', () => {
@@ -16,17 +20,12 @@ describe('Testing Find In Store', () => {
   });
   describe('pausing', () => {
     it('should pause the test', (done) => {
-      common.pause(2500, done);
+      common.pause(done, 2000);
     });
   });
   describe('Selecting category', () => {
     it('should pick a category', (done) => {
       common.pickCategory(done);
-    });
-  });
-  describe('pausing', () => {
-    it('should pause the test', (done) => {
-      common.pause(2500, done);
     });
   });
   describe('Selecting Style', () => {
@@ -36,7 +35,7 @@ describe('Testing Find In Store', () => {
   });
   describe('pausing', () => {
     it('should pause the test', (done) => {
-      common.pause(5000, done);
+      common.pause(done, 5000);
     });
   });
   describe('Selecting Item', () => {
@@ -46,47 +45,47 @@ describe('Testing Find In Store', () => {
   });
   describe('pausing', () => {
     it('should pause the test', (done) => {
-      common.pause(7500, done);
+      common.pause(done, 2000);
     });
   });
   describe('Selecting a Size', () => {
-    it('should select t size', (done) => {
-      common.selectSize(done);
+    it('should select a size', (done) => {
+      common.selectSize(done, '9');
     });
   });
   describe('pausing', () => {
     it('should pause the test', (done) => {
-      common.pause(5000, done);
+      common.pause(done, 2000);
     });
   });
-  describe('find in store', () => {
-    it('should click find in stores link', (done) => {
-      common.openFindInStore(done);
-    });
-  });
-  describe('pausing', () => {
-    it('should pause the test', (done) => {
-      common.pause(3000, done);
-    });
-  });
-  describe('Search for Store using zipcode', () => {
-    it('should search for stores via Zipcode', (done) => {
-      common.searchZipcodeFIS(done, 33759);
+  describe('Adding item to Bag', () => {
+    it('should add item to bag', (done) => {
+      common.addToBag(done);
     });
   });
   describe('pausing', () => {
     it('should pause the test', (done) => {
-      common.pause(10000, done);
+      common.pause(done, 2000);
     });
   });
-  describe('Verify Store Address', () => {
-    it('should verify the store address (this may take a while)', (done) => {
-      common.verifyStoreAddress(done);
+  describe('Close Cart Modal', () => {
+    it('should close cart modal', (done) => {
+      common.closeModal(done);
     });
   });
   describe('pausing', () => {
     it('should pause the test', (done) => {
-      common.pause(5000, done);
+      common.pause(done, 2000);
+    });
+  });
+  describe('Go To homepage', () => {
+    it('should go to homepage', (done) => {
+      common.gotoHomepage(done);
+    });
+ });
+  describe('pausing', () => {
+    it('should pause the test', (done) => {
+      common.pause(done, 5000);
     });
   });
   describe('Screenshot the results', () => {
@@ -94,7 +93,32 @@ describe('Testing Find In Store', () => {
       common.getScreenshot(done, 'test');
     });
   });
+  describe('pausing', () => {
+    it('should pause the test', (done) => {
+      common.pause(done, 5000);
+    });
+  });
+  describe('Go To Cart', () => {
+    it('should go to Cart', (done) => {
+      common.gotoCart(done);
+    });
+  });
+  describe('pausing', () => {
+    it('should pause the test', (done) => {
+      common.pause(done, 5000);
+    });
+  });
+  describe('Screenshot the results', () => {
+    it('should take a screenshot of the results', (done) => {
+      common.getScreenshot(done, 'test');
+    });
+  });
+  describe('pausing', () => {
+    it('should pause the test', (done) => {
+      common.pause(done, 5000);
+    });
+  });
   after((done) => {
     common.end(done);
   });
-});
+})

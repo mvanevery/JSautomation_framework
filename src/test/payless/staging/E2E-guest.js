@@ -219,6 +219,11 @@ describe('Testing End to End Guest', () => {
       common.verifyConfirmOrder(done);
     });
   });
+  describe('Screenshot the results', () => {
+    it('should take a screenshot of the results', (done) => {
+      common.getScreenshot(done, 'test');
+    });
+  });
   after((done) => {
     common.end(done);
   });

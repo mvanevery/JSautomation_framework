@@ -3,6 +3,8 @@ const client = require(`../../../../core/clients/${clientType}`).client;
 const project = require('../../../projects/config').project;
 const config = require(`../../../projects/${project}/config`);
 const assert = require('chai').assert;
+const date = new Date();
+const current = `${date.getMonth()}-${date.getDate()}-${date.getFullYear()}-${date.getHours()}-${date.getMinutes()}-${date.getSeconds()}`;
 
 module.exports = {
   addShipFirstName: (done, first) => {
@@ -156,7 +158,6 @@ module.exports = {
         .then((text) => {
           try {
             assert.sameMembers(config.helpers.shipToStoreAddress, text.split('\n'), 'The expected value was not equal to the text');
-            done();
           } catch (err) {
             done(err);
           }
@@ -167,9 +168,9 @@ module.exports = {
     if (client.isVisible('#summary-shipping-subheader', done)) {
       client.getText('#js-shipping-summary-body > ul')
         .then((text) => {
+          console.log(text);
           try {
             assert.sameMembers(config.helpers.shipInfoFake, text.split('\n'), 'The expected value was not equal to the text');
-            done();
           } catch (err) {
             done(err);
           }
@@ -182,7 +183,6 @@ module.exports = {
         .then((text) => {
           try {
             assert.sameMembers(config.helpers.payInfoFake, text.split('\n'), 'The expected value was not equal to the text');
-            done();
           } catch (err) {
             done(err);
           }
@@ -247,7 +247,6 @@ module.exports = {
         .then((text) => {
           try {
             assert.sameMembers(config.helpers.billInfoSTSFake, text.split('\n'), 'The expected value was not equal to the text');
-            done();
           } catch (err) {
             done(err);
           }
@@ -260,7 +259,6 @@ module.exports = {
         .then((text) => {
           try {
             assert.sameMembers(config.helpers.billInfoSTAFake, text.split('\n'), 'The expected value was not equal to the text');
-            done();
           } catch (err) {
             done(err);
           }
@@ -276,8 +274,8 @@ module.exports = {
     }
   },
   verifyConfirmOrder: (done) => {
-    if (client.isVisible('//div.order > div.check-mark > i.icon', done)) {
-      client.getText('//div.modal.order-confirmation > div.body > div.order > span.success')
+    if (client.isVisible('//div.modal.order-confirmation > div.body > div.order > div.check-mark > i.icon', done)) {
+      client.getText('//div.modal.order-confirmation > div.body > div.order > span.text')
         .then((status) => {
           if (status === 'SUCCESS!') {
             console.log(`${status} = Order Status`);
@@ -285,6 +283,7 @@ module.exports = {
             console.log('Did not complete');
           }
         });
+      client.saveScreenshot(`src/test/payless/screens/${name}_${current}.png`, done);
     }
   },
   verifyOrderError: (done) => {
@@ -293,15 +292,16 @@ module.exports = {
         .then(() => {
           client.getText('div.left-column > div.checkout-error')
             .then((error) => {
-              if (error === config.helpers.orderError) {
-                console.log(`${error} Order Failed!`);
-              } else {
-                console.log('There was no error');
-              }
-            });
+              console.log(error);
+              //.then(() => {
+              //    try {
+              //      assert.equal(config.helpers.orderError, error, 'The expected value was not equal to the text');
+              //    } catch (err) {
+              //      done(err);
+              //    }
+              //  })
+            })
         });
-    } else {
-      console.log('There was no error');
     }
   },
 

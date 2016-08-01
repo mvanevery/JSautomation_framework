@@ -19,6 +19,11 @@ describe('Testing End to End Production', () => {
       home.verifyPromo(done);
     });
   });
+  describe('Verifying banner', () => {
+    it('should verify banner', (done) => {
+      home.verifyBanners(done);
+    });
+  });
   after((done) => {
     common.end(done);
   });

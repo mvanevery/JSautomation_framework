@@ -76,6 +76,12 @@ module.exports = {
 
 // HOMEPAGE/MENU FUNCTIONALITY
 
+  closePopup: (done) =>{
+    if(client.isVisible('i.icon.spin-target', done)) {
+      client.click('i.icon.spin-target');
+    }
+  },
+
   openMenu: (done) => {
     if (client.isVisible(home.helpers.menu, done)) {
       client.click(home.helpers.menu);
@@ -135,15 +141,6 @@ module.exports = {
       client.click(home.helpers.cartIcon);
     } else {
       console.log('Icon not visible');
-    }
-  },
-
-  verifyPromo: (done) => {
-    if (client.isVisible(home.helpers.promoHeader, done)) {
-      client.getText(home.helpers.promoHeader)
-        .then((header) => {
-          console.log(header);
-        })
     }
   },
 

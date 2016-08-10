@@ -12,7 +12,7 @@ const plp = require(`../../../projects/${project}/helpers/plp`);
 const store = require(`../../../projects/${project}/helpers/store-locator`);
 const expect = require('chai').expect;
 const assert = require('chai').assert;
-//const $ = require('chai-jquery');
+const $ = require('chai-jquery');
 
 module.exports = {
 
@@ -116,12 +116,12 @@ module.exports = {
   },
 
   verifyBanners: (done) => {
-    if(client.isVisible('div.promotions >  a > img', done)) {
-       client.getSource('div.promotions >  a > img')
-      .then((source) => {
-             console.log(source);
-           })
+    if(client.isVisible(module.exports.helpers.promoHeader, done)) {
+       assert.elementIsVisible('div.slider-container > a > img');
     }
+    //else {
+    //    assert.visible('div.promotions > a > img');
+    //  }
   }
   //navigateHorizontalMenu: (done) => {
   //  if(client.isVisible('div.page-body', done)) {

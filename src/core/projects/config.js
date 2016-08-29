@@ -17,5 +17,5 @@ const clientIndex = process.argv.indexOf(client[0]);
 module.exports = {
   project: !!project[0] ? process.argv[projectIndex].replace(/--archon:/, '') : 'rutt roh',
   test: !!test[0] ? process.argv[testIndex].replace(/--test:/, '') : 'no test defined',
-  client: !!client[0] ? process.argv[clientIndex].replace(/--client:/, '') : 'phantomjs'
+  client: !!client[0] ? process.argv[clientIndex].replace(/--client:/, '') : 'appium'
 };

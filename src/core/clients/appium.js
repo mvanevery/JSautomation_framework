@@ -4,10 +4,10 @@ exports.client = require('webdriverio').remote({
     browserName: '',
     'appium-version': '1.3',
     platformName: 'iOS',
-    bundleId: 'com.madmobiledev.ConciergeDev',
+    bundleId: 'com.derickwarshaw.jenkins',
     platformVersion: '9.3',
-    deviceName: 'MM Concierge-Silver',
-    udid: 'dff8ad9bb716a56766d98b2232c3f541ba9bb796',
+    deviceName: "Derick's iPhone 6 Plus",
+    udid: 'fe2a06279d3ffa06d207d6b9c702eb84f235c5fc',
     autoWebview: true
   }
 });

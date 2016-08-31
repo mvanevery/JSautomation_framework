@@ -6,6 +6,7 @@ const expect = require('chai').expect;
 const assert = require('chai').assert;
 const date = new Date();
 const current = `${date.getMonth()}-${date.getDate()}-${date.getFullYear()}-${date.getHours()}-${date.getMinutes()}-${date.getSeconds()}`;
+const By = client.By
 
 module.exports = {
   mobileView: (done) => {
@@ -19,25 +20,28 @@ module.exports = {
   pause: (done, pauseTime) => {
     client.pause(pauseTime, done);
   },
-  login: (done, username, password) => {
+  login: (done) => {
 
-    if (client.isVisible('body', done)) {
-      client.click('#username-input')
-        .then(() => {
-          client.setValue('//input[@id="username-input"]', username)
+    if (client.isVisible('id="username"', done)) {
+        //.then(() => {
+         // client.getValue('id=username');
+          client.keys('id="username"', config.login.username)
             .then(() => {
-              client.setValue('//input[@id="password-input"]', password)
+              client.keys('id="password"', config.login.password)
                 .then(() => {
-                  client.click('#login-button"]');
+                  client.click('//button[@id="login-button"]');
               });
             });
-        });
+         //});
     }
   },
   refreshPage: (done) => {
     client.refresh(done);
   },
-  goTo: (done) => {
+  goToChrome: (done) => {
+    client.init().url(config.routes.baseUrl, done);
+  },
+  goToAppium: (done) => {
     client.init(done);
   },
 

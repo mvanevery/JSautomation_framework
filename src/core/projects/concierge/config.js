@@ -5,9 +5,10 @@ module.exports = {
   helpers: {
 
     // Provision Screen
+    fld_image: '//img[@alt="Concierge"]',
     fld_provision: '//input[@name="authKey"]',
     txt_provisionKey_burberry: '4e044de8-0b50-46c1-d76d-46f3a4df4b86',
-    txt_provisionKey_talbots: '53c3e209-7c27-4a61-a82f-dccbab39bfc5',
+    txt_provisionKey_talbots: 'http://manage.qa.madcloud.io/api/v1/discovery/c99c29d1-5437-f9e9-f233-80df0d135a65',
     btn_send: '//button[@type="button"]',
 
     // Login Screen
@@ -17,14 +18,14 @@ module.exports = {
     url_login: 'localhost:3000/login',
     lnk_deprovision: '//a[@href="provision"',
     txt_ssales_user: 'ssales',
-    txt_ssales_pass: 'werooisk',
+    txt_ssales_pass: 'password',
     btn_signIn: '//button[@type="button"]',
 
     // Module "Dashboard"
     img_nav_logo: '//span[@class="mm-c-nav__logo-img"]',
     img_nav_dashboard: '//a[@href="/"]',
     img_nav_planner: '//a[@href="/planner"]',
-    img_nav_blackbook: '//a[@href="/blackbook"]',
+    blackbook_icon: '//a[contains(@href, "/blackbook")]',
     img_nav_add: '//a[@href="#"]',
 
     widget_appointments: '//div[@class="mm-c-appointments-widget"]',

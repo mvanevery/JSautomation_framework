@@ -1,5 +1,5 @@
 /**
- * From command line type gulp test-local --archon:PROJECTNAME --test:TESTNAME (example: gulp init-findInStore --archon:payless --test:findInStore)
+ * From command line type gulp test-local --archon:PROJECTNAME --test:TESTNAME (example: gulp init-findInStore --archon:payless --test:findInStore --client:chrome)
  *
  * Using arguments will set a variable in the project that tells it which project you want to run tests for and which
  * test to run

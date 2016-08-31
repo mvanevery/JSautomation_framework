@@ -11,6 +11,9 @@ module.exports = {
       width: 1024
     }, true).then(done);
   },
+  goTo: (done) => {
+    client.init().url(config.routes.baseUrl, done);
+  },
 
   openBrowser(done) {
     client.init(done);
@@ -22,30 +25,30 @@ module.exports = {
     }
   },
 
-  pause(done) {
-    client.pause(5000, done);
+  pause: (pauseTime, done) => {
+    client.pause(done, pauseTime);
   },
 
   enterProvisionBurberry(done) {
     if (client.isVisible(config.helpers.fld_provision, done)) {
-      client.setValue(config.helpers.fld_provision, config.helpers.txt_provisionKey_burberry)
+      client.keys(config.helpers.fld_provision, config.helpers.txt_provisionKey_burberry)
         .then(() => {
           client.click(config.helpers.btn_send);
         });
     } else {
-      console.log('Provision Key field is not available.');
+      console.log('Already provisioned');
     }
   },
 
   enterProvisionTalbots(done) {
     if (client.isVisible(config.helpers.fld_provision, done)) {
       client.setValue(config.helpers.fld_provision, config.helpers.txt_provisionKey_talbots)
-        .then(() => {
-          client.click(config.helpers.btn_send);
-        });
+          .then(() => {
+            client.click(config.helpers.btn_send);
+          });
     } else {
-      console.log('ERROR: Provision Key field is not available.');
-    }
+        console.log('Already provisioned');
+      }
   },
 
   deprovision(done) {
@@ -81,7 +84,7 @@ module.exports = {
     if (client.isVisible('basic-form-input-email', done)) {
       client.setValue(config.helpers.fld_user, config.helpers.txt_ssales_user)
         .then(() => {
-          client.setValue(config.helpers.fld_password, config.helpers.txt_ssales_pass)
+          client.setValue(config.helpers.fld_password, 'test')
             .then(() => {
               client.click(config.helpers.btn_signIn);
             });
@@ -134,19 +137,18 @@ module.exports = {
   },
 
   navBlackbook(done) {
-    client.waitForVisible(config.helpers.img_nav_blackbook, 5000);
-    if (client.isVisible(config.helpers.img_nav_blackbook)) {
-      client.click(config.helpers.img_nav_blackbook);
+   if (client.isVisible(config.helpers.blackbook_icon, done)) {
+      client.click(config.helpers.blackbook_icon);
     } else {
       console.log('	ERROR: The Blackbook icon is not in the menu.');
     }
-    client.waitForVisible(config.helpers.img_myCustomers, 5000);
-    if (client.isVisible(config.helpers.img_myCustomers)) {
-      console.log('	PASS: The user has reached the Blackbook screen.');
-    } else {
-      console.log('	ERROR: The Blackbook screen is unreachable.');
-    }
-    done();
+    //client.waitForVisible(config.helpers.img_myCustomers, 5000);
+    //if (client.isVisible(config.helpers.img_myCustomers)) {
+    //  console.log('	PASS: The user has reached the Blackbook screen.');
+    //} else {
+    //  console.log('	ERROR: The Blackbook screen is unreachable.');
+    //}
+    //done();
   },
 
   searchCustomer(done) {

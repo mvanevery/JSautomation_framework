@@ -47,6 +47,12 @@ describe('Smoke Test: Customer Search', () => {
     });
   });
 
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.getsomeText(done);
+    });
+  });
+
   //describe('Search for "McClellan"', () => {
   //  it('Should find the customer "Ryan McClellan"', (done) => {
   //    common.searchCustomer(done);

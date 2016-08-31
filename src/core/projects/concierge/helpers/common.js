@@ -29,11 +29,19 @@ module.exports = {
     client.pause(done, pauseTime);
   },
 
+  getsomeText(done) {
+    if (client.isVisible('//a[contains(@href, "/")]', done))
+    client.getText('.mm-c-header > div:nth-child(2) > div:nth-child(1)')
+    .then((text) => {
+          console.log(text);
+        });
+  },
+
   enterProvisionBurberry(done) {
-    if (client.isVisible(config.helpers.fld_provision, done)) {
-      client.keys(config.helpers.fld_provision, config.helpers.txt_provisionKey_burberry)
+    if (client.isVisible(config.helpers.keyField, done)) {
+      client.keys(config.helpers.keyField, config.helpers.burberry_provkey)
         .then(() => {
-          client.click(config.helpers.btn_send);
+          client.click(config.helpers.submitKey);
         });
     } else {
       console.log('Already provisioned');
@@ -41,10 +49,10 @@ module.exports = {
   },
 
   enterProvisionTalbots(done) {
-    if (client.isVisible(config.helpers.fld_provision, done)) {
-      client.setValue(config.helpers.fld_provision, config.helpers.txt_provisionKey_talbots)
+    if (client.isVisible(provisioningPage.helpers.keyField, done)) {
+      client.setValue(config.helpers.keyField, config.helpers.talbots_provkey)
           .then(() => {
-            client.click(config.helpers.btn_send);
+            client.click(config.helpers.submitButton);
           });
     } else {
         console.log('Already provisioned');
@@ -73,20 +81,20 @@ module.exports = {
   },
 
   verifyLoginScreen(done) {
-    if (client.isVisible(config.helpers.img_logo, done)) {
-      console.log('Not sure what this should do here');
+    if (client.isVisible(loginPage.helpers.login_logo, done)) {
+      console.log('');
     } else {
       console.log('ERROR: The provision failed to reach the Login screen.');
     }
   },
 
   loginSsales(done) {
-    if (client.isVisible('basic-form-input-email', done)) {
-      client.setValue(config.helpers.fld_user, config.helpers.txt_ssales_user)
+    if (client.isVisible(loginPage.helpers.login_logo, done)) {
+      client.setValue(loginPage.helpers.usernameField, loginPage.helpers.username)
         .then(() => {
-          client.setValue(config.helpers.fld_password, 'test')
+          client.setValue(loginPage.helpers.passwordField, loginPage.helpers.password)
             .then(() => {
-              client.click(config.helpers.btn_signIn);
+              client.click(loginPage.helpers.signIn);
             });
         });
     } else {
@@ -111,13 +119,6 @@ module.exports = {
     } else {
       console.log('	ERROR: The Dashboard icon is not in the menu.');
     }
-    client.waitForVisible(config.helpers.widget_appointments, 5000);
-    if (client.isVisible(config.helpers.widget_appointments)) {
-      console.log('	PASS: The user has reached the Dashboard screen.');
-    } else {
-      console.log('	ERROR: The Dashboard screen is unreachable.');
-    }
-    done();
   },
 
   navPlanner(done) {
@@ -127,13 +128,6 @@ module.exports = {
     } else {
       console.log('	ERROR: The Planner icon is not in the menu.');
     }
-    client.waitForVisible(config.helpers.txt_title_planner, 5000);
-    if (client.isVisible(config.helpers.txt_title_planner)) {
-      console.log('	PASS: The user has reached the Planner screen.');
-    } else {
-      console.log('	ERROR: The Planner screen is unreachable.');
-    }
-    done();
   },
 
   navBlackbook(done) {
@@ -142,13 +136,6 @@ module.exports = {
     } else {
       console.log('	ERROR: The Blackbook icon is not in the menu.');
     }
-    //client.waitForVisible(config.helpers.img_myCustomers, 5000);
-    //if (client.isVisible(config.helpers.img_myCustomers)) {
-    //  console.log('	PASS: The user has reached the Blackbook screen.');
-    //} else {
-    //  console.log('	ERROR: The Blackbook screen is unreachable.');
-    //}
-    //done();
   },
 
   searchCustomer(done) {

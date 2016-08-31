@@ -4,10 +4,10 @@ exports.client = require('webdriverio').remote({
     browserName: '',
     'appium-version': '1.3',
     platformName: 'iOS',
-    bundleId: 'com.madmobiledev.ConciergeDev',
+    bundleId: 'BUNDLE_ID_GOES_HERE',
     platformVersion: '9.3',
-    deviceName: 'MM Concierge-Silver',
-    udid: 'dff8ad9bb716a56766d98b2232c3f541ba9bb796',
+    deviceName: "ENTER_DEVICE_NAME_HERE",
+    udid: 'ENTER_UDID_HERE',
     autoWebview: true
   }
 });

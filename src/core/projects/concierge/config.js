@@ -5,21 +5,11 @@ module.exports = {
   helpers: {
 
     // Module "Dashboard"
-    img_nav_logo: '//span[@class="mm-c-nav__logo-img"]',
-    img_nav_dashboard: '//a[@href="/"]',
-    img_nav_planner: '//a[@href="/planner"]',
-    blackbook_icon: '//a[contains(@href, "/blackbook")]',
-    img_nav_add: '//a[@href="#"]',
+
 
     widget_appointments: '//div[@class="mm-c-appointments-widget"]',
 
     // Module "Blackbook"
-    txt_title_blackbook: '//h1[contains(text(),"Black Book")]',
-    img_myCustomers: '//a[contains(text(),"My Customers")]',
-    img_Store: '//a[contains(text(),"Store")]',
-    img_Segments: '//a[contains(text(),"Segments")]',
-    fld_lastName: '//div[2]/div/input',
-    txt_Customer_Ryan: '//div[@title="Ryan"]',
 
     // Module "Planner"
     txt_title_planner: '//h1[contains(text(),"Planner")]',

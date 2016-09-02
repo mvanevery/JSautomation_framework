@@ -2,6 +2,9 @@ const clientType = require('../../../projects/config').client;
 const client = require(`../../../../core/clients/${clientType}`).client;
 const project = require('../../../projects/config').project;
 const config = require(`../../../projects/${project}/config`);
+const landingPage = require(`../../../projects/${project}/selectors/landingPage`);
+const loginPage = require(`../../../projects/${project}/selectors/loginPage`);
+const provisioning = require(`../../../projects/${project}/selectors/provisioning`);
 
 module.exports = {
 
@@ -31,7 +34,7 @@ module.exports = {
 
   getsomeText(done) {
     if (client.isVisible('//a[contains(@href, "/")]', done))
-    client.getText('.mm-c-header > div:nth-child(2) > div:nth-child(1)')
+    client.getText(config.helpers.blackbookHeader)
     .then((text) => {
           console.log(text);
         });
@@ -60,14 +63,11 @@ module.exports = {
   },
 
   deprovision(done) {
-    client.url('localhost:3000/provision');
-    // client.waitForVisible(config.helpers.lnk_deprovision, 5000);
-    // if (client.isVisible(config.helpers.lnk_deprovision)) {
-    // 	client.click(config.helpers.lnk_deprovision);
+     if (client.isVisible(loginPage.helpers.deprovision, done)) {
+     	client.click(loginPage.helpers.deprovision);
     // } else {
     // 	console.log('	ERROR: Deprovision link is unavailable.');
-    // }
-    done();
+     }
   },
 
   verifyProvisionScreen(done) {
@@ -82,7 +82,7 @@ module.exports = {
 
   verifyLoginScreen(done) {
     if (client.isVisible(loginPage.helpers.login_logo, done)) {
-      console.log('');
+      console.log('Welcome to the Login Page');
     } else {
       console.log('ERROR: The provision failed to reach the Login screen.');
     }
@@ -133,8 +133,9 @@ module.exports = {
   navBlackbook(done) {
    if (client.isVisible(config.helpers.blackbook_icon, done)) {
       client.click(config.helpers.blackbook_icon);
-    } else {
-      console.log('	ERROR: The Blackbook icon is not in the menu.');
+    if(client.isVisible(landingPage.helpers.homeIcon, done)) {
+      client.getText()
+    }
     }
   },
 

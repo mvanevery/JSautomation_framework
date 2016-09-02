@@ -10,7 +10,7 @@ module.exports = {
         passwordField: '//input[@name="basic-form-input-password"]',
         login_logo: 'img.mm-c-login__logo',
         url_login: 'localhost:3000/login',
-        lnk_deprovision: '//a[@href="provision"',
+        deprovision: '.mm-o-icon',
         username: 'ssales',
         password: 'password',
         signIn: '//button[@type="button"]'

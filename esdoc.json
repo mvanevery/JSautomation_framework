@@ -14,7 +14,6 @@
     "usage": ["./manual/usage.md"],
     "tutorial": ["./manual/tutorial.md"],
     "configuration": ["./manual/configuration.md"],
-    "example": ["./manual/example.md"],
     "faq": ["./manual/faq.md"],
     "changelog": ["./CHANGELOG.md"]
   },

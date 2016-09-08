@@ -48,13 +48,13 @@ describe('Smoke Test: Login as "ssales"', () => {
     });
   });
 
-  //describe('Verify Concierge Screen', () => {
-  //  it('Should navigate to the Concierge screen', (done) => {
-  //    common.verifyConciergeScreen(done);
-  //  });
-  //});
+  describe('Verify Concierge Screen', () => {
+    it('Should navigate to the Concierge screen', (done) => {
+      common.verifyConciergeScreen(done);
+    });
+  });
 
-  //after((done) => {
-  //  common.end(done);
-  //});
+  after((done) => {
+    common.end(done);
+  });
 });

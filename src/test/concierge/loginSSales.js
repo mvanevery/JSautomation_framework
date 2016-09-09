@@ -12,6 +12,7 @@ describe('Smoke Test: Login as "ssales"', () => {
   before((done) => {
     common.openBrowser(done);
   });
+
   describe('Pausing', () => {
     it('Should pause the test for 5 seconds', (done) => {
       common.pause(done, 2500);

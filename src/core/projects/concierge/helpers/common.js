@@ -52,10 +52,10 @@ module.exports = {
   },
 
   enterProvisionTalbots(done) {
-    if (client.isVisible(provisioningPage.helpers.keyField, done)) {
-      client.setValue(config.helpers.keyField, config.helpers.talbots_provkey)
+    if (client.isVisible(provisioning.helpers.keyField, done)) {
+      client.setValue(provisioning.helpers.keyField, provisioning.helpers.talbots_provkey)
           .then(() => {
-            client.click(config.helpers.submitButton);
+            client.click(provisioning.helpers.submitButton);
           });
     } else {
         console.log('Already provisioned');
@@ -70,15 +70,15 @@ module.exports = {
      }
   },
 
-  verifyProvisionScreen(done) {
-    // expect(config.helpers.txt_title_blackbook).to.exist;
-    // chai.expect('return config.helpers.img_nav_logo').exec.to.exist;
-    // if (client.isVisible(config.helpers.fld_provision)) {
-    // } else {
-    // 	console.log('	ERROR: Concierge failed to reach the Provision screen.');
-    // }
-    done();
-  },
+  //verifyProvisionScreen(done) {
+  //  // expect(config.helpers.txt_title_blackbook).to.exist;
+  //  // chai.expect('return config.helpers.img_nav_logo').exec.to.exist;
+  //  // if (client.isVisible(config.helpers.fld_provision)) {
+  //  // } else {
+  //  // 	console.log('	ERROR: Concierge failed to reach the Provision screen.');
+  //  // }
+  //  done();
+  //},
 
   verifyLoginScreen(done) {
     if (client.isVisible(loginPage.helpers.login_logo, done)) {

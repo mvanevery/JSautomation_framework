@@ -57,5 +57,6 @@ describe('Smoke Test: Login as "ssales"', () => {
 
   after((done) => {
     common.end(done);
-  });
+  })
+
 });

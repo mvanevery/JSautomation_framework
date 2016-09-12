@@ -30,6 +30,7 @@ module.exports = {
 
   pause: (pauseTime, done) => {
     client.pause(done, pauseTime);
+    console.log('fuck shit dayum');
   },
 
   getsomeText(done) {
@@ -42,7 +43,7 @@ module.exports = {
 
   enterProvisionBurberry(done) {
     if (client.isVisible(config.helpers.keyField, done)) {
-      client.keys(config.helpers.keyField, config.helpers.burberry_provkey)
+      client.setValue(config.helpers.keyField, config.helpers.burberry_provkey)
         .then(() => {
           client.click(config.helpers.submitKey);
         });

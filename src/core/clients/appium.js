@@ -9,6 +9,6 @@ exports.client = require('webdriverio').remote({
     platformVersion: '9.3.2',
     deviceName: 'MM Concierge-Silver',
     udid: 'dff8ad9bb716a56766d98b2232c3f541ba9bb796',
-    autoWebview: false
+    autoWebview: true
   }
 });

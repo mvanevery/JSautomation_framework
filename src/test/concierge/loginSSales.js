@@ -13,11 +13,11 @@ describe('Smoke Test: Login as "ssales"', () => {
     common.openBrowser(done);
   });
 
-  describe('Pausing', () => {
-    it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done, 2500);
-    });
-  });
+  //describe('Pausing', () => {
+  //  it('Should pause the test for 5 seconds', (done) => {
+  //    common.pause(done, 2500);
+  //  });
+  //});
 
   describe('Enter Provision Key', () => {
     it('Should populate the provision key', (done) => {

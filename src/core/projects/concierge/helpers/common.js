@@ -89,8 +89,8 @@ module.exports = {
     }
   },
 
-  loginSsales(done) {
-    if (client.isVisible(loginPage.helpers.login_logo, done)) {
+  loginUser(done) {
+    if (client.isVisible(loginPage.helpers.signIn, done)) {
       client.setValue(loginPage.helpers.usernameField, loginPage.helpers.username)
         .then(() => {
           client.setValue(loginPage.helpers.passwordField, loginPage.helpers.password)
@@ -123,20 +123,42 @@ module.exports = {
   },
 
   navPlanner(done) {
-    client.waitForVisible(config.helpers.img_nav_planner, 5000);
-    if (client.isVisible(config.helpers.img_nav_planner)) {
-      client.click(config.helpers.img_nav_planner);
+    if (client.isVisible(config.helpers.plannerIcon)) {
+      client.click(config.helpers.plannerIcon);
     } else {
       console.log('	ERROR: The Planner icon is not in the menu.');
     }
   },
 
-  navBlackbook(done) {
-   if (client.isVisible(config.helpers.blackbook_icon, done)) {
-      client.click(config.helpers.blackbook_icon);
-    if(client.isVisible(landingPage.helpers.homeIcon, done)) {
-      client.getText()
-    }
+  navBlackbook(done, expected) {
+   if (client.isVisible(landingPage.helpers.blackbookIcon, done)) {
+      client.click(landingPage.helpers.blackbookIcon)
+   .then(() => {
+       client.getText(landingPage.helpers.blackbookHeader)
+         .then((text) => {
+           try {
+             assert.equal(expected, text, 'The expected value was not equal to the text');
+           } catch (err) {
+             done(err);
+           }
+         })
+     })
+   }
+  },
+
+  navSearch(done, expected) {
+    if (client.isVisible(landingPage.helpers.searchIcon, done)) {
+      client.click(landingPage.helpers.searchIcon)
+      .then(() => {
+          client.getText(landingPage.helpers.productSearchField)
+          .then((text) => {
+              try {
+                assert.equal(expected, text, 'The expected value was not equal to the text');
+              } catch (err) {
+                done(err);
+              }
+            })
+        })
     }
   },
 

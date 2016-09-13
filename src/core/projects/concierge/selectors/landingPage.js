@@ -11,6 +11,8 @@ module.exports = {
         plannerIcon: '//a[@href="/planner"]',
         blackbookIcon: '//a[contains(@href, "/blackbook")]',
         expertIcon: '//a[contains(@href, "/catalog/expert")]',
+        searchIcon: 'mm-o-icon mm-c-nav__icon icon-search',
+        productSearchField: '//input[@name="Product Search"]',
         menu: '//a[@href="#"]',
         logout: 'mm-c-nav__list-item last',
         logoutModal: '.pure-container > div:nth-child(8) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)',

@@ -5,6 +5,12 @@ describe('Provision Talbots', () => {
     common.openBrowser(done);
   });
 
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 1500);
+    });
+  });
+
   describe('Enter Provision Key', () => {
     it('Should populate the provision key', (done) => {
       common.enterProvisionTalbots(done);

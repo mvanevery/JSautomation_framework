@@ -7,11 +7,12 @@ module.exports = {
     },
     helpers:{
         homeIcon: 'span.mm-c-nav__logo-img]',
-        //img_nav_dashboard: '//a[@href="/"]',
+        iconList: 'mm-c-nav__list',
         plannerIcon: '//a[@href="/planner"]',
         blackbookIcon: '//a[contains(@href, "/blackbook")]',
         expertIcon: '//a[contains(@href, "/catalog/expert")]',
         searchIcon: 'mm-o-icon mm-c-nav__icon icon-search',
+        addIcon: 'mm-o-icon mm-c-nav__icon icon-create-fill',
         productSearchField: '//input[@name="Product Search"]',
         menu: '//a[@href="#"]',
         logout: 'mm-c-nav__list-item last',

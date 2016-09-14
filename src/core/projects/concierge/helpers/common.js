@@ -8,6 +8,7 @@ const provisioning = require(`../../../projects/${project}/selectors/provisionin
 
 module.exports = {
 
+  // -------------------------   GLOBALS
   mobileView(done) {
     client.setViewportSize({
       height: 768,
@@ -40,6 +41,8 @@ module.exports = {
           console.log(text);
         });
   },
+
+  // ------------------------------------ PROVISIONING
 
   enterProvisionBurberry(done) {
     if (client.isVisible(config.helpers.keyField, done)) {
@@ -81,6 +84,8 @@ module.exports = {
   //  done();
   //},
 
+  // ---------------------------------------- LOGIN
+
   verifyLoginScreen(done) {
     if (client.isVisible(loginPage.helpers.login_logo, done)) {
       console.log('Welcome to the Login Page');
@@ -103,9 +108,10 @@ module.exports = {
     }
   },
 
+// ----------------------------------------  LANDING PAGE
+
   verifyConciergeScreen(done) {
-    client.waitForVisible(config.helpers.img_nav_logo, 5000, done);
-    if (client.isVisible(config.helpers.img_nav_logo)) {
+    if (client.isVisible(landingPage.helpers.homeIcon)) {
       console.log('	PASS: The Concierge screen is visible.');
     } else {
       console.log('	ERROR: The user failed to reach the Concierge screen.');
@@ -114,9 +120,8 @@ module.exports = {
   },
 
   navDashboard(done) {
-    client.waitForVisible(config.helpers.img_nav_dashboard, 5000);
-    if (client.isVisible(config.helpers.img_nav_dashboard)) {
-      client.click(config.helpers.img_nav_dashboard);
+    if (client.isVisible(landingPage.helpers.iconList)) {
+      client.click(landingPage.helpers.iconList);
     } else {
       console.log('	ERROR: The Dashboard icon is not in the menu.');
     }
@@ -161,6 +166,23 @@ module.exports = {
         })
     }
   },
+
+  navAddition(done) {
+    if (client.isVisible(landingPage.helpers.addIcon, done)) {
+      client.click(landingPage.helpers.addIcon)
+      .then(() => {
+          client.getText(landingPage.helpers.createLabel)
+          .then((text) => {
+              try {
+                assert.equal(expected, text, 'The expected value was not equal to the text');
+              } catch (err) {
+                done(err);
+              }
+            })
+        })
+    }
+  },
+
 
   searchCustomer(done) {
     client.waitForVisible(config.helpers.fld_lastName, 5000);

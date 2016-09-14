@@ -10,7 +10,7 @@ const mochaOptions = {
   reporterOptions: {
     reportDir: './src/test/payless/reports',
     reportName: 'report',
-    reportTitle: 'Go To Cart',
+    reportTitle: 'Verify Header',
     inlineAssets: true
   }
 };

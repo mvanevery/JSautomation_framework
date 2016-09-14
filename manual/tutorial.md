@@ -6,12 +6,12 @@
 #### Test Case Steps
     Writing the Test Case steps are all follow the same format. 1. Test Step description 2. Test Step function and then
     3. Test Step function to be executed.
-    Example:
+    Example: *Everything within the '' is what will be displayed during the test run in the terminal
     1. describe('Enter Provision Key', () => {
     2. it('Should populate the provision key', (done) => {
     3. common.enterProvisionTalbots(done);
 
-     Example:
+   #### Example:
 
      describe('Pausing', () => { 
             -- This line is to describe what action is being taken in this step 

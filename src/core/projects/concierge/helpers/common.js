@@ -2,14 +2,21 @@ const clientType = require('../../../projects/config').client;
 const client = require(`../../../../core/clients/${clientType}`).client;
 const project = require('../../../projects/config').project;
 const config = require(`../../../projects/${project}/config`);
+const landingPage = require(`../../../projects/${project}/selectors/landingPage`);
+const loginPage = require(`../../../projects/${project}/selectors/loginPage`);
+const provisioning = require(`../../../projects/${project}/selectors/provisioning`);
 
 module.exports = {
 
+  // -------------------------   GLOBALS
   mobileView(done) {
     client.setViewportSize({
       height: 768,
       width: 1024
     }, true).then(done);
+  },
+  goTo: (done) => {
+    client.init().url(config.routes.baseUrl, done);
   },
 
   openBrowser(done) {
@@ -22,68 +29,78 @@ module.exports = {
     }
   },
 
-  pause(done) {
-    client.pause(5000, done);
+  pause: (pauseTime, done) => {
+    client.pause(done, pauseTime);
+    console.log('fuck shit dayum');
   },
 
+  getsomeText(done) {
+    if (client.isVisible('//a[contains(@href, "/")]', done))
+    client.getText(config.helpers.blackbookHeader)
+    .then((text) => {
+          console.log(text);
+        });
+  },
+
+  // ------------------------------------ PROVISIONING
+
   enterProvisionBurberry(done) {
-    if (client.isVisible(config.helpers.fld_provision, done)) {
-      client.setValue(config.helpers.fld_provision, config.helpers.txt_provisionKey_burberry)
+    if (client.isVisible(config.helpers.keyField, done)) {
+      client.setValue(config.helpers.keyField, config.helpers.burberry_provkey)
         .then(() => {
-          client.click(config.helpers.btn_send);
+          client.click(config.helpers.submitKey);
         });
     } else {
-      console.log('Provision Key field is not available.');
+      console.log('Already provisioned');
     }
   },
 
   enterProvisionTalbots(done) {
-    if (client.isVisible(config.helpers.fld_provision, done)) {
-      client.setValue(config.helpers.fld_provision, config.helpers.txt_provisionKey_talbots)
-        .then(() => {
-          client.click(config.helpers.btn_send);
-        });
+    if (client.isVisible(provisioning.helpers.keyField, done)) {
+      client.setValue(provisioning.helpers.keyField, provisioning.helpers.talbots_provkey)
+          .then(() => {
+            client.click(provisioning.helpers.submitButton);
+          });
     } else {
-      console.log('ERROR: Provision Key field is not available.');
-    }
+        console.log('Already provisioned');
+      }
   },
 
   deprovision(done) {
-    client.url('localhost:3000/provision');
-    // client.waitForVisible(config.helpers.lnk_deprovision, 5000);
-    // if (client.isVisible(config.helpers.lnk_deprovision)) {
-    // 	client.click(config.helpers.lnk_deprovision);
+     if (client.isVisible(loginPage.helpers.deprovision, done)) {
+     	client.click(loginPage.helpers.deprovision);
     // } else {
     // 	console.log('	ERROR: Deprovision link is unavailable.');
-    // }
-    done();
+     }
   },
 
-  verifyProvisionScreen(done) {
-    // expect(config.helpers.txt_title_blackbook).to.exist;
-    // chai.expect('return config.helpers.img_nav_logo').exec.to.exist;
-    // if (client.isVisible(config.helpers.fld_provision)) {
-    // } else {
-    // 	console.log('	ERROR: Concierge failed to reach the Provision screen.');
-    // }
-    done();
-  },
+  //verifyProvisionScreen(done) {
+  //  // expect(config.helpers.txt_title_blackbook).to.exist;
+  //  // chai.expect('return config.helpers.img_nav_logo').exec.to.exist;
+  //  // if (client.isVisible(config.helpers.fld_provision)) {
+  //  // } else {
+  //  // 	console.log('	ERROR: Concierge failed to reach the Provision screen.');
+  //  // }
+  //  done();
+  //},
+
+  // ---------------------------------------- LOGIN
 
   verifyLoginScreen(done) {
-    if (client.isVisible(config.helpers.img_logo, done)) {
-      console.log('Not sure what this should do here');
+    if (client.isVisible(loginPage.helpers.login_logo, done)) {
+      console.log('Welcome to the Login Page');
     } else {
       console.log('ERROR: The provision failed to reach the Login screen.');
     }
   },
 
-  loginSsales(done) {
-    if (client.isVisible('basic-form-input-email', done)) {
-      client.setValue(config.helpers.fld_user, config.helpers.txt_ssales_user)
+  loginUser(done) {
+    if (client.isVisible(loginPage.helpers.signIn, done)) {
+      client.setValue(loginPage.helpers.usernameField, loginPage.helpers.username)
         .then(() => {
-          client.setValue(config.helpers.fld_password, config.helpers.txt_ssales_pass)
+          client.setValue(loginPage.helpers.passwordField, loginPage.helpers.password)
             .then(() => {
-              client.click(config.helpers.btn_signIn);
+              client.click(loginPage.helpers.signIn);
             });
         });
     } else {
@@ -91,9 +108,10 @@ module.exports = {
     }
   },
 
+// ----------------------------------------  LANDING PAGE
+
   verifyConciergeScreen(done) {
-    client.waitForVisible(config.helpers.img_nav_logo, 5000, done);
-    if (client.isVisible(config.helpers.img_nav_logo)) {
+    if (client.isVisible(landingPage.helpers.homeIcon)) {
       console.log('	PASS: The Concierge screen is visible.');
     } else {
       console.log('	ERROR: The user failed to reach the Concierge screen.');
@@ -102,52 +120,69 @@ module.exports = {
   },
 
   navDashboard(done) {
-    client.waitForVisible(config.helpers.img_nav_dashboard, 5000);
-    if (client.isVisible(config.helpers.img_nav_dashboard)) {
-      client.click(config.helpers.img_nav_dashboard);
+    if (client.isVisible(landingPage.helpers.iconList)) {
+      client.click(landingPage.helpers.iconList);
     } else {
       console.log('	ERROR: The Dashboard icon is not in the menu.');
     }
-    client.waitForVisible(config.helpers.widget_appointments, 5000);
-    if (client.isVisible(config.helpers.widget_appointments)) {
-      console.log('	PASS: The user has reached the Dashboard screen.');
-    } else {
-      console.log('	ERROR: The Dashboard screen is unreachable.');
-    }
-    done();
   },
 
   navPlanner(done) {
-    client.waitForVisible(config.helpers.img_nav_planner, 5000);
-    if (client.isVisible(config.helpers.img_nav_planner)) {
-      client.click(config.helpers.img_nav_planner);
+    if (client.isVisible(config.helpers.plannerIcon)) {
+      client.click(config.helpers.plannerIcon);
     } else {
       console.log('	ERROR: The Planner icon is not in the menu.');
     }
-    client.waitForVisible(config.helpers.txt_title_planner, 5000);
-    if (client.isVisible(config.helpers.txt_title_planner)) {
-      console.log('	PASS: The user has reached the Planner screen.');
-    } else {
-      console.log('	ERROR: The Planner screen is unreachable.');
-    }
-    done();
   },
 
-  navBlackbook(done) {
-    client.waitForVisible(config.helpers.img_nav_blackbook, 5000);
-    if (client.isVisible(config.helpers.img_nav_blackbook)) {
-      client.click(config.helpers.img_nav_blackbook);
-    } else {
-      console.log('	ERROR: The Blackbook icon is not in the menu.');
-    }
-    client.waitForVisible(config.helpers.img_myCustomers, 5000);
-    if (client.isVisible(config.helpers.img_myCustomers)) {
-      console.log('	PASS: The user has reached the Blackbook screen.');
-    } else {
-      console.log('	ERROR: The Blackbook screen is unreachable.');
-    }
-    done();
+  navBlackbook(done, expected) {
+   if (client.isVisible(landingPage.helpers.blackbookIcon, done)) {
+      client.click(landingPage.helpers.blackbookIcon)
+   .then(() => {
+       client.getText(landingPage.helpers.blackbookHeader)
+         .then((text) => {
+           try {
+             assert.equal(expected, text, 'The expected value was not equal to the text');
+           } catch (err) {
+             done(err);
+           }
+         })
+     })
+   }
   },
+
+  navSearch(done, expected) {
+    if (client.isVisible(landingPage.helpers.searchIcon, done)) {
+      client.click(landingPage.helpers.searchIcon)
+      .then(() => {
+          client.getText(landingPage.helpers.productSearchField)
+          .then((text) => {
+              try {
+                assert.equal(expected, text, 'The expected value was not equal to the text');
+              } catch (err) {
+                done(err);
+              }
+            })
+        })
+    }
+  },
+
+  navAddition(done) {
+    if (client.isVisible(landingPage.helpers.addIcon, done)) {
+      client.click(landingPage.helpers.addIcon)
+      .then(() => {
+          client.getText(landingPage.helpers.createLabel)
+          .then((text) => {
+              try {
+                assert.equal(expected, text, 'The expected value was not equal to the text');
+              } catch (err) {
+                done(err);
+              }
+            })
+        })
+    }
+  },
+
 
   searchCustomer(done) {
     client.waitForVisible(config.helpers.fld_lastName, 5000);

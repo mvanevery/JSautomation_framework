@@ -11,7 +11,7 @@ describe('Testing Find A Product', () => {
   });
   describe('Searching for an Item', () => {
     it('should search for an item', (done) => {
-      common.searchItem(done);
+      home.searchItem(done);
     });
   });
   describe('pausing', () => {

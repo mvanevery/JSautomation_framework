@@ -31,6 +31,7 @@ devices. Below is listed what you need for Windows and Mac machines.
 - Java
 - Android SDK (this will install universal drivers for android devices)
 - Xcode and Xcode command line tools
+- Command Line Tools for Android SDK
 
 
 

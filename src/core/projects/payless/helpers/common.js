@@ -76,6 +76,12 @@ module.exports = {
 
 // HOMEPAGE/MENU FUNCTIONALITY
 
+  closePopup: (done) =>{
+    if(client.isVisible('i.icon.spin-target', done)) {
+      client.click('i.icon.spin-target');
+    }
+  },
+
   openMenu: (done) => {
     if (client.isVisible(home.helpers.menu, done)) {
       client.click(home.helpers.menu);
@@ -137,6 +143,7 @@ module.exports = {
       console.log('Icon not visible');
     }
   },
+
 
 // FIND A STORE/FIND IN STORE FUNCTIONALITY
 

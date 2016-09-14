@@ -13,15 +13,9 @@ describe('Smoke Test: Login as "ssales"', () => {
     common.openBrowser(done);
   });
 
-  describe('Enter Provision Key', () => {
-    it('Should populate the provision key', (done) => {
-      common.enterProvisionTalbots(done);
-    });
-  });
-
   describe('Pausing', () => {
     it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done);
+      common.pause(done, 1500);
     });
   });
 
@@ -33,13 +27,13 @@ describe('Smoke Test: Login as "ssales"', () => {
 
   describe('Login', () => {
     it('Should login as "ssales"', (done) => {
-      common.loginSsales(done);
+      common.loginUser(done);
     });
   });
 
   describe('Pausing', () => {
     it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done);
+      common.pause(done, 3000);
     });
   });
 
@@ -51,5 +45,6 @@ describe('Smoke Test: Login as "ssales"', () => {
 
   after((done) => {
     common.end(done);
-  });
+  })
+
 });

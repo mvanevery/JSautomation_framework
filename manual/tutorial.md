@@ -5,9 +5,9 @@
 ## Writing Test Steps
 #### Test Case Steps
     Writing the Test Case steps are all follow the same format.
-    1. Test Step description
-    2. Test Step function and then
-    3. Test Step function to be executed.
+    1. Test step description
+    2. Test step function and then
+    3. Test step function to be executed.
 
     Example: *Everything within the '' is what will be displayed during the test run in the terminal
     1. describe('Enter Provision Key', () => {

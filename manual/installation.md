@@ -41,11 +41,11 @@ devices. Below is listed what you need for Windows and Mac machines.
 - (Mac only) Before installing any other program install Xcode. This can be done through the App Store
 simply by search for Xcode.
 - (Mac Only) Once Xcode is installed, install the Xcode command line tools this can be done
-from the Terminal using:
+from the terminal using:
 
       xcode-select --install
 - (Mac Only) To install Brew, ensure Xcode and Xcode command line tools are installed. Once that is done
-in the Terminal use this command
+in the terminal use this command
 
       ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 - Install WebStorm or an equivalent JavaScript development IDE
@@ -63,10 +63,11 @@ in the Terminal use this command
          4. In the Variable Name, set that to JAVA_HOME
          5. In the Variable Value field, set that to where the JDK lives. Ex:
          C:\Program Files\Java\jdk1.8.0_101
-         6. Select the Path vairable and click Edit
+         6. Select the Path variable and click Edit
          7. (if on Windows 10) Click New and add a route to the javapath. Ex: C:\ProgramData\Oracle\Java\javapath
+
       * For Mac - To add the JAVA paths you must edit the .bash_profile file
-        1. Open Terminal
+        1. Open terminal
         2. Ensure you are in root. Use command
 
                cd ~
@@ -76,5 +77,9 @@ in the Terminal use this command
         4. In the .bash_profile, you need to add the JAVA_HOME. Add this to the file:
 
                 export JAVA_HOME=$(/usr/libexec/java_home)
+        5. To save the file, press Command+X, when asked to save press Y and hit Enter to confirm the file name
+        6. To confirm that Java is installed, quit the terminal and reopen it
+        7. When the terminal opens back up, use the commands to verify the Java installation
 
+                java -version
 

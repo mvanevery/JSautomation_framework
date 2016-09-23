@@ -37,6 +37,7 @@ devices. Below is listed what you need for Windows and Mac machines.
 
 ## Installation
 
+
 - (Mac only) Before installing any other program install Xcode. This can be done through the App Store
 simply by search for Xcode.
 - (Mac Only) Once Xcode is installed, install the Xcode command line tools this can be done
@@ -47,5 +48,17 @@ from the Terminal using:
 in the Terminal use this command
 
       ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+- Install WebStorm or an equivalent JavaScript development IDE
+     * [Webstorm](https://www.jetbrains.com/webstorm/download/) (preferred)
+     * [NetBeans IDE](https://netbeans.org/downloads/index.html)
+     * [Visual Studio](https://www.visualstudio.com/vs/community/)
+- Install JAVA. This can be downloaded from Oracle.com. You need the
+[Java Runtime Environment](http://java.com/en/download/)(JRE) and the
+[Java Development Kit](http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html)(JDK)
+   * Once JAVA is downloaded and installed. You must set JAVA paths on your machine.
+      * For Windows - To add the JAVA paths you must edit the system environment variables
+      to do this you must go into the System Properties. Select the Advanced tab and click the button
+      marked Environment Variables.
+
 
 

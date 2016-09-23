@@ -1,13 +1,16 @@
 ### Test Step Breakdown
 
 
-    describe('Pausing', () => { 
-        -- This line is to describe what action is being taken in this step 
-    it('Should pause the test for 5 seconds', (done) => { 
-        -- This line describes what the step is actually doing or rather supposed to be doing 
-    common.pause(done, 2500); 
-         -- This line is what function is being called in this step. For instance 'common.pause()', 'common' is the js file and 'pause' is 
+    This line is to describe what action is being taken in this step
+        describe('Pausing', () => { 
+
+    #This line describes what the step is actually doing or rather supposed to be doing     
+        it('Should pause the test for 5 seconds', (done) => { 
+         
+    #This line is what function is being called in this step. For instance 'common.pause()', 'common' is the js file and 'pause' is 
      the function within that file that is being executed.   
+        common.pause(done, 2500); 
+
 
 ### Test Example
 

@@ -57,8 +57,24 @@ in the Terminal use this command
 [Java Development Kit](http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html)(JDK)
    * Once JAVA is downloaded and installed. You must set JAVA paths on your machine.
       * For Windows - To add the JAVA paths you must edit the system environment variables
-      to do this you must go into the System Properties. Select the Advanced tab and click the button
-      marked Environment Variables.
+         1. Go into the System Properties
+         2. Select the Advanced tab and click the button marked Environment Variables
+         3. Under System Variables, click New
+         4. In the Variable Name, set that to JAVA_HOME
+         5. In the Variable Value field, set that to where the JDK lives. Ex:
+         C:\Program Files\Java\jdk1.8.0_101
+         6. Select the Path vairable and click Edit
+         7. (if on Windows 10) Click New and add a route to the javapath. Ex: C:\ProgramData\Oracle\Java\javapath
+      * For Mac - To add the JAVA paths you must edit the .bash_profile file
+        1. Open Terminal
+        2. Ensure you are in root. Use command
 
+               cd ~
+        3. Once in root, you need to open the .bash_profile so that you can add the paths. Use this command:
+
+               nano .bash_profile
+        4. In the .bash_profile, you need to add the JAVA_HOME. Add this to the file:
+
+                export JAVA_HOME=$(/usr/libexec/java_home)
 
 

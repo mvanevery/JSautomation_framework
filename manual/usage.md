@@ -15,8 +15,9 @@ commit the code to your branch on the server.
 need to update. You also pull to your branch when you are about to submit for code for
 a PR (peer review/pull request).
 ## Peer Review/Pull Request
-
--
+- When you have code that you feel is ready to be merged into the development branch you
+do this through a PR (peer review/pull request). This is done within BitBucket, in the repo
+for the project.
 
 
 

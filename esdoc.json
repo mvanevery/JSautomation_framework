@@ -11,7 +11,7 @@
   "manual": {
     "overview": ["./manual/overview.md"],
     "installation": ["./manual/installation.md"],
-    "usage": ["./manual/usage.md"],
+    "code control": ["./manual/codeControl.md"],
     "tutorial": ["./manual/tutorial.md"],
     "configuration": ["./manual/configuration.md"],
     "faq": ["./manual/faq.md"],

@@ -37,5 +37,15 @@ devices. Below is listed what you need for Windows and Mac machines.
 
 ## Installation
 
+- (Mac only) Before installing any other program install Xcode. This can be done through the App Store
+simply by search for Xcode.
+- (Mac Only) Once Xcode is installed, install the Xcode command line tools this can be done
+from the Terminal using:
+
+      xcode-select --install
+- (Mac Only) To install Brew, ensure Xcode and Xcode command line tools are installed. Once that is done
+in the Terminal use this command
+
+      ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 

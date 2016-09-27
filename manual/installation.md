@@ -85,13 +85,13 @@ in the terminal use this command
         7. When the terminal opens back up, use the commands to verify the Java installation
 
                 java -version
+
 - Download and Install [Node.js](https://nodejs.org/en/download/) and [NVM(Node Version Manager)](https://github.com/creationix/nvm)
     * The Node.js should be a wizard type install so just follow the prompts
     * The NVM install is easiest done through the command line. Follow the instructions on the page for
     curl or Wget installation instructions
 - Download and Install [Appium](Http://appium.io)
     * Follow the install wizard and Appium will install everything necessary to run the standalone program
-
 - Download and Install the [Android SDK and Tools](https://developer.android.com/studio/index.html)
     * Scroll to the bottom of the page and select the corresponding Android Studio installation for
     your operating system.
@@ -127,6 +127,12 @@ in the terminal use this command
                     PATH=$PATH:$ANDROID_HOME/platform-tools
                     PATH=$PATH:$ANDROID_HOME/tools
              5. To save the file, press Command+X, when asked to save press Y and hit Enter to confirm the file name
-             6. To confirm that Java is installed, quit the terminal and reopen it
-             7. When the terminal opens back up, use the commands to verify the Java installation
 
+
+- Download and install FireFox from [here](https://www.mozilla.org/en-US/firefox/new/?scene=2)
+  This is used to run the Selenium IDE, which is a useful tool for getting element information when scripting.
+
+- Download and install Selenium IDE from [here](https://addons.mozilla.org/en-US/firefox/addon/selenium-ide/). This
+  will install the Selenium IDE plugin, to be used only in Firefox
+
+- Download and Install the [Selenium Standalone Server](http://goo.gl/EUxR76) and [Chromedriver](https://sites.google.com/a/chromium.org/chromedriver/)

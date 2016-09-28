@@ -5,7 +5,7 @@ Automation test framework
 1. See Install doc [Node v5.7.0](https://nodejs.org/en/).
 2. `npm install`
 
-## Code Control
+## Usage
 
 ## Examples
 1. Steps go here

@@ -19,7 +19,7 @@ devices. Below is listed what you need for Windows and Mac machines.
 - Chromedriver
 - Mozilla Firefox
 - Google Chrome
-
+- Gulp
 
 ### Mac
 
@@ -35,13 +35,16 @@ devices. Below is listed what you need for Windows and Mac machines.
 - Chromedriver
 - Selenium IDE
 - Firefox
+- Gulp
+- iDeviceInstaller
+- iOS-Webkit-Proxy
 
 
 
-## Installation
+## Installation of Programs
 
 
-- (Mac only) Before installing any other program install Xcode. This can be done through the App Store
+- (Mac Only) Before installing any other program install Xcode. This can be done through the App Store
 simply by search for Xcode.
 - (Mac Only) Once Xcode is installed, install the Xcode command line tools this can be done
 from the terminal using:
@@ -136,3 +139,43 @@ in the terminal use this command
   will install the Selenium IDE plugin, to be used only in Firefox
 
 - Download and Install the [Selenium Standalone Server](http://goo.gl/EUxR76) and [Chromedriver](https://sites.google.com/a/chromium.org/chromedriver/)
+
+- Install Gulp globally on your machine. This is needed to run the test. Open the terminal and enter the code below
+
+        npm install -g gulp
+
+- (Mac Only) Install the iOS-Webkit-Proxy via command line. This allows Appium to speak directly to an iOS device. It needs to be running in order
+to test against devices. Open the terminal and enter the code below
+
+        brew install ios-webkit-debug-proxy
+
+- (Mac Only) Install iDeviceInstaller on your machine. Open the terminal and enter the code below
+
+        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null 2> /dev/null
+     when that is finished enter this
+
+        brew install ideviceinstaller
+
+## Installing Archon
+
+From within WebStorm or equivalent Javascript IDE, you need to pull the project down from its Git repository. You must have access
+ to the project for this to work, so make sure you have access to the Archon-Framework before attempting to pull the project down.
+
+Since I work in WebStorm I will use that as a base of reference for steps but the concepts should apply everywhere
+
+- Open your Javascript IDE, depending on what you use you may be prompted with the choice of how to create a new project. You want to
+checkout the project from Git. In WebStorm, you choose "Check out from Version Control" and choose Git
+- When prompted to input the Git repository info, you need to set the Git Repository URL and the directories you wish to use.
+    - if you have access to the Git repository in BitBucket, then you can get the repository URL from there it will look something like
+    this
+
+          git@bitbucket.org:madmobile/archon-framework.git
+    - Set you directories to what ever you would like them to be and hit the clone button
+    - If prompted for a username and password use you BitBucket username and password
+- Once the project has been pulled down and it is on your machine, it needs a few minutes to complete indexing. After that,
+you want to open the terminal within the IDE and run the command below
+
+        npm install
+
+#### You have installed the Archon Framework on your machine. Head over to Configuration to get your IDE setup to run the project with no issue!
+

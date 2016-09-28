@@ -170,6 +170,7 @@ checkout the project from Git. In WebStorm, you choose "Check out from Version C
     this
 
           git@bitbucket.org:madmobile/archon-framework.git
+
     - Set you directories to what ever you would like them to be and hit the clone button
     - If prompted for a username and password use you BitBucket username and password
 - Once the project has been pulled down and it is on your machine, it needs a few minutes to complete indexing. After that,

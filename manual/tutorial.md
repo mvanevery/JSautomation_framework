@@ -70,15 +70,30 @@
 
 ### All of these are done with WebStorm in mind
 ### Commit
-- To Commit your code, go to VCS on the menu, select Commit Changes(**ctrl+K or cmd+K**). This will commit your code to branch locally
-but will not commit the code to your branch in the repository.
+- To Commit your code
+    1. Go to VCS on the menu and select Commit Changes(**ctrl+K or cmd+K**)
+    2. Add any comments regarding that commit at that moment and click the Commit button.
+
+This will commit your code to branch locally but will not commit the code to your branch in the repository.
+
 ### Push
-- To Push your code, go to VCS on the menu, select Git and under the Fetch section, select Push (**shift+ctrl+K or shift+cmd+K**)
+- To Push your code
+    1. Go to VCS on the menu, select Git
+    2. Under the Fetch section, select Push (**shift+ctrl+K or shift+cmd+K**)
+    3. Click the Push button
+
 Typically you push your code at the same time that you push code. That is to ensure that the code in the repo matches the code you
-have locally on your machine.
+   have locally on your machine.
+
 ### Pull
-- You pull to your branch, go to VCS on the menu and select Update Project(**ctrl+T or cmd+T**). This is done when development has been done by you on a different
+- You pull to your branch
+    1. Go to VCS on the menu and select Update Project(**ctrl+T or cmd+T**).
+    2. When the modal displays make sure the settings are set to Merge under Update Type and the other option is set to Use Stash.
+    3. The click OK
+
+This is done when development has been done by you on a different
 machine or a second developer has contributed to this branch and you need to get that update.
+
 ### Pull Request
 - When you have code that you feel is ready to be merged into the development branch or want
  to open it up for collaboration you do this through a PR (peer review/pull request). This is

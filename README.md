@@ -2,12 +2,12 @@
 Automation test framework
 
 ## Installation
-1. Install [Node v5.7.0](https://nodejs.org/en/).
+1. See Install doc [Node v5.7.0](https://nodejs.org/en/).
 2. `npm install`
 
 ## Usage
 
-### Run Test
+## Examples
 1. Steps go here
 2. More steps
 

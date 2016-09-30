@@ -26,7 +26,7 @@ exports.client = require('webdriverio').remote({
     appActivity: 'com.madmobiledev.Concierge.MainActivity',
     browserName: '',
     appPackage: 'com.madmobiledev.Concierge',
-    deviceName: 'Nexus 7',
+    deviceName: 'QA 5.1.1 Device',
     udid: '0909931a',
     setWebContentsDebuggingEnbabled: true,
     autoWebview: false

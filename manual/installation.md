@@ -45,7 +45,7 @@ devices. Below is listed what you need for Windows and Mac machines.
 
 
 - (Mac Only) Before installing any other program install Xcode. This can be done through the App Store
-simply by search for Xcode.
+simply by searching for Xcode.
 - (Mac Only) Once Xcode is installed, install the Xcode command line tools this can be done
 from the terminal using:
 
@@ -83,8 +83,8 @@ in the terminal use this command
         4. In the .bash_profile, you need to add the JAVA_HOME. Add this to the file:
 
                 export JAVA_HOME=$(/usr/libexec/java_home)
-        5. To save the file, press Command+X, when asked to save press Y and hit Enter to confirm the file name
-        6. To confirm that Java is installed, quit the terminal and reopen it
+        5. To save the file, press Control+O, to exit press Control+X, when asked to save press Y and hit Enter to confirm the file name
+        6. To confirm that Java is installed, quit the terminal program and relaunch it
         7. When the terminal opens back up, use the commands to verify the Java installation
 
                 java -version
@@ -95,6 +95,10 @@ in the terminal use this command
     curl or Wget installation instructions
 - Download and Install [Appium](Http://appium.io)
     * Follow the install wizard and Appium will install everything necessary to run the standalone program
+    * From the terminal, install Appium using command
+
+            - npm install -g appium
+
 - Download and Install the [Android SDK and Tools](https://developer.android.com/studio/index.html)
     * Scroll to the bottom of the page and select the corresponding Android Studio installation for
     your operating system.
@@ -130,6 +134,9 @@ in the terminal use this command
                     PATH=$PATH:$ANDROID_HOME/platform-tools
                     PATH=$PATH:$ANDROID_HOME/tools
              5. To save the file, press Command+X, when asked to save press Y and hit Enter to confirm the file name
+             6. Before anything will take and be usuable in the terminal you must quit all instances of the terminal. Not
+             just closing all terminal windows but quitting the terminal program is needed. **You must do that any time you update
+             the .bash_profile**
 
 
 - Download and install FireFox from [here](https://www.mozilla.org/en-US/firefox/new/?scene=2)
@@ -156,7 +163,7 @@ to test against devices. Open the terminal and enter the code below
 
         brew install ideviceinstaller
 
-## Installing Archon
+## Installation of Archon
 
 From within WebStorm or equivalent Javascript IDE, you need to pull the project down from its Git repository. You must have access
  to the project for this to work, so make sure you have access to the Archon-Framework before attempting to pull the project down.
@@ -178,5 +185,5 @@ you want to open the terminal within the IDE and run the command below
 
         npm install
 
-#### You have installed the Archon Framework on your machine. Head over to Configuration to get your IDE setup to run the project with no issue!
-
+You have installed the Archon Framework on your machine.
+Head over to [Configuration](./manual/configuration.html) to get your IDE setup to run the project with no issue!

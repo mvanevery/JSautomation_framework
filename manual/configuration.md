@@ -31,5 +31,6 @@ you want to open the terminal within the IDE and run the command below
 
 Once the npm install has completed. To run the project so that you can begin development run the following command
 
-        npm start (For Oracle/Concierge)
-        npm run dev (For Sysco UOM)
+        For Oracle/Concierge:   npm start
+
+        For Sysco UOM:          npm run dev

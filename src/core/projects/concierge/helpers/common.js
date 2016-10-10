@@ -108,14 +108,17 @@ module.exports = {
     }
   },
 
-  //specifyStore(done) {
-  //  if (client.isVisible('input[name="storeId"]', done)) {
-  //    client.setValue('input[name="storeId"]', 'test')
-  //    .then(() => {
-  //        client.click
-  //      })
-  //  }
-  //}
+//----------------------------------- Store ID Page ----------------------------------------------------
+
+  specifyStore(done) {
+    if (client.isVisible('input[name="storeId"]', done)) {
+      client.setValue('input[name="storeId"]', store.helpers.storeID)
+        .then(() => {
+          client.click(store.helpers.saveButton)
+        })
+    }
+  },
+
 
 // ----------------------------------------  LANDING PAGE
 

@@ -96,7 +96,7 @@ machine or a second developer has contributed to this branch and you need to get
 
 ### Pull Request
 - When you have code that you feel is ready to be merged into the development branch or want
- to open it up for collaboration you do this through a PR (peer review/pull request). This is
+ to open it up for collaboration you do this through a PR (pull request). This is
  done within BitBucket, in the repo for the project.
    1. Open BitBucket and log in using your credentials that have access to the Archon Framework
    2. Navigate to the Archon Framework
@@ -104,7 +104,9 @@ machine or a second developer has contributed to this branch and you need to get
    4. On the Pull Requests page, you will see a drop down on the left pointing to a drop down on the right
    5. In the left drop down, select the branch you have been working on and want merged into the development branch
    6. In the right drop down, select Develop as the branch
-   7. In the description section, put the status of the request like "In Development or Do NOT Merge or Ready to be Merged"
-   along with any other information
+   7. In the description section, put the status of the request. Normally, the only one you need is "Do NOT Merge". Also in the
+   description, your commit messages will be present, for cleanup, you can remove the commit messages and make a more detailed
+   description of the what is in the pull request. What you worked on and what you did is sufficient or just a bulleted list of
+   the changes
    8. (Optional) You can check or uncheck the box marked "Close Branch". If left checked it will remove the from the repository when the
    branch is merged

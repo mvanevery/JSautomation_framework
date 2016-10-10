@@ -108,6 +108,15 @@ module.exports = {
     }
   },
 
+  //specifyStore(done) {
+  //  if (client.isVisible('input[name="storeId"]', done)) {
+  //    client.setValue('input[name="storeId"]', 'test')
+  //    .then(() => {
+  //        client.click
+  //      })
+  //  }
+  //}
+
 // ----------------------------------------  LANDING PAGE
 
   verifyConciergeScreen(done) {

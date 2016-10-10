@@ -1,25 +1,26 @@
-# Archon
-Automation test framework
+# Archon Automation test framework
 
-## Installation
-1. See Install doc [Node v5.7.0](https://nodejs.org/en/).
-2. `npm install`
+### [Installation](./manual/installation.html)
+##### [Setup](./manual/installation.html#setup)
+   - For Windows
+   - For Mac
 
-## Usage
+##### [Installation of Programs](./manual/installation.html#installation-of-programs)
+##### [Installation of Archon](./manual/installation.html#installation-of-archon)
 
-## Examples
-1. Steps go here
-2. More steps
+### [Usage](./manual/usage.html)
 
-### Other Things
+### [Tutorial](./manual/tutorial.html)
 
-Describe some more stuff here
+### [Examples](./manual/example.html)
+1. Test Step Breakdown
+2. Step Examples
 
-The default client is PhantomJS but can be changed by...
 
-### Development
+## Development
 
-## Tips
+### [Configuration](./manual/configuration.html)
+##### [Setting Up Webstorm](./manual/configuration.html#setting-up-webstorm)
+##### [Connecting to Project Environments](./manual/configuration.html#connecting-to-project-environments)
 
-### Webstorm
-- Preferences -> Languages & Frameworks -> Javascript -> Choose ECMAScript 6
+

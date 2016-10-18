@@ -69,7 +69,6 @@ build/Release
 node_modules
 
 ### Project
-docs
 dist
 *.zip
 *.tar

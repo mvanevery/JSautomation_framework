@@ -9,25 +9,13 @@ const current = `${date.getMonth()}-${date.getDate()}-${date.getFullYear()}-${da
 const By = client.By
 
 module.exports = {
-  mobileView: (done) => {
-    client.setViewportSize({
-      height: 559,
-      width: 375
-    }, true).then(done);
-  },
-
-// MULTI-PAGE FUNCTIONS
-  pause: (done, pauseTime) => {
-    client.pause(pauseTime, done);
-  },
   login: (done) => {
-
-    if (client.isVisible('id="username"', done)) {
+    if (client.isVisible(config.login.userField, done)) {
         //.then(() => {
          // client.getValue('id=username');
-          client.keys('id="username"', config.login.username)
+          client.setValue(config.login.userField, config.login.username)
             .then(() => {
-              client.keys('id="password"', config.login.password)
+              client.setValue(config.login.passField, config.login.password)
                 .then(() => {
                   client.click('//button[@id="login-button"]');
               });
@@ -35,22 +23,4 @@ module.exports = {
          //});
     }
   },
-  refreshPage: (done) => {
-    client.refresh(done);
-  },
-  goToChrome: (done) => {
-    client.init().url(config.routes.baseUrl, done);
-  },
-  goToAppium: (done) => {
-    client.init(done);
-  },
-
-// REPORTING
-  getScreenshot: (done) => {
-    client.saveScreenshot(`checkout${current}.png`, done);
-  },
-
-  end: (done) => {
-    client.end(done);
-  }
 };

@@ -17,6 +17,12 @@ describe('Provision Talbots', () => {
     });
   });
 
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 5000);
+    });
+  });
+
   describe('Verify Login Screen', () => {
     it('Should navigate to the login screen', (done) => {
       common.verifyLoginScreen(done);

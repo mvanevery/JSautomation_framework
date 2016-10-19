@@ -1,3 +1,6 @@
+/**
+ * Created by mvanevery on 10/11/16.
+ */
 const mochaOptions = {
   timeout: '50000',
   reporter: 'mochawesome',
@@ -16,7 +19,7 @@ function handleError(err) {
 
 module.exports = function (gulp, mocha) {
   return function () {
-    return gulp.src('./src/test/concierge/provisionining.js', {read: false})
+    return gulp.src('./src/test/concierge/provisionTalbots.js', {read: false})
       .pipe(mocha(mochaOptions).on("error", handleError));
   }
 };

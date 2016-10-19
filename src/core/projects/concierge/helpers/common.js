@@ -5,6 +5,8 @@ const config = require(`../../../projects/${project}/config`);
 const landingPage = require(`../../../projects/${project}/selectors/landingPage`);
 const loginPage = require(`../../../projects/${project}/selectors/loginPage`);
 const provisioning = require(`../../../projects/${project}/selectors/provisioning`);
+const store = require(`../../../projects/${project}/selectors/store`);
+const planner = require(`../../../projects/${project}/selectors/planner`);
 
 module.exports = {
 
@@ -29,9 +31,8 @@ module.exports = {
     }
   },
 
-  pause: (pauseTime, done) => {
-    client.pause(done, pauseTime);
-    console.log('fuck shit dayum');
+  pause: (done, pauseTime) => {
+    client.pause(pauseTime, done);
   },
 
   getsomeText(done) {
@@ -94,11 +95,11 @@ module.exports = {
     }
   },
 
-  loginUser(done) {
+  loginUser(done,username, password) {
     if (client.isVisible(loginPage.helpers.signIn, done)) {
-      client.setValue(loginPage.helpers.usernameField, loginPage.helpers.username)
+      client.setValue(loginPage.helpers.usernameField, username || loginPage.helpers.username)
         .then(() => {
-          client.setValue(loginPage.helpers.passwordField, loginPage.helpers.password)
+          client.setValue(loginPage.helpers.passwordField, password || loginPage.helpers.password)
             .then(() => {
               client.click(loginPage.helpers.signIn);
             });
@@ -108,14 +109,28 @@ module.exports = {
     }
   },
 
-  //specifyStore(done) {
-  //  if (client.isVisible('input[name="storeId"]', done)) {
-  //    client.setValue('input[name="storeId"]', 'test')
-  //    .then(() => {
-  //        client.click
-  //      })
-  //  }
-  //}
+//----------------------------------- Store ID Page ----------------------------------------------------
+
+  specifyStore(done, storeID) {
+    if (client.isVisible(store.helpers.storeIDField, done)) {
+      client.setValue(store.helpers.storeIDField, storeID || store.helpers.storeID)
+        .then(() => {
+          client.click(store.helpers.saveButton)
+            //.then(() => {
+            //  client.click(loginPage.helpers.signIn);
+            //});
+        })
+    }
+  },
+  specifyStoreCancel(done) {
+    if (client.isVisible(store.helpers.storeIDField, done)) {
+      client.setValue(store.helpers.storeIDField, store.helpers.storeID)
+        .then(() => {
+          client.click(store.helpers.cancelButton)
+        })
+    }
+  },
+
 
 // ----------------------------------------  LANDING PAGE
 
@@ -126,6 +141,17 @@ module.exports = {
       console.log('	ERROR: The user failed to reach the Concierge screen.');
     }
     done();
+  },
+
+  navMenu(done) {
+    if (client.isVisible(landingPage.helpers.menuIcon)) {
+      client.click(landingPage.helpers.menuIcon)
+        .then(() => {
+          client.getText('h2')
+        })
+    } else {
+      console.log('	ERROR: The Dashboard icon is not in the menu.');
+    }
   },
 
   navDashboard(done) {
@@ -141,6 +167,37 @@ module.exports = {
       client.click(config.helpers.plannerIcon);
     } else {
       console.log('	ERROR: The Planner icon is not in the menu.');
+    }
+  },
+
+  addTask(done,expected) {
+    if(client.isVisible(planner.helpers.taskAddition)) {
+      client.click(planner.helpers.taskAddition)
+    .then(() => {
+          client.getText(planner.helpers.taskTitle)
+            .then((text) => {
+              try {
+                assert.equal(expected, text, 'The Task modal is displayed');
+              } catch (err) {
+                done(err);
+              }
+            })
+        })
+    }
+  },
+  addAppointment(done,expected) {
+    if(client.isVisible(planner.helpers.apptAddition)) {
+      client.click(planner.helpers.apptAddition)
+        .then(() => {
+          client.getText(planner.helpers.apptTitle)
+            .then((text) => {
+              try {
+                assert.equal(expected, text, 'The Task modal is displayed');
+              } catch (err) {
+                done(err);
+              }
+            })
+        })
     }
   },
 
@@ -192,6 +249,58 @@ module.exports = {
     }
   },
 
+  //-----------------------------------------------Task/Appointment Modal ------------------
+
+  addSubject(done,subject) {
+    if (client.isVisible(planner.helpers.modalSubject, done)) {
+      client.setValue(planner.helpers.modalSubject, subject);
+    }
+  },
+
+  addType(done, type) {
+    if (client.isVisible(planner.helpers.taskType, done)) {
+      client.setValue(planner.helpers.taskType, type);
+    }
+  },
+
+  addStartDate(done, start) {
+    if (client.isVisible(planner.helpers.modalStartDateTime, done)) {
+      client.setValue(planner.helpers.modalStartDateTime, start);
+    }
+  },
+
+  addEndDate(done, end) {
+    if (client.isVisible(planner.helpers.modalEndDateTime, done)) {
+      client.setValue(planner.helpers.modalEndDateTime, end);
+    }
+  },
+
+  addStatus(done, status) {
+    if (client.isVisible(planner.helpers.modalStatus, done)) {
+      client.setValue(planner.helpers.modalStatus, status);
+    }
+  },
+
+  addPriority(done, priority) {
+    if (client.isVisible(planner.helpers.modalPriority, done)) {
+      client.setValue(planner.helpers.modalPriority, priority)
+    }
+  },
+
+  saveTask(done) {
+    if (client.isVisible(planner.helpers.taskSave, done)) {
+      client.click(planner.helpers.taskSave);
+    }
+  },
+
+  cancelTask(done) {
+    if (client.isVisible(planner.helpers.taskCancel, done)) {
+      client.click(planner.helpers.taskCancel)
+    }
+  },
+
+
+  //-----------------------------------------------------------
 
   searchCustomer(done) {
     client.waitForVisible(config.helpers.fld_lastName, 5000);

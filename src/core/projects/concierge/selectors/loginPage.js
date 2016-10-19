@@ -11,8 +11,8 @@ module.exports = {
         login_logo: 'img.mm-c-login__logo',
         url_login: 'localhost:3000/login',
         deprovision: '.mm-o-icon',
-        username: 'qaUser',
-        password: 'qaUser@123',
+        username: '',
+        password: '',
         signIn: '//button[@type="button"]'
     }
 }

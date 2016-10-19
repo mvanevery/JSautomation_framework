@@ -25,7 +25,7 @@ describe('Smoke Test: Add Appointment', () => {
 
   describe('Login', () => {
     it('Should login as "ssales"', (done) => {
-      common.loginSsales(done);
+      common.loginUser(done, 'qaUser', 'qaUser@123');
     });
   });
 

@@ -33,7 +33,6 @@ module.exports = {
 
   pause: (done, pauseTime) => {
     client.pause(pauseTime, done);
-    //console.log('fuck shit dayum');
   },
 
   getsomeText(done) {

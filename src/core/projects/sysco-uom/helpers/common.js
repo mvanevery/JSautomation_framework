@@ -39,9 +39,12 @@ module.exports = {
   },
   back(done) {
     if(client.isVisible(config.generic.backArrow, done)) {
-      client.touchClick(config.generic.backArrow)
+      client.touch(config.generic.backArrow)
       .then(() => {
-        console.log('This has been clicked')
+          client.release(config.generic.backArrow)
+          .then(() => {
+              console.log('This has been clicked')
+            });
       });
     }
   },

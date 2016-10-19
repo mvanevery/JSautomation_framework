@@ -3,7 +3,7 @@ module.exports = {
     baseUrl: 'http://localhost:3001'
   },
   generic: {
-    backArrow:'a#back-nav',
+    backArrow:'//a[@id="back-nav"]/i',
     addSymbol:'add-nav',
     close:'close-nav',
     edit:'edit-nav'
@@ -11,7 +11,7 @@ module.exports = {
   login: {
     userField:'//input[@id="username"]',
     passField:'//input[@id="password"]',
-    username: 'sqnorm50',
+    username: 'squomnorm44',
     password: 'welcome1'
   },
   homepage: {

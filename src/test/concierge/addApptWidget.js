@@ -41,7 +41,7 @@ describe('Smoke Test: Add Appointment', () => {
 
   describe('Click the Add Appointment + Symbol', () => {
     it('Should open a Modal asking for appointment details', (done) => {
-      common.navMenu(done);
+      common.navPlanner(done);
     });
   });
 

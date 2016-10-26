@@ -10,7 +10,7 @@ module.exports = {
         bagIcon:'div.mm-o-icon.icon-bag-outline',
         iconList: 'mm-c-nav__list',
         iconListTitle:'h2',
-        plannerIcon: '//div[@data-id, "catalog"]',
+        plannerIcon: '//div[@id="app"(contains(@data-id="catalog"))]',
         //plannerIcon: 'mm-o-icon mm-c-nav__icon icon-year-to-date',
         blackbookIcon: '//a[contains(@href, "/blackbook")]',
         expertIcon: '//a[contains(@href, "/catalog/expert")]',

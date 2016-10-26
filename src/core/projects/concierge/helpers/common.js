@@ -162,11 +162,19 @@ module.exports = {
     }
   },
 
-  navPlanner(done) {
-    if (client.isVisible(config.helpers.plannerIcon)) {
-      client.click(config.helpers.plannerIcon);
-    } else {
-      console.log('	ERROR: The Planner icon is not in the menu.');
+  navPlanner(done, expected) {
+    if(client.isVisible(landingPage.helpers.plannerIcon, done)) {
+      client.click(landingPage.helpers.plannerIcon)
+        .then(() => {
+          client.getText(planner.helpers.plannerTitle)
+            .then((text) => {
+              try {
+                assert.equal(expected, text, 'The Task modal is displayed');
+              } catch (err) {
+                done(err);
+              }
+            })
+        })
     }
   },
 

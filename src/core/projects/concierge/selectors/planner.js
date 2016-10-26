@@ -8,6 +8,7 @@ module.exports = {
     baseUrl: 'localhost:3000/'
   },
   helpers: {
+    plannerTitle: '//*[contains(text(), "Planner")]',
     taskAddition:'a > button[type="button"]',
     apptAddition:'//button[@type="button"])[5]',
     taskViewMore:'//button[@type="button"][2]',

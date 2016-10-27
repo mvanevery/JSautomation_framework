@@ -13,6 +13,6 @@ module.exports = {
         deprovision: '.mm-o-icon',
         username: 'qauser',
         password: 'asdf',
-        signIn: '[data-id="signin"]'
+        signIn: '//button[@data-id="signin"]'
     }
 }

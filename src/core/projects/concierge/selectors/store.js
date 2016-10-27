@@ -9,8 +9,8 @@ module.exports = {
 
   helpers: {
     storeID: '326',
-    saveButton: '[data-id="save-store-settings"]',
-    cancelButton: '[data-id="cancel-store-settings"]',
+    saveButton: '//button[@data-id="save-store-settings"]',
+    cancelButton: '//button[@data-id="cancel-store-settings"]',
     storeIDField:'//input[@name="storeId"]'
   }
 }

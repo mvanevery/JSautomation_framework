@@ -10,7 +10,7 @@ const common = require('../../core/projects/concierge/helpers/common');
 
 describe('Smoke Test: Login as "ssales"', () => {
   before((done) => {
-    common.goTo(done);
+    common.openBrowser(done);
   });
 
   describe('Pausing', () => {

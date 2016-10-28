@@ -7,6 +7,7 @@ const loginPage = require(`../../../projects/${project}/selectors/loginPage`);
 const provisioning = require(`../../../projects/${project}/selectors/provisioning`);
 const store = require(`../../../projects/${project}/selectors/store`);
 const planner = require(`../../../projects/${project}/selectors/planner`);
+const assert = require('chai').assert;
 
 module.exports = {
 
@@ -167,11 +168,20 @@ module.exports = {
     }
   },
 
-  navPlanner(done) {
-    if (client.isVisible(config.helpers.plannerIcon)) {
-      client.click(config.helpers.plannerIcon);
-    } else {
-      console.log('	ERROR: The Planner icon is not in the menu.');
+  navPlanner(done, expected) {
+    if(client.isVisible(landingPage.helpers.plannerIcon, done)) {
+      client.click(landingPage.helpers.plannerIcon)
+        .then(() => {
+          client.getText(planner.helpers.plannerTitle)
+            .then((text) => {
+              //console.log(text);
+              try {
+                assert.equal(expected, text, 'Title Matches');
+              } catch (err) {
+                done(err);
+              }
+            })
+        })
     }
   },
 
@@ -268,9 +278,10 @@ module.exports = {
     }
   },
 
-  addStartDate(done, start) {
+  addStartDate(done) {
     if (client.isVisible(planner.helpers.modalStartDateTime, done)) {
-      client.setValue(planner.helpers.modalStartDateTime, start);
+      client.touch(planner.helpers.modalStartDateTime);
+      //client.click(planner.helpers.modalStartDateTime, start);
     }
   },
 
@@ -336,20 +347,43 @@ module.exports = {
   },
 
 
-  addAppointmentForm_fromPlanner(done) {
-    client.waitForVisible(config.helpers.img_nav_planner, 5000);
-    if (client.isVisible(config.helpers.btn_create)) {
-      client.click(config.helpers.btn_create);
-    } else {
-      console.log('	ERROR: Missing the create button.');
+  apptToggle(done, expected) {
+    if (client.isVisible(planner.helpers.plannerTitle, done)) {
+      client.click(planner.helpers.taskToggleSwitch)
+        .then(() => {
+          client.click(planner.helpers.addButton)
+            .then(() => {
+              client.getText(planner.helpers.taskTitle)
+                .then((text) => {
+                  try {
+                    assert.equal(expected, text, 'The expected value was not equal to the text');
+                  } catch (err) {
+                    done(err);
+                  }
+                })
+            })
+        })
+
     }
-    client.waitForVisible(config.helpers.cmb_type, 5000);
-    if (client.isVisible(config.helpers.cmb_type)) {
-      console.log('	PASS: The user has reached the Appointment/Task form.');
-    } else {
-      console.log('	ERROR: The Appointment/Task form is unreachable.');
+  },
+  taskToggle(done, expected) {
+    if (client.isVisible(planner.helpers.plannerTitle, done)) {
+      client.click(planner.helpers.taskToggleSwitch)
+        .then(() => {
+          client.click(planner.helpers.addButton)
+            .then(() => {
+              client.getText(planner.helpers.taskTitle)
+                .then((text) => {
+                  try {
+                    assert.equal(expected, text, 'The expected value was not equal to the text');
+                  } catch (err) {
+                    done(err);
+                  }
+                })
+            })
+        })
+
     }
-    done();
   },
 
   addAppointment_05012016(done) {

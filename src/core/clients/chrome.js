@@ -4,10 +4,10 @@
 exports.client = require('webdriverio').remote({
   desiredCapabilities: {
     browserName: 'chrome',
-    chromeOptions: {
-      mobileEmulation: {
-        deviceName: 'Apple iPhone 6'
-      }
-    }
+//    chromeOptions: {
+//      mobileEmulation: {
+//        deviceName: 'Apple iPhone 6'
+//      }
+//    }
   }
 });

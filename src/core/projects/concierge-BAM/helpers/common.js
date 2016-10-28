@@ -66,7 +66,7 @@ module.exports = {
 
 // ----------------------------------------  LANDING PAGE  ----------------------------------------
 
-  verifyBamLandingPage(done) {
+  verifyBamLandingPage(done, expected) {
     if (client.isVisible(landingPage.helpers.img_headerLogo)) {
       console.log('	PASS: The BAM landing page is available.');
     } else {

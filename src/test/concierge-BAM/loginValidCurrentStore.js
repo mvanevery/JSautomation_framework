@@ -8,7 +8,7 @@ const common = require('../../core/projects/concierge-BAM/helpers/common');
 
 describe('Login as a valid user.', () => {
   before((done) => {
-    common.openBrowser(done);
+    common.goTo(done);
   });
 
   describe('Pausing', () => {
@@ -43,7 +43,7 @@ describe('Login as a valid user.', () => {
 
   describe('Verify BAM landing page', () => {
     it('Should navigate to the BAM landing page', (done) => {
-      common.verifyBamLandingPage(done);
+      common.verifyBamLandingPage(done, "Company News");
     });
   });
   //

@@ -16,7 +16,7 @@ function handleError(err) {
 
 module.exports = function (gulp, mocha) {
   return function () {
-    return gulp.src('./src/test/concierge-BAM/loginValidCurrentStore', {read: false})
+    return gulp.src('./src/test/concierge-BAM/loginValidCurrentStore.js', {read: false})
       .pipe(mocha(mochaOptions).on("error", handleError));
   }
 };

@@ -172,7 +172,7 @@ module.exports = {
             .then((text) => {
               //console.log(text);
               try {
-                assert.equal(expected, text, 'Title Matches');
+                assert.equal(expected, text, 'The titles does not match');
               } catch (err) {
                 done(err);
               }
@@ -188,7 +188,7 @@ module.exports = {
           client.getText(planner.helpers.taskTitle)
             .then((text) => {
               try {
-                assert.equal(expected, text, 'The Task modal is displayed');
+                assert.equal(expected, text, 'The Task modal is not displayed');
               } catch (err) {
                 done(err);
               }

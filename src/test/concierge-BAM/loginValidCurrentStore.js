@@ -1,5 +1,6 @@
 /**
- * run test with firefox flag for client
+ * From command line type:
+ *      gulp initiate-loginValidCurrentStore --archon:concierge-BAM --test:loginValidCurrentStore --client:firefox
  */
 
 const common = require('../../core/projects/concierge-BAM/helpers/common');

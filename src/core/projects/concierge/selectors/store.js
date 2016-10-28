@@ -9,7 +9,7 @@ module.exports = {
 
   helpers: {
     storeID: '326',
-    saveButton: '//div[@id="app"]/div/div/div[5]/div[2]/div/div/div/button[2]',
+    saveButton: '//button[@data-id="save-store-settings"]',
     //saveButton: '//button[@contains(text()="Save"])',
     //saveButton: '//button[@type="button"][5]',
     cancelButton:'//div[@id="app"]/div/div/div[5]/div[2]/div/div/div/button',

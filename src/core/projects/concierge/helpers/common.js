@@ -273,12 +273,12 @@ module.exports = {
     }
   },
 
-  addStartDate(done) {
+  addStartDate(done,start) {
     if (client.isVisible(planner.helpers.modalStartDateTime, done)) {
-      client.touch(planner.helpers.modalStartDateTime);
-      //client.click(planner.helpers.modalStartDateTime, start);
-    }
-  },
+          client.sendKeys(planner.helpers.modalStartDateTime, start);
+        //})
+      }
+    },
 
   addEndDate(done, end) {
     if (client.isVisible(planner.helpers.modalEndDateTime, done)) {

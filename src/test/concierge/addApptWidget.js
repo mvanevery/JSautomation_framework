@@ -5,7 +5,7 @@ const common = require('../../core/projects/concierge/helpers/common');
 
 describe('Smoke Test: Add Appointment', () => {
   before((done) => {
-    common.openBrowser(done);
+    common.goTo(done);
   });
 
   describe('Verify Login Screen', () => {

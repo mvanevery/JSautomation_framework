@@ -275,7 +275,7 @@ module.exports = {
 
   addStartDate(done,start) {
     if (client.isVisible(planner.helpers.modalStartDateTime, done)) {
-          client.sendKeys(planner.helpers.modalStartDateTime, start);
+          client.keys(planner.helpers.modalStartDateTime, start);
         //})
       }
     },

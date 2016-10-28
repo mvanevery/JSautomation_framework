@@ -114,6 +114,16 @@ module.exports = {
     }
   },
 
+  loginUserStore(done) {
+    if (client.isVisible(loginPage.helpers.signIn, done)) {
+
+              client.click(loginPage.helpers.signIn);
+    } else {
+      console.log('	ERROR: Login page is not available.');
+    }
+  },
+
+
 //----------------------------------- Store ID Page ----------------------------------------------------
 
   specifyStore(done, storeID) {
@@ -121,18 +131,12 @@ module.exports = {
       client.setValue(store.helpers.storeIDField, storeID || store.helpers.storeID)
         .then(() => {
           client.click(store.helpers.saveButton)
-            //.then(() => {
-            //  client.click(loginPage.helpers.signIn);
-            //});
         })
     }
   },
   specifyStoreCancel(done) {
     if (client.isVisible(store.helpers.storeIDField, done)) {
-      client.setValue(store.helpers.storeIDField, store.helpers.storeID)
-        .then(() => {
-          client.click(store.helpers.cancelButton)
-        })
+        client.click(store.helpers.cancelButton)
     }
   },
 

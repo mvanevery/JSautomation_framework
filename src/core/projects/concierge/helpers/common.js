@@ -18,8 +18,9 @@ module.exports = {
       width: 1024
     }, true).then(done);
   },
+
   goTo: (done) => {
-    client.init().url('localhost:3000', done);
+    client.init().url(config.routes.baseUrl, done);
   },
 
   openBrowser(done) {
@@ -117,9 +118,9 @@ module.exports = {
       client.setValue(store.helpers.storeIDField, storeID || store.helpers.storeID)
         .then(() => {
           client.click(store.helpers.saveButton)
-            .then(() => {
-              client.click(loginPage.helpers.signIn);
-            });
+            //.then(() => {
+            //  client.click(loginPage.helpers.signIn);
+            //});
         })
     }
   },

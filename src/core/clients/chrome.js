@@ -13,13 +13,11 @@
 //});
 exports.client = require('webdriverio').remote({
   desiredCapabilities: {
-    browserName: 'firefox',
-    host: '127.0.0.1',
-    port: '3001'
-   // chromeOptions: {
-     // mobileEmulation: {
-       // deviceName: 'Apple iPhone 6'
-      //}
-    //}
+    browserName: 'chrome',
+    chromeOptions: {
+      mobileEmulation: {
+        deviceName: 'Apple iPhone 6'
+      }
+    }
   }
 });

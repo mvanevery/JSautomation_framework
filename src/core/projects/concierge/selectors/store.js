@@ -9,9 +9,10 @@ module.exports = {
 
   helpers: {
     storeID: '326',
-    saveButton: '//button[@contains(text()="Save"])',
+    saveButton: '//div[@id="app"]/div/div/div[5]/div[2]/div/div/div/button[2]',
+    //saveButton: '//button[@contains(text()="Save"])',
     //saveButton: '//button[@type="button"][5]',
-    cancelButton:'//button[@type="button"][4]',
+    cancelButton:'//div[@id="app"]/div/div/div[5]/div[2]/div/div/div/button',
     storeIDField:'//input[@name="storeId"]'
   }
 }

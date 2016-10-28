@@ -1,6 +1,6 @@
 module.exports = {
   routes: {
-    baseUrl: 'localhost:3000/'
+    baseUrl: 'http://localhost:3001/'
   },
   helpers: {
 

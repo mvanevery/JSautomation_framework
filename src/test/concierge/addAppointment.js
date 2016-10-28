@@ -5,18 +5,6 @@ describe('Smoke Test: Add Appointment', () => {
     common.openBrowser(done);
   });
 
-  describe('Enter Provision Key', () => {
-    it('Should populate the provision key', (done) => {
-      common.enterProvisionTalbots(done);
-    });
-  });
-
-  describe('Pausing', () => {
-    it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done);
-    });
-  });
-
   describe('Verify Login Screen', () => {
     it('Should navigate to the login screen', (done) => {
       common.verifyLoginScreen(done);
@@ -49,7 +37,7 @@ describe('Smoke Test: Add Appointment', () => {
 
   describe('Open Appointment Form', () => {
     it('Should open the appointment form from the Planner', (done) => {
-      common.addAppointmentForm_fromPlanner(done);
+      common.apptToggle(done, "Create Task");
     });
   });
 
@@ -59,11 +47,6 @@ describe('Smoke Test: Add Appointment', () => {
     });
   });
 
-  describe('Add Appointment', () => {
-    it('Should add an appointment for 05/01/2016', (done) => {
-      common.addAppointment_05012016(done);
-    });
-  });
 
 
   //  after(function (done) {

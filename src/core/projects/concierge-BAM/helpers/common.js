@@ -36,45 +36,45 @@ module.exports = {
     client.pause(pauseTime, done);
   },
 
-
-
-  // ---------------------------------------- LOGIN ----------------------------------------
-
-  verifyLoginScreen(done) {
-    if (client.isVisible(loginPage.helpers.img_loginLogo, done)) {
-      console.log('Login Page is available.');
-    } else {
-      console.log('ERROR: The Login Page in unavailable.');
-    }
-  },
-
-  loginUser(done,username,password) {
-    if (client.isVisible(loginPage.helpers.btn_signIn, done)) {
-      client.setValue(loginPage.helpers.fld_username, username || loginPage.helpers.data_username)
-        .then(() => {
-          client.setValue(loginPage.helpers.fld_password, password || loginPage.helpers.data_password)
-            .then(() => {
-              client.click(loginPage.helpers.btn_signIn);
-            });
-        });
-    } else {
-      console.log('	ERROR: The Login page is not available.');
-    }
-  },
-
-
-
-// ----------------------------------------  LANDING PAGE  ----------------------------------------
-
-  verifyBamLandingPage(done, expected) {
-    if (client.isVisible(landingPage.helpers.img_headerLogo)) {
-      console.log('	PASS: The BAM landing page is available.');
-    } else {
-      console.log('	ERROR: The BAM landing page is unavailable.');
-    }
-    done();
-  },
-
+//
+//
+//   // ---------------------------------------- LOGIN ----------------------------------------
+//
+//   verifyLoginScreen(done) {
+//     if (client.isVisible(loginPage.helpers.img_loginLogo, done)) {
+//       console.log('Login Page is available.');
+//     } else {
+//       console.log('ERROR: The Login Page in unavailable.');
+//     }
+//   },
+//
+//   loginUser(done,username,password) {
+//     if (client.isVisible(loginPage.helpers.btn_signIn, done)) {
+//       client.setValue(loginPage.helpers.fld_username, username || loginPage.helpers.data_username)
+//         .then(() => {
+//           client.setValue(loginPage.helpers.fld_password, password || loginPage.helpers.data_password)
+//             .then(() => {
+//               client.click(loginPage.helpers.btn_signIn);
+//             });
+//         });
+//     } else {
+//       console.log('	ERROR: The Login page is not available.');
+//     }
+//   },
+//
+//
+//
+// // ----------------------------------------  LANDING PAGE  ----------------------------------------
+//
+//   verifyBamLandingPage(done, expected) {
+//     if (client.isVisible(landingPage.helpers.img_headerLogo)) {
+//       console.log('	PASS: The BAM landing page is available.');
+//     } else {
+//       console.log('	ERROR: The BAM landing page is unavailable.');
+//     }
+//     done();
+//   },
+//
   //
   // navMenu(done) {
   //   if (client.isVisible(landingPage.helpers.menuIcon)) {

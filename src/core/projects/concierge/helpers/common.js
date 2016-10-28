@@ -117,9 +117,9 @@ module.exports = {
       client.setValue(store.helpers.storeIDField, storeID || store.helpers.storeID)
         .then(() => {
           client.click(store.helpers.saveButton)
-            //.then(() => {
-            //  client.click(loginPage.helpers.signIn);
-            //});
+            .then(() => {
+              client.click(loginPage.helpers.signIn);
+            });
         })
     }
   },

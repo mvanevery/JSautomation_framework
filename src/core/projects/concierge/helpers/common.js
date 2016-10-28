@@ -17,12 +17,17 @@ module.exports = {
       width: 1024
     }, true).then(done);
   },
-  goTo: (done) => {
-    client.init().url(config.routes.baseUrl, done);
-  },
 
-  openBrowser(done) {
-    client.init(done);
+  goTo: (done) => {
+    //gulp --client:chrome
+    if (`${clientType}` == 'chrome')
+    {
+      client.init().url(config.routes.baseUrl, done);
+    }
+    else if (`${clientType}` == 'appium')
+    {
+      client.init(done);
+    }
   },
 
   closeBrowser(done) {

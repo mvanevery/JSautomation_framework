@@ -2,7 +2,7 @@ const common = require('../../core/projects/concierge/helpers/common');
 
 describe('Smoke Test: Provisioning', () => {
   before((done) => {
-    common.openBrowser(done);
+    common.goTo(done);
   });
 
   // Talbots provisioning test

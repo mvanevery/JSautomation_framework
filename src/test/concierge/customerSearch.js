@@ -2,7 +2,7 @@ const common = require('../../core/projects/concierge/helpers/common');
 
 describe('Smoke Test: Customer Search', () => {
   before((done) => {
-    common.openBrowser(done);
+    common.goTo(done);
   });
 
   //describe('Enter Provision Key', () => {

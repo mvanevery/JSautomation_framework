@@ -4,7 +4,7 @@ const common = require('../../core/projects/concierge/helpers/common');
 
 describe('Open Concierge', () => {
   before((done) => {
-    common.openBrowser(done);
+    common.goTo(done);
   });
 
   describe('Verify Concierge Homepage', () => {

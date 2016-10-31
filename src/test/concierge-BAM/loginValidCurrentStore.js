@@ -4,8 +4,8 @@
  */
 
 const common = require('../../core/projects/concierge-BAM/helpers/common');
-const landingPage = require('../../core/projects/concierge-BAM/selectors/landingPage');
 const loginPage = require('../../core/projects/concierge-BAM/selectors/loginPage');
+const landingPage = require('../../core/projects/concierge-BAM/selectors/landingPage');
 
 describe('Login as a valid user.', () => {
   before((done) => {
@@ -20,7 +20,7 @@ describe('Login as a valid user.', () => {
 
   describe('Verify Login Screen', () => {
     it('Should navigate to the login screen', (done) => {
-      landingPage.verifyLoginScreen(done);
+      loginPage.verifyLoginScreen(done);
     });
   });
 
@@ -32,7 +32,7 @@ describe('Login as a valid user.', () => {
 
   describe('Login', () => {
     it('Should login as "180001"', (done) => {
-      landingPage.loginUser(done,180001,1234);
+      loginPage.loginUser(done,180001,1234);
     });
   });
 
@@ -44,7 +44,7 @@ describe('Login as a valid user.', () => {
 
   describe('Verify BAM landing page', () => {
     it('Should navigate to the BAM landing page', (done) => {
-      loginPage.verifyBamLandingPage(done, "Company News");
+      landingPage.verifyBamLandingPage(done, "Company News");
     });
   });
 

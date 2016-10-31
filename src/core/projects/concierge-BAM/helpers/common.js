@@ -5,8 +5,8 @@ const clientType = require('../../../projects/config').client;
 const client = require(`../../../../core/clients/${clientType}`).client;
 const project = require('../../../projects/config').project;
 const config = require(`../../../projects/${project}/config`);
-const landingPage = require(`../../../projects/${project}/selectors/landingPage`);
-const loginPage = require(`../../../projects/${project}/selectors/loginPage`);
+// const landingPage = require(`../../../projects/${project}/selectors/landingPage`);
+// const loginPage = require(`../../../projects/${project}/selectors/loginPage`);
 
 
 module.exports = {

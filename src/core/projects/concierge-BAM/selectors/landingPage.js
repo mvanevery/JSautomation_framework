@@ -1,6 +1,12 @@
 /**
  * Created by afeldmeyer on 10/28/16.
  */
+
+const clientType = require('../../../projects/config').client;
+const client = require(`../../../../core/clients/${clientType}`).client;
+const project = require('../../../projects/config').project;
+const config = require(`../../../projects/${project}/config`);
+
 module.exports = {
     routes: {
       baseUrl: 'https://serviceqa.booksamillion.com/'

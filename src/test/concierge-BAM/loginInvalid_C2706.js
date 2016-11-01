@@ -1,13 +1,17 @@
 /**
+ * Project:     Concierge-BAM
+ * Test Name:   loginInvalid_C2706
+ * Test Steps:  https://madmobile.testrail.com/index.php?/cases/view/2706
+ * Author:      Aaron Feldmeyer
+ * Date:        11/1/2016
+ *
  * From command line type:
- *      gulp initiate-loginValidCurrentStore --archon:concierge-BAM --test:loginValidCurrentStore --client:firefox
+ *      gulp initiate-<TestName> --archon:concierge-BAM --test:<TestName> --client:chrome
  */
 
 const common = require('../../core/projects/concierge-BAM/helpers/common');
-// const loginPage = require('../../core/projects/concierge-BAM/selectors/loginPage');
-// const landingPage = require('../../core/projects/concierge-BAM/selectors/landingPage');
 
-describe('Login as a valid user.', () => {
+describe('Attempt to login as an invalid user.', () => {
   before((done) => {
     common.goTo(done);
   });
@@ -31,20 +35,20 @@ describe('Login as a valid user.', () => {
   });
 
   describe('Login', () => {
-    it('Should login as "180001"', (done) => {
-      common.loginUser(done,180001,1234);
+    it('Should not login as "111111"', (done) => {
+      common.loginUser(done,111111,1234);
     });
   });
 
   describe('Pausing', () => {
     it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done, 8000);
+      common.pause(done, 5000);
     });
   });
 
-  describe('Verify BAM landing page', () => {
-    it('Should navigate to the BAM landing page', (done) => {
-      common.verifyBamLandingPage(done, "Company News");
+  describe('Verify the login error', () => {
+    it('Should view the login error', (done) => {
+      common.verifyLoginError(done);
     });
   });
 

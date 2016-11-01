@@ -13,6 +13,7 @@ module.exports = {
 
       // Nav Menu
       btn_avatar:           '//div[@class="app-menu_avatar"]',
+      txt_storeNum:         '//div[@class="app-store_number"]',
 
       // Logout Modal
       btn_logout_cancel:    '//button[@class="btn close"]',

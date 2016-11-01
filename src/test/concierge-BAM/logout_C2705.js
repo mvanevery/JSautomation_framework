@@ -1,6 +1,12 @@
 /**
+ * Project:     Concierge-BAM
+ * Test Name:   logout_C2705
+ * Test Steps:  https://madmobile.testrail.com/index.php?/cases/view/2705
+ * Author:      Aaron Feldmeyer
+ * Date:        11/1/2016
+ *
  * From command line type:
- *      gulp initiate-<testName> --archon:concierge-BAM --test:<testName> --client:chrome
+ *      gulp initiate-<TestName> --archon:concierge-BAM --test:<TestName> --client:chrome
  */
 
 const common = require('../../core/projects/concierge-BAM/helpers/common');

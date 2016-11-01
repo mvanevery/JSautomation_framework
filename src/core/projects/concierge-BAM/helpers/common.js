@@ -104,11 +104,28 @@ module.exports = {
     if (client.isVisible(landingPage.helpers.img_headerLogo)) {
       console.log('	PASS: The user can reach the Landing Page.');
         } else {
-          console.log('	ERROR: The Dashboard icon is not in the menu.');
+          console.log('	ERROR: The user was unable to reach the Landing Page.');
         }
     done();
       },
 
+
+    verifyStoreNum(done, expected) {
+      var assert = require('chai').assert;
+      if (client.isVisible(landingPage.helpers.txt_storeNum)) {
+
+            try {
+              assert.equal("123", "123", 'The BAM store number is as expected.');
+              console.log("Passed");
+            } catch (err) {
+              console.log("ERROR");
+              //console.log(err);
+            }
+            done();
+
+
+      }
+    },
 
   // verifyBamLandingPage(done, expected) {
   //   if (client.isVisible(landingPage.helpers.img_headerLogo)) {

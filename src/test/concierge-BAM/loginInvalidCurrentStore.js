@@ -7,7 +7,7 @@ const common = require('../../core/projects/concierge-BAM/helpers/common');
 // const loginPage = require('../../core/projects/concierge-BAM/selectors/loginPage');
 // const landingPage = require('../../core/projects/concierge-BAM/selectors/landingPage');
 
-describe('Login as a valid user.', () => {
+describe('Attempt to login as an invalid user.', () => {
   before((done) => {
     common.goTo(done);
   });
@@ -32,7 +32,7 @@ describe('Login as a valid user.', () => {
 
   describe('Login', () => {
     it('Should login as "180001"', (done) => {
-      common.loginUser(done,180001,1234);
+      common.loginUser(done,180001,1111);
     });
   });
 
@@ -42,9 +42,9 @@ describe('Login as a valid user.', () => {
     });
   });
 
-  describe('Verify BAM landing page', () => {
-    it('Should navigate to the BAM landing page', (done) => {
-      common.verifyBamLandingPage(done, "Company News");
+  describe('Verify the login error', () => {
+    it('Should view the login error', (done) => {
+      common.verifyLoginError(done);
     });
   });
 

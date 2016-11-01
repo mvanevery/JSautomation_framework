@@ -1,6 +1,6 @@
 /**
  * From command line type:
- *      gulp initiate-loginValidCurrentStore --archon:concierge-BAM --test:loginValidCurrentStore --client:firefox
+ *      gulp initiate-<testName> --archon:concierge-BAM --test:<testName> --client:chrome
  */
 
 const common = require('../../core/projects/concierge-BAM/helpers/common');
@@ -26,7 +26,7 @@ describe('Login as a valid user.', () => {
 
   describe('Pausing', () => {
     it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done, 3000);
+      common.pause(done, 5000);
     });
   });
 
@@ -48,5 +48,40 @@ describe('Login as a valid user.', () => {
     });
   });
 
+  describe('Pausing', () => {
+    it('Should pause the test for 1 seconds', (done) => {
+      common.pause(done, 1000);
+    });
+  });
+
+  describe('Select the user Avatar', () => {
+    it('Should open the logout modal.', (done) => {
+      common.selectAvatar(done);
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 1 seconds', (done) => {
+      common.pause(done, 1000);
+    });
+  });
+
+  describe('Click the Logout button', () => {
+    it('Should logout the user.', (done) => {
+      common.selectLogout(done);
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 5000);
+    });
+  });
+
+  describe('Verify Login Screen', () => {
+    it('Should navigate to the login screen', (done) => {
+      common.verifyLoginScreen(done);
+    });
+  });
 
 });

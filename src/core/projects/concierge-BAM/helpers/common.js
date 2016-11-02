@@ -58,14 +58,6 @@ module.exports = {
     }
   },
 
-  // it('should display a notification message after successful form submit', function () {
-  //   var form = browser.element('form');
-  //   var notification = browser.element('.notification');
-  //   form.submit();
-  //   notification.waitForExist(5000);
-  //   expect(notification.getText()).to.be.equal('Data transmitted successfully!')
-  // });
-
   loginUser(done,username,password,location) {
     if (client.isVisible(loginPage.helpers.btn_signIn, done)) {
       client.setValue(loginPage.helpers.fld_username, username || loginPage.helpers.data_username)
@@ -116,11 +108,10 @@ module.exports = {
 
 // ----------------------------------------  LANDING PAGE  ----------------------------------------
 
-  verifyBamLandingPage(done) {
-    expect(landingPage.helpers.img_headerLogo).to.exist;
-    done();
-      },
-
+    verifyBamLandingPage(done) {
+      expect(landingPage.helpers.img_headerLogo).to.exist;
+      done();
+    },
 
     verifyStoreNum(done, expected) {
       if (client.isVisible(landingPage.helpers.txt_storeNum)) {

@@ -53,7 +53,7 @@ describe('Smoke Test: Add Appointment', () => {
 
   describe('Open Appointment Form', () => {
     it('Should open the appointment form from the Planner', (done) => {
-      common.taskToggle(done, "Create Task");
+      common.taskToggle(done, "Create Tasking Task");
     });
   });
   describe('Pausing', () => {
@@ -122,8 +122,7 @@ describe('Smoke Test: Add Appointment', () => {
   //});
 
 
-
 //    after(function (done) {
 //   	common.end(done);
 //   });
-});
+})

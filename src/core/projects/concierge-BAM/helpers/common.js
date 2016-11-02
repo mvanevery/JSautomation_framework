@@ -69,7 +69,7 @@ module.exports = {
   },
 
   verifyLoginError(done) {
-    if (client.isVisible(loginPage.helpers.img_loginLogo, done)) {
+    if (client.isVisible(loginPage.helpers.txt_loginError, done)) {
       console.log('Login Page is available.');
     } else {
       console.log('ERROR: The Login Page in unavailable.');

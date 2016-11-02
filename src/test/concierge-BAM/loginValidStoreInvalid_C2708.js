@@ -1,17 +1,20 @@
 /**
  * Project:     Concierge-BAM
- * Test Name:   loginInvalid_C2706
- * Test Steps:  https://madmobile.testrail.com/index.php?/cases/view/2706
+ * Test Name:   loginValidStoreInvalid_C2708
+ * Test Steps:  https://madmobile.testrail.com/index.php?/cases/view/2708
  * Author:      Aaron Feldmeyer
- * Date:        11/1/2016
+ * Date:        11/2/2016
  *
  * From command line type:
  *      gulp initiate-<TestName> --archon:concierge-BAM --test:<TestName> --client:chrome
  */
 
-const common = require('../../core/projects/concierge-BAM/helpers/common');
 
-describe('Attempt to login as an invalid user.', () => {
+const common = require('../../core/projects/concierge-BAM/helpers/common');
+// const loginPage = require('../../core/projects/concierge-BAM/selectors/loginPage');
+// const landingPage = require('../../core/projects/concierge-BAM/selectors/landingPage');
+
+describe('Login as a valid user but with an invalid store number.', () => {
   before((done) => {
     common.goTo(done);
   });
@@ -29,13 +32,13 @@ describe('Attempt to login as an invalid user.', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 5 seconds', (done) => {
+    it('Should pause the test for 3 seconds', (done) => {
       common.pause(done, 3000);
     });
   });
 
   describe('Login', () => {
-    it('Should not login as "111111"', (done) => {
+    it('Should login as "180001"', (done) => {
       common.loginUser(done,180001,1234);
     });
   });
@@ -43,6 +46,12 @@ describe('Attempt to login as an invalid user.', () => {
   describe('Pausing', () => {
     it('Should pause the test for 5 seconds', (done) => {
       common.pause(done, 5000);
+    });
+  });
+
+  describe('Verify BAM landing page', () => {
+    it('Should navigate to the BAM landing page', (done) => {
+      common.verifyBamLandingPage(done);
     });
   });
 

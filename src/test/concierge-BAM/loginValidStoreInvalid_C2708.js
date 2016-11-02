@@ -1,7 +1,7 @@
 /**
  * Project:     Concierge-BAM
- * Test Name:   loginValidStoreInvalid_C2708
- * Test Steps:  https://madmobile.testrail.com/index.php?/cases/view/2708
+ * TestName:    loginValidStoreInvalid_C2708
+ * TestSteps:   https://madmobile.testrail.com/index.php?/cases/view/2708
  * Author:      Aaron Feldmeyer
  * Date:        11/2/2016
  *
@@ -46,12 +46,6 @@ describe('Login as a valid user but with an invalid store number.', () => {
   describe('Pausing', () => {
     it('Should pause the test for 5 seconds', (done) => {
       common.pause(done, 5000);
-    });
-  });
-
-  describe('Verify BAM landing page', () => {
-    it('Should navigate to the BAM landing page', (done) => {
-      common.verifyBamLandingPage(done);
     });
   });
 

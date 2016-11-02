@@ -1,7 +1,7 @@
 /**
  * Project:     Concierge-BAM
- * Test Name:   loginValidCurrentSore_C2703
- * Test Steps:  https://madmobile.testrail.com/index.php?/cases/view/2703
+ * TestName:    loginValidCurrentSore_C2703
+ * TestSteps:   https://madmobile.testrail.com/index.php?/cases/view/2703
  * Author:      Aaron Feldmeyer
  * Date:        11/1/2016
  *

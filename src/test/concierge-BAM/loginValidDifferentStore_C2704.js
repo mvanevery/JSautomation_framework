@@ -1,7 +1,7 @@
 /**
  * Project:     Concierge-BAM
- * Test Name:   loginValidDifferentSore_C2704
- * Test Steps:  https://madmobile.testrail.com/index.php?/cases/view/2704
+ * TestName:    loginValidDifferentSore_C2704
+ * TestSteps:   https://madmobile.testrail.com/index.php?/cases/view/2704
  * Author:      Aaron Feldmeyer
  * Date:        11/2/2016
  *
@@ -16,7 +16,8 @@ const common = require('../../core/projects/concierge-BAM/helpers/common');
 
 describe('Login as a valid user.', () => {
   before((done) => {
-    common.goTo(done,'https:\\serviceqa.booksamillion.com');
+    //common.goTo(done,'https:\\serviceqa.booksamillion.com');
+    common.goTo(done,'https://www.google.com');
   });
 
   describe('Pausing', () => {
@@ -57,7 +58,7 @@ describe('Login as a valid user.', () => {
 
   describe('Verify BAM store number', () => {
     it('Should verify that the store number is #224', (done) => {
-      common.verifyStoreNum(done,'223');
+      common.verifyStoreNum(done,'#224');
     });
   });
 

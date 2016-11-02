@@ -113,17 +113,16 @@ module.exports = {
     verifyStoreNum(done, expected) {
       var assert = require('chai').assert;
       if (client.isVisible(landingPage.helpers.txt_storeNum)) {
-
+        client.getText(landingPage.helpers.txt_storeNum)
+          .then((text) => {
             try {
-              assert.equal("123", "123", 'The BAM store number is as expected.');
-              console.log("Passed");
+              assert.equal(text, expected);
+              console.log("         The BAM store number is as expected.");
             } catch (err) {
-              console.log("ERROR");
-              //console.log(err);
+              console.log(err);
             }
             done();
-
-
+          })
       }
     },
 

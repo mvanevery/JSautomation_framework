@@ -57,7 +57,7 @@ describe('Login as a valid user.', () => {
 
   describe('Verify BAM store number', () => {
     it('Should verify that the store number is #180', (done) => {
-      common.verifyStoreNum(done,'#18');
+      common.verifyStoreNum(done,'#180');
     });
   });
 

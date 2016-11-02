@@ -39,7 +39,7 @@ describe('Login as a valid user but with an invalid store number.', () => {
 
   describe('Login', () => {
     it('Should login as "180001"', (done) => {
-      common.loginUser(done,180001,1234);
+      common.loginUser(done,180001,1234,9999);
     });
   });
 

@@ -10,6 +10,7 @@ const loginPage = require(`../../../projects/${project}/selectors/loginPage`);
 const landingPage = require(`../../../projects/${project}/selectors/landingPage`);
 
 const assert = require('chai').assert;
+const expect = require('chai').expect;
 
 module.exports = {
 
@@ -51,6 +52,14 @@ module.exports = {
     }
   },
 
+  // it('should display a notification message after successful form submit', function () {
+  //   var form = browser.element('form');
+  //   var notification = browser.element('.notification');
+  //   form.submit();
+  //   notification.waitForExist(5000);
+  //   expect(notification.getText()).to.be.equal('Data transmitted successfully!')
+  // });
+
   loginUser(done,username,password,location) {
     if (client.isVisible(loginPage.helpers.btn_signIn, done)) {
       client.setValue(loginPage.helpers.fld_username, username || loginPage.helpers.data_username)
@@ -69,10 +78,20 @@ module.exports = {
   },
 
   verifyLoginError(done) {
+    //if (client.isVisible(loginPage.helpers.txt_loginError, done)) {
     if (client.isVisible(loginPage.helpers.txt_loginError, done)) {
-      console.log('Login Page is available.');
-    } else {
-      console.log('ERROR: The Login Page in unavailable.');
+      //console.log('Login Page is available.');
+      client.getText(loginPage.helpers.txt_loginError)
+        .then((text) => {
+          //console.log(text);
+          var errorMessage = 'Valid credentials povided., Invalid store number provided or found. This employee may have to provide a specific store.';
+          const response = text.join(',').includes(errorMessage);
+          try {
+            assert.equals(errorMessage, text, 'The expected value was not equal to the text');
+          } catch (err) {
+            done(err);
+          }
+        })
     }
   },
 

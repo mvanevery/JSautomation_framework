@@ -8,6 +8,7 @@ const provisioning = require(`../../../projects/${project}/selectors/provisionin
 const store = require(`../../../projects/${project}/selectors/store`);
 const planner = require(`../../../projects/${project}/selectors/planner`);
 const assert = require('chai').assert;
+const expect = require('chai').expect;
 
 module.exports = {
 
@@ -223,6 +224,7 @@ module.exports = {
            } catch (err) {
              done(err);
            }
+           expect(landingPage.helpers.blackbookHeader).to.equal(expected);
          })
      })
    }
@@ -255,6 +257,7 @@ module.exports = {
               } catch (err) {
                 done(err);
               }
+              expect.()
             })
         })
     }
@@ -276,8 +279,10 @@ module.exports = {
 
   addStartDate(done,start) {
     if (client.isVisible(planner.helpers.modalStartDateTime, done)) {
-          client.keys(planner.helpers.modalStartDateTime, start);
-        //})
+      client.touchClick(planner.helpers.modalStartDateTime)
+      .then(() => {
+          client.setValue(planner.helpers.modalStartDateTime, start)
+        })
       }
     },
 

@@ -20,10 +20,10 @@ module.exports = {
         menuNewArrivals:'li[contains(@span="New Arrivals")]',
         menu: '//a[contains(@href, "/")]',
         email: '//div[@class="mm-o-icon icon-email-fill"]',
-        logout: '//div[@class="mm-o-icon icon-year-to-date"]',
+        logout: '//div[@data-id="module-logout"]',
         logoutModal: '.pure-container > div:nth-child(8) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)',
-        logoutCancel: '.pure-container > div:nth-child(8) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > button:nth-child(1)',
-        logoutConfirm: '.pure-container > div:nth-child(8) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > button:nth-child(2)'
+        logoutCancel: '//div[contains(text(),"Cancel")]',
+        logoutConfirm: '//div[contains(text(),"Log Out")]'
     }
 }
 

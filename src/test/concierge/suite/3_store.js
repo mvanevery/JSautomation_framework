@@ -38,18 +38,6 @@ describe('Smoke Test: Set Store ID', () => {
     });
   });
 
-  describe('Login', () => {
-    it('Should login as "qauser"', (done) => {
-      common.loginUser(done);
-    });
-  });
-
-  describe('Pausing', () => {
-    it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done, 5000);
-    });
-  });
-
   describe('Verify Concierge Screen', () => {
     it('Should navigate to the Concierge screen', (done) => {
       common.verifyConciergeScreen(done);

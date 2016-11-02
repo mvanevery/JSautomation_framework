@@ -1,20 +1,11 @@
+/**
+ * Created by mvanevery on 10/11/16.
+ */
 const common = require('../../core/projects/concierge/helpers/common');
 
 describe('Smoke Test: Add Appointment', () => {
   before((done) => {
     common.goTo(done);
-  });
-
-  describe('Enter Provision Key', () => {
-    it('Should populate the provision key', (done) => {
-      common.enterProvisionTalbots(done);
-    });
-  });
-
-  describe('Pausing', () => {
-    it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done);
-    });
   });
 
   describe('Verify Login Screen', () => {
@@ -24,49 +15,155 @@ describe('Smoke Test: Add Appointment', () => {
   });
 
   describe('Login', () => {
-    it('Should login as "ssales"', (done) => {
-      common.loginUser(done, 'qaUser', 'qaUser@123');
+    it('Should login as "qauser"', (done) => {
+      common.loginUser(done);
     });
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done, 5000);
+    it('Should pause the test for 10 seconds', (done) => {
+      common.pause(done, 10000);
     });
   });
 
-  describe('Click Planner', () => {
-    it('Should take user to the Planner', (done) => {
-      common.navPlanner(done);
+  //describe('Select a Store', () => {
+  //  it('Should input Store ID', (done) => {
+  //    common.specifyStore(done, '326');
+  //  });
+  //});
+  //
+  //describe('Pausing', () => {
+  //  it('Should pause the test for 5 seconds', (done) => {
+  //    common.pause(done, 5000);
+  //  });
+  //});
+
+
+  describe('Click the Planner menu option', () => {
+    it('Should open planner sections', (done) => {
+      common.navPlanner(done, "Planner");
     });
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done, 5000);
+    it('Should pause the test for 2 seconds', (done) => {
+      common.pause(done, 10000);
     });
   });
 
-  describe('Open Appointment Form', () => {
+  describe('Change the type and Open Task Form', () => {
     it('Should open the appointment form from the Planner', (done) => {
-      common.apptToggle(done, "Create Task");
+      common.taskToggle(done, "Create Task");
+    });
+  });
+  describe('Pausing', () => {
+    it('Should pause the test for 2 seconds', (done) => {
+      common.pause(done, 7500);
+    });
+  });
+
+  describe('Add Subject', () => {
+    it('Should add a subject to the Subject field', (done) => {
+      common.addSubject(done, 'Automation Test Appointment');
     });
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 5 seconds', (done) => {
+    it('Should pause the test for 2 seconds', (done) => {
+      common.pause(done, 2000);
+    });
+  });
+
+  //describe('Add Start Date', () => {
+  //  it('Should add a start date to the Start Date field', (done) => {
+  //    common.addStartDate(done, 'Oct 27,2016, 3:00 PM');
+  //  });
+  //});
+
+  //describe('Pausing', () => {
+  //  it('Should pause the test for 2 seconds', (done) => {
+  //    common.pause(done, 2000);
+  //  });
+  //});
+
+  //describe('Add End Date', () => {
+  //  it('Should add an end date to the End Date field', (done) => {
+  //    common.addEndDate(done, 'Oct 27,2016, 4:00 PM');
+  //  });
+  //});
+  //
+  //describe('Pausing', () => {
+  //  it('Should pause the test for 2 seconds', (done) => {
+  //    common.pause(done, 2000);
+  //  });
+  //});
+  //
+  describe('Add Status', () => {
+    it('Should add a status to the Status field', (done) => {
+      common.addStatus(done, 'INPROGRESS');
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 2 seconds', (done) => {
+      common.pause(done, 4000);
+    });
+  });
+  describe('Add Priority', () => {
+    it('Should add priority to the Priority field', (done) => {
+      common.addPriority(done, 'MEDIUM');
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 2 seconds', (done) => {
+      common.pause(done, 2000);
+    });
+  });
+  describe('Save the Task', () => {
+    it('Should click the DONE button ', (done) => {
+      common.saveTask(done);
+    });
+  });
+  describe('Pausing', () => {
+    it('Should pause the test for 2 seconds', (done) => {
+      common.pause(done, 2000);
+    });
+  });
+  describe('Verify Added Task', () => {
+    it('Should verify that the Task is displayed on Planner Page', (done) => {
+      common.verifyAddedTask(done, 'Automation Test Appointment');
+    });
+  });
+  describe('Pausing', () => {
+    it('Should pause the test for 2 seconds', (done) => {
+      common.pause(done, 2000);
+    });
+  });
+  describe('Delete the Task', () => {
+    it('Should click the DONE button and remove the task ', (done) => {
+      common.deleteTask(done);
+    });
+  });
+  describe('Pausing', () => {
+    it('Should pause the test for 2 seconds', (done) => {
       common.pause(done, 5000);
     });
   });
-
-  describe('Add Appointment', () => {
-    it('Should add an appointment for 05/01/2016', (done) => {
-      common.addAppointment_05012016(done);
+  describe('Logout', () => {
+    it('Should Logout from the current user', (done) => {
+      common.logoutUser(done);
+    });
+  });
+  describe('Pausing', () => {
+    it('Should pause the test for 2 seconds', (done) => {
+      common.pause(done, 2000);
     });
   });
 
 
-  //  after(function (done) {
-  // 	common.end(done);
-  // });
-});
+
+//    after(function (done) {
+//   	common.end(done);
+//   });
+})

@@ -9,6 +9,7 @@ const config = require(`../../../projects/${project}/config`);
 const loginPage = require(`../../../projects/${project}/selectors/loginPage`);
 const landingPage = require(`../../../projects/${project}/selectors/landingPage`);
 
+const assert = require('chai').assert;
 
 module.exports = {
 
@@ -19,8 +20,9 @@ module.exports = {
       width: 1024
     }, true).then(done);
   },
-  goTo: (done) => {
-    client.init().url(config.routes.baseUrl, done);
+
+  goTo: (done,testURL) => {
+    client.init().url(testURL || config.routes.baseUrl, done);
   },
 
   openBrowser(done) {
@@ -43,19 +45,22 @@ module.exports = {
 
   verifyLoginScreen(done) {
     if (client.isVisible(loginPage.helpers.img_loginLogo, done)) {
-      console.log('Login Page is available.');
+      //console.log('Login Page is available.');
     } else {
       console.log('ERROR: The Login Page in unavailable.');
     }
   },
 
-  loginUser(done,username,password) {
+  loginUser(done,username,password,location) {
     if (client.isVisible(loginPage.helpers.btn_signIn, done)) {
       client.setValue(loginPage.helpers.fld_username, username || loginPage.helpers.data_username)
         .then(() => {
           client.setValue(loginPage.helpers.fld_password, password || loginPage.helpers.data_password)
             .then(() => {
-              client.click(loginPage.helpers.btn_signIn);
+              client.setValue(loginPage.helpers.fld_storeOverride, location || loginPage.helpers.data_location)
+                .then(() => {
+                  client.click(loginPage.helpers.btn_signIn);
+                });
             });
         });
     } else {
@@ -102,7 +107,7 @@ module.exports = {
 
   verifyBamLandingPage(done) {
     if (client.isVisible(landingPage.helpers.img_headerLogo)) {
-      console.log('	PASS: The user can reach the Landing Page.');
+      //console.log('	PASS: The user can reach the Landing Page.');
         } else {
           console.log('	ERROR: The user was unable to reach the Landing Page.');
         }
@@ -111,16 +116,14 @@ module.exports = {
 
 
     verifyStoreNum(done, expected) {
-      var assert = require('chai').assert;
       if (client.isVisible(landingPage.helpers.txt_storeNum)) {
         client.getText(landingPage.helpers.txt_storeNum)
           .then((text) => {
             try {
               assert.equal(text, expected);
-              console.log("         The BAM store number is as expected.");
-            } catch (err) {
-              console.log(err);
-            }
+              } catch (err) {
+                console.log(err);
+              }
             done();
           })
       }

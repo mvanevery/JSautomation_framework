@@ -3,9 +3,9 @@
  */
 
 module.exports = {
-    routes: {
-      baseUrl: 'https://service.booksamillion.com/'
-    },
+    // routes: {
+    //   baseUrl: 'https://serviceqa.booksamillion.com/'
+    // },
     helpers: {
       img_loginLogo:        '//div[@class="login-form__logo"]',
       fld_username:         '//input[@name="employee_id"]',
@@ -15,7 +15,8 @@ module.exports = {
       txt_loginError:       '//div[@class="login-form__error"]',
 
       data_username:        '180001',
-      data_password:        '1234'
+      data_password:        '1234',
+      data_location:        ''
     },
 
 }

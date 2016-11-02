@@ -3,7 +3,7 @@
  */
 module.exports = {
   routes: {
-    baseUrl: 'https://service.booksamillion.com/'
+    baseUrl: 'https://serviceqa.booksamillion.com/'
   },
   helpers: {
   }

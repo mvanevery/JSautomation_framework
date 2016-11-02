@@ -8,9 +8,9 @@ const project = require('../../../projects/config').project;
 const config = require(`../../../projects/${project}/config`);
 
 module.exports = {
-    routes: {
-      baseUrl: 'https://serviceqa.booksamillion.com/'
-    },
+    // routes: {
+    //   baseUrl: 'https://serviceqa.booksamillion.com/'
+    // },
     helpers:{
       img_headerLogo:       '//span[@class="sprite-header-logo"]',
       txt_sectionLabels:    '//div[@h3="Company News"]',

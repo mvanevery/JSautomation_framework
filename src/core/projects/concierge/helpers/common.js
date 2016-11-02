@@ -34,7 +34,7 @@ module.exports = {
     }
   },
 
-  pause: (done, pauseTime) => {
+ pause: (done, pauseTime) => {
     client.pause(pauseTime, done);
   },
 
@@ -112,6 +112,16 @@ module.exports = {
     }
   },
 
+  verifyStoreId(done) {
+    if (client.isVisible(landingPage.helpers.storeIdLabel)) {
+      console.log('	PASS: The Store ID is visible.');
+    } else {
+      console.log('	ERROR: The user failed to logout.');
+    }
+    done();
+  },
+
+
 //----------------------------------- Store ID Page ----------------------------------------------------
 
   specifyStore(done, storeID) {
@@ -119,31 +129,47 @@ module.exports = {
       client.setValue(store.helpers.storeIDField, storeID || store.helpers.storeID)
         .then(() => {
           client.click(store.helpers.saveButton)
-            //.then(() => {
-            //  client.click(loginPage.helpers.signIn);
-            //});
         })
     }
   },
   specifyStoreCancel(done) {
     if (client.isVisible(store.helpers.storeIDField, done)) {
-      client.setValue(store.helpers.storeIDField, store.helpers.storeID)
-        .then(() => {
-          client.click(store.helpers.cancelButton)
-        })
+      client.click(store.helpers.cancelButton)
     }
   },
-
-
 // ----------------------------------------  LANDING PAGE
 
   verifyConciergeScreen(done) {
-    if (client.isVisible(landingPage.helpers.homeIcon)) {
+    if (client.isVisible(landingPage.helpers.logout)) {
       console.log('	PASS: The Concierge screen is visible.');
     } else {
       console.log('	ERROR: The user failed to reach the Concierge screen.');
     }
     done();
+  },
+
+  verifyLogoutButton(done) {
+     if (client.isVisible(landingPage.helpers.logout, done)) {
+           client.click(landingPage.helpers.logout);
+     } else {
+       console.log('Already logged out.');
+     }
+  },
+
+  verifyLogoutCancelButton(done) {
+     if (client.isVisible(landingPage.helpers.logoutCancel, done)) {
+           client.click(landingPage.helpers.logoutCancel);
+     } else {
+       console.log('Logout modal not launching.');
+     }
+  },
+
+  verifyLogoutConfirmButton(done) {
+     if (client.isVisible(landingPage.helpers.logoutConfirm, done)) {
+           client.click(landingPage.helpers.logoutConfirm);
+     } else {
+       console.log('Logout modal not launching.');
+     }
   },
 
   navMenu(done) {

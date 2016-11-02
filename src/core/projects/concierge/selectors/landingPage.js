@@ -6,7 +6,7 @@ module.exports = {
         baseUrl: 'localhost:3000/'
     },
     helpers:{
-        homeIcon: 'span.mm-c-nav__logo-img]',
+        homeIcon: 'span.mm-c-nav__logo-img',
         bagIcon:'div.mm-o-icon.icon-bag-outline',
         iconList: 'mm-c-nav__list',
         iconListTitle:'h2',

@@ -2,7 +2,7 @@ const common = require('../../core/projects/concierge/helpers/common');
 
 describe('Provision Burberry', () => {
   before((done) => {
-    common.openBrowser(done);
+    common.goTo(done);
   });
 
   describe('Enter Provision Key', () => {
@@ -16,4 +16,8 @@ describe('Provision Burberry', () => {
       common.verifyLoginScreen(done);
     });
   });
+
+//      after(function (done) {
+//     	common.end(done);
+//     });
 });

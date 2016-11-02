@@ -15,7 +15,7 @@ describe('Open Concierge', () => {
 
   // assert.equal('Test', 'Test', 'The page title failed expected result.');
 
-  // after(function (done) {
-  // 	common.end(done);
-  // });
+   after(function (done) {
+   	common.end(done);
+   });
 });

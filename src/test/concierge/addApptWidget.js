@@ -15,8 +15,8 @@ describe('Smoke Test: Add Appointment', () => {
   });
 
   describe('Login', () => {
-    it('Should login as "qaUser"', (done) => {
-      common.loginUser(done, 'qaUser', 'qaUser@123');
+    it('Should login as "qauser"', (done) => {
+      common.loginUser(done);
     });
   });
 
@@ -118,7 +118,7 @@ describe('Smoke Test: Add Appointment', () => {
 
 
 
-  //  after(function (done) {
-  // 	common.end(done);
-  // });
+//    after(function (done) {
+//   	common.end(done);
+//   });
 });

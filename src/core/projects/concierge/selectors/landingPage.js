@@ -6,7 +6,7 @@ module.exports = {
         baseUrl: 'localhost:3000/'
     },
     helpers:{
-        homeIcon: 'span.mm-c-nav__logo-img]',
+        homeIcon: 'span.mm-c-nav__logo-img',
         bagIcon:'div.mm-o-icon.icon-bag-outline',
         iconList: 'mm-c-nav__list',
         iconListTitle:'h2',
@@ -21,10 +21,11 @@ module.exports = {
         menuNewArrivals:'li[contains(@span="New Arrivals")]',
       //  menu: '//a[contains(@href, "#")]',
         email: 'mm-o-icon mm-c-nav__icon icon-email-fill',
-        logout: 'mm-c-nav__list-item last',
-        logoutModal: '.pure-container > div:nth-child(8) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)',
-        logoutCancel: '.pure-container > div:nth-child(8) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > button:nth-child(1)',
-        logoutConfirm: '.pure-container > div:nth-child(8) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > button:nth-child(2)'
+        //logout: 'mm-c-nav__list-item last',
+        logout: '//div[@data-id="module-logout"]',
+        //logoutModal: '.pure-container > div:nth-child(8) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)',
+        logoutCancel: '//button[@data-id="logoutCancelBtn"]',
+        logoutConfirm: '//button[@data-id="logoutConfirmBtn"]',
     }
 }
 

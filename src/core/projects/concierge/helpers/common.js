@@ -37,8 +37,8 @@ module.exports = {
     }
   },
 
-  pause: (done) => {
-    client.pause(1500, done);
+ pause: (done, pauseTime) => {
+    client.pause(pauseTime, done);
   },
 
   getsomeText(done) {

@@ -18,7 +18,7 @@ describe('Sysco UOM Stuffs', () => {
   });
   describe('Pausing', () => {
     it('Should pause the test for 10 seconds', (done) => {
-      common.pause(done, 15000);
+      common.pause(done, 5000);
     });
   });
   describe('Click Expense from homepage', () => {

@@ -13,7 +13,7 @@ describe('Smoke Test: Add Appointment', () => {
 
   describe('Pausing', () => {
     it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done);
+      common.pause(done, 5000);
     });
   });
 
@@ -24,14 +24,14 @@ describe('Smoke Test: Add Appointment', () => {
   });
 
   describe('Login', () => {
-    it('Should login as "ssales"', (done) => {
-      common.loginUser(done, 'qaUser', 'qaUser@123');
+    it('Should login as "qauser"', (done) => {
+      common.loginUser(done);
     });
   });
 
   describe('Pausing', () => {
     it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done);
+      common.pause(done, 5000);
     });
   });
 
@@ -43,19 +43,19 @@ describe('Smoke Test: Add Appointment', () => {
 
   describe('Pausing', () => {
     it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done);
+      common.pause(done, 5000);
     });
   });
 
-  describe('Open Appointment Form', () => {
-    it('Should open the appointment form from the Planner', (done) => {
-      common.addAppointmentForm_fromPlanner(done);
-    });
-  });
+//  describe('Open Appointment Form', () => {
+//    it('Should open the appointment form from the Planner', (done) => {
+//      common.addAppointmentForm_fromPlanner(done);
+//    });
+//  });
 
   describe('Pausing', () => {
     it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done);
+      common.pause(done, 5000);
     });
   });
 
@@ -66,7 +66,7 @@ describe('Smoke Test: Add Appointment', () => {
   });
 
 
-  //  after(function (done) {
-  // 	common.end(done);
-  // });
+//    after(function (done) {
+//   	common.end(done);
+//   });
 });

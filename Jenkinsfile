@@ -51,28 +51,28 @@ ios-deploy -i 6bbbd889caeed808c71677e5bd5f1c7f764eaddd -b Concierge.ipa</command
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command># start appium
-##BUILD_ID=dontKillMe nohup /usr/local/bin/appium &gt; $PWD/appium.log 2&gt;&amp;1 &amp;</command>
+BUILD_ID=dontKillMe nohup /usr/local/bin/appium &gt; $PWD/appium.log 2&gt;&amp;1 &amp;</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command>sleep 10</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command># start ios webkit debug proxy
-##BUILD_ID=dontKillMe nohup ios_webkit_debug_proxy -c 6bbbd889caeed808c71677e5bd5f1c7f764eaddd:27753 -d &gt; $HOME/ios_webkit_debug_proxy.log 2&gt;&amp;1 &amp;</command>
+BUILD_ID=dontKillMe nohup ios_webkit_debug_proxy -c 6bbbd889caeed808c71677e5bd5f1c7f764eaddd:27753 -d &gt; $HOME/ios_webkit_debug_proxy.log 2&gt;&amp;1 &amp;</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command>sleep 10</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
-      <command>##gulp initiate-allTests --archon:concierge --test:allTests</command>
+      <command>gulp initiate-allTests --archon:concierge --test:allTests</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command># stop ios_webkit_debug_proxy
-##pkill ios_webkit_debug_proxy</command>
+pkill ios_webkit_debug_proxy</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command># stop appium
-##pkill node /usr/local/bin/appium</command>
+pkill node /usr/local/bin/appium</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>

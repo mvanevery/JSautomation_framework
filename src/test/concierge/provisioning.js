@@ -2,7 +2,7 @@ const common = require('../../core/projects/concierge/helpers/common');
 
 describe('Smoke Test: Provisioning', () => {
   before((done) => {
-    common.openBrowser(done);
+    common.goTo(done);
   });
 
   // Talbots provisioning test
@@ -13,7 +13,7 @@ describe('Smoke Test: Provisioning', () => {
   });
   describe('Pausing', () => {
     it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done);
+      common.pause(done, 5000);
     });
   });
   describe('Verify Login Screen', () => {
@@ -28,7 +28,7 @@ describe('Smoke Test: Provisioning', () => {
   // });
   // describe('Pausing', function() {
   // 	it('Should pause the test for 5 seconds', function(done) {
-  // 		common.pause(done);
+  // 		common.pause(done, 5000);
   // 	})
   // });
   // describe('Verify Provision Screen', function () {
@@ -43,7 +43,7 @@ describe('Smoke Test: Provisioning', () => {
   });
   describe('Pausing', () => {
     it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done);
+      common.pause(done, 5000);
     });
   });
 
@@ -60,7 +60,7 @@ describe('Smoke Test: Provisioning', () => {
   });
   describe('Pausing', () => {
     it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done);
+      common.pause(done, 5000);
     });
   });
   describe('Verify Login Screen', () => {
@@ -69,7 +69,7 @@ describe('Smoke Test: Provisioning', () => {
     });
   });
 
-  after((done) => {
-    common.end(done);
-  });
+//  after((done) => {
+//    common.end(done);
+//  });
 });

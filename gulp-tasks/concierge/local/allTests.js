@@ -1,8 +1,8 @@
 /**
- * Created by mvanevery on 10/11/16.
- */
-/**
- * Created by mvanevery on 10/11/16.
+ * Created by jharre on 10/28/16.
+ *
+ * runs all tests in order in /src/test/concierge/suite directory
+ *
  */
 const mochaOptions = {
   timeout: '50000',
@@ -10,7 +10,7 @@ const mochaOptions = {
   reporterOptions: {
     reportDir: './src/test/concierge/reports',
     reportName: 'report',
-    reportTitle: 'Add Appt through Widget',
+    reportTitle: 'Run all tests',
     inlineAssets: true
   }
 };
@@ -22,7 +22,7 @@ function handleError(err) {
 
 module.exports = function (gulp, mocha) {
   return function () {
-    return gulp.src('./src/test/concierge/addApptWidget.js', {read: false})
+    return gulp.src('./src/test/concierge/suite/**/*.js', {read: false})
       .pipe(mocha(mochaOptions).on("error", handleError));
   }
 };

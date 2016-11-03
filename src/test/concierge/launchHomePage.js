@@ -4,7 +4,7 @@ const common = require('../../core/projects/concierge/helpers/common');
 
 describe('Open Concierge', () => {
   before((done) => {
-    common.openBrowser(done);
+    common.goTo(done);
   });
 
   describe('Verify Concierge Homepage', () => {
@@ -15,7 +15,7 @@ describe('Open Concierge', () => {
 
   // assert.equal('Test', 'Test', 'The page title failed expected result.');
 
-  // after(function (done) {
-  // 	common.end(done);
-  // });
+   after(function (done) {
+   	common.end(done);
+   });
 });

@@ -2,7 +2,7 @@ const common = require('../../core/projects/concierge/helpers/common');
 
 describe('Smoke Test: Customer Search', () => {
   before((done) => {
-    common.openBrowser(done);
+    common.goTo(done);
   });
 
   //describe('Enter Provision Key', () => {
@@ -13,7 +13,7 @@ describe('Smoke Test: Customer Search', () => {
   //
   //describe('Pausing', () => {
   //  it('Should pause the test for 5 seconds', (done) => {
-  //    common.pause(done);
+  //    common.pause(done, 5000);
   //  });
   //});
 
@@ -24,14 +24,14 @@ describe('Smoke Test: Customer Search', () => {
   });
 
   describe('Login', () => {
-    it('Should login as "ssales"', (done) => {
-      common.loginSsales(done);
+    it('Should login as "qauser"', (done) => {
+      common.loginUser(done);
     });
   });
 
   describe('Pausing', () => {
     it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done, 8000);
+      common.pause(done, 5000);
     });
   });
 
@@ -43,7 +43,7 @@ describe('Smoke Test: Customer Search', () => {
 
   describe('Pausing', () => {
     it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done, 3000);
+      common.pause(done, 5000);
     });
   });
 
@@ -71,8 +71,8 @@ describe('Smoke Test: Customer Search', () => {
   //  });
   //});
 
-  //  after((done) => {
-  // 	common.end(done);
-  // });
+//    after((done) => {
+//   	common.end(done);
+//   });
 
 });

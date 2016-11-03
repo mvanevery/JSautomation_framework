@@ -1,8 +1,8 @@
-const common = require('../../core/projects/concierge/helpers/common');
+const common = require('../../../core/projects/concierge/helpers/common');
 
 describe('Provision Talbots', () => {
   before((done) => {
-    common.openBrowser(done);
+    common.goTo(done);
   });
 
   describe('Pausing', () => {

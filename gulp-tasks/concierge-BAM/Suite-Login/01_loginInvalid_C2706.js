@@ -1,5 +1,5 @@
 const mochaOptions = {
-  timeout: '50000',
+  timeout: '30000',
   reporter: 'mochawesome',
   reporterOptions: {
     reportDir: './src/test/concierge-BAM/reports',

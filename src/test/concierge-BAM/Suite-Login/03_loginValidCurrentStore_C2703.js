@@ -1,28 +1,20 @@
 /**
  * Project:     Concierge-BAM
- * Test Name:   logout_C2705
- * Test Steps:  https://madmobile.testrail.com/index.php?/cases/view/2705
+ * TestName:    Suite-Login/03_loginValidCurrentSore_C2703
+ * TestSteps:   https://madmobile.testrail.com/index.php?/cases/view/2703
  * Author:      Aaron Feldmeyer
- * Date:        11/1/2016
+ * Date:        11/3/2016
  *
- * From command line type:
- *      gulp initiate-<TestName> --archon:concierge-BAM --test:<TestName> --client:chrome
+ * Execute through the "Suite-Login".
  */
 
-const common = require('../../core/projects/concierge-BAM/helpers/common');
-// const loginPage = require('../../core/projects/concierge-BAM/selectors/loginPage');
-// const landingPage = require('../../core/projects/concierge-BAM/selectors/landingPage');
+const common = require('./src/core/projects/concierge-BAM/helpers/common');
 
-describe('Login as a valid user.', () => {
-  before((done) => {
-    common.goTo(done);
-  });
 
-  describe('Pausing', () => {
-    it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done, 5000);
-    });
-  });
+describe('Login as a valid user at the current store.', () => {
+  // before((done) => {
+  //   common.goTo(done);
+  // });
 
   describe('Verify Login Screen', () => {
     it('Should navigate to the login screen', (done) => {
@@ -30,11 +22,11 @@ describe('Login as a valid user.', () => {
     });
   });
 
-  describe('Pausing', () => {
-    it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done, 5000);
-    });
-  });
+  // describe('Pausing', () => {
+  //   it('Should pause the test for 5 seconds', (done) => {
+  //     common.pause(done, 3000);
+  //   });
+  // });
 
   describe('Login', () => {
     it('Should login as "180001"', (done) => {
@@ -43,22 +35,25 @@ describe('Login as a valid user.', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 5 seconds', (done) => {
+    it('Should pause the test for 8 seconds', (done) => {
       common.pause(done, 8000);
     });
   });
 
   describe('Verify BAM landing page', () => {
     it('Should navigate to the BAM landing page', (done) => {
-      common.verifyBamLandingPage(done, "Company News");
+      common.verifyBamLandingPage(done);
     });
   });
 
-  describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+  describe('Verify BAM store number', () => {
+    it('Should verify that the store number is #180', (done) => {
+      common.verifyStoreNum(done,'#180');
     });
   });
+
+
+// Logout
 
   describe('Select the user Avatar', () => {
     it('Should open the logout modal.', (done) => {
@@ -89,5 +84,6 @@ describe('Login as a valid user.', () => {
       common.verifyLoginScreen(done);
     });
   });
+
 
 });

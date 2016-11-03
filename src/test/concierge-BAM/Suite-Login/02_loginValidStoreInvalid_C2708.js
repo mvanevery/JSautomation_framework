@@ -1,23 +1,20 @@
 /**
  * Project:     Concierge-BAM
- * TestName:    loginValidStoreInvalid_C2708
+ * TestName:    Suite-Login/02_loginValidStoreInvalid_C2708
  * TestSteps:   https://madmobile.testrail.com/index.php?/cases/view/2708
  * Author:      Aaron Feldmeyer
- * Date:        11/2/2016
+ * Date:        11/3/2016
  *
- * From command line type:
- *      gulp initiate-<TestName> --archon:concierge-BAM --test:<TestName> --client:chrome
+ * Execute through the "Suite-Login".
  */
 
+const common = require('./src/core/projects/concierge-BAM/helpers/common');
 
-const common = require('../../core/projects/concierge-BAM/helpers/common');
-// const loginPage = require('../../core/projects/concierge-BAM/selectors/loginPage');
-// const landingPage = require('../../core/projects/concierge-BAM/selectors/landingPage');
 
 describe('Login as a valid user but with an invalid store number.', () => {
-  before((done) => {
-    common.goTo(done);
-  });
+  // before((done) => {
+  //   common.goTo(done);
+  // });
 
   describe('Pausing', () => {
     it('Should pause the test for 5 seconds', (done) => {

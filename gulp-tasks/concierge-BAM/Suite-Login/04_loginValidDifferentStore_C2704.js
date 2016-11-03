@@ -1,10 +1,10 @@
 const mochaOptions = {
-  timeout: '50000',
+  timeout: '30000',
   reporter: 'mochawesome',
   reporterOptions: {
     reportDir: './src/test/concierge-BAM/reports',
     reportName: 'report',
-    reportTitle: 'Login as valid user for current store.',
+    reportTitle: 'Login as valid user for different store.',
     inlineAssets: true
   }
 };
@@ -16,7 +16,7 @@ function handleError(err) {
 
 module.exports = function (gulp, mocha) {
   return function () {
-    return gulp.src('./src/test/concierge-BAM/loginValidDifferentStore_C2704.js', {read: false})
+    return gulp.src('./src/test/concierge-BAM/Suite-Login/04_loginValidDifferentStore_C2704.js', {read: false})
       .pipe(mocha(mochaOptions).on("error", handleError));
   }
 };

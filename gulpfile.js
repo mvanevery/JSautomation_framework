@@ -11,10 +11,11 @@ const browserSync = require('browser-sync');
 const selenium = require('selenium-standalone');
 const mocha = require('gulp-mocha');
 const project = require('./src/core/projects/config').project;
+const projectType = require('./src/core/projects/config').projectType;
 const test = require('./src/core/projects/config').test;
 
 const getTask = function (task) {
-   return require(`./gulp-tasks/${project}/${task}`)(gulp, mocha);
+   return require(`./gulp-tasks/${project}/${projectType}/${task}`)(gulp, mocha);
 };
 
 function terminateProcess() {

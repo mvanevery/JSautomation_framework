@@ -7,10 +7,11 @@ const mochaOptions = {
   reporterOptions: {
     reportDir: './src/test/concierge/reports',
     reportName: 'report',
-    reportTitle: 'Add Appt through Widget',
+    reportTitle: 'Add Appointment through Widget',
     inlineAssets: true
   }
 };
+const projectType = require('../../../src/core/projects/config').projectType;
 
 function handleError(err) {
   console.log(err.toString());

@@ -1,7 +1,7 @@
 /**
  * Created by mvanevery on 10/11/16.
  */
-const common = require('../../core/projects/concierge/helpers/common');
+const common = require('../../../core/projects/concierge/helpers/common');
 
 describe('Smoke Test: Add Appointment', () => {
   before((done) => {

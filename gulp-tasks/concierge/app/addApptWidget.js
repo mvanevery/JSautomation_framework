@@ -19,7 +19,7 @@ function handleError(err) {
 
 module.exports = function (gulp, mocha) {
   return function () {
-    return gulp.src('./src/test/concierge/addAppointment.js', {read: false})
+    return gulp.src('./src/test/concierge/appSuite/addAppointment.js', {read: false})
       .pipe(mocha(mochaOptions).on("error", handleError));
   }
 };

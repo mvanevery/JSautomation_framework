@@ -17,7 +17,7 @@ const common = require('../../core/projects/concierge-BAM/helpers/common');
 describe('Login as a valid user.', () => {
   before((done) => {
     //common.goTo(done,'https:\\serviceqa.booksamillion.com');
-    common.goTo(done,'https://www.google.com');
+    common.goTo(done);
   });
 
   describe('Pausing', () => {

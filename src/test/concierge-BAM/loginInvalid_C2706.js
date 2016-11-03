@@ -36,7 +36,7 @@ describe('Attempt to login as an invalid user.', () => {
 
   describe('Login', () => {
     it('Should not login as "111111"', (done) => {
-      common.loginUser(done,180001,1234);
+      common.loginUser(done,111111,1234);
     });
   });
 

@@ -18,5 +18,4 @@ module.exports = {
       data_password:        '1234',
       data_location:        ''
     },
-
 }

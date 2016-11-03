@@ -5,13 +5,13 @@
  * Author:      Aaron Feldmeyer
  * Date:        11/3/2016
  *
- * Execute through the "Suite-Login".
+ * Execute through the "LoginTestSuite".
  */
 
-const common = require('./src/core/projects/concierge-BAM/helpers/common');
+const common = require('../../../core/projects/concierge-BAM/helpers/common');
 
 
-describe('Login as a valid user.', () => {
+describe('Login as a valid user to a different store number.', () => {
   // before((done) => {
   //   common.goTo(done);
   // });
@@ -88,9 +88,9 @@ describe('Login as a valid user.', () => {
 
 // Close the browser
 
-  describe('Verify Login Screen', () => {
-    it('Should navigate to the login screen', (done) => {
-      common.verifyLoginScreen(done);
+  describe('Ending the test', () => {
+    it('Should close the broser', (done) => {
+      common.end(done);
     });
   });
 

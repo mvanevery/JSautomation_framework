@@ -8,7 +8,7 @@
 
 const common = require('../../../core/projects/concierge/helpers/common');
 
-describe('Smoke Test: Login as "ssales"', () => {
+describe('Smoke Test: Login and Logout as "qaUser"', () => {
   before((done) => {
     common.goTo(done);
   });
@@ -32,8 +32,8 @@ describe('Smoke Test: Login as "ssales"', () => {
   });
 
   describe('Login', () => {
-    it('Should login as "ssales"', (done) => {
-      common.loginUser(done);
+    it('Should login as "qaUser"', (done) => {
+      common.loginUser(done, 'qaUser', 'qaUser@123');
     });
   });
 
@@ -48,9 +48,13 @@ describe('Smoke Test: Login as "ssales"', () => {
       common.verifyConciergeScreen(done);
     });
   });
-  //
-  //after((done) => {
-  //  common.end(done);
-  //})
+  describe('Logout', () => {
+    it('Should logout the current user', (done) => {
+      common.logoutUser(done);
+    });
+  });
+  after((done) => {
+    common.end(done);
+  });
 
 });

@@ -8,28 +8,35 @@ module.exports = {
     baseUrl: 'localhost:3000/'
   },
   helpers: {
+    //===================================== GLOBAL ================================
     plannerTitle: '//div[contains(text(),"Planner")]',
-    taskAddition:'a > button[type="button"]',
-    apptAddition:'//button[@type="button"])[5]',
-    taskViewMore:'//button[@type="button"][2]',
-    apptViewMore:'//button[@type="button"][4]',
-    taskType: 'select[name="type"]',
-    modalSubject: 'input[name="subject"]',
-    modalStartDateTime: '//div[@id="app"]/div/div/div/div/div[3]/div[2]/div/div[2]/div/div/form/div/div[4]/div/div/div[2]/input',
-    //modalStartDateTime:'input[name="startDateTime"]',
-    modalEndDateTime:'input[name="endDateTime"]',
+    addButton: '//div[@class="mm-o-icon icon-plus"]',
+    delete:'//div[contains(text(),"Done")]',
+    yesButton:'//div[contains(text(),"Yes")]',
+    Cancel: '//button[contains(text(),"Cancel")]',
+    Discard:'//div[contains(text(),"Discard")]',
+    continueEdit:'//div[contains(text(),"Continue Editing")]',
+    Save:'//div[contains(text(),"Done")]',
+    modalType: '//select[@name="type"]',
+    modalSubject: '//input[@name="subject"]',
+    modalStartDateTime:'//input[@name="startDateTime"]',
+    modalEndDateTime:'//input[@name="endDateTime"]',
     modalStatus:'//select[@name="status"]',
     modalPriority:'//select[@name="priority"]',
-    taskSave:'//div[contains(text(),"Done")]',
-    taskCancel: '//button[contains(text(),"Cancel")]',
-    taskDiscard:'xpath=(//button[@type="button"])[7]',
+
+    //============================================= TASK ==================================
+    taskAddition:'a > button[type="button"]',
+    taskViewMore:'//button[@type="button"][2]',
     taskTitle: '//div[contains(text(),"Create Task")]',
-    apptTitle: '.pure-container > div:nth-child(8) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2)',
-    apptToggleSwitch:'//div[contains(text(),"Appt")]',
     taskToggleSwitch:'//div[contains(text(),"Task")]',
-    addButton: '//div[@class="mm-o-icon icon-plus"]',
-    addedTaskTitle: '//div[contains(text(),"Automation Test Appointment")]',
-    deleteTask:'//div[contains(text(),"Done")]',
-    yesButton:'//div[contains(text(),"Yes")]'
+    addedTaskTitle: '//div[contains(text(),"Automation Test Task")]',
+
+    //=========================================== APPOINTMENT ==============================
+    apptAddition:'//button[@type="button"])[5]',
+    apptViewMore:'//button[@type="button"][4]',
+    apptTitle: '//div[contains(text(),"Create Appointment")]',
+    apptToggleSwitch:'//div[contains(text(),"Appt")]',
+    addedApptTitle: '//div[contains(text(),"Automation Test Appointment")]',
+
   }
 }

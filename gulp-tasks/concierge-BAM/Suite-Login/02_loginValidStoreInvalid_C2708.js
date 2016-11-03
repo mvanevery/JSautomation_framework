@@ -4,7 +4,7 @@ const mochaOptions = {
   reporterOptions: {
     reportDir: './src/test/concierge-BAM/reports',
     reportName: 'report',
-    reportTitle: 'Unabke to login as invalid user for current store.',
+    reportTitle: 'Login as valid user for current store.',
     inlineAssets: true
   }
 };
@@ -16,7 +16,7 @@ function handleError(err) {
 
 module.exports = function (gulp, mocha) {
   return function () {
-    return gulp.src('./src/test/concierge-BAM/01_loginInvalid_C2706.js', {read: false})
+    return gulp.src('./src/test/concierge-BAM/loginValidStoreInvalid_C2708.js', {read: false})
       .pipe(mocha(mochaOptions).on("error", handleError));
   }
 };

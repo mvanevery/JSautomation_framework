@@ -11,6 +11,7 @@ const mochaOptions = {
     inlineAssets: true
   }
 };
+const projectType = require('../../../src/core/projects/config').projectType;
 
 function handleError(err) {
   console.log(err.toString());
@@ -19,7 +20,7 @@ function handleError(err) {
 
 module.exports = function (gulp, mocha) {
   return function () {
-    return gulp.src('./src/test/concierge/appSuite/addTask.js', {read: false})
+    return gulp.src('./src/test/concierge/appSuite/addAppointment.js', {read: false})
       .pipe(mocha(mochaOptions).on("error", handleError));
   }
 };

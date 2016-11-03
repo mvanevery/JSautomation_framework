@@ -3,7 +3,7 @@ const project = process.argv.filter((argument) => {
 });
 
 const projectType = process.argv.filter((argument) => {
-  return argument.match(/--archon-type/);
+  return argument.match(/--archonType/);
 });
 
 const test = process.argv.filter((argument) => {
@@ -21,7 +21,7 @@ const clientIndex = process.argv.indexOf(client[0]);
 
 module.exports = {
   project: !!project[0] ? process.argv[projectIndex].replace(/--archon:/, '') : 'rutt roh',
-  projectType: !!projectType[0] ? process.argv[projectTypeIndex].replace(/--archon-type:/, '') : 'local',
+  projectType: !!projectType[0] ? process.argv[projectTypeIndex].replace(/--archonType:/, '') : 'local',
   test: !!test[0] ? process.argv[testIndex].replace(/--test:/, '') : 'no test defined',
   client: !!client[0] ? process.argv[clientIndex].replace(/--client:/, '') : 'appium'
 };

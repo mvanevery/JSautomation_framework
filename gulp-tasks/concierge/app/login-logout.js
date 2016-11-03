@@ -8,6 +8,7 @@ const mochaOptions = {
     inlineAssets: true
   }
 };
+const projectType = require('../../../src/core/projects/config').projectType;
 
 function handleError(err) {
   console.log(err.toString());

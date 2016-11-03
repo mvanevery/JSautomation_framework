@@ -8,6 +8,8 @@ const provisioning = require(`../../../projects/${project}/selectors/provisionin
 const store = require(`../../../projects/${project}/selectors/store`);
 const planner = require(`../../../projects/${project}/selectors/planner`);
 const assert = require('chai').assert;
+const expect = require('chai').expect;
+
 
 module.exports = {
 
@@ -29,6 +31,10 @@ module.exports = {
     {
       client.init(done);
     }
+  },
+
+  openBrowser(done) {
+    client.init(done);
   },
 
   closeBrowser(done) {
@@ -91,14 +97,16 @@ module.exports = {
   //  done();
   //},
 
-  // ---------------------------------------- LOGIN
+  // ---------------------------------------- LOGIN/LOGOUT
 
   verifyLoginScreen(done) {
-    if (client.isVisible(loginPage.helpers.login_logo, done)) {
-      console.log('Welcome to the Login Page');
-    } else {
-      console.log('ERROR: The provision failed to reach the Login screen.');
-    }
+    expect(loginPage.helpers.loginLogo).not.to.be.visible;
+    done();
+    //if (client.isVisible(loginPage.helpers.login_logo, done)) {
+    //  console.log('Welcome to the Login Page');
+    //} else {
+    //  console.log('ERROR: The provision failed to reach the Login screen.');
+    //}
   },
 
   loginUser(done,username, password) {
@@ -132,6 +140,9 @@ module.exports = {
       client.setValue(store.helpers.storeIDField, storeID || store.helpers.storeID)
         .then(() => {
           client.click(store.helpers.saveButton)
+          .then(() => {
+              client.click(loginPage.helpers.signIn);
+            })
         })
     }
   },
@@ -151,11 +162,12 @@ module.exports = {
     done();
   },
 
-  verifyLogoutButton(done) {
+  logoutUser(done) {
      if (client.isVisible(landingPage.helpers.logout, done)) {
-           client.click(landingPage.helpers.logout);
-     } else {
-       console.log('Already logged out.');
+       client.click(landingPage.helpers.logout)
+          .then(() => {
+               client.click(landingPage.helpers.logoutConfirm);
+             })
      }
   },
 
@@ -290,7 +302,7 @@ module.exports = {
     }
   },
 
-  //-----------------------------------------------Task/Appointment Modal ------------------
+  //-----------------------------------------------Task/Appointment Modal/PLANNER Page ------------------
 
   addSubject(done,subject) {
     if (client.isVisible(planner.helpers.modalSubject, done)) {
@@ -300,7 +312,7 @@ module.exports = {
 
   addType(done, type) {
     if (client.isVisible(planner.helpers.taskType, done)) {
-      client.setValue(planner.helpers.taskType, type);
+      client.selectByValue(planner.helpers.taskType, type);
     }
   },
 
@@ -319,13 +331,13 @@ module.exports = {
 
   addStatus(done, status) {
     if (client.isVisible(planner.helpers.modalStatus, done)) {
-      client.setValue(planner.helpers.modalStatus, status);
+        client.selectByValue(planner.helpers.modalStatus, status);
     }
   },
 
   addPriority(done, priority) {
     if (client.isVisible(planner.helpers.modalPriority, done)) {
-      client.setValue(planner.helpers.modalPriority, priority)
+      client.selectByValue(planner.helpers.modalPriority, priority)
     }
   },
 
@@ -338,6 +350,68 @@ module.exports = {
   cancelTask(done) {
     if (client.isVisible(planner.helpers.taskCancel, done)) {
       client.click(planner.helpers.taskCancel)
+    }
+  },
+
+  apptToggle(done, expected) {
+    if (client.isVisible(planner.helpers.plannerTitle, done)) {
+      client.click(planner.helpers.taskToggleSwitch)
+        .then(() => {
+          client.click(planner.helpers.addButton)
+            .then(() => {
+              client.getText(planner.helpers.taskTitle)
+                .then((text) => {
+                  try {
+                    assert.equal(expected, text, 'The expected value was not equal to the text');
+                  } catch (err) {
+                    done(err);
+                  }
+                })
+            })
+        })
+
+    }
+  },
+  taskToggle(done, expected) {
+    if (client.isVisible(planner.helpers.plannerTitle, done)) {
+      client.click(planner.helpers.taskToggleSwitch)
+        .then(() => {
+          client.click(planner.helpers.addButton)
+            .then(() => {
+              client.getText(planner.helpers.taskTitle)
+                .then((text) => {
+                  //expect(text).to.be.equal(expected);
+                  try {
+                    assert.equal(expected, text, 'The expected value was not equal to the text');
+                  } catch (err) {
+                    done(err);
+                  }
+                })
+            })
+        })
+
+    }
+  },
+
+  verifyAddedTask(done, expected) {
+    if(client.isVisible(planner.helpers.plannerTitle, done)) {
+     client.getText(planner.helpers.addedTaskTitle)
+      .then((text) => {
+         try {
+           assert.equal(expected, text, 'The expected value was not equal to the text');
+         } catch (err) {
+           done(err);
+         }
+       })
+    }
+  },
+
+  deleteTask(done) {
+    if(client.isVisible(planner.helpers.addedTaskTitle, done)) {
+      client.click(planner.helpers.deleteTask)
+      .then(() => {
+          client.click(planner.helpers.yesButton);
+        })
     }
   },
 
@@ -373,44 +447,7 @@ module.exports = {
   },
 
 
-  apptToggle(done, expected) {
-    if (client.isVisible(planner.helpers.plannerTitle, done)) {
-      client.click(planner.helpers.taskToggleSwitch)
-        .then(() => {
-          client.click(planner.helpers.addButton)
-            .then(() => {
-              client.getText(planner.helpers.taskTitle)
-                .then((text) => {
-                  try {
-                    assert.equal(expected, text, 'The expected value was not equal to the text');
-                  } catch (err) {
-                    done(err);
-                  }
-                })
-            })
-        })
 
-    }
-  },
-  taskToggle(done, expected) {
-    if (client.isVisible(planner.helpers.plannerTitle, done)) {
-      client.click(planner.helpers.taskToggleSwitch)
-        .then(() => {
-          client.click(planner.helpers.addButton)
-            .then(() => {
-              client.getText(planner.helpers.taskTitle)
-                .then((text) => {
-                  try {
-                    assert.equal(expected, text, 'The expected value was not equal to the text');
-                  } catch (err) {
-                    done(err);
-                  }
-                })
-            })
-        })
-
-    }
-  },
 
   addAppointment_05012016(done) {
     client.click(config.helpers.cmb_type)

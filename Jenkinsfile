@@ -1,5 +1,121 @@
 # placeholder for qajenkins job config files. not really a Jenkinsfile. MM JCH 11-2-2016
 
+#Concierge
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@3.0.0">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <url>https://archon-jenkins@bitbucket.org/madmobile/archon-framework.git</url>
+        <credentialsId>1cf3be35-1da0-42db-abae-d4d1d325d24e</credentialsId>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>*/develop</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <submoduleCfg class="list"/>
+    <extensions/>
+  </scm>
+  <quietPeriod>300</quietPeriod>
+  <assignedNode>macmini</assignedNode>
+  <canRoam>false</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command># delete previous iOS app build from device
+ideviceinstaller -U com.madmobiledev.ConciergeDev -u 6bbbd889caeed808c71677e5bd5f1c7f764eaddd</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command># npm install for archon-framework
+npm install</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command># download ipa from hockeyapp
+curl -L -o Concierge.ipa https://rink.hockeyapp.net/api/2/apps/c8241ed859d343c9a59734cbd6f906c3/app_versions/4?format=ipa</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command># install ipa onto device using phonegap ios-deploy
+ios-deploy -i 6bbbd889caeed808c71677e5bd5f1c7f764eaddd -b Concierge.ipa</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command># start appium
+BUILD_ID=dontKillMe nohup /usr/local/bin/appium &gt; $PWD/appium.log 2&gt;&amp;1 &amp;</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>sleep 10</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command># start ios webkit debug proxy
+BUILD_ID=dontKillMe nohup ios_webkit_debug_proxy -c 6bbbd889caeed808c71677e5bd5f1c7f764eaddd:27753 -d &gt; $HOME/ios_webkit_debug_proxy.log 2&gt;&amp;1 &amp;</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>sleep 10</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>gulp initiate-allTests --archon:concierge --test:allTests</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command># stop ios_webkit_debug_proxy
+pkill ios_webkit_debug_proxy</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command># stop appium
+pkill node /usr/local/bin/appium</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers>
+    <hudson.plugins.emailext.ExtendedEmailPublisher plugin="email-ext@2.52">
+      <recipientList>jharre@madmobile.com</recipientList>
+      <configuredTriggers>
+        <hudson.plugins.emailext.plugins.trigger.AlwaysTrigger>
+          <email>
+            <subject>$PROJECT_DEFAULT_SUBJECT</subject>
+            <body>$PROJECT_DEFAULT_CONTENT</body>
+            <recipientProviders>
+              <hudson.plugins.emailext.plugins.recipients.ListRecipientProvider/>
+            </recipientProviders>
+            <attachmentsPattern></attachmentsPattern>
+            <attachBuildLog>false</attachBuildLog>
+            <compressBuildLog>false</compressBuildLog>
+            <replyTo>$PROJECT_DEFAULT_REPLYTO</replyTo>
+            <contentType>project</contentType>
+          </email>
+        </hudson.plugins.emailext.plugins.trigger.AlwaysTrigger>
+      </configuredTriggers>
+      <contentType>default</contentType>
+      <defaultSubject>$DEFAULT_SUBJECT</defaultSubject>
+      <defaultContent>$DEFAULT_CONTENT</defaultContent>
+      <attachmentsPattern></attachmentsPattern>
+      <presendScript>$DEFAULT_PRESEND_SCRIPT</presendScript>
+      <postsendScript>$DEFAULT_POSTSEND_SCRIPT</postsendScript>
+      <attachBuildLog>true</attachBuildLog>
+      <compressBuildLog>false</compressBuildLog>
+      <replyTo>$DEFAULT_REPLYTO</replyTo>
+      <saveOutput>false</saveOutput>
+      <disabled>false</disabled>
+    </hudson.plugins.emailext.ExtendedEmailPublisher>
+  </publishers>
+  <buildWrappers>
+    <hudson.plugins.ws__cleanup.PreBuildCleanup plugin="ws-cleanup@0.30">
+      <deleteDirs>false</deleteDirs>
+      <cleanupParameter></cleanupParameter>
+      <externalDelete></externalDelete>
+    </hudson.plugins.ws__cleanup.PreBuildCleanup>
+  </buildWrappers>
+</project>
+
 # uom-automation-ios
 <?xml version='1.0' encoding='UTF-8'?>
 <project>

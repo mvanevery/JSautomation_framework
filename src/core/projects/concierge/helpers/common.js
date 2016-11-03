@@ -9,6 +9,7 @@ const store = require(`../../../projects/${project}/selectors/store`);
 const planner = require(`../../../projects/${project}/selectors/planner`);
 const assert = require('chai').assert;
 const expect = require('chai').expect;
+const $ = require('chai-Jquery');
 
 
 module.exports = {
@@ -100,13 +101,11 @@ module.exports = {
   // ---------------------------------------- LOGIN/LOGOUT
 
   verifyLoginScreen(done) {
-    expect(loginPage.helpers.loginLogo).not.to.be.visible;
-    done();
-    //if (client.isVisible(loginPage.helpers.login_logo, done)) {
-    //  console.log('Welcome to the Login Page');
-    //} else {
-    //  console.log('ERROR: The provision failed to reach the Login screen.');
-    //}
+    if (client.isVisible(loginPage.helpers.loginLogo, done)) {
+      console.log('Welcome to the Login Page');
+    } else {
+      console.log('ERROR: The provision failed to reach the Login screen.');
+    }
   },
 
   loginUser(done,username, password) {
@@ -154,7 +153,7 @@ module.exports = {
 // ----------------------------------------  LANDING PAGE
 
   verifyConciergeScreen(done) {
-    if (client.isVisible(landingPage.helpers.logout)) {
+    if (client.isVisible(landingPage.helpers.icon)) {
       console.log('	PASS: The Concierge screen is visible.');
     } else {
       console.log('	ERROR: The user failed to reach the Concierge screen.');

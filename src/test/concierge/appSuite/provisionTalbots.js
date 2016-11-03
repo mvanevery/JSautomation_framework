@@ -35,7 +35,7 @@ describe('Provision Talbots and Set Store', () => {
   });
   describe('Login User', () => {
     it('Should Login as user "qaUser"', (done) => {
-      common.loginUser(done);
+      common.loginUser(done, "qaUser", "qaUser@123");
     });
   });
   describe('Pausing', () => {

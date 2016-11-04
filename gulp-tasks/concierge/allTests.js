@@ -1,7 +1,7 @@
 /**
  * Created by jharre on 10/28/16.
  *
- * runs all tests in order in /src/test/concierge/suite directory
+ * runs all tests in order in /src/test/concierge/ directory
  *
  */
 const mochaOptions = {
@@ -15,6 +15,18 @@ const mochaOptions = {
   }
 };
 
+const projectType = require('../../src/core/projects/config').projectType;
+
+//gulp --client:chrome
+if (`${projectType}` == 'local')
+{
+  var suiteType = 'suite';
+}
+else if (`${projectType}` == 'app')
+{
+  var suiteType = 'appSuite';
+}
+
 function handleError(err) {
   console.log(err.toString());
   this.emit('end');
@@ -22,7 +34,7 @@ function handleError(err) {
 
 module.exports = function (gulp, mocha) {
   return function () {
-    return gulp.src('./src/test/concierge/suite/**/*.js', {read: false})
+    return gulp.src('./src/test/concierge/'+suiteType+'/**/*.js', {read: false})
       .pipe(mocha(mochaOptions).on("error", handleError));
   }
 };

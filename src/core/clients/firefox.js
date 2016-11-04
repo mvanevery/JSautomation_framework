@@ -3,7 +3,7 @@
  */
 exports.client = require('webdriverio').remote({
   desiredCapabilities: {
-    browserName:'firefox'
+    browserName: 'firefox'
     //chromeOptions: {
     //  mobileEmulation: {
     //    deviceName:

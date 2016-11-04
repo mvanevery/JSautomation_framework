@@ -11,6 +11,18 @@ describe('Provision Talbots and Set Store', () => {
     });
   });
 
+  describe('Verify Provision Screen', () => {
+    it('Should verify Provisioning Screen', (done) => {
+      common.verifyProvisionScreen(done);
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 1000);
+    });
+  });
+
   describe('Enter Provision Key', () => {
     it('Should populate the provision key', (done) => {
       common.enterProvisionTalbots(done);
@@ -24,7 +36,7 @@ describe('Provision Talbots and Set Store', () => {
   });
 
   describe('Verify Login Screen', () => {
-    it('Should navigate to the login screen', (done) => {
+    it('Should verify the Login Screen', (done) => {
       common.verifyLoginScreen(done);
     });
   });
@@ -53,9 +65,9 @@ describe('Provision Talbots and Set Store', () => {
       common.pause(done, 5000);
     });
   });
-  describe('Verify Login Screen', () => {
-    it('Should navigate to the login screen', (done) => {
-      common.verifyLoginScreen(done);
+  describe('Logout', () => {
+    it('Should Logout from the current user', (done) => {
+      common.logoutUser(done);
     });
   });
   after((done) => {

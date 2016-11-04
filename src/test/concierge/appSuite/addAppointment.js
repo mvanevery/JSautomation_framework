@@ -64,7 +64,7 @@ describe('Smoke Test: Add Appointment', () => {
 
   describe('Add Start Date', () => {
     it('Should add a start date to the Start Date field', (done) => {
-      common.addStartDate(done, '2016-11-10T11:00:00.000');
+      common.addStartDate(done, '2016-11-10T11:00');
     });
   });
 

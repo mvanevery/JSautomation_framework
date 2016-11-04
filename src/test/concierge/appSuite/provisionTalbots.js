@@ -70,6 +70,11 @@ describe('Provision Talbots and Set Store', () => {
       common.logoutUser(done);
     });
   });
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 2000);
+    });
+  });
   after((done) => {
     common.end(done);
   })

@@ -15,10 +15,12 @@ const projectType = require('./src/core/projects/config').projectType;
 const test = require('./src/core/projects/config').test;
 
 const getTask = function (task) {
+  // all tests
   if (task == 'allTests')
   {
     return require(`./gulp-tasks/${project}/${task}`)(gulp, mocha);
   }
+  // individual tests
   else
   {
     return require(`./gulp-tasks/${project}/${projectType}/${task}`)(gulp, mocha);

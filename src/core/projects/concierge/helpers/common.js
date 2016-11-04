@@ -101,11 +101,13 @@ module.exports = {
   // ---------------------------------------- LOGIN/LOGOUT
 
   verifyLoginScreen(done) {
-    if (client.isVisible(loginPage.helpers.loginLogo, done)) {
-      console.log('Welcome to the Login Page');
-    } else {
-      console.log('ERROR: The provision failed to reach the Login screen.');
-    }
+    expect(landingPage.helpers.homeIcon).to.exist;
+    //if (client.isVisible(loginPage.helpers.loginLogo, done)) {
+    //  console.log('Welcome to the Login Page');
+    //} else {
+    //  console.log('ERROR: The provision failed to reach the Login screen.');
+    //}
+    done();
   },
 
   loginUser(done,username, password) {
@@ -315,9 +317,9 @@ module.exports = {
     }
   },
 
-  addStartDate(done) {
+  addStartDate(done, start) {
     if (client.isVisible(planner.helpers.modalStartDateTime, done)) {
-      client.click(planner.helpers.modalStartDateTime, start);
+      client.setValue(planner.helpers.modalStartDateTime, start);
     }
   },
 

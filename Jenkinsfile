@@ -32,13 +32,17 @@ curl -H $CRUMB -X POST http://conciergeautomation:94ba2b7d36d3d251e09edeec48d598
     <submoduleCfg class="list"/>
     <extensions/>
   </scm>
-  <quietPeriod>300</quietPeriod>
   <assignedNode>macmini</assignedNode>
   <canRoam>false</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
-  <triggers/>
+  <triggers>
+    <hudson.triggers.TimerTrigger>
+      <spec># Run once a day at 1am EST
+H 1 * * *</spec>
+    </hudson.triggers.TimerTrigger>
+  </triggers>
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
@@ -72,7 +76,8 @@ BUILD_ID=dontKillMe nohup ios_webkit_debug_proxy -c 6bbbd889caeed808c71677e5bd5f
       <command>sleep 10</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
-      <command>gulp initiate-allTests --archon:concierge --test:allTests</command>
+      <command># --client:chrome will not work w/o http://localhost:3000
+gulp initiate-allTests --archon:concierge --test:allTests</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command># stop ios_webkit_debug_proxy
@@ -85,7 +90,7 @@ pkill node /usr/local/bin/appium</command>
   </builders>
   <publishers>
     <hudson.plugins.emailext.ExtendedEmailPublisher plugin="email-ext@2.52">
-      <recipientList>jharre@madmobile.com</recipientList>
+      <recipientList>jharre@madmobile.com,mvanevery@madmobile.com,afeldmeyer@madmobile.com</recipientList>
       <configuredTriggers>
         <hudson.plugins.emailext.plugins.trigger.AlwaysTrigger>
           <email>
@@ -104,8 +109,8 @@ pkill node /usr/local/bin/appium</command>
       </configuredTriggers>
       <contentType>default</contentType>
       <defaultSubject>$DEFAULT_SUBJECT</defaultSubject>
-      <defaultContent>$DEFAULT_CONTENT</defaultContent>
-      <attachmentsPattern></attachmentsPattern>
+      <defaultContent>$BUILD_LOG</defaultContent>
+      <attachmentsPattern>src/test/concierge/reports/report.html</attachmentsPattern>
       <presendScript>$DEFAULT_PRESEND_SCRIPT</presendScript>
       <postsendScript>$DEFAULT_POSTSEND_SCRIPT</postsendScript>
       <attachBuildLog>true</attachBuildLog>
@@ -116,11 +121,17 @@ pkill node /usr/local/bin/appium</command>
     </hudson.plugins.emailext.ExtendedEmailPublisher>
   </publishers>
   <buildWrappers>
-    <hudson.plugins.ws__cleanup.PreBuildCleanup plugin="ws-cleanup@0.30">
+    <hudson.plugins.ws__cleanup.PreBuildCleanup plugin="ws-cleanup@0.32">
       <deleteDirs>false</deleteDirs>
       <cleanupParameter></cleanupParameter>
       <externalDelete></externalDelete>
     </hudson.plugins.ws__cleanup.PreBuildCleanup>
+    <hudson.plugins.build__timeout.BuildTimeoutWrapper plugin="build-timeout@1.17.1">
+      <strategy class="hudson.plugins.build_timeout.impl.NoActivityTimeOutStrategy">
+        <timeoutSecondsString>300</timeoutSecondsString>
+      </strategy>
+      <operationList/>
+    </hudson.plugins.build__timeout.BuildTimeoutWrapper>
   </buildWrappers>
 </project>
 

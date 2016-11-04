@@ -1,14 +1,17 @@
 /**
- * ios_webkit_debug_proxy -c dff8ad9bb716a56766d98b2232c3f541ba9bb796:27753 -d (start proxy)
+ * Project:     Concierge-BAM
+ * TestName:    Suite-Login/01_loginInvalid_C2706
+ * TestSteps:   https://madmobile.testrail.com/index.php?/cases/view/2706
+ * Author:      Aaron Feldmeyer
+ * Date:        11/3/2016
  *
- * appium (start server)
- *
- * run test with appium flag for client
+ * Execute through the "LoginTestSuite".
  */
 
-const common = require('../../../core/projects/concierge/helpers/common');
+const common = require('../../../core/projects/concierge-BAM/helpers/common');
 
-describe('Smoke Test: Login as "ssales"', () => {
+
+describe('Attempt to login as an invalid user.', () => {
   before((done) => {
     common.goTo(done);
   });
@@ -32,25 +35,22 @@ describe('Smoke Test: Login as "ssales"', () => {
   });
 
   describe('Login', () => {
-    it('Should login as "ssales"', (done) => {
-      common.loginUser(done);
+    it('Should not login as "111111"', (done) => {
+      common.loginUser(done,111111,1234);
     });
   });
 
   describe('Pausing', () => {
     it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done, 8000);
+      common.pause(done, 5000);
     });
   });
 
-  describe('Verify Concierge Screen', () => {
-    it('Should navigate to the Concierge screen', (done) => {
-      common.verifyConciergeScreen(done);
+  describe('Verify the login error', () => {
+    it('Should view the login error', (done) => {
+      common.verifyLoginError(done);
     });
   });
-  //
-  //after((done) => {
-  //  common.end(done);
-  //})
+
 
 });

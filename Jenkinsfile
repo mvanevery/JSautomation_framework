@@ -1,5 +1,13 @@
 # placeholder for qajenkins job config files. not really a Jenkinsfile. MM JCH 11-2-2016
 
+# CI Sysco on jenkins.madmobile.com
+#CRUMB=$(curl -s 'http://uomautomation:675361f9ca87306b1fd62260318f1418@qajenkins.madmobile.com/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,":",//crumb)')
+#curl -H $CRUMB -X POST http://uomautomation:675361f9ca87306b1fd62260318f1418@qajenkins.madmobile.com/job/uom-automation-ios/build
+
+# CI Concierge on jenkins.madmobile.com
+CRUMB=$(curl -s 'http://conciergeautomation:94ba2b7d36d3d251e09edeec48d598e4@qajenkins.madmobile.com/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,":",//crumb)')
+curl -H $CRUMB -X POST http://conciergeautomation:94ba2b7d36d3d251e09edeec48d598e4@qajenkins.madmobile.com/job/Concierge/build
+
 #Concierge
 <?xml version='1.0' encoding='UTF-8'?>
 <project>

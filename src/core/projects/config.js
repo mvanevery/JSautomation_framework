@@ -3,7 +3,7 @@ const project = process.argv.filter((argument) => {
 });
 
 const projectType = process.argv.filter((argument) => {
-  return argument.match(/--archon-type/);
+  return argument.match(/--archonType/);
 });
 
 const test = process.argv.filter((argument) => {

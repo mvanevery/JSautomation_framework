@@ -8,7 +8,7 @@
 CRUMB=$(curl -s 'http://conciergeautomation:94ba2b7d36d3d251e09edeec48d598e4@qajenkins.madmobile.com/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,":",//crumb)')
 curl -H $CRUMB -X POST http://conciergeautomation:94ba2b7d36d3d251e09edeec48d598e4@qajenkins.madmobile.com/job/Concierge/build
 
-#Concierge
+# Concierge start
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
@@ -46,12 +46,18 @@ H 1 * * *</spec>
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
+      <command># npm install for archon-framework
+npm install</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>sleep 10</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
       <command># delete previous iOS app build from device
 ideviceinstaller -U com.madmobiledev.ConciergeDev -u 6bbbd889caeed808c71677e5bd5f1c7f764eaddd</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
-      <command># npm install for archon-framework
-npm install</command>
+      <command>sleep 10</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command># download ipa from hockeyapp
@@ -77,6 +83,7 @@ BUILD_ID=dontKillMe nohup ios_webkit_debug_proxy -c 6bbbd889caeed808c71677e5bd5f
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command># --client:chrome will not work w/o http://localhost:3000
+# gulp initiate-allTests --archon:concierge --test:allTests -- client:chrome --archonType=local
 gulp initiate-allTests --archon:concierge --test:allTests</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
@@ -90,7 +97,7 @@ pkill node /usr/local/bin/appium</command>
   </builders>
   <publishers>
     <hudson.plugins.emailext.ExtendedEmailPublisher plugin="email-ext@2.52">
-      <recipientList>jharre@madmobile.com,mvanevery@madmobile.com,afeldmeyer@madmobile.com</recipientList>
+      <recipientList>jharre@madmobile.com</recipientList>
       <configuredTriggers>
         <hudson.plugins.emailext.plugins.trigger.AlwaysTrigger>
           <email>
@@ -111,12 +118,26 @@ pkill node /usr/local/bin/appium</command>
       <defaultSubject>$DEFAULT_SUBJECT</defaultSubject>
       <defaultContent>$BUILD_LOG</defaultContent>
       <attachmentsPattern>src/test/concierge/reports/report.html</attachmentsPattern>
-      <presendScript>$DEFAULT_PRESEND_SCRIPT</presendScript>
+      <presendScript>list = build.logFile.readLines()
+FailedJobCount = list.count {it.contains(&quot;failed&quot;) || it.contains(&quot;failing&quot;)}
+AbortedJobCount = list.count {it.contains(&quot;aborted&quot;)}
+if (FailedJobCount &gt; 0)
+{
+msg.setSubject(&quot;Concierge - Build #&quot; + $BUILD_NUMBER + &quot;- Failed&quot;);
+}
+else if (AbortedJobCount &gt; 0)
+{
+msg.setSubject(&quot;Concierge - Build #&quot; + $BUILD_NUMBER + &quot;- Aborted&quot;);
+}
+else
+{
+msg.setSubject(&quot;Concierge - Build #&quot; + $BUILD_NUMBER + &quot;- Success&quot;);
+}</presendScript>
       <postsendScript>$DEFAULT_POSTSEND_SCRIPT</postsendScript>
       <attachBuildLog>true</attachBuildLog>
       <compressBuildLog>false</compressBuildLog>
       <replyTo>$DEFAULT_REPLYTO</replyTo>
-      <saveOutput>false</saveOutput>
+      <saveOutput>true</saveOutput>
       <disabled>false</disabled>
     </hudson.plugins.emailext.ExtendedEmailPublisher>
   </publishers>
@@ -128,12 +149,14 @@ pkill node /usr/local/bin/appium</command>
     </hudson.plugins.ws__cleanup.PreBuildCleanup>
     <hudson.plugins.build__timeout.BuildTimeoutWrapper plugin="build-timeout@1.17.1">
       <strategy class="hudson.plugins.build_timeout.impl.NoActivityTimeOutStrategy">
-        <timeoutSecondsString>300</timeoutSecondsString>
+        <timeoutSecondsString>600</timeoutSecondsString>
       </strategy>
       <operationList/>
     </hudson.plugins.build__timeout.BuildTimeoutWrapper>
+    <hudson.plugins.timestamper.TimestamperBuildWrapper plugin="timestamper@1.8.7"/>
   </buildWrappers>
 </project>
+# Concierge end
 
 # uom-automation-ios
 <?xml version='1.0' encoding='UTF-8'?>

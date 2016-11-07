@@ -62,17 +62,17 @@ describe('Smoke Test: Add Appointment', () => {
     });
   });
 
-  describe('Add Start Date', () => {
-    it('Should add a start date to the Start Date field', (done) => {
-      common.addStartDate(done, '2016-11-10T11:00');
-    });
-  });
-
-  describe('Pausing', () => {
-    it('Should pause the test for 2 seconds', (done) => {
-      common.pause(done, 2000);
-    });
-  });
+  //describe('Add Start Date', () => {
+  //  it('Should add a start date to the Start Date field', (done) => {
+  //    common.addStartDate(done, '2016-11-10T11:00');
+  //  });
+  //});
+  //
+  //describe('Pausing', () => {
+  //  it('Should pause the test for 2 seconds', (done) => {
+  //    common.pause(done, 2000);
+  //  });
+  //});
 
   //describe('Add End Date', () => {
   //  it('Should add an end date to the End Date field', (done) => {
@@ -86,69 +86,69 @@ describe('Smoke Test: Add Appointment', () => {
   //  });
   //});
   //
-  //describe('Add Status', () => {
-  //  it('Should add a status to the Status field', (done) => {
-  //    common.addStatus(done, 'INPROGRESS');
-  //  });
-  //});
-  //
-  //describe('Pausing', () => {
-  //  it('Should pause the test for 2 seconds', (done) => {
-  //    common.pause(done, 2000);
-  //  });
-  //});
-  //describe('Add Priority', () => {
-  //  it('Should add priority to the Priority field', (done) => {
-  //    common.addPriority(done, 'MEDIUM');
-  //  });
-  //});
-  //
-  //describe('Pausing', () => {
-  //  it('Should pause the test for 2 seconds', (done) => {
-  //    common.pause(done, 2000);
-  //  });
-  //});
-  //describe('Save the Task', () => {
-  //  it('Should click the DONE button ', (done) => {
-  //    common.save(done);
-  //  });
-  //});
-  //describe('Pausing', () => {
-  //  it('Should pause the test for 2 seconds', (done) => {
-  //    common.pause(done, 2000);
-  //  });
-  //});
-  //describe('Verify Added Task', () => {
-  //  it('Should verify that the Task is displayed on Planner Page', (done) => {
-  //    common.verifyAddedAppt(done, 'Automation Test Appointment');
-  //  });
-  //});
-  //describe('Pausing', () => {
-  //  it('Should pause the test for 2 seconds', (done) => {
-  //    common.pause(done, 2000);
-  //  });
-  //});
-  //describe('Delete the Task', () => {
-  //  it('Should click the DONE button and remove the task ', (done) => {
-  //    common.deleteAppt(done);
-  //  });
-  //});
-  //describe('Pausing', () => {
-  //  it('Should pause the test for 2 seconds', (done) => {
-  //    common.pause(done, 5000);
-  //  });
-  //});
-  //describe('Logout', () => {
-  //  it('Should Logout from the current user', (done) => {
-  //    common.logoutUser(done);
-  //  });
-  //});
-  //describe('Pausing', () => {
-  //  it('Should pause the test for 2 seconds', (done) => {
-  //    common.pause(done, 2000);
-  //  });
-  //});
-  //after((done) => {
-  //  common.end(done);
-  //})
+  describe('Add Status', () => {
+    it('Should add a status to the Status field', (done) => {
+      common.addStatus(done, 'INPROGRESS');
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 2 seconds', (done) => {
+      common.pause(done, 2000);
+    });
+  });
+  describe('Add Priority', () => {
+    it('Should add priority to the Priority field', (done) => {
+      common.addPriority(done, 'MEDIUM');
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 2 seconds', (done) => {
+      common.pause(done, 2000);
+    });
+  });
+  describe('Save the Task', () => {
+    it('Should click the DONE button ', (done) => {
+      common.save(done);
+    });
+  });
+  describe('Pausing', () => {
+    it('Should pause the test for 2 seconds', (done) => {
+      common.pause(done, 2000);
+    });
+  });
+  describe('Verify Added Task', () => {
+    it('Should verify that the Task is displayed on Planner Page', (done) => {
+      common.verifyAddedAppt(done, 'Automation Test Appointment');
+    });
+  });
+  describe('Pausing', () => {
+    it('Should pause the test for 2 seconds', (done) => {
+      common.pause(done, 2000);
+    });
+  });
+  describe('Delete the Task', () => {
+    it('Should click the DONE button and remove the task ', (done) => {
+      common.deleteAppt(done);
+    });
+  });
+  describe('Pausing', () => {
+    it('Should pause the test for 2 seconds', (done) => {
+      common.pause(done, 5000);
+    });
+  });
+  describe('Logout', () => {
+    it('Should Logout from the current user', (done) => {
+      common.logoutUser(done);
+    });
+  });
+  describe('Pausing', () => {
+    it('Should pause the test for 2 seconds', (done) => {
+      common.pause(done, 2000);
+    });
+  });
+  after((done) => {
+    common.end(done);
+  })
 })

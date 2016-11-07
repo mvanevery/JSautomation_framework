@@ -97,7 +97,7 @@ pkill node /usr/local/bin/appium</command>
   </builders>
   <publishers>
     <hudson.plugins.emailext.ExtendedEmailPublisher plugin="email-ext@2.52">
-      <recipientList>jharre@madmobile.com</recipientList>
+      <recipientList>jharre@madmobile.com,afeldmeyer@madmobile.com,mvanevery@madmobile.com</recipientList>
       <configuredTriggers>
         <hudson.plugins.emailext.plugins.trigger.AlwaysTrigger>
           <email>
@@ -119,19 +119,22 @@ pkill node /usr/local/bin/appium</command>
       <defaultContent>$BUILD_LOG</defaultContent>
       <attachmentsPattern>src/test/concierge/reports/report.html</attachmentsPattern>
       <presendScript>list = build.logFile.readLines()
-FailedJobCount = list.count {it.contains(&quot;failed&quot;) || it.contains(&quot;failing&quot;)}
+FailedJobCount = list.count {it.contains(&quot;failed&quot;) || it.contains(&quot;failing&quot;) || it.contains(&quot;failure&quot;)}
 AbortedJobCount = list.count {it.contains(&quot;aborted&quot;)}
 if (FailedJobCount &gt; 0)
 {
 msg.setSubject(&quot;Concierge - Build #&quot; + $BUILD_NUMBER + &quot;- Failed&quot;);
+build.@result = hudson.model.Result.FAILURE;
 }
 else if (AbortedJobCount &gt; 0)
 {
 msg.setSubject(&quot;Concierge - Build #&quot; + $BUILD_NUMBER + &quot;- Aborted&quot;);
+build.@result = hudson.model.Result.ABORTED;
 }
 else
 {
 msg.setSubject(&quot;Concierge - Build #&quot; + $BUILD_NUMBER + &quot;- Success&quot;);
+build.@result = hudson.model.Result.SUCCESS;
 }</presendScript>
       <postsendScript>$DEFAULT_POSTSEND_SCRIPT</postsendScript>
       <attachBuildLog>true</attachBuildLog>

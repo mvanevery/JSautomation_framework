@@ -14,7 +14,7 @@ const $ = require('chai-Jquery');
 
 module.exports = {
 
-  // -------------------------   GLOBALS
+  // ================================================== GLOBALS ========================================================
   mobileView(done) {
     client.setViewportSize({
       height: 768,
@@ -56,7 +56,7 @@ module.exports = {
         });
   },
 
-  // ------------------------------------ PROVISIONING
+  // ==================================================== PROVISIONING =================================================
 
   enterProvisionBurberry(done) {
     if (client.isVisible(config.helpers.keyField, done)) {
@@ -101,7 +101,7 @@ module.exports = {
      }
   },
 
-  // ---------------------------------------- LOGIN/LOGOUT
+  // ========================================== LOGIN/LOGOUT ===========================================================
 
   verifyLoginScreen(done) {
     if (client.isVisible(loginPage.helpers.loginLogo, done)) {
@@ -140,7 +140,7 @@ module.exports = {
   },
 
 
-//==================================================== Store ID Page ===================================================
+//==================================================== STORE ID PAGE ===================================================
 
   specifyStore(done, storeID) {
     if (client.isVisible(store.helpers.storeIDField, done)) {
@@ -460,10 +460,12 @@ module.exports = {
   },
 
 
-  //-----------------------------------------------------------
+  //=========================================== BLACKBOOK ==============================================================
 
   searchCustomer(done) {
-    client.waitForVisible(config.helpers.fld_lastName, 5000);
+    if(client.isVisible(blackbook.helpers.fld_lastName, 5000)) {
+
+    }
     if (client.isVisible(config.helpers.fld_lastName, done)) {
       client.click(config.helpers.fld_lastName)
         .then(() => {
@@ -493,41 +495,41 @@ module.exports = {
 
 
 
-  addAppointment_05012016(done) {
-    client.click(config.helpers.cmb_type)
-      .then(() => {
-        client.setValue(config.helpers.cmb_type, 'Appointment');
-      });
-    client.pause(2000);
-    client.click(config.helpers.txt_subject)
-      .then(() => {
-        client.setValue(config.helpers.txt_subject, 'Test Appointment for 05/01/2016.');
-      });
-    client.pause(2000);
-    client.click(config.helpers.date_start)
-      .then(() => {
-        client.setValue(config.helpers.date_start, '05012016');
-      });
-    client.pause(2000);
-    client.click(config.helpers.date_end)
-      .then(() => {
-        client.setValue(config.helpers.date_start, '05012016');
-      });
-    client.pause(2000);
-    // client.click(config.helpers.cmb_status)
-    // 	.then(function() {
-    // 		client.selectByValue(config.helpers.cmb_status, 'Open')
-    // 	});
-    // client.pause(2000);
-    client.click(config.helpers.cmb_priority)
-      .then(() => {
-        client.selectByValue(config.helpers.cmb_priority, 'High');
-      });
-    client.pause(2000);
-    client.click(config.helpers.btn_save);
-
-    done();
-  },
+  //addAppointment_05012016(done) {
+  //  client.click(config.helpers.cmb_type)
+  //    .then(() => {
+  //      client.setValue(config.helpers.cmb_type, 'Appointment');
+  //    });
+  //  client.pause(2000);
+  //  client.click(config.helpers.txt_subject)
+  //    .then(() => {
+  //      client.setValue(config.helpers.txt_subject, 'Test Appointment for 05/01/2016.');
+  //    });
+  //  client.pause(2000);
+  //  client.click(config.helpers.date_start)
+  //    .then(() => {
+  //      client.setValue(config.helpers.date_start, '05012016');
+  //    });
+  //  client.pause(2000);
+  //  client.click(config.helpers.date_end)
+  //    .then(() => {
+  //      client.setValue(config.helpers.date_start, '05012016');
+  //    });
+  //  client.pause(2000);
+  //  // client.click(config.helpers.cmb_status)
+  //  // 	.then(function() {
+  //  // 		client.selectByValue(config.helpers.cmb_status, 'Open')
+  //  // 	});
+  //  // client.pause(2000);
+  //  client.click(config.helpers.cmb_priority)
+  //    .then(() => {
+  //      client.selectByValue(config.helpers.cmb_priority, 'High');
+  //    });
+  //  client.pause(2000);
+  //  client.click(config.helpers.btn_save);
+  //
+  //  done();
+  //},
 
   end(done) {
     client.end();

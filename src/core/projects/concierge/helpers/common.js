@@ -88,23 +88,31 @@ module.exports = {
      }
   },
 
-  //verifyProvisionScreen(done) {
-  //  // expect(config.helpers.txt_title_blackbook).to.exist;
-  //  // chai.expect('return config.helpers.img_nav_logo').exec.to.exist;
-  //  // if (client.isVisible(config.helpers.fld_provision)) {
-  //  // } else {
-  //  // 	console.log('	ERROR: Concierge failed to reach the Provision screen.');
-  //  // }
-  //  done();
-  //},
+  verifyProvisionScreen(done) {
+     if(client.isVisible(provisioning.helpers.concierge_logo, done)) {
+       client.getAttribute(provisioning.helpers.keyField, 'placeholder')
+       .then((text) => {
+           try {
+             assert.equal(provisioning.helpers.placeholderText, text, 'Not on provisioning screen');
+           } catch (err) {
+             done(err);
+           }
+         })
+     }
+  },
 
   // ---------------------------------------- LOGIN/LOGOUT
 
   verifyLoginScreen(done) {
     if (client.isVisible(loginPage.helpers.loginLogo, done)) {
-      console.log('Welcome to the Login Page');
-    } else {
-      console.log('ERROR: The provision failed to reach the Login screen.');
+      client.getAttribute(loginPage.helpers.usernameField, 'placeholder')
+        .then((text) => {
+          try {
+            assert.equal(loginPage.helpers.userPlaceholder, text, 'Not on Login screen');
+          } catch (err) {
+            done(err);
+          }
+        })
     }
   },
 
@@ -132,7 +140,7 @@ module.exports = {
   },
 
 
-//----------------------------------- Store ID Page ----------------------------------------------------
+//==================================================== Store ID Page ===================================================
 
   specifyStore(done, storeID) {
     if (client.isVisible(store.helpers.storeIDField, done)) {
@@ -150,10 +158,10 @@ module.exports = {
       client.click(store.helpers.cancelButton)
     }
   },
-// ----------------------------------------  LANDING PAGE
+// ================================================  LANDING PAGE ======================================================
 
   verifyConciergeScreen(done) {
-    if (client.isVisible(landingPage.helpers.icon)) {
+    if (client.isVisible(landingPage.helpers.productIcon)) {
       console.log('	PASS: The Concierge screen is visible.');
     } else {
       console.log('	ERROR: The user failed to reach the Concierge screen.');
@@ -186,9 +194,9 @@ module.exports = {
      }
   },
 
-  navMenu(done) {
-    if (client.isVisible(landingPage.helpers.menuIcon)) {
-      client.click(landingPage.helpers.menuIcon)
+  navProduct(done) {
+    if (client.isVisible(landingPage.helpers.productIcon)) {
+      client.click(landingPage.helpers.productIcon)
         .then(() => {
           client.getText('h2')
         })
@@ -222,36 +230,7 @@ module.exports = {
     }
   },
 
-  addTask(done,expected) {
-    if(client.isVisible(planner.helpers.taskAddition)) {
-      client.click(planner.helpers.taskAddition)
-    .then(() => {
-          client.getText(planner.helpers.taskTitle)
-            .then((text) => {
-              try {
-                assert.equal(expected, text, 'The Task modal is not displayed');
-              } catch (err) {
-                done(err);
-              }
-            })
-        })
-    }
-  },
-  addAppointment(done,expected) {
-    if(client.isVisible(planner.helpers.apptAddition)) {
-      client.click(planner.helpers.apptAddition)
-        .then(() => {
-          client.getText(planner.helpers.apptTitle)
-            .then((text) => {
-              try {
-                assert.equal(expected, text, 'The Task modal is not displayed');
-              } catch (err) {
-                done(err);
-              }
-            })
-        })
-    }
-  },
+
 
   navBlackbook(done, expected) {
    if (client.isVisible(landingPage.helpers.blackbookIcon, done)) {
@@ -301,7 +280,48 @@ module.exports = {
     }
   },
 
-  //-----------------------------------------------Task/Appointment Modal/PLANNER Page ------------------
+  //======================================== Task/Appointment Modal/PLANNER Page =======================================
+
+  //goForwardMonth(done) {
+  //  if(client.isVisible(planner.helpers.plannerTitle)) {
+  //    client.getText(planner.helpers.calendarMonth)
+  //    .then((current) => {
+  //        client.
+  //
+  //      })
+  //  }
+  //},
+
+  addTask(done,expected) {
+    if(client.isVisible(planner.helpers.taskAddition)) {
+      client.click(planner.helpers.taskAddition)
+        .then(() => {
+          client.getText(planner.helpers.taskTitle)
+            .then((text) => {
+              try {
+                assert.equal(expected, text, 'The Task modal is not displayed');
+              } catch (err) {
+                done(err);
+              }
+            })
+        })
+    }
+  },
+  addAppointment(done,expected) {
+    if(client.isVisible(planner.helpers.apptAddition)) {
+      client.click(planner.helpers.apptAddition)
+        .then(() => {
+          client.getText(planner.helpers.apptTitle)
+            .then((text) => {
+              try {
+                assert.equal(expected, text, 'The Task modal is not displayed');
+              } catch (err) {
+                done(err);
+              }
+            })
+        })
+    }
+  },
 
   addSubject(done,subject) {
     if (client.isVisible(planner.helpers.modalSubject, done)) {
@@ -315,9 +335,12 @@ module.exports = {
     }
   },
 
-  addStartDate(done) {
+  addStartDate(done, start) {
     if (client.isVisible(planner.helpers.modalStartDateTime, done)) {
-      client.click(planner.helpers.modalStartDateTime, start);
+      client.click(planner.helpers.modalStartDateTime)
+        .then(() => {
+          client.setValue(planner.helpers.modalStartDateTime, start);
+        });
     }
   },
 

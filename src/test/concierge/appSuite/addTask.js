@@ -26,19 +26,6 @@ describe('Smoke Test: Add Task', () => {
     });
   });
 
-  //describe('Select a Store', () => {
-  //  it('Should input Store ID', (done) => {
-  //    common.specifyStore(done, '326');
-  //  });
-  //});
-  //
-  //describe('Pausing', () => {
-  //  it('Should pause the test for 5 seconds', (done) => {
-  //    common.pause(done, 5000);
-  //  });
-  //});
-
-
   describe('Click the Planner menu option', () => {
     it('Should open planner sections', (done) => {
       common.navPlanner(done, "Planner");

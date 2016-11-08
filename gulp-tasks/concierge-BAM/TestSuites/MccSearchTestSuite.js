@@ -1,11 +1,11 @@
 /**
  * Project:     Concierge-BAM
- * TestSuite:   LoginTestSuite
+ * TestSuite:   MccSearchTestSuite
  * Author:      Aaron Feldmeyer
- * Date:        11/3/2016
+ * Date:        11/8/2016
  *
  * From command line type:
- * gulp initiate-TestSuites/LoginTestSuite --archon:concierge-BAM --test:TestSuites/LoginTestSuite --client:chrome
+ * gulp initiate-MccSearchTestSuite --archon:concierge-BAM --archonType:TestSuites --test:MccSearchTestSuite --client:chrome
  */
 
 const mochaOptions = {
@@ -26,7 +26,7 @@ function handleError(err) {
 
 module.exports = function (gulp, mocha) {
   return function () {
-    return gulp.src('./src/test/concierge-BAM/Suite/Login/**/*.js', {read: false})
+    return gulp.src('./src/test/concierge-BAM/Suite/MccSearch/**/*.js', {read: false})
       .pipe(mocha(mochaOptions).on("error", handleError));
   }
 };

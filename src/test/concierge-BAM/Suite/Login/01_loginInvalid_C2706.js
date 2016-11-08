@@ -1,15 +1,15 @@
 /**
  * Project:     Concierge-BAM
- * Test Name:   loginInvalid_C2706
- * Test Steps:  https://madmobile.testrail.com/index.php?/cases/view/2706
+ * TestName:    Suite-Login/01_loginInvalid_C2706
+ * TestSteps:   https://madmobile.testrail.com/index.php?/cases/view/2706
  * Author:      Aaron Feldmeyer
- * Date:        11/1/2016
+ * Date:        11/3/2016
  *
- * From command line type:
- *      gulp initiate-<TestName> --archon:concierge-BAM --test:<TestName> --client:chrome
+ * Execute through the "LoginTestSuite".
  */
 
-const common = require('../../core/projects/concierge-BAM/helpers/common');
+const common = require('../../../../core/projects/concierge-BAM/helpers/common');
+
 
 describe('Attempt to login as an invalid user.', () => {
   before((done) => {
@@ -29,8 +29,8 @@ describe('Attempt to login as an invalid user.', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done, 3000);
+    it('Should pause the test for 10 seconds', (done) => {
+      common.pause(done, 10000);
     });
   });
 

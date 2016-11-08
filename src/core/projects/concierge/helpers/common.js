@@ -108,7 +108,7 @@ module.exports = {
     }
   },
 
-  loginUser(done,username, password) {
+  loginUser(done, username, password) {
     if (client.isVisible(loginPage.helpers.signIn, done)) {
       client.setValue(loginPage.helpers.usernameField, username || loginPage.helpers.username)
         .then(() => {

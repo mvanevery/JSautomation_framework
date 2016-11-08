@@ -8,6 +8,7 @@ const config = require(`../../../projects/${project}/config`);
 
 const loginPage = require(`../../../projects/${project}/selectors/loginPage`);
 const landingPage = require(`../../../projects/${project}/selectors/landingPage`);
+const mccPage = require(`../../../projects/${project}/selectors/mccPage`);
 
 const assert = require('chai').assert;
 const expect = require('chai').expect;
@@ -126,6 +127,50 @@ module.exports = {
           })
       }
     },
+
+    selectMccSearch(done) {
+      if (client.isVisible(landingPage.helpers.btn_mccSearch, done)) {
+        client.click(landingPage.helpers.btn_mccSearch)
+      } else {
+        console.log('ERROR: Unable to find the MCC Search button.');
+      }
+    },
+
+// ----------------------------------------  MCC SEARCH PAGE  ----------------------------------------
+
+  verifyMccPage(done) {
+    expect(mccPage.helpers.fld_lastName).to.exist;
+    done();
+  },
+
+  fillMccFormPhone(done, value) {
+    if (client.isVisible(mccPage.helpers.fld_phone)) {
+      //client.click(field);
+      client.setValue(mccPage.helpers.fld_phone, value)
+    }
+    else{
+      console.log('	ERROR: The MCC Search page is unavailable.');
+    }
+    done();
+  },
+
+  selectSearchButton(done) {
+    if (client.isVisible(mccPage.helpers.btn_search, done)) {
+      client.click(mccPage.helpers.btn_search)
+    } else {
+      console.log('ERROR: Unable to find the Search button.');
+    }
+  },
+
+  verifyNoResults(done) {
+  // if (client.isVisible(mccPage.helpers.txt_noResults, done)) {
+  //   client.click(mccPage.helpers.txt_noResults)
+  // } else {
+  //   console.log('ERROR: Unable to find the Search button.');
+  // }
+    expect(mccPage.helpers.txt_noResults).to.exist;
+    done();
+},
 
   // verifyBamLandingPage(done, expected) {
   //   if (client.isVisible(landingPage.helpers.img_headerLogo)) {

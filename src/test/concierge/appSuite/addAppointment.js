@@ -1,9 +1,3 @@
-/**
- * Created by mvanevery on 11/3/16.
- */
-
-const common = require('../../../core/projects/concierge/helpers/common');
-
 describe('Smoke Test: Add Appointment', () => {
   before((done) => {
     common.goTo(done);
@@ -128,3 +122,9 @@ describe('Smoke Test: Add Appointment', () => {
     common.end(done);
   })
 })
+
+/**
+ * Created by mvanevery on 11/3/16.
+ */
+
+const common = require('../../../core/projects/concierge/helpers/common');

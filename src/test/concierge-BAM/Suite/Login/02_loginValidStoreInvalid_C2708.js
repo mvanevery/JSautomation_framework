@@ -1,20 +1,20 @@
 /**
  * Project:     Concierge-BAM
- * TestName:    Suite-Login/01_loginInvalid_C2706
- * TestSteps:   https://madmobile.testrail.com/index.php?/cases/view/2706
+ * TestName:    Suite-Login/02_loginValidStoreInvalid_C2708
+ * TestSteps:   https://madmobile.testrail.com/index.php?/cases/view/2708
  * Author:      Aaron Feldmeyer
  * Date:        11/3/2016
  *
  * Execute through the "LoginTestSuite".
  */
 
-const common = require('../../../core/projects/concierge-BAM/helpers/common');
+const common = require('../../../../core/projects/concierge-BAM/helpers/common');
 
 
-describe('Attempt to login as an invalid user.', () => {
-  before((done) => {
-    common.goTo(done);
-  });
+describe('Login as a valid user but with an invalid store number.', () => {
+  // before((done) => {
+  //   common.goTo(done);
+  // });
 
   describe('Pausing', () => {
     it('Should pause the test for 5 seconds', (done) => {
@@ -29,14 +29,14 @@ describe('Attempt to login as an invalid user.', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 5 seconds', (done) => {
+    it('Should pause the test for 3 seconds', (done) => {
       common.pause(done, 3000);
     });
   });
 
   describe('Login', () => {
-    it('Should not login as "111111"', (done) => {
-      common.loginUser(done,111111,1234);
+    it('Should login as "180001"', (done) => {
+      common.loginUser(done,180001,1234,9999);
     });
   });
 

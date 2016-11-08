@@ -1,9 +1,3 @@
-/**
- * Created by mvanevery on 11/3/16.
- */
-
-const common = require('../../../core/projects/concierge/helpers/common');
-
 describe('Smoke Test: Add Appointment', () => {
   before((done) => {
     common.goTo(done);
@@ -62,30 +56,6 @@ describe('Smoke Test: Add Appointment', () => {
     });
   });
 
-  //describe('Add Start Date', () => {
-  //  it('Should add a start date to the Start Date field', (done) => {
-  //    common.addStartDate(done, 'Oct 27,2016, 3:00 PM');
-  //  });
-  //});
-
-  //describe('Pausing', () => {
-  //  it('Should pause the test for 2 seconds', (done) => {
-  //    common.pause(done, 2000);
-  //  });
-  //});
-
-  //describe('Add End Date', () => {
-  //  it('Should add an end date to the End Date field', (done) => {
-  //    common.addEndDate(done, 'Oct 27,2016, 4:00 PM');
-  //  });
-  //});
-  //
-  //describe('Pausing', () => {
-  //  it('Should pause the test for 2 seconds', (done) => {
-  //    common.pause(done, 2000);
-  //  });
-  //});
-  //
   describe('Add Status', () => {
     it('Should add a status to the Status field', (done) => {
       common.addStatus(done, 'INPROGRESS');
@@ -152,3 +122,9 @@ describe('Smoke Test: Add Appointment', () => {
     common.end(done);
   })
 })
+
+/**
+ * Created by mvanevery on 11/3/16.
+ */
+
+const common = require('../../../core/projects/concierge/helpers/common');

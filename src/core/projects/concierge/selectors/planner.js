@@ -23,6 +23,9 @@ module.exports = {
     modalEndDateTime:'//input[@name="endDateTime"]',
     modalStatus:'//select[@name="status"]',
     modalPriority:'//select[@name="priority"]',
+    forwardMonth:'//div[@class="mm-o-icon icon-planner-arrow-right"]',
+    backMonth:'//div[@class="mm-o-icon icon-planner-arrow-left"]',
+    calendarMonth:'div > div > div > span',
 
     //============================================= TASK ==================================
     taskAddition:'a > button[type="button"]',

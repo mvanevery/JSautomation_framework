@@ -16,7 +16,7 @@ module.exports = {
         searchIcon: '//div[@class="mm-o-icon icon-search"]',
         addIcon: 'mm-o-icon mm-c-nav__icon icon-create-fill',
         productSearchField: '//input[@name="Product Search"]',
-        menuIcon: '//div[@class="mm-o-icon icon-top-products"]',
+        productIcon: '//div[@class="mm-o-icon icon-top-products"]',
         menuNewArrivals:'li[contains(@span="New Arrivals")]',
         menu: '//a[contains(@href, "/")]',
         email: '//div[@class="mm-o-icon icon-email-fill"]',

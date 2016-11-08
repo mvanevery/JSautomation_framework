@@ -6,7 +6,13 @@ module.exports = {
         baseUrl: 'localhost:3000/'
     },
     helpers: {
-        blackbookHeader: '.mm-c-header > div:nth-child(2) > div:nth-child(1)',
+      firstName:'//input[@name="firstName"]',
+      lastName:'//input[@name="lastName"]',
+      phone:'//input[@name="phone"]',
+      email:'//input[@name="email"]',
+      city:'//input[@name="city"]',
+      zipcode:'//input[@name=postalCode"]',
+      blackbookHeader: '//div[contains(text(),"My Clients]',
         img_myCustomers: '//a[contains(text(),"My Customers")]',
         img_Store: '//a[contains(text(),"Store")]',
         img_Segments: '//a[contains(text(),"Segments")]',

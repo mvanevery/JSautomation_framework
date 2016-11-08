@@ -1,5 +1,5 @@
 /**
- * Created by afeldmeyer on 10/28/16.
+ * Created by afeldmeyer on 11/8/16.
  */
 
 module.exports = {
@@ -7,15 +7,14 @@ module.exports = {
     //   baseUrl: 'https://serviceqa.booksamillion.com/'
     // },
     helpers: {
-      img_loginLogo:        '//div[@class="login-form__logo"]',
-      fld_username:         '//input[@name="employee_id"]',
-      fld_password:         '//input[@name="employee_pin"]',
-      fld_storeOverride:    '//input[@name="store_override"]',
-      btn_signIn:           '//button[@type="submit"]',
-      txt_loginError:       '//div[@class="login-form__error"]',
-
-      data_username:        '180001',
-      data_password:        '1234',
-      data_location:        ''
+      fld_lastName:         '//input[@id="js-mcc-search-last"]',
+      fld_zipCode:          '//input[@id="js-mcc-search-zip"]',
+      fld_phone:            '//input[@id="js-mcc-search-phone"]',
+      fld_email:            '//input[@id="js-mcc-search-email"]',
+      btn_search:           '//input[@class="btn-submit-form"]',
+      btn_reset:            '//div[@class="btn-reset-form"]',
+      txt_customerName:     '//div[@class="name"]',
+      txt_cardInfo:         '//div[@class="card-info"]',
+      txt_noResults:        '//p[@class="no-results"]',
     },
 }

@@ -7,7 +7,7 @@ module.exports = {
     },
     helpers:{
         homeIcon: 'span.mm-c-nav__logo-img',
-        bagIcon:'div.mm-o-icon.icon-bag-outline',
+        bagIcon:'//div[@class="mm-o-icon.icon-bag-outline"]',
         iconList: 'mm-c-nav__list',
         iconListTitle:'h2',
         plannerIcon: '//div[@class="mm-o-icon icon-year-to-date"]',

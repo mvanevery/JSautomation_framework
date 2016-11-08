@@ -16,7 +16,7 @@ module.exports = {
     Cancel: '//button[contains(text(),"Cancel")]',
     Discard:'//div[contains(text(),"Discard")]',
     continueEdit:'//div[contains(text(),"Continue Editing")]',
-    Save:'//div[contains(text(),"Done")]',
+    Save:'//button[contains(text(),"Done")]',
     modalType: '//select[@name="type"]',
     modalSubject: '//input[@name="subject"]',
     modalStartDateTime:'//input[@name="startDateTime"]',

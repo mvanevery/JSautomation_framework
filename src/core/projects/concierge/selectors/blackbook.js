@@ -19,6 +19,7 @@ module.exports = {
       listToggle:'//div[contains(text(),"List"]',
       addCustomer:'//div[@class="mm-o-icon icon-plus"]',
       searchResults:'//div[contains(text(),"Jerry Smith"]',
+
         img_myCustomers: '//a[contains(text(),"My Customers")]',
         img_Store: '//a[contains(text(),"Store")]',
         img_Segments: '//a[contains(text(),"Segments")]',

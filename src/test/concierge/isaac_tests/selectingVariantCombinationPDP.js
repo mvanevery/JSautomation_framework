@@ -67,7 +67,13 @@ describe('Select the 1st item on the sweaters PLP', () => {
   });
 });
 
-describe('')
+describe('Pausing', () => {
+  it('Should pause the test for 5 seconds', (done) => {
+    common.pause(done, 5000)
+  });
+});
+
+describe('Select Color Variant')
 
 /**
  * Created by imyman on 11/8/16.

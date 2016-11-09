@@ -123,7 +123,4 @@ describe('Smoke Test: Add Task', () => {
       common.pause(done, 2000);
     });
   });
-  after((done) => {
-    common.end(done);
-  })
 })

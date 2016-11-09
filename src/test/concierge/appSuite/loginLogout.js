@@ -53,7 +53,4 @@ describe('Smoke Test: Login and Logout as "qaUser"', () => {
       common.logoutUser(done);
     });
   });
-  after((done) => {
-    common.end(done);
-  });
 });

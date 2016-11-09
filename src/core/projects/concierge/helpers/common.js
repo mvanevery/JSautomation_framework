@@ -10,7 +10,8 @@ const planner = require(`../../../projects/${project}/selectors/planner`);
 const assert = require('chai').assert;
 const expect = require('chai').expect;
 const $ = require('chai-Jquery');
-
+const selenium = require('selenium-standalone');
+const gulp = require('gulp');
 
 module.exports = {
 
@@ -23,19 +24,21 @@ module.exports = {
   },
 
   goTo: (done) => {
-    //gulp --client:chrome
-    if (`${clientType}` == 'chrome')
+    if (client.requestHandler.sessionID == null)
     {
-      client.init().url(config.routes.baseUrl, done);
+      if (`${clientType}` == 'chrome')
+      {
+        client.init().url(config.routes.baseUrl, done);
+      }
+      else if (`${clientType}` == 'appium')
+      {
+        client.init(done);
+      }
     }
-    else if (`${clientType}` == 'appium')
+    else
     {
-      client.init(done);
+      done();
     }
-  },
-
-  openBrowser(done) {
-    client.init(done);
   },
 
   closeBrowser(done) {

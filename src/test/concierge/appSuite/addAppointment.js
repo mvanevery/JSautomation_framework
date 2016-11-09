@@ -1,3 +1,9 @@
+/**
+ * Created by mvanevery on 11/3/16.
+ */
+
+const common = require('../../../core/projects/concierge/helpers/common');
+
 describe('Smoke Test: Add Appointment', () => {
   before((done) => {
     common.goTo(done);
@@ -17,7 +23,7 @@ describe('Smoke Test: Add Appointment', () => {
 
   describe('Pausing', () => {
     it('Should pause the test for 10 seconds', (done) => {
-      common.pause(done, 10000);
+      common.pause(done, 1500);
     });
   });
 
@@ -118,13 +124,4 @@ describe('Smoke Test: Add Appointment', () => {
       common.pause(done, 2000);
     });
   });
-  after((done) => {
-    common.end(done);
-  })
 })
-
-/**
- * Created by mvanevery on 11/3/16.
- */
-
-const common = require('../../../core/projects/concierge/helpers/common');

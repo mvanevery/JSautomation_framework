@@ -75,7 +75,4 @@ describe('Provision Talbots and Set Store', () => {
       common.pause(done, 2000);
     });
   });
-  after((done) => {
-    common.end(done);
-  })
 });

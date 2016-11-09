@@ -11,7 +11,6 @@ const assert = require('chai').assert;
 const expect = require('chai').expect;
 const $ = require('chai-Jquery');
 
-
 module.exports = {
 
   // ================================================== GLOBALS ========================================================
@@ -22,20 +21,22 @@ module.exports = {
     }, true).then(done);
   },
 
-  goTo: (done) => {
-    //gulp --client:chrome
-    if (`${clientType}` == 'chrome')
+  goTo(done){
+    if (client.requestHandler.sessionID == null)
     {
-      client.init().url(config.routes.baseUrl, done);
+      if (`${clientType}` == 'chrome')
+      {
+        client.init().url(config.routes.baseUrl, done);
+      }
+      else if (`${clientType}` == 'appium')
+      {
+        client.init(done);
+      }
     }
-    else if (`${clientType}` == 'appium')
+    else
     {
-      client.init(done);
+      done();
     }
-  },
-
-  openBrowser(done) {
-    client.init(done);
   },
 
   closeBrowser(done) {
@@ -89,16 +90,19 @@ module.exports = {
   },
 
   verifyProvisionScreen(done) {
-     if(client.isVisible(provisioning.helpers.concierge_logo, done)) {
-       client.getAttribute(provisioning.helpers.keyField, 'placeholder')
-       .then((text) => {
-           try {
-             assert.equal(provisioning.helpers.placeholderText, text, 'Not on provisioning screen');
-           } catch (err) {
-             done(err);
-           }
-         })
-     }
+    if(client.isVisible(provisioning.helpers.concierge_logo, done)) {
+     client.getAttribute(provisioning.helpers.keyField, 'placeholder')
+     .then((text) => {
+         try {
+           assert.equal(provisioning.helpers.placeholderText, text, 'Not on provisioning screen');
+         } catch (err) {
+           done(err);
+         }
+       })
+    }
+    else {
+      console.log('Already provisioned');
+    }
   },
 
   // ========================================== LOGIN/LOGOUT ===========================================================

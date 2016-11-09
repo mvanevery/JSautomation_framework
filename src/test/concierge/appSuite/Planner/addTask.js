@@ -1,4 +1,9 @@
-describe('Smoke Test: Add Appointment', () => {
+/**
+ * Created by mvanevery on 10/11/16.
+ */
+const common = require('../../../../core/projects/concierge/helpers/common');
+
+describe('Smoke Test: Add Task', () => {
   before((done) => {
     common.goTo(done);
   });
@@ -8,15 +13,10 @@ describe('Smoke Test: Add Appointment', () => {
       common.verifyLoginScreen(done);
     });
   });
-  describe('Pausing', () => {
-    it('Should pause the test for 2 seconds', (done) => {
-      common.pause(done, 2000);
-    });
-  });
 
   describe('Login', () => {
     it('Should login as "qauser"', (done) => {
-      common.loginUser(done, 'qaUser', 'qaUser@123');
+      common.loginUser(done);
     });
   });
 
@@ -40,7 +40,7 @@ describe('Smoke Test: Add Appointment', () => {
 
   describe('Change the type and Open Task Form', () => {
     it('Should open the appointment form from the Planner', (done) => {
-      common.apptToggle(done, "Create Appointment");
+      common.taskToggle(done, "Create Task");
     });
   });
   describe('Pausing', () => {
@@ -51,7 +51,7 @@ describe('Smoke Test: Add Appointment', () => {
 
   describe('Add Subject', () => {
     it('Should add a subject to the Subject field', (done) => {
-      common.addSubject(done, 'Automation Test Appointment');
+      common.addSubject(done, 'Automation Test Task');
     });
   });
 
@@ -69,7 +69,7 @@ describe('Smoke Test: Add Appointment', () => {
 
   describe('Pausing', () => {
     it('Should pause the test for 2 seconds', (done) => {
-      common.pause(done, 2000);
+      common.pause(done, 4000);
     });
   });
   describe('Add Priority', () => {
@@ -95,10 +95,19 @@ describe('Smoke Test: Add Appointment', () => {
   });
   describe('Verify Added Task', () => {
     it('Should verify that the Task is displayed on Planner Page', (done) => {
-      common.verifyAddedAppt(done, 'Automation Test Appointment');
+      common.verifyAddedTask(done, 'Automation Test Appointment');
     });
   });
-
+  describe('Pausing', () => {
+    it('Should pause the test for 2 seconds', (done) => {
+      common.pause(done, 2000);
+    });
+  });
+  describe('Delete the Task', () => {
+    it('Should click the DONE button and remove the task ', (done) => {
+      common.deleteTask(done);
+    });
+  });
   describe('Pausing', () => {
     it('Should pause the test for 2 seconds', (done) => {
       common.pause(done, 5000);
@@ -111,16 +120,7 @@ describe('Smoke Test: Add Appointment', () => {
   });
   describe('Pausing', () => {
     it('Should pause the test for 2 seconds', (done) => {
-      common.pause(done, 5000);
+      common.pause(done, 2000);
     });
   });
-  //after((done) => {
-  //  common.end(done);
-  //})
 })
-
-/**
- * Created by mvanevery on 11/3/16.
- */
-
-const common = require('../../../core/projects/concierge/helpers/common');

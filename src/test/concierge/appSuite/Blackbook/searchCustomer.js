@@ -5,7 +5,7 @@
  *  C1595 Talbots E2E - Search Customer(All Clients).
  */
 
-const common = require('../../../core/projects/concierge/helpers/common');
+const common = require('../../../../core/projects/concierge/helpers/common');
 
 describe('Smoke Test: Search Customer', () => {
   before((done) => {

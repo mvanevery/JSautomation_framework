@@ -7,21 +7,21 @@ describe('Provision Talbots and Set Store', () => {
 
   describe('Pausing', () => {
     it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done, 1500);
+      common.pause(done, 5000);
     });
   });
-  //
-  //describe('Verify Provision Screen', () => {
-  //  it('Should verify Provisioning Screen', (done) => {
-  //    common.verifyProvisionScreen(done);
-  //  });
-  //});
-  //
-  //describe('Pausing', () => {
-  //  it('Should pause the test for 5 seconds', (done) => {
-  //    common.pause(done, 1000);
-  //  });
-  //});
+
+  describe('Verify Provision Screen', () => {
+    it('Should verify Provisioning Screen', (done) => {
+      common.verifyProvisionScreen(done);
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 5000);
+    });
+  });
 
   describe('Enter Provision Key', () => {
     it('Should populate the provision key', (done) => {
@@ -75,7 +75,4 @@ describe('Provision Talbots and Set Store', () => {
       common.pause(done, 2000);
     });
   });
-  after((done) => {
-    common.end(done);
-  })
 });

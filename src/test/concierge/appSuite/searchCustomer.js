@@ -47,5 +47,9 @@ describe('Smoke Test: Search Customer', () => {
       common.searchCustomer(done, 'Smith', 'J');
     });
   })
-  describe
+  describe('Verify Search Results', () => {
+    it('Should verify the customer search results', (done) => {
+      common.verifySearchResult(done);
+    })
+  })
 })

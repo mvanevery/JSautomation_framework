@@ -364,8 +364,8 @@ module.exports = {
   },
 
   save(done) {
-    if (client.isVisible(planner.helpers.save, done)) {
-      client.click(planner.helpers.save);
+    if (client.isVisible(planner.helpers.saveButton, done)) {
+      client.click(planner.helpers.saveButton);
     }
   },
 

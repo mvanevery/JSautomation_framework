@@ -176,25 +176,9 @@ module.exports = {
   logoutUser(done) {
      if (client.isVisible(landingPage.helpers.logout, done)) {
        client.click(landingPage.helpers.logout)
-          .then(() => {
-               client.click(landingPage.helpers.logoutConfirm);
-             })
-     }
-  },
-
-  verifyLogoutCancelButton(done) {
-     if (client.isVisible(landingPage.helpers.logoutCancel, done)) {
-           client.click(landingPage.helpers.logoutCancel);
-     } else {
-       console.log('Logout modal not launching.');
-     }
-  },
-
-  verifyLogoutConfirmButton(done) {
-     if (client.isVisible(landingPage.helpers.logoutConfirm, done)) {
-           client.click(landingPage.helpers.logoutConfirm);
-     } else {
-       console.log('Logout modal not launching.');
+      .then(() => {
+         client.click(landingPage.helpers.logoutConfirm);
+       })
      }
   },
 

@@ -90,16 +90,19 @@ module.exports = {
   },
 
   verifyProvisionScreen(done) {
-     if(client.isVisible(provisioning.helpers.concierge_logo, done)) {
-       client.getAttribute(provisioning.helpers.keyField, 'placeholder')
-       .then((text) => {
-           try {
-             assert.equal(provisioning.helpers.placeholderText, text, 'Not on provisioning screen');
-           } catch (err) {
-             done(err);
-           }
-         })
-     }
+    if(client.isVisible(provisioning.helpers.concierge_logo, done)) {
+     client.getAttribute(provisioning.helpers.keyField, 'placeholder')
+     .then((text) => {
+         try {
+           assert.equal(provisioning.helpers.placeholderText, text, 'Not on provisioning screen');
+         } catch (err) {
+           done(err);
+         }
+       })
+    }
+    else {
+      console.log('Already provisioned');
+    }
   },
 
   // ========================================== LOGIN/LOGOUT ===========================================================

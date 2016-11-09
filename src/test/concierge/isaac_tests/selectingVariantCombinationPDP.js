@@ -1,4 +1,6 @@
-
+/* Author: Isaac Myman
+   Test Rails Link: https://madmobile.testrail.net/index.php?/cases/view/1667    https://madmobile.testrail.net/index.php?/cases/view/1665
+ */
 
 describe('Verify Login Screen', () => {
   it('Should navigate to the login screen', (done) => {
@@ -73,7 +75,54 @@ describe('Pausing', () => {
   });
 });
 
-describe('Select Color Variant')
+describe('Select 1st color variant option', () => {
+  it('Should select 1st color variant option', (done) => {
+    common.selectColor(done);
+  });
+});
+
+describe('Pausing', () => {
+  it('Should pause the test for 2 seconds', (done) => {
+    common.pause(done, 5000);
+  });
+});
+
+describe('Verify picture has changed', () => {
+  it('Should change picture to reflect color variant selection', (done) => {
+    common.verifyPDPImage(done);
+  });
+});
+
+describe('Select petites size type variant option', () => {
+  it('Should select petites variant option', (done) => {
+    common.selectSizeType(done);
+  });
+});
+
+describe('Pausing', () => {
+  it('Should pause the test for 2 seconds', (done) => {
+    common.pause(done, 5000);
+  });
+});
+
+describe('Select PM size variant option', () => {
+  it('Should select PM variant option', (done) => {
+    common.selectSize(done);
+  });
+});
+
+describe('Pausing', () => {
+  it('Should pause the test for 2 seconds', (done) => {
+    common.pause(done, 5000);
+  });
+});
+
+describe('Verify your price displays', () => {
+  it('Should now show your price field and original price', (done) => {
+    common,verifyYourPrice(done);
+  });
+});
+
 
 /**
  * Created by imyman on 11/8/16.

@@ -10,8 +10,6 @@ const planner = require(`../../../projects/${project}/selectors/planner`);
 const assert = require('chai').assert;
 const expect = require('chai').expect;
 const $ = require('chai-Jquery');
-const selenium = require('selenium-standalone');
-const gulp = require('gulp');
 
 module.exports = {
 

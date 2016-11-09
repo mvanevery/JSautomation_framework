@@ -7,7 +7,7 @@ const mochaOptions = {
   reporterOptions: {
     reportDir: './src/test/concierge/reports',
     reportName: 'report',
-    reportTitle: 'Provisioning',
+    reportTitle: 'Provisioning Talbots',
     inlineAssets: true
   }
 };

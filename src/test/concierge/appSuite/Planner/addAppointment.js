@@ -1,9 +1,10 @@
 /**
- * Created by mvanevery on 10/11/16.
+ * Created by mvanevery on 11/3/16.
  */
-const common = require('../../../core/projects/concierge/helpers/common');
 
-describe('Smoke Test: Add Task', () => {
+const common = require('../../../../core/projects/concierge/helpers/common');
+
+describe('Smoke Test: Add Appointment', () => {
   before((done) => {
     common.goTo(done);
   });
@@ -13,10 +14,15 @@ describe('Smoke Test: Add Task', () => {
       common.verifyLoginScreen(done);
     });
   });
+  describe('Pausing', () => {
+    it('Should pause the test for 2 seconds', (done) => {
+      common.pause(done, 2000);
+    });
+  });
 
   describe('Login', () => {
     it('Should login as "qauser"', (done) => {
-      common.loginUser(done);
+      common.loginUser(done, 'qaUser', 'qaUser@123');
     });
   });
 
@@ -40,7 +46,7 @@ describe('Smoke Test: Add Task', () => {
 
   describe('Change the type and Open Task Form', () => {
     it('Should open the appointment form from the Planner', (done) => {
-      common.taskToggle(done, "Create Task");
+      common.apptToggle(done, "Create Appointment");
     });
   });
   describe('Pausing', () => {
@@ -51,7 +57,7 @@ describe('Smoke Test: Add Task', () => {
 
   describe('Add Subject', () => {
     it('Should add a subject to the Subject field', (done) => {
-      common.addSubject(done, 'Automation Test Task');
+      common.addSubject(done, 'Automation Test Appointment');
     });
   });
 
@@ -69,7 +75,7 @@ describe('Smoke Test: Add Task', () => {
 
   describe('Pausing', () => {
     it('Should pause the test for 2 seconds', (done) => {
-      common.pause(done, 4000);
+      common.pause(done, 2000);
     });
   });
   describe('Add Priority', () => {
@@ -95,19 +101,10 @@ describe('Smoke Test: Add Task', () => {
   });
   describe('Verify Added Task', () => {
     it('Should verify that the Task is displayed on Planner Page', (done) => {
-      common.verifyAddedTask(done, 'Automation Test Appointment');
+      common.verifyAddedAppt(done, 'Automation Test Appointment');
     });
   });
-  describe('Pausing', () => {
-    it('Should pause the test for 2 seconds', (done) => {
-      common.pause(done, 2000);
-    });
-  });
-  describe('Delete the Task', () => {
-    it('Should click the DONE button and remove the task ', (done) => {
-      common.deleteTask(done);
-    });
-  });
+
   describe('Pausing', () => {
     it('Should pause the test for 2 seconds', (done) => {
       common.pause(done, 5000);
@@ -120,7 +117,7 @@ describe('Smoke Test: Add Task', () => {
   });
   describe('Pausing', () => {
     it('Should pause the test for 2 seconds', (done) => {
-      common.pause(done, 2000);
+      common.pause(done, 5000);
     });
   });
 })

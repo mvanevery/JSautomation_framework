@@ -22,10 +22,10 @@ module.exports = {
         email: '//div[@class="mm-o-icon icon-email-fill"]',
         logout: '//div[@data-id="module-logout"]',
         logoutModal: '.pure-container > div:nth-child(8) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)',
-        //logoutCancel: '//div[contains(text(),"Cancel")]',
-        logoutCancel:'//button[@data-id="cancel"]',
-        //logoutConfirm: '//div[contains(text(),"Log Out")]'
-        logoutConfirm: '//button[@data-id="logout")]'
+        logoutCancel: '//div[contains(text(),"Cancel")]',
+        //logoutCancel:'//button[@data-id="cancel"]',
+        logoutConfirm: '//div[contains(text(),"Log Out")]'
+        //logoutConfirm: '//button[@data-id="logout")]'
     }
 }
 

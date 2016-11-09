@@ -19,67 +19,6 @@ describe('Smoke Test: Delete Emails C1632', () => {
     common.goTo(done);
   });
 
-  //provisioning
-  describe('Verify Provision Screen', () => {
-    it('Should verify Provisioning Screen', (done) => {
-      common.verifyProvisionScreen(done);
-    });
-  });
-
-  describe('Pausing', () => {
-    it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done, 5000);
-    });
-  });
-
-  describe('Enter Provision Key', () => {
-    it('Should populate the provision key', (done) => {
-      common.enterProvisionTalbots(done);
-    });
-  });
-
-  describe('Pausing', () => {
-    it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done, 5000);
-    });
-  });
-
-  describe('Login User', () => {
-    it('Should Login as user "qaUser"', (done) => {
-      common.loginUser(done, "qaUser", "qaUser@123");
-    });
-  });
-
-  describe('Pausing', () => {
-    it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done, 5000);
-    });
-  });
-
-  describe('Specify Store', () => {
-    it('Should enter Store ID and Save', (done) => {
-      common.specifyStore(done, "326");
-    });
-  });
-
-  describe('Pausing', () => {
-    it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done, 5000);
-    });
-  });
-
-  describe('Login User', () => {
-    it('Should Login as user "qaUser"', (done) => {
-      common.loginUser(done, "qaUser", "qaUser@123");
-    });
-  });
-
-  describe('Pausing', () => {
-    it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done, 5000);
-    });
-  });
-
   //delete emails
 
   //logout

@@ -23,7 +23,7 @@ describe('Smoke Test: Add Appointment', () => {
 
   describe('Pausing', () => {
     it('Should pause the test for 10 seconds', (done) => {
-      common.pause(done, 1500);
+      common.pause(done, 10000);
     });
   });
 

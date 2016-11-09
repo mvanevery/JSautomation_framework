@@ -528,17 +528,19 @@ sudo shutdown -r +1</command>
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>npm install
-npm run lint</command>
+      <command># JCH 11/8/2016 removed b/c npm install was taking to long to install. PRs were causing this job to build a queue.
+#npm install
+#npm run lint</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>
   <buildWrappers>
-    <hudson.plugins.ws__cleanup.PreBuildCleanup plugin="ws-cleanup@0.30">
+    <hudson.plugins.ws__cleanup.PreBuildCleanup plugin="ws-cleanup@0.32">
       <deleteDirs>false</deleteDirs>
       <cleanupParameter></cleanupParameter>
       <externalDelete></externalDelete>
     </hudson.plugins.ws__cleanup.PreBuildCleanup>
+    <hudson.plugins.timestamper.TimestamperBuildWrapper plugin="timestamper@1.8.7"/>
     <jenkins.plugins.nodejs.tools.NpmPackagesBuildWrapper plugin="nodejs@0.2.1">
       <nodeJSInstallationName>NodeJS 5.7.0</nodeJSInstallationName>
     </jenkins.plugins.nodejs.tools.NpmPackagesBuildWrapper>

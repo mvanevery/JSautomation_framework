@@ -21,7 +21,7 @@ module.exports = {
     }, true).then(done);
   },
 
-  goTo: (done) => {
+  goTo(done){
     if (client.requestHandler.sessionID == null)
     {
       if (`${clientType}` == 'chrome')

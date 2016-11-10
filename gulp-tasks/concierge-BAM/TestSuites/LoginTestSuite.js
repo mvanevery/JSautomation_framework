@@ -5,7 +5,7 @@
  * Date:        11/3/2016
  *
  * From command line type:
- * gulp initiate-TestSuites/LoginTestSuite --archon:concierge-BAM --test:TestSuites/LoginTestSuite --client:chrome
+ * gulp initiate-LoginTestSuite --archon:concierge-BAM --archonType:TestSuites --test:LoginTestSuite --client:chrome
  */
 
 const mochaOptions = {
@@ -13,7 +13,7 @@ const mochaOptions = {
   reporter: 'mochawesome',
   reporterOptions: {
     reportDir: './src/test/concierge-BAM/reports',
-    reportName: 'report',
+    reportName: 'Login_Report',
     reportTitle: 'Login Test Suite',
     inlineAssets: true
   }

@@ -17,8 +17,8 @@ describe('Attempt to login as an invalid user.', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done, 5000);
+    it('Should pause the test for 10 seconds', (done) => {
+      common.pause(done, 10000);
     });
   });
 
@@ -29,8 +29,8 @@ describe('Attempt to login as an invalid user.', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 10 seconds', (done) => {
-      common.pause(done, 10000);
+    it('Should pause the test for 1 seconds', (done) => {
+      common.pause(done, 1000);
     });
   });
 

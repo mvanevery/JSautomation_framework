@@ -7,7 +7,7 @@ const mochaOptions = {
   reporterOptions: {
     reportDir: './src/test/concierge/reports',
     reportName: 'report',
-    reportTitle: 'Add Appointment through Widget',
+    reportTitle: 'Add Task through Planner page',
     inlineAssets: true
   }
 };

@@ -6,7 +6,7 @@
  * run test with appium flag for client
  */
 
-const common = require('../../../core/projects/concierge/helpers/common');
+const common = require('../../../../core/projects/concierge/helpers/common');
 
 describe('Smoke Test: Login and Logout as "qaUser"', () => {
   before((done) => {
@@ -52,8 +52,5 @@ describe('Smoke Test: Login and Logout as "qaUser"', () => {
     it('Should logout the current user', (done) => {
       common.logoutUser(done);
     });
-  });
-  after((done) => {
-    common.end(done);
   });
 });

@@ -7,10 +7,10 @@ const loginPage = require(`../../../projects/${project}/selectors/loginPage`);
 const provisioning = require(`../../../projects/${project}/selectors/provisioning`);
 const store = require(`../../../projects/${project}/selectors/store`);
 const planner = require(`../../../projects/${project}/selectors/planner`);
+const blackbook = require(`../../../projects/${project}/selectors/blackbook`);
 const assert = require('chai').assert;
 const expect = require('chai').expect;
 const $ = require('chai-Jquery');
-
 
 module.exports = {
 
@@ -22,20 +22,22 @@ module.exports = {
     }, true).then(done);
   },
 
-  goTo: (done) => {
-    //gulp --client:chrome
-    if (`${clientType}` == 'chrome')
+  goTo(done){
+    if (client.requestHandler.sessionID == null)
     {
-      client.init().url(config.routes.baseUrl, done);
+      if (`${clientType}` == 'chrome')
+      {
+        client.init().url(config.routes.baseUrl, done);
+      }
+      else if (`${clientType}` == 'appium')
+      {
+        client.init(done);
+      }
     }
-    else if (`${clientType}` == 'appium')
+    else
     {
-      client.init(done);
+      done();
     }
-  },
-
-  openBrowser(done) {
-    client.init(done);
   },
 
   closeBrowser(done) {
@@ -89,16 +91,19 @@ module.exports = {
   },
 
   verifyProvisionScreen(done) {
-     if(client.isVisible(provisioning.helpers.concierge_logo, done)) {
-       client.getAttribute(provisioning.helpers.keyField, 'placeholder')
-       .then((text) => {
-           try {
-             assert.equal(provisioning.helpers.placeholderText, text, 'Not on provisioning screen');
-           } catch (err) {
-             done(err);
-           }
-         })
-     }
+    if(client.isVisible(provisioning.helpers.concierge_logo, done)) {
+     client.getAttribute(provisioning.helpers.keyField, 'placeholder')
+     .then((text) => {
+         try {
+           assert.equal(provisioning.helpers.placeholderText, text, 'Not on provisioning screen');
+         } catch (err) {
+           done(err);
+         }
+       })
+    }
+    else {
+      console.log('Already provisioned');
+    }
   },
 
   // ========================================== LOGIN/LOGOUT ===========================================================
@@ -172,25 +177,9 @@ module.exports = {
   logoutUser(done) {
      if (client.isVisible(landingPage.helpers.logout, done)) {
        client.click(landingPage.helpers.logout)
-          .then(() => {
-               client.click(landingPage.helpers.logoutConfirm);
-             })
-     }
-  },
-
-  verifyLogoutCancelButton(done) {
-     if (client.isVisible(landingPage.helpers.logoutCancel, done)) {
-           client.click(landingPage.helpers.logoutCancel);
-     } else {
-       console.log('Logout modal not launching.');
-     }
-  },
-
-  verifyLogoutConfirmButton(done) {
-     if (client.isVisible(landingPage.helpers.logoutConfirm, done)) {
-           client.click(landingPage.helpers.logoutConfirm);
-     } else {
-       console.log('Logout modal not launching.');
+      .then(() => {
+         client.click(landingPage.helpers.logoutConfirm);
+       })
      }
   },
 
@@ -363,8 +352,8 @@ module.exports = {
   },
 
   save(done) {
-    if (client.isVisible(planner.helpers.save, done)) {
-      client.click(planner.helpers.save);
+    if (client.isVisible(planner.helpers.saveButton, done)) {
+      client.click(planner.helpers.saveButton);
     }
   },
 
@@ -462,17 +451,29 @@ module.exports = {
 
   //=========================================== BLACKBOOK ==============================================================
 
-  searchCustomer(done) {
-    if(client.isVisible(blackbook.helpers.fld_lastName, 5000)) {
-
-    }
-    if (client.isVisible(config.helpers.fld_lastName, done)) {
-      client.click(config.helpers.fld_lastName)
+  searchCustomer(done, lastname, firstname) {
+    if(client.isVisible(blackbook.helpers.lastName, done)) {
+      client.setValue(blackbook.helpers.lastName, lastname)
         .then(() => {
-          client.setValue(config.helpers.fld_lastName, 'McClellan');
-        });
-    } else {
-      console.log('	ERROR: Last Name field is not available.');
+          client.setValue(blackbook.helpers.firstName, firstname)
+            .then(() => {
+              client.click(blackbook.helpers.searchButton)
+            })
+
+      })
+    }
+  },
+
+  verifySearchResult(done, expected) {
+    if(client.isVisible(blackbook.helpers.searchResults, done)) {
+      client.getText(blackbook.helpers.searchResults)
+      .then((text) => {
+          try {
+            assert.equal(expected, text, 'The expected value was not equal to the text');
+          } catch (err) {
+            done(err);
+          }
+        })
     }
   },
 

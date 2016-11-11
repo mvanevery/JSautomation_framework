@@ -7,7 +7,7 @@ module.exports = {
     },
     helpers:{
         homeIcon: 'span.mm-c-nav__logo-img',
-        bagIcon:'div.mm-o-icon.icon-bag-outline',
+        bagIcon:'//div[@class="mm-o-icon.icon-bag-outline"]',
         iconList: 'mm-c-nav__list',
         iconListTitle:'h2',
         plannerIcon: '//div[@class="mm-o-icon icon-year-to-date"]',
@@ -23,7 +23,9 @@ module.exports = {
         logout: '//div[@data-id="module-logout"]',
         logoutModal: '.pure-container > div:nth-child(8) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)',
         logoutCancel: '//div[contains(text(),"Cancel")]',
+        //logoutCancel:'//button[@data-id="cancel"]',
         logoutConfirm: '//div[contains(text(),"Log Out")]'
+        //logoutConfirm: '//button[@data-id="logout")]'
     }
 }
 

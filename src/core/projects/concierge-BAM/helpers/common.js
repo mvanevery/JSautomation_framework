@@ -143,10 +143,24 @@ module.exports = {
     done();
   },
 
-  fillMccFormPhone(done, value) {
-    if (client.isVisible(mccPage.helpers.fld_phone)) {
-      //client.click(field);
-      client.setValue(mccPage.helpers.fld_phone, value)
+  fillMccForm(done, field, value) {
+    if (client.isVisible(mccPage.helpers.fld_lastName)) {
+      switch (field){
+        case 'name':
+          client.setValue(mccPage.helpers.fld_lastName, value);
+            break;
+        case 'zip':
+          client.setValue(mccPage.helpers.fld_zipCode, value);
+            break;
+        case 'phone':
+          client.setValue(mccPage.helpers.fld_phone, value);
+            break;
+        case 'email':
+          client.setValue(mccPage.helpers.fld_email, value);
+            break;
+        default:
+            break;
+      }
     }
     else{
       console.log('	ERROR: The MCC Search page is unavailable.');

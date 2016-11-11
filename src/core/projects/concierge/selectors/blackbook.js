@@ -1,6 +1,9 @@
 /**
  * Created by mvanevery on 8/31/16.
  */
+
+import CUSTOMERNAME from '../../../../test/concierge/appSuite/Email/sendEmail_C1638';
+
 module.exports = {
     routes: {
         baseUrl: 'localhost:3000/'
@@ -18,7 +21,18 @@ module.exports = {
       searchToggle:'//div[contains(text(),"Search"]',
       listToggle:'//div[contains(text(),"List"]',
       addCustomer:'//div[@class="mm-o-icon icon-plus"]',
-      searchResults:'//div[contains(text(),"Jerry Smith"]',
+      searchResults:`//div[contains(text(),${CUSTOMERNAME}]`,
+
+      //================================================== CUSTOMER PROFILE ============================================
+
+      profileTitle: '//div[contains(text(),"Customer Profile"]',
+      customerName: '//div[contains(text(),"Jerry Smith"]',
+      emailIcon: '//div[@class="mm-o-icon icon-email"]',
+      blankEmailIcon: '//div[@class=:mm-o-icon icon-blank-template"]',
+      birthdayEmailIcon: '',
+
+
+
 
         img_myCustomers: '//a[contains(text(),"My Customers")]',
         img_Store: '//a[contains(text(),"Store")]',

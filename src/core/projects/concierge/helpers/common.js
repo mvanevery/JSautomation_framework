@@ -12,6 +12,8 @@ const assert = require('chai').assert;
 const expect = require('chai').expect;
 const $ = require('chai-Jquery');
 
+import CUSTOMERNAME from '../../../../test/concierge/appSuite/Email/sendEmail_C1638';
+
 module.exports = {
 
   // ================================================== GLOBALS ========================================================
@@ -464,6 +466,7 @@ module.exports = {
     }
   },
 
+
   verifySearchResult(done, expected) {
     if(client.isVisible(blackbook.helpers.searchResults, done)) {
       client.getText(blackbook.helpers.searchResults)
@@ -478,59 +481,27 @@ module.exports = {
   },
 
   selectCustomer(done) {
-    client.waitForVisible(config.helpers.txt_Customer_Ryan, 5000);
-    if (client.isVisible(config.helpers.txt_Customer_Ryan)) {
-      client.click(config.helpers.txt_Customer_Ryan);
-    } else {
-      console.log('	ERROR: Missing the customer record for Ryan McClellan.');
+    if(client.isVisible(blackbook.helpers.searchResults, done)) {
+      client.click(blackbook.helpers.searchResults)
+        .then(() => {
+          client.getText(blackbook.helpers.profileTitle)
+            .then((text) => {
+
+            })
+        })
     }
-    client.waitForVisible(config.helpers.txt_Customer_Header, 5000);
-    if (client.isVisible(config.helpers.txt_Customer_Header)) {
-      console.log('	PASS: The user has reached the Customer Profile screen.');
-    } else {
-      console.log('	ERROR: The Customer Profile screen is unreachable.');
-    }
-    done();
   },
 
+  openEmail(done) {
+    if(client.isVisible(blackbook.helpers.emailIcon, done)) {
+      client.click(blackbook.helpers.emailIcon)
+        .then(() => {
+          client.getText((text) => {
 
-
-
-  //addAppointment_05012016(done) {
-  //  client.click(config.helpers.cmb_type)
-  //    .then(() => {
-  //      client.setValue(config.helpers.cmb_type, 'Appointment');
-  //    });
-  //  client.pause(2000);
-  //  client.click(config.helpers.txt_subject)
-  //    .then(() => {
-  //      client.setValue(config.helpers.txt_subject, 'Test Appointment for 05/01/2016.');
-  //    });
-  //  client.pause(2000);
-  //  client.click(config.helpers.date_start)
-  //    .then(() => {
-  //      client.setValue(config.helpers.date_start, '05012016');
-  //    });
-  //  client.pause(2000);
-  //  client.click(config.helpers.date_end)
-  //    .then(() => {
-  //      client.setValue(config.helpers.date_start, '05012016');
-  //    });
-  //  client.pause(2000);
-  //  // client.click(config.helpers.cmb_status)
-  //  // 	.then(function() {
-  //  // 		client.selectByValue(config.helpers.cmb_status, 'Open')
-  //  // 	});
-  //  // client.pause(2000);
-  //  client.click(config.helpers.cmb_priority)
-  //    .then(() => {
-  //      client.selectByValue(config.helpers.cmb_priority, 'High');
-  //    });
-  //  client.pause(2000);
-  //  client.click(config.helpers.btn_save);
-  //
-  //  done();
-  //},
+          })
+        })
+    }
+  },
 
   end(done) {
     client.end();

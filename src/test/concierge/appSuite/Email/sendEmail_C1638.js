@@ -1,13 +1,13 @@
 /**
- * Created by mvanevery on 11/7/16.
+ *  * Project:     Concierge
+ * Test Name:   sendEmail_C1638
+ * Test Steps:  https://madmobile.testrail.com/index.php?/cases/view/1638
+ * Author:      Mike Van Every
+ * Date:        11/1/2016
+ *
  */
-/**
- *  C1595 Talbots E2E - Search Customer(All Clients).
- */
-const common = require('../../../../core/projects/concierge/helpers/common');
 
-export let CUSTOMERNAME;
-const setName = (name) => CUSTOMERNAME = name;
+const common = require('../../../../core/projects/concierge/helpers/common');
 
 describe('Smoke Test: Search Customer', () => {
   before((done) => {
@@ -58,18 +58,22 @@ describe('Smoke Test: Search Customer', () => {
 
   describe('Verify Search Results', () => {
     it('Should verify the customer search results', (done) => {
-      common.verifySearchResult(done, setName('Jerry Smith'));
+      common.verifySearchResult(done);
     });
   });
 
-  describe('Logout', () => {
-    it('Should Logout from the current user', (done) => {
-      common.logoutUser(done);
-    });
-  });
   describe('Pausing', () => {
     it('Should pause the test for 2 seconds', (done) => {
       common.pause(done, 5000);
     });
   });
+
+  describe('Click Customer Card and Verify Customer Profile',() => {
+    it('Should select the Customer Card and verify the customer profile', (done) => {
+      common.selectCustomer(done, 'Customer Profile');
+    });
+  });
+
+
+
 })

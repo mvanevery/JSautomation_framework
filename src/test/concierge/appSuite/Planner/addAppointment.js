@@ -4,6 +4,10 @@
 
 const common = require('../../../../core/projects/concierge/helpers/common');
 
+//let CUSTOMERNAME;
+//const setName = (name) => CUSTOMERNAME = name;
+//exports.CUSTOMERNAME = setName(name);
+
 describe('Smoke Test: Add Appointment', () => {
   before((done) => {
     common.goTo(done);
@@ -34,7 +38,8 @@ describe('Smoke Test: Add Appointment', () => {
 
   describe('Click the Planner menu option', () => {
     it('Should open planner sections', (done) => {
-      common.navPlanner(done, "Planner");
+     common.navPlanner(done, 'Planner');
+      // common.navPlanner(done, setName("Planner"));
     });
   });
 

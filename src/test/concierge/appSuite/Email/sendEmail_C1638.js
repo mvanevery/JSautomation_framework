@@ -74,6 +74,14 @@ describe('Smoke Test: Search Customer', () => {
     });
   });
 
+  describe('Click Email Icon in the Customer Profile', () => {
+    it('Should click the email icon', (done) => {
+      common.openEmail(done);
+    });
+  });
 
+  describe('Selects Email Template to fill out', () => {
+    it('Should select email template from the list of templates')
+  })
 
 })

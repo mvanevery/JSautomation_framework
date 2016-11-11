@@ -12,7 +12,7 @@ const assert = require('chai').assert;
 const expect = require('chai').expect;
 const $ = require('chai-Jquery');
 
-import CUSTOMERNAME from '../../../../test/concierge/appSuite/Email/sendEmail_C1638';
+//import CUSTOMERNAME from '../../../../test/concierge/appSuite/Email/sendEmail_C1638';
 
 module.exports = {
 

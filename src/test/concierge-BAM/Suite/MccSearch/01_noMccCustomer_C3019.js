@@ -66,8 +66,8 @@ describe('Test for when there is no MCC customer found.', () => {
 
   describe('Enter "999" into the Phone field', () => {
     it('Should type "999" into the Phone field', (done) => {
-      common.fillMccFormPhone(done,999);
-      //common.fillMccForm(done,"mccPage.helpers.fld_phone",999);
+      // field options are 'name','phone','zip','email'
+      common.fillMccForm(done,'phone',999);
     });
   });
 

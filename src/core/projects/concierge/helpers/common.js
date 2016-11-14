@@ -496,6 +496,7 @@ module.exports = {
 
 
 
+
   //addAppointment_05012016(done) {
   //  client.click(config.helpers.cmb_type)
   //    .then(() => {
@@ -536,4 +537,4 @@ module.exports = {
     client.end();
     done();
   }
-};
+}

@@ -13,8 +13,8 @@ const mochaOptions = {
   reporter: 'mochawesome',
   reporterOptions: {
     reportDir: './src/test/concierge-BAM/reports',
-    reportName: 'report',
-    reportTitle: 'Login Test Suite',
+    reportName: 'MccSearch_Report',
+    reportTitle: 'MCC Search Test Suite',
     inlineAssets: true
   }
 };

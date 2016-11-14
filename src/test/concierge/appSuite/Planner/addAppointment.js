@@ -3,6 +3,9 @@
  */
 
 const common = require('../../../../core/projects/concierge/helpers/common');
+const login = require('../../../../core/projects/concierge/helpers/loginPage');
+const landing = require('../../../../core/projects/concierge/helpers/landingPage');
+const planner = require('../../../../core/projects/concierge/helpers/planner');
 
 //let CUSTOMERNAME;
 //const setName = (name) => CUSTOMERNAME = name;
@@ -15,7 +18,7 @@ describe('Smoke Test: Add Appointment', () => {
 
   describe('Verify Login Screen', () => {
     it('Should navigate to the login screen', (done) => {
-      common.verifyLoginScreen(done);
+      login.verifyLoginScreen(done);
     });
   });
   describe('Pausing', () => {
@@ -26,7 +29,7 @@ describe('Smoke Test: Add Appointment', () => {
 
   describe('Login', () => {
     it('Should login as "qauser"', (done) => {
-      common.loginUser(done, 'qaUser', 'qaUser@123');
+      login.loginUser(done, 'qaUser', 'qaUser@123');
     });
   });
 
@@ -38,8 +41,7 @@ describe('Smoke Test: Add Appointment', () => {
 
   describe('Click the Planner menu option', () => {
     it('Should open planner sections', (done) => {
-     common.navPlanner(done, 'Planner');
-      // common.navPlanner(done, setName("Planner"));
+      landing.navPlanner(done, "Planner");
     });
   });
 
@@ -51,7 +53,7 @@ describe('Smoke Test: Add Appointment', () => {
 
   describe('Change the type and Open Task Form', () => {
     it('Should open the appointment form from the Planner', (done) => {
-      common.apptToggle(done, "Create Appointment");
+      planner.apptToggle(done, "Create Appointment");
     });
   });
   describe('Pausing', () => {
@@ -62,7 +64,7 @@ describe('Smoke Test: Add Appointment', () => {
 
   describe('Add Subject', () => {
     it('Should add a subject to the Subject field', (done) => {
-      common.addSubject(done, 'Automation Test Appointment');
+      planner.addSubject(done, 'Automation Test Appointment');
     });
   });
 
@@ -74,7 +76,7 @@ describe('Smoke Test: Add Appointment', () => {
 
   describe('Add Status', () => {
     it('Should add a status to the Status field', (done) => {
-      common.addStatus(done, 'INPROGRESS');
+      planner.addStatus(done, 'INPROGRESS');
     });
   });
 
@@ -85,7 +87,7 @@ describe('Smoke Test: Add Appointment', () => {
   });
   describe('Add Priority', () => {
     it('Should add priority to the Priority field', (done) => {
-      common.addPriority(done, 'MEDIUM');
+      planner.addPriority(done, 'MEDIUM');
     });
   });
 
@@ -96,7 +98,7 @@ describe('Smoke Test: Add Appointment', () => {
   });
   describe('Save the Task', () => {
     it('Should click the DONE button ', (done) => {
-      common.save(done);
+      planner.save(done);
     });
   });
   describe('Pausing', () => {
@@ -106,7 +108,7 @@ describe('Smoke Test: Add Appointment', () => {
   });
   describe('Verify Added Task', () => {
     it('Should verify that the Task is displayed on Planner Page', (done) => {
-      common.verifyAddedAppt(done, 'Automation Test Appointment');
+      planner.verifyAddedAppt(done, 'Automation Test Appointment');
     });
   });
 
@@ -117,7 +119,7 @@ describe('Smoke Test: Add Appointment', () => {
   });
   describe('Logout', () => {
     it('Should Logout from the current user', (done) => {
-      common.logoutUser(done);
+      login.logoutUser(done);
     });
   });
   describe('Pausing', () => {

@@ -12,21 +12,13 @@ const common = require('../../../../core/projects/concierge-BAM/helpers/common')
 
 
 describe('Login as a valid user at the current store.', () => {
-  // before((done) => {
-  //   common.goTo(done);
-  // });
+
 
   describe('Verify Login Screen', () => {
     it('Should navigate to the login screen', (done) => {
       common.verifyLoginScreen(done);
     });
   });
-
-  // describe('Pausing', () => {
-  //   it('Should pause the test for 5 seconds', (done) => {
-  //     common.pause(done, 3000);
-  //   });
-  // });
 
   describe('Login', () => {
     it('Should login as "180001"', (done) => {

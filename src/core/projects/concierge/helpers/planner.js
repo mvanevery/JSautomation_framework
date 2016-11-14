@@ -172,15 +172,7 @@ module.exports = {
 
   deleteTask(done) {
     if(client.isVisible(planner.helpers.addedTaskTitle, done)) {
-      client.click(planner.helpers.delete)
-        .then(() => {
-          client.click(planner.helpers.yesButton);
-        })
-    }
-  },
-  deleteAppt(done) {
-    if(client.isVisible(planner.helpers.addedApptTitle, done)) {
-      client.click(planner.helpers.delete)
+      client.click(planner.helpers.removeTask)
         .then(() => {
           client.click(planner.helpers.yesButton);
         })

@@ -5,10 +5,10 @@
  *  C1595 Talbots E2E - Search Customer(All Clients).
  */
 
-const common = require('../../../core/projects/concierge/helpers/common');
-const login = require('../../../core/projects/concierge/helpers/loginPage');
-const blackbook = require('../../../core/projects/concierge/helpers/blackbook');
-const landing = require('../../../core/projects/concierge/helpers/landingPage');
+const common = require('../../../../core/projects/concierge/helpers/common');
+const login = require('../../../../core/projects/concierge/helpers/loginPage');
+const blackbook = require('../../../..?core/projects/concierge/helpers/blackbook');
+const landing = require('../../../../core/projects/concierge/helpers/landingPage');
 
 
 describe('Smoke Test: Search Customer', () => {

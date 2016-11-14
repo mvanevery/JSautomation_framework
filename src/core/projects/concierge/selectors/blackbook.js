@@ -2,7 +2,7 @@
  * Created by mvanevery on 8/31/16.
  */
 
-import CUSTOMERNAME from '../../../../test/concierge/appSuite/Email/sendEmail_C1638';
+//import CUSTOMERNAME from '../../../../test/concierge/appSuite/Email/sendEmail_C1638';
 
 module.exports = {
     routes: {
@@ -21,7 +21,7 @@ module.exports = {
       searchToggle:'//div[contains(text(),"Search"]',
       listToggle:'//div[contains(text(),"List"]',
       addCustomer:'//div[@class="mm-o-icon icon-plus"]',
-      searchResults:`//div[contains(text(),${CUSTOMERNAME}]`,
+      searchResults:`//div[contains(text(),"Jerry Smith")]`,
 
       //================================================== CUSTOMER PROFILE ============================================
 

@@ -48,10 +48,11 @@ H 1 * * *</spec>
     <hudson.tasks.Shell>
       <command># npm install for archon-framework
 # JCH 11/11/2016 disabled due to npm hanging on install. disabled Delete workspace before build starts ^^^^
-npm install</command>
+##npm install</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
-      <command>sleep 10</command>
+      <command># JCH 11/11/2016 disabled due to npm hanging on install. disabled Delete workspace before build starts ^^^^
+##sleep 10</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command># delete previous iOS app build from device
@@ -84,7 +85,7 @@ BUILD_ID=dontKillMe nohup ios_webkit_debug_proxy -c 6bbbd889caeed808c71677e5bd5f
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command># --client:chrome will not work w/o http://localhost:3000
-# gulp initiate-allTests --archon:concierge --test:allTests -- client:chrome --archonType=local
+# gulp initiate-allTests --archon:concierge --test:allTests --client:chrome
 gulp initiate-allTests --archon:concierge --test:allTests</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
@@ -146,11 +147,15 @@ build.@result = hudson.model.Result.SUCCESS;
     </hudson.plugins.emailext.ExtendedEmailPublisher>
   </publishers>
   <buildWrappers>
-    <hudson.plugins.ws__cleanup.PreBuildCleanup plugin="ws-cleanup@0.32">
-      <deleteDirs>false</deleteDirs>
-      <cleanupParameter></cleanupParameter>
-      <externalDelete></externalDelete>
-    </hudson.plugins.ws__cleanup.PreBuildCleanup>
+    <org.jenkinsci.plugins.configfiles.buildwrapper.ConfigFileBuildWrapper plugin="config-file-provider@2.13">
+      <managedFiles>
+        <org.jenkinsci.plugins.configfiles.buildwrapper.ManagedFile>
+          <fileId>1bf41f6e-70ed-4fd8-af47-77b824fa6e97</fileId>
+          <targetLocation>src/core/clients</targetLocation>
+          <replaceTokens>false</replaceTokens>
+        </org.jenkinsci.plugins.configfiles.buildwrapper.ManagedFile>
+      </managedFiles>
+    </org.jenkinsci.plugins.configfiles.buildwrapper.ConfigFileBuildWrapper>
     <hudson.plugins.build__timeout.BuildTimeoutWrapper plugin="build-timeout@1.17.1">
       <strategy class="hudson.plugins.build_timeout.impl.NoActivityTimeOutStrategy">
         <timeoutSecondsString>600</timeoutSecondsString>

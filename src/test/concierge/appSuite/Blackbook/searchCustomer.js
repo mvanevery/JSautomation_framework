@@ -6,8 +6,8 @@
  */
 const common = require('../../../../core/projects/concierge/helpers/common');
 
-export let CUSTOMERNAME;
-const setName = (name) => CUSTOMERNAME = name;
+//export let CUSTOMERNAME;
+//const setName = (name) => CUSTOMERNAME = name;
 
 describe('Smoke Test: Search Customer', () => {
   before((done) => {
@@ -58,7 +58,7 @@ describe('Smoke Test: Search Customer', () => {
 
   describe('Verify Search Results', () => {
     it('Should verify the customer search results', (done) => {
-      common.verifySearchResult(done, setName('Jerry Smith'));
+      common.verifySearchResult(done,'Jerry Smith');
     });
   });
 

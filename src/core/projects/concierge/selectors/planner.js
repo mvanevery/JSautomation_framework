@@ -10,7 +10,7 @@ module.exports = {
   },
   helpers: {
     //===================================== GLOBAL ================================
-    plannerTitle: `//div[contains(text(), ${CUSTOMERNAME}]`,
+    plannerTitle: `//div[contains(text(),"Planner")]`,
     addButton: '//div[@class="mm-o-icon icon-plus"]',
     yesButton:'//div[contains(text(),"Yes")]',
     Cancel: '//button[@data-id="cancel"]',

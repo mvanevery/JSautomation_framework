@@ -17,6 +17,7 @@ const $ = require('chai-Jquery');
 module.exports = {
 
   // ================================================== GLOBALS ========================================================
+
   mobileView(done) {
     client.setViewportSize({
       height: 768,

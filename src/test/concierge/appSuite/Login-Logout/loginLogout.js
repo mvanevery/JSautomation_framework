@@ -7,6 +7,8 @@
  */
 
 const common = require('../../../../core/projects/concierge/helpers/common');
+const login = require('../../../../core/projects/concierge/helpers/loginPage');
+const landing = require('../../../../core/projects/concierge/helpers/landingPage');
 
 describe('Smoke Test: Login and Logout as "qaUser"', () => {
   before((done) => {
@@ -21,36 +23,50 @@ describe('Smoke Test: Login and Logout as "qaUser"', () => {
 
   describe('Verify Login Screen', () => {
     it('Should navigate to the login screen', (done) => {
-      common.verifyLoginScreen(done);
+      login.verifyLoginScreen(done);
     });
   });
 
   describe('Pausing', () => {
     it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done, 3000);
+      common.pause(done, 5000);
     });
   });
 
   describe('Login', () => {
     it('Should login as "qaUser"', (done) => {
-      common.loginUser(done, 'qaUser', 'qaUser@123');
+      login.loginUser(done, 'qaUser', 'qaUser@123');
     });
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 5 seconds', (done) => {
+    it('Should pause the test for 8 seconds', (done) => {
       common.pause(done, 8000);
     });
   });
 
   describe('Verify Concierge Screen', () => {
     it('Should navigate to the Concierge screen', (done) => {
-      common.verifyConciergeScreen(done);
+      landing.verifyConciergeScreen(done);
     });
   });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 2 seconds', (done) => {
+      common.pause(done, 2000);
+    });
+  });
+
   describe('Logout', () => {
     it('Should logout the current user', (done) => {
-      common.logoutUser(done);
+      login.logoutUser(done);
     });
   });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 2 seconds', (done) => {
+      common.pause(done, 2000);
+    });
+  });
+
 });

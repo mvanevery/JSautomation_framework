@@ -1,24 +1,51 @@
-const landingPage = require(`../../../../projects/${project}/selectors/landingPage`);
-const loginPage = require(`../../../projects/${project}/selectors/loginPage`);
-const provisioning = require(`../../../../projects/${project}/selectors/provisioning`);
+const clientType = require('../../../projects/config').client;
+const client = require(`../../../../core/clients/${clientType}`).client;
+const project = require('../../../projects/config').project;
+const config = require(`../../../projects/${project}/config`);
 const store = require(`../../../projects/${project}/selectors/store`);
-const planner = require(`../../../projects/${project}/selectors/planner`);
 const blackbook = require(`../../../projects/${project}/selectors/blackbook`);
 const assert = require('chai').assert;
-const $ = require('chai-Jquery');
 
 module.exports = {
 
-  searchCustomer(done, lastname, firstname) {
+  enterFirstname(done, firstName) {
+    if(client.isVisible(blackbook.helpers.firstName, done)) {
+      client.setValue(blackbook.helpers.firstName, firstName)
+    }
+  },
+  enterLastname(done, lastName) {
     if(client.isVisible(blackbook.helpers.lastName, done)) {
-      client.setValue(blackbook.helpers.lastName, lastname)
-        .then(() => {
-          client.setValue(blackbook.helpers.firstName, firstname)
-            .then(() => {
-              client.click(blackbook.helpers.searchButton)
-            })
+      client.setValue(blackbook.helpers.lastName, lastName)
+    }
+  },
 
-        })
+  enterPhone(done, phone) {
+    if(client.isVisible(blackbook.helpers.phone, done)) {
+      client.setValue(blackbook.helpers.phone, phone)
+    }
+  },
+
+  enterEmail(done, email) {
+    if(client.isVisible(blackbook.helpers.email, done)) {
+      client.setValue(blackbook.helpers.email, email)
+    }
+  },
+
+  enterCity(done, city) {
+    if(client.isVisible(blackbook.helpers.city, done)) {
+      client.setValue(blackbook.helpers.city, city)
+    }
+  },
+
+  enterZipcode(done, zipcode) {
+    if(client.isVisible(blackbook.helpers.zipcode, done)) {
+      client.setValue(blackbook.helpers.zipcode, zipcode)
+    }
+  },
+
+  searchCustomer(done) {
+    if(client.isVisible(blackbook.helpers.searchButton, done)) {
+       client.click(blackbook.helpers.searchButton)
     }
   },
 
@@ -35,20 +62,20 @@ module.exports = {
     }
   },
 
-  selectCustomer(done) {
-    client.waitForVisible(config.helpers.txt_Customer_Ryan, 5000);
-    if (client.isVisible(config.helpers.txt_Customer_Ryan)) {
-      client.click(config.helpers.txt_Customer_Ryan);
-    } else {
-      console.log('	ERROR: Missing the customer record for Ryan McClellan.');
-    }
-    client.waitForVisible(config.helpers.txt_Customer_Header, 5000);
-    if (client.isVisible(config.helpers.txt_Customer_Header)) {
-      console.log('	PASS: The user has reached the Customer Profile screen.');
-    } else {
-      console.log('	ERROR: The Customer Profile screen is unreachable.');
-    }
-    done();
-  },
+  //selectCustomer(done) {
+  //  client.waitForVisible(config.helpers.txt_Customer_Ryan, 5000);
+  //  if (client.isVisible(config.helpers.txt_Customer_Ryan)) {
+  //    client.click(config.helpers.txt_Customer_Ryan);
+  //  } else {
+  //    console.log('	ERROR: Missing the customer record for Ryan McClellan.');
+  //  }
+  //  client.waitForVisible(config.helpers.txt_Customer_Header, 5000);
+  //  if (client.isVisible(config.helpers.txt_Customer_Header)) {
+  //    console.log('	PASS: The user has reached the Customer Profile screen.');
+  //  } else {
+  //    console.log('	ERROR: The Customer Profile screen is unreachable.');
+  //  }
+  //  done();
+  //},
 
 }

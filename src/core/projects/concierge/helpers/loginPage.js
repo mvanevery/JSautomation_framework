@@ -45,7 +45,7 @@ module.exports = {
   },
 
   verifyStoreId(done) {
-    if (client.isVisible(landingPage.helpers.storeIdLabel)) {
+    if (client.isVisible(loginPage.helpers.storeIdLabel)) {
       console.log('	PASS: The Store ID is visible.');
     } else {
       console.log('	ERROR: The user failed to logout.');
@@ -53,4 +53,14 @@ module.exports = {
     done();
   },
 
+
+  logoutUser(done) {
+    if (client.isVisible(landingPage.helpers.logout, done)) {
+      client.click(landingPage.helpers.logout)
+        .then(() => {
+          client.click(landingPage.helpers.logoutConfirm);
+        })
+    }
+
+  }
 }

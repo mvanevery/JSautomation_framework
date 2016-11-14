@@ -24,14 +24,7 @@ module.exports = {
     done();
   },
 
-  logoutUser(done) {
-    if (client.isVisible(landingPage.helpers.logout, done)) {
-      client.click(landingPage.helpers.logout)
-        .then(() => {
-          client.click(landingPage.helpers.logoutConfirm);
-        })
-    }
-  },
+
 
   navProduct(done) {
     if (client.isVisible(landingPage.helpers.productIcon)) {

@@ -4,7 +4,6 @@ const project = require('../../../projects/config').project;
 const config = require(`../../../projects/${project}/config`);
 const loginPage = require(`../../../projects/${project}/selectors/loginPage`);
 const provisioning = require(`../../../projects/${project}/selectors/provisioning`);
-const store = require(`../../../projects/${project}/selectors/store`);
 const assert = require('chai').assert;
 const expect = require('chai').expect;
 const $ = require('chai-Jquery');
@@ -15,10 +14,10 @@ const $ = require('chai-Jquery');
 module.exports = {
 
   enterProvisionBurberry(done) {
-    if (client.isVisible(config.helpers.keyField, done)) {
-      client.setValue(config.helpers.keyField, config.helpers.burberry_provkey)
+    if (client.isVisible(provisioning.helpers.keyField, done)) {
+      client.setValue(provisioning.helpers.keyField, config.helpers.burberry_provkey)
         .then(() => {
-          client.click(config.helpers.submitKey);
+          client.click(provisioning.helpers.submitKey);
         });
     } else {
       console.log('Already provisioned');

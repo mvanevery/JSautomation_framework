@@ -1,5 +1,5 @@
 /**
- * Created by mvanevery on 10/11/16.
+ * Created by mvanevery on 10/14/16.
  */
 const mochaOptions = {
   timeout: '50000',
@@ -7,12 +7,11 @@ const mochaOptions = {
   reporterOptions: {
     reportDir: './src/test/concierge/reports',
     reportName: 'report',
-    reportTitle: 'Provisioning Talbots',
+    reportTitle: 'Add Appointment through Planner page',
     inlineAssets: true
   }
 };
 const projectType = require('../../../src/core/projects/config').projectType;
-
 
 function handleError(err) {
   console.log(err.toString());
@@ -21,7 +20,7 @@ function handleError(err) {
 
 module.exports = function (gulp, mocha) {
   return function () {
-    return gulp.src('./src/test/concierge/appSuite/a.provisioning.js', {read: false})
+    return gulp.src('./src/test/concierge/appSuite/Blackbook/addCustomer.js', {read: false})
       .pipe(mocha(mochaOptions).on("error", handleError));
   }
 };

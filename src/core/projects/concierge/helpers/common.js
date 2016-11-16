@@ -12,9 +12,12 @@ const assert = require('chai').assert;
 const expect = require('chai').expect;
 const $ = require('chai-Jquery');
 
+//import CUSTOMERNAME from '../../../../test/concierge/appSuite/Email/sendEmail_C1638';
+
 module.exports = {
 
   // ================================================== GLOBALS ========================================================
+
   mobileView(done) {
     client.setViewportSize({
       height: 768,
@@ -98,4 +101,4 @@ module.exports = {
     client.end();
     done();
   }
-}
+};

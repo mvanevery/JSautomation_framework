@@ -1,4 +1,4 @@
-/* Author: Isaac Myman
+/** Author: Isaac Myman
    Test Rails Link: https://madmobile.testrail.net/index.php?/cases/view/1667    https://madmobile.testrail.net/index.php?/cases/view/1665
  */
 

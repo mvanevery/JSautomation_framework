@@ -2,6 +2,7 @@
  * Created by mvanevery on 10/10/16.
  */
 
+//import CUSTOMERNAME from '../../../../test/concierge/appSuite/Planner/addAppointment.js';
 
 module.exports = {
   routes: {
@@ -9,7 +10,7 @@ module.exports = {
   },
   helpers: {
     //===================================== GLOBAL ================================
-    plannerTitle: '//div[contains(text(),"Planner")]',
+    plannerTitle: `//div[contains(text(),"Planner")]`,
     addButton: '//div[@class="mm-o-icon icon-plus"]',
     yesButton:'//div[contains(text(),"Yes")]',
     Cancel: '//button[@data-id="cancel"]',

@@ -7,6 +7,10 @@ const login = require('../../../../core/projects/concierge/helpers/loginPage');
 const landing = require('../../../../core/projects/concierge/helpers/landingPage');
 const planner = require('../../../../core/projects/concierge/helpers/planner');
 
+//let CUSTOMERNAME;
+//const setName = (name) => CUSTOMERNAME = name;
+//exports.CUSTOMERNAME = setName(name);
+
 describe('Smoke Test: Add Appointment', () => {
   before((done) => {
     common.goTo(done);

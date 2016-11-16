@@ -75,7 +75,7 @@ describe('Provision Talbots and Set Store', () => {
   });
   describe('Pausing', () => {
     it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done, 2000);
+      common.pause(done, 5000);
     });
   });
 });

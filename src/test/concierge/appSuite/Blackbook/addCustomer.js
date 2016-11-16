@@ -74,17 +74,17 @@ describe('Smoke Test: Search Customer', () => {
     });
   });
 
-  describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
-    });
-  });
-
-  describe('Open Phone section', () => {
-    it('should open the phone section', (done) => {
-      blackbook.openPhone(done);
-    });
-  });
+  //describe('Pausing', () => {
+  //  it('Should pause the test for 1 seconds', (done) => {
+  //    common.pause(done, 1000);
+  //  });
+  //});
+  //
+  //describe('Open Phone section', () => {
+  //  it('should open the phone section', (done) => {
+  //    blackbook.openPhone(done);
+  //  });
+  //});
 
   describe('Pausing', () => {
     it('Should pause the test for 1 seconds', (done) => {

@@ -15,13 +15,20 @@ module.exports = {
       email:'//input[@name="email"]',
       city:'//input[@name="city"]',
       zipcode:'//input[@name=postalCode"]',
-      searchButton:'//span[contains(text(),"Search Customers"]',
+      searchButton:'//button[@data-id="searchButton]',
+      resetButton:'//button[@data-id="resetButton"]',
       blackbookHeader: '//div[contains(text(),"My Clients]',
       myClientsToggle:'',
       searchToggle:'//div[contains(text(),"Search"]',
       listToggle:'//div[contains(text(),"List"]',
-      addCustomer:'//div[@class="mm-o-icon icon-plus"]',
+      addCustomerButton:'//button[@data-id="customer-add"]',
       searchResults:`//div[contains(text(),"Jerry Smith")]`,
+      saveButton:'//div[contains(text(),"Done")]',
+      modalHeader:'//div[contains(text(),"Add Customer")]',
+      addPhoneModal:'//div[contains(text(),"Add Phone")]',
+      addEmailModal:'//div[contains(text(),"Add Email")]',
+      addAddressModal:'//div[contains(text(),"Add Address")]',
+      Cancel: '//button[@data-id="cancel"]',
 
       //================================================== CUSTOMER PROFILE ============================================
 

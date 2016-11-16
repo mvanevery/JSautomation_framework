@@ -49,6 +49,30 @@ module.exports = {
     }
   },
 
+  addCustomer(done) {
+    if(client.isVisible(blackbook.helpers.addCustomerButton, done)) {
+      client.click(blackbook.helpers.addCustomerButton)
+    }
+  },
+
+  openPhone(done) {
+    if(client.isVisible(blackbook.helpers.modalHeader, done)) {
+      client.click(blackbook.helpers.addPhoneModal)
+    }
+  },
+
+  openEmail(done) {
+    if(client.isVisible(blackbook.helpers.modalHeader, done)) {
+      client.click(blackbook.helpers.addEmailModal)
+    }
+  },
+
+  openAddress(done) {
+    if(client.isVisible(blackbook.helpers.modalHeader, done)) {
+      client.click(blackbook.helpers.addAddressModal)
+    }
+  },
+
   verifySearchResult(done, expected) {
     if(client.isVisible(blackbook.helpers.searchResults, done)) {
       client.getText(blackbook.helpers.searchResults)
@@ -59,6 +83,12 @@ module.exports = {
             done(err);
           }
         })
+    }
+  },
+
+  save(done) {
+    if (client.isVisible(blackbook.helpers.saveButton, done)) {
+      client.click(blackbook.helpers.saveButton);
     }
   },
 

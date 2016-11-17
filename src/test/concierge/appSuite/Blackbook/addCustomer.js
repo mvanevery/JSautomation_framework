@@ -58,7 +58,7 @@ describe('Smoke Test: Search Customer', () => {
 
   describe('Enter First Name', () => {
     it('should enter a name in the first name field', (done) => {
-      blackbook.enterFirstname(done, "Automation");
+      blackbook.enterFirstnameModal(done, "Automation");
     });
   });
 
@@ -70,7 +70,7 @@ describe('Smoke Test: Search Customer', () => {
 
   describe('Enter Last Name', () => {
     it('should enter a name in the last name field', (done) => {
-      blackbook.enterLastname(done, "Test");
+      blackbook.enterLastnameModal(done, "Test");
     });
   });
 

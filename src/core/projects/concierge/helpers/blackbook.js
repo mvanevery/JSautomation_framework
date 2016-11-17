@@ -13,9 +13,22 @@ module.exports = {
       client.setValue(blackbook.helpers.firstName, firstName)
     }
   },
+
+  enterFirstnameModal(done, firstName) {
+    if(client.isVisible(blackbook.helpers.firstNameModal, done)) {
+      client.setValue(blackbook.helpers.firstNameModal, firstName)
+    }
+  },
+
   enterLastname(done, lastName) {
     if(client.isVisible(blackbook.helpers.lastName, done)) {
       client.setValue(blackbook.helpers.lastName, lastName)
+    }
+  },
+
+  enterLastnameModal(done, lastName) {
+    if(client.isVisible(blackbook.helpers.lastNameModal, done)) {
+      client.setValue(blackbook.helpers.lastNameModal, lastName)
     }
   },
 
@@ -25,9 +38,21 @@ module.exports = {
     }
   },
 
+  enterPhoneModal(done, phone) {
+    if(client.isVisible(blackbook.helpers.phoneModal, done)) {
+      client.setValue(blackbook.helpers.phoneModal, phone)
+    }
+  },
+
   enterEmail(done, email) {
     if(client.isVisible(blackbook.helpers.email, done)) {
       client.setValue(blackbook.helpers.email, email)
+    }
+  },
+
+  enterEmailModal(done, email) {
+    if(client.isVisible(blackbook.helpers.emailModal, done)) {
+      client.setValue(blackbook.helpers.emailModal, email)
     }
   },
 

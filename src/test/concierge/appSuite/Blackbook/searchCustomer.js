@@ -89,4 +89,22 @@ describe('Smoke Test: Search Customer', () => {
       blackbook.verifySearchResult(done);
     });
   });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 2 seconds', (done) => {
+      common.pause(done, 5000);
+    });
+  });
+
+  describe('Logout', () => {
+    it('Should Logout from the current user', (done) => {
+      login.logoutUser(done);
+    });
+  });
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 5000);
+    });
+  });
+
 })

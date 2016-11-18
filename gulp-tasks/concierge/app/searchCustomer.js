@@ -1,5 +1,5 @@
 /**
- * Created by mvanevery on 10/11/16.
+ * Created by jharre on 11/18/16.
  */
 const mochaOptions = {
   timeout: '50000',

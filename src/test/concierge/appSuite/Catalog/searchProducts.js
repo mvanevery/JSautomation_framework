@@ -8,7 +8,7 @@ const common = require('../../../../core/projects/concierge/helpers/common');
 const login = require('../../../../core/projects/concierge/helpers/loginPage');
 const blackbook = require('../../../../core/projects/concierge/helpers/blackbook');
 const landing = require('../../../../core/projects/concierge/helpers/landingPage');
-
+const catalog = require('../../../../core/projects/concierge/helpers/catalog');
 
 //export let CUSTOMERNAME;
 //const setName = (name) => CUSTOMERNAME = name;
@@ -38,7 +38,7 @@ describe('Smoke Test: Search Products', () => {
 
   describe('Click the Catalog menu option', () => {
     it('Should open Catalog sections', (done) => {
-      landing.navProducts(done);
+      landing.navCatalog(done);
     });
   });
 
@@ -50,7 +50,7 @@ describe('Smoke Test: Search Products', () => {
 
     describe('Click the New Arrivals menu option', () => {
       it('Should open New Arrivals sections', (done) => {
-        landing.navProduct(done, "New Arrivals");
+        catalog.LeftDrawer(done, "New Arrivals");
       });
     });
 
@@ -62,7 +62,7 @@ describe('Smoke Test: Search Products', () => {
 
     describe('Click the Catalog menu option', () => {
       it('Should open Catalog sections', (done) => {
-        landing.navProducts(done);
+        landing.navCatalog(done);
       });
     });
 
@@ -74,7 +74,7 @@ describe('Smoke Test: Search Products', () => {
 
     describe('Click the Shoes menu option', () => {
       it('Should open Shoes sections', (done) => {
-        landing.navProduct(done, "Shoes");
+        catalog.LeftDrawer(done, "Shoes");
       });
     });
 
@@ -84,19 +84,21 @@ describe('Smoke Test: Search Products', () => {
       });
     });
 
-        describe('Click the Shoes menu option', () => {
-          it('Should open Shoes sections', (done) => {
-            landing.navProduct(done, "Flats");
-          });
-        });
+    describe('Click the Flats menu option', () => {
+      it('Should open Flats section', (done) => {
+        catalog.LeftDrawer(done, "Flats");
+      });
+    });
 
-        describe('Pausing', () => {
-          it('Should pause the test for 5 seconds', (done) => {
-            common.pause(done, 5000);
-          });
-        });
+    describe('Pausing', () => {
+      it('Should pause the test for 5 seconds', (done) => {
+        common.pause(done, 5000);
+      });
+    });
 
-
-
-
+//    describe('Click the Shoes menu option', () => {
+//      it('Should open Flats section', (done) => {
+//        catalog.LeftDrawer(done, "Flats");
+//      });
+//    });
 })

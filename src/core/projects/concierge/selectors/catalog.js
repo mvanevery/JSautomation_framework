@@ -7,10 +7,12 @@ module.exports = {
     baseUrl: 'localhost:3000/'
   },
   helpers: {
-
-    newArrival:'//div[contains(text()."New Arrivals"}]',
-    apparel: '//div[contains(text(),"Apparel"}]',
-    shoes: '//div[contains(text(),"Shoes")]',
-
+      products: {
+        newArrivals: '//div[contains(text(),"New Arrivals")]',
+        shoes: '//div[contains(text(),"Shoes")]',
+        flats: '//div[contains(text(),"Flats")]',
+      }
   }
 }
+
+

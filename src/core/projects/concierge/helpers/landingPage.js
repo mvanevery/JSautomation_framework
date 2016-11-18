@@ -24,35 +24,11 @@ module.exports = {
     done();
   },
 
-  navProducts(done) {
+  navCatalog(done) {
     if (client.isVisible(landingPage.helpers.productIcon)) {
       client.click(landingPage.helpers.productIcon)
     } else {
       console.log('	ERROR: The Catalog icon is not in the menu.');
-    }
-    done();
-  },
-
-  navProduct(done, catalogLabel) {
-    if (client.isVisible(landingPage.helpers.menuNewArrivals.newArrivals)) {
-    console.log(catalogLabel);
-      if (catalogLabel == 'New Arrivals')
-      {
-        client.click(landingPage.helpers.menuNewArrivals.newArrivals);
-      }
-      else if (catalogLabel == 'Shoes')
-      {
-        client.click(landingPage.helpers.menuNewArrivals.Shoes);
-      }
-            else if (catalogLabel == 'Flats')
-            {
-              client.click(landingPage.helpers.menuNewArrivals.flats);
-            }
-      else {
-            console.log('	ERROR: The New Arrivals or Shoes icon is not in the menu.');
-          }
-    } else {
-      console.log('	ERROR: The New Arrivals or Shoes icon is not in the menu.');
     }
     done();
   },

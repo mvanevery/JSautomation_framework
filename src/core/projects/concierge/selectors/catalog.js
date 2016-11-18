@@ -1,5 +1,5 @@
 /**
- * Created by mvanevery on 11/14/16.
+ * Created by jharre on 11/18/16.
  */
 
 module.exports = {
@@ -7,10 +7,14 @@ module.exports = {
     baseUrl: 'localhost:3000/'
   },
   helpers: {
-      products: {
+      catalogMenuTitle: '//div[contains(text(),"Catalog")]',
+      productCategories: {
         newArrivals: '//div[contains(text(),"New Arrivals")]',
         shoes: '//div[contains(text(),"Shoes")]',
         flats: '//div[contains(text(),"Flats")]',
+      },
+      products: {
+        edisonFlatsRoses: '//div[contains(text(),"Edison Flats-Roses")]'
       }
   }
 }

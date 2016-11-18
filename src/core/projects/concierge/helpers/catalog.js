@@ -1,3 +1,6 @@
+/**
+ * Created by jharre on 11/18/16.
+ */
 const clientType = require('../../../projects/config').client;
 const client = require(`../../../../core/clients/${clientType}`).client;
 const project = require('../../../projects/config').project;
@@ -16,12 +19,12 @@ const $ = require('chai-Jquery');
 
 module.exports = {
   LeftDrawer(done, catalogLabel) {
-    if (client.isVisible(catalog.helpers.products.newArrivals)) {
+    if (client.isVisible(catalog.helpers.productCategories.newArrivals, done)) {
       if (catalogLabel == 'New Arrivals')
       {
-        client.click(catalog.helpers.products.newArrivals)
+        client.click(catalog.helpers.productCategories.newArrivals)
           .then (() => {
-            client.getText(catalog.helpers.products.newArrivals)
+            client.getText(catalog.helpers.productCategories.newArrivals)
               .then((text) => {
                 try {
                   assert.equal(catalogLabel, text, 'The New Arrivals page is not displayed');
@@ -33,13 +36,13 @@ module.exports = {
       }
       else if (catalogLabel == 'Shoes')
       {
-        client.click(catalog.helpers.products.shoes)
+        client.click(catalog.helpers.productCategories.shoes)
       }
       else if (catalogLabel == 'Flats')
       {
-        client.click(catalog.helpers.products.flats)
+        client.click(catalog.helpers.productCategories.flats)
           .then (() => {
-            client.getText(catalog.helpers.products.flats)
+            client.getText(catalog.helpers.productCategories.flats)
               .then((text) => {
                 try {
                   assert.equal(catalogLabel, text, 'The Flats page is not displayed');
@@ -56,6 +59,21 @@ module.exports = {
     } else {
       console.log('	ERROR: The New Arrivals or Shoes icon is not in the menu.');
     }
-    done();
+  },
+  openProductDetailsPage(done) {
+    if(client.isVisible(catalog.helpers.products.edisonFlatsRoses, done)) {
+      client.click(catalog.helpers.products.edisonFlatsRoses)
+    }
+  },
+  productDetailsPage(done,productLabel) {
+    client.getText(catalog.helpers.products.edisonFlatsRoses)
+      .then((text) => {
+        try {
+          assert.equal(productLabel, text, 'The Products Detail page is not displayed');
+          done();
+        } catch (err) {
+          done(err);
+        }
+      });
   }
 }

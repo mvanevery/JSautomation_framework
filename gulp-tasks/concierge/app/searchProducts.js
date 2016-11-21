@@ -1,5 +1,5 @@
 /**
- * Created by jharre on 11/18/16.
+ * Created by jharre on 11/21/16.
  */
 const mochaOptions = {
   timeout: '50000',
@@ -20,7 +20,7 @@ function handleError(err) {
 
 module.exports = function (gulp, mocha) {
   return function () {
-    return gulp.src('./src/test/concierge/appSuite/Blackbook/searchCustomer.js', {read: false})
+    return gulp.src('./src/test/concierge/appSuite/Catalog/searchProducts.js', {read: false})
       .pipe(mocha(mochaOptions).on("error", handleError));
   }
 };

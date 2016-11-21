@@ -2,7 +2,7 @@
  * Created by mvanevery on 11/7/16.
  */
 /**
- *  C1595 Talbots E2E - Search Customer(All Clients).
+ *  C2695 - Talbots E2E - Search Customer (My Clients).
  */
 const common = require('../../../../core/projects/concierge/helpers/common');
 const login = require('../../../../core/projects/concierge/helpers/loginPage');

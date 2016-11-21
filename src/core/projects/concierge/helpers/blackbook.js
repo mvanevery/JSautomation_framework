@@ -8,6 +8,12 @@ const assert = require('chai').assert;
 
 module.exports = {
 
+  toggleMyClients(done) {
+    if(client.isVisible(blackbook.helpers.myClientsToggle, done)) {
+      client.touch(blackbook.helpers.myClientsToggle)
+    }
+  },
+
   enterFirstname(done, firstName) {
     if(client.isVisible(blackbook.helpers.firstName, done)) {
       client.setValue(blackbook.helpers.firstName, firstName)
@@ -62,9 +68,57 @@ module.exports = {
     }
   },
 
+  enterCityModal(done, city) {
+    if(client.isVisible(blackbook.helpers.cityModal, done)) {
+      client.setValue(blackbook.helpers.cityModal, city)
+    }
+  },
+
   enterZipcode(done, zipcode) {
     if(client.isVisible(blackbook.helpers.zipcode, done)) {
       client.setValue(blackbook.helpers.zipcode, zipcode)
+    }
+  },
+
+  enterZipcodeModal(done, zipcode) {
+    if(client.isVisible(blackbook.helpers.zipcodeModal, done)) {
+      client.setValue(blackbook.helpers.zipcodeModal, zipcode)
+    }
+  },
+
+  enterState(done, state) {
+    if(client.isVisible(blackbook.helpers.state, done)) {
+      client.setValue(blackbook.helpers.state, state)
+    }
+  },
+
+  enterStateModal(done, state) {
+    if(client.isVisible(blackbook.helpers.stateModal, done)) {
+      client.setValue(blackbook.helpers.stateModal, state)
+    }
+  },
+
+  enterStreet1(done, street1) {
+    if(client.isVisible(blackbook.helpers.street1Modal, done)) {
+      client.setValue(blackbook.helpers.street1Modal, street1)
+    }
+  },
+
+  enterStreet2(done, street2) {
+    if(client.isVisible(blackbook.helpers.street2Modal, done)) {
+      client.setValue(blackbook.helpers.street2Modal, street2)
+    }
+  },
+
+  enterCountryModal(done, country) {
+    if(client.isVisible(blackbook.helpers.countryModal, done)) {
+      client.setValue(blackbook.helpers.countryModal, country)
+    }
+  },
+
+  modalAddressType(done, type) {
+    if(client.isVisible(blackbook.helpers.addresssTypeModal, done)) {
+      client.selectByValue(blackbook.helpers.addresssTypeModal, type)
     }
   },
 
@@ -86,9 +140,33 @@ module.exports = {
     }
   },
 
+  modalPhoneToggle(done) {
+    if(client.isVisible(blackbook.helpers.phoneToggleModal, done)) {
+      client.click(blackbook.helpers.phoneToggleModal)
+    }
+  },
+
+  modalPhoneType(done, type) {
+    if(client.isVisible(blackbook.helpers.phoneTypeModal, done)) {
+      client.selectByValue(blackbook.helpers.phoneTypeModal, type)
+    }
+  },
+
   openEmail(done) {
     if(client.isVisible(blackbook.helpers.modalHeader, done)) {
       client.click(blackbook.helpers.addEmailModal)
+    }
+  },
+
+  modalEmailToggle(done) {
+    if(client.isVisible(blackbook.helpers.emailToggleModal, done)) {
+      client.click(blackbook.helpers.emailToggleModal)
+    }
+  },
+
+  modalEmailType(done, type) {
+    if(client.isVisible(blackbook.helpers.emailTypeModal, done)) {
+      client.selectByValue(blackbook.helpers.emailTypeModal, type)
     }
   },
 
@@ -108,6 +186,20 @@ module.exports = {
             done(err);
           }
         })
+    }
+  },
+
+  selectCustomerCard(done) {
+    if(client.isVisible(blackbook.helpers.searchButton, done)) {
+      client.click(blackbook.helpers.searchAvatar)
+        //.then((text) => {
+        //  console.log(text);
+        //  try {
+        //    assert.equal('Horse', text, 'The expected value was not equal to the text');
+        //  } catch (err) {
+        //    done(err);
+        //  }
+        //})
     }
   },
 

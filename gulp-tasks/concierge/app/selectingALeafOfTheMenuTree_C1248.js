@@ -1,6 +1,11 @@
 /**
- * Created by jharre on 11/21/16.
+ * Project:     Concierge
+ * TestName     Catalog/selectALeafOfTheMenuTree_C1248
+ * TestSteps:   https://madmobile.testrail.com/index.php?/cases/view/1248
+ * Author:      John Harre
+ * Date:        11/21/2016
  */
+
 const mochaOptions = {
   timeout: '50000',
   reporter: 'mochawesome',
@@ -20,7 +25,8 @@ function handleError(err) {
 
 module.exports = function (gulp, mocha) {
   return function () {
-    return gulp.src('./src/test/concierge/appSuite/Catalog/searchProducts.js', {read: false})
+    return gulp.src('./src/test/concierge/appSuite/Catalog/selectingALeafOfTheMenuTree_C1248.js', {read: false})
       .pipe(mocha(mochaOptions).on("error", handleError));
   }
 };
+

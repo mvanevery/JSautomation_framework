@@ -16,8 +16,7 @@ module.exports = {
         searchIcon: '//div[@class="mm-o-icon icon-search"]',
         addIcon: 'mm-o-icon mm-c-nav__icon icon-create-fill',
         productSearchField: '//input[@name="Product Search"]',
-        productIcon: '//div[@class="mm-o-icon icon-top-products"]',
-        menuNewArrivals:'li[contains(@span="New Arrivals")]',
+        productIcon: '//div[@class="mm-o-icon icon-hamburger-menu"]',
         menu: '//a[contains(@href, "/")]',
         email: '//div[@class="mm-o-icon icon-email-fill"]',
         logout: '//div[@data-id="module-logout"]',
@@ -25,7 +24,7 @@ module.exports = {
         logoutCancel: '//div[contains(text(),"Cancel")]',
         //logoutCancel:'//button[@data-id="cancel"]',
         logoutConfirm: '//div[contains(text(),"Log Out")]'
-        //logoutConfirm: '//button[@data-id="logout")]'
+        //logoutConfirm: '//div[@data-id="logout")]'
     }
 }
 

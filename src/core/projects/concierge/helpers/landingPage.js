@@ -8,10 +8,9 @@ const provisioning = require(`../../../projects/${project}/selectors/provisionin
 const store = require(`../../../projects/${project}/selectors/store`);
 const planner = require(`../../../projects/${project}/selectors/planner`);
 const blackbook = require(`../../../projects/${project}/selectors/blackbook`);
+const catalog = require(`../../../projects/${project}/selectors/catalog`);
 const assert = require('chai').assert;
 const $ = require('chai-Jquery');
-
-
 
 module.exports = {
 
@@ -24,16 +23,21 @@ module.exports = {
     done();
   },
 
-
-
-  navProduct(done) {
-    if (client.isVisible(landingPage.helpers.productIcon)) {
+  navCatalog(done, catalogLabel) {
+    if (client.isVisible(landingPage.helpers.productIcon, done)) {
       client.click(landingPage.helpers.productIcon)
-        .then(() => {
-          client.getText('h2')
-        })
+        .then (() => {
+          client.getText(catalog.helpers.catalogMenuTitle)
+            .then((text) => {
+              try {
+                assert.equal(catalogLabel, text, 'The Catalog drawer is not displayed');
+              } catch (err) {
+                done(err);
+              }
+            });
+        });
     } else {
-      console.log('	ERROR: The Dashboard icon is not in the menu.');
+      console.log('	ERROR: The Catalog icon is not in the menu.');
     }
   },
 

@@ -40,7 +40,7 @@ curl -H $CRUMB -X POST http://conciergeautomation:94ba2b7d36d3d251e09edeec48d598
   <triggers>
     <hudson.triggers.TimerTrigger>
       <spec># Run once a day at 1am EST
-H 1 * * *</spec>
+H H * * 1,3,5,7</spec>
     </hudson.triggers.TimerTrigger>
   </triggers>
   <concurrentBuild>false</concurrentBuild>
@@ -48,11 +48,11 @@ H 1 * * *</spec>
     <hudson.tasks.Shell>
       <command># npm install for archon-framework
 # JCH 11/11/2016 disabled due to npm hanging on install. disabled Delete workspace before build starts ^^^^
-##npm install</command>
+npm install</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command># JCH 11/11/2016 disabled due to npm hanging on install. disabled Delete workspace before build starts ^^^^
-##sleep 10</command>
+sleep 10</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command># delete previous iOS app build from device
@@ -99,7 +99,7 @@ pkill node /usr/local/bin/appium</command>
   </builders>
   <publishers>
     <hudson.plugins.emailext.ExtendedEmailPublisher plugin="email-ext@2.52">
-      <recipientList>jharre@madmobile.com,afeldmeyer@madmobile.com,mvanevery@madmobile.com</recipientList>
+      <recipientList>jharre@madmobile.com</recipientList>
       <configuredTriggers>
         <hudson.plugins.emailext.plugins.trigger.AlwaysTrigger>
           <email>
@@ -121,7 +121,7 @@ pkill node /usr/local/bin/appium</command>
       <defaultContent>$BUILD_LOG</defaultContent>
       <attachmentsPattern>src/test/concierge/reports/report.html</attachmentsPattern>
       <presendScript>list = build.logFile.readLines()
-FailedJobCount = list.count {it.contains(&quot;failed&quot;) || it.contains(&quot;failing&quot;) || it.contains(&quot;failure&quot;)}
+FailedJobCount = list.count {it.contains(&quot;failed&quot;) || it.contains(&quot;failing&quot;) || it.contains(&quot;failure&quot;) || it.contains(&quot;MODULE_NOT_FOUND&quot;)}
 AbortedJobCount = list.count {it.contains(&quot;aborted&quot;)}
 if (FailedJobCount &gt; 0)
 {

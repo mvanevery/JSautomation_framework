@@ -1,5 +1,9 @@
 /**
- * Created by mvanevery on 11/3/16.
+ * Project:     Concierge
+ * Test Name:   addAppointment
+ * Test Steps:  https://madmobile.testrail.com/index.php?/cases/view/1015
+ * Author:      Mike Van Every
+ * Date:        11/1/2016
  */
 
 const common = require('../../../../core/projects/concierge/helpers/common');

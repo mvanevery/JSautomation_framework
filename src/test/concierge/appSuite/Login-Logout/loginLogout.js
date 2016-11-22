@@ -1,4 +1,11 @@
 /**
+ * Project:     Concierge
+ * Test Name:   loginLogout
+ * Test Steps:  https://madmobile.testrail.com/index.php?/cases/view/985
+ * Test Steps:  https://madmobile.testrail.com/index.php?/cases/view/991
+ * Author:      Mike Van Every
+ * Date:        11/1/2016
+ *
  * ios_webkit_debug_proxy -c dff8ad9bb716a56766d98b2232c3f541ba9bb796:27753 -d (start proxy)
  *
  * appium (start server)

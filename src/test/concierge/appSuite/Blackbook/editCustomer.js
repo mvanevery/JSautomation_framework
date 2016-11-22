@@ -1,23 +1,13 @@
 /**
- * Created by mvanevery on 11/7/16.
+ * Created by mvanevery on 11/16/16.
  */
-/**
- * Project:     Concierge
- * Test Name:   searCustomer
- * Test Steps:  https://madmobile.testrail.com/index.php?/cases/view/2695
- * C2695 - Talbots E2E - Search Customer (My Clients).
- * Author:      Mike Van Every
- * Date:        11//2016
 
- */
+
 const common = require('../../../../core/projects/concierge/helpers/common');
 const login = require('../../../../core/projects/concierge/helpers/loginPage');
 const blackbook = require('../../../../core/projects/concierge/helpers/blackbook');
 const landing = require('../../../../core/projects/concierge/helpers/landingPage');
 
-
-//export let CUSTOMERNAME;
-//const setName = (name) => CUSTOMERNAME = name;
 
 describe('Smoke Test: Search Customer', () => {
   before((done) => {
@@ -56,7 +46,7 @@ describe('Smoke Test: Search Customer', () => {
 
   describe('Enter First Name', () => {
     it('should enter a name in the first name field', (done) => {
-      blackbook.enterFirstname(done, "J");
+      blackbook.enterFirstname(done, "Automation");
     });
   });
 
@@ -68,7 +58,7 @@ describe('Smoke Test: Search Customer', () => {
 
   describe('Enter Last Name', () => {
     it('should enter a name in the last name field', (done) => {
-      blackbook.enterLastname(done, "Smith");
+      blackbook.enterLastname(done, "Test");
     });
   });
 
@@ -90,9 +80,9 @@ describe('Smoke Test: Search Customer', () => {
     });
   });
 
-  describe('Verify Search Results', () => {
-    it('Should verify the customer search results', (done) => {
-      blackbook.verifySearchResult(done);
+  describe('Click the Search Card Avatar', () => {
+    it('Should click the search card avatar', (done) => {
+      blackbook.selectCustomerCard(done,'Customer Profile');
     });
   });
 
@@ -102,15 +92,77 @@ describe('Smoke Test: Search Customer', () => {
     });
   });
 
-  describe('Logout', () => {
-    it('Should Logout from the current user', (done) => {
-      login.logoutUser(done);
+  //describe('Verify Customer Name', () => {
+  //  it('Should verify the customer name on the Customer Profile page', (done) => {
+  //    blackbook.verifyCustomerName(done, 'Automation Test');
+  //  });
+  //});
+  //
+  //describe('Pausing', () => {
+  //  it('Should pause the test for 1 seconds', (done) => {
+  //    common.pause(done, 1000);
+  //  });
+  //});
+
+  describe('Click the Edit Icon', () => {
+    it('Should click the edit icon', (done) => {
+      blackbook.openEditCustomer(done, 'Edit Customer');
     });
   });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 1 seconds', (done) => {
+      common.pause(done, 1000);
+    });
+  });
+
+  describe('Enter Last Name', () => {
+    it('should enter a name in the last name field', (done) => {
+      blackbook.enterLastnameModal(done, "Test");
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 1 seconds', (done) => {
+      common.pause(done, 1000);
+    });
+  });
+
+  describe('Click the DONE button', () => {
+    it('should click the DONE button and save the customer', (done) => {
+      blackbook.save(done);
+    });
+  });
+
   describe('Pausing', () => {
     it('Should pause the test for 5 seconds', (done) => {
       common.pause(done, 5000);
     });
   });
+  //
+  //describe('Verify Customer Name', () => {
+  //  it('Should verify the customer name on the Customer Profile page', (done) => {
+  //    blackbook.verifyCustomerName(done, 'Automation Test Updated');
+  //  });
+  //});
+  //
+  //describe('Pausing', () => {
+  //  it('Should pause the test for 1 seconds', (done) => {
+  //    common.pause(done, 1000);
+  //  });
+  //});
+
+  describe('Logout', () => {
+    it('Should Logout from the current user', (done) => {
+      login.logoutUser(done);
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 2 seconds', (done) => {
+      common.pause(done, 2000);
+    });
+  });
+
 
 })

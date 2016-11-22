@@ -7,7 +7,7 @@ const mochaOptions = {
   reporterOptions: {
     reportDir: './src/test/concierge/reports',
     reportName: 'report',
-    reportTitle: 'Add Appointment through Widget',
+    reportTitle: 'Search Customer',
     inlineAssets: true
   }
 };
@@ -20,7 +20,7 @@ function handleError(err) {
 
 module.exports = function (gulp, mocha) {
   return function () {
-    return gulp.src('./src/test/concierge/appSuite/Email/replyingToAThread_C1639.js', {read: false})
+    return gulp.src('./src/test/concierge/appSuite/Blackbook/searchAllCustomers.js', {read: false})
       .pipe(mocha(mochaOptions).on("error", handleError));
   }
 };

@@ -8,14 +8,33 @@ const assert = require('chai').assert;
 
 module.exports = {
 
+  toggleMyClients(done) {
+    if(client.isVisible(blackbook.helpers.myClientsToggle, done)) {
+      client.touch(blackbook.helpers.myClientsToggle)
+    }
+  },
+
   enterFirstname(done, firstName) {
     if(client.isVisible(blackbook.helpers.firstName, done)) {
       client.setValue(blackbook.helpers.firstName, firstName)
     }
   },
+
+  enterFirstnameModal(done, firstName) {
+    if(client.isVisible(blackbook.helpers.firstNameModal, done)) {
+      client.setValue(blackbook.helpers.firstNameModal, firstName)
+    }
+  },
+
   enterLastname(done, lastName) {
     if(client.isVisible(blackbook.helpers.lastName, done)) {
       client.setValue(blackbook.helpers.lastName, lastName)
+    }
+  },
+
+  enterLastnameModal(done, lastName) {
+    if(client.isVisible(blackbook.helpers.lastNameModal, done)) {
+      client.setValue(blackbook.helpers.lastNameModal, lastName)
     }
   },
 
@@ -25,9 +44,21 @@ module.exports = {
     }
   },
 
+  enterPhoneModal(done, phone) {
+    if(client.isVisible(blackbook.helpers.phoneModal, done)) {
+      client.setValue(blackbook.helpers.phoneModal, phone)
+    }
+  },
+
   enterEmail(done, email) {
     if(client.isVisible(blackbook.helpers.email, done)) {
       client.setValue(blackbook.helpers.email, email)
+    }
+  },
+
+  enterEmailModal(done, email) {
+    if(client.isVisible(blackbook.helpers.emailModal, done)) {
+      client.setValue(blackbook.helpers.emailModal, email)
     }
   },
 
@@ -37,9 +68,57 @@ module.exports = {
     }
   },
 
+  enterCityModal(done, city) {
+    if(client.isVisible(blackbook.helpers.cityModal, done)) {
+      client.setValue(blackbook.helpers.cityModal, city)
+    }
+  },
+
   enterZipcode(done, zipcode) {
     if(client.isVisible(blackbook.helpers.zipcode, done)) {
       client.setValue(blackbook.helpers.zipcode, zipcode)
+    }
+  },
+
+  enterZipcodeModal(done, zipcode) {
+    if(client.isVisible(blackbook.helpers.zipcodeModal, done)) {
+      client.setValue(blackbook.helpers.zipcodeModal, zipcode)
+    }
+  },
+
+  enterState(done, state) {
+    if(client.isVisible(blackbook.helpers.state, done)) {
+      client.setValue(blackbook.helpers.state, state)
+    }
+  },
+
+  enterStateModal(done, state) {
+    if(client.isVisible(blackbook.helpers.stateModal, done)) {
+      client.setValue(blackbook.helpers.stateModal, state)
+    }
+  },
+
+  enterStreet1(done, street1) {
+    if(client.isVisible(blackbook.helpers.street1Modal, done)) {
+      client.setValue(blackbook.helpers.street1Modal, street1)
+    }
+  },
+
+  enterStreet2(done, street2) {
+    if(client.isVisible(blackbook.helpers.street2Modal, done)) {
+      client.setValue(blackbook.helpers.street2Modal, street2)
+    }
+  },
+
+  enterCountryModal(done, country) {
+    if(client.isVisible(blackbook.helpers.countryModal, done)) {
+      client.setValue(blackbook.helpers.countryModal, country)
+    }
+  },
+
+  modalAddressType(done, type) {
+    if(client.isVisible(blackbook.helpers.addresssTypeModal, done)) {
+      client.selectByValue(blackbook.helpers.addresssTypeModal, type)
     }
   },
 
@@ -61,9 +140,33 @@ module.exports = {
     }
   },
 
+  modalPhoneToggle(done) {
+    if(client.isVisible(blackbook.helpers.phoneToggleModal, done)) {
+      client.click(blackbook.helpers.phoneToggleModal)
+    }
+  },
+
+  modalPhoneType(done, type) {
+    if(client.isVisible(blackbook.helpers.phoneTypeModal, done)) {
+      client.selectByValue(blackbook.helpers.phoneTypeModal, type)
+    }
+  },
+
   openEmail(done) {
     if(client.isVisible(blackbook.helpers.modalHeader, done)) {
       client.click(blackbook.helpers.addEmailModal)
+    }
+  },
+
+  modalEmailToggle(done) {
+    if(client.isVisible(blackbook.helpers.emailToggleModal, done)) {
+      client.click(blackbook.helpers.emailToggleModal)
+    }
+  },
+
+  modalEmailType(done, type) {
+    if(client.isVisible(blackbook.helpers.emailTypeModal, done)) {
+      client.selectByValue(blackbook.helpers.emailTypeModal, type)
     }
   },
 
@@ -86,11 +189,50 @@ module.exports = {
     }
   },
 
-  save(done) {
-    if (client.isVisible(blackbook.helpers.saveButton, done)) {
-      client.click(blackbook.helpers.saveButton);
+  selectCustomerCard(done) {
+    if(client.isVisible(blackbook.helpers.searchButton, done)) {
+      client.click(blackbook.helpers.searchAvatar)
+        //.then((text) => {
+        //  console.log(text);
+        //  try {
+        //    assert.equal('Horse', text, 'The expected value was not equal to the text');
+        //  } catch (err) {
+        //    done(err);
+        //  }
+        //})
     }
   },
+
+  openEditCustomer(done, expected) {
+    if (client.isVisible(blackbook.helpers.blackbookHeader, done)) {
+      client.click(blackbook.helpers.editIcon)
+        .then(() => {
+          client.getText(blackbook.helpers.modalHeader)
+            .then((text) => {
+              try {
+                assert.equal(expected, text, 'The expected value was not equal to the text');
+              } catch (err) {
+                done(err);
+              }
+            })
+        })
+    }
+  },
+
+  verifyCustomerName(done, expected) {
+    if(client.isVisible(blackbook.helpers.blackbookHeader, done)) {
+      client.getText(blackbook.helpers.customerName)
+        .then((text) => {
+          try {
+            assert.equal(expected, text, 'The expected value was not equal to the text');
+          } catch (err) {
+            done(err);
+          }
+        })
+    }
+  }
+
+
 
   //selectCustomer(done) {
   //  client.waitForVisible(config.helpers.txt_Customer_Ryan, 5000);

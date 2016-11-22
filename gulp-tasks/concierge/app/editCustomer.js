@@ -1,5 +1,5 @@
 /**
- * Created by jharre on 11/9/16.
+ * Created by mvanevery on 10/14/16.
  */
 const mochaOptions = {
   timeout: '50000',
@@ -7,7 +7,7 @@ const mochaOptions = {
   reporterOptions: {
     reportDir: './src/test/concierge/reports',
     reportName: 'report',
-    reportTitle: 'Add Appointment through Widget',
+    reportTitle: 'Add Appointment through Planner page',
     inlineAssets: true
   }
 };
@@ -20,7 +20,7 @@ function handleError(err) {
 
 module.exports = function (gulp, mocha) {
   return function () {
-    return gulp.src('./src/test/concierge/appSuite/Email/deleteEmails_C1632.js', {read: false})
+    return gulp.src('./src/test/concierge/appSuite/Blackbook/editCustomer.js', {read: false})
       .pipe(mocha(mochaOptions).on("error", handleError));
   }
 };

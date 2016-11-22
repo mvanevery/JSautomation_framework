@@ -88,7 +88,7 @@ module.exports = {
     if (client.isVisible(landingPage.helpers.searchIcon, done)) {
       client.click(landingPage.helpers.searchIcon)
         .then(() => {
-          client.getName(landingPage.helpers.productSearchField)
+          client.getText(landingPage.helpers.productSearchField)
             .then((text) => {
               console.log(text);
               //try {

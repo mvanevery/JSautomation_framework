@@ -203,11 +203,36 @@ module.exports = {
     }
   },
 
-  save(done) {
-    if (client.isVisible(blackbook.helpers.saveButton, done)) {
-      client.click(blackbook.helpers.saveButton);
+  openEditCustomer(done, expected) {
+    if (client.isVisible(blackbook.helpers.blackbookHeader, done)) {
+      client.click(blackbook.helpers.editIcon)
+        .then(() => {
+          client.getText(blackbook.helpers.modalHeader)
+            .then((text) => {
+              try {
+                assert.equal(expected, text, 'The expected value was not equal to the text');
+              } catch (err) {
+                done(err);
+              }
+            })
+        })
     }
   },
+
+  verifyCustomerName(done, expected) {
+    if(client.isVisible(blackbook.helpers.blackbookHeader, done)) {
+      client.getText(blackbook.helpers.customerName)
+        .then((text) => {
+          try {
+            assert.equal(expected, text, 'The expected value was not equal to the text');
+          } catch (err) {
+            done(err);
+          }
+        })
+    }
+  }
+
+
 
   //selectCustomer(done) {
   //  client.waitForVisible(config.helpers.txt_Customer_Ryan, 5000);

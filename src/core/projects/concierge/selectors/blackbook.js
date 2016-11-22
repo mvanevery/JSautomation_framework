@@ -30,7 +30,7 @@ module.exports = {
 
       searchResults:`//div[contains(text(),"Jerry")]`,
       saveButton:'//button[@data-id="Done"]',
-      modalHeader:'//div[contains(text(),"Add Customer")]',
+      modalHeader:'//div[@data-id="modalHeader"]',
       firstNameModal:'//input[@data-id="firstNameAddModal"]',
       lastNameModal:'//input[@data-id="lastNameAddModal"]',
       addPhoneModal:'//button[@data-id="addPhone"]',
@@ -54,9 +54,10 @@ module.exports = {
 
       //================================================== CUSTOMER PROFILE ============================================
 
-      profileTitle: '//div[contains(text(),"Customer Profile"]',
       customerName: '//div[contains(text(),"Automation Test"]',
-      editIcon:'//button[@data-id="editCustomer"]',
+      //customerName:'//div[@data-id="contactFullName"]',
+      editIcon:'//div[@class="mm-o-icon icon-edit-customer"]',
+      //editIcon:'//button[@data-id="editCustomer"]',
       emailIcon: '//div[@data-id="email"]',
       blankEmailIcon: '//div[@class=:mm-o-icon icon-blank-template"]',
       birthdayEmailIcon: '',

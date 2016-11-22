@@ -82,7 +82,7 @@ describe('Smoke Test: Search Customer', () => {
 
   describe('Click the Search Card Avatar', () => {
     it('Should click the search card avatar', (done) => {
-      blackbook.selectCustomerCard(done);
+      blackbook.selectCustomerCard(done,'Customer Profile');
     });
   });
 
@@ -118,7 +118,7 @@ describe('Smoke Test: Search Customer', () => {
 
   describe('Enter Last Name', () => {
     it('should enter a name in the last name field', (done) => {
-      blackbook.enterLastnameModal(done, "Test Updated");
+      blackbook.enterLastnameModal(done, "Test");
     });
   });
 

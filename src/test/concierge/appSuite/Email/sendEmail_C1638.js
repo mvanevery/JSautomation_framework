@@ -70,7 +70,7 @@ describe('Smoke Test: Search Customer', () => {
 
   describe('Click Customer Card and Verify Customer Profile',() => {
     it('Should select the Customer Card and verify the customer profile', (done) => {
-      common.selectCustomer(done, 'Customer Profile');
+      common.selectCustomerCard(done, 'Customer Profile');
     });
   });
 

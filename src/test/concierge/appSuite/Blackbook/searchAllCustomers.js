@@ -1,10 +1,9 @@
 /**
- * Created by mvanevery on 11/17/16.
- */
-
-/**
- * Created by mvanevery on 11/7/16.
- */
+ * Project:     Concierge
+ * Test Name:   addAppointment
+ * Test Steps:  https://madmobile.testrail.com/index.php?/cases/view/1595
+ * Author:      Mike Van Every
+ * Date:        11/7/2016
 /**
  *  C1595 - Talbots E2E - Search Customer(All Clients).
  */

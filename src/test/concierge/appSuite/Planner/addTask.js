@@ -1,5 +1,5 @@
 /**
- *  * Project:     Concierge
+ * Project:     Concierge
  * Test Name:   addAppointment
  * Test Steps:  https://madmobile.testrail.com/index.php?/cases/view/1015
  * Author:      Mike Van Every

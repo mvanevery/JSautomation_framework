@@ -80,5 +80,10 @@ module.exports = {
           done(err);
         }
       });
+  },
+  catalogBackBtn(done) {
+    if(client.isVisible(catalog.helpers.catalogBackBtn, done)) {
+      client.click(catalog.helpers.catalogBackBtn)
+    }
   }
 }

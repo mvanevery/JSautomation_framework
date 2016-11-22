@@ -176,6 +176,11 @@ module.exports = {
     }
   },
 
+  save(done) {   if (client.isVisible(blackbook.helpers.saveButton, done)) {
+      client.click(blackbook.helpers.saveButton); 
+  } },
+
+
   verifySearchResult(done, expected) {
     if(client.isVisible(blackbook.helpers.searchResults, done)) {
       client.getText(blackbook.helpers.searchResults)
@@ -189,17 +194,17 @@ module.exports = {
     }
   },
 
-  selectCustomerCard(done) {
+  selectCustomerCard(done,expected) {
     if(client.isVisible(blackbook.helpers.searchButton, done)) {
       client.click(blackbook.helpers.searchAvatar)
-        //.then((text) => {
-        //  console.log(text);
-        //  try {
-        //    assert.equal('Horse', text, 'The expected value was not equal to the text');
-        //  } catch (err) {
-        //    done(err);
-        //  }
-        //})
+        .then((text) => {
+          client.getText(blackbook.helpers.blackbookHeader)
+          try {
+            assert.equal(expected, text, 'The expected value was not equal to the text');
+          } catch (err) {
+            done(err);
+          }
+        })
     }
   },
 

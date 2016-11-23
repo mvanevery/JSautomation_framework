@@ -7,6 +7,7 @@ const common = require('../../../../core/projects/concierge/helpers/common');
 const login = require('../../../../core/projects/concierge/helpers/loginPage');
 const blackbook = require('../../../../core/projects/concierge/helpers/blackbook');
 const landing = require('../../../../core/projects/concierge/helpers/landingPage');
+const search = require('../../../../core/projects/concierge/helpers/productSearch');
 
 describe('Smoke Test: Search Customer', () => {
   before((done) => {
@@ -33,7 +34,7 @@ describe('Smoke Test: Search Customer', () => {
 
   describe('Click the Blackbook menu option', () => {
     it('Should open Blackbook sections', (done) => {
-      landing.navSearch(done, "Product Searching Stuff");
+      landing.navSearch(done, "Product Search");
     });
   });
 
@@ -43,9 +44,21 @@ describe('Smoke Test: Search Customer', () => {
     });
   });
 
-  describe('Verify Search drawer is open', () => {
-    it('should verify that the drawer is open', (done) => {
-      search.verifySearchOpen(done);
+  //describe('Verify Search drawer is open', () => {
+  //  it('should verify that the drawer is open', (done) => {
+  //    search.verifySearchOpen(done);
+  //  });
+  //});
+  //
+  //describe('Pausing', () => {
+  //  it('Should pause the test for 2 seconds', (done) => {
+  //    common.pause(done, 2000);
+  //  });
+  //});
+
+  describe('Enter search criteria', () => {
+    it('Should enter search criteria and search', (done) => {
+      search.enterSearchCriteria(done, 'Shoes');
     });
   });
 
@@ -54,11 +67,5 @@ describe('Smoke Test: Search Customer', () => {
       common.pause(done, 2000);
     });
   });
-
-  describe('Enter search criteria', () => {
-    it('Should enter search criteria and search', (done) => {
-      search.enterSearchCriteria(done, 'Shoes')
-    })
-  })
 
 })

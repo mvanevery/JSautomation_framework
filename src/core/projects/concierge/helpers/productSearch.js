@@ -17,8 +17,8 @@ const $ = require('chai-Jquery');
 module.exports = {
 
   verifySearchOpen(done, expected) {
-    if (client.isVisible(search.helpers.productSearchField, done)) {
-          client.getText(search.helpers.productSearchField)
+    if (client.isVisible(search.helpers.searchField, done)) {
+          client.getText(search.helpers.searchField)
             .then((text) => {
               try {
                 assert.equal(expected, text, 'The expected value was not equal to the text');
@@ -31,7 +31,7 @@ module.exports = {
 
   enterSearchCriteria(done, criteria) {
     if (client.isVisible(search.helpers.searchField, done)) {
-      client.setValue(search.helpers.searchField, criteria )
+      client.setValue(search.helpers.searchField, criteria)
         .then(() => {
           client.click(search.helpers.searchButton);
         })

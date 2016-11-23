@@ -1,7 +1,7 @@
 /**
  * Project:     Concierge
- * Test Name:   deleteEmails_C1632
- * Test Steps:  https://madmobile.testrail.net/index.php?/cases/view/1632
+ * Test Name:   replyingToAThread_C1639
+ * Test Steps:  https://madmobile.testrail.net/index.php?/cases/view/1639
  * Author:      John Harre
  * Date:        11/9/2016
  *
@@ -12,14 +12,14 @@
  *      gulp initiate-<Test Name> --archon:concierge --test:<Test Name>
  */
 
-const common = require('../../../../core/projects/concierge/helpers/common');
+const common = require('../../../core/projects/concierge/helpers/common');
 
-describe('Smoke Test: Delete Emails C1632', () => {
+describe('Smoke Test: Replying To A Thread C1639', () => {
   before((done) => {
     common.goTo(done);
   });
 
-  //delete emails
+  //replying to a thread
 
   //logout
   describe('Logout', () => {
@@ -27,7 +27,6 @@ describe('Smoke Test: Delete Emails C1632', () => {
       common.logoutUser(done);
     });
   });
-
   describe('Pausing', () => {
     it('Should pause the test for 2 seconds', (done) => {
       common.pause(done, 2000);

@@ -7,6 +7,9 @@
 module.exports = {
 
   searchField:'//input[@name="Product Search"]',
+  searchButton:'//button[@data-id="searchFields"]',
+  resetButton:'//button[@data-id="resetFields',
+  searchPlpHeader: '//div[data-id="pageHeader"]',
 
 
 }

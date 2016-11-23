@@ -43,4 +43,22 @@ describe('Smoke Test: Search Customer', () => {
     });
   });
 
+  describe('Verify Search drawer is open', () => {
+    it('should verify that the drawer is open', (done) => {
+      search.verifySearchOpen(done);
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 2 seconds', (done) => {
+      common.pause(done, 2000);
+    });
+  });
+
+  describe('Enter search criteria', () => {
+    it('Should enter search criteria and search', (done) => {
+      search.enterSearchCriteria(done, 'Shoes')
+    })
+  })
+
 })

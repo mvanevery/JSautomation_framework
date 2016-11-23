@@ -49,7 +49,7 @@ module.exports = {
       zipcodeModal:'//input[@data-id="modalZipcode"]',
       countryModal:'//input[@data-id="modalCountry"]',
       addresssTypeModal:'//select[@data-id="addressType"]',
-      searchAvatar: '//div[contains(text(),"Automation")]',
+      customerCard: '//div[@data-id="customerCard-0")]',
       Cancel: '//button[@data-id="cancel"]',
 
       //================================================== CUSTOMER PROFILE ============================================

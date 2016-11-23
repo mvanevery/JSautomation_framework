@@ -8,6 +8,7 @@ const provisioning = require(`../../../projects/${project}/selectors/provisionin
 const store = require(`../../../projects/${project}/selectors/store`);
 const planner = require(`../../../projects/${project}/selectors/planner`);
 const blackbook = require(`../../../projects/${project}/selectors/blackbook`);
+const search = require(`../../../projects/${project}/selectors/productSearch`);
 const assert = require('chai').assert;
 const expect = require('chai').expect;
 const $ = require('chai-Jquery');
@@ -16,8 +17,8 @@ const $ = require('chai-Jquery');
 module.exports = {
 
   verifySearchOpen(done, expected) {
-    if (client.isVisible(landingPage.helpers.productSearchField, done)) {
-          client.getText(landingPage.helpers.productSearchField)
+    if (client.isVisible(search.helpers.productSearchField, done)) {
+          client.getText(search.helpers.productSearchField)
             .then((text) => {
               try {
                 assert.equal(expected, text, 'The expected value was not equal to the text');
@@ -28,5 +29,18 @@ module.exports = {
           }
         },
 
+  enterSearchCriteria(done, criteria) {
+    if (client.isVisible(search.helpers.searchField, done)) {
+      client.setValue(search.helpers.searchField, criteria )
+        .then(() => {
+          client.click(search.helpers.searchButton);
+        })
+    }
+  },
 
+  verifySearchPLP(done, expected) {
+    if(client.isVisible(search.helpers.searchPlpHeader, done)) {
+      client.getText()
+    }
+  }
 }

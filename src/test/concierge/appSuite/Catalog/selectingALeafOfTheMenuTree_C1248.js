@@ -12,7 +12,7 @@ const blackbook = require('../../../../core/projects/concierge/helpers/blackbook
 const landing = require('../../../../core/projects/concierge/helpers/landingPage');
 const catalog = require('../../../../core/projects/concierge/helpers/catalog');
 
-describe('Smoke Test: Search Products', () => {
+describe('Smoke Test: C1248 Selecting A Leaf Of The Menu Tree', () => {
   before((done) => {
     common.goTo(done);
   });
@@ -35,7 +35,6 @@ describe('Smoke Test: Search Products', () => {
     });
   });
 
-  /** @test {selectALeafOfTheMenuTree_C1248#click} */
   describe('Click the Catalog menu option', () => {
     it('Should open Catalog section', (done) => {
       landing.navCatalog(done, "Catalog");

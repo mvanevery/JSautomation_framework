@@ -1,9 +1,9 @@
 /**
  * Project:     Concierge
- * TestName     Catalog/selectALeafOfTheMenuTree_C1248
- * TestSteps:   https://madmobile.testrail.com/index.php?/cases/view/1248
+ * TestName     Catalog/openingAndClosingFunctionality_C1249
+ * TestSteps:   https://madmobile.testrail.com/index.php?/cases/view/1249
  * Author:      John Harre
- * Date:        11/21/2016
+ * Date:        11/23/2016
  */
 
 const common = require('../../../../core/projects/concierge/helpers/common');
@@ -12,7 +12,7 @@ const blackbook = require('../../../../core/projects/concierge/helpers/blackbook
 const landing = require('../../../../core/projects/concierge/helpers/landingPage');
 const catalog = require('../../../../core/projects/concierge/helpers/catalog');
 
-describe('Smoke Test: C1248 Selecting A Leaf Of The Menu Tree', () => {
+describe('Smoke Test: C1249 Opening and Closing Functionality', () => {
   before((done) => {
     common.goTo(done);
   });
@@ -83,8 +83,8 @@ describe('Smoke Test: C1248 Selecting A Leaf Of The Menu Tree', () => {
       });
     });
 
-    describe('Click the Shoes -> Flats menu option', () => {
-      it('Should open Shoes -> Flats section', (done) => {
+    describe('Click the Flats menu option', () => {
+      it('Should open Flats section', (done) => {
         catalog.LeftDrawer(done, "Flats");
       });
     });
@@ -95,7 +95,7 @@ describe('Smoke Test: C1248 Selecting A Leaf Of The Menu Tree', () => {
       });
     });
 
-    describe('Click on a Shoes -> Flats product.', () => {
+    describe('Click on a Flats product.', () => {
       it('Should open Flats product details page.', (done) => {
         catalog.openProductDetailsPage(done);
       });
@@ -107,8 +107,8 @@ describe('Smoke Test: C1248 Selecting A Leaf Of The Menu Tree', () => {
       });
     });
 
-    describe('See a Shoes -> Flats product details.', () => {
-      it('Should see Shoes -> Flats product details page.', (done) => {
+    describe('See a Flats product details.', () => {
+      it('Should see Flats product details page.', (done) => {
         catalog.productDetailsPage(done, "Edison Flats-Roses");
       });
     });
@@ -121,7 +121,7 @@ describe('Smoke Test: C1248 Selecting A Leaf Of The Menu Tree', () => {
 
     describe('Logout', () => {
       it('Should Logout from the current user', (done) => {
-        login.logoutUser(done);
+        landing.logoutUser(done);
       });
     });
 

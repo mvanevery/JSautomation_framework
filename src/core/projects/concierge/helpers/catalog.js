@@ -71,16 +71,17 @@ module.exports = {
     }
   },
   productDetailsPage(done,productLabel) {
-    if(client.isVisible(catalog.helpers.products.edisonFlatsRoses, done)) {
-      client.getText(catalog.helpers.products.edisonFlatsRoses)
-        .then((text) => {
-          try {
-            assert.equal(productLabel, text, 'The Shoes -> Flats Products Detail page is not displayed correctly.');
-          } catch (err) {
-            done(err);
-          }
-        });
-    }
+      if(client.isVisible(catalog.helpers.products.edisonFlatsRoses, done)) {
+        client.getText(catalog.helpers.products.edisonFlatsRoses)
+          .then((text) => {
+            try {
+              assert.equal(productLabel, text, 'The Shoes -> Flats Products Detail page is not displayed correctly.');
+              done();
+            } catch (err) {
+              done(err);
+            }
+          });
+      }
   },
   catalogBackBtn(done) {
     if(client.isVisible(catalog.helpers.catalogBackBtn, done)) {

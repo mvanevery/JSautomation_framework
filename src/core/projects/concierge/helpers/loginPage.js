@@ -55,10 +55,10 @@ module.exports = {
 
 
   logoutUser(done) {
-    if (client.isVisible(landingPage.helpers.logout, done)) {
-      client.click(landingPage.helpers.logout)
+    if (client.isVisible(loginPage.helpers.logout, done)) {
+      client.click(loginPage.helpers.logout)
         .then(() => {
-          client.click(landingPage.helpers.logoutConfirm);
+          client.click(loginPage.helpers.logoutConfirm);
         })
     }
 

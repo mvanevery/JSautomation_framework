@@ -196,7 +196,7 @@ module.exports = {
 
   selectCustomerCard(done,expected) {
     if(client.isVisible(blackbook.helpers.searchButton, done)) {
-      client.click(blackbook.helpers.searchAvatar)
+      client.click(blackbook.helpers.customerCard)
         .then((text) => {
           client.getText(blackbook.helpers.blackbookHeader)
           try {

@@ -1,7 +1,5 @@
 /**
  * Created by mvanevery on 11/7/16.
- */
-/**
  * Project:     Concierge
  * Test Name:   searCustomer
  * Test Steps:  https://madmobile.testrail.com/index.php?/cases/view/2695

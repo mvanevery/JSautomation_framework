@@ -83,8 +83,8 @@ describe('Smoke Test: C1248 Selecting A Leaf Of The Menu Tree', () => {
       });
     });
 
-    describe('Click the Flats menu option', () => {
-      it('Should open Flats section', (done) => {
+    describe('Click the Shoes -> Flats menu option', () => {
+      it('Should open Shoes -> Flats section', (done) => {
         catalog.LeftDrawer(done, "Flats");
       });
     });
@@ -95,7 +95,7 @@ describe('Smoke Test: C1248 Selecting A Leaf Of The Menu Tree', () => {
       });
     });
 
-    describe('Click on a Flats product.', () => {
+    describe('Click on a Shoes -> Flats product.', () => {
       it('Should open Flats product details page.', (done) => {
         catalog.openProductDetailsPage(done);
       });
@@ -107,8 +107,8 @@ describe('Smoke Test: C1248 Selecting A Leaf Of The Menu Tree', () => {
       });
     });
 
-    describe('See a Flats product details.', () => {
-      it('Should see Flats product details page.', (done) => {
+    describe('See a Shoes -> Flats product details.', () => {
+      it('Should see Shoes -> Flats product details page.', (done) => {
         catalog.productDetailsPage(done, "Edison Flats-Roses");
       });
     });

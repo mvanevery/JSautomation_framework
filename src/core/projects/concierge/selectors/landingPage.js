@@ -21,11 +21,6 @@ module.exports = {
         productIcon: '//div[@class="mm-o-icon icon-hamburger-menu"]',
         menu: '//a[contains(@href, "/")]',
         email: '//div[@class="mm-o-icon icon-email-fill"]',
-        logout: '//div[@data-id="module-logout"]',
-        logoutCancel: '//div[contains(text(),"Cancel")]',
-        //logoutCancel:'//button[@data-id="cancel"]',
-        logoutConfirm: '//div[contains(text(),"Log Out")]'
-        //logoutConfirm: '//div[@data-id="logout")]'
     }
 }
 

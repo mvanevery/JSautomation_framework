@@ -8,11 +8,11 @@
  * Date:        11/16/2016/
 */
 
-const common = require('../../../../core/projects/concierge/helpers/common');
-const login = require('../../../../core/projects/concierge/helpers/loginPage');
-const blackbook = require('../../../../core/projects/concierge/helpers/blackbook');
-const landing = require('../../../../core/projects/concierge/helpers/landingPage');
-const search = require('../../../../core/projects/concierge/helpers/productSearch');
+const common = require('../../../core/projects/concierge/helpers/common');
+const login = require('../../../core/projects/concierge/helpers/loginPage');
+const blackbook = require('../../../core/projects/concierge/helpers/blackbook');
+const landing = require('../../../core/projects/concierge/helpers/landingPage');
+const search = require('../../../core/projects/concierge/helpers/productSearch');
 
 describe('Smoke Test: Search Customer', () => {
   before((done) => {
@@ -26,8 +26,8 @@ describe('Smoke Test: Search Customer', () => {
   });
 
   describe('Login', () => {
-    it('Should login as "qauser"', (done) => {
-      login.loginUser(done, 'qaUser', 'qaUser@123');
+    it('Should login as "testauto"', (done) => {
+      login.loginUser(done, 'testauto', 'qaUser@123');
     });
   });
 

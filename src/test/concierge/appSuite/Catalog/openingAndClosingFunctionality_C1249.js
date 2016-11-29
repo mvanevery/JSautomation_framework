@@ -24,8 +24,8 @@ describe('Smoke Test: C1249 Opening and Closing Functionality', () => {
   });
 
   describe('Login', () => {
-    it('Should login as "qauser"', (done) => {
-      login.loginUser(done, 'qaUser', 'qaUser@123');
+    it('Should login as "testauto"', (done) => {
+      login.loginUser(done, 'testauto', 'qaUser@123');
     });
   });
 

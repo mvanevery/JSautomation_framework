@@ -57,8 +57,8 @@ describe('Provision Talbots and Set Store', () => {
     });
   });
   describe('Login User', () => {
-    it('Should Login as user "qaUser"', (done) => {
-      login.loginUser(done, "qaUser", "qaUser@123");
+    it('Should Login as user "testauto"', (done) => {
+      login.loginUser(done, "testauto", "qaUser@123");
     });
   });
   describe('Pausing', () => {

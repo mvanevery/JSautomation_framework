@@ -12,7 +12,7 @@ module.exports = {
         storeIdLabel: '//div[@data-id="storeIdLbl"]',
         url_login: 'localhost:3000/login',
         deprovision: '.mm-o-icon',
-        username: 'qauser',
+        username: 'testauto',
         password: 'asdf',
         signIn: '//button[@data-id="signin"]',
         userPlaceholder:'Username',

@@ -8,7 +8,6 @@
 
 const common = require('../../../../core/projects/concierge/helpers/common');
 const login = require('../../../../core/projects/concierge/helpers/loginPage');
-const blackbook = require('../../../../core/projects/concierge/helpers/blackbook');
 const landing = require('../../../../core/projects/concierge/helpers/landingPage');
 const catalog = require('../../../../core/projects/concierge/helpers/catalog');
 
@@ -50,18 +49,6 @@ describe('Smoke Test: C1247 Navigation to Leaf Menu and Back to Parent', () => {
   describe('Click the Shoes menu option', () => {
     it('Should open Shoes section', (done) => {
       catalog.LeftDrawer(done, "Shoes");
-    });
-  });
-
-  describe('Pausing', () => {
-    it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done, 5000);
-    });
-  });
-
-  describe('Click the Back button', () => {
-    it('Should click the Back button', (done) => {
-      catalog.catalogBackBtn(done);
     });
   });
 

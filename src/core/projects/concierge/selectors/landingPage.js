@@ -7,7 +7,7 @@ module.exports = {
     },
     helpers:{
         homeIcon: 'span.mm-c-nav__logo-img',
-        bagIcon:'//div[@class="mm-o-icon.icon-bag-outline"]',
+        bagIcon:'//a[@data-id="bag"]',
         iconList: 'mm-c-nav__list',
         iconListTitle:'h2',
         plannerIcon: '//div[@class="mm-o-icon icon-year-to-date"]',
@@ -21,6 +21,7 @@ module.exports = {
         productIcon: '//div[@class="mm-o-icon icon-hamburger-menu"]',
         menu: '//a[contains(@href, "/")]',
         email: '//div[@class="mm-o-icon icon-email-fill"]',
+        leftDrawerOverlay:'//div[@data-id="closeLeftDrawerOverlay"]',
     }
 }
 

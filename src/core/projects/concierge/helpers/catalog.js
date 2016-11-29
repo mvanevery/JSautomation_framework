@@ -1,11 +1,3 @@
-/**
- * Project:     Concierge
- * TestName     Catalog/selectALeafOfTheMenuTree_C1248
- * TestSteps:   https://madmobile.testrail.com/index.php?/cases/view/1248
- * Author:      John Harre
- * Date:        11/21/2016
- */
-
 const clientType = require('../../../projects/config').client;
 const client = require(`../../../../core/clients/${clientType}`).client;
 const project = require('../../../projects/config').project;
@@ -86,5 +78,23 @@ module.exports = {
     if(client.isVisible(catalog.helpers.catalogBackBtn, done)) {
       client.click(catalog.helpers.catalogBackBtn)
     }
+  },
+
+  leftDrawerOverlay(done) {
+    if (client.isVisible(catalog.helpers.productCategories.shoes, done)) {
+     client.click(landingPage.helpers.leftDrawerOverlay);
+    }
+  },
+
+  leftDrawerOverlayCheck(done, catalogExists) {
+    client.isExisting(catalog.helpers.productCategories.shoes)
+      .then((isExisting) => {
+        try {
+          assert.equal(catalogExists, isExisting, 'The Catalog Left Drawer is not closed.');
+        } catch (err) {
+          done(err);
+        }
+      });
+     done();
   }
 }

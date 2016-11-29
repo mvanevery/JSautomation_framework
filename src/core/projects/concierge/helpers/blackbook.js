@@ -176,10 +176,11 @@ module.exports = {
     }
   },
 
-  save(done) {   if (client.isVisible(blackbook.helpers.saveButton, done)) {
+  save(done) { 
+    if (client.isVisible(blackbook.helpers.saveButton, done)) {
       client.click(blackbook.helpers.saveButton); 
-  } },
-
+  } 
+ },
 
   verifySearchResult(done, expected) {
     if(client.isVisible(blackbook.helpers.searchResults, done)) {

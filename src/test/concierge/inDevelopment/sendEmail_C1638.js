@@ -21,8 +21,8 @@ describe('Smoke Test: Search Customer', () => {
   });
 
   describe('Login', () => {
-    it('Should login as "qauser"', (done) => {
-      common.loginUser(done, 'qaUser', 'qaUser@123');
+    it('Should login as "testauto"', (done) => {
+      common.loginUser(done, 'testauto', 'qaUser@123');
     });
   });
 

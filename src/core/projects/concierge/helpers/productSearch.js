@@ -44,3 +44,17 @@ module.exports = {
     }
   }
 }
+
+
+verifyProductNumber(done, number) {
+  if(client.isVisible(search.helpers.productNumber, done)) {
+    client.getText(search.helpers.productNumber)
+      .then((text) => {
+        try {
+          assert.equal(number, text, 'The expected number was not equal to the actual number');
+        } catch (err) {
+          done(err);
+        }
+      })
+  }
+}

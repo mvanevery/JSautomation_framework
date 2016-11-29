@@ -76,7 +76,6 @@ module.exports = {
           .then((text) => {
             try {
               assert.equal(productLabel, text, 'The Shoes -> Flats Products Detail page is not displayed correctly.');
-              done();
             } catch (err) {
               done(err);
             }

@@ -63,13 +63,5 @@ module.exports = {
       birthdayEmailIcon: '',
 
 
-
-
-        img_myCustomers: '//a[contains(text(),"My Customers")]',
-        img_Store: '//a[contains(text(),"Store")]',
-        img_Segments: '//a[contains(text(),"Segments")]',
-        fld_lastName: '//div[2]/div/input',
-        txt_Customer_Ryan: '//div[@title="Ryan"]'
-
     }
 }

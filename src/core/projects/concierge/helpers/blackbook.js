@@ -9,181 +9,181 @@ const assert = require('chai').assert;
 module.exports = {
 
   toggleMyClients(done) {
-    if(client.isVisible(blackbook.helpers.myClientsToggle, done)) {
+    if (client.isVisible(blackbook.helpers.myClientsToggle, done)) {
       client.touch(blackbook.helpers.myClientsToggle)
     }
   },
 
   enterFirstname(done, firstName) {
-    if(client.isVisible(blackbook.helpers.firstName, done)) {
+    if (client.isVisible(blackbook.helpers.firstName, done)) {
       client.setValue(blackbook.helpers.firstName, firstName)
     }
   },
 
   enterFirstnameModal(done, firstName) {
-    if(client.isVisible(blackbook.helpers.firstNameModal, done)) {
+    if (client.isVisible(blackbook.helpers.firstNameModal, done)) {
       client.setValue(blackbook.helpers.firstNameModal, firstName)
     }
   },
 
   enterLastname(done, lastName) {
-    if(client.isVisible(blackbook.helpers.lastName, done)) {
+    if (client.isVisible(blackbook.helpers.lastName, done)) {
       client.setValue(blackbook.helpers.lastName, lastName)
     }
   },
 
   enterLastnameModal(done, lastName) {
-    if(client.isVisible(blackbook.helpers.lastNameModal, done)) {
+    if (client.isVisible(blackbook.helpers.lastNameModal, done)) {
       client.setValue(blackbook.helpers.lastNameModal, lastName)
     }
   },
 
   enterPhone(done, phone) {
-    if(client.isVisible(blackbook.helpers.phone, done)) {
+    if (client.isVisible(blackbook.helpers.phone, done)) {
       client.setValue(blackbook.helpers.phone, phone)
     }
   },
 
   enterPhoneModal(done, phone) {
-    if(client.isVisible(blackbook.helpers.phoneModal, done)) {
+    if (client.isVisible(blackbook.helpers.phoneModal, done)) {
       client.setValue(blackbook.helpers.phoneModal, phone)
     }
   },
 
   enterEmail(done, email) {
-    if(client.isVisible(blackbook.helpers.email, done)) {
+    if (client.isVisible(blackbook.helpers.email, done)) {
       client.setValue(blackbook.helpers.email, email)
     }
   },
 
   enterEmailModal(done, email) {
-    if(client.isVisible(blackbook.helpers.emailModal, done)) {
+    if (client.isVisible(blackbook.helpers.emailModal, done)) {
       client.setValue(blackbook.helpers.emailModal, email)
     }
   },
 
   enterCity(done, city) {
-    if(client.isVisible(blackbook.helpers.city, done)) {
+    if (client.isVisible(blackbook.helpers.city, done)) {
       client.setValue(blackbook.helpers.city, city)
     }
   },
 
   enterCityModal(done, city) {
-    if(client.isVisible(blackbook.helpers.cityModal, done)) {
+    if (client.isVisible(blackbook.helpers.cityModal, done)) {
       client.setValue(blackbook.helpers.cityModal, city)
     }
   },
 
   enterZipcode(done, zipcode) {
-    if(client.isVisible(blackbook.helpers.zipcode, done)) {
+    if (client.isVisible(blackbook.helpers.zipcode, done)) {
       client.setValue(blackbook.helpers.zipcode, zipcode)
     }
   },
 
   enterZipcodeModal(done, zipcode) {
-    if(client.isVisible(blackbook.helpers.zipcodeModal, done)) {
+    if (client.isVisible(blackbook.helpers.zipcodeModal, done)) {
       client.setValue(blackbook.helpers.zipcodeModal, zipcode)
     }
   },
 
   enterState(done, state) {
-    if(client.isVisible(blackbook.helpers.state, done)) {
+    if (client.isVisible(blackbook.helpers.state, done)) {
       client.setValue(blackbook.helpers.state, state)
     }
   },
 
   enterStateModal(done, state) {
-    if(client.isVisible(blackbook.helpers.stateModal, done)) {
+    if (client.isVisible(blackbook.helpers.stateModal, done)) {
       client.setValue(blackbook.helpers.stateModal, state)
     }
   },
 
   enterStreet1(done, street1) {
-    if(client.isVisible(blackbook.helpers.street1Modal, done)) {
+    if (client.isVisible(blackbook.helpers.street1Modal, done)) {
       client.setValue(blackbook.helpers.street1Modal, street1)
     }
   },
 
   enterStreet2(done, street2) {
-    if(client.isVisible(blackbook.helpers.street2Modal, done)) {
+    if (client.isVisible(blackbook.helpers.street2Modal, done)) {
       client.setValue(blackbook.helpers.street2Modal, street2)
     }
   },
 
   enterCountryModal(done, country) {
-    if(client.isVisible(blackbook.helpers.countryModal, done)) {
+    if (client.isVisible(blackbook.helpers.countryModal, done)) {
       client.setValue(blackbook.helpers.countryModal, country)
     }
   },
 
   modalAddressType(done, type) {
-    if(client.isVisible(blackbook.helpers.addresssTypeModal, done)) {
+    if (client.isVisible(blackbook.helpers.addresssTypeModal, done)) {
       client.selectByValue(blackbook.helpers.addresssTypeModal, type)
     }
   },
 
   searchCustomer(done) {
-    if(client.isVisible(blackbook.helpers.searchButton, done)) {
-       client.click(blackbook.helpers.searchButton)
+    if (client.isVisible(blackbook.helpers.searchButton, done)) {
+      client.click(blackbook.helpers.searchButton)
     }
   },
 
   addCustomer(done) {
-    if(client.isVisible(blackbook.helpers.addCustomerButton, done)) {
+    if (client.isVisible(blackbook.helpers.addCustomerButton, done)) {
       client.click(blackbook.helpers.addCustomerButton)
     }
   },
 
   openPhone(done) {
-    if(client.isVisible(blackbook.helpers.modalHeader, done)) {
+    if (client.isVisible(blackbook.helpers.modalHeader, done)) {
       client.click(blackbook.helpers.addPhoneModal)
     }
   },
 
   modalPhoneToggle(done) {
-    if(client.isVisible(blackbook.helpers.phoneToggleModal, done)) {
+    if (client.isVisible(blackbook.helpers.phoneToggleModal, done)) {
       client.click(blackbook.helpers.phoneToggleModal)
     }
   },
 
   modalPhoneType(done, type) {
-    if(client.isVisible(blackbook.helpers.phoneTypeModal, done)) {
+    if (client.isVisible(blackbook.helpers.phoneTypeModal, done)) {
       client.selectByValue(blackbook.helpers.phoneTypeModal, type)
     }
   },
 
   openEmail(done) {
-    if(client.isVisible(blackbook.helpers.modalHeader, done)) {
+    if (client.isVisible(blackbook.helpers.modalHeader, done)) {
       client.click(blackbook.helpers.addEmailModal)
     }
   },
 
   modalEmailToggle(done) {
-    if(client.isVisible(blackbook.helpers.emailToggleModal, done)) {
+    if (client.isVisible(blackbook.helpers.emailToggleModal, done)) {
       client.click(blackbook.helpers.emailToggleModal)
     }
   },
 
   modalEmailType(done, type) {
-    if(client.isVisible(blackbook.helpers.emailTypeModal, done)) {
+    if (client.isVisible(blackbook.helpers.emailTypeModal, done)) {
       client.selectByValue(blackbook.helpers.emailTypeModal, type)
     }
   },
 
   openAddress(done) {
-    if(client.isVisible(blackbook.helpers.modalHeader, done)) {
+    if (client.isVisible(blackbook.helpers.modalHeader, done)) {
       client.click(blackbook.helpers.addAddressModal)
     }
   },
 
-  saveButton(done) { 
+  saveButton(done) {
     if (client.isVisible(blackbook.helpers.saveButton, done)) {
-      client.click(blackbook.helpers.saveButton); 
-  } 
- },
+      client.click(blackbook.helpers.saveButton);
+    }
+  },
 
   verifySearchResult(done, expected) {
-    if(client.isVisible(blackbook.helpers.searchResults, done)) {
+    if (client.isVisible(blackbook.helpers.searchResults, done)) {
       client.getText(blackbook.helpers.searchResults)
         .then((text) => {
           try {
@@ -195,8 +195,8 @@ module.exports = {
     }
   },
 
-  selectCustomerCard(done,expected) {
-    if(client.isVisible(blackbook.helpers.searchButton, done)) {
+  selectCustomerCard(done, expected) {
+    if (client.isVisible(blackbook.helpers.searchButton, done)) {
       client.click(blackbook.helpers.customerCard)
         .then((text) => {
           client.getText(blackbook.helpers.blackbookHeader)
@@ -226,7 +226,7 @@ module.exports = {
   },
 
   verifyBlackbookHeader(done, expected) {
-    client.getValue(blackbook.helpers.blackbookHeader,done)
+    client.getValue(blackbook.helpers.blackbookHeader, done)
       .then((text) => {
         console.log(text);
         //try {
@@ -238,7 +238,7 @@ module.exports = {
   },
 
   verifyCustomerName(done, expected) {
-    if(client.isVisible(blackbook.helpers.blackbookHeader, done)) {
+    if (client.isVisible(blackbook.helpers.blackbookHeader, done)) {
       client.getText(blackbook.helpers.customerName)
         .then((text) => {
           try {
@@ -248,24 +248,83 @@ module.exports = {
           }
         })
     }
-  }
+  },
 
+  verifyFirstName(done, expected) {
+    if (client.isVisible(blackbook.helpers.blackbookHeader, done)) {
+      client.getAttribute(blackbook.helpers.firstName, 'name')
+        .then((text) => {
+          try {
+            assert.equal(expected, text, 'The expected value was not equal to the text');
+          } catch (err) {
+            done(err);
+          }
+        })
+    }
+  },
 
+  verifyLastName(done, expected) {
+    if (client.isVisible(blackbook.helpers.blackbookHeader, done)) {
+      client.getAttribute(blackbook.helpers.lastName, 'name')
+        .then((text) => {
+          try {
+            assert.equal(expected, text, 'The expected value was not equal to the text');
+          } catch (err) {
+            done(err);
+          }
+        })
+    }
+  },
 
-  //selectCustomer(done) {
-  //  client.waitForVisible(config.helpers.txt_Customer_Ryan, 5000);
-  //  if (client.isVisible(config.helpers.txt_Customer_Ryan)) {
-  //    client.click(config.helpers.txt_Customer_Ryan);
-  //  } else {
-  //    console.log('	ERROR: Missing the customer record for Ryan McClellan.');
-  //  }
-  //  client.waitForVisible(config.helpers.txt_Customer_Header, 5000);
-  //  if (client.isVisible(config.helpers.txt_Customer_Header)) {
-  //    console.log('	PASS: The user has reached the Customer Profile screen.');
-  //  } else {
-  //    console.log('	ERROR: The Customer Profile screen is unreachable.');
-  //  }
-  //  done();
-  //},
+  verifyPhone(done, expected) {
+    if (client.isVisible(blackbook.helpers.blackbookHeader, done)) {
+      client.getAttribute(blackbook.helpers.phone, 'name')
+        .then((text) => {
+          try {
+            assert.equal(expected, text, 'The expected value was not equal to the text');
+          } catch (err) {
+            done(err);
+          }
+        })
+    }
+  },
 
+  verifyEmail(done, expected) {
+    if (client.isVisible(blackbook.helpers.blackbookHeader, done)) {
+      client.getAttribute(blackbook.helpers.email, 'name')
+        .then((text) => {
+          try {
+            assert.equal(expected, text, 'The expected value was not equal to the text');
+          } catch (err) {
+            done(err);
+          }
+        })
+    }
+  },
+
+  verifyCity(done, expected) {
+    if (client.isVisible(blackbook.helpers.blackbookHeader, done)) {
+      client.getAttribute(blackbook.helpers.city, 'name')
+        .then((text) => {
+          try {
+            assert.equal(expected, text, 'The expected value was not equal to the text');
+          } catch (err) {
+            done(err);
+          }
+        })
+    }
+  },
+
+  verifyZipcode(done, expected) {
+    if (client.isVisible(blackbook.helpers.blackbookHeader, done)) {
+      client.getAttribute(blackbook.helpers.zipcode, 'name')
+        .then((text) => {
+          try {
+            assert.equal(expected, text, 'The expected value was not equal to the text');
+          } catch (err) {
+            done(err);
+          }
+        })
+    }
+  },
 }

@@ -38,7 +38,8 @@ module.exports = {
   },
 
   pause: (done, pauseTime) => {
-    client.pause(pauseTime, done);
+    client.pause(pauseTime);
+    done();
   },
 
 
@@ -168,6 +169,32 @@ module.exports = {
     done();
   },
 
+  verifyBlankField(done, field) {
+    if (client.isVisible(mccPage.helpers.fld_lastName)) {
+      switch (field){
+        case 'name':
+          var fieldText = client.getText(mccPage.helpers.fld_lastName);
+          expect(fieldText).to.be.null;
+          break;
+        // case 'zip':
+        //   client.setValue(mccPage.helpers.fld_zipCode, value);
+        //   break;
+        // case 'phone':
+        //   client.setValue(mccPage.helpers.fld_phone, value);
+        //   break;
+        // case 'email':
+        //   client.setValue(mccPage.helpers.fld_email, value);
+        //   break;
+        default:
+          break;
+      }
+    }
+    else{
+      console.log('	ERROR: The MCC Search page is unavailable.');
+    }
+    done();
+  },
+
   selectSearchButton(done) {
     if (client.isVisible(mccPage.helpers.btn_search, done)) {
       client.click(mccPage.helpers.btn_search)
@@ -177,14 +204,17 @@ module.exports = {
   },
 
   verifyNoResults(done) {
-  // if (client.isVisible(mccPage.helpers.txt_noResults, done)) {
-  //   client.click(mccPage.helpers.txt_noResults)
-  // } else {
-  //   console.log('ERROR: Unable to find the Search button.');
-  // }
     expect(mccPage.helpers.txt_noResults).to.exist;
     done();
 },
+
+  resetfields(done) {
+    if (client.isVisible(mccPage.helpers.btn_reset, done)) {
+      client.click(mccPage.helpers.btn_reset)
+    } else {
+      console.log('ERROR: Unable to find the Reset Fields button.');
+    }
+  },
 
   // verifyBamLandingPage(done, expected) {
   //   if (client.isVisible(landingPage.helpers.img_headerLogo)) {

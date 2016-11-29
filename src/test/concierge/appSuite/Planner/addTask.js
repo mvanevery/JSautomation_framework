@@ -22,7 +22,7 @@ describe('Smoke Test: Add Task', () => {
   });
 
   describe('Login', () => {
-    it('Should login as "qauser"', (done) => {
+    it('Should login as "testauto"', (done) => {
       login.loginUser(done, 'testauto', 'qaUser@123');
     });
   });

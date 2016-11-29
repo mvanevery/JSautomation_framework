@@ -63,63 +63,63 @@ describe('Smoke Test: Search Customer', () => {
     });
   });
 
-  //describe('Enter First Name', () => {
-  //  it('should enter a name in the first name field', (done) => {
-  //    blackbook.enterFirstname(done, "J");
-  //  });
-  //});
-  //
-  //describe('Pausing', () => {
-  //  it('Should pause the test for 1 seconds', (done) => {
-  //    common.pause(done, 1000);
-  //  });
-  //});
-  //
-  //describe('Enter Last Name', () => {
-  //  it('should enter a name in the last name field', (done) => {
-  //    blackbook.enterLastname(done, "Smith");
-  //  });
-  //});
-  //
-  //describe('Pausing', () => {
-  //  it('Should pause the test for 1 seconds', (done) => {
-  //    common.pause(done, 1000);
-  //  });
-  //});
-  //
-  //describe('Click the Search Customer button', () => {
-  //  it('Should click the search customer button', (done) => {
-  //    blackbook.searchCustomer(done);
-  //  });
-  //});
-  //
-  //describe('Pausing', () => {
-  //  it('Should pause the test for 2 seconds', (done) => {
-  //    common.pause(done, 5000);
-  //  });
-  //});
-  //
-  //describe('Verify Search Results', () => {
-  //  it('Should verify the customer search results', (done) => {
-  //    blackbook.verifySearchResult(done);
-  //  });
-  //});
-  //
-  //describe('Pausing', () => {
-  //  it('Should pause the test for 2 seconds', (done) => {
-  //    common.pause(done, 5000);
-  //  });
-  //});
-  //
-  //describe('Logout', () => {
-  //  it('Should Logout from the current user', (done) => {
-  //    login.logoutUser(done);
-  //  });
-  //});
-  //describe('Pausing', () => {
-  //  it('Should pause the test for 5 seconds', (done) => {
-  //    common.pause(done, 5000);
-  //  });
-  //});
+  describe('Enter First Name', () => {
+    it('should enter a name in the first name field', (done) => {
+      blackbook.enterFirstname(done, "J");
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 1 seconds', (done) => {
+      common.pause(done, 1000);
+    });
+  });
+
+  describe('Enter Last Name', () => {
+    it('should enter a name in the last name field', (done) => {
+      blackbook.enterLastname(done, "Smith");
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 1 seconds', (done) => {
+      common.pause(done, 1000);
+    });
+  });
+
+  describe('Click the Search Customer button', () => {
+    it('Should click the search customer button', (done) => {
+      blackbook.searchCustomer(done);
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 2 seconds', (done) => {
+      common.pause(done, 5000);
+    });
+  });
+
+  describe('Verify Search Results', () => {
+    it('Should verify the customer search results', (done) => {
+      blackbook.verifySearchResult(done);
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 2 seconds', (done) => {
+      common.pause(done, 5000);
+    });
+  });
+
+  describe('Logout', () => {
+    it('Should Logout from the current user', (done) => {
+      login.logoutUser(done);
+    });
+  });
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 5000);
+    });
+  });
 
 })

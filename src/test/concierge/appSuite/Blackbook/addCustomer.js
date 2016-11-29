@@ -214,7 +214,7 @@ describe('Smoke Test: Add Customer', () => {
 
   describe('Enter Zipcode in the modal', () => {
     it('should enter Zipcode in the modal', (done) => {
-      blackbook.enterZipcodeModal(done, '33607');
+      blackbook.enterZipcodeModal(done, '33608');
     });
   });
 
@@ -248,17 +248,17 @@ describe('Smoke Test: Add Customer', () => {
     });
   });
 
-  //describe('Click the DONE button', () => {
-  //  it('should click the DONE button and save the customer', (done) => {
-  //    blackbook.save(done);
-  //  });
-  //});
+  describe('Click the DONE button', () => {
+    it('should click the DONE button and save the customer', (done) => {
+      blackbook.saveButton(done);
+    });
+  });
 
-  //describe('Pausing', () => {
-  //  it('Should pause the test for 5 seconds', (done) => {
-  //    common.pause(done, 5000);
-  //  });
-  //});
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 5000);
+    });
+  });
 
   describe('Logout', () => {
     it('Should Logout from the current user', (done) => {

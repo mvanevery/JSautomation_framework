@@ -92,17 +92,17 @@ describe('Smoke Test: Search Customer', () => {
     });
   });
 
-  //describe('Verify Customer Name', () => {
-  //  it('Should verify the customer name on the Customer Profile page', (done) => {
-  //    blackbook.verifyCustomerName(done, 'Automation Test');
-  //  });
-  //});
-  //
-  //describe('Pausing', () => {
-  //  it('Should pause the test for 1 seconds', (done) => {
-  //    common.pause(done, 1000);
-  //  });
-  //});
+  describe('Verify Customer Name', () => {
+    it('Should verify the customer name on the Customer Profile page', (done) => {
+      blackbook.verifyCustomerName(done, 'Automation Test');
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 1 seconds', (done) => {
+      common.pause(done, 1000);
+    });
+  });
 
   describe('Click the Edit Icon', () => {
     it('Should click the edit icon', (done) => {

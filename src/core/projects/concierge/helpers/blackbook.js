@@ -176,7 +176,7 @@ module.exports = {
     }
   },
 
-  save(done) { 
+  saveButton(done) { 
     if (client.isVisible(blackbook.helpers.saveButton, done)) {
       client.click(blackbook.helpers.saveButton); 
   } 

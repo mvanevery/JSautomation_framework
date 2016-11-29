@@ -250,7 +250,7 @@ describe('Smoke Test: Add Customer', () => {
 
   describe('Click the DONE button', () => {
     it('should click the DONE button and save the customer', (done) => {
-      blackbook.save(done);
+      blackbook.saveButton(done);
     });
   });
 

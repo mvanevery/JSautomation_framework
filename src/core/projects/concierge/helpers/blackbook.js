@@ -224,6 +224,18 @@ module.exports = {
     }
   },
 
+  verifyBlackbookHeader(done, expected) {
+    client.getValue(blackbook.helpers.blackbookHeader,done)
+      .then((text) => {
+        console.log(text);
+        //try {
+        //  assert.equal(expected, text, 'The expected value was not equal to the text');
+        //} catch (err) {
+        //  done(err);
+        //}
+      });
+  },
+
   verifyCustomerName(done, expected) {
     if(client.isVisible(blackbook.helpers.blackbookHeader, done)) {
       client.getText(blackbook.helpers.customerName)

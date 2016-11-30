@@ -182,7 +182,7 @@ module.exports = {
     }
   },
 
-  verifySearchResult(done, expected) {
+  verifySearchResults(done, expected) {
     if (client.isVisible(blackbook.helpers.searchResults, done)) {
       client.getText(blackbook.helpers.searchResults)
         .then((text) => {

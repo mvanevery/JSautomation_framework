@@ -28,7 +28,7 @@ module.exports = {
 
 //================================================== Add Customer Modal ================================================
 
-      searchResults:`//div[contains(text(),"Jerry")]`,
+      searchResults:`//div[@data-id="customerCard-0")]`,
       saveButton:'//button[@data-id="Done"]',
       modalHeader:'//div[@data-id="modalHeader"]',
       firstNameModal:'//input[@data-id="firstNameAddModal"]',
@@ -54,7 +54,7 @@ module.exports = {
 
       //================================================== CUSTOMER PROFILE ============================================
 
-      customerName: '//div[contains(text(),"Automation Test"]',
+      customerName: '//div[contains(text(),"Automation Customer"]',
       //customerName:'//div[@data-id="contactFullName"]',
       editIcon:'//div[@class="mm-o-icon icon-edit-customer"]',
       //editIcon:'//button[@data-id="editCustomer"]',

@@ -118,6 +118,30 @@ describe('Smoke Test: C191 Default Descriptiobn', () => {
       });
     });
 
+    describe('See read less... link', () => {
+      it('Should click read less... link.', (done) => {
+        catalog.readLessLink(done);
+      });
+    });
+
+    describe('Pausing', () => {
+      it('Should pause the test for 5 seconds', (done) => {
+        common.pause(done, 5000);
+      });
+    });
+
+    describe('See read more... link', () => {
+      it('Should see read more... link.', (done) => {
+        catalog.readMoreLinkChk(done,false);
+      });
+    });
+
+    describe('Pausing', () => {
+      it('Should pause the test for 5 seconds', (done) => {
+        common.pause(done, 5000);
+      });
+    });
+
     describe('Logout', () => {
       it('Should Logout from the current user', (done) => {
         login.logoutUser(done);

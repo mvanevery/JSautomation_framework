@@ -16,8 +16,10 @@ module.exports = {
       },
       products: {
         edisonFlatsRoses: '//div[contains(text(),"Edison Flats-Roses")]',
+        moreLinkLabel: '//div[contains(text(),"read more")]',
         readMoreLink: '//button[@data-id="readMoreLink"]',
-        readLessLink: '//div[contains(text(),"read less")]'
+        lessLinkLabel: '//div[contains(text(),"read less")]',
+        readLessLink: '//button[@data-id="readMoreLink"]',
       }
   }
 }

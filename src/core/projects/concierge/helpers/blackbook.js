@@ -128,6 +128,12 @@ module.exports = {
     }
   },
 
+  resetFields(done) {
+    if(client.isVisible(blackbook.helpers.resetButton, done)) {
+      client.click(blackbook.helpers.resetButton)
+    }
+  },
+
   addCustomer(done) {
     if (client.isVisible(blackbook.helpers.addCustomerButton, done)) {
       client.click(blackbook.helpers.addCustomerButton)

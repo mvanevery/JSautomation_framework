@@ -8,7 +8,6 @@
 
 const common = require('../../../../core/projects/concierge/helpers/common');
 const login = require('../../../../core/projects/concierge/helpers/loginPage');
-const blackbook = require('../../../../core/projects/concierge/helpers/blackbook');
 const landing = require('../../../../core/projects/concierge/helpers/landingPage');
 const catalog = require('../../../../core/projects/concierge/helpers/catalog');
 
@@ -47,88 +46,40 @@ describe('Smoke Test: C1249 Opening and Closing Functionality', () => {
     });
   });
 
-    describe('Click the New Arrivals menu option', () => {
-      it('Should open New Arrivals section', (done) => {
-        catalog.LeftDrawer(done, "New Arrivals");
-      });
+  describe('Click the Overlay', () => {
+    it('Should close Catalog Left Drawer.', (done) => {
+      catalog.leftDrawerOverlay(done);
     });
+  });
 
-    describe('Pausing', () => {
-      it('Should pause the test for 5 seconds', (done) => {
-        common.pause(done, 5000);
-      });
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 5000);
     });
+  });
 
-    describe('Click the Catalog menu option', () => {
-      it('Should open Catalog section', (done) => {
-        landing.navCatalog(done, "Catalog");
-      });
+  describe('Check if Catalog Left Drawer is still open.', () => {
+    it('Catalog Left drawer should be closed.', (done) => {
+      catalog.leftDrawerOverlayCheck(done, false);
     });
+  });
 
-    describe('Pausing', () => {
-      it('Should pause the test for 5 seconds', (done) => {
-        common.pause(done, 5000);
-      });
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 5000);
     });
+  });
 
-    describe('Click the Shoes menu option', () => {
-      it('Should open Shoes section', (done) => {
-        catalog.LeftDrawer(done, "Shoes");
-      });
+  describe('Logout', () => {
+    it('Should Logout from the current user', (done) => {
+      login.logoutUser(done);
     });
+  });
 
-    describe('Pausing', () => {
-      it('Should pause the test for 5 seconds', (done) => {
-        common.pause(done, 5000);
-      });
+  describe('Pausing', () => {
+    it('Should pause the test for 2 seconds', (done) => {
+      common.pause(done, 2000);
     });
-
-    describe('Click the Flats menu option', () => {
-      it('Should open Flats section', (done) => {
-        catalog.LeftDrawer(done, "Flats");
-      });
-    });
-
-    describe('Pausing', () => {
-      it('Should pause the test for 5 seconds', (done) => {
-        common.pause(done, 5000);
-      });
-    });
-
-    describe('Click on a Flats product.', () => {
-      it('Should open Flats product details page.', (done) => {
-        catalog.openProductDetailsPage(done);
-      });
-    });
-
-    describe('Pausing', () => {
-      it('Should pause the test for 5 seconds', (done) => {
-        common.pause(done, 5000);
-      });
-    });
-
-    describe('See a Flats product details.', () => {
-      it('Should see Flats product details page.', (done) => {
-        catalog.productDetailsPage(done, "Edison Flats-Roses");
-      });
-    });
-
-    describe('Pausing', () => {
-      it('Should pause the test for 5 seconds', (done) => {
-        common.pause(done, 5000);
-      });
-    });
-
-    describe('Logout', () => {
-      it('Should Logout from the current user', (done) => {
-        landing.logoutUser(done);
-      });
-    });
-
-    describe('Pausing', () => {
-      it('Should pause the test for 2 seconds', (done) => {
-        common.pause(done, 2000);
-      });
-    });
+  });
 
 })

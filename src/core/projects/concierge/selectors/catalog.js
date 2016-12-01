@@ -18,6 +18,9 @@ module.exports = {
         francescaDrivingFlatsSuede: '//div[contains(text(),"Francesca Driving Flats-Suede")]',
         readMoreLink: '//button[@data-id="readMoreLink"]',
         readLessLink: '//div[contains(text(),"read less")]'
+      },
+      variants: {
+        size:  '//div[@data-id="PDPVariantDefaultValue"]'
       }
   }
 }

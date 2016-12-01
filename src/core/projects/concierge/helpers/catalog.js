@@ -120,14 +120,28 @@ module.exports = {
   },
 
   productDetailsPageVariants(done, expected) {
-    client.isVisible(catalog.helpers.products.francescaDrivingFlatsSuede)
-      .then(function(isVisible){
-          try {
-            assert.equal(productLabel, isVisible, 'The Shoes -> Flats Products Detail page is not displayed correctly.');
-          } catch (err) {
-            done(err);
-          }
-        });
+//    client.isVisible(catalog.helpers.variants.size)
+//      .then(function(isVisible){
+//      console.log(isVisible);
+////          try {
+////            assert.equal(expected, isVisible, 'The Shoes -> Flats Products Detail Variants did not displayed correctly.');
+////          } catch (err) {
+////            done(err);
+////          }
+//        });
+
+client.getHTML(catalog.helpers.variants.size).then(function(html) {
+
+                    if (html.toLowerCase().indexOf("color: rgb(255, 48, 59)") >= 0)
+                    {
+                      console.log("default value");
+                    }
+                    else
+                    {
+                      console.log("not default value");
+                    }
+                });
+
     done();
   },
 }

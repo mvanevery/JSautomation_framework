@@ -14,10 +14,12 @@ module.exports = {
     }
   },
 
-  enterFirstname(done, firstName) {
-    if (client.isVisible(blackbook.helpers.firstName, done)) {
-      client.setValue(blackbook.helpers.firstName, firstName)
+  enterFirstname(done, selector, firstName) {
+    if (client.isVisible(blackbook.helpers[selector])) {
+      client.setValue(blackbook.helpers[selector], firstName)
     }
+  done();
+
   },
 
   enterFirstnameModal(done, firstName) {
@@ -188,9 +190,38 @@ module.exports = {
     }
   },
 
+  elementVisible(done, select, expected) {
+    client.isVisible(blackbook.helpers[select])
+      .then(function(isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the text');
+        } catch (err) {
+          done(err);
+        }
+      });
+    //client.isVisible(blackbook.helpers.searchButton)
+    //  .then((isVisible) => {
+    //    try {
+    //      assert.equal(expected, isVisible, 'The Shoes -> Flats Products Detail page is not displayed correctly.');
+    //    } catch (err) {
+    //      done(err);
+    //    }
+    //  });
+    //done();
+  },
+
+
+  getFieldValue(done) {
+    //if (client.isVisible(blackbook.helpers.saveButton, done)) {
+      client.getText(blackbook.helpers.firstName, done)
+        .then((text) => {
+          console.log(text)
+        })
+  },
+
   verifySearchResults(done, expected) {
-    if (client.isVisible(blackbook.helpers.searchResults, done)) {
-      client.getText(blackbook.helpers.searchResults)
+    //if (client.isVisible(blackbook.helpers.searchResults, done)) {
+      client.getText(blackbook.helpers.searchResults, done)
         .then((text) => {
           try {
             assert.equal(expected, text, 'The expected value was not equal to the text');
@@ -198,7 +229,7 @@ module.exports = {
             done(err);
           }
         })
-    }
+    //}
   },
 
   selectCustomerCard(done, expected) {

@@ -52,7 +52,7 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
 
   describe('Enter First Name', () => {
     it('should enter a name in the first name field', (done) => {
-      blackbook.enterFirstname(done, "Mark");
+      blackbook.enterFirstname(done, "Automation");
     });
   });
 
@@ -70,7 +70,7 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
 
   describe('Verify Search Results', () => {
     it('should return "Automation Customer" in results', (done) => {
-      blackbook.verifySearchResults(done, 'Mark Hamill');
+      blackbook.verifySearchResults(done, 'Automation Customer');
     });
   });
 
@@ -82,7 +82,7 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
 
   describe('Enter First Name', () => {
     it('should enter a name in the first name field', (done) => {
-      blackbook.enterFirstname(done, "Ma");
+      blackbook.enterFirstname(done, "Au");
     });
   });
 
@@ -100,7 +100,7 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
 
   describe('Verify Search Results', () => {
     it('should return "Automation Customer" in results', (done) => {
-      blackbook.verifySearchResults(done, 'Mark Hamill');
+      blackbook.verifySearchResults(done, 'Automation Customer');
     });
   });
 
@@ -118,7 +118,7 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
 
   describe('Enter Last Name', () => {
     it('should enter a name in the last name field', (done) => {
-      blackbook.enterLastname(done, "Hamill");
+      blackbook.enterLastname(done, "Customer");
     });
   });
 
@@ -136,7 +136,7 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
 
   describe('Verify Search Results', () => {
     it('should return "Automation Customer" in results', (done) => {
-      blackbook.verifySearchResults(done, 'Mark Hamill');
+      blackbook.verifySearchResults(done, 'Automation Customer');
     });
   });
 
@@ -148,7 +148,7 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
 
   describe('Enter Last Name', () => {
     it('should enter a name in the last name field', (done) => {
-      blackbook.enterLastname(done, "Ha");
+      blackbook.enterLastname(done, "Cu");
     });
   });
 
@@ -166,7 +166,7 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
 
   describe('Verify Search Results', () => {
     it('should return "Automation Customer" in results', (done) => {
-      blackbook.verifySearchResults(done, 'Mark Hamill');
+      blackbook.verifySearchResults(done, 'Automation Customer');
     });
   });
 
@@ -184,7 +184,7 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
 
   describe('Enter Phone Number', () => {
     it('should enter a number in the phone field', (done) => {
-      blackbook.enterPhone(done, "5209639876");
+      blackbook.enterPhone(done, '8556781234');
     });
   });
 
@@ -202,7 +202,7 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
 
   describe('Verify Search Results', () => {
     it('should return "Automation Customer" in results', (done) => {
-      blackbook.verifySearchResults(done, 'Mark Hamill');
+      blackbook.verifySearchResults(done, 'Automation Customer');
     });
   });
 
@@ -214,7 +214,7 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
 
   describe('Enter Phone Number', () => {
     it('should enter a number in the phone field', (done) => {
-      blackbook.enterPhone(done, "520");
+      blackbook.enterPhone(done, "855");
     });
   });
 
@@ -232,7 +232,7 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
 
   describe('Verify Search Results', () => {
     it('should return "Automation Customer" in results', (done) => {
-      blackbook.verifySearchResults(done, 'Mark Hamill');
+      blackbook.verifySearchResults(done, 'Automation Customer');
     });
   });
 
@@ -250,7 +250,7 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
 
   describe('Enter Email Address', () => {
     it('should enter address in the email field', (done) => {
-      blackbook.enterEmail(done, "luke.skywalker@madmobile.com");
+      blackbook.enterEmail(done, "qa.automation@madmobile.com");
     });
   });
 
@@ -268,7 +268,7 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
 
   describe('Verify Search Results', () => {
     it('should return "Automation Customer" in results', (done) => {
-      blackbook.verifySearchResults(done, 'Mark Hamill');
+      blackbook.verifySearchResults(done, 'Automation Customer');
     });
   });
 
@@ -280,7 +280,7 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
 
   describe('Enter Email Address', () => {
     it('should enter address in the email field', (done) => {
-      blackbook.enterEmail(done, "Luke");
+      blackbook.enterEmail(done, "qa");
     });
   });
 
@@ -298,7 +298,7 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
 
   describe('Verify Search Results', () => {
     it('should return "Automation Customer" in results', (done) => {
-      blackbook.verifySearchResults(done, 'Mark Hamill');
+      blackbook.verifySearchResults(done, 'Automation Customer');
     });
   });
 
@@ -316,7 +316,7 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
 
   describe('Enter City ', () => {
     it('should enter city in the city field', (done) => {
-      blackbook.enterCity(done, "Tatooine");
+      blackbook.enterCity(done, "Tampa");
     });
   });
 
@@ -334,7 +334,7 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
 
   describe('Verify Search Results', () => {
     it('should return "Automation Customer" in results', (done) => {
-      blackbook.verifySearchResults(done, 'Mark Hamill');
+      blackbook.verifySearchResults(done, 'Automation Customer');
     });
   });
 

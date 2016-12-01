@@ -87,10 +87,10 @@ module.exports = {
   },
 
   leftDrawerOverlayCheck(done, catalogExists) {
-    client.isExisting(catalog.helpers.productCategories.shoes)
-      .then((isExisting) => {
+    client.isVisible(catalog.helpers.productCategories.shoes)
+      .then((isVisible) => {
         try {
-          assert.equal(catalogExists, isExisting, 'The Catalog Left Drawer is not closed.');
+          assert.equal(catalogExists, isVisible, 'The Catalog Left Drawer is not closed.');
         } catch (err) {
           done(err);
         }
@@ -105,10 +105,10 @@ module.exports = {
   },
 
    readLessLinkChk(done, lessLink) {
-     client.isExisting(catalog.helpers.products.lessLinkLabel)
-       .then((isExisting) => {
+     client.isVisible(catalog.helpers.products.lessLinkLabel)
+       .then((isVisible) => {
          try {
-           assert.equal(lessLink, isExisting, 'The PDP read less link did not appear after expanding the PDP description.');
+           assert.equal(lessLink, isVisible, 'The PDP read less link did not appear after expanding the PDP description.');
          } catch (err) {
            done(err);
          }
@@ -123,10 +123,10 @@ module.exports = {
      },
 
    readMoreLinkChk(done, moreLink) {
-     client.isExisting(catalog.helpers.products.moreLinkLabel)
-       .then((isExisting) => {
+     client.isVisible(catalog.helpers.products.moreLinkLabel)
+       .then((isVisible) => {
          try {
-           assert.equal(moreLink, isExisting, 'The PDP read more link did not appear after collapsing the PDP description.');
+           assert.equal(moreLink, isVisible, 'The PDP read more link did not appear after collapsing the PDP description.');
          } catch (err) {
            done(err);
          }

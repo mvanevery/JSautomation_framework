@@ -57,14 +57,16 @@ module.exports = {
       console.log('	ERROR: The New Arrivals or Shoes icon is not in the menu.');
     }
   },
+
   openProductDetailsPage(done) {
-    if(client.isVisible(catalog.helpers.products.edisonFlatsRoses, done)) {
-      client.click(catalog.helpers.products.edisonFlatsRoses)
+    if(client.isVisible(catalog.helpers.products.francescaDrivingFlatsSuede, done)) {
+      client.click(catalog.helpers.products.francescaDrivingFlatsSuede)
     }
   },
+
   productDetailsPage(done,productLabel) {
-      if(client.isVisible(catalog.helpers.products.edisonFlatsRoses, done)) {
-        client.getText(catalog.helpers.products.edisonFlatsRoses)
+      if(client.isVisible(catalog.helpers.products.francescaDrivingFlatsSuede, done)) {
+        client.getText(catalog.helpers.products.francescaDrivingFlatsSuede)
           .then((text) => {
             try {
               assert.equal(productLabel, text, 'The Shoes -> Flats Products Detail page is not displayed correctly.');
@@ -74,6 +76,7 @@ module.exports = {
           });
       }
   },
+
   catalogBackBtn(done) {
     if(client.isVisible(catalog.helpers.catalogBackBtn, done)) {
       client.click(catalog.helpers.catalogBackBtn)
@@ -104,15 +107,27 @@ module.exports = {
      }
   },
 
-   readLessLink(done, lessLink) {
-     client.isExisting(catalog.helpers.products.readLessLink)
-       .then((isExisting) => {
-         try {
-           assert.equal(lessLink, isExisting, 'The PDP read less link did not appear.');
-         } catch (err) {
-           done(err);
-         }
-       });
-      done();
-   }
+  readLessLink(done, lessLink) {
+   client.isExisting(catalog.helpers.products.readLessLink)
+     .then((isExisting) => {
+       try {
+         assert.equal(lessLink, isExisting, 'The PDP read less link did not appear.');
+       } catch (err) {
+         done(err);
+       }
+     });
+    done();
+  },
+
+  productDetailsPageVariants(done, expected) {
+    client.isVisible(catalog.helpers.products.francescaDrivingFlatsSuede)
+      .then(function(isVisible){
+          try {
+            assert.equal(productLabel, isVisible, 'The Shoes -> Flats Products Detail page is not displayed correctly.');
+          } catch (err) {
+            done(err);
+          }
+        });
+    done();
+  },
 }

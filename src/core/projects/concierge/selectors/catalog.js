@@ -15,7 +15,7 @@ module.exports = {
         flats: '//div[contains(text(),"Flats")]',
       },
       products: {
-        edisonFlatsRoses: '//div[contains(text(),"Edison Flats-Roses")]',
+        francescaDrivingFlatsSuede: '//div[contains(text(),"Francesca Driving Flats-Suede")]',
         readMoreLink: '//button[@data-id="readMoreLink"]',
         readLessLink: '//div[contains(text(),"read less")]'
       }

@@ -96,5 +96,23 @@ module.exports = {
         }
       });
      done();
-  }
+  },
+
+  readMoreLink(done) {
+     if(client.isVisible(catalog.helpers.products.readMoreLink, done)) {
+        client.click(catalog.helpers.products.readMoreLink)
+     }
+  },
+
+   readLessLink(done, lessLink) {
+     client.isExisting(catalog.helpers.products.readLessLink)
+       .then((isExisting) => {
+         try {
+           assert.equal(lessLink, isExisting, 'The PDP read less link did not appear.');
+         } catch (err) {
+           done(err);
+         }
+       });
+      done();
+   }
 }

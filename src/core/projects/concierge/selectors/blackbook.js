@@ -21,7 +21,6 @@ module.exports = {
       searchButton:'//button[@data-id="searchButton"]',
       resetButton:'//button[@data-id="resetButton"]',
       blackbookHeader: '//div[@data-id="pageHeader"]',
-      //blackbookHeader: '//div',
       myClientsToggle:'//switch[@data-id="clientsToggle"]',
       searchToggle:'//div[contains(text(),"Search")]',
       listToggle:'//div[contains(text(),"List")]',
@@ -29,8 +28,8 @@ module.exports = {
 
 //================================================== Add Customer Modal ================================================
 
-      //searchResults:`//div[@data-id="customerCard-0")]`,
-      searchResults:`//div[contains(text(),"Automation Customer")]`,
+      searchResults:`//div[@data-id="customerCard-0")]`,
+      //searchResults:`//div[contains(text(),"Automation Customer")]`,
       saveButton:'//button[@data-id="Done"]',
       modalHeader:'//div[@data-id="modalHeader"]',
       firstNameModal:'//input[@data-id="firstNameAddModal"]',

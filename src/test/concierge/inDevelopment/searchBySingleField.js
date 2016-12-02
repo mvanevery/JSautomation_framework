@@ -52,7 +52,13 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
 
   describe('Enter First Name', () => {
     it('should enter a name in the first name field', (done) => {
-      blackbook.enterFirstname(done, "Automation");
+      blackbook.enterFieldValue(done,"firstName", "Automation");
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 1 seconds', (done) => {
+      common.pause(done, 1000);
     });
   });
 
@@ -82,7 +88,13 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
 
   describe('Enter First Name', () => {
     it('should enter a name in the first name field', (done) => {
-      blackbook.enterFirstname(done, "Au");
+      blackbook.enterFieldValue(done,"firstName", "Au");
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 1 seconds', (done) => {
+      common.pause(done, 1000);
     });
   });
 
@@ -116,9 +128,21 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
     });
   });
 
+  describe('Pausing', () => {
+    it('Should pause the test for 2 seconds', (done) => {
+      common.pause(done, 2000);
+    });
+  });
+
   describe('Enter Last Name', () => {
     it('should enter a name in the last name field', (done) => {
-      blackbook.enterLastname(done, "Customer");
+      blackbook.enterFieldValue(done,"lastName", "Customer");
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 1 seconds', (done) => {
+      common.pause(done, 1000);
     });
   });
 
@@ -148,7 +172,13 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
 
   describe('Enter Last Name', () => {
     it('should enter a name in the last name field', (done) => {
-      blackbook.enterLastname(done, "Cu");
+      blackbook.enterFieldValue(done,"lastName", "Cu");
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 1 seconds', (done) => {
+      common.pause(done, 1000);
     });
   });
 
@@ -167,6 +197,12 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
   describe('Verify Search Results', () => {
     it('should return "Automation Customer" in results', (done) => {
       blackbook.verifySearchResults(done, 'Automation Customer');
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 1 seconds', (done) => {
+      common.pause(done, 1000);
     });
   });
 
@@ -184,7 +220,13 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
 
   describe('Enter Phone Number', () => {
     it('should enter a number in the phone field', (done) => {
-      blackbook.enterPhone(done, '8556781234');
+      blackbook.enterFieldValue(done,'phone', '8556781234');
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 1 seconds', (done) => {
+      common.pause(done, 1000);
     });
   });
 
@@ -214,7 +256,13 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
 
   describe('Enter Phone Number', () => {
     it('should enter a number in the phone field', (done) => {
-      blackbook.enterPhone(done, "855");
+      blackbook.enterFieldValue(done,'phone', "855");
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 1 seconds', (done) => {
+      common.pause(done, 1000);
     });
   });
 
@@ -233,6 +281,12 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
   describe('Verify Search Results', () => {
     it('should return "Automation Customer" in results', (done) => {
       blackbook.verifySearchResults(done, 'Automation Customer');
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 1 seconds', (done) => {
+      common.pause(done, 1000);
     });
   });
 
@@ -250,7 +304,13 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
 
   describe('Enter Email Address', () => {
     it('should enter address in the email field', (done) => {
-      blackbook.enterEmail(done, "qa.automation@madmobile.com");
+      blackbook.enterFieldValue(done,'email', "qa.automation@madmobile.com");
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 1 seconds', (done) => {
+      common.pause(done, 1000);
     });
   });
 
@@ -280,7 +340,13 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
 
   describe('Enter Email Address', () => {
     it('should enter address in the email field', (done) => {
-      blackbook.enterEmail(done, "qa");
+      blackbook.enterFieldValue(done,'email', "qa");
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 1 seconds', (done) => {
+      common.pause(done, 1000);
     });
   });
 
@@ -299,6 +365,12 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
   describe('Verify Search Results', () => {
     it('should return "Automation Customer" in results', (done) => {
       blackbook.verifySearchResults(done, 'Automation Customer');
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 1 seconds', (done) => {
+      common.pause(done, 1000);
     });
   });
 
@@ -316,7 +388,13 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
 
   describe('Enter City ', () => {
     it('should enter city in the city field', (done) => {
-      blackbook.enterCity(done, "Tampa");
+      blackbook.enterFieldValue(done,'city', "Tampa");
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 1 seconds', (done) => {
+      common.pause(done, 1000);
     });
   });
 
@@ -335,6 +413,48 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
   describe('Verify Search Results', () => {
     it('should return "Automation Customer" in results', (done) => {
       blackbook.verifySearchResults(done, 'Automation Customer');
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 5000);
+    });
+  });
+
+  describe('Enter City ', () => {
+    it('should enter city in the city field', (done) => {
+      blackbook.enterFieldValue(done,'city', "Tampa");
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 1 seconds', (done) => {
+      common.pause(done, 1000);
+    });
+  });
+
+  describe('Click the Search Customer button', () => {
+    it('Should click the search customer button', (done) => {
+      blackbook.searchCustomer(done);
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 5000);
+    });
+  });
+
+  describe('Verify Search Results', () => {
+    it('should return "Automation Customer" in results', (done) => {
+      blackbook.verifySearchResults(done, 'Automation Customer');
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 1 seconds', (done) => {
+      common.pause(done, 1000);
     });
   });
 

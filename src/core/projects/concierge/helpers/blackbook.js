@@ -205,36 +205,33 @@ module.exports = {
         }
       })
     done();
-    //client.isVisible(blackbook.helpers.searchButton)
-    //  .then((isVisible) => {
-    //    try {
-    //      assert.equal(expected, isVisible, 'The Shoes -> Flats Products Detail page is not displayed correctly.');
-    //    } catch (err) {
-    //      done(err);
-    //    }
-    //  });
-    //done();
   },
 
 
-  getFieldValue(done) {
-    //if (client.isVisible(blackbook.helpers.saveButton, done)) {
-      client.getText(blackbook.helpers.firstName, done)
-        .then((text) => {
-          console.log(text)
-        })
+  getFieldValue(done, select, expected) {
+    client.getValue(blackbook.helpers[select])
+      .then(function (getValue) {
+        try {
+          assert.equal(expected, getValue, 'The expected value was not equal to the text');
+        } catch (err) {
+          done(err);
+        }
+      })
+    done();
   },
 
   verifySearchResults(done, expected) {
     //if (client.isVisible(blackbook.helpers.searchResults, done)) {
-      client.getText(blackbook.helpers.searchResults, done)
-        .then((text) => {
+      client.getValue(blackbook.helpers.searchResults)
+        .then(function(getValue) {
           try {
-            assert.equal(expected, text, 'The expected value was not equal to the text');
+            assert.equal(expected, getValue, 'The expected value was not equal to the text');
           } catch (err) {
             done(err);
           }
+          console.log(getValue);
         })
+    done();
     //}
   },
 

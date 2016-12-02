@@ -43,12 +43,12 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
       landing.navBlackbook(done, "My Clients");
     });
   });
-
-  describe('Get visible', () => {
-    it('Should get value of field', (done) => {
-      blackbook.elementVisible(done, "blackbookHeader", true);
-    });
-  });
+  //
+  //describe('Get visible', () => {
+  //  it('Should get value of field', (done) => {
+  //    blackbook.elementVisible(done, "blackbookHeader", true);
+  //  });
+  //});
 
   describe('Pausing', () => {
     it('Should pause the test for 5 seconds', (done) => {
@@ -63,7 +63,7 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 5 seconds', (done) => {
+    it('Should pause the test for 1 seconds', (done) => {
       common.pause(done, 1000);
     });
   });
@@ -75,7 +75,7 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 5 seconds', (done) => {
+    it('Should pause the test for 1 seconds', (done) => {
       common.pause(done, 1000);
     });
   });
@@ -87,7 +87,7 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 5 seconds', (done) => {
+    it('Should pause the test for 1 seconds', (done) => {
       common.pause(done, 1000);
     });
   });
@@ -99,7 +99,7 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 5 seconds', (done) => {
+    it('Should pause the test for 1 seconds', (done) => {
       common.pause(done, 1000);
     });
   });
@@ -111,7 +111,7 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 5 seconds', (done) => {
+    it('Should pause the test for 1 seconds', (done) => {
       common.pause(done, 1000);
     });
   });
@@ -123,8 +123,158 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 5 seconds', (done) => {
+    it('Should pause the test for 1 seconds', (done) => {
       common.pause(done, 1000);
+    });
+  });
+
+  describe('Get Value from First Name Field', () => {
+    it('Should get the value from an First Name field', (done) => {
+      blackbook.getFieldValue(done, 'firstName', 'Automation');
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 1 seconds', (done) => {
+      common.pause(done, 1000);
+    });
+  });
+
+  describe('Get Value from Last Name Field', () => {
+    it('Should get the value from an Last Name field', (done) => {
+      blackbook.getFieldValue(done, 'lastName', 'Customer');
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 1 seconds', (done) => {
+      common.pause(done, 1000);
+    });
+  });
+
+  describe('Get Value from Phone # Field', () => {
+    it('Should get the value from an Phone # field', (done) => {
+      blackbook.getFieldValue(done, 'phone', '8135551234');
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 1 seconds', (done) => {
+      common.pause(done, 1000);
+    });
+  });
+
+  describe('Get Value from Email Field', () => {
+    it('Should get the value from an Email field', (done) => {
+      blackbook.getFieldValue(done, 'email', 'qa.automation@madmobile.com');
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 1 seconds', (done) => {
+      common.pause(done, 1000);
+    });
+  });
+
+  describe('Get Value from city Field', () => {
+    it('Should get the value from an City field', (done) => {
+      blackbook.getFieldValue(done, 'city', 'Tampa');
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 1 seconds', (done) => {
+      common.pause(done, 1000);
+    });
+  });
+
+  describe('Get Value from Zipcode Field', () => {
+    it('Should get the value from an Zipcode field', (done) => {
+      blackbook.getFieldValue(done, 'zipcode', '85701');
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 2 seconds', (done) => {
+      common.pause(done, 2000);
+    });
+  });
+
+  describe('Clear Search Fields', () => {
+    it('Should Logout from the current user', (done) => {
+      blackbook.resetFields(done);
+    });
+  });
+
+  describe('Verify Value from First Name Field', () => {
+    it('Should get the value from an First Name field and verify it is empty', (done) => {
+      blackbook.getFieldValue(done, 'firstName', '');
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 1 seconds', (done) => {
+      common.pause(done, 1000);
+    });
+  });
+
+  describe('Verify Value from Last Name Field', () => {
+    it('Should get the value from an Last Name field and verify it is empty', (done) => {
+      blackbook.getFieldValue(done, 'lastName', '');
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 1 seconds', (done) => {
+      common.pause(done, 1000);
+    });
+  });
+
+  describe('Verify Value from Phone # Field', () => {
+    it('Should get the value from an Phone # field and verify it is empty', (done) => {
+      blackbook.getFieldValue(done, 'phone', '');
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 1 seconds', (done) => {
+      common.pause(done, 1000);
+    });
+  });
+
+  describe('Verify Value from Email Field', () => {
+    it('Should get the value from an Email field and verify it is empty', (done) => {
+      blackbook.getFieldValue(done, 'email', '');
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 1 seconds', (done) => {
+      common.pause(done, 1000);
+    });
+  });
+
+  describe('Verify Value from City Field', () => {
+    it('Should get the value from an City field and verify it is empty', (done) => {
+      blackbook.getFieldValue(done, 'city', '');
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 1 seconds', (done) => {
+      common.pause(done, 1000);
+    });
+  });
+
+  describe('Verify Value from Zipcode Field', () => {
+    it('Should get the value from an Zipcode field and verify it is empty', (done) => {
+      blackbook.getFieldValue(done, 'zipcode', '');
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 1 seconds', (done) => {
+      common.pause(done, 2000);
     });
   });
 

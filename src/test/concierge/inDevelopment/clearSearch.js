@@ -58,7 +58,7 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
 
   describe('Enter First Name', () => {
     it('should enter a name in the first name field', (done) => {
-      blackbook.enterFirstname(done,"phone", "5551234");
+      blackbook.enterFieldValue(done,"firstName", "Automation");
     });
   });
 
@@ -70,7 +70,55 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
 
   describe('Enter Last Name', () => {
     it('should enter a name in the last name field', (done) => {
-      blackbook.enterLastname(done, "Customer");
+      blackbook.enterFieldValue(done, "lastName", "Customer");
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 1000);
+    });
+  });
+
+  describe('Enter Last Name', () => {
+    it('should enter a name in the last name field', (done) => {
+      blackbook.enterFieldValue(done, "phone", "8135551234");
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 1000);
+    });
+  });
+
+  describe('Enter Last Name', () => {
+    it('should enter a name in the last name field', (done) => {
+      blackbook.enterFieldValue(done, "email", "qa.automation@madmobile.com");
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 1000);
+    });
+  });
+
+  describe('Enter Last Name', () => {
+    it('should enter a name in the last name field', (done) => {
+      blackbook.enterFieldValue(done, "city", "Tampa");
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 1000);
+    });
+  });
+
+  describe('Enter Last Name', () => {
+    it('should enter a name in the last name field', (done) => {
+      blackbook.enterFieldValue(done, "zipcode", "85701");
     });
   });
 

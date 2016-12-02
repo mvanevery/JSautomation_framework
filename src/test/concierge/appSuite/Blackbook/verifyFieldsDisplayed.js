@@ -54,7 +54,7 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
 
   describe('Verify the First Name field is displayed', () => {
     it('should verify the name and visibility of the field', (done) => {
-      blackbook.verifyFirstNameDisplayed(done, 'firstName');
+      blackbook.elementVisible(done, 'firstName', true);
     });
   });
 
@@ -66,7 +66,7 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
 
   describe('Verify the Last Name field is displayed', () => {
     it('should verify the name and visibility of the field', (done) => {
-      blackbook.verifyLastNameDisplayed(done, 'lastName');
+      blackbook.elementVisible(done, 'lastName', true);
     });
   });
 
@@ -78,7 +78,7 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
 
   describe('Verify the Phone field is displayed', () => {
     it('should verify the name and visibility of the field', (done) => {
-      blackbook.verifyPhoneDisplayed(done, 'phone');
+      blackbook.elementVisible(done, 'phone', true);
     });
   });
 
@@ -90,7 +90,7 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
 
   describe('Verify the Email field is displayed', () => {
     it('should verify the name and visibility of the field', (done) => {
-      blackbook.verifyEmailDisplayed(done, 'email');
+      blackbook.elementVisible(done, 'email', true);
     });
   });
 
@@ -102,7 +102,7 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
 
   describe('Verify the City field is displayed', () => {
     it('should verify the name and visibility of the field', (done) => {
-      blackbook.verifyCityDisplayed(done, 'city');
+      blackbook.elementVisible(done, 'city', true);
     });
   });
 
@@ -114,7 +114,7 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
 
   describe('Verify the Zipcode field is displayed', () => {
     it('should verify the name and visibility of the field', (done) => {
-      blackbook.verifyZipcodeDisplayed(done, 'postalCode');
+      blackbook.elementVisible(done, 'postalCode', true);
     });
   });
 

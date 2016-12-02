@@ -14,11 +14,16 @@ module.exports = {
     }
   },
 
+  enterFieldValue(done, selector, value) {
+    if (client.isVisible(blackbook.helpers[selector], done)) {
+      client.setValue(blackbook.helpers[selector], value)
+    }
+  },
+
   enterFirstname(done, selector, firstName) {
-    if (client.isVisible(blackbook.helpers[selector])) {
+    if (client.isVisible(blackbook.helpers[selector], done)) {
       client.setValue(blackbook.helpers[selector], firstName)
     }
-  done();
 
   },
 
@@ -198,7 +203,8 @@ module.exports = {
         } catch (err) {
           done(err);
         }
-      });
+      })
+    done();
     //client.isVisible(blackbook.helpers.searchButton)
     //  .then((isVisible) => {
     //    try {

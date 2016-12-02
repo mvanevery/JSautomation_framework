@@ -55,7 +55,7 @@ describe('Smoke Test: Add Appointment', () => {
     });
   });
 
-  describe('Change the type and Open Task Form', () => {
+  describe('Change the type and Open Appointment Form', () => {
     it('Should open the appointment form from the Planner', (done) => {
       planner.apptToggle(done, "Create Appointment");
     });
@@ -110,8 +110,8 @@ describe('Smoke Test: Add Appointment', () => {
       common.pause(done, 2000);
     });
   });
-  describe('Verify Added Task', () => {
-    it('Should verify that the Task is displayed on Planner Page', (done) => {
+  describe('Verify Added Appointment', () => {
+    it('Should verify that the Appointment is displayed on Planner Page', (done) => {
       planner.verifyAddedAppt(done, 'Automation Test Appointment');
     });
   });

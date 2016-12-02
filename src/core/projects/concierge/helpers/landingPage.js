@@ -4,6 +4,7 @@ const project = require('../../../projects/config').project;
 const config = require(`../../../projects/${project}/config`);
 const landingPage = require(`../../../projects/${project}/selectors/landingPage`);
 const loginPage = require(`../../../projects/${project}/selectors/loginPage`);
+const login = require(`../../../projects/${project}/helpers/loginPage`);
 const provisioning = require(`../../../projects/${project}/selectors/provisioning`);
 const store = require(`../../../projects/${project}/selectors/store`);
 const planner = require(`../../../projects/${project}/selectors/planner`);
@@ -84,22 +85,35 @@ module.exports = {
     }
   },
 
-  navSearch(done, expected) {
-    if (client.isVisible(landingPage.helpers.searchIcon, done)) {
-      client.click(landingPage.helpers.searchIcon)
-        .then(() => {
-          client.getText(landingPage.helpers.productSearchField)
-            .then((text) => {
-              console.log(text);
-              //try {
-              //  assert.equal(expected, text, 'The expected value was not equal to the text');
-              //} catch (err) {
-              //  done(err);
-              //}
-            })
-        })
-    }
+  navigateIcons(done,select) {
+    client.isVisible(landingPage.helpers[select])
+      .then(function (isVisible) {
+        assert.isTrue(isVisible, 'The expected value was not equal to the text');
+        if (isVisible == true) {
+          client.click(landingPage.helpers[select])
+        } else {
+          client.click(login.helpers.logoutUser(done));
+        }
+      })
+    done();
   },
+
+  //navSearch(done, expected) {
+  //  if (client.isVisible(landingPage.helpers.searchIcon, done)) {
+  //    client.click(landingPage.helpers.searchIcon)
+  //      .then(() => {
+  //        client.getText(landingPage.helpers.productSearchField)
+  //          .then((text) => {
+  //            console.log(text);
+  //            //try {
+  //            //  assert.equal(expected, text, 'The expected value was not equal to the text');
+  //            //} catch (err) {
+  //            //  done(err);
+  //            //}
+  //          })
+  //      })
+  //  }
+  //},
 
   navAddition(done) {
     if (client.isVisible(landingPage.helpers.addIcon, done)) {

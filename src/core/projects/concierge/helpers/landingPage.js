@@ -10,7 +10,7 @@ const planner = require(`../../../projects/${project}/selectors/planner`);
 const blackbook = require(`../../../projects/${project}/selectors/blackbook`);
 const catalog = require(`../../../projects/${project}/selectors/catalog`);
 const assert = require('chai').assert;
-const $ = require('chai-Jquery');
+
 
 module.exports = {
 
@@ -86,20 +86,24 @@ module.exports = {
   },
 
   navSearch(done, expected) {
-    if (client.isVisible(landingPage.helpers.searchIcon, done)) {
-      client.click(landingPage.helpers.searchIcon)
+    client.isVisible(landingPage.helpers.searchIcon)
+      .then(function(isVisible) {
+        assert.isTrue(isVisible, 'The expected value was not equal to the text')
         .then(() => {
-          client.getText(landingPage.helpers.productSearchField)
-            .then((text) => {
-              console.log(text);
-              //try {
-              //  assert.equal(expected, text, 'The expected value was not equal to the text');
-              //} catch (err) {
-              //  done(err);
-              //}
-            })
-        })
-    }
+          client.click(landingPage.helpers.searchIcon)
+        });
+    })
+    done();
+
+    //if (client.isVisible(landingPage.helpers.searchIcon, done)) {
+    //  client.click(landingPage.helpers.searchIcon)
+    //    .then(() => {
+    //      client.getText(landingPage.helpers.productSearchField)
+    //        .then((text) => {
+    //          console.log(text);
+    //        })
+    //    })
+    //}
   },
 
   navAddition(done) {

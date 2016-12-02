@@ -84,7 +84,7 @@ describe('Smoke Test: C1665 Select Variant Combination', () => {
 
    describe('See a Shoes -> Flats product variants.', () => {
      it('Should see Shoes -> Flats product variants.', (done) => {
-       catalog.productDetailsPageVariantsShown(done, true);
+       catalog.PDPVariantsShown(done, true);
      });
    });
 
@@ -96,7 +96,7 @@ describe('Smoke Test: C1665 Select Variant Combination', () => {
 
     describe('See a Shoes -> Flats product default variant.', () => {
       it('Should see Shoes -> Flats product default variant.', (done) => {
-        catalog.productDetailsPageDefaultVariantShown(done, "-1");
+        catalog.PDPDefaultVariantShown(done, "-1");
       });
     });
 
@@ -113,8 +113,8 @@ describe('Smoke Test: C1665 Select Variant Combination', () => {
    });
 
    describe('Pausing', () => {
-     it('Should pause the test for 2 seconds', (done) => {
-       common.pause(done, 2000);
+     it('Should pause the test for 5 seconds', (done) => {
+       common.pause(done, 5000);
      });
    });
 

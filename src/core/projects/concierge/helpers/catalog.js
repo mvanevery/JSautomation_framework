@@ -119,8 +119,8 @@ module.exports = {
     done();
   },
 
-  productDetailsPageVariantsShown(done, expected) {
-    client.isVisible(catalog.helpers.variants.size)
+  PDPVariantsShown(done, expected) {
+    client.isVisible(catalog.helpers.variants.defaultVariant)
       .then(function(isVisible){
           try {
             assert.equal(expected, isVisible, 'The Shoes -> Flats Products Detail Variants did not displayed correctly.');
@@ -131,9 +131,9 @@ module.exports = {
     done();
   },
 
-  productDetailsPageDefaultVariantShown(done, expected) {
-      client.getHTML(catalog.helpers.variants.size).then(function(html) {
-      var idx = html.toLowerCase().indexOf(catalog.helpers.variants.sizeValue);
+  PDPDefaultVariantShown(done, expected) {
+      client.getHTML(catalog.helpers.variants.defaultVariant).then(function(html) {
+      var idx = html.toLowerCase().indexOf(catalog.helpers.variants.variantSelectedValue);
         try {
           assert.notEqual(expected, idx, 'The Shoes -> Flats Products Detail Default Variant did not displayed correctly.');
         } catch (err) {

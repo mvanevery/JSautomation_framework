@@ -15,7 +15,7 @@ const blackbook = require('../../../core/projects/concierge/helpers/blackbook');
 const landing = require('../../../core/projects/concierge/helpers/landingPage');
 
 
-describe('Smoke Test: Verify Search Fields Displayed', () => {
+describe('Smoke Test: Search by Single Specified Fields', () => {
   before((done) => {
     common.goTo(done);
   });

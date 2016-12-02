@@ -14,7 +14,7 @@ const blackbook = require('../../../../core/projects/concierge/helpers/blackbook
 const landing = require('../../../../core/projects/concierge/helpers/landingPage');
 const search = require('../../../../core/projects/concierge/helpers/productSearch');
 
-describe('Smoke Test: Search Customer', () => {
+describe('Smoke Test: Search Product by SKU', () => {
   before((done) => {
     common.goTo(done);
   });
@@ -75,7 +75,7 @@ describe('Smoke Test: Search Customer', () => {
 
   describe('Verify Product Title', () => {
     it('should verify the product title', (done) => {
-      search.verifyProductNumber(done,'123456789');
+      search.verifyProductNumber(done,'H465689');
     });
   });
 

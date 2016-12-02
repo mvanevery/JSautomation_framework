@@ -1,9 +1,9 @@
 /**
  * Created by mvanevery on 12/01/16.
  * Project:     Concierge
- * Test Name:   searchBySingleField
- * Test Steps:  https://madmobile.testrail.com/index.php?/cases/view/2210
- * C2210 - Searching by a Single Specified Field
+ * Test Name:   clearSearch
+ * Test Steps:  https://madmobile.testrail.com/index.php?/cases/view/2212
+ * C2212 - Clear Search Fields
  * Author:      Mike Van Every
  * Date:        12/01/2016
  */
@@ -13,9 +13,8 @@ const common = require('../../../core/projects/concierge/helpers/common');
 const login = require('../../../core/projects/concierge/helpers/loginPage');
 const blackbook = require('../../../core/projects/concierge/helpers/blackbook');
 const landing = require('../../../core/projects/concierge/helpers/landingPage');
-const provision = require('../../../core/projects/concierge/helpers/provisioning');
 
-describe('Smoke Test: Verify Search Fields Displayed', () => {
+describe('Smoke Test: Clear Search Fields', () => {
   before((done) => {
     common.goTo(done);
   });
@@ -43,7 +42,7 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
       landing.navBlackbook(done, "My Clients");
     });
   });
-  //
+
   //describe('Get visible', () => {
   //  it('Should get value of field', (done) => {
   //    blackbook.elementVisible(done, "blackbookHeader", true);

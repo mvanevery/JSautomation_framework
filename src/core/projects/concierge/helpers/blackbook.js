@@ -14,10 +14,17 @@ module.exports = {
     }
   },
 
-  enterFirstname(done, firstName) {
-    if (client.isVisible(blackbook.helpers.firstName, done)) {
-      client.setValue(blackbook.helpers.firstName, firstName)
+  enterFieldValue(done, selector, value) {
+    if (client.isVisible(blackbook.helpers[selector], done)) {
+      client.setValue(blackbook.helpers[selector], value)
     }
+  },
+
+  enterFirstname(done, selector, firstName) {
+    if (client.isVisible(blackbook.helpers[selector], done)) {
+      client.setValue(blackbook.helpers[selector], firstName)
+    }
+
   },
 
   enterFirstnameModal(done, firstName) {
@@ -128,6 +135,12 @@ module.exports = {
     }
   },
 
+  resetFields(done) {
+    if(client.isVisible(blackbook.helpers.resetButton, done)) {
+      client.click(blackbook.helpers.resetButton)
+    }
+  },
+
   addCustomer(done) {
     if (client.isVisible(blackbook.helpers.addCustomerButton, done)) {
       client.click(blackbook.helpers.addCustomerButton)
@@ -182,17 +195,46 @@ module.exports = {
     }
   },
 
-  verifySearchResult(done, expected) {
-    if (client.isVisible(blackbook.helpers.searchResults, done)) {
-      client.getText(blackbook.helpers.searchResults)
-        .then((text) => {
+  elementVisible(done, select, expected) {
+    client.isVisible(blackbook.helpers[select])
+      .then(function(isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the text');
+        } catch (err) {
+          done(err);
+        }
+      })
+    done();
+  },
+
+
+
+
+  getFieldValue(done, select, expected) {
+    client.getValue(blackbook.helpers[select])
+      .then(function (getValue) {
+        try {
+          assert.equal(expected, getValue, 'The expected value was not equal to the text');
+        } catch (err) {
+          done(err);
+        }
+      })
+    done();
+  },
+
+  verifySearchResults(done, expected) {
+    //if (client.isVisible(blackbook.helpers.searchResults, done)) {
+      client.getValue(blackbook.helpers.searchResults)
+        .then(function(getValue) {
           try {
-            assert.equal(expected, text, 'The expected value was not equal to the text');
+            assert.equal(expected, getValue, 'The expected value was not equal to the text');
           } catch (err) {
             done(err);
           }
+          console.log(getValue);
         })
-    }
+    done();
+    //}
   },
 
   selectCustomerCard(done, expected) {

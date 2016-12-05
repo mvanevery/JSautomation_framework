@@ -46,7 +46,7 @@ describe('Smoke Test: Add Task', () => {
   });
 
   describe('Change the type and Open Task Form', () => {
-    it('Should open the appointment form from the Planner', (done) => {
+    it('Should open the task form from the Planner', (done) => {
       planner.taskToggle(done, "Create Task");
     });
   });

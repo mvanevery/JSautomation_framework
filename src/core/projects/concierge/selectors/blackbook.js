@@ -20,15 +20,16 @@ module.exports = {
       zipcode:'//input[@name="postalCode"]',
       searchButton:'//button[@data-id="searchButton"]',
       resetButton:'//button[@data-id="resetButton"]',
-      blackbookHeader: '//div[data-id="pageHeader"]',
+      blackbookHeader: '//div[@data-id="pageHeader"]',
       myClientsToggle:'//switch[@data-id="clientsToggle"]',
-      searchToggle:'//div[contains(text(),"Search"]',
-      listToggle:'//div[contains(text(),"List"]',
+      searchToggle:'//div[contains(text(),"Search")]',
+      listToggle:'//div[contains(text(),"List")]',
       addCustomerButton:'//button[@data-id="customer-add"]',
 
 //================================================== Add Customer Modal ================================================
 
-      searchResults:`//div[contains(text(),"Jerry")]`,
+      searchResults:`//div[@data-id="customerCard-0")]`,
+      //searchResults:`//div[contains(text(),"Automation Customer")]`,
       saveButton:'//button[@data-id="Done"]',
       modalHeader:'//div[@data-id="modalHeader"]',
       firstNameModal:'//input[@data-id="firstNameAddModal"]',
@@ -54,7 +55,7 @@ module.exports = {
 
       //================================================== CUSTOMER PROFILE ============================================
 
-      customerName: '//div[contains(text(),"Automation Test"]',
+      customerName: '//div[contains(text(),"Automation Customer"]',
       //customerName:'//div[@data-id="contactFullName"]',
       editIcon:'//div[@class="mm-o-icon icon-edit-customer"]',
       //editIcon:'//button[@data-id="editCustomer"]',

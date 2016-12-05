@@ -43,7 +43,7 @@ const search = require('../../../../core/projects/concierge/helpers/productSearc
 
   describe('Click the Product Search menu option', () => {
     it('Should open Product Search drawer', (done) => {
-     landing.navSearch(done, "Product Search");
+     landing.navSearch(done, false);
   });
 });
 

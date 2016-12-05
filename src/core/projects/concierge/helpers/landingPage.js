@@ -86,14 +86,25 @@ module.exports = {
   },
 
   navSearch(done, expected) {
-    client.isVisible(landingPage.helpers.searchIcon)
-      .then(function(isVisible) {
-        assert.isTrue(isVisible, 'The expected value was not equal to the text')
-        .then(() => {
-          client.click(landingPage.helpers.searchIcon)
-        });
-    })
-    done();
+    client.isVisible(landingPage.helpers.searchIcon, done)
+      .then(() => {
+        client.click(landingPage.helpers.searchIcon)
+      })
+  },
+
+
+    //      .then(function(isVisible) {
+    //    assert.isTrue(expected, isVisible, 'The expected value was not equal to the text')
+    //    //.then(() => {
+    //      if(isVisible == true) {
+    //          client.click(landingPage.helpers.searchIcon)
+    //        }
+    //        //.then(()=> {
+    //
+    //      })
+    //    }
+    //},
+    //done();
 
     //if (client.isVisible(landingPage.helpers.searchIcon, done)) {
     //  client.click(landingPage.helpers.searchIcon)
@@ -104,9 +115,9 @@ module.exports = {
     //        })
     //    })
     //}
-  },
+  //},
 
-  navAddition(done) {
+  navAddition(done)  {
     if (client.isVisible(landingPage.helpers.addIcon, done)) {
       client.click(landingPage.helpers.addIcon)
         .then(() => {
@@ -120,6 +131,7 @@ module.exports = {
             })
         })
     }
-  },
+  }
 
 }
+

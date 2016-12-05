@@ -54,7 +54,7 @@ describe('Smoke Test: Search Customer', () => {
 
   describe('Enter First Name', () => {
     it('should enter a name in the first name field', (done) => {
-      blackbook.enterFirstname(done, "J");
+      blackbook.enterFirstname(done, "Au");
     });
   });
 
@@ -66,7 +66,7 @@ describe('Smoke Test: Search Customer', () => {
 
   describe('Enter Last Name', () => {
     it('should enter a name in the last name field', (done) => {
-      blackbook.enterLastname(done, "Smith");
+      blackbook.enterLastname(done, "Customer");
     });
   });
 
@@ -90,7 +90,7 @@ describe('Smoke Test: Search Customer', () => {
 
   describe('Verify Search Results', () => {
     it('Should verify the customer search results', (done) => {
-      blackbook.verifySearchResult(done);
+      blackbook.verifySearchResults(done, 'Automation Customer');
     });
   });
 

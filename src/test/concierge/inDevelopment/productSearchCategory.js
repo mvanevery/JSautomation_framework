@@ -14,7 +14,7 @@ const blackbook = require('../../../core/projects/concierge/helpers/blackbook');
 const landing = require('../../../core/projects/concierge/helpers/landingPage');
 const search = require('../../../core/projects/concierge/helpers/productSearch');
 
-describe('Smoke Test: Search Customer', () => {
+describe('Smoke Test: Search Product by Category', () => {
   before((done) => {
     common.goTo(done);
   });

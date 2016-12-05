@@ -43,11 +43,11 @@ describe('Smoke Test: Clear Search Fields', () => {
     });
   });
 
-  //describe('Get visible', () => {
-  //  it('Should get value of field', (done) => {
-  //    blackbook.elementVisible(done, "blackbookHeader", true);
-  //  });
-  //});
+  describe('Get visible', () => {
+    it('Should get value of field', (done) => {
+      blackbook.elementVisible(done, "blackbookHeader", true);
+    });
+  });
 
   describe('Pausing', () => {
     it('Should pause the test for 5 seconds', (done) => {
@@ -79,8 +79,8 @@ describe('Smoke Test: Clear Search Fields', () => {
     });
   });
 
-  describe('Enter Last Name', () => {
-    it('should enter a name in the last name field', (done) => {
+  describe('Enter Phone #', () => {
+    it('should enter a phone # in the phone field', (done) => {
       blackbook.enterFieldValue(done, "phone", "8135551234");
     });
   });
@@ -91,8 +91,8 @@ describe('Smoke Test: Clear Search Fields', () => {
     });
   });
 
-  describe('Enter Last Name', () => {
-    it('should enter a name in the last name field', (done) => {
+  describe('Enter an Email', () => {
+    it('should enter email in the email field', (done) => {
       blackbook.enterFieldValue(done, "email", "qa.automation@madmobile.com");
     });
   });
@@ -103,8 +103,8 @@ describe('Smoke Test: Clear Search Fields', () => {
     });
   });
 
-  describe('Enter Last Name', () => {
-    it('should enter a name in the last name field', (done) => {
+  describe('Enter City', () => {
+    it('should enter a city in the city field', (done) => {
       blackbook.enterFieldValue(done, "city", "Tampa");
     });
   });
@@ -115,8 +115,8 @@ describe('Smoke Test: Clear Search Fields', () => {
     });
   });
 
-  describe('Enter Last Name', () => {
-    it('should enter a name in the last name field', (done) => {
+  describe('Enter Zipcode', () => {
+    it('should enter a zipcode in the zipcode field', (done) => {
       blackbook.enterFieldValue(done, "zipcode", "85701");
     });
   });
@@ -175,7 +175,7 @@ describe('Smoke Test: Clear Search Fields', () => {
     });
   });
 
-  describe('Get Value from city Field', () => {
+  describe('Get Value from City Field', () => {
     it('Should get the value from an City field', (done) => {
       blackbook.getFieldValue(done, 'city', 'Tampa');
     });

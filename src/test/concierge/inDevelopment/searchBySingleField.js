@@ -482,4 +482,4 @@ describe('Smoke Test: Search by Single Specified Fields', () => {
     });
   });
 
-})
+});

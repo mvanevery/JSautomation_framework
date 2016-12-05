@@ -39,7 +39,7 @@ describe('Smoke Test: Search Product by Category', () => {
 
   describe('Click the Blackbook menu option', () => {
     it('Should open Blackbook sections', (done) => {
-      landing.navigateIcons(done, 'black');
+      landing.navigateIcons(done, "email", false);
     });
   });
 

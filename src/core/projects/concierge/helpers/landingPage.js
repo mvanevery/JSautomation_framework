@@ -86,18 +86,41 @@ module.exports = {
     }
   },
 
-  navigateIcons(done, select) {
-    client.isVisible(landingPage.helpers[select])
+  navigateIcons(done, selector, expected) {
+    client.isVisible(landingPage.helpers[selector], done)
       .then(function (isVisible) {
-        assert.isTrue(isVisible, 'The expected value was not equal to the text');
-        if (isVisible == true) {
-          client.click(landingPage.helpers[select])
-        } else {
-          client.click(login.helpers.logoutUser(done));
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the text')
+        } catch (err) {
+          done(err);
         }
+        //console.log(isVisible);
+        //if (isVisible == true) {
+          client.click(landingPage.helpers[selector], done);
+          //} else {
+          //  client.click(landingPage.helpers.logoutUser(done))
+          //}
+          //done();
+        //}
       })
-    done();
   },
+
+  navSearch(done, selector, expected) {
+  client.isVisible(landingPage.helpers[selector])
+    .then(function(isVisible) {
+      try {
+        assert.isTrue(expected, isVisible, 'The expected value was not equal to the text')
+      }  catch (err) {
+        done(err);
+      }
+      if(isVisible == true) {
+        client.click(landingPage.helpers.searchIcon)
+      }
+      //.then(()=> {
+
+    })
+  done();
+},
 
   //navSearch(done, expected) {
   //  if (client.isVisible(landingPage.helpers.searchIcon, done)) {

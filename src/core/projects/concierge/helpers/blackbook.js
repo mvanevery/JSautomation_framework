@@ -207,9 +207,6 @@ module.exports = {
     done();
   },
 
-
-
-
   getFieldValue(done, select, expected) {
     client.getValue(blackbook.helpers[select])
       .then(function (getValue) {

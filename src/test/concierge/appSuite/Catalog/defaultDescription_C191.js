@@ -1,9 +1,9 @@
 /**
  * Project:     Concierge
- * TestName     Catalog/selectALeafOfTheMenuTree_C1248
- * TestSteps:   https://madmobile.testrail.com/index.php?/cases/view/1248
+ * TestName     Catalog/defaultDescription_C191
+ * TestSteps:   https://madmobile.testrail.net/index.php?/cases/view/191
  * Author:      John Harre
- * Date:        11/21/2016
+ * Date:        11/30/2016
  */
 
 const common = require('../../../../core/projects/concierge/helpers/common');
@@ -11,7 +11,7 @@ const login = require('../../../../core/projects/concierge/helpers/loginPage');
 const landing = require('../../../../core/projects/concierge/helpers/landingPage');
 const catalog = require('../../../../core/projects/concierge/helpers/catalog');
 
-describe('Smoke Test: C1248 Selecting A Leaf Of The Menu Tree', () => {
+describe('Smoke Test: C191 Default Descriptiobn', () => {
   before((done) => {
     common.goTo(done);
   });
@@ -45,30 +45,6 @@ describe('Smoke Test: C1248 Selecting A Leaf Of The Menu Tree', () => {
       common.pause(done, 5000);
     });
   });
-
-    describe('Click the New Arrivals menu option', () => {
-      it('Should open New Arrivals section', (done) => {
-        catalog.LeftDrawer(done, "New Arrivals");
-      });
-    });
-
-    describe('Pausing', () => {
-      it('Should pause the test for 5 seconds', (done) => {
-        common.pause(done, 5000);
-      });
-    });
-
-    describe('Click the Catalog menu option', () => {
-      it('Should open Catalog section', (done) => {
-        landing.navCatalog(done, "Catalog");
-      });
-    });
-
-    describe('Pausing', () => {
-      it('Should pause the test for 5 seconds', (done) => {
-        common.pause(done, 5000);
-      });
-    });
 
     describe('Click the Shoes menu option', () => {
       it('Should open Shoes section', (done) => {
@@ -109,6 +85,30 @@ describe('Smoke Test: C1248 Selecting A Leaf Of The Menu Tree', () => {
     describe('See a Shoes -> Flats product details.', () => {
       it('Should see Shoes -> Flats product details page.', (done) => {
         catalog.productDetailsPage(done, "Edison Flats-Roses");
+      });
+    });
+
+    describe('Pausing', () => {
+      it('Should pause the test for 5 seconds', (done) => {
+        common.pause(done, 5000);
+      });
+    });
+
+    describe('See read more... link', () => {
+      it('Should click read more... link.', (done) => {
+        catalog.readMoreLink(done);
+      });
+    });
+
+    describe('Pausing', () => {
+      it('Should pause the test for 5 seconds', (done) => {
+        common.pause(done, 5000);
+      });
+    });
+
+    describe('See read less... link', () => {
+      it('Should see read less... link.', (done) => {
+        catalog.readLessLink(done,false);
       });
     });
 

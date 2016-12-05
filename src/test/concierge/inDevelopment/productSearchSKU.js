@@ -1,20 +1,20 @@
 /**
- * Created by mvanevery on 11/16/16.
+ * Created by mvanevery on 11/29/16.
  * Project:     Concierge
- * Test Name:   productSearchCategory
- * Test Steps:  https://madmobile.testrail.com/index.php?/cases/view/181
- * C181 - Search by Product Category
+ * Test Name:   productSearchSKU
+ * Test Steps:  https://madmobile.testrail.com/index.php?/cases/view/179
+ * C179 - Search by Product SKU
  * Author:      Mike Van Every
- * Date:        11/16/2016/
-*/
+ * Date:        11/29/2016/
+ */
 
-const common = require('../../../core/projects/concierge/helpers/common');
-const login = require('../../../core/projects/concierge/helpers/loginPage');
-const blackbook = require('../../../core/projects/concierge/helpers/blackbook');
-const landing = require('../../../core/projects/concierge/helpers/landingPage');
-const search = require('../../../core/projects/concierge/helpers/productSearch');
+const common = require('../../../../core/projects/concierge/helpers/common');
+const login = require('../../../../core/projects/concierge/helpers/loginPage');
+const blackbook = require('../../../../core/projects/concierge/helpers/blackbook');
+const landing = require('../../../../core/projects/concierge/helpers/landingPage');
+const search = require('../../../../core/projects/concierge/helpers/productSearch');
 
-describe('Smoke Test: Search Product by Category', () => {
+describe('Smoke Test: Search Product by SKU', () => {
   before((done) => {
     common.goTo(done);
   });
@@ -26,7 +26,7 @@ describe('Smoke Test: Search Product by Category', () => {
   });
 
   describe('Login', () => {
-    it('Should login as "testauto"', (done) => {
+    it('Should login as "qauser"', (done) => {
       login.loginUser(done, 'testauto', 'qaUser@123');
     });
   });
@@ -37,8 +37,8 @@ describe('Smoke Test: Search Product by Category', () => {
     });
   });
 
-  describe('Click the Blackbook menu option', () => {
-    it('Should open Blackbook sections', (done) => {
+  describe('Click the Product Search menu option', () => {
+    it('Should open Product Search drawer', (done) => {
       landing.navSearch(done, "Product Search");
     });
   });
@@ -63,25 +63,25 @@ describe('Smoke Test: Search Product by Category', () => {
 
   describe('Enter search criteria', () => {
     it('Should enter search criteria and search', (done) => {
-      search.enterSearchCriteria(done, 'Shoes');
+      search.enterSearchCriteria(done, 'Edison Flats-Bonfire Plaid');
     });
   });
 
   describe('Pausing', () => {
     it('Should pause the test for 2 seconds', (done) => {
-      common.pause(done, 5000);
+      common.pause(done, 2000);
     });
   });
 
-  describe('Verify PLP Header', () => {
-    it('should verify the PLP header', (done) => {
-      search.verifySearchPLP(done,'Searching "Shoes"');
+  describe('Verify Product Title', () => {
+    it('should verify the product title', (done) => {
+      search.verifyProductNumber(done,'H465689');
     });
   });
 
   describe('Pausing', () => {
     it('Should pause the test for 2 seconds', (done) => {
-      common.pause(done, 5000);
+      common.pause(done, 2000);
     });
   });
 
@@ -90,6 +90,7 @@ describe('Smoke Test: Search Product by Category', () => {
       login.logoutUser(done);
     });
   });
+
   describe('Pausing', () => {
     it('Should pause the test for 5 seconds', (done) => {
       common.pause(done, 5000);
@@ -97,3 +98,5 @@ describe('Smoke Test: Search Product by Category', () => {
   });
 
 })
+
+

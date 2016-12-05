@@ -1,9 +1,9 @@
 /**
  * Project:     Concierge
- * TestName     Catalog/selectALeafOfTheMenuTree_C1248
- * TestSteps:   https://madmobile.testrail.com/index.php?/cases/view/1248
+ * TestName     Catalog/PLPDisplay_C182
+ * TestSteps:   https://madmobile.testrail.net/index.php?/cases/view/182
  * Author:      John Harre
- * Date:        11/21/2016
+ * Date:        11/30/2016
  */
 
 const common = require('../../../../core/projects/concierge/helpers/common');
@@ -11,8 +11,8 @@ const login = require('../../../../core/projects/concierge/helpers/loginPage');
 const landing = require('../../../../core/projects/concierge/helpers/landingPage');
 const catalog = require('../../../../core/projects/concierge/helpers/catalog');
 
-describe('Smoke Test: C1248 Selecting A Leaf Of The Menu Tree', () => {
-  before((done) => {
+describe('Smoke Test: C182 PLP Display', () => {
+ before((done) => {
     common.goTo(done);
   });
 
@@ -129,5 +129,4 @@ describe('Smoke Test: C1248 Selecting A Leaf Of The Menu Tree', () => {
         common.pause(done, 2000);
       });
     });
-
 })

@@ -1,11 +1,3 @@
-/**
- * Project:     Concierge
- * TestName     Catalog/selectALeafOfTheMenuTree_C1248
- * TestSteps:   https://madmobile.testrail.com/index.php?/cases/view/1248
- * Author:      John Harre
- * Date:        11/21/2016
- */
-
 const clientType = require('../../../projects/config').client;
 const client = require(`../../../../core/clients/${clientType}`).client;
 const project = require('../../../projects/config').project;
@@ -65,27 +57,89 @@ module.exports = {
       console.log('	ERROR: The New Arrivals or Shoes icon is not in the menu.');
     }
   },
+
   openProductDetailsPage(done) {
-    if(client.isVisible(catalog.helpers.products.edisonFlatsRoses, done)) {
-      client.click(catalog.helpers.products.edisonFlatsRoses)
+    if(client.isVisible(catalog.helpers.products.francescaDrivingFlatsSuede, done)) {
+      client.click(catalog.helpers.products.francescaDrivingFlatsSuede)
     }
   },
+
   productDetailsPage(done,productLabel) {
-      if(client.isVisible(catalog.helpers.products.edisonFlatsRoses, done)) {
-        client.getText(catalog.helpers.products.edisonFlatsRoses)
+      if(client.isVisible(catalog.helpers.products.francescaDrivingFlatsSuede, done)) {
+        client.getText(catalog.helpers.products.francescaDrivingFlatsSuede)
           .then((text) => {
             try {
               assert.equal(productLabel, text, 'The Shoes -> Flats Products Detail page is not displayed correctly.');
-              done();
             } catch (err) {
               done(err);
             }
           });
       }
   },
+
   catalogBackBtn(done) {
     if(client.isVisible(catalog.helpers.catalogBackBtn, done)) {
       client.click(catalog.helpers.catalogBackBtn)
     }
+  },
+
+  leftDrawerOverlay(done) {
+    if (client.isVisible(catalog.helpers.productCategories.shoes, done)) {
+     client.click(landingPage.helpers.leftDrawerOverlay);
+    }
+  },
+
+  leftDrawerOverlayCheck(done, catalogExists) {
+    client.isExisting(catalog.helpers.productCategories.shoes)
+      .then((isExisting) => {
+        try {
+          assert.equal(catalogExists, isExisting, 'The Catalog Left Drawer is not closed.');
+        } catch (err) {
+          done(err);
+        }
+      });
+     done();
+  },
+
+  readMoreLink(done) {
+     if(client.isVisible(catalog.helpers.products.readMoreLink, done)) {
+        client.click(catalog.helpers.products.readMoreLink)
+     }
+  },
+
+  readLessLink(done, lessLink) {
+   client.isExisting(catalog.helpers.products.readLessLink)
+     .then((isExisting) => {
+       try {
+         assert.equal(lessLink, isExisting, 'The PDP read less link did not appear.');
+       } catch (err) {
+         done(err);
+       }
+     });
+    done();
+  },
+
+  productDetailsPageVariantsShown(done, expected) {
+    client.isVisible(catalog.helpers.variants.size)
+      .then(function(isVisible){
+          try {
+            assert.equal(expected, isVisible, 'The Shoes -> Flats Products Detail Variants did not displayed correctly.');
+          } catch (err) {
+            done(err);
+          }
+        });
+    done();
+  },
+
+  productDetailsPageDefaultVariantShown(done, expected) {
+      client.getHTML(catalog.helpers.variants.size).then(function(html) {
+      var idx = html.toLowerCase().indexOf(catalog.helpers.variants.sizeValue);
+        try {
+          assert.notEqual(expected, idx, 'The Shoes -> Flats Products Detail Default Variant did not displayed correctly.');
+        } catch (err) {
+          done(err);
+        }
+      });
+    done();
   }
 }

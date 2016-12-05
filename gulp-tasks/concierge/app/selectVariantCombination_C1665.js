@@ -1,17 +1,18 @@
 /**
- * Created by mvanevery on 11/22/16.
+ * Project:     Concierge
+ * TestName     Catalog/selectALeafOfTheMenuTree_C1248
+ * TestSteps:   https://madmobile.testrail.com/index.php?/cases/view/1248
+ * Author:      John Harre
+ * Date:        11/21/2016
  */
 
-/**
- * Created by mvanevery on 10/11/16.
- */
 const mochaOptions = {
   timeout: '50000',
   reporter: 'mochawesome',
   reporterOptions: {
     reportDir: './src/test/concierge/reports',
     reportName: 'report',
-    reportTitle: 'Add Appointment through Planner page',
+    reportTitle: 'Search Customer',
     inlineAssets: true
   }
 };
@@ -24,7 +25,8 @@ function handleError(err) {
 
 module.exports = function (gulp, mocha) {
   return function () {
-    return gulp.src('./src/test/concierge/inDevelopment/productSearchCategory.js', {read: false})
+    return gulp.src('./src/test/concierge/appSuite/Catalog/selectVariantCombination_C1665.js', {read: false})
       .pipe(mocha(mochaOptions).on("error", handleError));
   }
 };
+

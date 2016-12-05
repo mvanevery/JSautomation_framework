@@ -207,13 +207,11 @@ module.exports = {
     done();
   },
 
-
-
-
   getFieldValue(done, select, expected) {
     client.getValue(blackbook.helpers[select])
       .then(function (getValue) {
         try {
+          console.log(getValue);
           assert.equal(expected, getValue, 'The expected value was not equal to the text');
         } catch (err) {
           done(err);

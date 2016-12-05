@@ -24,7 +24,7 @@ function handleError(err) {
 
 module.exports = function (gulp, mocha) {
   return function () {
-    return gulp.src('./src/test/concierge/appSuite/inDevelopment/productSearchCategory.js', {read: false})
+    return gulp.src('./src/test/concierge/inDevelopment/productSearchCategory.js', {read: false})
       .pipe(mocha(mochaOptions).on("error", handleError));
   }
 };

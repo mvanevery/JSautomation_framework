@@ -85,7 +85,7 @@ module.exports = {
     }
   },
 
-  navigateIcons(done,select) {
+  navigateIcons(done, select) {
     client.isVisible(landingPage.helpers[select])
       .then(function (isVisible) {
         assert.isTrue(isVisible, 'The expected value was not equal to the text');

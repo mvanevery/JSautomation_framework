@@ -77,6 +77,12 @@ describe('Login as a valid user to a different store number.', () => {
     });
   });
 
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 5000);
+    });
+  });
+
 
 // Close the browser
 

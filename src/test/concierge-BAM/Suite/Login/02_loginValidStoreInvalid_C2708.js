@@ -83,5 +83,10 @@ describe('Login as a valid user but with an invalid store number.', () => {
     });
   });
 
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 5000);
+    });
+  });
 
 });

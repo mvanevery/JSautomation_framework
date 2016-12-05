@@ -3,9 +3,6 @@
  */
 
 module.exports = {
-    // routes: {
-    //   baseUrl: 'https://serviceqa.booksamillion.com/'
-    // },
     helpers: {
       img_loginLogo:        '//div[@class="login-form__logo"]',
       fld_username:         '//input[@name="employee_id"]',

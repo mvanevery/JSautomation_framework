@@ -3,9 +3,6 @@
  */
 
 module.exports = {
-    // routes: {
-    //   baseUrl: 'https://serviceqa.booksamillion.com/'
-    // },
     helpers:{
       // Header
       img_headerLogo:       '//a[@class="app-header_logo"]',

@@ -72,20 +72,15 @@ module.exports = {
   navBlackbook(done, expected) {
     if (client.isVisible(landingPage.helpers.blackbookIcon, done)) {
       client.click(landingPage.helpers.blackbookIcon)
-      //    .then(() => {
-      //      client.getText(blackbook.helpers.blackbookHeader)
-      //        .then((text) => {
-      //          try {
-      //            assert.equal(expected, text, 'The expected value was not equal to the text');
-      //          } catch (err) {
-      //            done(err);
-      //          }
-      //        })
-      //    })
-      //done();
     }
   },
 
+  navSearch(done) {
+    client.isVisible(landingPage.helpers.searchIcon, done)
+      .then(() => {
+        client.click(landingPage.helpers.searchIcon)
+      })
+  },
   navigateIcons(done, selector, expected) {
     client.isVisible(landingPage.helpers[selector], done)
       .then(function (isVisible) {
@@ -139,7 +134,7 @@ module.exports = {
   //  }
   //},
 
-  navAddition(done) {
+  navAddition(done)  {
     if (client.isVisible(landingPage.helpers.addIcon, done)) {
       client.click(landingPage.helpers.addIcon)
         .then(() => {
@@ -153,6 +148,7 @@ module.exports = {
             })
         })
     }
-  },
+  }
 
 }
+

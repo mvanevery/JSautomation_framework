@@ -43,7 +43,7 @@ const search = require('../../../../core/projects/concierge/helpers/productSearc
 
   describe('Click the Product Search menu option', () => {
     it('Should open Product Search drawer', (done) => {
-     landing.navSearch(done, "Product Search");
+     landing.navSearch(done);
   });
 });
 
@@ -73,7 +73,7 @@ describe('Pausing', () => {
 
   describe('Pausing', () => {
     it('Should pause the test for 2 seconds', (done) => {
-     common.pause(done, 2000);
+     common.pause(done, 10000);
 });
 });
 

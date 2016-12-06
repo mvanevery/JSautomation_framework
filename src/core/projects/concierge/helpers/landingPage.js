@@ -71,51 +71,15 @@ module.exports = {
   navBlackbook(done, expected) {
     if (client.isVisible(landingPage.helpers.blackbookIcon, done)) {
       client.click(landingPage.helpers.blackbookIcon)
-    //    .then(() => {
-    //      client.getText(blackbook.helpers.blackbookHeader)
-    //        .then((text) => {
-    //          try {
-    //            assert.equal(expected, text, 'The expected value was not equal to the text');
-    //          } catch (err) {
-    //            done(err);
-    //          }
-    //        })
-    //    })
-    //done();
     }
   },
 
-  navSearch(done, expected) {
+  navSearch(done) {
     client.isVisible(landingPage.helpers.searchIcon, done)
       .then(() => {
         client.click(landingPage.helpers.searchIcon)
       })
   },
-
-
-    //      .then(function(isVisible) {
-    //    assert.isTrue(expected, isVisible, 'The expected value was not equal to the text')
-    //    //.then(() => {
-    //      if(isVisible == true) {
-    //          client.click(landingPage.helpers.searchIcon)
-    //        }
-    //        //.then(()=> {
-    //
-    //      })
-    //    }
-    //},
-    //done();
-
-    //if (client.isVisible(landingPage.helpers.searchIcon, done)) {
-    //  client.click(landingPage.helpers.searchIcon)
-    //    .then(() => {
-    //      client.getText(landingPage.helpers.productSearchField)
-    //        .then((text) => {
-    //          console.log(text);
-    //        })
-    //    })
-    //}
-  //},
 
   navAddition(done)  {
     if (client.isVisible(landingPage.helpers.addIcon, done)) {

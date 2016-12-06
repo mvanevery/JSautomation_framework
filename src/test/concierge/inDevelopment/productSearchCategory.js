@@ -33,21 +33,21 @@ describe('Smoke Test: Search Product by Category', () => {
 
   describe('Pausing', () => {
     it('Should pause the test for 10 seconds', (done) => {
-      common.pause(done, 10000);
+      common.pause(done, 15000);
     });
   });
 
   describe('Click the Blackbook menu option', () => {
     it('Should open Blackbook sections', (done) => {
-      landing.navigateIcons(done, "email", false);
+      landing.navigateIcons(done, "searchIcon", false);
     });
   });
 
-  //describe('Pausing', () => {
-  //  it('Should pause the test for 5 seconds', (done) => {
-  //    common.pause(done, 5000);
-  //  });
-  //});
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 5000);
+    });
+  });
   //
   //describe('Verify Search drawer is open', () => {
   //  it('should verify that the drawer is open', (done) => {

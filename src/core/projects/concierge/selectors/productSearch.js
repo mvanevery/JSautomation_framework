@@ -8,8 +8,8 @@ module.exports = {
 
   helpers: {
     searchField: '//input[@name="Product Search"]',
-    //searchButton: '//button[@data-id="searchButton"]',
-    searchButton:'//div[contains(text(),"Search")]',
+    searchButton: '//button[@data-id="searchButton"]',
+    //searchButton:'//div[contains(text(),"Search")]',
     resetButton: '//button[@data-id="resetFields]',
     searchPlpHeader: '//div[@data-id="pageHeader"]',
     productTitle: '//div[@data-id="productTitle"]',

@@ -71,42 +71,17 @@ module.exports = {
   navBlackbook(done, expected) {
     if (client.isVisible(landingPage.helpers.blackbookIcon, done)) {
       client.click(landingPage.helpers.blackbookIcon)
-    //    .then(() => {
-    //      client.getText(blackbook.helpers.blackbookHeader)
-    //        .then((text) => {
-    //          try {
-    //            assert.equal(expected, text, 'The expected value was not equal to the text');
-    //          } catch (err) {
-    //            done(err);
-    //          }
-    //        })
-    //    })
-    //done();
     }
   },
 
-  navSearch(done, expected) {
-    client.isVisible(landingPage.helpers.searchIcon)
-      .then(function(isVisible) {
-        assert.isTrue(isVisible, 'The expected value was not equal to the text')
-        .then(() => {
-          client.click(landingPage.helpers.searchIcon)
-        });
-    })
-    done();
-
-    //if (client.isVisible(landingPage.helpers.searchIcon, done)) {
-    //  client.click(landingPage.helpers.searchIcon)
-    //    .then(() => {
-    //      client.getText(landingPage.helpers.productSearchField)
-    //        .then((text) => {
-    //          console.log(text);
-    //        })
-    //    })
-    //}
+  navSearch(done) {
+    client.isVisible(landingPage.helpers.searchIcon, done)
+      .then(() => {
+        client.click(landingPage.helpers.searchIcon)
+      })
   },
 
-  navAddition(done) {
+  navAddition(done)  {
     if (client.isVisible(landingPage.helpers.addIcon, done)) {
       client.click(landingPage.helpers.addIcon)
         .then(() => {
@@ -120,6 +95,7 @@ module.exports = {
             })
         })
     }
-  },
+  }
 
 }
+

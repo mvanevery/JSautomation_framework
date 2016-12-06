@@ -13,7 +13,7 @@ module.exports = {
         plannerIcon: '//div[@class="mm-o-icon icon-year-to-date"]',
         //plannerIcon:'//div[@data-id="planner"]',
         blackbookIcon: '//div[@class="mm-o-icon icon-black-book"]',
-        //blackbookIcon:'//Icon[@data-id="blackbook"]',
+        blackbookIcon:'//Icon[@data-id="blackbook"]',
         expertIcon: '//div[@class="mm-o-icon icon-year-to-date"]',
         searchIcon: '//div[@class="mm-o-icon icon-search"]',
         addIcon: 'mm-o-icon mm-c-nav__icon icon-create-fill',

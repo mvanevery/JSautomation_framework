@@ -39,7 +39,7 @@ describe('Smoke Test: Clear Search Fields', () => {
 
   describe('Click the Blackbook menu option', () => {
     it('Should open Blackbook sections', (done) => {
-      landing.navBlackbook(done, "My Clients");
+      landing.navigateIcons(done, "blackbookIcon", true);
     });
   });
   describe('Pausing', () => {
@@ -50,7 +50,7 @@ describe('Smoke Test: Clear Search Fields', () => {
 
   describe('Get visible', () => {
     it('Should get value of field', (done) => {
-      blackbook.elementVisible(done, "blackbookHeader", false);
+      blackbook.elementVisible(done, "blackbookHeader", true);
     });
   });
 

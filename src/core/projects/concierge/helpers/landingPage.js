@@ -69,22 +69,37 @@ module.exports = {
 
 
 
-  navBlackbook(done, expected) {
-    if (client.isVisible(landingPage.helpers.blackbook, done)) {
-      client.click(landingPage.helpers.blackbookIcon)
-        .then(() => {
-          client.getText(blackbook.helpers.blackbookHeader)
-            .then((text) => {
-              console.log(text);
-              //try {
-              //  assert.equal(expected, text, 'The expected value was not equal to the text');
-              //} catch (err) {
-              //  done(err);
-              //}
-            })
-        })
-    }
+  navigateIcons(done, selector, expected) {
+    client.isVisible(landingPage.helpers[selector])
+      .then(function(isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
+        }  catch (err) {
+          done(err);
+        }
+        if(isVisible == true) {
+          client.click(landingPage.helpers[selector])
+        } else {
+          client.click(login.logoutUser(done));
+        }
+      })
+    done();
   },
+  //   client.isVisible(landingPage.helpers.blackbook, done)
+  //     client.click(landingPage.helpers.blackbookIcon)
+  //      .then(() => {
+  //        client.getText(blackbook.helpers.blackbookHeader)
+  //          .then((text) => {
+  //            console.log(text);
+  //            try {
+  //              assert.equal(expected, text, 'The expected value was not equal to the text');
+  //            } catch (err) {
+  //              done(err);
+  //            }
+  //          })
+  //      })
+  //  }
+  //},
 
   navSearch(done) {
     client.isVisible(landingPage.helpers.searchIcon, done)
@@ -92,7 +107,7 @@ module.exports = {
         client.click(landingPage.helpers.searchIcon)
       })
   },
-  navigateIcons(done, selector, expected) {
+test(done, selector, expected) {
       if (client.isVisible(landingPage.helpers[selector], done)) {
         client.click(landingPage.helpers.searchIcon)
           .then(() => {

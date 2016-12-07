@@ -16,17 +16,26 @@ const $ = require('chai-Jquery');
 
 module.exports = {
 
-  verifySearchOpen(done, expected) {
-    if (client.isVisible(search.helpers.searchField, done)) {
-      client.getText(search.helpers.searchField)
-        .then((text) => {
-          try {
-            assert.equal(expected, text, 'The expected value was not equal to the text');
-          } catch (err) {
-            done(err);
-          }
-        })
-    }
+  verifySearchOpen(done, expected, label) {
+    client.isVisible(search.helpers.searchField)
+     .then(function(isVisible) {
+      try {
+        assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
+      } catch (err) {
+        done(err);
+      }
+      if (isVisible == true) {
+        client.getAttribute(search.helpers.searchField, 'name')
+          .then((text) => {
+            try {
+              assert.equal(label, text, 'The expected number was not equal to the actual number');
+            } catch (err) {
+              done(err);
+            }
+          })
+      }
+    })
+    done();
   },
 
   enterSearchCriteria(done, criteria) {
@@ -38,44 +47,70 @@ module.exports = {
     }
   },
 
-  verifySearchPLP(done, title) {
-    //if(client.isVisible(search.helpers.searchPlpHeader, done)) {
-    client.getText(search.helpers.searchPlpHeader, done)
-      .then((text) => {
-        console.log(text);
-        //try {
-        //  assert.equal(title, text, 'The expected title was not equal to the actual title');
-        //} catch (err) {
-        //  done(err);
-        //}
+  verifySearchPLP(done, expected, title) {
+    client.isVisible(search.helpers.searchPlpHeader)
+      .then(function(isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
+        } catch (err) {
+          done(err);
+        }
+        if (isVisible == true) {
+          client.getText(search.helpers.searchPlpHeader, title)
+            .then((text) => {
+              try {
+                assert.equal(title, text, 'The expected number was not equal to the actual title');
+              } catch (err) {
+                done(err);
+              }
+            })
+        }
       })
-    //}
-
+    done();
   },
 
-  verifyProductTitle(done, title) {
-    if(client.isVisible(search.helpers.productTitle, done)) {
-      client.getText(search.helpers.productTitle)
-        .then((text) => {
+  verifyProductTitle(done, expected, title) {
+      client.isVisible(search.helpers.productTitle)
+        .then(function(isVisible) {
           try {
-            assert.equal(title, text, 'The expected title was not equal to the actual title');
+            assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
           } catch (err) {
             done(err);
           }
-        })
-    }
-  },
-
-  verifyProductNumber(done, number) {
-    if(client.isVisible(search.helpers.productNumber, done)) {
-      client.getText(search.helpers.productNumber)
-        .then((text) => {
-          try {
-            assert.equal(number, text, 'The expected number was not equal to the actual number');
-          } catch (err) {
-            done(err);
+          if (isVisible == true) {
+            client.getText(search.helpers.productTitle, title)
+              .then((text) => {
+                try {
+                  assert.equal(title, text, 'The expected number was not equal to the actual title');
+                } catch (err) {
+                  done(err);
+                }
+              })
           }
         })
-    }
-  }
+    done();
+  },
+
+  verifyProductNumber(done, expected, number) {
+    client.isVisible(search.helpers.productNumber)
+      .then(function(isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
+        } catch (err) {
+          done(err);
+        }
+        if (isVisible == true) {
+          client.getText(search.helpers.productNumber)
+            .then((text) => {
+              try {
+                assert.equal(number, text, 'The expected number was not equal to the actual number');
+              } catch (err) {
+                done(err);
+              }
+            })
+        }
+      })
+    done();
+  },
+
 }

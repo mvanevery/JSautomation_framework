@@ -19,6 +19,7 @@ module.exports = {
         fulfillment:'//div[@data-id="fulfillment"]',
         sales:'//div[@data-id="lookbuilder"]',
         leftDrawerOverlay:'//div[@data-id="closeLeftDrawerOverlay"]',
+        broke:'null'
         //productIcon: '//div[@class="mm-o-icon icon-hamburger-menu"]',
         //expertIcon: '//div[@class="mm-o-icon icon-year-to-date"]',
     }

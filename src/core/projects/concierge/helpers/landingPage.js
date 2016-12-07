@@ -67,8 +67,6 @@ module.exports = {
     }
   },
 
-
-
   navigateIcons(done, selector, expected) {
     client.isVisible(landingPage.helpers[selector])
       .then(function(isVisible) {
@@ -80,26 +78,11 @@ module.exports = {
         if(isVisible == true) {
           client.click(landingPage.helpers[selector])
         } else {
-          client.click(login.logoutUser(done));
+          client.click(login.logoutUser(done))
         }
       })
     done();
   },
-  //   client.isVisible(landingPage.helpers.blackbook, done)
-  //     client.click(landingPage.helpers.blackbookIcon)
-  //      .then(() => {
-  //        client.getText(blackbook.helpers.blackbookHeader)
-  //          .then((text) => {
-  //            console.log(text);
-  //            try {
-  //              assert.equal(expected, text, 'The expected value was not equal to the text');
-  //            } catch (err) {
-  //              done(err);
-  //            }
-  //          })
-  //      })
-  //  }
-  //},
 
   navSearch(done) {
     client.isVisible(landingPage.helpers.searchIcon, done)
@@ -107,22 +90,22 @@ module.exports = {
         client.click(landingPage.helpers.searchIcon)
       })
   },
-test(done, selector, expected) {
-      if (client.isVisible(landingPage.helpers[selector], done)) {
-        client.click(landingPage.helpers.searchIcon)
-          .then(() => {
-            client.getText(landingPage.helpers.productSearchField)
-              .then((text) => {
-                console.log(text);
+  //test(done, selector, expected) {
+  //    if (client.isVisible(landingPage.helpers[selector], done)) {
+  //      client.click(landingPage.helpers.searchIcon)
+  //        .then(() => {
+  //          client.getText(landingPage.helpers.productSearchField)
+  //            .then((text) => {
+  //              console.log(text);
                 //try {
                 //  assert.equal(expected, text, 'The expected value was not equal to the text');
                 //} catch (err) {
                 //  done(err);
                 //}
-              })
-          })
-      }
-  },
+  //            })
+  //        })
+  //    }
+  //},
   //  client.isVisible(landingPage.helpers[selector], done)
   //    .then(function (isVisible) {
   //      try {
@@ -157,23 +140,6 @@ test(done, selector, expected) {
     })
   done();
 },
-
-  //navSearch(done, expected) {
-  //  if (client.isVisible(landingPage.helpers.searchIcon, done)) {
-  //    client.click(landingPage.helpers.searchIcon)
-  //      .then(() => {
-  //        client.getText(landingPage.helpers.productSearchField)
-  //          .then((text) => {
-  //            console.log(text);
-  //            //try {
-  //            //  assert.equal(expected, text, 'The expected value was not equal to the text');
-  //            //} catch (err) {
-  //            //  done(err);
-  //            //}
-  //          })
-  //      })
-  //  }
-  //},
 
   navAddition(done)  {
     if (client.isVisible(landingPage.helpers.addIcon, done)) {

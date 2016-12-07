@@ -39,7 +39,7 @@ describe('Smoke Test: Search Product by SKU', () => {
 
   describe('Click the Product Search menu option', () => {
     it('Should open Product Search drawer', (done) => {
-      landing.navSearch(done, "Product Search");
+      landing.navigateIcons(done, "searchIcon", true);
     });
   });
 
@@ -51,7 +51,7 @@ describe('Smoke Test: Search Product by SKU', () => {
 
   describe('Verify Search drawer is open', () => {
     it('should verify that the drawer is open', (done) => {
-      search.verifySearchOpen(done);
+      search.verifySearchOpen(done, true, "Product Search");
     });
   });
 
@@ -69,13 +69,13 @@ describe('Smoke Test: Search Product by SKU', () => {
 
   describe('Pausing', () => {
     it('Should pause the test for 2 seconds', (done) => {
-      common.pause(done, 2000);
+      common.pause(done, 10000);
     });
   });
 
   describe('Verify Product Title', () => {
     it('should verify the product title', (done) => {
-      search.verifyProductNumber(done,'H465689');
+      search.verifyProductNumber(done, true,'Item H465689');
     });
   });
 

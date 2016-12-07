@@ -43,7 +43,7 @@ const search = require('../../../../core/projects/concierge/helpers/productSearc
 
   describe('Click the Product Search menu option', () => {
     it('Should open Product Search drawer', (done) => {
-     landing.navSearch(done);
+      landing.navigateIcons(done, "searchIcon", true);
   });
 });
 
@@ -55,7 +55,7 @@ const search = require('../../../../core/projects/concierge/helpers/productSearc
 
 describe('Verify Search drawer is open', () => {
   it('should verify that the drawer is open', (done) => {
-    search.verifySearchOpen(done);
+    search.verifySearchOpen(done, true, "Product Search");
   });
 });
 
@@ -79,7 +79,7 @@ describe('Pausing', () => {
 
   describe('Verify Product Title', () => {
     it('should verify the product title', (done) => {
-      search.verifyProductTitle(done,'Edison Flats-Bonfire Plaid');
+      search.verifyProductTitle(done, true, 'Edison Flats-Bonfire Plaid');
   });
 });
 

@@ -20,7 +20,7 @@ module.exports = {
       zipcode:'//input[@name="postalCode"]',
       searchButton:'//button[@data-id="searchButton"]',
       resetButton:'//button[@data-id="resetButton"]',
-      blackbookHeader: '//div[@data-id="pageHeader"]',
+      pageHeader: '//div[@data-id="pageHeader"]',
       myClientsToggle:'//switch[@data-id="clientsToggle"]',
       searchToggle:'//div[contains(text(),"Search")]',
       listToggle:'//div[contains(text(),"List")]',

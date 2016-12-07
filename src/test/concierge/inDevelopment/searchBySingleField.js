@@ -40,7 +40,18 @@ describe('Smoke Test: Search by Single Specified Fields', () => {
 
   describe('Click the Blackbook menu option', () => {
     it('Should open Blackbook sections', (done) => {
-      landing.navBlackbook(done, "My Clients");
+      landing.navigateIcons(done, "blackbookIcon", true);
+    });
+  });
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 5000);
+    });
+  });
+
+  describe('Verify Header', () => {
+    it('Should verify the header on the Blackbook page', (done) => {
+      blackbook.elementVisible(done, "blackbookHeader", true);
     });
   });
 
@@ -52,7 +63,7 @@ describe('Smoke Test: Search by Single Specified Fields', () => {
 
   describe('Enter First Name', () => {
     it('should enter a name in the first name field', (done) => {
-      blackbook.enterFieldValue(done,"firstName", "Automation");
+      blackbook.enterValue(done, true,"firstName", "Automation");
     });
   });
 

@@ -104,7 +104,7 @@ module.exports = {
   },
 
   verifySearchPLP(done, expected, title) {
-    client.isVisible(search.helpers.searchPlpHeader)
+    client.isVisible(search.helpers.pageHeader)
       .then(function(isVisible) {
         try {
           assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
@@ -112,7 +112,7 @@ module.exports = {
           done(err);
         }
         if (isVisible == true) {
-          client.getText(search.helpers.searchPlpHeader, title)
+          client.getText(search.helpers.pageHeader, title)
             .then((text) => {
               try {
                 assert.equal(title, text, 'The expected number was not equal to the actual title');

@@ -16,7 +16,9 @@ module.exports = {
     productNumber:'//div[@data-id="productNumber"]',
     productDescription:'//div[@data-id="productDescription"]',
     readMorePlus:'//button[@data-id="readMorePlus"]',
-    readMoreLink:'//button[@data-id="readMoreLink"]'
+    readMoreLink:'//button[@data-id="readMoreLink"]',
+    noResults:'//div[@data-id="noResults"]',
+    retryButton:'//button[@data-id="refreshButton"]'
   }
 
 }

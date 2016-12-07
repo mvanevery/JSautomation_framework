@@ -38,13 +38,69 @@ module.exports = {
     done();
   },
 
-  enterSearchCriteria(done, criteria) {
-    if (client.isVisible(search.helpers.searchField, done)) {
-      client.setValue(search.helpers.searchField, criteria)
-        .then(() => {
-          client.click(search.helpers.searchButton);
-        })
-    }
+  verifyButtonDisabled(done, expected, criteria, enabled) {
+    client.isVisible(search.helpers.searchButton)
+      .then(function(isVisible) {
+          try {
+            assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
+          } catch (err) {
+            done(err);
+          }
+          if (isVisible == true) {
+            client.setValue(search.helpers.searchField, criteria)
+              .then(() => {
+                client.isEnabled(search.helpers.searchButton)
+                 .then(function(isEnabled) {
+                  try {
+                  assert.equal(enabled, isEnabled, 'The expected value was not equal to the actual value')
+                } catch (err) {
+                  done(err);
+                }
+             })
+          })
+      }
+    })
+  done();
+  },
+
+  enterSearchCriteria(done, expected, criteria) {
+    client.isVisible(search.helpers.searchField)
+      .then(function (isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
+        } catch (err) {
+          done(err);
+        }
+        if (isVisible == true) {
+          client.setValue(search.helpers.searchField, criteria)
+            .then(() => {
+              client.click(search.helpers.searchButton);
+            })
+        }
+      })
+    done();
+  },
+
+  verifySearchNoResults(done, expected, results) {
+    client.isVisible(search.helpers.noResults)
+      .then(function(isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the text');
+        } catch (err) {
+          done(err);
+        }
+        if(isVisible == true) {
+          client.getText(blackbook.helpers.noResults)
+            .then((text) => {
+              try {
+                assert.equal(results, text, 'The expected number was not equal to the actual number');
+              } catch (err) {
+                done(err);
+              }
+            })
+        }
+      });
+    done();
   },
 
   verifySearchPLP(done, expected, title) {

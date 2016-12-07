@@ -15,7 +15,7 @@ const blackbook = require('../../../core/projects/concierge/helpers/blackbook');
 const landing = require('../../../core/projects/concierge/helpers/landingPage');
 const search = require('../../../core/projects/concierge/helpers/productSearch');
 
-describe('Smoke Test: Search Product by Category', () => {
+describe('Smoke Test: Search Product - Blank Field', () => {
   before((done) => {
     common.goTo(done);
   });
@@ -62,9 +62,9 @@ describe('Smoke Test: Search Product by Category', () => {
     });
   });
 
-  describe('Enter search criteria', () => {
-    it('Should enter search criteria and search', (done) => {
-      search.enterSearchCriteria(done, '');
+  describe('Verify the Search Button is disabled', () => {
+    it('Should verify the search button is disabled and unclickable with a blank search field', (done) => {
+      search.verifyButtonDisabled(done, true,"", false);
     });
   });
 
@@ -73,5 +73,18 @@ describe('Smoke Test: Search Product by Category', () => {
       common.pause(done, 5000);
     });
   });
+
+  describe('Logout', () => {
+    it('Should Logout from the current user', (done) => {
+      login.logoutUser(done);
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 5000);
+    });
+  });
+
 })
 

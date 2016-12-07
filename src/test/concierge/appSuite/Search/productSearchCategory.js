@@ -37,8 +37,8 @@ describe('Smoke Test: Search Product by Category', () => {
     });
   });
 
-  describe('Click the Blackbook menu option', () => {
-    it('Should open Blackbook sections', (done) => {
+  describe('Click the Product Search icon', () => {
+    it('Should open product search drawer', (done) => {
       landing.navigateIcons(done, "searchIcon", true);
     });
   });

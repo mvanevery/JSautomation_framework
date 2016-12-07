@@ -34,13 +34,24 @@ describe('Smoke Test: Add Customer', () => {
 
   describe('Click the Blackbook menu option', () => {
     it('Should open Blackbook sections', (done) => {
-      landing.navBlackbook(done, "My Clients");
+      landing.navigateIcons(done, "blackbookIcon", true);
+    });
+  });
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 5000);
+    });
+  });
+
+  describe('Verify Header', () => {
+    it('Should verify the header on the Blackbook page', (done) => {
+      blackbook.elementVisible(done, "blackbookHeader", true);
     });
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 2 seconds', (done) => {
-      common.pause(done, 5000);
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 2000);
     });
   });
 
@@ -58,7 +69,7 @@ describe('Smoke Test: Add Customer', () => {
 
   describe('Enter First Name', () => {
     it('should enter a name in the first name field', (done) => {
-      blackbook.enterFirstnameModal(done, "Automation");
+      blackbook.enterValue(done, true, "firstNameModal", "Automation");
     });
   });
 
@@ -70,7 +81,7 @@ describe('Smoke Test: Add Customer', () => {
 
   describe('Enter Last Name', () => {
     it('should enter a name in the last name field', (done) => {
-      blackbook.enterLastnameModal(done, "Test");
+      blackbook.enterValue(done, true, "lastNameModal", "Test");
     });
   });
 
@@ -94,7 +105,7 @@ describe('Smoke Test: Add Customer', () => {
 
   describe('Enter Modal Phone #', () => {
     it('should enter phone # in the modal', (done) => {
-      blackbook.enterPhoneModal(done, '8135551234')
+      blackbook.enterValue(done, true, "phoneModal", '8135551234')
     });
   });
 
@@ -106,7 +117,7 @@ describe('Smoke Test: Add Customer', () => {
 
   describe('Select Phone Type', () => {
     it('should select the phone type', (done) => {
-      blackbook.modalPhoneType(done, 'PERSONAL');
+      blackbook.enterValue(done, true, "phoneTypeModal", 'PERSONAL');
     });
   });
 
@@ -130,7 +141,7 @@ describe('Smoke Test: Add Customer', () => {
 
   describe('Enter Email address in the modal', () => {
     it('should enter the email address in the modal', (done) => {
-      blackbook.enterEmailModal(done, 'qa.automation@gmail.com');
+      blackbook.enterValue(done, true, "emailModal", 'qa.automation@gmail.com');
     });
   });
 
@@ -142,7 +153,7 @@ describe('Smoke Test: Add Customer', () => {
 
   describe('Select Email Type', () => {
     it('should select the email type', (done) => {
-      blackbook.modalEmailType(done, 'OTHER');
+      blackbook.enterValue(done, true, "emailTypeModal", 'OTHER');
     });
   });
 
@@ -166,7 +177,7 @@ describe('Smoke Test: Add Customer', () => {
 
   describe('Enter Address Line 1', () => {
     it('should enter address line 1', (done) => {
-     blackbook.enterStreet1(done, '2701 N Rocky Point Dr');
+      blackbook.enterValue(done, true, "street1Modal", '2701 N Rocky Point Dr');
     });
   });
 
@@ -178,7 +189,7 @@ describe('Smoke Test: Add Customer', () => {
 
   describe('Enter Address Line 2', () => {
     it('should enter address line 2', (done) => {
-      blackbook.enterStreet2(done, 'Suite 500');
+      blackbook.enterValue(done, true, "street2Modal", 'Suite 500');
     });
   });
 
@@ -190,7 +201,7 @@ describe('Smoke Test: Add Customer', () => {
 
   describe('Enter City in the modal', () => {
     it('should enter city in the modal', (done) => {
-      blackbook.enterCityModal(done, 'Tampa');
+      blackbook.enterValue(done, true, "cityModal", 'Tampa');
     });
   });
 
@@ -202,7 +213,7 @@ describe('Smoke Test: Add Customer', () => {
 
   describe('Enter State in the modal', () => {
     it('should enter State in the modal', (done) => {
-      blackbook.enterStateModal(done, 'FL');
+      blackbook.enterValue(done, true, "stateModal", 'FL');
     });
   });
 
@@ -214,7 +225,7 @@ describe('Smoke Test: Add Customer', () => {
 
   describe('Enter Zipcode in the modal', () => {
     it('should enter Zipcode in the modal', (done) => {
-      blackbook.enterZipcodeModal(done, '33608');
+      blackbook.enterValue(done, true, "zipcodeModal", '33608');
     });
   });
 
@@ -226,7 +237,7 @@ describe('Smoke Test: Add Customer', () => {
 
   describe('Enter Country in the modal', () => {
     it('should enter Zipcode in the modal', (done) => {
-      blackbook.enterCountryModal(done, 'USA');
+      blackbook.enterValue(done, true, "countryModal", 'USA');
     });
   });
 
@@ -238,7 +249,7 @@ describe('Smoke Test: Add Customer', () => {
 
   describe('Enter Address Type in the modal', () => {
     it('should enter address type in the modal', (done) => {
-      blackbook.modalAddressType(done, 'OTHER');
+      blackbook.enterValue(done, true, "addressTypeModal", 'OTHER');
     });
   });
 

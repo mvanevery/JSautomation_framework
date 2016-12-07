@@ -42,7 +42,18 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
 
   describe('Click the Blackbook menu option', () => {
     it('Should open Blackbook sections', (done) => {
-      landing.navBlackbook(done, "My Clients");
+      landing.navigateIcons(done, "blackbookIcon", true);
+    });
+  });
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 5000);
+    });
+  });
+
+  describe('Verify Header', () => {
+    it('Should verify the header on the Blackbook page', (done) => {
+      blackbook.elementVisible(done, "blackbookHeader", true);
     });
   });
 

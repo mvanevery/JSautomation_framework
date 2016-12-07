@@ -41,12 +41,23 @@ describe('Smoke Test: Search Customer', () => {
 
   describe('Click the Blackbook menu option', () => {
     it('Should open Blackbook sections', (done) => {
-      landing.navBlackbook(done, "My Clients");
+      landing.navigateIcons(done, "blackbookIcon", true);
+    });
+  });
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 5000);
+    });
+  });
+
+  describe('Verify Header', () => {
+    it('Should verify the header on the Blackbook page', (done) => {
+      blackbook.elementVisible(done, "blackbookHeader", true);
     });
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 2 seconds', (done) => {
+    it('Should pause the test for 5 seconds', (done) => {
       common.pause(done, 5000);
     });
   });
@@ -101,7 +112,7 @@ describe('Smoke Test: Search Customer', () => {
 
   describe('Verify Search Results', () => {
     it('Should verify the customer search results', (done) => {
-      blackbook.verifySearchResult(done);
+      blackbook.verifySearchResults(done, true, "Automation Customer");
     });
   });
 

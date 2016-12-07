@@ -13,10 +13,6 @@ const login = require('../../../../core/projects/concierge/helpers/loginPage');
 const blackbook = require('../../../../core/projects/concierge/helpers/blackbook');
 const landing = require('../../../../core/projects/concierge/helpers/landingPage');
 
-
-//export let CUSTOMERNAME;
-//const setName = (name) => CUSTOMERNAME = name;
-
 describe('Smoke Test: Search Customer', () => {
   before((done) => {
     common.goTo(done);
@@ -42,19 +38,30 @@ describe('Smoke Test: Search Customer', () => {
 
   describe('Click the Blackbook menu option', () => {
     it('Should open Blackbook sections', (done) => {
-      landing.navBlackbook(done, "My Clients");
+      landing.navigateIcons(done, "blackbookIcon", true);
+    });
+  });
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 5000);
+    });
+  });
+
+  describe('Verify Header', () => {
+    it('Should verify the header on the Blackbook page', (done) => {
+      blackbook.elementVisible(done, "blackbookHeader", true);
     });
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 2 seconds', (done) => {
+    it('Should pause the test for 5 seconds', (done) => {
       common.pause(done, 5000);
     });
   });
 
   describe('Enter First Name', () => {
     it('should enter a name in the first name field', (done) => {
-      blackbook.enterFirstname(done, "Au");
+      blackbook.enterValue(done, true, "firstName", "Au");
     });
   });
 
@@ -66,7 +73,7 @@ describe('Smoke Test: Search Customer', () => {
 
   describe('Enter Last Name', () => {
     it('should enter a name in the last name field', (done) => {
-      blackbook.enterLastname(done, "Customer");
+      blackbook.enterValue(done, true, "lastName", "Customer");
     });
   });
 
@@ -90,7 +97,7 @@ describe('Smoke Test: Search Customer', () => {
 
   describe('Verify Search Results', () => {
     it('Should verify the customer search results', (done) => {
-      blackbook.verifySearchResults(done, 'Automation Customer');
+      blackbook.verifySearchResults(done, true, "Automation Customer");
     });
   });
 

@@ -237,32 +237,41 @@ module.exports = {
     done();
   },
 
-  verifySearchResults(done, expected) {
-      client.getValue(blackbook.helpers.searchResults)
-        .then(function(getValue) {
+  verifySearchResults(done, expected, results) {
+      client.isVisble(blackbook.helpers.searchResults)
+        .then(function(isVisible) {
           try {
-            assert.equal(expected, getValue, 'The expected value was not equal to the text');
+            assert.equal(expected, isVisible, 'The expected value was not equal to the text');
           } catch (err) {
             done(err);
           }
-          console.log(getValue);
+          if(isVisible == true) {
+            client.getText(blackbook.helpers.searchResults)
+            then((text) => {
+              try {
+                assert.equal(results, text, 'The expected number was not equal to the actual number');
+              } catch (err) {
+                done(err);
+              }
+            })
+          }
         })
     done();
-    //}
   },
 
   selectCustomerCard(done, expected) {
-    if (client.isVisible(blackbook.helpers.searchButton, done)) {
-      client.click(blackbook.helpers.customerCard)
-        .then((text) => {
-          client.getText(blackbook.helpers.blackbookHeader)
+      client.isVisble(blackbook.helpers.customerCard)
+        .then(function(isVisible) {
           try {
-            assert.equal(expected, text, 'The expected value was not equal to the text');
+            assert.equal(expected, isVisible, 'The expected value was not equal to the text');
           } catch (err) {
             done(err);
           }
+          if (isVisible == true) {
+            client.click(blackbook.helpers.customerCard, value)
+          }
         })
-    }
+    done();
   },
 
   openEditCustomer(done, expected) {

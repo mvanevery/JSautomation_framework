@@ -32,21 +32,32 @@ const landing = require('../../../../core/projects/concierge/helpers/landingPage
     });
   });
 
-  describe('Click the Blackbook menu option', () => {
-    it('Should open Blackbook sections', (done) => {
-      landing.navBlackbook(done, "My Clients");
-    });
-  });
+   describe('Click the Blackbook menu option', () => {
+     it('Should open Blackbook sections', (done) => {
+       landing.navigateIcons(done, "blackbookIcon", true);
+     });
+   });
+   describe('Pausing', () => {
+     it('Should pause the test for 5 seconds', (done) => {
+       common.pause(done, 5000);
+     });
+   });
 
-  describe('Pausing', () => {
-    it('Should pause the test for 2 seconds', (done) => {
-      common.pause(done, 5000);
-    });
-  });
+   describe('Verify Header', () => {
+     it('Should verify the header on the Blackbook page', (done) => {
+       blackbook.elementVisible(done, "blackbookHeader", true);
+     });
+   });
+
+   describe('Pausing', () => {
+     it('Should pause the test for 5 seconds', (done) => {
+       common.pause(done, 5000);
+     });
+   });
 
   describe('Enter First Name', () => {
     it('should enter a name in the first name field', (done) => {
-      blackbook.enterFirstname(done, "Automation");
+      blackbook.enterValue(done, true, "firstName", "Automation");
     });
   });
 
@@ -58,7 +69,7 @@ const landing = require('../../../../core/projects/concierge/helpers/landingPage
 
   describe('Enter Last Name', () => {
     it('should enter a name in the last name field', (done) => {
-      blackbook.enterLastname(done, "Test");
+      blackbook.enterValue(done, true, "lastName", "Test");
     });
   });
 

@@ -48,8 +48,8 @@ describe('Smoke Test: Clear Search Fields', () => {
     });
   });
 
-  describe('Get visible', () => {
-    it('Should get value of field', (done) => {
+  describe('Verify Header', () => {
+    it('Should verify the header on the Blackbook page', (done) => {
       blackbook.elementVisible(done, "blackbookHeader", true);
     });
   });
@@ -59,19 +59,19 @@ describe('Smoke Test: Clear Search Fields', () => {
       common.pause(done, 5000);
     });
   });
-  //
-  //describe('Enter First Name', () => {
-  //  it('should enter a name in the first name field', (done) => {
-  //    blackbook.enterFieldValue(done,"firstName", "Automation");
-  //  });
-  //});
-  //
-  //describe('Pausing', () => {
-  //  it('Should pause the test for 1 seconds', (done) => {
-  //    common.pause(done, 1000);
-  //  });
-  //});
-  //
+
+  describe('Enter First Name', () => {
+    it('should enter a name in the first name field', (done) => {
+      blackbook.enterValue(done, true, "firstName", "Automation");
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 1 seconds', (done) => {
+      common.pause(done, 1000);
+    });
+  });
+
   //describe('Enter Last Name', () => {
   //  it('should enter a name in the last name field', (done) => {
   //    blackbook.enterFieldValue(done, "lastName", "Customer");

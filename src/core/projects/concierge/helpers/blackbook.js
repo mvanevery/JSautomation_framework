@@ -207,6 +207,24 @@ module.exports = {
     done();
   },
 
+  enterValue(done, expected,selector, value) {
+    client.isVisible(blackbook.helpers[selector])
+      .then(function(isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the text');
+        } catch (err) {
+          done(err);
+        }
+        if (isVisible == true) {
+          client.setValue(blackbook.helpers[selector], value)
+        }
+      })
+    done();
+},
+
+ // elementVisible(done, expected, selector,value) {
+
+
   getFieldValue(done, select, expected) {
     client.getValue(blackbook.helpers[select])
       .then(function (getValue) {

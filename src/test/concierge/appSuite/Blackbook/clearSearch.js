@@ -39,12 +39,17 @@ describe('Smoke Test: Clear Search Fields', () => {
 
   describe('Click the Blackbook menu option', () => {
     it('Should open Blackbook sections', (done) => {
-      landing.navBlackbook(done, "My Clients");
+      landing.navigateIcons(done, "blackbookIcon", true);
+    });
+  });
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 5000);
     });
   });
 
-  describe('Get visible', () => {
-    it('Should get value of field', (done) => {
+  describe('Verify Header', () => {
+    it('Should verify the header on the Blackbook page', (done) => {
       blackbook.elementVisible(done, "blackbookHeader", true);
     });
   });
@@ -57,7 +62,7 @@ describe('Smoke Test: Clear Search Fields', () => {
 
   describe('Enter First Name', () => {
     it('should enter a name in the first name field', (done) => {
-      blackbook.enterFieldValue(done,"firstName", "Automation");
+      blackbook.enterValue(done, true, "firstName", "Automation");
     });
   });
 
@@ -69,7 +74,7 @@ describe('Smoke Test: Clear Search Fields', () => {
 
   describe('Enter Last Name', () => {
     it('should enter a name in the last name field', (done) => {
-      blackbook.enterFieldValue(done, "lastName", "Customer");
+      blackbook.enterValue(done, true, "lastName", "Customer");
     });
   });
 
@@ -81,7 +86,7 @@ describe('Smoke Test: Clear Search Fields', () => {
 
   describe('Enter Phone #', () => {
     it('should enter a phone # in the phone field', (done) => {
-      blackbook.enterFieldValue(done, "phone", "8135551234");
+      blackbook.enterValue(done, true, "phone", "8135551234");
     });
   });
 
@@ -93,7 +98,7 @@ describe('Smoke Test: Clear Search Fields', () => {
 
   describe('Enter an Email', () => {
     it('should enter email in the email field', (done) => {
-      blackbook.enterFieldValue(done, "email", "qa.automation@madmobile.com");
+      blackbook.enterValue(done, true, "email", "qa.automation@madmobile.com");
     });
   });
 
@@ -105,7 +110,7 @@ describe('Smoke Test: Clear Search Fields', () => {
 
   describe('Enter City', () => {
     it('should enter a city in the city field', (done) => {
-      blackbook.enterFieldValue(done, "city", "Tampa");
+      blackbook.enterValue(done, true, "city", "Tampa");
     });
   });
 
@@ -117,7 +122,7 @@ describe('Smoke Test: Clear Search Fields', () => {
 
   describe('Enter Zipcode', () => {
     it('should enter a zipcode in the zipcode field', (done) => {
-      blackbook.enterFieldValue(done, "zipcode", "85701");
+      blackbook.enterValue(done, true, "zipcode", "85701");
     });
   });
 

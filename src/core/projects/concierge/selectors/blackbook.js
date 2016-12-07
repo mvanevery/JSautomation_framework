@@ -28,7 +28,7 @@ module.exports = {
 
 //================================================== Add Customer Modal ================================================
 
-      searchResults:`//div[@data-id="customerCard-0")]`,
+      searchResults:`//div[@data-id="cardName-0"]`,
       //searchResults:`//div[contains(text(),"Automation Customer")]`,
       saveButton:'//button[@data-id="Done"]',
       modalHeader:'//div[@data-id="modalHeader"]',

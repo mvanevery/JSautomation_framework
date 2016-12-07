@@ -33,13 +33,13 @@ describe('Smoke Test: Search Product by Category', () => {
 
   describe('Pausing', () => {
     it('Should pause the test for 10 seconds', (done) => {
-      common.pause(done, 10000);
+      common.pause(done, 15000);
     });
   });
 
   describe('Click the Blackbook menu option', () => {
     it('Should open Blackbook sections', (done) => {
-      landing.navSearch(done, "Product Search");
+      landing.navigateIcons(done, "searchIcon", true);
     });
   });
 
@@ -51,7 +51,7 @@ describe('Smoke Test: Search Product by Category', () => {
 
   describe('Verify Search drawer is open', () => {
     it('should verify that the drawer is open', (done) => {
-      search.verifySearchOpen(done);
+      search.verifySearchOpen(done, true, "Product Search");
     });
   });
 
@@ -75,7 +75,7 @@ describe('Smoke Test: Search Product by Category', () => {
 
   describe('Verify PLP Header', () => {
     it('should verify the PLP header', (done) => {
-      search.verifySearchPLP(done,'Searching "Shoes"');
+      search.verifySearchPLP(done, true, 'Searching "Shoes"');
     });
   });
 

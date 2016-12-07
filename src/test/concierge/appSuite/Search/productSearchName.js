@@ -41,8 +41,8 @@ const search = require('../../../../core/projects/concierge/helpers/productSearc
   });
 });
 
-  describe('Click the Product Search menu option', () => {
-    it('Should open Product Search drawer', (done) => {
+  describe('Click the Product Search icon', () => {
+    it('Should open product search drawer', (done) => {
       landing.navigateIcons(done, "searchIcon", true);
   });
 });

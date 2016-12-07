@@ -1,18 +1,19 @@
 /**
- * Created by mvanevery on 11/16/16.
+ * Created by mvanevery on 12/07/16.
  * Project:     Concierge
- * Test Name:   productSearchCategory
- * Test Steps:  https://madmobile.testrail.com/index.php?/cases/view/181
- * C181 - Search by Product Category
+ * Test Name:   productSearchBlank
+ * Test Steps:  https://madmobile.testrail.com/index.php?/cases/view/186
+ * C186 - Blank Field
  * Author:      Mike Van Every
- * Date:        11/16/2016/
-*/
+ * Date:        12/07/2016/
+ */
 
-const common = require('../../../../core/projects/concierge/helpers/common');
-const login = require('../../../../core/projects/concierge/helpers/loginPage');
-const blackbook = require('../../../../core/projects/concierge/helpers/blackbook');
-const landing = require('../../../../core/projects/concierge/helpers/landingPage');
-const search = require('../../../../core/projects/concierge/helpers/productSearch');
+
+const common = require('../../../core/projects/concierge/helpers/common');
+const login = require('../../../core/projects/concierge/helpers/loginPage');
+const blackbook = require('../../../core/projects/concierge/helpers/blackbook');
+const landing = require('../../../core/projects/concierge/helpers/landingPage');
+const search = require('../../../core/projects/concierge/helpers/productSearch');
 
 describe('Smoke Test: Search Product by Category', () => {
   before((done) => {
@@ -63,7 +64,7 @@ describe('Smoke Test: Search Product by Category', () => {
 
   describe('Enter search criteria', () => {
     it('Should enter search criteria and search', (done) => {
-      search.enterSearchCriteria(done, 'Shoes');
+      search.enterSearchCriteria(done, '');
     });
   });
 
@@ -72,28 +73,4 @@ describe('Smoke Test: Search Product by Category', () => {
       common.pause(done, 5000);
     });
   });
-
-  describe('Verify PLP Header', () => {
-    it('should verify the PLP header', (done) => {
-      search.verifySearchPLP(done, true, 'Searching "Shoes"');
-    });
-  });
-
-  describe('Pausing', () => {
-    it('Should pause the test for 2 seconds', (done) => {
-      common.pause(done, 5000);
-    });
-  });
-
-  describe('Logout', () => {
-    it('Should Logout from the current user', (done) => {
-      login.logoutUser(done);
-    });
-  });
-  describe('Pausing', () => {
-    it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done, 5000);
-    });
-  });
-
 })

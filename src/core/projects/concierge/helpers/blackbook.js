@@ -238,7 +238,7 @@ module.exports = {
   },
 
   verifySearchResults(done, expected, results) {
-      client.isVisble(blackbook.helpers.searchResults)
+      client.isVisible(blackbook.helpers.searchResults)
         .then(function(isVisible) {
           try {
             assert.equal(expected, isVisible, 'The expected value was not equal to the text');
@@ -247,7 +247,7 @@ module.exports = {
           }
           if(isVisible == true) {
             client.getText(blackbook.helpers.searchResults)
-            then((text) => {
+              .then((text) => {
               try {
                 assert.equal(results, text, 'The expected number was not equal to the actual number');
               } catch (err) {
@@ -255,7 +255,7 @@ module.exports = {
               }
             })
           }
-        })
+        });
     done();
   },
 

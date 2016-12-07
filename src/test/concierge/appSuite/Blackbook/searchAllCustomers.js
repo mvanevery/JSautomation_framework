@@ -76,25 +76,25 @@ describe('Smoke Test: Search Customer', () => {
 
   describe('Enter First Name', () => {
     it('should enter a name in the first name field', (done) => {
-      blackbook.enterFirstname(done, "J");
+      blackbook.enterValue(done, true, "firstName", "A");
     });
   });
 
   describe('Pausing', () => {
     it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+      common.pause(done, 3000);
     });
   });
 
   describe('Enter Last Name', () => {
     it('should enter a name in the last name field', (done) => {
-      blackbook.enterLastname(done, "Smith");
+      blackbook.enterValue(done, true, "lastName", "Customer");
     });
   });
 
   describe('Pausing', () => {
     it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+      common.pause(done, 3000);
     });
   });
 

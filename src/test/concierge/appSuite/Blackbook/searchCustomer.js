@@ -66,8 +66,8 @@ describe('Smoke Test: Search Customer', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
@@ -78,8 +78,8 @@ describe('Smoke Test: Search Customer', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
@@ -90,8 +90,8 @@ describe('Smoke Test: Search Customer', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 2 seconds', (done) => {
-      common.pause(done, 5000);
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 10000);
     });
   });
 

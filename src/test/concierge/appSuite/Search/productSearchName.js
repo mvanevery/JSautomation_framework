@@ -74,7 +74,7 @@ describe('Pausing', () => {
   describe('Pausing', () => {
     it('Should pause the test for 2 seconds', (done) => {
      common.pause(done, 10000);
-});
+  });
 });
 
   describe('Verify Product Title', () => {
@@ -89,11 +89,11 @@ describe('Pausing', () => {
   });
 });
 
-  describe('Logout', () => {
-    it('Should Logout from the current user', (done) => {
-      login.logoutUser(done);
-  });
-});
+    describe('Logout', () => {
+      it('Should logout the current user', (done) => {
+        login.logoutUser(done, true);
+      });
+    });
 
   describe('Pausing', () => {
     it('Should pause the test for 5 seconds', (done) => {

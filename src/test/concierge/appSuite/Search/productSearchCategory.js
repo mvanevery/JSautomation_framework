@@ -86,8 +86,8 @@ describe('Smoke Test: Search Product by Category', () => {
   });
 
   describe('Logout', () => {
-    it('Should Logout from the current user', (done) => {
-      login.logoutUser(done);
+    it('Should logout the current user', (done) => {
+      login.logoutUser(done, true);
     });
   });
   describe('Pausing', () => {

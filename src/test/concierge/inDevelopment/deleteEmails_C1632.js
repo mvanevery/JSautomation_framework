@@ -23,8 +23,8 @@ describe('Smoke Test: Delete Emails C1632', () => {
 
   //logout
   describe('Logout', () => {
-    it('Should Logout from the current user', (done) => {
-      common.logoutUser(done);
+    it('Should logout the current user', (done) => {
+      login.logoutUser(done, true);
     });
   });
 

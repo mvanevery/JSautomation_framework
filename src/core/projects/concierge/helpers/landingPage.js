@@ -15,12 +15,15 @@ const assert = require('chai').assert;
 
 module.exports = {
 
-  verifyConciergeScreen(done) {
-    if (client.isVisible(landingPage.helpers.productIcon)) {
-      console.log('	PASS: The Concierge screen is visible.');
-    } else {
-      console.log('	ERROR: The user failed to reach the Concierge screen.');
-    }
+  verifyConciergeScreen(done, expected) {
+    client.isVisible(landingPage.helpers.headerImage)
+      .then(function(isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
+        }  catch (err) {
+          done(err);
+        }
+       })
     done();
   },
 

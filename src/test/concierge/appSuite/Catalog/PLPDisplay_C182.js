@@ -118,11 +118,11 @@ describe('Smoke Test: C182 PLP Display', () => {
       });
     });
 
-    describe('Logout', () => {
-      it('Should Logout from the current user', (done) => {
-        login.logoutUser(done);
-      });
+  describe('Logout', () => {
+    it('Should logout the current user', (done) => {
+      login.logoutUser(done, true);
     });
+  });
 
     describe('Pausing', () => {
       it('Should pause the test for 2 seconds', (done) => {

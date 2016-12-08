@@ -30,7 +30,7 @@ describe('Smoke Test: Login and Logout as "testauto"', () => {
 
   describe('Verify Login Screen', () => {
     it('Should navigate to the login screen', (done) => {
-      login.verifyLoginScreen(done);
+      login.verifyLoginScreen(done, true);
     });
   });
 
@@ -42,7 +42,7 @@ describe('Smoke Test: Login and Logout as "testauto"', () => {
 
   describe('Login', () => {
     it('Should login as "testauto"', (done) => {
-      login.loginUser(done, 'testauto', 'qaUser@123');
+      login.loginUser(done, true, 'testauto', 'qaUser@123');
     });
   });
 
@@ -54,7 +54,7 @@ describe('Smoke Test: Login and Logout as "testauto"', () => {
 
   describe('Verify Concierge Screen', () => {
     it('Should navigate to the Concierge screen', (done) => {
-      landing.verifyConciergeScreen(done);
+      landing.verifyConciergeScreen(done, true);
     });
   });
 
@@ -66,7 +66,7 @@ describe('Smoke Test: Login and Logout as "testauto"', () => {
 
   describe('Logout', () => {
     it('Should logout the current user', (done) => {
-      login.logoutUser(done);
+      login.logoutUser(done, true);
     });
   });
 

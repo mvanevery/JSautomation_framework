@@ -482,8 +482,8 @@ describe('Smoke Test: Search by Single Specified Fields', () => {
   });
 
   describe('Logout', () => {
-    it('Should Logout from the current user', (done) => {
-      login.logoutUser(done);
+    it('Should logout the current user', (done) => {
+      login.logoutUser(done, true);
     });
   });
 

@@ -71,8 +71,8 @@ describe('Smoke Test: C1249 Opening and Closing Functionality', () => {
   });
 
   describe('Logout', () => {
-    it('Should Logout from the current user', (done) => {
-      login.logoutUser(done);
+    it('Should logout the current user', (done) => {
+      login.logoutUser(done, true);
     });
   });
 

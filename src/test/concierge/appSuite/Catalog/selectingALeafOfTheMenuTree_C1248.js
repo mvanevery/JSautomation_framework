@@ -118,11 +118,11 @@ describe('Smoke Test: C1248 Selecting A Leaf Of The Menu Tree', () => {
       });
     });
 
-    describe('Logout', () => {
-      it('Should Logout from the current user', (done) => {
-        login.logoutUser(done);
-      });
+  describe('Logout', () => {
+    it('Should logout the current user', (done) => {
+      login.logoutUser(done, true);
     });
+  });
 
     describe('Pausing', () => {
       it('Should pause the test for 2 seconds', (done) => {

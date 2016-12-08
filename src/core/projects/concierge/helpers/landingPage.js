@@ -77,69 +77,10 @@ module.exports = {
         }
         if(isVisible == true) {
           client.click(landingPage.helpers[selector])
-        } else {
-          client.click(login.logoutUser(done))
         }
       })
     done();
   },
-
-  navSearch(done) {
-    client.isVisible(landingPage.helpers.searchIcon, done)
-      .then(() => {
-        client.click(landingPage.helpers.searchIcon)
-      })
-  },
-  //test(done, selector, expected) {
-  //    if (client.isVisible(landingPage.helpers[selector], done)) {
-  //      client.click(landingPage.helpers.searchIcon)
-  //        .then(() => {
-  //          client.getText(landingPage.helpers.productSearchField)
-  //            .then((text) => {
-  //              console.log(text);
-                //try {
-                //  assert.equal(expected, text, 'The expected value was not equal to the text');
-                //} catch (err) {
-                //  done(err);
-                //}
-  //            })
-  //        })
-  //    }
-  //},
-  //  client.isVisible(landingPage.helpers[selector], done)
-  //    .then(function (isVisible) {
-  //      try {
-  //        assert.equal(expected, isVisible, 'The expected value was not equal to the text')
-  //      } catch (err) {
-  //        done(err);
-  //      }
-  //      //console.log(isVisible);
-  //      //if (isVisible == true) {
-  //        client.click(landingPage.helpers[selector], done);
-  //        //} else {
-  //        //  client.click(landingPage.helpers.logoutUser(done))
-  //        //}
-  //        //done();
-  //      //}
-  //    })
-  //},
-
-  navSearch(done, selector, expected) {
-  client.isVisible(landingPage.helpers[selector])
-    .then(function(isVisible) {
-      try {
-        assert.isTrue(expected, isVisible, 'The expected value was not equal to the text')
-      }  catch (err) {
-        done(err);
-      }
-      if(isVisible == true) {
-        client.click(landingPage.helpers.searchIcon)
-      }
-      //.then(()=> {
-
-    })
-  done();
-},
 
   navAddition(done)  {
     if (client.isVisible(landingPage.helpers.addIcon, done)) {

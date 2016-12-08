@@ -19,6 +19,20 @@ module.exports = {
   //      })
   //  }
   //},
+  enterValue(done, expected,selector, value) {
+    client.isVisible(planner.helpers[selector])
+      .then(function(isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the text');
+        } catch (err) {
+          done(err);
+        }
+        if (isVisible == true) {
+          client.setValue(planner.helpers[selector], value)
+        }
+      })
+    done();
+  },
 
   addTask(done,expected) {
     if(client.isVisible(planner.helpers.taskAddition)) {

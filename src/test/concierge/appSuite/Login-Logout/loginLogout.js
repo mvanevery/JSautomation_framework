@@ -54,7 +54,7 @@ describe('Smoke Test: Login and Logout as "testauto"', () => {
 
   describe('Verify Concierge Screen', () => {
     it('Should navigate to the Concierge screen', (done) => {
-      landing.verifyConciergeScreen(done);
+      landing.verifyConciergeScreen(done, true);
     });
   });
 

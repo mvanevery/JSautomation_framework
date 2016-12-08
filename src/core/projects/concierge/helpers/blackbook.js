@@ -222,6 +222,29 @@ module.exports = {
     done();
 },
 
+  verifyPageHeader(done, expected, title) {
+    client.isVisible(blackbook.helpers.pageHeader)
+      .then(function(isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
+        } catch (err) {
+          done(err);
+        }
+        if (isVisible == true) {
+          client.getText(blackbook.helpers.pageHeader, title)
+            .then((text) => {
+              try {
+                assert.equal(title, text, 'The expected number was not equal to the actual title');
+              } catch (err) {
+                done(err);
+              }
+            })
+        }
+      })
+    done();
+  },
+
+
   getFieldValue(done, select, expected) {
     client.getValue(blackbook.helpers[select])
       .then(function (getValue) {

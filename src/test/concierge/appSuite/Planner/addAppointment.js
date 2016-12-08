@@ -22,7 +22,7 @@ describe('Smoke Test: Add Appointment', () => {
 
   describe('Verify Login Screen', () => {
     it('Should navigate to the login screen', (done) => {
-      login.verifyLoginScreen(done);
+      login.verifyLoginScreen(done, true);
     });
   });
   describe('Pausing', () => {
@@ -33,7 +33,7 @@ describe('Smoke Test: Add Appointment', () => {
 
   describe('Login', () => {
     it('Should login as "testauto"', (done) => {
-      login.loginUser(done, 'testauto', 'qaUser@123');
+      login.loginUser(done,true, 'testauto', 'qaUser@123');
     });
   });
 
@@ -45,7 +45,7 @@ describe('Smoke Test: Add Appointment', () => {
 
   describe('Click the Planner menu option', () => {
     it('Should open planner sections', (done) => {
-      landing.navPlanner(done, "Planner");
+      landing.navigateIcons(done, 'plannerIcon', true);
     });
   });
 
@@ -57,7 +57,7 @@ describe('Smoke Test: Add Appointment', () => {
 
   describe('Change the type and Open Appointment Form', () => {
     it('Should open the appointment form from the Planner', (done) => {
-      planner.apptToggle(done, "Create Appointment");
+      planner.apptToggle(done, true, "Create Stuff Appointment");
     });
   });
   describe('Pausing', () => {

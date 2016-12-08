@@ -8,11 +8,11 @@
  * Date:        12/07/2016/
  */
 
-const common = require('../../../core/projects/concierge/helpers/common');
-const login = require('../../../core/projects/concierge/helpers/loginPage');
-const blackbook = require('../../../core/projects/concierge/helpers/blackbook');
-const landing = require('../../../core/projects/concierge/helpers/landingPage');
-const search = require('../../../core/projects/concierge/helpers/productSearch');
+const common = require('../../../../core/projects/concierge/helpers/common');
+const login = require('../../../../core/projects/concierge/helpers/loginPage');
+const blackbook = require('../../../../core/projects/concierge/helpers/blackbook');
+const landing = require('../../../../core/projects/concierge/helpers/landingPage');
+const search = require('../../../../core/projects/concierge/helpers/productSearch');
 
 describe('Smoke Test: Search Product for No Results', () => {
   before((done) => {

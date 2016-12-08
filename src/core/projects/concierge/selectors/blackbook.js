@@ -29,8 +29,7 @@ module.exports = {
 //================================================== Add Customer Modal ================================================
 
       searchResults:`//div[@data-id="cardName-0"]`,
-      //searchResults:`//div[contains(text(),"Automation Customer")]`,
-      saveButton:'//button[@data-id="Done"]',
+      save:'//button[@data-id="Done"]',
       modalHeader:'//div[@data-id="modalHeader"]',
       firstNameModal:'//input[@data-id="firstNameAddModal"]',
       lastNameModal:'//input[@data-id="lastNameAddModal"]',
@@ -51,7 +50,7 @@ module.exports = {
       countryModal:'//input[@data-id="modalCountry"]',
       addresssTypeModal:'//select[@data-id="addressType"]',
       customerCard: '//div[@data-id="customerCard-0")]',
-      Cancel: '//button[@data-id="cancel"]',
+      cancel: '//button[@data-id="cancel"]',
 
       //================================================== CUSTOMER PROFILE ============================================
 

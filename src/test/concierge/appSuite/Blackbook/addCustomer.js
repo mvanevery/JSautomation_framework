@@ -57,7 +57,7 @@ describe('Smoke Test: Add Customer', () => {
 
   describe('Click + to open Add customer Modal', ()=> {
     it('should click the + button and open a modal', (done) => {
-      blackbook.addCustomer(done);
+      blackbook.addCustomer(done, true);
     });
   });
 
@@ -74,8 +74,8 @@ describe('Smoke Test: Add Customer', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
@@ -86,20 +86,20 @@ describe('Smoke Test: Add Customer', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
   describe('Open Phone section', () => {
     it('should open the phone section', (done) => {
-      blackbook.openPhone(done);
+      blackbook.openPhone(done, true);
     });
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
@@ -110,32 +110,32 @@ describe('Smoke Test: Add Customer', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
   describe('Select Phone Type', () => {
     it('should select the phone type', (done) => {
-      blackbook.enterValue(done, true, "phoneTypeModal", 'PERSONAL');
+      blackbook.modalPhoneType(done, true, 'PERSONAL');
     });
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
   describe('Open Email Section', () => {
     it('should open the email section', (done) => {
-      blackbook.openEmail(done);
+      blackbook.openEmail(done, true);
     });
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
@@ -146,32 +146,32 @@ describe('Smoke Test: Add Customer', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
   describe('Select Email Type', () => {
     it('should select the email type', (done) => {
-      blackbook.enterValue(done, true, "emailTypeModal", 'OTHER');
+      blackbook.modalEmailType(done, true, 'OTHER');
     });
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
   describe('Open Address Section', () => {
     it('should open the Address section', (done) => {
-      blackbook.openAddress(done);
+      blackbook.openAddress(done, true);
     });
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
@@ -182,8 +182,8 @@ describe('Smoke Test: Add Customer', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
@@ -194,8 +194,8 @@ describe('Smoke Test: Add Customer', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
@@ -206,8 +206,8 @@ describe('Smoke Test: Add Customer', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
@@ -218,8 +218,8 @@ describe('Smoke Test: Add Customer', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
@@ -230,8 +230,8 @@ describe('Smoke Test: Add Customer', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
@@ -242,8 +242,8 @@ describe('Smoke Test: Add Customer', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
@@ -254,14 +254,14 @@ describe('Smoke Test: Add Customer', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
   describe('Click the DONE button', () => {
     it('should click the DONE button and save the customer', (done) => {
-      blackbook.saveButton(done);
+      blackbook.saveButton(done, true);
     });
   });
 

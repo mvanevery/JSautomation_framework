@@ -63,7 +63,7 @@ describe('Smoke Test: Search Product for No Results', () => {
 
   describe('Enter search criteria', () => {
     it('Should enter search criteria and search', (done) => {
-      search.enterSearchCriteria(done, 'things things things');
+      search.enterSearchCriteria(done, true, 'sfshsf');
     });
   });
 
@@ -73,7 +73,7 @@ describe('Smoke Test: Search Product for No Results', () => {
     });
   });
 
-  describe('Verify Product Title', () => {
+  describe('Verify Product Results', () => {
     it('should verify the product title', (done) => {
       search.verifySearchNoResults(done, true,'Unable to load product list.');
     });

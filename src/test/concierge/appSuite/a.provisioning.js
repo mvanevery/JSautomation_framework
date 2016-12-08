@@ -48,7 +48,7 @@ describe('Provision Talbots and Set Store', () => {
 
   describe('Verify Login Screen', () => {
     it('Should verify the Login Screen', (done) => {
-      login.verifyLoginScreen(done);
+      login.verifyLoginScreen(done, true);
     });
   });
   describe('Pausing', () => {
@@ -56,9 +56,9 @@ describe('Provision Talbots and Set Store', () => {
       common.pause(done, 5000);
     });
   });
-  describe('Login User', () => {
-    it('Should Login as user "testauto"', (done) => {
-      login.loginUser(done, "testauto", "qaUser@123");
+  describe('Login', () => {
+    it('Should login as "testauto"', (done) => {
+      login.loginUser(done, true, 'testauto', 'qaUser@123');
     });
   });
   describe('Pausing', () => {

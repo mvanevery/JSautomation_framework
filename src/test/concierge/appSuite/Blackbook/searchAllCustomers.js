@@ -23,13 +23,13 @@ describe('Smoke Test: Search Customer', () => {
 
   describe('Verify Login Screen', () => {
     it('Should navigate to the login screen', (done) => {
-      login.verifyLoginScreen(done);
+      login.verifyLoginScreen(done, true);
     });
   });
 
   describe('Login', () => {
     it('Should login as "testauto"', (done) => {
-      login.loginUser(done, 'testauto', 'qaUser@123');
+      login.loginUser(done, true, 'testauto', 'qaUser@123');
     });
   });
 
@@ -52,7 +52,7 @@ describe('Smoke Test: Search Customer', () => {
 
   describe('Verify Header', () => {
     it('Should verify the header on the Blackbook page', (done) => {
-      blackbook.elementVisible(done, "blackbookHeader", true);
+      blackbook.verifyPageHeader(done, true, 'My Clients');
     });
   });
 

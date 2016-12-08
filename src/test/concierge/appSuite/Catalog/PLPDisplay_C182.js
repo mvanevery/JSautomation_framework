@@ -18,13 +18,13 @@ describe('Smoke Test: C182 PLP Display', () => {
 
   describe('Verify Login Screen', () => {
     it('Should navigate to the login screen', (done) => {
-      login.verifyLoginScreen(done);
+      login.verifyLoginScreen(done, true);
     });
   });
 
   describe('Login', () => {
     it('Should login as "testauto"', (done) => {
-      login.loginUser(done, 'testauto', 'qaUser@123');
+      login.loginUser(done, true, 'testauto', 'qaUser@123');
     });
   });
 

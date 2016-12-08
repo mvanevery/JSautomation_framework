@@ -21,13 +21,13 @@ describe('Smoke Test: Search Product for No Results', () => {
 
   describe('Verify Login Screen', () => {
     it('Should navigate to the login screen', (done) => {
-      login.verifyLoginScreen(done);
+      login.verifyLoginScreen(done, true);
     });
   });
 
   describe('Login', () => {
-    it('Should login as "qauser"', (done) => {
-      login.loginUser(done, 'testauto', 'qaUser@123');
+    it('Should login as "testauto"', (done) => {
+      login.loginUser(done, true, 'testauto', 'qaUser@123');
     });
   });
 

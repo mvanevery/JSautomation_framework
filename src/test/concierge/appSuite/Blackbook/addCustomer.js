@@ -22,7 +22,7 @@ describe('Smoke Test: Add Customer', () => {
 
   describe('Login', () => {
     it('Should login as "testauto"', (done) => {
-      login.loginUser(done, 'testauto', 'qaUser@123');
+      login.loginUser(done, true, 'testauto', 'qaUser@123');
     });
   });
 

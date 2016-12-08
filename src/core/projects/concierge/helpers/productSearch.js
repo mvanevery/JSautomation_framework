@@ -90,7 +90,7 @@ module.exports = {
           done(err);
         }
         if(isVisible == true) {
-          client.getText(blackbook.helpers.noResults)
+          client.getText(search.helpers.noResults)
             .then((text) => {
               try {
                 assert.equal(results, text, 'The expected number was not equal to the actual number');
@@ -102,6 +102,28 @@ module.exports = {
       });
     done();
   },
+
+  //verifySearchNoResults(done, expected, results) {
+  //  client.isVisible(search.helpers.noResults)
+  //    .then(function(isVisible) {
+  //      try {
+  //        assert.equal(expected, isVisible, 'The expected value was not equal to the text');
+  //      } catch (err) {
+  //        done(err);
+  //      }
+  //      if(isVisible == true) {
+  //        client.getText(blackbook.helpers.noResults)
+  //          .then((text) => {
+  //            try {
+  //              assert.equal(results, text, 'The expected number was not equal to the actual number');
+  //            } catch (err) {
+  //              done(err);
+  //            }
+  //          })
+  //      }
+  //    });
+  //  done();
+  //},
 
   verifySearchPLP(done, expected, title) {
     client.isVisible(search.helpers.pageHeader)

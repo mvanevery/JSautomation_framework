@@ -53,7 +53,7 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
 
   describe('Verify Header', () => {
     it('Should verify the header on the Blackbook page', (done) => {
-      blackbook.elementVisible(done, "blackbookHeader", true);
+      blackbook.verifyPageHeader(done, true, 'My Clients');
     });
   });
 

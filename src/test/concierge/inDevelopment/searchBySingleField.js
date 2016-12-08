@@ -22,13 +22,13 @@ describe('Smoke Test: Search by Single Specified Fields', () => {
 
   describe('Verify Login Screen', () => {
     it('Should navigate to the login screen', (done) => {
-      login.verifyLoginScreen(done);
+      login.verifyLoginScreen(done, true);
     });
   });
 
   describe('Login', () => {
     it('Should login as "testauto"', (done) => {
-      login.loginUser(done, 'testauto', 'qaUser@123');
+      login.loginUser(done, true, 'testauto', 'qaUser@123');
     });
   });
 
@@ -51,7 +51,7 @@ describe('Smoke Test: Search by Single Specified Fields', () => {
 
   describe('Verify Header', () => {
     it('Should verify the header on the Blackbook page', (done) => {
-      blackbook.elementVisible(done, "blackbookHeader", true);
+      blackbook.verifyPageHeader(done, true, 'My Clients');
     });
   });
 
@@ -68,14 +68,14 @@ describe('Smoke Test: Search by Single Specified Fields', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
   describe('Click the Search Customer button', () => {
     it('Should click the search customer button', (done) => {
-      blackbook.searchCustomer(done);
+      blackbook.searchCustomer(done, true);
     });
   });
 
@@ -104,14 +104,14 @@ describe('Smoke Test: Search by Single Specified Fields', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
   describe('Click the Search Customer button', () => {
     it('Should click the search customer button', (done) => {
-      blackbook.searchCustomer(done);
+      blackbook.searchCustomer(done, true);
     });
   });
 
@@ -135,7 +135,7 @@ describe('Smoke Test: Search by Single Specified Fields', () => {
 
   describe('Click the Reset Fields button', () => {
     it('Should click the reset fields button', (done) => {
-      blackbook.resetFields(done);
+      blackbook.resetFields(done, true);
     });
   });
 
@@ -152,14 +152,14 @@ describe('Smoke Test: Search by Single Specified Fields', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
   describe('Click the Search Customer button', () => {
     it('Should click the search customer button', (done) => {
-      blackbook.searchCustomer(done);
+      blackbook.searchCustomer(done, true);
     });
   });
 
@@ -188,14 +188,14 @@ describe('Smoke Test: Search by Single Specified Fields', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
   describe('Click the Search Customer button', () => {
     it('Should click the search customer button', (done) => {
-      blackbook.searchCustomer(done);
+      blackbook.searchCustomer(done, true);
     });
   });
 
@@ -212,14 +212,14 @@ describe('Smoke Test: Search by Single Specified Fields', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
   describe('Click the Reset Fields button', () => {
     it('Should click the reset fields button', (done) => {
-      blackbook.resetFields(done);
+      blackbook.resetFields(done, true);
     });
   });
 
@@ -236,14 +236,14 @@ describe('Smoke Test: Search by Single Specified Fields', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
   describe('Click the Search Customer button', () => {
     it('Should click the search customer button', (done) => {
-      blackbook.searchCustomer(done);
+      blackbook.searchCustomer(done, true);
     });
   });
 
@@ -272,14 +272,14 @@ describe('Smoke Test: Search by Single Specified Fields', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
   describe('Click the Search Customer button', () => {
     it('Should click the search customer button', (done) => {
-      blackbook.searchCustomer(done);
+      blackbook.searchCustomer(done, true);
     });
   });
 
@@ -296,14 +296,14 @@ describe('Smoke Test: Search by Single Specified Fields', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
   describe('Click the Reset Fields button', () => {
     it('Should click the reset fields button', (done) => {
-      blackbook.resetFields(done);
+      blackbook.resetFields(done, true);
     });
   });
 
@@ -315,19 +315,19 @@ describe('Smoke Test: Search by Single Specified Fields', () => {
 
   describe('Enter Email Address', () => {
     it('should enter address in the email field', (done) => {
-      blackbook.enterValue(done, true, 'email', "qa.automation@madmobile.com");
+      blackbook.enterValue(done, true, 'email', "qa.test@madmobile.com");
     });
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
   describe('Click the Search Customer button', () => {
     it('Should click the search customer button', (done) => {
-      blackbook.searchCustomer(done);
+      blackbook.searchCustomer(done, true);
     });
   });
 
@@ -356,14 +356,14 @@ describe('Smoke Test: Search by Single Specified Fields', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
   describe('Click the Search Customer button', () => {
     it('Should click the search customer button', (done) => {
-      blackbook.searchCustomer(done);
+      blackbook.searchCustomer(done, true);
     });
   });
 
@@ -380,14 +380,14 @@ describe('Smoke Test: Search by Single Specified Fields', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
   describe('Click the Reset Fields button', () => {
     it('Should click the reset fields button', (done) => {
-      blackbook.resetFields(done);
+      blackbook.resetFields(done, true);
     });
   });
 
@@ -404,14 +404,14 @@ describe('Smoke Test: Search by Single Specified Fields', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
   describe('Click the Search Customer button', () => {
     it('Should click the search customer button', (done) => {
-      blackbook.searchCustomer(done);
+      blackbook.searchCustomer(done, true);
     });
   });
 
@@ -440,14 +440,14 @@ describe('Smoke Test: Search by Single Specified Fields', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
   describe('Click the Search Customer button', () => {
     it('Should click the search customer button', (done) => {
-      blackbook.searchCustomer(done);
+      blackbook.searchCustomer(done, true);
     });
   });
 
@@ -464,14 +464,14 @@ describe('Smoke Test: Search by Single Specified Fields', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
   describe('Click the Reset Fields button', () => {
     it('Should click the reset fields button', (done) => {
-      blackbook.resetFields(done);
+      blackbook.resetFields(done, true);
     });
   });
 

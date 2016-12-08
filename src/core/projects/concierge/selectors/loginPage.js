@@ -18,9 +18,9 @@ module.exports = {
         signIn: '//button[@data-id="signin"]',
         userPlaceholder:'Username',
         logout: '//div[@data-id="module-logout"]',
-        logoutCancel: '//div[contains(text(),"Cancel")]',
-        //logoutCancel:'//button[@data-id="cancel"]',
-        logoutConfirm: '//div[contains(text(),"Log Out")]'
-        //logoutConfirm: '//div[@data-id="logout")]'
+        //logoutCancel: '//div[contains(text(),"Cancel")]',
+        logoutCancel:'//button[@data-id="cancel"]',
+       // logoutConfirm: '//div[contains(text(),"Log Out")]'
+        logoutConfirm: '//div[@data-id="logout")]'
     }
 }

@@ -283,8 +283,8 @@ describe('Smoke Test: Clear Search Fields', () => {
   });
 
   describe('Logout', () => {
-    it('Should Logout from the current user', (done) => {
-      login.logoutUser(done);
+    it('Should logout the current user', (done) => {
+      login.logoutUser(done, true);
     });
   });
 

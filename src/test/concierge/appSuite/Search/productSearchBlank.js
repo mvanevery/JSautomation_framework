@@ -75,8 +75,8 @@ describe('Smoke Test: Search Product - Blank Field', () => {
   });
 
   describe('Logout', () => {
-    it('Should Logout from the current user', (done) => {
-      login.logoutUser(done);
+    it('Should logout the current user', (done) => {
+      login.logoutUser(done, true);
     });
   });
 

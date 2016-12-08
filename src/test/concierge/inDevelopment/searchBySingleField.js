@@ -87,7 +87,7 @@ describe('Smoke Test: Search by Single Specified Fields', () => {
 
   describe('Verify Search Results', () => {
     it('should return "Automation Customer" in results', (done) => {
-      blackbook.verifySearchResults(done, 'Automation Customer');
+      blackbook.verifySearchResults(done, true, 'Automation Customer');
     });
   });
 
@@ -99,7 +99,7 @@ describe('Smoke Test: Search by Single Specified Fields', () => {
 
   describe('Enter First Name', () => {
     it('should enter a name in the first name field', (done) => {
-      blackbook.enterFieldValue(done,"firstName", "Au");
+      blackbook.enterValue(done, true,"firstName", "Au");
     });
   });
 
@@ -123,7 +123,7 @@ describe('Smoke Test: Search by Single Specified Fields', () => {
 
   describe('Verify Search Results', () => {
     it('should return "Automation Customer" in results', (done) => {
-      blackbook.verifySearchResults(done, 'Automation Customer');
+      blackbook.verifySearchResults(done, true, 'Automation Customer');
     });
   });
 
@@ -147,7 +147,7 @@ describe('Smoke Test: Search by Single Specified Fields', () => {
 
   describe('Enter Last Name', () => {
     it('should enter a name in the last name field', (done) => {
-      blackbook.enterFieldValue(done,"lastName", "Customer");
+      blackbook.enterValue(done, true, "lastName", "Customer");
     });
   });
 
@@ -171,7 +171,7 @@ describe('Smoke Test: Search by Single Specified Fields', () => {
 
   describe('Verify Search Results', () => {
     it('should return "Automation Customer" in results', (done) => {
-      blackbook.verifySearchResults(done, 'Automation Customer');
+      blackbook.verifySearchResults(done, true, 'Automation Customer');
     });
   });
 
@@ -183,7 +183,7 @@ describe('Smoke Test: Search by Single Specified Fields', () => {
 
   describe('Enter Last Name', () => {
     it('should enter a name in the last name field', (done) => {
-      blackbook.enterFieldValue(done,"lastName", "Cu");
+      blackbook.enterValue(done, true, "lastName", "Cu");
     });
   });
 
@@ -207,7 +207,7 @@ describe('Smoke Test: Search by Single Specified Fields', () => {
 
   describe('Verify Search Results', () => {
     it('should return "Automation Customer" in results', (done) => {
-      blackbook.verifySearchResults(done, 'Automation Customer');
+      blackbook.verifySearchResults(done, true, 'Automation Customer');
     });
   });
 
@@ -231,7 +231,7 @@ describe('Smoke Test: Search by Single Specified Fields', () => {
 
   describe('Enter Phone Number', () => {
     it('should enter a number in the phone field', (done) => {
-      blackbook.enterFieldValue(done,'phone', '8556781234');
+      blackbook.enterValue(done, true, 'phone', '8556781234');
     });
   });
 
@@ -255,7 +255,7 @@ describe('Smoke Test: Search by Single Specified Fields', () => {
 
   describe('Verify Search Results', () => {
     it('should return "Automation Customer" in results', (done) => {
-      blackbook.verifySearchResults(done, 'Automation Customer');
+      blackbook.verifySearchResults(done, true, 'Automation Customer');
     });
   });
 
@@ -267,7 +267,7 @@ describe('Smoke Test: Search by Single Specified Fields', () => {
 
   describe('Enter Phone Number', () => {
     it('should enter a number in the phone field', (done) => {
-      blackbook.enterFieldValue(done,'phone', "855");
+      blackbook.enterValue(done, true, 'phone', "855");
     });
   });
 
@@ -291,7 +291,7 @@ describe('Smoke Test: Search by Single Specified Fields', () => {
 
   describe('Verify Search Results', () => {
     it('should return "Automation Customer" in results', (done) => {
-      blackbook.verifySearchResults(done, 'Automation Customer');
+      blackbook.verifySearchResults(done, true, 'Automation Customer');
     });
   });
 
@@ -315,7 +315,7 @@ describe('Smoke Test: Search by Single Specified Fields', () => {
 
   describe('Enter Email Address', () => {
     it('should enter address in the email field', (done) => {
-      blackbook.enterFieldValue(done,'email', "qa.automation@madmobile.com");
+      blackbook.enterValue(done, true, 'email', "qa.automation@madmobile.com");
     });
   });
 
@@ -339,7 +339,7 @@ describe('Smoke Test: Search by Single Specified Fields', () => {
 
   describe('Verify Search Results', () => {
     it('should return "Automation Customer" in results', (done) => {
-      blackbook.verifySearchResults(done, 'Automation Customer');
+      blackbook.verifySearchResults(done, true, 'Automation Customer');
     });
   });
 
@@ -351,7 +351,7 @@ describe('Smoke Test: Search by Single Specified Fields', () => {
 
   describe('Enter Email Address', () => {
     it('should enter address in the email field', (done) => {
-      blackbook.enterFieldValue(done,'email', "qa");
+      blackbook.enterValue(done, true, 'email', "qa");
     });
   });
 
@@ -375,7 +375,7 @@ describe('Smoke Test: Search by Single Specified Fields', () => {
 
   describe('Verify Search Results', () => {
     it('should return "Automation Customer" in results', (done) => {
-      blackbook.verifySearchResults(done, 'Automation Customer');
+      blackbook.verifySearchResults(done, true, 'Automation Customer');
     });
   });
 
@@ -399,7 +399,7 @@ describe('Smoke Test: Search by Single Specified Fields', () => {
 
   describe('Enter City ', () => {
     it('should enter city in the city field', (done) => {
-      blackbook.enterFieldValue(done,'city', "Tampa");
+      blackbook.enterValue(done, true, 'city', "Tampa");
     });
   });
 
@@ -423,7 +423,7 @@ describe('Smoke Test: Search by Single Specified Fields', () => {
 
   describe('Verify Search Results', () => {
     it('should return "Automation Customer" in results', (done) => {
-      blackbook.verifySearchResults(done, 'Automation Customer');
+      blackbook.verifySearchResults(done, true, 'Automation Customer');
     });
   });
 
@@ -435,7 +435,7 @@ describe('Smoke Test: Search by Single Specified Fields', () => {
 
   describe('Enter City ', () => {
     it('should enter city in the city field', (done) => {
-      blackbook.enterFieldValue(done,'city', "Tampa");
+      blackbook.enterValue(done, true, 'city', "Tampa");
     });
   });
 
@@ -459,7 +459,7 @@ describe('Smoke Test: Search by Single Specified Fields', () => {
 
   describe('Verify Search Results', () => {
     it('should return "Automation Customer" in results', (done) => {
-      blackbook.verifySearchResults(done, 'Automation Customer');
+      blackbook.verifySearchResults(done, true, 'Automation Customer');
     });
   });
 

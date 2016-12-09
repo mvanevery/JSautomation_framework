@@ -14,7 +14,7 @@ const blackbook = require('../../../../core/projects/concierge/helpers/blackbook
 const landing = require('../../../../core/projects/concierge/helpers/landingPage');
 
 
-describe('Smoke Test: Add Customer', () => {
+describe('Smoke Test: Modal Activation and Functionality', () => {
   before((done) => {
     common.goTo(done);
   });

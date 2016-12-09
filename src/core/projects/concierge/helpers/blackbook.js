@@ -8,11 +8,21 @@ const assert = require('chai').assert;
 
 module.exports = {
 
-  toggleMyClients(done) {
-    if (client.isVisible(blackbook.helpers.myClientsToggle, done)) {
-      client.touch(blackbook.helpers.myClientsToggle)
-    }
+  toggleMyClients(done, expected) {
+    client.isVisible(blackbook.helpers.myClientsToggle)
+      .then(function (isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
+        } catch (err) {
+          done(err);
+        }
+        if (isVisible == true) {
+          client.selectByValue(blackbook.helpers.myClientsToggle, type);
+        }
+      })
+    done();
   },
+
 
   modalAddressType(done, expected, type) {
     client.isVisible(blackbook.helpers.modalHeader)

@@ -14,11 +14,11 @@ const landing = require('../../../../core/projects/concierge/helpers/landingPage
     common.goTo(done);
   });
 
-  describe('Verify Login Screen', () => {
-    it('Should navigate to the login screen', (done) => {
-      login.verifyLoginScreen(done);
-    });
-  });
+   describe('Verify Login Screen', () => {
+     it('Should navigate to the login screen', (done) => {
+       login.verifyLoginScreen(done, true);
+     });
+   });
 
    describe('Login', () => {
      it('Should login as "testauto"', (done) => {

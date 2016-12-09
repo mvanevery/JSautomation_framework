@@ -487,9 +487,9 @@ describe('Smoke Test: Search by Single Specified Fields', () => {
     });
   });
 
-  describe('Pausing', () => {
-    it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done, 5000);
+  describe('Test Completed: Cleaning up', () => {
+    it('Should pause the test for 10 seconds', (done) => {
+      common.pause(done, 10000);
     });
   });
 

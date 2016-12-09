@@ -34,6 +34,21 @@ module.exports = {
     done();
   },
 
+  selectValue(done, expected, selector, value)  {
+    client.isVisible(planner.helpers[selector])
+    .then(function(isVisible) {
+    try {
+      assert.equal(expected, isVisible, 'The expected value was not equal to the text');
+    } catch (err) {
+      done(err);
+      }
+    if (isVisible == true) {
+      client.setByValue(planner.helpers[selector], value)
+      }
+    })
+  done();
+},
+
   addTask(done,expected, title) {
     client.isVisible(planner.helpers.taskAddition)
       .then(function(isVisible) {

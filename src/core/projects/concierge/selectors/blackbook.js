@@ -54,7 +54,7 @@ module.exports = {
 
       //================================================== CUSTOMER PROFILE ============================================
 
-      customerName: '//div[contains(text(),"Automation Customer"]',
+      customerName: '//div[@data-id="contactFullName"]',
       //customerName:'//div[@data-id="contactFullName"]',
       editIcon:'//div[@class="mm-o-icon icon-edit-customer"]',
       //editIcon:'//button[@data-id="editCustomer"]',

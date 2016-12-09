@@ -25,15 +25,15 @@ const search = require('../../../../core/projects/concierge/helpers/productSearc
 
   describe('Verify Login Screen', () => {
    it('Should navigate to the login screen', (done) => {
-     login.verifyLoginScreen(done);
+     login.verifyLoginScreen(done, true);
   });
 });
 
-  describe('Login', () => {
-   it('Should login as "testauto"', (done) => {
-     login.loginUser(done, 'testauto', 'qaUser@123');
-  });
-});
+    describe('Login', () => {
+      it('Should login as "testauto"', (done) => {
+        login.loginUser(done, true, 'testauto', 'qaUser@123');
+      });
+    });
 
   describe('Pausing', () => {
    it('Should pause the test for 10 seconds', (done) => {

@@ -20,11 +20,11 @@ const landing = require('../../../../core/projects/concierge/helpers/landingPage
     });
   });
 
-  describe('Login', () => {
-    it('Should login as "testauto"', (done) => {
-      login.loginUser(done, 'testauto', 'qaUser@123');
-    });
-  });
+   describe('Login', () => {
+     it('Should login as "testauto"', (done) => {
+       login.loginUser(done, true, 'testauto', 'qaUser@123');
+     });
+   });
 
   describe('Pausing', () => {
     it('Should pause the test for 10 seconds', (done) => {

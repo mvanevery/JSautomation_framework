@@ -8,17 +8,37 @@ const assert = require('chai').assert;
 
 module.exports = {
 
-  toggleMyClients(done) {
-    if (client.isVisible(blackbook.helpers.myClientsToggle, done)) {
-      client.touch(blackbook.helpers.myClientsToggle)
-    }
+  toggleMyClients(done, expected) {
+    client.isVisible(blackbook.helpers.myClientsToggle)
+      .then(function (isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
+        } catch (err) {
+          done(err);
+        }
+        if (isVisible == true) {
+          client.selectByValue(blackbook.helpers.myClientsToggle, type);
+        }
+      })
+    done();
   },
 
-  modalAddressType(done, type) {
-    if (client.isVisible(blackbook.helpers.addresssTypeModal, done)) {
-      client.selectByValue(blackbook.helpers.addresssTypeModal, type)
-    }
+
+  modalAddressType(done, expected, type) {
+    client.isVisible(blackbook.helpers.modalHeader)
+      .then(function (isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
+        } catch (err) {
+          done(err);
+        }
+        if (isVisible == true) {
+          client.selectByValue(blackbook.helpers.addressTypeModal, type);
+        }
+      })
+    done();
   },
+
 
   searchCustomer(done, expected) {
     client.isVisible(blackbook.helpers.searchButton)
@@ -186,6 +206,51 @@ module.exports = {
     done();
   },
 
+  cancelButton(done, expected) {
+    client.isVisible(blackbook.helpers.cancel)
+      .then(function (isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
+        } catch (err) {
+          done(err);
+        }
+        if (isVisible == true) {
+          client.click(blackbook.helpers.cancel);
+        }
+      })
+    done();
+  },
+
+  continueButton(done, expected) {
+    client.isVisible(blackbook.helpers.continue)
+      .then(function (isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
+        } catch (err) {
+          done(err);
+        }
+        if (isVisible == true) {
+          client.click(blackbook.helpers.continue);
+        }
+      })
+    done();
+  },
+
+  discardButton(done, expected) {
+    client.isVisible(blackbook.helpers.discard)
+      .then(function (isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
+        } catch (err) {
+          done(err);
+        }
+        if (isVisible == true) {
+          client.click(blackbook.helpers.discard);
+        }
+      })
+    done();
+  },
+
   elementVisible(done, select, expected) {
     client.isVisible(blackbook.helpers[select])
       .then(function(isVisible) {
@@ -223,6 +288,28 @@ module.exports = {
         }
         if (isVisible == true) {
           client.getText(blackbook.helpers.pageHeader, title)
+            .then((text) => {
+              try {
+                assert.equal(title, text, 'The expected number was not equal to the actual title');
+              } catch (err) {
+                done(err);
+              }
+            })
+        }
+      })
+    done();
+  },
+
+  verifyModalHeader(done, expected, title) {
+    client.isVisible(blackbook.helpers.modalHeader)
+      .then(function(isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
+        } catch (err) {
+          done(err);
+        }
+        if (isVisible == true) {
+          client.getText(blackbook.helpers.modalHeader, title)
             .then((text) => {
               try {
                 assert.equal(title, text, 'The expected number was not equal to the actual title');

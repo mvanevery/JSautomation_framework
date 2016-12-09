@@ -6,9 +6,6 @@ const blackbook = require('../../../../core/projects/concierge/helpers/blackbook
 const landing = require('../../../../core/projects/concierge/helpers/landingPage');
 
 
-//export let CUSTOMERNAME;
-//const setName = (name) => CUSTOMERNAME = name;
-
 describe('Smoke Test: Add Customer', () => {
   before((done) => {
     common.goTo(done);
@@ -249,7 +246,7 @@ describe('Smoke Test: Add Customer', () => {
 
   describe('Enter Address Type in the modal', () => {
     it('should enter address type in the modal', (done) => {
-      blackbook.enterValue(done, true, "addressTypeModal", 'OTHER');
+      blackbook.modalAddressType(done, true, 'OTHER');
     });
   });
 
@@ -277,9 +274,9 @@ describe('Smoke Test: Add Customer', () => {
     });
   });
 
-  describe('Pausing', () => {
-    it('Should pause the test for 2 seconds', (done) => {
-      common.pause(done, 2000);
+  describe('Test Completed: Cleaning up', () => {
+    it('Should pause the test for 10 seconds', (done) => {
+      common.pause(done, 10000);
     });
   });
 

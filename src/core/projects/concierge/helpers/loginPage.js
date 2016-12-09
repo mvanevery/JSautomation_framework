@@ -29,19 +29,6 @@ module.exports = {
     done();
   },
 
-
-  //  if (client.isVisible(loginPage.helpers.loginLogo, done)) {
-  //    client.getAttribute(loginPage.helpers.usernameField, 'placeholder')
-  //      .then((text) => {
-  //        try {
-  //          assert.equal(loginPage.helpers.userPlaceholder, text, 'Not on Login screen');
-  //        } catch (err) {
-  //          done(err);
-  //        }
-  //      })
-  //  }
-  //},
-
   loginUser(done, expected, username, password) {
     client.isVisible(loginPage.helpers.signIn)
       .then(function (isVisible) {

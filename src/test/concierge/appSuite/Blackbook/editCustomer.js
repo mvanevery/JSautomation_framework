@@ -141,7 +141,7 @@ const landing = require('../../../../core/projects/concierge/helpers/landingPage
 
   describe('Enter Last Name', () => {
     it('should enter a name in the last name field', (done) => {
-      blackbook.enterLastnameModal(done, "Test");
+      blackbook.enterValue(done, true, "lastName", "Test");
     });
   });
 
@@ -181,9 +181,9 @@ const landing = require('../../../../core/projects/concierge/helpers/landingPage
      });
    });
 
-  describe('Pausing', () => {
-    it('Should pause the test for 2 seconds', (done) => {
-      common.pause(done, 2000);
-    });
-  });
+   describe('Test Completed: Cleaning up', () => {
+     it('Should pause the test for 10 seconds', (done) => {
+       common.pause(done, 10000);
+     });
+   });
 })

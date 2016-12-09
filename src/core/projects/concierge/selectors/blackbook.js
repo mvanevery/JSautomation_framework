@@ -17,7 +17,7 @@ module.exports = {
       phone:'//input[@name="phone"]',
       email:'//input[@name="email"]',
       city:'//input[@name="city"]',
-      zipcode:'//input[@name="postalCode"]',
+      zipcode:'//input[@name="zip"]',
       searchButton:'//button[@data-id="searchButton"]',
       resetButton:'//button[@data-id="resetButton"]',
       pageHeader: '//div[@data-id="pageHeader"]',
@@ -29,7 +29,6 @@ module.exports = {
 //================================================== Add Customer Modal ================================================
 
       searchResults:`//div[@data-id="cardName-0"]`,
-      save:'//button[@data-id="Done"]',
       modalHeader:'//div[@data-id="modalHeader"]',
       firstNameModal:'//input[@data-id="firstNameAddModal"]',
       lastNameModal:'//input[@data-id="lastNameAddModal"]',
@@ -48,9 +47,12 @@ module.exports = {
       stateModal:'//input[@data-id="modalState"]',
       zipcodeModal:'//input[@data-id="modalZipcode"]',
       countryModal:'//input[@data-id="modalCountry"]',
-      addresssTypeModal:'//select[@data-id="addressType"]',
+      addressTypeModal:'//select[@data-id="addressType"]',
       customerCard: '//div[@data-id="customerCard-0")]',
-      cancel: '//button[@data-id="cancel"]',
+      save:'//button[@data-id="Done"]',
+      cancel: '//button[@data-id="Cancel"]',
+      continue:'//button[@data-id="Continue"]',
+      discard:'//button[@data-id="Discard"]',
 
       //================================================== CUSTOMER PROFILE ============================================
 

@@ -9,10 +9,10 @@
  */
 
 
-const common = require('../../../core/projects/concierge/helpers/common');
-const login = require('../../../core/projects/concierge/helpers/loginPage');
-const blackbook = require('../../../core/projects/concierge/helpers/blackbook');
-const landing = require('../../../core/projects/concierge/helpers/landingPage');
+const common = require('../../../../core/projects/concierge/helpers/common');
+const login = require('../../../../core/projects/concierge/helpers/loginPage');
+const blackbook = require('../../../../core/projects/concierge/helpers/blackbook');
+const landing = require('../../../../core/projects/concierge/helpers/landingPage');
 
 
 describe('Smoke Test: Search by a Combination of Fields', () => {

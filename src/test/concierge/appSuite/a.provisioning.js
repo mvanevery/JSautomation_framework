@@ -63,7 +63,7 @@ describe('Provision Talbots and Set Store', () => {
   });
   describe('Pausing', () => {
     it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done, 5000);
+      common.pause(done, 8000);
     });
   });
   describe('Specify Store', () => {
@@ -73,7 +73,7 @@ describe('Provision Talbots and Set Store', () => {
   });
   describe('Pausing', () => {
     it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done, 5000);
+      common.pause(done, 7000);
     });
   });
   describe('Logout', () => {

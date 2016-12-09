@@ -87,7 +87,7 @@ describe('Smoke Test: Search Product for No Results', () => {
 
   describe('Logout', () => {
     it('Should Logout from the current user', (done) => {
-      login.logoutUser(done);
+      login.logoutUser(done, true);
     });
   });
 

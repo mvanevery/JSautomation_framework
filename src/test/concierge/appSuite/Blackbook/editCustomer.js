@@ -129,7 +129,7 @@ const landing = require('../../../../core/projects/concierge/helpers/landingPage
 
   describe('Enter Last Name', () => {
     it('should enter a name in the last name field', (done) => {
-      blackbook.enterLastnameModal(done, "Test");
+      blackbook.enterValue(done, true, "lastName", "Test");
     });
   });
 

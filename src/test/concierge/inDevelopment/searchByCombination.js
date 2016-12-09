@@ -28,7 +28,7 @@ describe('Smoke Test: Search by a Combination of Fields', () => {
 
   describe('Login', () => {
     it('Should login as "testauto"', (done) => {
-      login.loginUser(done, 'testauto', 'qaUser@123');
+      login.loginUser(done, true, 'testauto', 'qaUser@123');
     });
   });
 
@@ -78,7 +78,11 @@ describe('Smoke Test: Search by a Combination of Fields', () => {
       blackbook.enterValue(done, true, "lastName", "C");
     });
   });
-
+  describe('Pausing', () => {
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
+    });
+  });
   describe('Click the Search Customer button', () => {
     it('Should click the search customer button', (done) => {
       blackbook.searchCustomer(done, true);

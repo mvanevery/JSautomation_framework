@@ -19,9 +19,10 @@ module.exports = {
   //      })
   //  }
   //},
-  enterValue(done, expected,selector, value) {
+
+  enterValue(done, expected, selector, value) {
     client.isVisible(planner.helpers[selector])
-      .then(function(isVisible) {
+      .then(function (isVisible) {
         try {
           assert.equal(expected, isVisible, 'The expected value was not equal to the text');
         } catch (err) {
@@ -36,22 +37,22 @@ module.exports = {
 
   selectValue(done, expected, selector, value)  {
     client.isVisible(planner.helpers[selector])
-    .then(function(isVisible) {
-    try {
-      assert.equal(expected, isVisible, 'The expected value was not equal to the text');
-    } catch (err) {
-      done(err);
-      }
-    if (isVisible == true) {
-      client.setByValue(planner.helpers[selector], value)
-      }
-    })
-  done();
-},
+      .then(function (isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the text');
+        } catch (err) {
+          done(err);
+        }
+        if (isVisible == true) {
+          client.setByValue(planner.helpers[selector], value)
+        }
+      })
+    done();
+  },
 
-  addTask(done,expected, title) {
+  addTask(done, expected, title) {
     client.isVisible(planner.helpers.taskAddition)
-      .then(function(isVisible) {
+      .then(function (isVisible) {
         try {
           assert.equal(expected, isVisible, 'The expected value was not equal to the text');
         } catch (err) {
@@ -71,13 +72,13 @@ module.exports = {
             });
         }
       });
-      done();
-      },
+    done();
+  },
 
 
   addAppointment(done, expected, title) {
     client.isVisible(planner.helpers.apptAddition)
-      .then(function(isVisible) {
+      .then(function (isVisible) {
         try {
           assert.equal(expected, isVisible, 'The expected value was not equal to the text');
         } catch (err) {
@@ -100,60 +101,39 @@ module.exports = {
     done();
   },
 
-  addSubject(done,subject) {
-    if (client.isVisible(planner.helpers.modalSubject, done)) {
-      client.setValue(planner.helpers.modalSubject, subject);
-    }
-  },
+  save(done, expected) {
+  client.isVisible(planner.helpers.saveButton)
+    .then(function (isVisible) {
+      try {
+        assert.equal(expected, isVisible, 'The expected value was not equal to the text');
+      } catch (err) {
+        done(err);
+      }
+      if (isVisible == true) {
+        client.click(planner.helpers.saveButton)
+        }
+    })
+  done();
+},
 
-  addType(done, type) {
-    if (client.isVisible(planner.helpers.modalType, done)) {
-      client.selectByValue(planner.helpers.modalType, type);
-    }
-  },
-
-  addStartDate(done, start) {
-    if (client.isVisible(planner.helpers.modalStartDateTime, done)) {
-      client.click(planner.helpers.modalStartDateTime)
-        .then(() => {
-          client.setValue(planner.helpers.modalStartDateTime, start);
-        });
-    }
-  },
-
-  addEndDate(done, end) {
-    if (client.isVisible(planner.helpers.modalEndDateTime, done)) {
-      client.setValue(planner.helpers.modalEndDateTime, end);
-    }
-  },
-
-  addStatus(done, status) {
-    if (client.isVisible(planner.helpers.modalStatus, done)) {
-      client.selectByValue(planner.helpers.modalStatus, status);
-    }
-  },
-
-  addPriority(done, priority) {
-    if (client.isVisible(planner.helpers.modalPriority, done)) {
-      client.selectByValue(planner.helpers.modalPriority, priority)
-    }
-  },
-
-  save(done) {
-    if (client.isVisible(planner.helpers.saveButton, done)) {
-      client.click(planner.helpers.saveButton);
-    }
-  },
-
-  cancelTask(done) {
-    if (client.isVisible(planner.helpers.taskCancel, done)) {
-      client.click(planner.helpers.taskCancel)
-    }
+  cancel(done, expected) {
+    client.isVisible(planner.helpers.cancel)
+      .then(function (isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the text');
+        } catch (err) {
+          done(err);
+        }
+        if (isVisible == true) {
+          client.click(planner.helpers.cancel)
+        }
+      })
+    done();
   },
 
   apptToggle(done, expected, title) {
     client.isVisible(planner.helpers.pageHeader)
-      .then(function(isVisible) {
+      .then(function (isVisible) {
         try {
           assert.equal(expected, isVisible, 'The expected value was not equal to the text');
         } catch (err) {
@@ -182,7 +162,7 @@ module.exports = {
 
   taskToggle(done, expected, title) {
     client.isVisible(planner.helpers.pageHeader)
-      .then(function(isVisible) {
+      .then(function (isVisible) {
         try {
           assert.equal(expected, isVisible, 'The expected value was not equal to the text');
         } catch (err) {
@@ -208,39 +188,69 @@ module.exports = {
     done();
   },
 
-  verifyAddedTask(done, expected) {
-    if(client.isVisible(planner.helpers.plannerTitle, done)) {
-      client.getText(planner.helpers.addedTaskTitle)
-        .then((text) => {
-          try {
-            assert.equal(expected, text, 'The expected value was not equal to the text');
-          } catch (err) {
-            done(err);
-          }
-        })
-    }
+  verifyAddedTask(done, expected, value) {
+    client.isVisible(planner.helpers.pageHeader)
+      .then(function (isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the text');
+        } catch (err) {
+          done(err);
+        }
+        if (isVisible == true) {
+          client.getText(planner.helpers.addedTaskTitle)
+            .then((text) => {
+              try {
+                assert.equal(value, text, 'The expected value was not equal to the text');
+              } catch (err) {
+                done(err);
+              }
+            })
+        }
+      })
+    done();
   },
 
-  verifyAddedAppt(done, expected) {
-    if(client.isVisible(planner.helpers.plannerTitle, done)) {
-      client.getText(planner.helpers.addedTaskTitle)
-        .then((text) => {
-          try {
-            assert.equal(expected, text, 'The expected value was not equal to the text');
-          } catch (err) {
-            done(err);
-          }
-        })
-    }
+
+  verifyAddedAppt(done, expected, value) {
+    client.isVisible(planner.helpers.pageHeader)
+      .then(function (isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the text');
+        } catch (err) {
+          done(err);
+        }
+        if (isVisible == true) {
+          client.getText(planner.helpers.addedApptTitle)
+            .then((text) => {
+              try {
+                assert.equal(value, text, 'The expected value was not equal to the text');
+              } catch (err) {
+                done(err);
+              }
+            })
+        }
+      })
+    done();
   },
 
-  deleteTask(done) {
-    if(client.isVisible(planner.helpers.addedTaskTitle, done)) {
-      client.click(planner.helpers.removeTask)
-        .then(() => {
-          client.click(planner.helpers.yesButton);
-        })
-    }
+  deleteTask(done, expected) {
+    client.isVisible(planner.helpers.addedTaskTitle)
+      .then(function (isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the text');
+        } catch (err) {
+          done(err);
+        }
+        if (isVisible == true) {
+          client.click(planner.helpers.removeTask)
+            .then(() => {
+              client.click(planner.helpers.yesButton);
+            });
+        }
+      })
+    done();
   },
 
 }
+
+

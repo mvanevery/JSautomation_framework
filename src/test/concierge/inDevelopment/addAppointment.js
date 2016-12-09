@@ -102,7 +102,7 @@ describe('Smoke Test: Add Appointment', () => {
   });
   describe('Save the Task', () => {
     it('Should click the DONE button ', (done) => {
-      planner.save(done);
+      planner.save(done, true);
     });
   });
   describe('Pausing', () => {
@@ -112,7 +112,7 @@ describe('Smoke Test: Add Appointment', () => {
   });
   describe('Verify Added Appointment', () => {
     it('Should verify that the Appointment is displayed on Planner Page', (done) => {
-      planner.verifyAddedAppt(done, 'Automation Test Appointment');
+      planner.verifyAddedAppt(done, true, 'Automation Test Appointment');
     });
   });
 

@@ -67,7 +67,7 @@ describe('Pausing', () => {
 
   describe('Enter search criteria', () => {
      it('Should enter search criteria and search', (done) => {
-       search.enterSearchCriteria(done, 'Edison Flats-Bonfire Plaid');
+       search.enterSearchCriteria(done, true, 'Edison Flats-Bonfire Plaid');
   });
 });
 

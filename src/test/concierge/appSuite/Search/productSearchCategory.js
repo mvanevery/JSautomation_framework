@@ -63,7 +63,7 @@ describe('Smoke Test: Search Product by Category', () => {
 
   describe('Enter search criteria', () => {
     it('Should enter search criteria and search', (done) => {
-      search.enterSearchCriteria(done, 'Shoes');
+      search.enterSearchCriteria(done, true, 'Shoes');
     });
   });
 

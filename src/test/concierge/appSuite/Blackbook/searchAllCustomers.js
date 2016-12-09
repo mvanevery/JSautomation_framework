@@ -100,7 +100,7 @@ describe('Smoke Test: Search Customer', () => {
 
   describe('Click the Search Customer button', () => {
     it('Should click the search customer button', (done) => {
-      blackbook.searchCustomer(done);
+      blackbook.searchCustomer(done, true);
     });
   });
 

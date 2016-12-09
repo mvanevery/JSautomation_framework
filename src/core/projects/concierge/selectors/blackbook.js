@@ -48,7 +48,7 @@ module.exports = {
       zipcodeModal:'//input[@data-id="modalZipcode"]',
       countryModal:'//input[@data-id="modalCountry"]',
       addressTypeModal:'//select[@data-id="addressType"]',
-      customerCard: '//div[@data-id="customerCard-0")]',
+      customerCard: '//div[@data-id="customerCard-0"]',
       save:'//button[@data-id="Done"]',
       cancel: '//button[@data-id="Cancel"]',
       continue:'//button[@data-id="Continue"]',
@@ -56,13 +56,12 @@ module.exports = {
 
       //================================================== CUSTOMER PROFILE ============================================
 
-      customerName: '//div[contains(text(),"Automation Customer"]',
-      //customerName:'//div[@data-id="contactFullName"]',
-      editIcon:'//div[@class="mm-o-icon icon-edit-customer"]',
-      //editIcon:'//button[@data-id="editCustomer"]',
+      customerName: '//div[@data-id="contactFullName"]',
+      editIcon:'//div[@data-id="editCustomer"]',
       emailIcon: '//div[@data-id="email"]',
       blankEmailIcon: '//div[@class=:mm-o-icon icon-blank-template"]',
       birthdayEmailIcon: '',
+
 
 
     }

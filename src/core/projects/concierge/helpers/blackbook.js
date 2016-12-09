@@ -357,8 +357,8 @@ module.exports = {
     done();
   },
 
-  selectCustomerCard(done, expected, value) {
-      client.isVisble(blackbook.helpers.customerCard)
+  selectCustomerCard(done, expected) {
+      client.isVisible(blackbook.helpers.customerCard)
         .then(function(isVisible) {
           try {
             assert.equal(expected, isVisible, 'The expected value was not equal to the text');
@@ -366,40 +366,48 @@ module.exports = {
             done(err);
           }
           if (isVisible == true) {
-            client.click(blackbook.helpers.customerCard, value)
+            client.click(blackbook.helpers.customerCard)
           }
         })
     done();
   },
 
   openEditCustomer(done, expected) {
-    if (client.isVisible(blackbook.helpers.blackbookHeader, done)) {
-      client.click(blackbook.helpers.editIcon)
-        .then(() => {
-          client.getText(blackbook.helpers.modalHeader)
-            .then((text) => {
-              try {
-                assert.equal(expected, text, 'The expected value was not equal to the text');
-              } catch (err) {
-                done(err);
-              }
-            })
-        })
-    }
+    client.isVisible(blackbook.helpers.customerName)
+      .then(function(isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the text');
+        } catch (err) {
+          done(err);
+        }
+        if (isVisible == true) {
+          client.click(blackbook.helpers.editIcon)
+        }
+      })
+    done();
   },
 
- verifyCustomerName(done, expected) {
-    if (client.isVisible(blackbook.helpers.blackbookHeader, done)) {
-      client.getText(blackbook.helpers.customerName)
-        .then((text) => {
-          try {
-            assert.equal(expected, text, 'The expected value was not equal to the text');
-          } catch (err) {
-            done(err);
-          }
-        })
-    }
-  },
+ verifyCustomerName(done, expected, value) {
+   client.isVisible(blackbook.helpers.customerName)
+     .then(function(isVisible) {
+       try {
+         assert.equal(expected, isVisible, 'The expected value was not equal to the text');
+       } catch (err) {
+         done(err);
+       }
+       if (isVisible == true) {
+         client.getText(blackbook.helpers.customerName)
+           .then((text) => {
+             try {
+               assert.equal(value, text, 'The expected value was not equal to the text');
+             } catch (err) {
+               done(err);
+             }
+           })
+       }
+     })
+   done();
+ },
 
   verifyFirstNameDisplayed(done, expected) {
     if(client.isVisible(blackbook.helpers.firstName, done))

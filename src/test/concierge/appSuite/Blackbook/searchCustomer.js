@@ -85,7 +85,7 @@ describe('Smoke Test: Search Customer', () => {
 
   describe('Click the Search Customer button', () => {
     it('Should click the search customer button', (done) => {
-      blackbook.searchCustomer(done);
+      blackbook.searchCustomer(done, true);
     });
   });
 
@@ -104,6 +104,36 @@ describe('Smoke Test: Search Customer', () => {
   describe('Pausing', () => {
     it('Should pause the test for 2 seconds', (done) => {
       common.pause(done, 5000);
+    });
+  });
+
+  describe('Click the Search Card Avatar', () => {
+    it('Should click the search card avatar', (done) => {
+      blackbook.selectCustomerCard(done, true);
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 2 seconds', (done) => {
+      common.pause(done, 5000);
+    });
+  });
+
+  describe('Verify Profile Header', () => {
+    it('Should verify the header on the Customer Profile page', (done) => {
+      blackbook.verifyPageHeader(done, true, 'Customer Profile');
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 2 seconds', (done) => {
+      common.pause(done, 2000);
+    });
+  });
+
+  describe('Verify Customer Name', () => {
+    it('Should verify the customer name on the Customer Profile page', (done) => {
+      blackbook.verifyCustomerName(done, true, 'Automation Customer');
     });
   });
 

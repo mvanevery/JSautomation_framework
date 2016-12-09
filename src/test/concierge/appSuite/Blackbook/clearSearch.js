@@ -67,8 +67,8 @@ describe('Smoke Test: Clear Search Fields', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
@@ -79,8 +79,8 @@ describe('Smoke Test: Clear Search Fields', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
@@ -91,8 +91,8 @@ describe('Smoke Test: Clear Search Fields', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
@@ -103,8 +103,8 @@ describe('Smoke Test: Clear Search Fields', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
@@ -115,8 +115,8 @@ describe('Smoke Test: Clear Search Fields', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
@@ -127,8 +127,8 @@ describe('Smoke Test: Clear Search Fields', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
@@ -139,8 +139,8 @@ describe('Smoke Test: Clear Search Fields', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
@@ -151,8 +151,8 @@ describe('Smoke Test: Clear Search Fields', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
@@ -163,8 +163,8 @@ describe('Smoke Test: Clear Search Fields', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
@@ -175,8 +175,8 @@ describe('Smoke Test: Clear Search Fields', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
@@ -187,8 +187,8 @@ describe('Smoke Test: Clear Search Fields', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
@@ -199,14 +199,20 @@ describe('Smoke Test: Clear Search Fields', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 2 seconds', (done) => {
-      common.pause(done, 2000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
   describe('Clear Search Fields', () => {
     it('Should Logout from the current user', (done) => {
-      blackbook.resetFields(done);
+      blackbook.resetFields(done, true);
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 2 seconds', (done) => {
+      common.pause(done, 2000);
     });
   });
 
@@ -217,8 +223,8 @@ describe('Smoke Test: Clear Search Fields', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
@@ -229,8 +235,8 @@ describe('Smoke Test: Clear Search Fields', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
@@ -241,8 +247,8 @@ describe('Smoke Test: Clear Search Fields', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
@@ -253,8 +259,8 @@ describe('Smoke Test: Clear Search Fields', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
@@ -265,8 +271,8 @@ describe('Smoke Test: Clear Search Fields', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
@@ -277,8 +283,8 @@ describe('Smoke Test: Clear Search Fields', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 2000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 

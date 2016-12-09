@@ -117,7 +117,7 @@ const landing = require('../../../../core/projects/concierge/helpers/landingPage
 
   describe('Verify Customer Name', () => {
     it('Should verify the customer name on the Customer Profile page', (done) => {
-      blackbook.verifyCustomerName(done, 'Automation Test');
+      blackbook.verifyCustomerName(done, true, 'Automation Test');
     });
   });
 

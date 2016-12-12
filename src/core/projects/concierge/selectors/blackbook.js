@@ -57,8 +57,8 @@ module.exports = {
       //================================================== CUSTOMER PROFILE ============================================
 
       customerName: '//div[@data-id="contactFullName"]',
-      editIcon:'//div[@data-id="editCustomer"]',
-      emailIcon: '//div[@data-id="email"]',
+      editIcon:'//button[@data-id="editCustomer"]',
+      emailIcon: '//button[@data-id="email"]',
       blankEmailIcon: '//div[@class=:mm-o-icon icon-blank-template"]',
       birthdayEmailIcon: '',
 

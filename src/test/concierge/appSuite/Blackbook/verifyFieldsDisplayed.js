@@ -14,9 +14,6 @@ const blackbook = require('../../../../core/projects/concierge/helpers/blackbook
 const landing = require('../../../../core/projects/concierge/helpers/landingPage');
 
 
-//export let CUSTOMERNAME;
-//const setName = (name) => CUSTOMERNAME = name;
-
 describe('Smoke Test: Verify Search Fields Displayed', () => {
   before((done) => {
     common.goTo(done);

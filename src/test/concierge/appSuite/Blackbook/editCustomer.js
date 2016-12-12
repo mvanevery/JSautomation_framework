@@ -128,8 +128,8 @@ const landing = require('../../../../core/projects/concierge/helpers/landingPage
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 3 seconds', (done) => {
-      common.pause(done, 3000);
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 5000);
     });
   });
 
@@ -140,14 +140,14 @@ const landing = require('../../../../core/projects/concierge/helpers/landingPage
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 3000);
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 5000);
     });
   });
 
   describe('Enter Last Name', () => {
     it('should enter a name in the last name field', (done) => {
-      blackbook.enterValue(done, true, "lastNameModal", "Test Updated");
+      blackbook.enterValue(done, true, "lastNameModal", "Updated");
     });
   });
 
@@ -171,7 +171,7 @@ const landing = require('../../../../core/projects/concierge/helpers/landingPage
 
   describe('Verify Customer Name', () => {
     it('Should verify the customer name on the Customer Profile page', (done) => {
-      blackbook.verifyCustomerName(done, true, 'Automation Test Updated');
+      blackbook.verifyCustomerName(done, true, 'Automation Updated');
     });
   });
 

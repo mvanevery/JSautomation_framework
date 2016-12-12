@@ -25,6 +25,14 @@ module.exports = {
 
       // Launch Pad
       txt_launchPad:        '//div[@class="launch-pad-links-panel"]',
+      img_vmWiki:           '//a[@data-track-clickthrough="VM Wiki"]',
+      img_ppWiki:           '//a[@data-track-clickthrough="P&P Wiki"]',
+      img_jmWiki:           '//a[@data-track-clickthrough="Joe Muggs Wiki"]',
+      img_ymWiki:           '//a[@data-track-clickthrough="YM Wiki"]',
+      url_vmWiki:           '//a[@href="http://opswiki.booksamillion.com/index.php?title=Visual_Merchandising&store=180"]',
+      url_ppWiki:           '//a[@href="http://policywiki.booksamillion.com/index.php?title=Policies_and_Procedures"]',
+      url_jmWiki:           '//a[@href="http://joemuggswiki.booksamillion.com/index.php?title=Main_Page"]',
+      url_ymWiki:           '//a[@href="http://yogurtwiki.booksamillion.com/index.php?title=Main_Page"]',
 
       // Store Resources
       txt_storeResources:   '//div[@class="store-resource-panel"]',

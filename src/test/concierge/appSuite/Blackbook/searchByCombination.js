@@ -26,6 +26,12 @@ describe('Smoke Test: Search by a Combination of Fields', () => {
     });
   });
 
+  describe('Pausing', () => {
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
+    });
+  });
+
   describe('Login', () => {
     it('Should login as "testauto"', (done) => {
       login.loginUser(done, true, 'testauto', 'qaUser@123');
@@ -305,4 +311,24 @@ describe('Smoke Test: Search by a Combination of Fields', () => {
     });
   });
 
+  describe('Pausing', () => {
+    it('Should pause the test for 2 seconds', (done) => {
+      common.pause(done, 2000);
+    });
+  });
+
+  describe('Logout', () => {
+    it('Should logout the current user', (done) => {
+      login.logoutUser(done, true, true);
+    });
+  });
+
+  describe('Test Completed: Cleaning up', () => {
+    it('Should pause the test for 10 seconds', (done) => {
+      common.pause(done, 10000);
+    });
+  });
+
 })
+
+

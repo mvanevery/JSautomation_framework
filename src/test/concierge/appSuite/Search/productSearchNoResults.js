@@ -25,6 +25,12 @@ describe('Smoke Test: Search Product for No Results', () => {
     });
   });
 
+  describe('Pausing', () => {
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
+    });
+  });
+
   describe('Login', () => {
     it('Should login as "testauto"', (done) => {
       login.loginUser(done, true, 'testauto', 'qaUser@123');
@@ -87,7 +93,7 @@ describe('Smoke Test: Search Product for No Results', () => {
 
   describe('Logout', () => {
     it('Should Logout from the current user', (done) => {
-      login.logoutUser(done, true);
+      login.logoutUser(done, true, true);
     });
   });
 

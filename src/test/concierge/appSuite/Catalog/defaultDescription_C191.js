@@ -120,7 +120,7 @@ describe('Smoke Test: C191 Default Descriptiobn', () => {
 
   describe('Logout', () => {
     it('Should logout the current user', (done) => {
-      login.logoutUser(done, true);
+      login.logoutUser(done, true, true);
     });
   });
 

@@ -17,6 +17,12 @@ describe('Smoke Test: Add Customer', () => {
     });
   });
 
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 5000);
+    });
+  });
+
   describe('Login', () => {
     it('Should login as "testauto"', (done) => {
       login.loginUser(done, true, 'testauto', 'qaUser@123');
@@ -79,78 +85,6 @@ describe('Smoke Test: Add Customer', () => {
   describe('Enter Last Name', () => {
     it('should enter a name in the last name field', (done) => {
       blackbook.enterValue(done, true, "lastNameModal", "Test");
-    });
-  });
-
-  describe('Pausing', () => {
-    it('Should pause the test for 3 seconds', (done) => {
-      common.pause(done, 3000);
-    });
-  });
-
-  describe('Open Phone section', () => {
-    it('should open the phone section', (done) => {
-      blackbook.openPhone(done, true);
-    });
-  });
-
-  describe('Pausing', () => {
-    it('Should pause the test for 3 seconds', (done) => {
-      common.pause(done, 3000);
-    });
-  });
-
-  describe('Enter Modal Phone #', () => {
-    it('should enter phone # in the modal', (done) => {
-      blackbook.enterValue(done, true, "phoneModal", '8135551234')
-    });
-  });
-
-  describe('Pausing', () => {
-    it('Should pause the test for 3 seconds', (done) => {
-      common.pause(done, 3000);
-    });
-  });
-
-  describe('Select Phone Type', () => {
-    it('should select the phone type', (done) => {
-      blackbook.modalPhoneType(done, true, 'PERSONAL');
-    });
-  });
-
-  describe('Pausing', () => {
-    it('Should pause the test for 3 seconds', (done) => {
-      common.pause(done, 3000);
-    });
-  });
-
-  describe('Open Email Section', () => {
-    it('should open the email section', (done) => {
-      blackbook.openEmail(done, true);
-    });
-  });
-
-  describe('Pausing', () => {
-    it('Should pause the test for 3 seconds', (done) => {
-      common.pause(done, 3000);
-    });
-  });
-
-  describe('Enter Email address in the modal', () => {
-    it('should enter the email address in the modal', (done) => {
-      blackbook.enterValue(done, true, "emailModal", 'qa.automation@gmail.com');
-    });
-  });
-
-  describe('Pausing', () => {
-    it('Should pause the test for 3 seconds', (done) => {
-      common.pause(done, 3000);
-    });
-  });
-
-  describe('Select Email Type', () => {
-    it('should select the email type', (done) => {
-      blackbook.modalEmailType(done, true, 'OTHER');
     });
   });
 
@@ -256,6 +190,84 @@ describe('Smoke Test: Add Customer', () => {
     });
   });
 
+  describe('Pausing', () => {
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 6000);
+    });
+  });
+
+  describe('Open Phone section', () => {
+    it('should open the phone section', (done) => {
+      blackbook.openPhone(done, true);
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 6 seconds', (done) => {
+      common.pause(done, 6000);
+    });
+  });
+
+  describe('Enter Modal Phone #', () => {
+    it('should enter phone # in the modal', (done) => {
+      blackbook.enterValue(done, true, "phoneModal", '8135551234')
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
+    });
+  });
+
+  describe('Select Phone Type', () => {
+    it('should select the phone type', (done) => {
+      blackbook.modalPhoneType(done, true, 'PERSONAL');
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 6 seconds', (done) => {
+      common.pause(done, 6000);
+    });
+  });
+
+  describe('Open Email Section', () => {
+    it('should open the email section', (done) => {
+      blackbook.openEmail(done, true);
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
+    });
+  });
+
+  describe('Enter Email address in the modal', () => {
+    it('should enter the email address in the modal', (done) => {
+      blackbook.enterValue(done, true, "emailModal", 'qa.automation@gmail.com');
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
+    });
+  });
+
+  describe('Select Email Type', () => {
+    it('should select the email type', (done) => {
+      blackbook.modalEmailType(done, true, 'PERSONAL');
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 6000);
+    });
+  });
+
   describe('Click the DONE button', () => {
     it('should click the DONE button and save the customer', (done) => {
       blackbook.saveButton(done, true);
@@ -270,7 +282,7 @@ describe('Smoke Test: Add Customer', () => {
 
   describe('Logout', () => {
     it('Should logout the current user', (done) => {
-      login.logoutUser(done, true);
+      login.logoutUser(done, true, true);
     });
   });
 

@@ -191,7 +191,7 @@ module.exports = {
           done(err);
         }
         if (isVisible == true) {
-          client.scroll(blackbook.helpers.addAddessModal)
+          client.scroll(blackbook.helpers.addAddressModal)
           .then(() => {
               client.click(blackbook.helpers.addAddressModal);
             })

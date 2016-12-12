@@ -58,23 +58,31 @@ module.exports = {
     }
   },
 
-  openProductDetailsPage(done) {
-    if(client.isVisible(catalog.helpers.products.francescaDrivingFlatsSuede, done)) {
-      client.click(catalog.helpers.products.francescaDrivingFlatsSuede)
-    }
+  openProductDetailsPage(done,expected,results) {
+     client.isVisible(catalog.helpers.products[results])
+       .then(function (isVisible) {
+         try {
+           assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
+         } catch (err) {
+           done(err);
+         }
+         if (isVisible == true) {
+           client.click(catalog.helpers.products[results])
+         }
+       })
+     done();
   },
 
-  productDetailsPage(done,productLabel) {
-      if(client.isVisible(catalog.helpers.products.francescaDrivingFlatsSuede, done)) {
-        client.getText(catalog.helpers.products.francescaDrivingFlatsSuede)
-          .then((text) => {
-            try {
-              assert.equal(productLabel, text, 'The Shoes -> Flats Products Detail page is not displayed correctly.');
-            } catch (err) {
-              done(err);
-            }
-          });
-      }
+  productDetailsPage(done,expected,results) {
+     client.isVisible(catalog.helpers.products[results])
+       .then(function (isVisible) {
+         try {
+           assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
+         } catch (err) {
+           done(err);
+         }
+       })
+     done();
   },
 
   catalogBackBtn(done) {
@@ -119,11 +127,11 @@ module.exports = {
     done();
   },
 
-  PDPVariantsShown(done, expected) {
-    client.isVisible(catalog.helpers.variants.defaultVariant)
+  PDPVariantsShown(done, expected, results) {
+    client.isVisible(catalog.helpers.variants[results])
       .then(function(isVisible){
           try {
-            assert.equal(expected, isVisible, 'The Shoes -> Flats Products Detail Variants did not displayed correctly.');
+            assert.equal(expected, isVisible, 'The expected value was not equal to the actual value');
           } catch (err) {
             done(err);
           }
@@ -135,7 +143,7 @@ module.exports = {
       client.getHTML(catalog.helpers.variants.defaultVariant).then(function(html) {
       var idx = html.toLowerCase().indexOf(catalog.helpers.variants.variantSelectedValue);
         try {
-          assert.notEqual(expected, idx, 'The Shoes -> Flats Products Detail Default Variant did not displayed correctly.');
+          assert.notEqual(expected, idx, 'The expected value was not equal to the actual value');
         } catch (err) {
           done(err);
         }

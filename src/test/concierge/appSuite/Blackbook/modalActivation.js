@@ -25,6 +25,12 @@ describe('Smoke Test: Modal Activation and Functionality', () => {
     });
   });
 
+  describe('Pausing', () => {
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
+    });
+  });
+
   describe('Login', () => {
     it('Should login as "testauto"', (done) => {
       login.loginUser(done, true, 'testauto', 'qaUser@123');
@@ -56,7 +62,7 @@ describe('Smoke Test: Modal Activation and Functionality', () => {
 
   describe('Pausing', () => {
     it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done, 2000);
+      common.pause(done, 5000);
     });
   });
 
@@ -67,8 +73,8 @@ describe('Smoke Test: Modal Activation and Functionality', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 2 seconds', (done) => {
-      common.pause(done, 2000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
@@ -79,8 +85,8 @@ describe('Smoke Test: Modal Activation and Functionality', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 2 seconds', (done) => {
-      common.pause(done, 2000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
@@ -92,7 +98,7 @@ describe('Smoke Test: Modal Activation and Functionality', () => {
 
   describe('Pausing', () => {
     it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done, 2000);
+      common.pause(done, 5000);
     });
   });
 
@@ -103,8 +109,8 @@ describe('Smoke Test: Modal Activation and Functionality', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 2 seconds', (done) => {
-      common.pause(done, 2000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
@@ -115,8 +121,8 @@ describe('Smoke Test: Modal Activation and Functionality', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 2 seconds', (done) => {
-      common.pause(done, 2000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
@@ -151,8 +157,8 @@ describe('Smoke Test: Modal Activation and Functionality', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 2 seconds', (done) => {
-      common.pause(done, 2000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
@@ -163,8 +169,8 @@ describe('Smoke Test: Modal Activation and Functionality', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 2 seconds', (done) => {
-      common.pause(done, 2000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
@@ -175,8 +181,8 @@ describe('Smoke Test: Modal Activation and Functionality', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 2 seconds', (done) => {
-      common.pause(done, 2000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
@@ -194,7 +200,7 @@ describe('Smoke Test: Modal Activation and Functionality', () => {
 
   describe('Logout', () => {
     it('Should logout the current user', (done) => {
-      login.logoutUser(done, true);
+      login.logoutUser(done, true, true);
     });
   });
 

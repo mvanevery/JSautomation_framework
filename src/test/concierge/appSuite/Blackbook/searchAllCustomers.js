@@ -13,10 +13,7 @@ const blackbook = require('../../../../core/projects/concierge/helpers/blackbook
 const landing = require('../../../../core/projects/concierge/helpers/landingPage');
 
 
-//export let CUSTOMERNAME;
-//const setName = (name) => CUSTOMERNAME = name;
-
-describe('Smoke Test: Search Customer', () => {
+describe('Smoke Test: Search Customer (All Clients)', () => {
   before((done) => {
     common.goTo(done);
   });
@@ -24,6 +21,12 @@ describe('Smoke Test: Search Customer', () => {
   describe('Verify Login Screen', () => {
     it('Should navigate to the login screen', (done) => {
       login.verifyLoginScreen(done, true);
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
@@ -62,17 +65,17 @@ describe('Smoke Test: Search Customer', () => {
     });
   });
 
-  describe('Toggle My Clients Off', () => {
-    it('click the My Clients toggle switch', (done) => {
-      blackbook.toggleMyClients(done);
-    });
-  });
-
-  describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
-    });
-  });
+  //describe('Toggle My Clients Off', () => {
+  //  it('click the My Clients toggle switch', (done) => {
+  //    blackbook.toggleMyClients(done, true);
+  //  });
+  //});
+  //
+  //describe('Pausing', () => {
+  //  it('Should pause the test for 1 seconds', (done) => {
+  //    common.pause(done, 1000);
+  //  });
+  //});
 
   describe('Enter First Name', () => {
     it('should enter a name in the first name field', (done) => {
@@ -81,7 +84,7 @@ describe('Smoke Test: Search Customer', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
+    it('Should pause the test for 3 seconds', (done) => {
       common.pause(done, 3000);
     });
   });
@@ -93,7 +96,7 @@ describe('Smoke Test: Search Customer', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
+    it('Should pause the test for 3 seconds', (done) => {
       common.pause(done, 3000);
     });
   });
@@ -105,7 +108,7 @@ describe('Smoke Test: Search Customer', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 2 seconds', (done) => {
+    it('Should pause the test for 5 seconds', (done) => {
       common.pause(done, 5000);
     });
   });
@@ -117,14 +120,14 @@ describe('Smoke Test: Search Customer', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 2 seconds', (done) => {
+    it('Should pause the test for 5 seconds', (done) => {
       common.pause(done, 5000);
     });
   });
 
   describe('Logout', () => {
     it('Should logout the current user', (done) => {
-      login.logoutUser(done, true);
+      login.logoutUser(done, true, true);
     });
   });
 

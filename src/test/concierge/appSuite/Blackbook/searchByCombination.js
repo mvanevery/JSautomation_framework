@@ -26,6 +26,12 @@ describe('Smoke Test: Search by a Combination of Fields', () => {
     });
   });
 
+  describe('Pausing', () => {
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
+    });
+  });
+
   describe('Login', () => {
     it('Should login as "testauto"', (done) => {
       login.loginUser(done, true, 'testauto', 'qaUser@123');
@@ -131,8 +137,8 @@ describe('Smoke Test: Search by a Combination of Fields', () => {
     });
   });
 
-  describe('Enter Last Name', () => {
-    it('should enter a name in the last name field', (done) => {
+  describe('Enter Phone #', () => {
+    it('should enter a name in the phone # field', (done) => {
       blackbook.enterValue(done, true, "phone", "8");
     });
   });
@@ -179,8 +185,8 @@ describe('Smoke Test: Search by a Combination of Fields', () => {
     });
   });
 
-  describe('Enter Last Name', () => {
-    it('should enter a name in the last name field', (done) => {
+  describe('Enter Email', () => {
+    it('should enter a name in the email field', (done) => {
       blackbook.enterValue(done, true, "email", "q");
     });
   });
@@ -227,8 +233,8 @@ describe('Smoke Test: Search by a Combination of Fields', () => {
     });
   });
 
-  describe('Enter Last Name', () => {
-    it('should enter a name in the last name field', (done) => {
+  describe('Enter City', () => {
+    it('should enter a name in the City field', (done) => {
       blackbook.enterValue(done, true, "city", "tampa");
     });
   });
@@ -275,8 +281,8 @@ describe('Smoke Test: Search by a Combination of Fields', () => {
     });
   });
 
-  describe('Enter Last Name', () => {
-    it('should enter a name in the last name field', (done) => {
+  describe('Enter Zipcode', () => {
+    it('should enter a name in the Zipcode field', (done) => {
       blackbook.enterValue(done, true, "zipcode", "33607");
     });
   });
@@ -305,4 +311,24 @@ describe('Smoke Test: Search by a Combination of Fields', () => {
     });
   });
 
+  describe('Pausing', () => {
+    it('Should pause the test for 2 seconds', (done) => {
+      common.pause(done, 2000);
+    });
+  });
+
+  describe('Logout', () => {
+    it('Should logout the current user', (done) => {
+      login.logoutUser(done, true, true);
+    });
+  });
+
+  describe('Test Completed: Cleaning up', () => {
+    it('Should pause the test for 10 seconds', (done) => {
+      common.pause(done, 10000);
+    });
+  });
+
 })
+
+

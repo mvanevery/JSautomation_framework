@@ -14,14 +14,32 @@ module.exports = {
       btn_avatar:           '//div[@class="app-menu_avatar"]',
       txt_storeNum:         '//div[@class="app-store_number"]',
 
+      // Company News
+      //txt_companyNewsPanel: '//div[@class="company-news-panel"]',
+      txt_companyNewsPanel: '//div[@class="other"]',
+
+      // Top Products
+      txt_bestSellingItems: '//div[@class="top-products-panel"]',
+
+      // Social Media
+      txt_socialMedia:      '//div[@class="social-panel"]',
+
+      // Launch Pad
+      txt_launchPad:        '//div[@class="launch-pad-links-panel"]',
+
       // Store Resources
+      txt_storeResources:   '//div[@class="store-resource-panel"]',
       btn_mccSearch:        '//a[@data-track-clickthrough="MCC Search"]',
 
       // Associate Resources
+      txt_associateResources:   '//div[@class="associate-resource-panel"]',
+
+      // Reports Panel
+      txt_reports:   '//div[@class="reports-panel"]',
 
 
       // Right Panel
-
+      txt_rightPanel:   '//div[@class="home-page_toolbar"]',
 
 
       // Logout Modal

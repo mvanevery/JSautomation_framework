@@ -140,6 +140,18 @@ module.exports = {
       }
     },
 
+    dashboardElementVisible(done, selector, expected) {
+      client.isVisible(landingPage.helpers[selector])
+        .then(function(isVisible) {
+          try {
+            assert.equal(expected, isVisible, 'The element was not visible on the page.')
+          } catch (err) {
+            done(err);
+          }
+        })
+      done();
+    },
+
     selectMccSearch(done) {
       if (client.isVisible(landingPage.helpers.btn_mccSearch, done)) {
         client.click(landingPage.helpers.btn_mccSearch)
@@ -155,10 +167,18 @@ module.exports = {
     done();
   },
 
-  // fillMccForm(done, field, value) {
-  //   client.setValue(mccPage.helpers.fld_phone, 999);
-  //   done();
-  // },
+  mccElementVisible(done, select, expected) {
+    client.isVisible(mccPage.helpers[select])
+      .then(function(isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the text');
+        } catch (err) {
+          done(err);
+        }
+      })
+    done();
+  },
+
 
   enterMccFormValue(done, selector, value) {
     if (client.isVisible(mccPage.helpers[selector])) {
@@ -178,27 +198,39 @@ module.exports = {
     }
   },
 
-  // mccElementVisible(done, selector, expected) {
-  //     client.isVisible(mccPage.helpers[selector])
-  //       .then(function(isVisible) {
-  //         try {
-  //           assert.equal(expected, isVisible, 'The element is not visible');
-  //         } catch (err) {
-  //           done(err);
-  //         }
-  //       })
-  //     done();
-  //   },
 
-  mccElementVisible(done,selector) {
+  // mccElementVisible(done,selector) {
+  //   client.isVisible(mccPage.helpers[selector])
+  //     .then(function (isVisible) {
+  //       assert.isTrue(isVisible, 'The element is not visible on the page.');
+  //       // if (isVisible == true) {
+  //       //   client.click(landingPage.helpers[selector])
+  //       // } else {
+  //       //   client.click(login.helpers.logoutUser(done));
+  //       // }
+  //     })
+  //   done();
+  // },
+
+
+  mccElementVisible(done, selector, expected) {
     client.isVisible(mccPage.helpers[selector])
-      .then(function (isVisible) {
-        assert.isTrue(isVisible, 'The element is not visible on the page.');
-        // if (isVisible == true) {
-        //   client.click(landingPage.helpers[selector])
-        // } else {
-        //   client.click(login.helpers.logoutUser(done));
-        // }
+      .then(function(isVisible) {
+        try {
+          assert.equal(true, isVisible, 'The element was visible on the page.')
+        } catch (err) {
+          done(err);
+        }
+        if (isVisible == true) {
+          client.getText(mccPage.helpers[selector], verbiage)
+            .then((verbiage) => {
+              try {
+                assert.equal(expected, verbiage, 'The expected text does not match the element text.');
+              } catch (err) {
+                done(err);
+              }
+            })
+        }
       })
     done();
   },

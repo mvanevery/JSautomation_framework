@@ -3,7 +3,7 @@
  * TestName:    MccSearch/01_noMccCustomer_C3019
  * TestSteps:   https://madmobile.testrail.com/index.php?/cases/view/3019
  * Author:      Aaron Feldmeyer
- * Date:        11/8/2016
+ * Date:        12/10/2016
  *
  * Execute through the "MccSearchTestSuite".
  */
@@ -11,7 +11,7 @@
 const common = require('../../../../core/projects/concierge-BAM/helpers/common');
 
 
-describe('Test for when there is no MCC customer found.', () => {
+  describe('Test for when there is no MCC customer found.', () => {
   before((done) => {
     common.goTo(done);
   });
@@ -24,19 +24,19 @@ describe('Test for when there is no MCC customer found.', () => {
 
   describe('Verify Login Screen', () => {
     it('Should navigate to the login screen', (done) => {
-      common.verifyLoginScreen(done);
+      common.logpinPageElementVisible(done, 'btn_signIn', true);
     });
   });
 
-  describe('Login', () => {
-    it('Should not login as "180001"', (done) => {
-      common.loginUser(done,180001,1234);
+    describe('Login', () => {
+      it('Should login as "180001"', (done) => {
+        common.loginUser(done,180001,1234);
+      });
     });
-  });
 
   describe('Pausing', () => {
-    it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done, 5000);
+    it('Should pause the test for 8 seconds', (done) => {
+      common.pause(done, 8000);
     });
   });
 
@@ -53,23 +53,29 @@ describe('Test for when there is no MCC customer found.', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 2 seconds', (done) => {
-      common.pause(done, 2000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
   describe('Verify the MCC Search page', () => {
     it('Should navigate to the MCC Search screen', (done) => {
-      common.verifyMccPage(done);
+      common.mccElementVisible(done, "fld_lastName", true);
     });
   });
 
   describe('Enter "999" into the Phone field', () => {
     it('Should type "999" into the Phone field', (done) => {
-      // field options are 'name','phone','zip','email'
-      common.fillMccForm(done,'phone',999);
+      // field options are: fld_lastName, fld_zipCode, fld_phone, fld_email
+      common.enterMccFormValue(done,"fld_zipCode","999");
     });
   });
+
+    describe('Pausing', () => {
+      it('Should pause the test for 5 seconds', (done) => {
+        common.pause(done, 5000);
+      });
+    });
 
   describe('Select Search button', () => {
     it('Should search for a MCC customer', (done) => {
@@ -85,8 +91,15 @@ describe('Test for when there is no MCC customer found.', () => {
 
   describe('Verify the No Results message', () => {
     it('Should find the No Results message', (done) => {
-      common.verifyNoResults(done);
+      common.mccElementVisible(done,"txt_noResults","No Results");
     });
   });
+
+
+    describe('Pausing', () => {
+      it('Should pause the test for 5 seconds', (done) => {
+        common.pause(done, 5000);
+      });
+    });
 
 });

@@ -5,7 +5,7 @@
  * Date:        12/10/2016
  *
  * From command line type:
- * gulp initiate-InDevelopmentTestSuite --archon:concierge-BAM --archonType:TestSuites --test:InDevelopment --client:chrome
+ * gulp initiate-InDevelopment --archon:concierge-BAM --archonType:TestSuites --test:InDevelopment --client:chrome
  */
 
 const mochaOptions = {

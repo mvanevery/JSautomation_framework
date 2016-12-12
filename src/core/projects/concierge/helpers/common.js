@@ -61,44 +61,8 @@ module.exports = {
         });
   },
 
-  //addAppointment_05012016(done) {
-  //  client.click(config.helpers.cmb_type)
-  //    .then(() => {
-  //      client.setValue(config.helpers.cmb_type, 'Appointment');
-  //    });
-  //  client.pause(2000);
-  //  client.click(config.helpers.txt_subject)
-  //    .then(() => {
-  //      client.setValue(config.helpers.txt_subject, 'Test Appointment for 05/01/2016.');
-  //    });
-  //  client.pause(2000);
-  //  client.click(config.helpers.date_start)
-  //    .then(() => {
-  //      client.setValue(config.helpers.date_start, '05012016');
-  //    });
-  //  client.pause(2000);
-  //  client.click(config.helpers.date_end)
-  //    .then(() => {
-  //      client.setValue(config.helpers.date_start, '05012016');
-  //    });
-  //  client.pause(2000);
-  //  // client.click(config.helpers.cmb_status)
-  //  // 	.then(function() {
-  //  // 		client.selectByValue(config.helpers.cmb_status, 'Open')
-  //  // 	});
-  //  // client.pause(2000);
-  //  client.click(config.helpers.cmb_priority)
-  //    .then(() => {
-  //      client.selectByValue(config.helpers.cmb_priority, 'High');
-  //    });
-  //  client.pause(2000);
-  //  client.click(config.helpers.btn_save);
-  //
-  //  done();
-  //},
-
   end(done) {
     client.end();
     done();
   }
-};
+}

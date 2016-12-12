@@ -17,7 +17,7 @@ const common = require('../../../../core/projects/concierge/helpers/common');
 const login = require('../../../../core/projects/concierge/helpers/loginPage');
 const landing = require('../../../../core/projects/concierge/helpers/landingPage');
 
-describe('Smoke Test: Login and Logout as "qaUser"', () => {
+describe('Smoke Test: Login and Logout as "testauto"', () => {
   before((done) => {
     common.goTo(done);
   });
@@ -30,7 +30,7 @@ describe('Smoke Test: Login and Logout as "qaUser"', () => {
 
   describe('Verify Login Screen', () => {
     it('Should navigate to the login screen', (done) => {
-      login.verifyLoginScreen(done);
+      login.verifyLoginScreen(done, true);
     });
   });
 
@@ -42,7 +42,7 @@ describe('Smoke Test: Login and Logout as "qaUser"', () => {
 
   describe('Login', () => {
     it('Should login as "testauto"', (done) => {
-      login.loginUser(done, 'testauto', 'qaUser@123');
+      login.loginUser(done, true, 'testauto', 'qaUser@123');
     });
   });
 
@@ -54,7 +54,7 @@ describe('Smoke Test: Login and Logout as "qaUser"', () => {
 
   describe('Verify Concierge Screen', () => {
     it('Should navigate to the Concierge screen', (done) => {
-      landing.verifyConciergeScreen(done);
+      landing.verifyConciergeScreen(done, true);
     });
   });
 
@@ -66,13 +66,13 @@ describe('Smoke Test: Login and Logout as "qaUser"', () => {
 
   describe('Logout', () => {
     it('Should logout the current user', (done) => {
-      login.logoutUser(done);
+      login.logoutUser(done, true);
     });
   });
 
-  describe('Pausing', () => {
-    it('Should pause the test for 2 seconds', (done) => {
-      common.pause(done, 2000);
+  describe('Test Completed: Cleaning up', () => {
+    it('Should pause the test for 10 seconds', (done) => {
+      common.pause(done, 10000);
     });
   });
 

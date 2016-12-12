@@ -16,31 +16,179 @@ const $ = require('chai-Jquery');
 
 module.exports = {
 
-  verifySearchOpen(done, expected) {
-    if (client.isVisible(search.helpers.searchField, done)) {
-          client.getText(search.helpers.searchField)
+  verifySearchOpen(done, expected, label) {
+    client.isVisible(search.helpers.searchField)
+     .then(function(isVisible) {
+      try {
+        assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
+      } catch (err) {
+        done(err);
+      }
+      if (isVisible == true) {
+        client.getAttribute(search.helpers.searchField, 'name')
+          .then((text) => {
+            try {
+              assert.equal(label, text, 'The expected number was not equal to the actual number');
+            } catch (err) {
+              done(err);
+            }
+          })
+      }
+    })
+    done();
+  },
+
+  verifyButtonDisabled(done, expected, criteria, enabled) {
+    client.isVisible(search.helpers.searchButton)
+      .then(function(isVisible) {
+          try {
+            assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
+          } catch (err) {
+            done(err);
+          }
+          if (isVisible == true) {
+            client.setValue(search.helpers.searchField, criteria)
+              .then(() => {
+                client.isEnabled(search.helpers.searchButton)
+                 .then(function(isEnabled) {
+                  try {
+                  assert.equal(enabled, isEnabled, 'The expected value was not equal to the actual value')
+                } catch (err) {
+                  done(err);
+                }
+             })
+          })
+      }
+    })
+  done();
+  },
+
+  enterSearchCriteria(done, expected, criteria) {
+    client.isVisible(search.helpers.searchField)
+      .then(function (isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
+        } catch (err) {
+          done(err);
+        }
+        if (isVisible == true) {
+          client.setValue(search.helpers.searchField, criteria)
+            .then(() => {
+              client.click(search.helpers.searchButton);
+            })
+        }
+      })
+    done();
+  },
+
+  verifySearchNoResults(done, expected, results) {
+    client.isVisible(search.helpers.noResults)
+      .then(function(isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the text');
+        } catch (err) {
+          done(err);
+        }
+        if(isVisible == true) {
+          client.getText(search.helpers.noResults)
             .then((text) => {
               try {
-                assert.equal(expected, text, 'The expected value was not equal to the text');
+                assert.equal(results, text, 'The expected number was not equal to the actual number');
               } catch (err) {
                 done(err);
               }
             })
-          }
-        },
-
-  enterSearchCriteria(done, criteria) {
-    if (client.isVisible(search.helpers.searchField, done)) {
-      client.setValue(search.helpers.searchField, criteria)
-        .then(() => {
-          client.click(search.helpers.searchButton);
-        })
-    }
+        }
+      });
+    done();
   },
 
-  verifySearchPLP(done, expected) {
-    if(client.isVisible(search.helpers.searchPlpHeader, done)) {
-      client.getText()
-    }
-  }
+  //verifySearchNoResults(done, expected, results) {
+  //  client.isVisible(search.helpers.noResults)
+  //    .then(function(isVisible) {
+  //      try {
+  //        assert.equal(expected, isVisible, 'The expected value was not equal to the text');
+  //      } catch (err) {
+  //        done(err);
+  //      }
+  //      if(isVisible == true) {
+  //        client.getText(blackbook.helpers.noResults)
+  //          .then((text) => {
+  //            try {
+  //              assert.equal(results, text, 'The expected number was not equal to the actual number');
+  //            } catch (err) {
+  //              done(err);
+  //            }
+  //          })
+  //      }
+  //    });
+  //  done();
+  //},
+
+  verifySearchPLP(done, expected, title) {
+    client.isVisible(search.helpers.pageHeader)
+      .then(function(isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
+        } catch (err) {
+          done(err);
+        }
+        if (isVisible == true) {
+          client.getText(search.helpers.pageHeader, title)
+            .then((text) => {
+              try {
+                assert.equal(title, text, 'The expected number was not equal to the actual title');
+              } catch (err) {
+                done(err);
+              }
+            })
+        }
+      })
+    done();
+  },
+
+  verifyProductTitle(done, expected, title) {
+      client.isVisible(search.helpers.productTitle)
+        .then(function(isVisible) {
+          try {
+            assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
+          } catch (err) {
+            done(err);
+          }
+          if (isVisible == true) {
+            client.getText(search.helpers.productTitle, title)
+              .then((text) => {
+                try {
+                  assert.equal(title, text, 'The expected number was not equal to the actual title');
+                } catch (err) {
+                  done(err);
+                }
+              })
+          }
+        })
+    done();
+  },
+
+  verifyProductNumber(done, expected, number) {
+    client.isVisible(search.helpers.productNumber)
+      .then(function(isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
+        } catch (err) {
+          done(err);
+        }
+        if (isVisible == true) {
+          client.getText(search.helpers.productNumber)
+            .then((text) => {
+              try {
+                assert.equal(number, text, 'The expected number was not equal to the actual number');
+              } catch (err) {
+                done(err);
+              }
+            })
+        }
+      })
+    done();
+  },
+
 }

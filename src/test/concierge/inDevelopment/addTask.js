@@ -3,37 +3,27 @@
  * Test Name:   addAppointment
  * Test Steps:  https://madmobile.testrail.com/index.php?/cases/view/1015
  * Author:      Mike Van Every
- * Date:        11/1/2016
+ * Date:        10/11/2016
  */
+const common = require('../../../core/projects/concierge/helpers/common');
+const login = require('../../../core/projects/concierge/helpers/loginPage');
+const landing = require('../../../core/projects/concierge/helpers/landingPage');
+const planner = require('../../../core/projects/concierge/helpers/planner');
 
-const common = require('../../../../core/projects/concierge/helpers/common');
-const login = require('../../../../core/projects/concierge/helpers/loginPage');
-const landing = require('../../../../core/projects/concierge/helpers/landingPage');
-const planner = require('../../../../core/projects/concierge/helpers/planner');
-
-//let CUSTOMERNAME;
-//const setName = (name) => CUSTOMERNAME = name;
-//exports.CUSTOMERNAME = setName(name);
-
-describe('Smoke Test: Add Appointment', () => {
+describe('Smoke Test: Add Task', () => {
   before((done) => {
     common.goTo(done);
   });
 
   describe('Verify Login Screen', () => {
     it('Should navigate to the login screen', (done) => {
-      login.verifyLoginScreen(done);
-    });
-  });
-  describe('Pausing', () => {
-    it('Should pause the test for 2 seconds', (done) => {
-      common.pause(done, 2000);
+      login.verifyLoginScreen(done, true);
     });
   });
 
   describe('Login', () => {
     it('Should login as "testauto"', (done) => {
-      login.loginUser(done, 'testauto', 'qaUser@123');
+      login.loginUser(done, true, 'testauto', 'qaUser@123');
     });
   });
 
@@ -56,8 +46,8 @@ describe('Smoke Test: Add Appointment', () => {
   });
 
   describe('Change the type and Open Task Form', () => {
-    it('Should open the appointment form from the Planner', (done) => {
-      planner.apptToggle(done, "Create Appointment");
+    it('Should open the task form from the Planner', (done) => {
+      planner.taskToggle(done, "Create Task");
     });
   });
   describe('Pausing', () => {
@@ -68,7 +58,7 @@ describe('Smoke Test: Add Appointment', () => {
 
   describe('Add Subject', () => {
     it('Should add a subject to the Subject field', (done) => {
-      planner.addSubject(done, 'Automation Test Appointment');
+      planner.addSubject(done, 'Automation Test Task');
     });
   });
 
@@ -86,7 +76,7 @@ describe('Smoke Test: Add Appointment', () => {
 
   describe('Pausing', () => {
     it('Should pause the test for 2 seconds', (done) => {
-      common.pause(done, 2000);
+      common.pause(done, 4000);
     });
   });
   describe('Add Priority', () => {
@@ -112,23 +102,32 @@ describe('Smoke Test: Add Appointment', () => {
   });
   describe('Verify Added Task', () => {
     it('Should verify that the Task is displayed on Planner Page', (done) => {
-      planner.verifyAddedAppt(done, 'Automation Test Appointment');
+      planner.verifyAddedTask(done, 'Automation Test Task');
     });
   });
-
+  describe('Pausing', () => {
+    it('Should pause the test for 2 seconds', (done) => {
+      common.pause(done, 2000);
+    });
+  });
+  describe('Delete the Task', () => {
+    it('Should click the DONE button and remove the task ', (done) => {
+      planner.deleteTask(done);
+    });
+  });
   describe('Pausing', () => {
     it('Should pause the test for 2 seconds', (done) => {
       common.pause(done, 5000);
     });
   });
   describe('Logout', () => {
-    it('Should Logout from the current user', (done) => {
-      login.logoutUser(done);
+    it('Should logout the current user', (done) => {
+      login.logoutUser(done, true);
     });
   });
-  describe('Pausing', () => {
-    it('Should pause the test for 2 seconds', (done) => {
-      common.pause(done, 5000);
+  describe('Test Completed: Cleaning up', () => {
+    it('Should pause the test for 10 seconds', (done) => {
+      common.pause(done, 10000);
     });
   });
 })

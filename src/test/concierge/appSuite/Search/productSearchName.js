@@ -90,10 +90,10 @@ describe('Pausing', () => {
 });
 
   describe('Pausing', () => {
-    it('Should pause the test for 2 seconds', (done) => {
-      common.pause(done, 2000);
-  });
-});
+      it('Should pause the test for 2 seconds', (done) => {
+        common.pause(done, 5000);
+      });
+    });
 
     describe('Logout', () => {
       it('Should logout the current user', (done) => {

@@ -74,8 +74,8 @@ describe('Smoke Test: Search Product by Category', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 2 seconds', (done) => {
-      common.pause(done, 5000);
+    it('Should pause the test for 8 seconds', (done) => {
+      common.pause(done, 8000);
     });
   });
 

@@ -69,7 +69,7 @@ describe('Smoke Test: Search Product by SKU', () => {
 
   describe('Enter search criteria', () => {
     it('Should enter search criteria and search', (done) => {
-      search.enterSearchCriteria(done, true, 'Edison Flats-Bonfire Plaid');
+      search.enterSearchCriteria(done, true, 'H465689');
     });
   });
 

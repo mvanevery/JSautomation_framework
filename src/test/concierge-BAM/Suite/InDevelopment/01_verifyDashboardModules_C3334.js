@@ -36,15 +36,21 @@ const common = require('../../../../core/projects/concierge-BAM/helpers/common')
 
   describe('Pausing', () => {
     it('Should pause the test for 8 seconds', (done) => {
-      common.pause(done, 8000);
+      common.pause(done, 15000);
     });
   });
 
   describe('Evaluate Company News', () => {
     it('Should verify that the Company News exists on the Dashboard', (done) => {
-      common.dashboardElementVisible(done, 'txt_companyNewsPanel', true);
+      common.dashboardElementVisible(done, true);
     });
   });
+
+    describe('Pausing', () => {
+      it('Should pause the test for 8 seconds', (done) => {
+        common.pause(done, 10000);
+      });
+    });
 
 
 });

@@ -140,8 +140,8 @@ module.exports = {
       }
     },
 
-    dashboardElementVisible(done, selector, expected) {
-      client.isVisible(landingPage.helpers[selector])
+    dashboardElementVisible(done, expected) {
+      client.isVisible(landingPage.helpers.txt_companyNewsPanel)
         .then(function(isVisible) {
           try {
             assert.equal(expected, isVisible, 'The element was not visible on the page.')

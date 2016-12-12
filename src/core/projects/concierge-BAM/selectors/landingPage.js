@@ -15,8 +15,7 @@ module.exports = {
       txt_storeNum:         '//div[@class="app-store_number"]',
 
       // Company News
-      //txt_companyNewsPanel: '//div[@class="company-news-panel"]',
-      txt_companyNewsPanel: '//div[@class="other"]',
+      txt_companyNewsPanel: '//div[@class="company-news-panel"]',
 
       // Top Products
       txt_bestSellingItems: '//div[@class="top-products-panel"]',

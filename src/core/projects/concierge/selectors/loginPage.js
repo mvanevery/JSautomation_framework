@@ -8,7 +8,7 @@ module.exports = {
     helpers: {
         usernameField: '//input[@data-id="username"]',
         passwordField: '//input[@data-id="password"]',
-        loginLogo: 'img.mm-c-login__logo',
+        loginLogo: '//img[@data-id="logo"]',
         //loginLogo:'//div[@data-id="logo"],
         storeIdLabel: '//div[@data-id="storeIdLbl"]',
         url_login: 'localhost:3000/login',

@@ -94,10 +94,10 @@ module.exports = {
           done(err);
         }
         if (isVisible == true) {
-          client.scroll(blackbook.helpers.addPhoneModal)
-          .then(() => {
-              client.click(blackbook.helpers.addPhoneModal);
-            })
+         // client.scroll(blackbook.helpers.addPhoneModal)
+          //.then(() => {
+           client.click(blackbook.helpers.addPhoneModal);
+          //  })
         }
       })
     done();
@@ -142,10 +142,10 @@ module.exports = {
           done(err);
         }
         if (isVisible == true) {
-          client.scroll(blackbook.helpers.addEmailModal).
-            then(() => {
+          //client.scroll(blackbook.helpers.addEmailModal, 0, 250)
+            //then(() => {
               client.click(blackbook.helpers.addEmailModal);
-            })
+            //})
         }
       })
     done();
@@ -182,7 +182,7 @@ module.exports = {
     done();
   },
 
-  openAddress(done) {
+  openAddress(done, expected) {
     client.isVisible(blackbook.helpers.modalHeader)
       .then(function (isVisible) {
         try {
@@ -191,10 +191,7 @@ module.exports = {
           done(err);
         }
         if (isVisible == true) {
-          client.scroll(blackbook.helpers.addAddressModal)
-          .then(() => {
               client.click(blackbook.helpers.addAddressModal);
-            })
         }
       })
     done();
@@ -209,7 +206,10 @@ module.exports = {
           done(err);
         }
         if (isVisible == true) {
-          client.click(blackbook.helpers.save);
+          client.click(blackbook.helpers.save)
+            .then(() => {
+              client.click(blackbook.helpers.cancel)
+            })
         }
       })
     done();
@@ -224,7 +224,8 @@ module.exports = {
           done(err);
         }
         if (isVisible == true) {
-          client.click(blackbook.helpers.cancel);
+          client.click(blackbook.helpers.cancel)
+
         }
       })
     done();

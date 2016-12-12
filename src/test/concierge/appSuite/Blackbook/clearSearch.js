@@ -218,7 +218,7 @@ describe('Smoke Test: Clear Search Fields', () => {
 
   describe('Pausing', () => {
     it('Should pause the test for 2 seconds', (done) => {
-      common.pause(done, 2000);
+      common.pause(done, 5000);
     });
   });
 

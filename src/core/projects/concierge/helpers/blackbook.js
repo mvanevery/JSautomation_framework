@@ -94,10 +94,7 @@ module.exports = {
           done(err);
         }
         if (isVisible == true) {
-         // client.scroll(blackbook.helpers.addPhoneModal)
-          //.then(() => {
            client.click(blackbook.helpers.addPhoneModal);
-          //  })
         }
       })
     done();
@@ -142,10 +139,7 @@ module.exports = {
           done(err);
         }
         if (isVisible == true) {
-          //client.scroll(blackbook.helpers.addEmailModal, 0, 250)
-            //then(() => {
               client.click(blackbook.helpers.addEmailModal);
-            //})
         }
       })
     done();

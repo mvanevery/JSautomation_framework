@@ -42,13 +42,13 @@ const common = require('../../../../core/projects/concierge-BAM/helpers/common')
 
   describe('Evaluate Company News', () => {
     it('Should verify that the Company News exists on the Dashboard', (done) => {
-      common.dashboardElementVisible(done, true);
+      common.dashboardElementVisible(done, "txt_companyNewsPanel", true);
     });
   });
 
     describe('Pausing', () => {
-      it('Should pause the test for 8 seconds', (done) => {
-        common.pause(done, 10000);
+      it('Should pause the test for 3 seconds', (done) => {
+        common.pause(done, 3000);
       });
     });
 

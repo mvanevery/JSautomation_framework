@@ -68,17 +68,17 @@ describe('Smoke Test: Search Customer (All Clients)', () => {
     });
   });
 
-  describe('Toggle My Clients Off', () => {
-    it('click the My Clients toggle switch', (done) => {
-      blackbook.toggleMyClients(done);
-    });
-  });
-
-  describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
-    });
-  });
+  //describe('Toggle My Clients Off', () => {
+  //  it('click the My Clients toggle switch', (done) => {
+  //    blackbook.toggleMyClients(done, true);
+  //  });
+  //});
+  //
+  //describe('Pausing', () => {
+  //  it('Should pause the test for 1 seconds', (done) => {
+  //    common.pause(done, 1000);
+  //  });
+  //});
 
   describe('Enter First Name', () => {
     it('should enter a name in the first name field', (done) => {
@@ -87,7 +87,7 @@ describe('Smoke Test: Search Customer (All Clients)', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
+    it('Should pause the test for 3 seconds', (done) => {
       common.pause(done, 3000);
     });
   });
@@ -99,7 +99,7 @@ describe('Smoke Test: Search Customer (All Clients)', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
+    it('Should pause the test for 3 seconds', (done) => {
       common.pause(done, 3000);
     });
   });
@@ -111,7 +111,7 @@ describe('Smoke Test: Search Customer (All Clients)', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 2 seconds', (done) => {
+    it('Should pause the test for 5 seconds', (done) => {
       common.pause(done, 5000);
     });
   });
@@ -123,7 +123,7 @@ describe('Smoke Test: Search Customer (All Clients)', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 2 seconds', (done) => {
+    it('Should pause the test for 5 seconds', (done) => {
       common.pause(done, 5000);
     });
   });

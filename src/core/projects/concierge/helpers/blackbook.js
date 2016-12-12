@@ -17,7 +17,7 @@ module.exports = {
           done(err);
         }
         if (isVisible == true) {
-          client.selectByValue(blackbook.helpers.myClientsToggle, type);
+          client.selectByValue(blackbook.helpers.myClientsToggle);
         }
       })
     done();

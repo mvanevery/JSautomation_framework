@@ -78,7 +78,7 @@ describe('Provision Talbots and Set Store', () => {
   });
   describe('Logout', () => {
     it('Should logout the current user', (done) => {
-      login.logoutUser(done, true);
+      login.logoutUser(done, true, true);
     });
   });
   describe('Test Completed: Cleaning up', () => {

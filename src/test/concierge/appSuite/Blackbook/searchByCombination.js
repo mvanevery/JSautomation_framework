@@ -137,8 +137,8 @@ describe('Smoke Test: Search by a Combination of Fields', () => {
     });
   });
 
-  describe('Enter Last Name', () => {
-    it('should enter a name in the last name field', (done) => {
+  describe('Enter Phone #', () => {
+    it('should enter a name in the phone # field', (done) => {
       blackbook.enterValue(done, true, "phone", "8");
     });
   });
@@ -185,8 +185,8 @@ describe('Smoke Test: Search by a Combination of Fields', () => {
     });
   });
 
-  describe('Enter Last Name', () => {
-    it('should enter a name in the last name field', (done) => {
+  describe('Enter Email', () => {
+    it('should enter a name in the email field', (done) => {
       blackbook.enterValue(done, true, "email", "q");
     });
   });
@@ -233,8 +233,8 @@ describe('Smoke Test: Search by a Combination of Fields', () => {
     });
   });
 
-  describe('Enter Last Name', () => {
-    it('should enter a name in the last name field', (done) => {
+  describe('Enter City', () => {
+    it('should enter a name in the City field', (done) => {
       blackbook.enterValue(done, true, "city", "tampa");
     });
   });
@@ -281,8 +281,8 @@ describe('Smoke Test: Search by a Combination of Fields', () => {
     });
   });
 
-  describe('Enter Last Name', () => {
-    it('should enter a name in the last name field', (done) => {
+  describe('Enter Zipcode', () => {
+    it('should enter a name in the Zipcode field', (done) => {
       blackbook.enterValue(done, true, "zipcode", "33607");
     });
   });

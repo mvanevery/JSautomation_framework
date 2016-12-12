@@ -185,14 +185,8 @@ describe('Smoke Test: Add Customer', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 3 seconds', (done) => {
-      common.pause(done, 3000);
-    });
-  });
-
-  describe('Pausing', () => {
-    it('Should pause the test for 3 seconds', (done) => {
-      common.pause(done, 6000);
+    it('Should pause the test for 10 seconds', (done) => {
+      common.pause(done, 10000);
     });
   });
 

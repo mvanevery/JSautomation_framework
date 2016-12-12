@@ -19,6 +19,7 @@ module.exports = {
         userPlaceholder:'Username',
         logout: '//div[@data-id="module-logout"]',
         logoutCancel:'//button[@data-id="cancel"]',
-        logoutConfirm: '//button[@data-id="logout"]'
+        logoutConfirm: '//button[@data-id="logout"]',
+        logoutQuestion:'//div[@data-id="logoutQuestion"]'
     }
 }

@@ -73,7 +73,7 @@ module.exports = {
   },
 
 
-  logoutUser(done, expected) {
+  logoutUser(done, expected, expectedAgain) {
     client.isVisible(loginPage.helpers.logout)
       .then(function (isVisible) {
         try {
@@ -84,7 +84,17 @@ module.exports = {
         if (isVisible == true) {
           client.click(loginPage.helpers.logout)
             .then(() => {
-              client.click(loginPage.helpers.logoutConfirm);
+              client.isVisible(loginPage.helpers.logoutQuestion)
+                .then(function (isVisible) {
+                  try {
+                    assert.equal(expectedAgain, isVisible, 'The expected value was not equal to the text');
+                  } catch (err) {
+                    done(err);
+                  }
+                  if (isVisible == true) {
+                    client.click(loginPage.helpers.logoutConfirm);
+                  }
+                })
             })
         }
       })

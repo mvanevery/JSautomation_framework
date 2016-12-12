@@ -120,7 +120,7 @@ describe('Smoke Test: C1248 Selecting A Leaf Of The Menu Tree', () => {
 
   describe('Logout', () => {
     it('Should logout the current user', (done) => {
-      login.logoutUser(done, true);
+      login.logoutUser(done, true, true);
     });
   });
 

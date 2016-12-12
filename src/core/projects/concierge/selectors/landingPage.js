@@ -22,7 +22,7 @@ module.exports = {
         headerImage:'//img[@data-id="headerImage"]',
 
 
-        //productIcon: '//div[@class="mm-o-icon icon-hamburger-menu"]',
+        productIcon: '//div[@data-id="catalog"]',
         //expertIcon: '//div[@class="mm-o-icon icon-year-to-date"]',
         broke:'null',
     }

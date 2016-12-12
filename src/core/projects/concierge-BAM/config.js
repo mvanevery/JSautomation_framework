@@ -3,8 +3,9 @@
  */
 module.exports = {
   routes: {
-    baseUrl: 'https://serviceqa.booksamillion.com/'
+    baseUrl: 'https://serviceqa.booksamillion.com'
   },
+
   helpers: {
   }
 };

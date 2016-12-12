@@ -18,15 +18,15 @@ describe('Smoke Test: C183 PLP Navigation to PDP', () => {
 
    describe('Verify Login Screen', () => {
      it('Should navigate to the login screen', (done) => {
-       login.verifyLoginScreen(done);
+       login.verifyLoginScreen(done, true);
      });
    });
 
-   describe('Login', () => {
-     it('Should login as "testauto"', (done) => {
-       login.loginUser(done, 'testauto', 'qaUser@123');
-     });
-   });
+  describe('Login', () => {
+    it('Should login as "testauto"', (done) => {
+      login.loginUser(done, true, 'testauto', 'qaUser@123');
+    });
+  });
 
    describe('Pausing', () => {
      it('Should pause the test for 10 seconds', (done) => {
@@ -118,16 +118,16 @@ describe('Smoke Test: C183 PLP Navigation to PDP', () => {
        });
      });
 
-     describe('Logout', () => {
-       it('Should Logout from the current user', (done) => {
-         login.logoutUser(done);
-       });
-     });
+  describe('Logout', () => {
+    it('Should logout the current user', (done) => {
+      login.logoutUser(done, true);
+    });
+  });
 
-     describe('Pausing', () => {
-       it('Should pause the test for 2 seconds', (done) => {
-         common.pause(done, 2000);
-       });
-     });
+  describe('Test Completed: Cleaning up', () => {
+    it('Should pause the test for 10 seconds', (done) => {
+      common.pause(done, 10000);
+    });
+  });
 
 })

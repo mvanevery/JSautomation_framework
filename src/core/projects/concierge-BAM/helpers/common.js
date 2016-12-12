@@ -38,8 +38,7 @@ module.exports = {
   },
 
   pause: (done, pauseTime) => {
-    client.pause(pauseTime);
-    done();
+    client.pause(pauseTime, done);
   },
 
 
@@ -58,6 +57,18 @@ module.exports = {
         done();
       })
     }
+  },
+
+  logpinPageElementVisible(done, select, expected) {
+    client.isVisible(loginPage.helpers[select])
+      .then(function(isVisible) {
+           try {
+             assert.equal(expected, isVisible, 'The object is not visible.');
+             } catch (err) {
+             done(err);
+           }
+      })
+    done();
   },
 
   loginUser(done,username,password,location) {
@@ -144,50 +155,14 @@ module.exports = {
     done();
   },
 
-  fillMccForm(done, field, value) {
-    if (client.isVisible(mccPage.helpers.fld_lastName)) {
-      switch (field){
-        case 'name':
-          client.setValue(mccPage.helpers.fld_lastName, value);
-            break;
-        case 'zip':
-          client.setValue(mccPage.helpers.fld_zipCode, value);
-            break;
-        case 'phone':
-          client.setValue(mccPage.helpers.fld_phone, value);
-            break;
-        case 'email':
-          client.setValue(mccPage.helpers.fld_email, value);
-            break;
-        default:
-            break;
-      }
-    }
-    else{
-      console.log('	ERROR: The MCC Search page is unavailable.');
-    }
-    done();
-  },
+  // fillMccForm(done, field, value) {
+  //   client.setValue(mccPage.helpers.fld_phone, 999);
+  //   done();
+  // },
 
-  verifyBlankField(done, field) {
-    if (client.isVisible(mccPage.helpers.fld_lastName)) {
-      switch (field){
-        case 'name':
-          var fieldText = client.getText(mccPage.helpers.fld_lastName);
-          expect(fieldText).to.be.null;
-          break;
-        // case 'zip':
-        //   client.setValue(mccPage.helpers.fld_zipCode, value);
-        //   break;
-        // case 'phone':
-        //   client.setValue(mccPage.helpers.fld_phone, value);
-        //   break;
-        // case 'email':
-        //   client.setValue(mccPage.helpers.fld_email, value);
-        //   break;
-        default:
-          break;
-      }
+  enterMccFormValue(done, selector, value) {
+    if (client.isVisible(mccPage.helpers[selector])) {
+      client.setValue(mccPage.helpers[selector], value)
     }
     else{
       console.log('	ERROR: The MCC Search page is unavailable.');
@@ -203,226 +178,30 @@ module.exports = {
     }
   },
 
-  verifyNoResults(done) {
-    expect(mccPage.helpers.txt_noResults).to.exist;
+  // mccElementVisible(done, selector, expected) {
+  //     client.isVisible(mccPage.helpers[selector])
+  //       .then(function(isVisible) {
+  //         try {
+  //           assert.equal(expected, isVisible, 'The element is not visible');
+  //         } catch (err) {
+  //           done(err);
+  //         }
+  //       })
+  //     done();
+  //   },
+
+  mccElementVisible(done,selector) {
+    client.isVisible(mccPage.helpers[selector])
+      .then(function (isVisible) {
+        assert.isTrue(isVisible, 'The element is not visible on the page.');
+        // if (isVisible == true) {
+        //   client.click(landingPage.helpers[selector])
+        // } else {
+        //   client.click(login.helpers.logoutUser(done));
+        // }
+      })
     done();
-},
-
-  resetfields(done) {
-    if (client.isVisible(mccPage.helpers.btn_reset, done)) {
-      client.click(mccPage.helpers.btn_reset)
-    } else {
-      console.log('ERROR: Unable to find the Reset Fields button.');
-    }
   },
-
-  // verifyBamLandingPage(done, expected) {
-  //   if (client.isVisible(landingPage.helpers.img_headerLogo)) {
-  //     client.click(landingPage.helpers.txt_companyNews)
-  //       .then(() => {
-  //         client.getText(landingPage.helpers.txt_companyNews)
-  //           .then((text) => {
-  //             try {
-  //               assert.equal(expected, text, 'The BAM landing page is displayed');
-  //             } catch (err) {
-  //               done(err);
-  //             }
-  //           })
-  //       })
-  //   }
-  // },
-//
-  //
-  // navMenu(done) {
-  //   if (client.isVisible(landingPage.helpers.menuIcon)) {
-  //     client.click(landingPage.helpers.menuIcon)
-  //       .then(() => {
-  //         client.getText('h2')
-  //       })
-  //   } else {
-  //     console.log('	ERROR: The Dashboard icon is not in the menu.');
-  //   }
-  // },
-  //
-  // navDashboard(done) {
-  //   if (client.isVisible(landingPage.helpers.iconList)) {
-  //     client.click(landingPage.helpers.iconList);
-  //   } else {
-  //     console.log('	ERROR: The Dashboard icon is not in the menu.');
-  //   }
-  // },
-  //
-  // navPlanner(done) {
-  //   if (client.isVisible(config.helpers.plannerIcon)) {
-  //     client.click(config.helpers.plannerIcon);
-  //   } else {
-  //     console.log('	ERROR: The Planner icon is not in the menu.');
-  //   }
-  // },
-  //
-  // addTask(done,expected) {
-  //   if(client.isVisible(planner.helpers.taskAddition)) {
-  //     client.click(planner.helpers.taskAddition)
-  //   .then(() => {
-  //         client.getText(planner.helpers.taskTitle)
-  //           .then((text) => {
-  //             try {
-  //               assert.equal(expected, text, 'The Task modal is displayed');
-  //             } catch (err) {
-  //               done(err);
-  //             }
-  //           })
-  //       })
-  //   }
-  // },
-  // addAppointment(done,expected) {
-  //   if(client.isVisible(planner.helpers.apptAddition)) {
-  //     client.click(planner.helpers.apptAddition)
-  //       .then(() => {
-  //         client.getText(planner.helpers.apptTitle)
-  //           .then((text) => {
-  //             try {
-  //               assert.equal(expected, text, 'The Task modal is displayed');
-  //             } catch (err) {
-  //               done(err);
-  //             }
-  //           })
-  //       })
-  //   }
-  // },
-  //
-  // navBlackbook(done, expected) {
-  //  if (client.isVisible(landingPage.helpers.blackbookIcon, done)) {
-  //     client.click(landingPage.helpers.blackbookIcon)
-  //  .then(() => {
-  //      client.getText(landingPage.helpers.blackbookHeader)
-  //        .then((text) => {
-  //          try {
-  //            assert.equal(expected, text, 'The expected value was not equal to the text');
-  //          } catch (err) {
-  //            done(err);
-  //          }
-  //        })
-  //    })
-  //  }
-  // },
-  //
-  // navSearch(done, expected) {
-  //   if (client.isVisible(landingPage.helpers.searchIcon, done)) {
-  //     client.click(landingPage.helpers.searchIcon)
-  //     .then(() => {
-  //         client.getText(landingPage.helpers.productSearchField)
-  //         .then((text) => {
-  //             try {
-  //               assert.equal(expected, text, 'The expected value was not equal to the text');
-  //             } catch (err) {
-  //               done(err);
-  //             }
-  //           })
-  //       })
-  //   }
-  // },
-  //
-  // navAddition(done) {
-  //   if (client.isVisible(landingPage.helpers.addIcon, done)) {
-  //     client.click(landingPage.helpers.addIcon)
-  //     .then(() => {
-  //         client.getText(landingPage.helpers.createLabel)
-  //         .then((text) => {
-  //             try {
-  //               assert.equal(expected, text, 'The expected value was not equal to the text');
-  //             } catch (err) {
-  //               done(err);
-  //             }
-  //           })
-  //       })
-  //   }
-  // },
-  //
-  //
-  //
-  // //-----------------------------------------------------------
-  //
-  // searchCustomer(done) {
-  //   client.waitForVisible(config.helpers.fld_lastName, 5000);
-  //   if (client.isVisible(config.helpers.fld_lastName, done)) {
-  //     client.click(config.helpers.fld_lastName)
-  //       .then(() => {
-  //         client.setValue(config.helpers.fld_lastName, 'McClellan');
-  //       });
-  //   } else {
-  //     console.log('	ERROR: Last Name field is not available.');
-  //   }
-  // },
-  //
-  // selectCustomer(done) {
-  //   client.waitForVisible(config.helpers.txt_Customer_Ryan, 5000);
-  //   if (client.isVisible(config.helpers.txt_Customer_Ryan)) {
-  //     client.click(config.helpers.txt_Customer_Ryan);
-  //   } else {
-  //     console.log('	ERROR: Missing the customer record for Ryan McClellan.');
-  //   }
-  //   client.waitForVisible(config.helpers.txt_Customer_Header, 5000);
-  //   if (client.isVisible(config.helpers.txt_Customer_Header)) {
-  //     console.log('	PASS: The user has reached the Customer Profile screen.');
-  //   } else {
-  //     console.log('	ERROR: The Customer Profile screen is unreachable.');
-  //   }
-  //   done();
-  // },
-  //
-  //
-  // addAppointmentForm_fromPlanner(done) {
-  //   client.waitForVisible(config.helpers.img_nav_planner, 5000);
-  //   if (client.isVisible(config.helpers.btn_create)) {
-  //     client.click(config.helpers.btn_create);
-  //   } else {
-  //     console.log('	ERROR: Missing the create button.');
-  //   }
-  //   client.waitForVisible(config.helpers.cmb_type, 5000);
-  //   if (client.isVisible(config.helpers.cmb_type)) {
-  //     console.log('	PASS: The user has reached the Appointment/Task form.');
-  //   } else {
-  //     console.log('	ERROR: The Appointment/Task form is unreachable.');
-  //   }
-  //   done();
-  // },
-  //
-  // addAppointment_05012016(done) {
-  //   client.click(config.helpers.cmb_type)
-  //     .then(() => {
-  //       client.setValue(config.helpers.cmb_type, 'Appointment');
-  //     });
-  //   client.pause(2000);
-  //   client.click(config.helpers.txt_subject)
-  //     .then(() => {
-  //       client.setValue(config.helpers.txt_subject, 'Test Appointment for 05/01/2016.');
-  //     });
-  //   client.pause(2000);
-  //   client.click(config.helpers.date_start)
-  //     .then(() => {
-  //       client.setValue(config.helpers.date_start, '05012016');
-  //     });
-  //   client.pause(2000);
-  //   client.click(config.helpers.date_end)
-  //     .then(() => {
-  //       client.setValue(config.helpers.date_start, '05012016');
-  //     });
-  //   client.pause(2000);
-  //   // client.click(config.helpers.cmb_status)
-  //   // 	.then(function() {
-  //   // 		client.selectByValue(config.helpers.cmb_status, 'Open')
-  //   // 	});
-  //   // client.pause(2000);
-  //   client.click(config.helpers.cmb_priority)
-  //     .then(() => {
-  //       client.selectByValue(config.helpers.cmb_priority, 'High');
-  //     });
-  //   client.pause(2000);
-  //   client.click(config.helpers.btn_save);
-  //
-  //   done();
-  // },
 
   end(done) {
     client.end();

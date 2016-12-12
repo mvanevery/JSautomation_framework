@@ -1,9 +1,5 @@
 /**
- * Created by mvanevery on 11/22/16.
- */
-
-/**
- * Created by mvanevery on 10/11/16.
+ * Created by mvanevery on 12/07/16.
  */
 const mochaOptions = {
   timeout: '50000',
@@ -24,7 +20,8 @@ function handleError(err) {
 
 module.exports = function (gulp, mocha) {
   return function () {
-    return gulp.src('./src/test/concierge/appSuite/Search/productSearchCategory.js', {read: false})
+    return gulp.src('./src/test/concierge/appSuite/Search/productSearchBlank.js', {read: false})
       .pipe(mocha(mochaOptions).on("error", handleError));
   }
 };
+

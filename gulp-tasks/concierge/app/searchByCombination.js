@@ -1,8 +1,4 @@
 /**
- * Created by mvanevery on 11/22/16.
- */
-
-/**
  * Created by mvanevery on 10/11/16.
  */
 const mochaOptions = {
@@ -11,7 +7,7 @@ const mochaOptions = {
   reporterOptions: {
     reportDir: './src/test/concierge/reports',
     reportName: 'report',
-    reportTitle: 'Add Appointment through Planner page',
+    reportTitle: 'Search Customer',
     inlineAssets: true
   }
 };
@@ -24,7 +20,7 @@ function handleError(err) {
 
 module.exports = function (gulp, mocha) {
   return function () {
-    return gulp.src('./src/test/concierge/appSuite/Search/productSearchCategory.js', {read: false})
+    return gulp.src('./src/test/concierge/appSuite/Blackbook/searchByCombination.js', {read: false})
       .pipe(mocha(mochaOptions).on("error", handleError));
   }
 };

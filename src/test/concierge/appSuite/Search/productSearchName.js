@@ -18,22 +18,22 @@ const blackbook = require('../../../../core/projects/concierge/helpers/blackbook
 const landing = require('../../../../core/projects/concierge/helpers/landingPage');
 const search = require('../../../../core/projects/concierge/helpers/productSearch');
 
-  describe('Smoke Test: Search Customer', () => {
+  describe('Smoke Test: Search Product by Name', () => {
     before((done) => {
       common.goTo(done);
 });
 
   describe('Verify Login Screen', () => {
    it('Should navigate to the login screen', (done) => {
-     login.verifyLoginScreen(done);
+     login.verifyLoginScreen(done, true);
   });
 });
 
-  describe('Login', () => {
-   it('Should login as "testauto"', (done) => {
-     login.loginUser(done, 'testauto', 'qaUser@123');
-  });
-});
+    describe('Login', () => {
+      it('Should login as "testauto"', (done) => {
+        login.loginUser(done, true, 'testauto', 'qaUser@123');
+      });
+    });
 
   describe('Pausing', () => {
    it('Should pause the test for 10 seconds', (done) => {
@@ -41,9 +41,9 @@ const search = require('../../../../core/projects/concierge/helpers/productSearc
   });
 });
 
-  describe('Click the Product Search menu option', () => {
-    it('Should open Product Search drawer', (done) => {
-     landing.navSearch(done, "Product Search");
+    describe('Click the Product Search icon', () => {
+      it('Should open product search drawer', (done) => {
+      landing.navigateIcons(done, "searchIcon", true);
   });
 });
 
@@ -55,7 +55,7 @@ const search = require('../../../../core/projects/concierge/helpers/productSearc
 
 describe('Verify Search drawer is open', () => {
   it('should verify that the drawer is open', (done) => {
-    search.verifySearchOpen(done);
+    search.verifySearchOpen(done, true, "Product Search");
   });
 });
 
@@ -67,19 +67,19 @@ describe('Pausing', () => {
 
   describe('Enter search criteria', () => {
      it('Should enter search criteria and search', (done) => {
-       search.enterSearchCriteria(done, 'Edison Flats-Bonfire Plaid');
+       search.enterSearchCriteria(done, true, 'Edison Flats-Bonfire Plaid');
   });
 });
 
   describe('Pausing', () => {
     it('Should pause the test for 2 seconds', (done) => {
-     common.pause(done, 2000);
-});
+     common.pause(done, 10000);
+  });
 });
 
   describe('Verify Product Title', () => {
     it('should verify the product title', (done) => {
-      search.verifyProductTitle(done,'Edison Flats-Bonfire Plaid');
+      search.verifyProductTitle(done, true, 'Edison Flats-Bonfire Plaid');
   });
 });
 
@@ -89,17 +89,17 @@ describe('Pausing', () => {
   });
 });
 
-  describe('Logout', () => {
-    it('Should Logout from the current user', (done) => {
-      login.logoutUser(done);
-  });
-});
+    describe('Logout', () => {
+      it('Should logout the current user', (done) => {
+        login.logoutUser(done, true);
+      });
+    });
 
-  describe('Pausing', () => {
-    it('Should pause the test for 5 seconds', (done) => {
-     common.pause(done, 5000);
-  });
-});
+    describe('Test Completed: Cleaning up', () => {
+      it('Should pause the test for 10 seconds', (done) => {
+        common.pause(done, 10000);
+      });
+    });
 
 })
 

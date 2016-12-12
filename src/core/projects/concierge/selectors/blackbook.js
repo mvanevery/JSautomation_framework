@@ -17,19 +17,18 @@ module.exports = {
       phone:'//input[@name="phone"]',
       email:'//input[@name="email"]',
       city:'//input[@name="city"]',
-      zipcode:'//input[@name="postalCode"]',
+      zipcode:'//input[@name="zip"]',
       searchButton:'//button[@data-id="searchButton"]',
       resetButton:'//button[@data-id="resetButton"]',
-      blackbookHeader: '//div[data-id="pageHeader"]',
+      pageHeader: '//div[@data-id="pageHeader"]',
       myClientsToggle:'//switch[@data-id="clientsToggle"]',
-      searchToggle:'//div[contains(text(),"Search"]',
-      listToggle:'//div[contains(text(),"List"]',
+      searchToggle:'//div[contains(text(),"Search")]',
+      listToggle:'//div[contains(text(),"List")]',
       addCustomerButton:'//button[@data-id="customer-add"]',
 
 //================================================== Add Customer Modal ================================================
 
-      searchResults:`//div[contains(text(),"Jerry")]`,
-      saveButton:'//button[@data-id="Done"]',
+      searchResults:`//div[@data-id="cardName-0"]`,
       modalHeader:'//div[@data-id="modalHeader"]',
       firstNameModal:'//input[@data-id="firstNameAddModal"]',
       lastNameModal:'//input[@data-id="lastNameAddModal"]',
@@ -48,19 +47,21 @@ module.exports = {
       stateModal:'//input[@data-id="modalState"]',
       zipcodeModal:'//input[@data-id="modalZipcode"]',
       countryModal:'//input[@data-id="modalCountry"]',
-      addresssTypeModal:'//select[@data-id="addressType"]',
-      customerCard: '//div[@data-id="customerCard-0")]',
-      Cancel: '//button[@data-id="cancel"]',
+      addressTypeModal:'//select[@data-id="addressType"]',
+      customerCard: '//div[@data-id="customerCard-0"]',
+      save:'//button[@data-id="Done"]',
+      cancel: '//button[@data-id="Cancel"]',
+      continue:'//button[@data-id="Continue"]',
+      discard:'//button[@data-id="Discard"]',
 
       //================================================== CUSTOMER PROFILE ============================================
 
-      customerName: '//div[contains(text(),"Automation Test"]',
-      //customerName:'//div[@data-id="contactFullName"]',
-      editIcon:'//div[@class="mm-o-icon icon-edit-customer"]',
-      //editIcon:'//button[@data-id="editCustomer"]',
+      customerName: '//div[@data-id="contactFullName"]',
+      editIcon:'//div[@data-id="editCustomer"]',
       emailIcon: '//div[@data-id="email"]',
       blankEmailIcon: '//div[@class=:mm-o-icon icon-blank-template"]',
       birthdayEmailIcon: '',
+
 
 
     }

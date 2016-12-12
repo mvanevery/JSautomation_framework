@@ -19,36 +19,70 @@ module.exports = {
   //      })
   //  }
   //},
-
-  addTask(done,expected) {
-    if(client.isVisible(planner.helpers.taskAddition)) {
-      client.click(planner.helpers.taskAddition)
-        .then(() => {
-          client.getText(planner.helpers.taskTitle)
-            .then((text) => {
-              try {
-                assert.equal(expected, text, 'The Task modal is not displayed');
-              } catch (err) {
-                done(err);
-              }
-            })
-        })
-    }
+  enterValue(done, expected,selector, value) {
+    client.isVisible(planner.helpers[selector])
+      .then(function(isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the text');
+        } catch (err) {
+          done(err);
+        }
+        if (isVisible == true) {
+          client.setValue(planner.helpers[selector], value)
+        }
+      })
+    done();
   },
-  addAppointment(done,expected) {
-    if(client.isVisible(planner.helpers.apptAddition)) {
-      client.click(planner.helpers.apptAddition)
-        .then(() => {
-          client.getText(planner.helpers.apptTitle)
-            .then((text) => {
-              try {
-                assert.equal(expected, text, 'The Task modal is not displayed');
-              } catch (err) {
-                done(err);
-              }
-            })
-        })
-    }
+
+  addTask(done,expected, title) {
+    client.isVisible(planner.helpers.taskAddition)
+      .then(function(isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the text');
+        } catch (err) {
+          done(err);
+        }
+        if (isVisible == true) {
+          client.click(planner.helpers.taskAddition)
+            .then(() => {
+              client.getText(planner.helpers.taskTitle)
+                .then((text) => {
+                  try {
+                    assert.equal(title, text, 'The Task modal is not displayed');
+                  } catch (err) {
+                    done(err);
+                  }
+                })
+            });
+        }
+      });
+      done();
+      },
+
+
+  addAppointment(done, expected, title) {
+    client.isVisible(planner.helpers.apptAddition)
+      .then(function(isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the text');
+        } catch (err) {
+          done(err);
+        }
+        if (isVisible == true) {
+          client.click(planner.helpers.apptAddition)
+            .then(() => {
+              client.getText(planner.helpers.apptTitle)
+                .then((text) => {
+                  try {
+                    assert.equal(title, text, 'The Task modal is not displayed');
+                  } catch (err) {
+                    done(err);
+                  }
+                })
+            });
+        }
+      });
+    done();
   },
 
   addSubject(done,subject) {
@@ -102,46 +136,61 @@ module.exports = {
     }
   },
 
-  apptToggle(done, expected) {
-    if (client.isVisible(planner.helpers.plannerTitle, done)) {
-      client.click(planner.helpers.taskToggleSwitch)
-        .then(() => {
+  apptToggle(done, expected, title) {
+    client.isVisible(planner.helpers.pageHeader)
+      .then(function(isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the text');
+        } catch (err) {
+          done(err);
+        }
+        if (isVisible == true) {
           client.click(planner.helpers.apptToggleSwitch)
             .then(() => {
               client.click(planner.helpers.addButton)
-                .then(() => {
-                  client.getText(planner.helpers.apptTitle)
-                    .then((text) => {
-                      try {
-                        assert.equal(expected, text, 'The expected value was not equal to the text');
-                      } catch (err) {
-                        done(err);
-                      }
-                    })
-                })
             })
-        })
-
-    }
-  },
-  taskToggle(done, expected) {
-    if (client.isVisible(planner.helpers.plannerTitle, done)) {
-      client.click(planner.helpers.taskToggleSwitch)
-        .then(() => {
-          client.click(planner.helpers.addButton)
             .then(() => {
-              client.getText(planner.helpers.taskTitle)
+              client.getText(planner.helpers.apptTitle)
                 .then((text) => {
+                  console.log(text);
                   try {
-                    assert.equal(expected, text, 'The expected value was not equal to the text');
+                    assert.equal(title, text, 'The Task modal is not displayed');
                   } catch (err) {
                     done(err);
                   }
                 })
-            })
-        })
+            });
+        }
+      });
+    done();
+  },
 
-    }
+  taskToggle(done, expected, title) {
+    client.isVisible(planner.helpers.pageHeader)
+      .then(function(isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the text');
+        } catch (err) {
+          done(err);
+        }
+        if (isVisible == true) {
+          client.click(planner.helpers.taskToggleSwitch)
+            .then(() => {
+              client.click(planner.helpers.addButton)
+            })
+            .then(() => {
+              client.getText(planner.helpers.taskTitle)
+                .then((text) => {
+                  try {
+                    assert.equal(title, text, 'The Task modal is not displayed');
+                  } catch (err) {
+                    done(err);
+                  }
+                })
+            });
+        }
+      });
+    done();
   },
 
   verifyAddedTask(done, expected) {

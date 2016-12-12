@@ -10,7 +10,7 @@ module.exports = {
   },
   helpers: {
     //===================================== GLOBAL ================================
-    plannerTitle: `//div[contains(text(),"Planner")]`,
+    pageHeader: '//div[@data-id="pageHeader"]',
     addButton: '//div[@class="mm-o-icon icon-plus"]',
     yesButton:'//div[contains(text(),"Yes")]',
     Cancel: '//button[@data-id="cancel"]',
@@ -19,6 +19,7 @@ module.exports = {
     continueEdit:'//div[contains(text(),"Continue Editing")]',
     //Save:'//button[@data-id="done]',
     saveButton:'//div[contains(text(),"Done")]',
+    //modalHeader:'//div[@data-id="modalHeader"]',
     modalType: '//select[@name="type"]',
     modalSubject: '//input[@name="subject"]',
     modalStartDateTime:'//input[@name="startDateTime"]',

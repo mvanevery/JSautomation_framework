@@ -11,7 +11,7 @@ const login = require('../../../../core/projects/concierge/helpers/loginPage');
 const landing = require('../../../../core/projects/concierge/helpers/landingPage');
 const catalog = require('../../../../core/projects/concierge/helpers/catalog');
 
-describe('Smoke Test: C1665 Select Variant Combination', () => {
+describe('Smoke Test: C1665 Select Variant Combination.', () => {
   before((done) => {
      common.goTo(done);
    });
@@ -72,7 +72,7 @@ describe('Smoke Test: C1665 Select Variant Combination', () => {
 
    describe('Click on a Shoes -> Flats product.', () => {
      it('Should open Flats product details page.', (done) => {
-       catalog.openProductDetailsPage(done);
+       catalog.openProductDetailsPage(done,true,'francescaDrivingFlatsSuede');
      });
    });
 
@@ -82,9 +82,9 @@ describe('Smoke Test: C1665 Select Variant Combination', () => {
      });
    });
 
-   describe('See a Shoes -> Flats product variants.', () => {
+   describe('Shoes -> Flats product variants.', () => {
      it('Should see Shoes -> Flats product variants.', (done) => {
-       catalog.productDetailsPageVariantsShown(done, true);
+       catalog.PDPVariantsShown(done, true, 'defaultVariant');
      });
    });
 
@@ -96,7 +96,7 @@ describe('Smoke Test: C1665 Select Variant Combination', () => {
 
     describe('See a Shoes -> Flats product default variant.', () => {
       it('Should see Shoes -> Flats product default variant.', (done) => {
-        catalog.productDetailsPageDefaultVariantShown(done, "-1");
+        catalog.PDPDefaultVariantShown(done, "-1");
       });
     });
 
@@ -112,6 +112,11 @@ describe('Smoke Test: C1665 Select Variant Combination', () => {
     });
   });
 
+   describe('Pausing', () => {
+     it('Should pause the test for 5 seconds', (done) => {
+       common.pause(done, 5000);
+     });
+   });
   describe('Test Completed: Cleaning up', () => {
     it('Should pause the test for 10 seconds', (done) => {
       common.pause(done, 10000);

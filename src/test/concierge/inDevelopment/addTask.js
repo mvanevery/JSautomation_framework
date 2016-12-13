@@ -5,10 +5,10 @@
  * Author:      Mike Van Every
  * Date:        10/11/2016
  */
-const common = require('../../../core/projects/concierge/helpers/common');
-const login = require('../../../core/projects/concierge/helpers/loginPage');
-const landing = require('../../../core/projects/concierge/helpers/landingPage');
-const planner = require('../../../core/projects/concierge/helpers/planner');
+const common = require('../../../../core/projects/concierge/helpers/common');
+const login = require('../../../../core/projects/concierge/helpers/loginPage');
+const landing = require('../../../../core/projects/concierge/helpers/landingPage');
+const planner = require('../../../../core/projects/concierge/helpers/planner');
 
 describe('Smoke Test: Add Task', () => {
   before((done) => {
@@ -17,13 +17,13 @@ describe('Smoke Test: Add Task', () => {
 
   describe('Verify Login Screen', () => {
     it('Should navigate to the login screen', (done) => {
-      login.verifyLoginScreen(done, true);
+      login.verifyLoginScreen(done);
     });
   });
 
   describe('Login', () => {
     it('Should login as "testauto"', (done) => {
-      login.loginUser(done, true, 'testauto', 'qaUser@123');
+      login.loginUser(done, 'testauto', 'qaUser@123');
     });
   });
 
@@ -46,7 +46,7 @@ describe('Smoke Test: Add Task', () => {
   });
 
   describe('Change the type and Open Task Form', () => {
-    it('Should open the task form from the Planner', (done) => {
+    it('Should open the appointment form from the Planner', (done) => {
       planner.taskToggle(done, "Create Task");
     });
   });
@@ -121,13 +121,13 @@ describe('Smoke Test: Add Task', () => {
     });
   });
   describe('Logout', () => {
-    it('Should logout the current user', (done) => {
-      login.logoutUser(done, true);
+    it('Should Logout from the current user', (done) => {
+      login.logoutUser(done);
     });
   });
-  describe('Test Completed: Cleaning up', () => {
-    it('Should pause the test for 10 seconds', (done) => {
-      common.pause(done, 10000);
+  describe('Pausing', () => {
+    it('Should pause the test for 2 seconds', (done) => {
+      common.pause(done, 2000);
     });
   });
 })

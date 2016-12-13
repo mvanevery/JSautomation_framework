@@ -27,22 +27,19 @@ module.exports = {
     done();
   },
 
-  navCatalog(done, catalogLabel) {
-    if (client.isVisible(landingPage.helpers.productIcon, done)) {
-      client.click(landingPage.helpers.productIcon)
-        .then (() => {
-          client.getText(catalog.helpers.catalogMenuTitle)
-            .then((text) => {
-              try {
-                assert.equal(catalogLabel, text, 'The Catalog drawer is not displayed');
-              } catch (err) {
-                done(err);
-              }
-            });
-        });
-    } else {
-      console.log('	ERROR: The Catalog icon is not in the menu.');
-    }
+  navCatalog(done, expected) {
+    client.click(landingPage.helpers.productIcon)
+      .then (() => {
+        client.getText(catalog.helpers.catalogMenuTitle)
+          .then((text) => {
+            try {
+              assert.equal(expected, text, 'The expected value was not equal to the actual value');
+            } catch (err) {
+              done(err);
+            }
+          });
+      });
+   done();
   },
 
   navDashboard(done) {

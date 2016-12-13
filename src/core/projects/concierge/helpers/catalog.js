@@ -15,47 +15,29 @@ const $ = require('chai-Jquery');
 
 
 module.exports = {
-  LeftDrawer(done, catalogLabel) {
-    if (client.isVisible(catalog.helpers.productCategories.newArrivals, done)) {
-      if (catalogLabel == 'New Arrivals')
-      {
-        client.click(catalog.helpers.productCategories.newArrivals)
-          .then (() => {
-            client.getText(catalog.helpers.productCategories.newArrivals)
-              .then((text) => {
-                try {
-                  assert.equal(catalogLabel, text, 'The New Arrivals page is not displayed');
-                } catch (err) {
-                  done(err);
-                }
-              });
-          });
-      }
-      else if (catalogLabel == 'Shoes')
-      {
-        client.click(catalog.helpers.productCategories.shoes)
-      }
-      else if (catalogLabel == 'Flats')
-      {
-        client.click(catalog.helpers.productCategories.flats)
-          .then (() => {
-            client.getText(catalog.helpers.productCategories.flats)
-              .then((text) => {
-                try {
-                  assert.equal(catalogLabel, text, 'The Flats page is not displayed');
-                } catch (err) {
-                  done(err);
-                }
-              });
-          });
-      }
-      else
-      {
-        console.log('	ERROR: The New Arrivals or Shoes icon is not in the menu.');
-      }
-    } else {
-      console.log('	ERROR: The New Arrivals or Shoes icon is not in the menu.');
-    }
+  LeftDrawer(done, expected, catalogLabel, results) {
+   client.isVisible(catalog.helpers.productCategories[results])
+     .then(function (isVisible) {
+       try {
+         assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
+       } catch (err) {
+         done(err);
+       }
+       if (isVisible == true) {
+         client.click(catalog.helpers.productCategories[results])
+           .then (() => {
+             client.getText(catalog.helpers.productCategories[results])
+               .then((text) => {
+                 try {
+                   assert.equal(catalogLabel, text, 'The page is not displayed');
+                 } catch (err) {
+                   done(err);
+                 }
+               });
+           });
+       }
+     })
+     done();
   },
 
   openProductDetailsPage(done,expected,results) {

@@ -9,7 +9,7 @@ exports.client = require('webdriverio').remote({
     platformVersion: '9.3',
     deviceName: 'Mad Mobile Mini iPad',
     udid: '6bbbd889caeed808c71677e5bd5f1c7f764eaddd',
-    automationName: 'XCUITest',
+    //automationName: 'XCUITest',
     autoWebview: true,
    // realDeviceLogger: '/Users/jharre/.nvm/versions/node/v6.6.0/lib/node_modules/deviceconsole/deviceconsole'
 //    platformVersion: '9.3.2',

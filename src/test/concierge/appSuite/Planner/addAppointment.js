@@ -6,10 +6,10 @@
  * Date:        11/1/2016
  */
 
-const common = require('../../../core/projects/concierge/helpers/common');
-const login = require('../../../core/projects/concierge/helpers/loginPage');
-const landing = require('../../../core/projects/concierge/helpers/landingPage');
-const planner = require('../../../core/projects/concierge/helpers/planner');
+const common = require('../../../../core/projects/concierge/helpers/common');
+const login = require('../../../../core/projects/concierge/helpers/loginPage');
+const landing = require('../../../../core/projects/concierge/helpers/landingPage');
+const planner = require('../../../../core/projects/concierge/helpers/planner');
 
 //let CUSTOMERNAME;
 //const setName = (name) => CUSTOMERNAME = name;
@@ -50,7 +50,7 @@ describe('Smoke Test: Add Appointment', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 2 seconds', (done) => {
+    it('Should pause the test for 10 seconds', (done) => {
       common.pause(done, 10000);
     });
   });
@@ -61,8 +61,8 @@ describe('Smoke Test: Add Appointment', () => {
     });
   });
   describe('Pausing', () => {
-    it('Should pause the test for 2 seconds', (done) => {
-      common.pause(done, 7500);
+    it('Should pause the test for 8 seconds', (done) => {
+      common.pause(done, 8000);
     });
   });
 
@@ -85,8 +85,8 @@ describe('Smoke Test: Add Appointment', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 3 seconds', (done) => {
-      common.pause(done, 3000);
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 5000);
     });
   });
   describe('Add Priority', () => {
@@ -96,8 +96,8 @@ describe('Smoke Test: Add Appointment', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 3 seconds', (done) => {
-      common.pause(done, 3000);
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 5000);
     });
   });
   describe('Save the Task', () => {
@@ -117,13 +117,13 @@ describe('Smoke Test: Add Appointment', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 2 seconds', (done) => {
+    it('Should pause the test for 5 seconds', (done) => {
       common.pause(done, 5000);
     });
   });
   describe('Logout', () => {
     it('Should logout the current user', (done) => {
-      login.logoutUser(done, true);
+      login.logoutUser(done, true, true);
     });
   });
   describe('Test Completed: Cleaning up', () => {

@@ -44,7 +44,7 @@ module.exports = {
           done(err);
         }
         if (isVisible == true) {
-          client.setByValue(planner.helpers[selector], value)
+          client.selectByValue(planner.helpers[selector], value)
         }
       })
     done();
@@ -102,7 +102,7 @@ module.exports = {
   },
 
   save(done, expected) {
-  client.isVisible(planner.helpers.saveButton)
+  client.isVisible(planner.helpers.save)
     .then(function (isVisible) {
       try {
         assert.equal(expected, isVisible, 'The expected value was not equal to the text');
@@ -110,7 +110,7 @@ module.exports = {
         done(err);
       }
       if (isVisible == true) {
-        client.click(planner.helpers.saveButton)
+        client.click(planner.helpers.save)
         }
     })
   done();

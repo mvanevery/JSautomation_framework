@@ -2,8 +2,6 @@
  * Created by mvanevery on 10/10/16.
  */
 
-//import CUSTOMERNAME from '../../../../test/concierge/appSuite/Planner/addAppointment.js';
-
 module.exports = {
   routes: {
     baseUrl: 'localhost:3000/'
@@ -13,10 +11,11 @@ module.exports = {
     pageHeader: '//div[@data-id="pageHeader"]',
     addButton: '//div[@class="mm-o-icon icon-plus"]',
     yesButton:'//div[contains(text(),"Yes")]',
+    //  yesButton:'//button[@data-id="Confirm"]',
     cancel: '//button[@data-id="cancel"]',
-    Discard:'//div[contains(text(),"Discard")]',
-    continueEdit:'//div[contains(text(),"Continue Editing")]',
-    Save:'//button[@data-id="done]',
+    Discard:'//button[@data-id="Discard"]',
+    continueEdit:'//button[@data-id="Continue"]',
+    save:'//button[@data-id="done"]',
     modalHeader:'//div[@data-id="modalHeader"]',
     modalType: '//select[@name="type"]',
     modalSubject: '//input[@name="subject"]',

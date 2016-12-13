@@ -17,13 +17,13 @@ describe('Smoke Test: Add Task', () => {
 
   describe('Verify Login Screen', () => {
     it('Should navigate to the login screen', (done) => {
-      login.verifyLoginScreen(done);
+      login.verifyLoginScreen(done, true);
     });
   });
 
   describe('Login', () => {
     it('Should login as "testauto"', (done) => {
-      login.loginUser(done, 'testauto', 'qaUser@123');
+      login.loginUser(done, true, 'testauto', 'qaUser@123');
     });
   });
 
@@ -46,73 +46,73 @@ describe('Smoke Test: Add Task', () => {
   });
 
   describe('Change the type and Open Task Form', () => {
-    it('Should open the appointment form from the Planner', (done) => {
-      planner.taskToggle(done, "Create Task");
+    it('Should open the task form from the Planner', (done) => {
+      planner.taskToggle(done, true, "Create Task");
     });
   });
   describe('Pausing', () => {
-    it('Should pause the test for 2 seconds', (done) => {
-      common.pause(done, 7500);
+    it('Should pause the test for 8 seconds', (done) => {
+      common.pause(done, 800);
     });
   });
 
   describe('Add Subject', () => {
     it('Should add a subject to the Subject field', (done) => {
-      planner.addSubject(done, 'Automation Test Task');
+      planner.enterValue(done, true, 'modalSubject', 'Automation Test Task');
     });
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 2 seconds', (done) => {
-      common.pause(done, 2000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
   describe('Add Status', () => {
     it('Should add a status to the Status field', (done) => {
-      planner.addStatus(done, 'INPROGRESS');
+      planner.selectValue(done, true, 'modalStatus', 'INPROGRESS');
     });
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 2 seconds', (done) => {
+    it('Should pause the test for 4 seconds', (done) => {
       common.pause(done, 4000);
     });
   });
   describe('Add Priority', () => {
     it('Should add priority to the Priority field', (done) => {
-      planner.addPriority(done, 'MEDIUM');
+      planner.selectValue(done, true, 'modalPriority', 'MEDIUM');
     });
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 2 seconds', (done) => {
-      common.pause(done, 2000);
+    it('Should pause the test for 4 seconds', (done) => {
+      common.pause(done, 4000);
     });
   });
   describe('Save the Task', () => {
     it('Should click the DONE button ', (done) => {
-      planner.save(done);
+      planner.save(done, true);
     });
   });
   describe('Pausing', () => {
-    it('Should pause the test for 2 seconds', (done) => {
-      common.pause(done, 2000);
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 5000);
     });
   });
   describe('Verify Added Task', () => {
     it('Should verify that the Task is displayed on Planner Page', (done) => {
-      planner.verifyAddedTask(done, 'Automation Test Task');
+      planner.verifyAddedTask(done, true, 'Automation Test Task');
     });
   });
   describe('Pausing', () => {
-    it('Should pause the test for 2 seconds', (done) => {
-      common.pause(done, 2000);
+    it('Should pause the test for 4 seconds', (done) => {
+      common.pause(done, 4000);
     });
   });
   describe('Delete the Task', () => {
     it('Should click the DONE button and remove the task ', (done) => {
-      planner.deleteTask(done);
+      planner.deleteTask(done, true);
     });
   });
   describe('Pausing', () => {
@@ -122,12 +122,12 @@ describe('Smoke Test: Add Task', () => {
   });
   describe('Logout', () => {
     it('Should Logout from the current user', (done) => {
-      login.logoutUser(done);
+      login.logoutUser(done, true, true);
     });
   });
-  describe('Pausing', () => {
-    it('Should pause the test for 2 seconds', (done) => {
-      common.pause(done, 2000);
+  describe('Test Completed: Cleaning up', () => {
+    it('Should pause the test for 10 seconds', (done) => {
+      common.pause(done, 10000);
     });
   });
 })

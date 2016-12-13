@@ -13,7 +13,7 @@ module.exports = {
       txt_customerName:     '//div[@class="name"]',
       txt_cardInfo:         '//div[@class="card-info"]',
 
-      //txt_noResults:        '//p[@class="no-results"]',
-      txt_noResults:        '//h1[contains(text(),"No Results")]',
+      txt_noResults:        '//section[@class="page-header"[contains(text(),"No Results")]]',
+      //txt_noResults:        '//h1[contains(text(),"No Results")]',
     },
 }

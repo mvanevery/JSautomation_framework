@@ -20,8 +20,11 @@ module.exports = {
         readLessLink: '//div[contains(text(),"read less")]'
       },
       variants: {
-        size:  '//div[@data-id="PDPVariantDefaultValue"]',
-        sizeValue:  'color: rgb(255, 48, 59)'
+        colorVariant:  '//div[@data-id="Color"]',
+        saleColorVariant:  '//div[@data-id="Sale Color"]',
+        defaultVariant:  '//div[@data-id="Size Type"]',
+        sizeVariant:  '//div[@data-id="Size"]',
+        variantSelectedValue:  'color: rgb(255, 48, 59)',
       }
   }
 }

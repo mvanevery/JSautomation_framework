@@ -14,9 +14,6 @@ const blackbook = require('../../../../core/projects/concierge/helpers/blackbook
 const landing = require('../../../../core/projects/concierge/helpers/landingPage');
 
 
-//export let CUSTOMERNAME;
-//const setName = (name) => CUSTOMERNAME = name;
-
 describe('Smoke Test: Verify Search Fields Displayed', () => {
   before((done) => {
     common.goTo(done);
@@ -25,6 +22,12 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
   describe('Verify Login Screen', () => {
     it('Should navigate to the login screen', (done) => {
       login.verifyLoginScreen(done, true);
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
@@ -137,7 +140,7 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
 
   describe('Logout', () => {
     it('Should logout the current user', (done) => {
-      login.logoutUser(done, true);
+      login.logoutUser(done, true, true);
     });
   });
 

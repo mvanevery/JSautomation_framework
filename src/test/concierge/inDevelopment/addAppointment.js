@@ -68,51 +68,51 @@ describe('Smoke Test: Add Appointment', () => {
 
   describe('Add Subject', () => {
     it('Should add a subject to the Subject field', (done) => {
-      planner.addSubject(done, 'Automation Test Appointment');
+      planner.enterValue(done, true, "modalSubject", 'Automation Test Appointment');
     });
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 2 seconds', (done) => {
-      common.pause(done, 2000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
   describe('Add Status', () => {
     it('Should add a status to the Status field', (done) => {
-      planner.addStatus(done, 'INPROGRESS');
+      planner.selectValue(done, true, "modalStatus", 'INPROGRESS');
     });
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 2 seconds', (done) => {
-      common.pause(done, 2000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
   describe('Add Priority', () => {
     it('Should add priority to the Priority field', (done) => {
-      planner.addPriority(done, 'MEDIUM');
+      planner.selectValue(done, true, "modalPriority", 'MEDIUM');
     });
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 2 seconds', (done) => {
-      common.pause(done, 2000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
   describe('Save the Task', () => {
     it('Should click the DONE button ', (done) => {
-      planner.save(done);
+      planner.save(done, true);
     });
   });
   describe('Pausing', () => {
-    it('Should pause the test for 2 seconds', (done) => {
-      common.pause(done, 2000);
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 5000);
     });
   });
   describe('Verify Added Appointment', () => {
     it('Should verify that the Appointment is displayed on Planner Page', (done) => {
-      planner.verifyAddedAppt(done, 'Automation Test Appointment');
+      planner.verifyAddedAppt(done, true, 'Automation Test Appointment');
     });
   });
 

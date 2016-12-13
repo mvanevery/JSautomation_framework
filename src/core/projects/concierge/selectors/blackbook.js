@@ -28,17 +28,17 @@ module.exports = {
 
 //================================================== Add Customer Modal ================================================
 
-      searchResults:`//div[@data-id="cardName-0"]`,
+      searchResults:'//div[@data-id="cardName-0"]',
       modalHeader:'//div[@data-id="modalHeader"]',
       firstNameModal:'//input[@data-id="firstNameAddModal"]',
       lastNameModal:'//input[@data-id="lastNameAddModal"]',
       addPhoneModal:'//button[@data-id="addPhone"]',
       phoneModal:'//input[@data-id="modalPhone"]',
-      phoneToggleModal:'//input[@data-id=primaryTogglePhone"]',
+      phoneToggleModal:'//input[@data-id="primaryTogglePhone"]',
       phoneTypeModal:'//select[@data-id="phoneType"]',
       addEmailModal:'//button[@data-id="addEmail"]',
       emailModal:'//input[@data-id="modalEmail"]',
-      emailToggleModal:'//input[@data-id=primaryToggleEmail"]',
+      emailToggleModal:'//input[@data-id="primaryToggleEmail"]',
       emailTypeModal:'//select[@data-id="emailType"]',
       addAddressModal:'//button[@data-id="addAddress"]',
       street1Modal:'//input[@data-id="modalStreet1"]',
@@ -57,8 +57,8 @@ module.exports = {
       //================================================== CUSTOMER PROFILE ============================================
 
       customerName: '//div[@data-id="contactFullName"]',
-      editIcon:'//div[@data-id="editCustomer"]',
-      emailIcon: '//div[@data-id="email"]',
+      editIcon:'//button[@data-id="editCustomer"]',
+      emailIcon: '//button[@data-id="email"]',
       blankEmailIcon: '//div[@class=:mm-o-icon icon-blank-template"]',
       birthdayEmailIcon: '',
 

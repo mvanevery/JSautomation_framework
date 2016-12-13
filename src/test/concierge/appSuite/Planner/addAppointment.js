@@ -112,7 +112,7 @@ describe('Smoke Test: Add Appointment', () => {
   });
   describe('Verify Added Appointment', () => {
     it('Should verify that the Appointment is displayed on Planner Page', (done) => {
-      planner.verifyAddedAppt(done, true, 'Automation Test Appointment');
+      planner.verifyAddedTaskAppt(done, true, 'Automation Test Appointment');
     });
   });
 

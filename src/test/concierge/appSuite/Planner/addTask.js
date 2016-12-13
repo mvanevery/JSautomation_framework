@@ -21,6 +21,12 @@ describe('Smoke Test: Add Task', () => {
     });
   });
 
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 5000);
+    });
+  });
+
   describe('Login', () => {
     it('Should login as "testauto"', (done) => {
       login.loginUser(done, true, 'testauto', 'qaUser@123');
@@ -52,7 +58,7 @@ describe('Smoke Test: Add Task', () => {
   });
   describe('Pausing', () => {
     it('Should pause the test for 8 seconds', (done) => {
-      common.pause(done, 800);
+      common.pause(done, 8000);
     });
   });
 
@@ -102,7 +108,7 @@ describe('Smoke Test: Add Task', () => {
   });
   describe('Verify Added Task', () => {
     it('Should verify that the Task is displayed on Planner Page', (done) => {
-      planner.verifyAddedTask(done, true, 'Automation Test Task');
+      planner.verifyAddedTaskAppt(done, true, 'Automation Test Task');
     });
   });
   describe('Pausing', () => {

@@ -65,6 +65,24 @@ module.exports = {
     done()
   },
 
+  // landing.navigateTree(done, "catalogDefaultCategory", "New Arrivals");
+  navigateTree(done, selector, expected) {
+//  console.log(selector);
+//  console.log(expected);
+   client.getText(landingPage.helpers.catalog[selector])
+     .then((text) => {
+//       console.log(landingPage.helpers.catalog[selector]);
+//       console.log(text);
+       try {
+         assert.equal(expected, text, 'The page is not displayed');
+       } catch (err) {
+         done(err);
+       }
+     });
+    done()
+  },
+
+
   navPlanner(done, expected) {
     if(client.isVisible(landingPage.helpers.plannerIcon, done)) {
       client.click(landingPage.helpers.plannerIcon)

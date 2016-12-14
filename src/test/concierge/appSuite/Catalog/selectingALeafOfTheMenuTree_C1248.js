@@ -1,6 +1,6 @@
 /**
  * Project:     Concierge
- * TestName     Catalog/selectALeafOfTheMenuTree_C1248
+ * TestName     Catalog/selectingALeafOfTheMenuTree_C1248
  * TestSteps:   https://madmobile.testrail.com/index.php?/cases/view/1248
  * Author:      John Harre
  * Date:        11/21/2016
@@ -63,4 +63,41 @@ describe('Smoke Test: C1248 Selecting A Leaf Of The Menu Tree.', () => {
       common.pause(done, 5000);
     });
   });
+
+  describe('Navigate through branches of the product catalog categories until you come to the leaves of a category branch.', () => {
+  it('A list of menu items with children display.', (done) => {
+      landing.navigateTree(done, "catalogDefaultCategory", "New Arrivals");
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 5000);
+    });
+  });
+
+  describe('Navigate through branches of the product catalog categories until you come to the leaves of a category branch.', () => {
+    it('Product catalog menu icon is in active state.', (done) => {
+      landing.navigateActiveIcons(done, "catalogMenuIcon", "catalogMenuIconActive",  "-1");
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 5000);
+    });
+  });
+
+  describe('Logout', () => {
+    it('Should logout the current user', (done) => {
+      login.logoutUser(done, true, true);
+    });
+  });
+
+  describe('Pausing', () => {
+   it('Should pause the test for 5 seconds', (done) => {
+     common.pause(done, 5000);
+   });
+  });
+
 })

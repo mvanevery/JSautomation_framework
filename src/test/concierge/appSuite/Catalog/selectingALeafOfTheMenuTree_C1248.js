@@ -16,64 +16,51 @@ describe('Smoke Test: C1248 Selecting A Leaf Of The Menu Tree.', () => {
     common.goTo(done);
   });
 
-  describe('Verify Login Screen', () => {
-    it('Should navigate to the login screen', (done) => {
+  describe('Verify Login Screen.', () => {
+    it('Should navigate to the login screen.', (done) => {
       login.verifyLoginScreen(done, true);
     });
   });
 
-  describe('Pausing', () => {
-    it('Should pause the test for 10 seconds', (done) => {
-      common.pause(done, 10000);
-    });
-  });
-
-  describe('Login', () => {
-    it('Should login as "testauto"', (done) => {
-      login.loginUser(done, true, 'testauto', 'qaUser@123');
-    });
-  });
-
-  describe('Pausing', () => {
-    it('Should pause the test for 10 seconds', (done) => {
-      common.pause(done, 10000);
-    });
-  });
-
-  describe('Click the Catalog menu option', () => {
-    it('Should open Catalog section', (done) => {
-      landing.navCatalog(done, "Catalog");
-    });
-  });
-
-  describe('Pausing', () => {
-    it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done, 5000);
-    });
-  });
-
-  describe('Click the New Arrivals menu option', () => {
-    it('Should open New Arrivals section', (done) => {
-      catalog.LeftDrawer(done, true, "New Arrivals", "newArrivals");
-    });
-  });
-
-  describe('Pausing', () => {
-    it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done, 5000);
-    });
-  });
-
-  describe('Logout.', () => {
-    it('Should logout the current user.', (done) => {
-      login.logoutUser(done, true, true);
-    });
-  });
-
-  describe('Test Completed: Cleaning up.', () => {
+  describe('Pausing.', () => {
     it('Should pause the test for 10 seconds.', (done) => {
       common.pause(done, 10000);
     });
   });
 
+  describe('Login.', () => {
+    it('Should login as "testauto".', (done) => {
+      login.loginUser(done, true, 'testauto', 'qaUser@123');
+    });
+  });
+
+  describe('Pausing.', () => {
+    it('Should pause the test for 10 seconds.', (done) => {
+      common.pause(done, 10000);
+    });
+  });
+
+  describe('Click on the product catalog menu icon in the left navigation bar.', () => {
+    it('Product catalog menu drawer opens and a list of product categories is displayed.', (done) => {
+      landing.navigateIcons(done, "catalogMenuIcon", true);
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 5000);
+    });
+  });
+
+  describe('Click on the product catalog menu icon in the left navigation bar.', () => {
+    it('Product catalog menu icon is in active state.', (done) => {
+      landing.navigateActiveIcons(done, "catalogMenuIcon", "catalogMenuIconActive",  "-1");
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 5000);
+    });
+  });
 })

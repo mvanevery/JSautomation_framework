@@ -7,8 +7,10 @@ module.exports = {
     baseUrl: 'localhost:3000/'
   },
   helpers: {
-      catalogMenuTitle: '//div[contains(text(),"Catalog")]',
-      catalogBackBtn: '//div[@data-id="catalogBackBtn"]',
+      catalog: {
+        catalogMenuTitle: '//div[contains(text(),"Catalog")]',
+        catalogBackBtn: '//div[@data-id="catalogBackBtn"]',
+      },
       productCategories: {
         newArrivals: '//div[contains(text(),"New Arrivals")]',
         shoes: '//div[contains(text(),"Shoes")]',

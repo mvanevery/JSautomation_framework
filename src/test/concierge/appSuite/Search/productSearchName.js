@@ -1,9 +1,5 @@
 /**
  * Created by mvanevery on 11/23/16.
- */
-
-/**
- * Created by mvanevery on 11/23/16.
  * Project:     Concierge
  * Test Name:   productSearchName
  * Test Steps:  https://madmobile.testrail.com/index.php?/cases/view/178

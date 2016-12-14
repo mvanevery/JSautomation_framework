@@ -437,16 +437,26 @@ module.exports = {
         })
   },
 
-  verifyPhoneDisplayed(done, expected) {
-    if(client.isVisible(blackbook.helpers.phone, done))
-      client.getAttribute(blackbook.helpers.phone, 'name')
-        .then((text) => {
-          try {
-            assert.equal(expected, text, 'The expected value was not equal to the text');
-          } catch (err) {
-            done(err);
-          }
-        })
+  verifyCustomerPhone(done, expected) {
+    client.isVisible(blackbook.helpers.customerPhone)
+      .then(function(isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the text');
+        } catch (err) {
+          done(err);
+        }
+        if (isVisible == true) {
+          client.getText(blackbook.helpers.customerPhone)
+            .then((text) => {
+              try {
+                assert.equal(value, text, 'The expected value was not equal to the text');
+              } catch (err) {
+                done(err);
+              }
+            })
+        }
+      })
+    done();
   },
 
   verifyEmailDisplayed(done, expected) {

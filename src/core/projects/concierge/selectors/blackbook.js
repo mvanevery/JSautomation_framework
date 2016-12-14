@@ -2,8 +2,6 @@
  * Created by mvanevery on 8/31/16.
  */
 
-//import CUSTOMERNAME from '../../../../test/concierge/appSuite/Email/sendEmail_C1638';
-
 module.exports = {
     routes: {
         baseUrl: 'localhost:3000/'
@@ -60,7 +58,7 @@ module.exports = {
       editIcon:'//button[@data-id="editCustomer"]',
       emailIcon: '//button[@data-id="email"]',
       blankEmailIcon: '//div[@class=:mm-o-icon icon-blank-template"]',
-      birthdayEmailIcon: '',
+      birthdayEmailIcon: ''
 
 
 

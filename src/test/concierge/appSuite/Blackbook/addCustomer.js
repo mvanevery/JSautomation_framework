@@ -1,4 +1,8 @@
-
+/**
+ * Project:     Concierge
+ * Test Name:   addCustomer
+ * Author:      Mike Van Every
+ */
 
 const common = require('../../../../core/projects/concierge/helpers/common');
 const login = require('../../../../core/projects/concierge/helpers/loginPage');

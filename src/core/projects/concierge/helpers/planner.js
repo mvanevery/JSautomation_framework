@@ -44,7 +44,7 @@ module.exports = {
           done(err);
         }
         if (isVisible == true) {
-          client.setByValue(planner.helpers[selector], value)
+          client.selectByValue(planner.helpers[selector], value)
         }
       })
     done();
@@ -102,7 +102,7 @@ module.exports = {
   },
 
   save(done, expected) {
-  client.isVisible(planner.helpers.saveButton)
+  client.isVisible(planner.helpers.save)
     .then(function (isVisible) {
       try {
         assert.equal(expected, isVisible, 'The expected value was not equal to the text');
@@ -110,7 +110,7 @@ module.exports = {
         done(err);
       }
       if (isVisible == true) {
-        client.click(planner.helpers.saveButton)
+        client.click(planner.helpers.save)
         }
     })
   done();
@@ -188,7 +188,7 @@ module.exports = {
     done();
   },
 
-  verifyAddedTask(done, expected, value) {
+  verifyAddedTaskAppt(done, expected, value) {
     client.isVisible(planner.helpers.pageHeader)
       .then(function (isVisible) {
         try {
@@ -197,30 +197,7 @@ module.exports = {
           done(err);
         }
         if (isVisible == true) {
-          client.getText(planner.helpers.addedTaskTitle)
-            .then((text) => {
-              try {
-                assert.equal(value, text, 'The expected value was not equal to the text');
-              } catch (err) {
-                done(err);
-              }
-            })
-        }
-      })
-    done();
-  },
-
-
-  verifyAddedAppt(done, expected, value) {
-    client.isVisible(planner.helpers.pageHeader)
-      .then(function (isVisible) {
-        try {
-          assert.equal(expected, isVisible, 'The expected value was not equal to the text');
-        } catch (err) {
-          done(err);
-        }
-        if (isVisible == true) {
-          client.getText(planner.helpers.addedApptTitle)
+          client.getText(planner.helpers.taskApptsName)
             .then((text) => {
               try {
                 assert.equal(value, text, 'The expected value was not equal to the text');
@@ -234,7 +211,7 @@ module.exports = {
   },
 
   deleteTask(done, expected) {
-    client.isVisible(planner.helpers.addedTaskTitle)
+    client.isVisible(planner.helpers.taskApptsName)
       .then(function (isVisible) {
         try {
           assert.equal(expected, isVisible, 'The expected value was not equal to the text');

@@ -2,8 +2,6 @@
  * Created by mvanevery on 10/10/16.
  */
 
-//import CUSTOMERNAME from '../../../../test/concierge/appSuite/Planner/addAppointment.js';
-
 module.exports = {
   routes: {
     baseUrl: 'localhost:3000/'
@@ -12,11 +10,12 @@ module.exports = {
     //===================================== GLOBAL ================================
     pageHeader: '//div[@data-id="pageHeader"]',
     addButton: '//div[@class="mm-o-icon icon-plus"]',
+    //addButton: '//button[@data-id="apptTasks-add"]',
     yesButton:'//div[contains(text(),"Yes")]',
     cancel: '//button[@data-id="cancel"]',
-    Discard:'//div[contains(text(),"Discard")]',
-    continueEdit:'//div[contains(text(),"Continue Editing")]',
-    Save:'//button[@data-id="done]',
+    discard:'//button[@data-id="Discard"]',
+    continueEdit:'//button[@data-id="Continue"]',
+    save:'//button[@data-id="done"]',
     modalHeader:'//div[@data-id="modalHeader"]',
     modalType: '//select[@name="type"]',
     modalSubject: '//input[@name="subject"]',
@@ -28,6 +27,7 @@ module.exports = {
     backMonth:'//div[@class="mm-o-icon icon-planner-arrow-left"]',
     calendarMonth:'div > div > div > span',
     taskApptsName: '//div[@data-id="taskApptsName]',
+    editApptTask:'//button[@data-id="apptTask-edit"]',
 
     //============================================= TASK ==================================
     taskAddition:'a > button[type="button"]',
@@ -35,7 +35,8 @@ module.exports = {
     taskTitle: '//div[contains(text(),"Create Task")]',
     taskToggleSwitch:'//div[contains(text(),"Task")]',
     addedTaskTitle: '//div[contains(text(),"Automation Test Task")]',
-    removeTask:'//div[contains(text(),"Done")]',
+    removeTask:'//button[@data-id="apptTask-delete"]',
+    yesButton:'//button[@data-id="Confirm"]',
 
     //=========================================== APPOINTMENT ==============================
     apptAddition:'//button[@type="button"])[5]',

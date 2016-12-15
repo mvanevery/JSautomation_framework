@@ -12,6 +12,7 @@ const landing = require('../../../../core/projects/concierge/helpers/landingPage
 const catalog = require('../../../../core/projects/concierge/helpers/catalog');
 
 describe('Smoke Test: C1249 Opening and Closing Functionality', () => {
+
   before((done) => {
     common.goTo(done);
   });
@@ -30,56 +31,56 @@ describe('Smoke Test: C1249 Opening and Closing Functionality', () => {
 
   describe('Pausing', () => {
     it('Should pause the test for 10 seconds', (done) => {
-      common.pause(done, 10000);
+      common.pause(done, 1500);
     });
   });
 
-  describe('Click the Catalog menu option', () => {
-    it('Should open Catalog section', (done) => {
-      landing.navCatalog(done, "Catalog");
-    });
-  });
-
-  describe('Pausing', () => {
-    it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done, 5000);
-    });
-  });
-
-  describe('Click the Overlay', () => {
-    it('Should close Catalog Left Drawer.', (done) => {
-      catalog.leftDrawerOverlay(done);
+  describe('Click the product catalog menu icon in the left navigation bar.', () => {
+    it('Product catalog menu drawer pops open and a list of categories is displayed. ', (done) => {
+      landing.navigateIcons(done, "catalogMenuIcon", true);
     });
   });
 
   describe('Pausing', () => {
     it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done, 5000);
+      common.pause(done, 2500);
     });
   });
 
-  describe('Check if Catalog Left Drawer is still open.', () => {
-    it('Catalog Left drawer should be closed.', (done) => {
-      catalog.leftDrawerOverlayCheck(done, false);
+  describe('Click the product catalog menu icon in the left navigation bar.', () => {
+    it('Product catalog menu icon is in active state.', (done) => {
+      landing.navigateActiveIcons(done, "catalogMenuIcon", "catalogMenuIconActive",  "-1");
     });
   });
 
   describe('Pausing', () => {
     it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done, 5000);
+      common.pause(done, 1500);
     });
   });
 
-  describe('Logout', () => {
-    it('Should logout the current user', (done) => {
-      login.logoutUser(done, true, true);
-    });
-  });
+//  describe('Click the product catalog menu icon in the left navigation bar.', () => {
+//    it('Product catalog menu drawer closes.', (done) => {
+//      landing.navigateIcons(done, "catalogMenuIcon", true);
+//    });
+//  });
+//
+//  describe('Pausing', () => {
+//    it('Should pause the test for 5 seconds', (done) => {
+//      common.pause(done, 2500);
+//    });
+//  });
 
-  describe('Test Completed: Cleaning up', () => {
-    it('Should pause the test for 10 seconds', (done) => {
-      common.pause(done, 10000);
-    });
-  });
+//  describe('Click the product catalog menu icon in the left navigation bar.', () => {
+//    it('The product catalog menu icon is again in inactive state.', (done) => {
+//      landing.navigateActiveIcons(done, "catalogMenuIcon", "catalogMenuIconActive",  "-1");
+//    });
+//  });
+//
+//  describe('Pausing', () => {
+//    it('Should pause the test for 5 seconds', (done) => {
+//      common.pause(done, 1500);
+//    });
+//  });
 
 })

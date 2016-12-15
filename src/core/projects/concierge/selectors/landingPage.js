@@ -26,7 +26,7 @@ module.exports = {
         catalog:
           {
             catalogMenuIcon: '//div[@data-id="catalog"]',
-            catalogMenuIconActive:  'color: inherit',
+            catalogMenuIconActive:  'color: rgb(255, 255, 255)',
             catalogMenuTitle: '//div[contains(text(),"Catalog")]',
             catalogClickCategory: '//div[contains(text(),"New Arrivals")]'
           }

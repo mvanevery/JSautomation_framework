@@ -1,6 +1,6 @@
 /**
  * Project:     Concierge
- * TestName     Catalog/selectALeafOfTheMenuTree_C1248
+ * TestName     Catalog/selectingALeafOfTheMenuTree_C1248
  * TestSteps:   https://madmobile.testrail.com/index.php?/cases/view/1248
  * Author:      John Harre
  * Date:        11/21/2016

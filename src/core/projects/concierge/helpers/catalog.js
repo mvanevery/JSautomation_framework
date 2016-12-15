@@ -15,51 +15,10 @@ const $ = require('chai-Jquery');
 
 
 module.exports = {
-  LeftDrawer(done, catalogLabel) {
-    if (client.isVisible(catalog.helpers.productCategories.newArrivals, done)) {
-      if (catalogLabel == 'New Arrivals')
-      {
-        client.click(catalog.helpers.productCategories.newArrivals)
-          .then (() => {
-            client.getText(catalog.helpers.productCategories.newArrivals)
-              .then((text) => {
-                try {
-                  assert.equal(catalogLabel, text, 'The New Arrivals page is not displayed');
-                } catch (err) {
-                  done(err);
-                }
-              });
-          });
-      }
-      else if (catalogLabel == 'Shoes')
-      {
-        client.click(catalog.helpers.productCategories.shoes)
-      }
-      else if (catalogLabel == 'Flats')
-      {
-        client.click(catalog.helpers.productCategories.flats)
-          .then (() => {
-            client.getText(catalog.helpers.productCategories.flats)
-              .then((text) => {
-                try {
-                  assert.equal(catalogLabel, text, 'The Flats page is not displayed');
-                } catch (err) {
-                  done(err);
-                }
-              });
-          });
-      }
-      else
-      {
-        console.log('	ERROR: The New Arrivals or Shoes icon is not in the menu.');
-      }
-    } else {
-      console.log('	ERROR: The New Arrivals or Shoes icon is not in the menu.');
-    }
-  },
 
-  openProductDetailsPage(done,expected,results) {
-     client.isVisible(catalog.helpers.products[results])
+  // catalog.navigateProducts(done, "hollyTartPlaidScarf", true);
+  navigateProducts(done,selector,expected) {
+     client.isVisible(catalog.helpers.products[selector])
        .then(function (isVisible) {
          try {
            assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
@@ -67,7 +26,7 @@ module.exports = {
            done(err);
          }
          if (isVisible == true) {
-           client.click(catalog.helpers.products[results])
+           client.click(catalog.helpers.products[selector])
          }
        })
      done();
@@ -150,4 +109,5 @@ module.exports = {
       });
     done();
   }
+
 }

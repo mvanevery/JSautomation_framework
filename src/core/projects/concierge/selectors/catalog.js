@@ -8,7 +8,6 @@ module.exports = {
   },
   helpers: {
       catalog: {
-        catalogMenuTitle: '//div[contains(text(),"Catalog")]',
         catalogBackBtn: '//div[@data-id="catalogBackBtn"]',
       },
       productCategories: {
@@ -17,7 +16,7 @@ module.exports = {
         flats: '//div[contains(text(),"Flats")]',
       },
       products: {
-        francescaDrivingFlatsSuede: '//div[contains(text(),"Francesca Driving Flats-Suede")]',
+        hollyTartPlaidScarf: '//div[contains(text(),"Holly Tartan Plaid Scarf")]',
         readMoreLink: '//button[@data-id="readMoreLink"]',
         readLessLink: '//div[contains(text(),"read less")]'
       },

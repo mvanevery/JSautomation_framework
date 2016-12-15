@@ -27,7 +27,8 @@ module.exports = {
           {
             catalogMenuIcon: '//div[@data-id="catalog"]',
             catalogMenuIconActive:  'color: inherit',
-            catalogDefaultCategory: '//div[contains(text(),"New Arrivals")]'
+            catalogMenuTitle: '//div[contains(text(),"Catalog")]',
+            catalogClickCategory: '//div[contains(text(),"New Arrivals")]'
           }
     }
 }

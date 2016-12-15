@@ -67,21 +67,31 @@ module.exports = {
 
   // landing.navigateTree(done, "catalogDefaultCategory", "New Arrivals");
   navigateTree(done, selector, expected) {
-//  console.log(selector);
-//  console.log(expected);
-   client.getText(landingPage.helpers.catalog[selector])
-     .then((text) => {
-//       console.log(landingPage.helpers.catalog[selector]);
-//       console.log(text);
-       try {
-         assert.equal(expected, text, 'The page is not displayed');
-       } catch (err) {
-         done(err);
-       }
-     });
-    done()
+       client.isVisible(landingPage.helpers.catalog[selector])
+         .then(function(isVisible) {
+           try {
+             assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
+           }  catch (err) {
+             done(err)
+           }
+       })
+       done()
   },
 
+// navigateActiveTree(done, selector, expected) {
+//    client.isVisible(landingPage.helpers.catalog[selector])
+//      .then(function(isVisible) {
+//        try {
+//          assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
+//        }  catch (err) {
+//          done(err)
+//        }
+//        if(isVisible == true) {
+//          client.click(landingPage.helpers.catalog[selector]);
+//        }
+//    })
+//    done()
+// },
 
   navPlanner(done, expected) {
     if(client.isVisible(landingPage.helpers.plannerIcon, done)) {

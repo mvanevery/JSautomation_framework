@@ -66,7 +66,7 @@ describe('Smoke Test: C1248 Selecting A Leaf Of The Menu Tree.', () => {
 
   describe('Navigate through branches of the product catalog categories until you come to the leaves of a category branch.', () => {
   it('A list of menu items with children display.', (done) => {
-      landing.navigateTree(done, "catalogMenuTitle", false);
+      landing.navigateTree(done, "catalogMenuTitle", true);
     });
   });
 
@@ -102,7 +102,7 @@ describe('Smoke Test: C1248 Selecting A Leaf Of The Menu Tree.', () => {
 
   describe('Click on one of the leaves of the product catalog menu tree.', () => {
   it('The product catalog menu drawer closes.', (done) => {
-      landing.navigateTree(done, "catalogDefaultCategory", true);
+      landing.navigateTree(done, "catalogMenuTitle", false);
     });
   });
 

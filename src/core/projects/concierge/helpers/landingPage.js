@@ -65,17 +65,17 @@ module.exports = {
     done()
   },
 
-  // landing.navigateTree(done, "catalogDefaultCategory", "New Arrivals");
+  // landing.navigateTree(done, "catalogDefaultCategory", true);
   navigateTree(done, selector, expected) {
-       client.isVisible(landingPage.helpers.catalog[selector])
-         .then(function(isVisible) {
-           try {
-             assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
-           }  catch (err) {
-             done(err)
-           }
-       })
-       done()
+     client.isVisible(landingPage.helpers.catalog[selector])
+       .then(function(isVisible) {
+         try {
+           assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
+         }  catch (err) {
+           done(err)
+         }
+     })
+     done()
   },
 
 // navigateActiveTree(done, selector, expected) {

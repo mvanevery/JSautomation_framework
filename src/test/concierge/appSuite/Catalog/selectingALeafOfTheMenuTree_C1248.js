@@ -24,7 +24,7 @@ describe('Smoke Test: C1248 Selecting A Leaf Of The Menu Tree.', () => {
 
   describe('Pausing.', () => {
     it('Should pause the test for 10 seconds.', (done) => {
-      common.pause(done, 1500);
+      common.pause(done, 10000);
     });
   });
 
@@ -36,7 +36,7 @@ describe('Smoke Test: C1248 Selecting A Leaf Of The Menu Tree.', () => {
 
   describe('Pausing.', () => {
     it('Should pause the test for 10 seconds.', (done) => {
-      common.pause(done, 2500);
+      common.pause(done, 10000);
     });
   });
 
@@ -48,7 +48,7 @@ describe('Smoke Test: C1248 Selecting A Leaf Of The Menu Tree.', () => {
 
   describe('Pausing', () => {
     it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done, 1500);
+      common.pause(done, 5000);
     });
   });
 
@@ -60,7 +60,7 @@ describe('Smoke Test: C1248 Selecting A Leaf Of The Menu Tree.', () => {
 
   describe('Pausing', () => {
     it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done, 1500);
+      common.pause(done, 5000);
     });
   });
 
@@ -72,7 +72,7 @@ describe('Smoke Test: C1248 Selecting A Leaf Of The Menu Tree.', () => {
 
   describe('Pausing', () => {
     it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done, 1500);
+      common.pause(done, 5000);
     });
   });
 
@@ -84,7 +84,7 @@ describe('Smoke Test: C1248 Selecting A Leaf Of The Menu Tree.', () => {
 
   describe('Pausing', () => {
     it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done, 1500);
+      common.pause(done, 5000);
     });
   });
 
@@ -96,7 +96,7 @@ describe('Smoke Test: C1248 Selecting A Leaf Of The Menu Tree.', () => {
 
   describe('Pausing', () => {
     it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done, 1500);
+      common.pause(done, 5000);
     });
   });
 
@@ -108,7 +108,7 @@ describe('Smoke Test: C1248 Selecting A Leaf Of The Menu Tree.', () => {
 
   describe('Pausing', () => {
     it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done, 1500);
+      common.pause(done, 5000);
     });
   });
 
@@ -120,7 +120,7 @@ describe('Smoke Test: C1248 Selecting A Leaf Of The Menu Tree.', () => {
 
   describe('Pausing', () => {
     it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done, 1500);
+      common.pause(done, 5000);
     });
   });
 
@@ -132,7 +132,7 @@ describe('Smoke Test: C1248 Selecting A Leaf Of The Menu Tree.', () => {
 
   describe('Pausing', () => {
     it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done, 1500);
+      common.pause(done, 5000);
     });
   });
 
@@ -144,7 +144,7 @@ describe('Smoke Test: C1248 Selecting A Leaf Of The Menu Tree.', () => {
 
   describe('Pausing', () => {
    it('Should pause the test for 5 seconds', (done) => {
-     common.pause(done, 1500);
+     common.pause(done, 5000);
    });
   });
 

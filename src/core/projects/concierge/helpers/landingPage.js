@@ -27,30 +27,55 @@ module.exports = {
     done();
   },
 
-  navCatalog(done, catalogLabel) {
-    if (client.isVisible(landingPage.helpers.productIcon, done)) {
-      client.click(landingPage.helpers.productIcon)
-        .then (() => {
-          client.getText(catalog.helpers.catalogMenuTitle)
-            .then((text) => {
-              try {
-                assert.equal(catalogLabel, text, 'The Catalog drawer is not displayed');
-              } catch (err) {
-                done(err);
-              }
-            });
-        });
-    } else {
-      console.log('	ERROR: The Catalog icon is not in the menu.');
-    }
-  },
-
   navDashboard(done) {
     if (client.isVisible(landingPage.helpers.iconList)) {
       client.click(landingPage.helpers.iconList);
     } else {
       console.log('	ERROR: The Dashboard icon is not in the menu.');
     }
+  },
+
+  // landing.navigateIcons(done, "catalogMenuIcon", true);
+  navigateIcons(done, selector, expected) {
+    client.isVisible(landingPage.helpers.catalog[selector])
+      .then(function(isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
+        }  catch (err) {
+          done(err)
+        }
+        if(isVisible == true) {
+          client.click(landingPage.helpers.catalog[selector]);
+        }
+    })
+    done()
+  },
+
+  // landing.navigateActiveIcons(done, "catalogMenuIcon", "catalogMenuIconActive", "-1");
+  navigateActiveIcons(done, selector, selectorActive, expected) {
+    client.getHTML(landingPage.helpers.catalog[selector])
+    .then(function(html){
+    var idx = html.toLowerCase().indexOf(landingPage.helpers.catalog[selectorActive]);
+      try {
+        assert.notEqual(expected, idx, 'The expected value was not equal to the actual value');
+      } catch (err) {
+        done(err)
+      }
+    });
+    done()
+  },
+
+  // landing.navigateTree(done, "catalogMenuTitle", true);
+  navigateTree(done, selector, expected) {
+     client.isVisible(landingPage.helpers.catalog[selector])
+       .then(function(isVisible) {
+         try {
+           assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
+         }  catch (err) {
+           done(err)
+         }
+     })
+     done()
   },
 
   navPlanner(done, expected) {
@@ -68,21 +93,6 @@ module.exports = {
             })
         })
     }
-  },
-
-  navigateIcons(done, selector, expected) {
-    client.isVisible(landingPage.helpers[selector])
-      .then(function(isVisible) {
-        try {
-          assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
-        }  catch (err) {
-          done(err);
-        }
-        if(isVisible == true) {
-          client.click(landingPage.helpers[selector])
-        }
-      })
-    done();
   },
 
   navAddition(done)  {

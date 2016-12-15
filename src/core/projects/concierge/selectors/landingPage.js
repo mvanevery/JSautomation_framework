@@ -20,10 +20,15 @@ module.exports = {
         sales:'//div[@data-id="lookbuilder"]',
         leftDrawerOverlay:'//div[@data-id="closeLeftDrawerOverlay"]',
         headerImage:'//img[@data-id="headerImage"]',
-
-
-        productIcon: '//div[@data-id="catalog"]',
         //expertIcon: '//div[@class="mm-o-icon icon-year-to-date"]',
         broke:'null',
+
+        catalog:
+          {
+            catalogMenuIcon: '//div[@data-id="catalog"]',
+            catalogMenuIconActive:  'color: inherit',
+            catalogMenuTitle: '//div[contains(text(),"Catalog")]',
+            catalogClickCategory: '//div[contains(text(),"New Arrivals")]'
+          }
     }
 }

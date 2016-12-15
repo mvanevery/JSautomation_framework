@@ -35,7 +35,7 @@ const common = require('../../../../core/projects/concierge-BAM/helpers/common')
     });
 
     describe('Pausing', () => {
-      it('Should pause the test for 8 seconds', (done) => {
+      it('Should pause the test for 15 seconds', (done) => {
         common.pause(done, 15000);
       });
     });

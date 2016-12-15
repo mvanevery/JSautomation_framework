@@ -65,7 +65,7 @@ module.exports = {
     done()
   },
 
-  // landing.navigateTree(done, "catalogDefaultCategory", true);
+  // landing.navigateTree(done, "catalogMenuTitle", true);
   navigateTree(done, selector, expected) {
      client.isVisible(landingPage.helpers.catalog[selector])
        .then(function(isVisible) {
@@ -77,21 +77,6 @@ module.exports = {
      })
      done()
   },
-
-// navigateActiveTree(done, selector, expected) {
-//    client.isVisible(landingPage.helpers.catalog[selector])
-//      .then(function(isVisible) {
-//        try {
-//          assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
-//        }  catch (err) {
-//          done(err)
-//        }
-//        if(isVisible == true) {
-//          client.click(landingPage.helpers.catalog[selector]);
-//        }
-//    })
-//    done()
-// },
 
   navPlanner(done, expected) {
     if(client.isVisible(landingPage.helpers.plannerIcon, done)) {

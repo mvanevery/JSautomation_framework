@@ -16,30 +16,10 @@ const $ = require('chai-Jquery');
 
 module.exports = {
 
-  // catalog.navigateProducts(done, "catalogDefaultCategory", true);
-//  navigateProducts(done, selector, expected) {
-//    client.isVisible(landingPage.helpers.catalog[selector])
-//      .then(function(isVisible) {
-//        try {
-//          assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
-//        }  catch (err) {
-//          done(err)
-//        }
-//        if(isVisible == true) {
-//          client.click(landingPage.helpers.catalog[selector]);
-//        }
-//    })
-//    done()
-//  },
-
-  // catalog.navigateProducts(done, "catalogDefaultCategory", true);
+  // catalog.navigateProducts(done, "hollyTartPlaidScarf", true);
   navigateProducts(done,selector,expected) {
-  console.log('selector: '+selector);
-  console.log('results: '+expected);
      client.isVisible(catalog.helpers.products[selector])
        .then(function (isVisible) {
-         console.log('catalog.helpers.products[selector]: '+catalog.helpers.products[selector]);
-         console.log('isVisible: '+isVisible);
          try {
            assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
          } catch (err) {
@@ -51,33 +31,6 @@ module.exports = {
        })
      done();
   },
-
-//  LeftDrawer(done, expected, catalogLabel, results) {
-//   client.isVisible(catalog.helpers.productCategories[results])
-//     .then(function (isVisible) {
-//       try {
-//         assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
-//       } catch (err) {
-//         done(err);
-//       }
-//       if (isVisible == true) {
-//         client.click(catalog.helpers.productCategories[results])
-//           .then (() => {
-//             client.getText(catalog.helpers.productCategories[results])
-//               .then((text) => {
-//                 try {
-//                   assert.equal(catalogLabel, text, 'The page is not displayed');
-//                 } catch (err) {
-//                   done(err);
-//                 }
-//               });
-//           });
-//       }
-//     })
-//     done();
-//  },
-
-
 
   productDetailsPage(done,expected,results) {
      client.isVisible(catalog.helpers.products[results])
@@ -156,4 +109,5 @@ module.exports = {
       });
     done();
   }
+
 }

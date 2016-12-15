@@ -112,66 +112,40 @@ describe('Smoke Test: C1248 Selecting A Leaf Of The Menu Tree.', () => {
     });
   });
 
-//  describe('Click on one of the leaves of the product catalog menu tree.', () => {
-//  it('The PLP (Product List Page) of that leaf displays and the product catalog menu drawer closes.', (done) => {
-//      catalog.navigateProducts(done, "hollyTartPlaidScarf", true);
-//    });
-//  });
-//
-//  describe('Pausing', () => {
-//    it('Should pause the test for 5 seconds', (done) => {
-//      common.pause(done, 1500);
-//    });
-//  });
+  describe('Click on one of the products in the PLP.', () => {
+  it('The PDP (Product Detail Page) of that product displays.', (done) => {
+      catalog.navigateProducts(done, "hollyTartPlaidScarf", true);
+    });
+  });
 
-//  describe('Navigate through branches of the product catalog categories until you come to the leaves of a category branch.', () => {
-//  it('A list of menu items with children display.', (done) => {
-//      landing.navigateTree(done, "catalogDefaultCategory", "New Arrivals");
-//    });
-//  });
-//
-//  describe('Pausing', () => {
-//    it('Should pause the test for 5 seconds', (done) => {
-//      common.pause(done, 1500);
-//    });
-//  });
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 1500);
+    });
+  });
 
-  //  describe('Click on one of the leaves of the product catalog menu tree.', () => {
-  //  it('The PLP (Product List Page) of that leaf displays and the product catalog menu drawer closes.', (done) => {
-  //      catalog.navigateProducts(done, "hollyTartPlaidScarf", true);
-  //    });
-  //  });
-  //
-  //  describe('Pausing', () => {
-  //    it('Should pause the test for 5 seconds', (done) => {
-  //      common.pause(done, 1500);
-  //    });
-  //  });
+  describe('Click on one of the products in the PLP', () => {
+    it('Product catalog menu icon is in active state.', (done) => {
+      landing.navigateActiveIcons(done, "catalogMenuIcon", "catalogMenuIconActive",  "-1");
+    });
+  });
 
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 1500);
+    });
+  });
 
-//
-//  describe('Click on one of the leaves of the product catalog menu tree', () => {
-//    it('Product catalog menu icon is in active state.', (done) => {
-//      landing.navigateActiveIcons(done, "catalogMenuIcon", "catalogMenuIconActive",  "-1");
-//    });
-//  });
-//
-//  describe('Pausing', () => {
-//    it('Should pause the test for 5 seconds', (done) => {
-//      common.pause(done, 1500);
-//    });
-//  });
+  describe('Logout', () => {
+    it('Should logout the current user', (done) => {
+      login.logoutUser(done, true, true);
+    });
+  });
 
-//  describe('Logout', () => {
-//    it('Should logout the current user', (done) => {
-//      login.logoutUser(done, true, true);
-//    });
-//  });
-//
-//  describe('Pausing', () => {
-//   it('Should pause the test for 5 seconds', (done) => {
-//     common.pause(done, 1500);
-//   });
-//  });
+  describe('Pausing', () => {
+   it('Should pause the test for 5 seconds', (done) => {
+     common.pause(done, 1500);
+   });
+  });
 
 })

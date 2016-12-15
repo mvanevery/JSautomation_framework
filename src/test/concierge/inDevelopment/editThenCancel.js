@@ -190,7 +190,7 @@ describe('Smoke Test: Edit Customer', () => {
 
   describe('Verify Customer Name', () => {
     it('Should verify the customer name on the Customer Profile page', (done) => {
-      blackbook.verifyCustomerName(done, true, 'Automation Updated');
+      blackbook.verifyCustomerName(done, true, 'Automation Test');
     });
   });
 

@@ -68,8 +68,8 @@ describe('Smoke Test: Edit Customer', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
@@ -80,8 +80,8 @@ describe('Smoke Test: Edit Customer', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
-      common.pause(done, 1000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
@@ -145,14 +145,14 @@ describe('Smoke Test: Edit Customer', () => {
     });
   });
 
-  describe('Enter Last Name', () => {
-    it('should enter a name in the last name field', (done) => {
-      blackbook.enterValue(done, true, "phoneMopdal", "8135551235");
+  describe('Enter Phone #', () => {
+    it('should enter a number in the phone field', (done) => {
+      blackbook.enterValue(done, true, "phoneModal", "8135551235");
     });
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
+    it('Should pause the test for 5 seconds', (done) => {
       common.pause(done, 5000);
     });
   });
@@ -169,14 +169,14 @@ describe('Smoke Test: Edit Customer', () => {
     });
   });
 
-  describe('Verify Customer Name', () => {
-    it('Should verify the customer name on the Customer Profile page', (done) => {
-      blackbook.verifyCustomerPhone(done, true, 'Automation Updated');
+  describe('Verify Customer Phone #', () => {
+    it('Should verify the customer phone # on the Customer Profile page', (done) => {
+      blackbook.verifyCustomerPhone(done, true, '8135551235');
     });
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
+    it('Should pause the test for 3 seconds', (done) => {
       common.pause(done, 3000);
     });
   });

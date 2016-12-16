@@ -8,12 +8,10 @@
  * Date:        12/14/2016
  */
 
-
 const common = require('../../../../core/projects/concierge/helpers/common');
 const login = require('../../../../core/projects/concierge/helpers/loginPage');
 const blackbook = require('../../../../core/projects/concierge/helpers/blackbook');
 const landing = require('../../../../core/projects/concierge/helpers/landingPage');
-//const profile = require('../../../core/projects/concierge/helpers/customerProfile');
 
 
 describe('Smoke Test: Edit Customer', () => {
@@ -211,8 +209,5 @@ describe('Smoke Test: Edit Customer', () => {
       common.pause(done, 10000);
     });
   });
-
-
-
 
 })

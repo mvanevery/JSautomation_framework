@@ -37,7 +37,7 @@ module.exports = {
 
   // landing.navigateIcons(done, "catalogMenuIcon", true);
   navigateIcons(done, selector, expected) {
-    client.isVisible(landingPage.helpers.catalog[selector])
+    client.isVisible(landingPage.helpers[selector])
       .then(function(isVisible) {
         try {
           assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
@@ -45,7 +45,7 @@ module.exports = {
           done(err)
         }
         if(isVisible == true) {
-          client.click(landingPage.helpers.catalog[selector]);
+          client.click(landingPage.helpers[selector]);
         }
     })
     done()
@@ -76,23 +76,6 @@ module.exports = {
          }
      })
      done()
-  },
-
-  navPlanner(done, expected) {
-    if(client.isVisible(landingPage.helpers.plannerIcon, done)) {
-      client.click(landingPage.helpers.plannerIcon)
-        .then(() => {
-          client.getText(planner.helpers.plannerTitle)
-            .then((text) => {
-              //console.log(text);
-              try {
-                assert.equal(expected, text, 'Title Matches');
-              } catch (err) {
-                done(err);
-              }
-            })
-        })
-    }
   },
 
   navAddition(done)  {

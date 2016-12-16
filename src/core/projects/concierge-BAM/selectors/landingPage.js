@@ -69,6 +69,20 @@ module.exports = {
 
       // Associate Resources
       txt_associateResources:   '//div[@class="associate-resource-panel"]',
+      btn_associateFeedback:    '//a[@data-track-clickthrough="Associate Feedback Survey"]',
+      lnk_associateFeedback:    '//a[@href="https://www.surveymonkey.com/r/?sm=VvND08aU%2ffQ4m0WJQye4vQ%3d%3d "]',
+      btn_associateMagCenter:   '//a[@data-track-clickthrough="Associate Magazine Center"]',
+      lnk_associateMagCenter:   '//a[@href="href="http://www.partnernewsstand.timeinc.com/storefront/"]',
+      btn_associateSelfServe:   '//a[@data-track-clickthrough="Associate Self Service"]',
+      lnk_associateSelfServe:   '//a[@href="http://opswiki.booksamillion.com/index.php?title=Welcome_to_Lawson_Employee_Self_Service"]',
+      btn_bamUniversity:        '//a[@data-track-clickthrough="BAM! University"]',
+      lnk_bamUniversity:        '//a[@href="http://bamcorp.booksamillion.com/index.php/bam-university/"]',
+      btn_bamStore:             '//a[@data-track-clickthrough="BAM! Company Store"]',
+      lnk_bamStore:             '//a[@href="https://dsiresources.com/Productlist.aspx"]',
+      btn_brightIdeas:          '//a[@data-track-clickthrough="Bright Ideas"]',
+      lnk_brightIdeas:          '//a[@href="https://www.surveymonkey.com/r/BAMBrightIdeas"]',
+      btn_exitSurvey:           '//a[@data-track-clickthrough="Exit Survey"]',
+      lnk_exitSurvey:           '//a[@href="https://www.surveymonkey.com/r/T7FQGVW"]',
 
       // Reports Panel
       txt_reports:   '//div[@class="reports-panel"]',

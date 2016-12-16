@@ -1,6 +1,6 @@
 /**
  * Project:     Concierge-BAM
- * TestName:    Dashboard/03_associateResourceLinks_C282
+ * TestName:    Dashboard/04_associateResourceLinks_C282
  * TestSteps:   https://madmobile.testrail.com/index.php?/cases/view/282
  * Author:      Aaron Feldmeyer
  * Date:        12/15/2016

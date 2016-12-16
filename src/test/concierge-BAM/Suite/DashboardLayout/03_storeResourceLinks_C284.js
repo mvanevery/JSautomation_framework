@@ -119,11 +119,6 @@ describe('Test the Store Resources links.', () => {
   });
 
   // Verify the <Save@BAM> link
-  // describe('Evaluate "Save@BAM"', () => {
-  //   it('Should verify that "Save@BAM" appears within the Store Resources section of the dashboard.', (done) => {
-  //     common.dashboardElementVisible(done, "btn_saveBAM", true);
-  //   });
-  // });
   describe('Evaluate the "Save@BAM" URL', () => {
     it('Should verify the "Save@BAM" URL is correct', (done) => {
       common.verifyURL(done, "btn_saveBAM", true, "lnk_saveBAM");

@@ -152,7 +152,7 @@ module.exports = {
     done();
   },
 
-    verifyURL(done, selector, expected,urlValue) {
+    verifyURL(done, selector, expected, urlValue) {
       client.isVisible(landingPage.helpers[selector])
         .then(function(isVisible) {
           try {
@@ -161,10 +161,10 @@ module.exports = {
             done(err);
           }
           if (isVisible == true)
-            client.getAttribute(landingPage.helpers.btn_brightIdeas, "href")
+            client.getAttribute(landingPage.helpers[selector], "href")
               .then((url) => {
                 try {
-                  assert.equal(urlValue, url, 'The element was not visible on the page.')
+                  assert.equal(landingPage.helpers[urlValue], url, 'The URL is not what was expected.')
                 } catch (err) {
                   done(err);
                 }

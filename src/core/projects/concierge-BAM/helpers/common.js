@@ -140,7 +140,19 @@ module.exports = {
       }
     },
 
-    dashboardElementVisible(done, selector, expected) {
+  dashboardElementVisible(done, selector, expected) {
+    client.isVisible(landingPage.helpers[selector])
+      .then(function(isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The element was not visible on the page.')
+        } catch (err) {
+          done(err);
+        }
+      })
+    done();
+  },
+
+    verifyURL(done, selector, expected,urlValue) {
       client.isVisible(landingPage.helpers[selector])
         .then(function(isVisible) {
           try {
@@ -148,6 +160,15 @@ module.exports = {
           } catch (err) {
             done(err);
           }
+          if (isVisible == true)
+            client.getAttribute(landingPage.helpers.btn_brightIdeas, "href")
+              .then((url) => {
+                try {
+                  assert.equal(urlValue, url, 'The element was not visible on the page.')
+                } catch (err) {
+                  done(err);
+                }
+              })
         })
       done();
     },

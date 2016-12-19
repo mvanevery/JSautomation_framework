@@ -11,14 +11,11 @@
 const common = require('../../../../core/projects/concierge-BAM/helpers/common');
 
 
-  describe('Test the layout of the dashboard.', () => {
-  before((done) => {
-    common.goTo(done);
-  });
+  describe('Test the layout of the dashboard and modules.', () => {
 
     describe('Pausing', () => {
-      it('Should pause the test for 10 seconds', (done) => {
-        common.pause(done, 10000);
+      it('Should pause the test for 5 seconds', (done) => {
+        common.pause(done, 5000);
       });
     });
 

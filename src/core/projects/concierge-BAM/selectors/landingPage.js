@@ -85,11 +85,24 @@ module.exports = {
       lnk_exitSurvey:           'https://www.surveymonkey.com/r/T7FQGVW',
 
       // Reports Panel
-      txt_reports:      '//div[@class="reports-panel"]',
-
+      txt_reports:              '//div[@class="reports-panel"]',
 
       // Right Panel
-      txt_rightPanel:   '//div[@class="home-page_toolbar"]',
+      txt_rightPanel:           '//div[@class="home-page_toolbar"]',
+      btn_rightTimeClock:       '//a[@data-track-clickthrough="Time Clock"]',
+      lnk_rightTimeClock:       'http://iisfinance.booksamillion.com/timeclock/TC_Login.asp?TargetPage=TC_Submit.asp',
+      btn_taskMgmt:             '//a[@data-track-clickthrough="Current Tasks"]',
+      lnk_taskMgmt:             'http://reflexis.booksamillion.com/RTMBAM/',
+      btn_custExperience:       '//a[@data-track-clickthrough="InMoment Data"]',
+      lnk_custExperience:       'https://www.inmoment.com/report/app?service=page&page=Login',
+      btn_storeLocator:         '//a[@data-track-clickthrough="Store Finder"]',
+      lnk_storeLocator:         'http://www.booksamillion.com/storefinder',
+      btn_bookmark:             '//a[@data-track-clickthrough="Employee Rewards"]',
+      lnk_bookmark:             'http://bookmarkrewards.com/',
+      btn_opportunities:        '//a[@data-track-clickthrough="Career Opportunities"]',
+      lnk_opportunities:        'http://opswiki.booksamillion.com/index.php?title=Featured_2NC_New_Store_Career_Opportunities',
+      btn_feedback:             '//a[@data-track-clickthrough="Website Feedback"]',
+      lnk_feedback:             'https://www.surveymonkey.com/r/ZPSNN7K',
 
 
       // Logout Modal

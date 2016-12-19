@@ -156,7 +156,7 @@ const landing = require('../../../../core/projects/concierge/helpers/landingPage
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 1 seconds', (done) => {
+    it('Should pause the test for 5 seconds', (done) => {
       common.pause(done, 5000);
     });
   });

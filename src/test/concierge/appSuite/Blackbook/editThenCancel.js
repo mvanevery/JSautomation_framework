@@ -1,12 +1,17 @@
 /**
- * Created by mvanevery on 12/13/16.
+ * Created by mvanevery on 12/14/16.
+ * Project:     Concierge
+ * Test Name:   editThenCancel
+ * Test Steps:   https://madmobile.testrail.net/index.php?/cases/view/62
+ * C62 - Edit Then Cancel
+ * Author:      Mike Van Every
+ * Date:        12/14/2016
  */
 
-
-const common = require('../../../core/projects/concierge/helpers/common');
-const login = require('../../../core/projects/concierge/helpers/loginPage');
-const blackbook = require('../../../core/projects/concierge/helpers/blackbook');
-const landing = require('../../../core/projects/concierge/helpers/landingPage');
+const common = require('../../../../core/projects/concierge/helpers/common');
+const login = require('../../../../core/projects/concierge/helpers/loginPage');
+const blackbook = require('../../../../core/projects/concierge/helpers/blackbook');
+const landing = require('../../../../core/projects/concierge/helpers/landingPage');
 
 
 describe('Smoke Test: Edit Customer', () => {
@@ -104,7 +109,7 @@ describe('Smoke Test: Edit Customer', () => {
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 2 seconds', (done) => {
+    it('Should pause the test for 5 seconds', (done) => {
       common.pause(done, 5000);
     });
   });
@@ -145,9 +150,9 @@ describe('Smoke Test: Edit Customer', () => {
     });
   });
 
-  describe('Enter Phone #', () => {
-    it('should enter a number in the phone field', (done) => {
-      blackbook.enterValue(done, true, "phoneModal", "8135551235");
+  describe('Enter Last Name', () => {
+    it('should enter a name in the last name field', (done) => {
+      blackbook.enterValue(done, true, "lastNameModal", "Updated");
     });
   });
 
@@ -157,21 +162,33 @@ describe('Smoke Test: Edit Customer', () => {
     });
   });
 
-  describe('Click the DONE button', () => {
-    it('should click the DONE button and save the customer', (done) => {
-      blackbook.saveButton(done, true);
+  describe('Click the CANCEL button', () => {
+    it('should click the CANCEL button and save the customer', (done) => {
+      blackbook.cancelButton(done, true);
     });
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done, 5000);
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
-  describe('Verify Customer Phone #', () => {
-    it('Should verify the customer phone # on the Customer Profile page', (done) => {
-      blackbook.verifyCustomerPhone(done, true, '8135551235');
+  describe('Click the DISCARD button', () => {
+    it('should click the DISCARD button and save the customer', (done) => {
+      blackbook.discardButton(done, true);
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
+    });
+  });
+
+  describe('Verify Customer Name', () => {
+    it('Should verify the customer name on the Customer Profile page', (done) => {
+      blackbook.verifyCustomerName(done, true, 'Automation Test');
     });
   });
 
@@ -192,6 +209,5 @@ describe('Smoke Test: Edit Customer', () => {
       common.pause(done, 10000);
     });
   });
-
 
 })

@@ -23,13 +23,13 @@ module.exports = {
         //expertIcon: '//div[@class="mm-o-icon icon-year-to-date"]',
         broke:'null',
 
-        catalog:
-          {
+//        catalog:
+//          {
             catalogMenuIcon: '//div[@data-id="catalog"]',
             catalogMenuIconActive:  'color: rgb(255, 255, 255)',
             catalogMenuIconInActive:  'color: rgb(147, 147, 163)',
             catalogMenuTitle: '//div[contains(text(),"Catalog")]',
             catalogClickCategory: '//div[contains(text(),"New Arrivals")]'
-          }
+//          }
     }
 }

@@ -37,7 +37,7 @@ module.exports = {
 
   // landing.navigateIcons(done, "catalogMenuIcon", true);
   navigateIcons(done, selector, expected) {
-    client.isVisible(landingPage.helpers.catalog[selector])
+    client.isVisible(landingPage.helpers[selector])
       .then(function(isVisible) {
         try {
           assert.equal(expected, isVisible, 'The expected value was not equal to the actual value.')
@@ -45,7 +45,7 @@ module.exports = {
           done(err)
         }
         if(isVisible == true) {
-          client.click(landingPage.helpers.catalog[selector]);
+          client.click(landingPage.helpers[selector]);
         }
     })
     done()
@@ -53,9 +53,9 @@ module.exports = {
 
   // landing.navigateActiveIcons(done, "catalogMenuIcon", "catalogMenuIconActive", "-1");
   navigateActiveIcons(done, selector, selectorActive, expected) {
-    client.getHTML(landingPage.helpers.catalog[selector])
+    client.getHTML(landingPage.helpers[selector])
     .then(function(html){
-    var idx = html.toLowerCase().indexOf(landingPage.helpers.catalog[selectorActive]);
+    var idx = html.toLowerCase().indexOf(landingPage.helpers[selectorActive]);
       try {
         assert.notEqual(expected, idx, 'The expected value was not equal to the actual value.');
       } catch (err) {
@@ -67,7 +67,7 @@ module.exports = {
 
   // landing.navigateTree(done, "catalogMenuTitle", true);
   navigateTree(done, selector, expected) {
-     client.isVisible(landingPage.helpers.catalog[selector])
+     client.isVisible(landingPage.helpers[selector])
        .then(function(isVisible) {
          try {
            assert.equal(expected, isVisible, 'The expected value was not equal to the actual value.')

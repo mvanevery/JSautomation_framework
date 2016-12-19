@@ -52,7 +52,7 @@ module.exports = {
 
   //catalog.overlay(done, "catalogMenuTitle", true);
   overlay(done, selector, expected) {
-      client.isVisible(landingPage.helpers.catalog[selector])
+      client.isVisible(landingPage.helpers[selector])
         .then(function(isVisible) {
           try {
             assert.equal(expected, isVisible, 'The expected value was not equal to the actual value.')

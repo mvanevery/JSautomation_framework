@@ -11,7 +11,7 @@ const login = require('../../../../core/projects/concierge/helpers/loginPage');
 const landing = require('../../../../core/projects/concierge/helpers/landingPage');
 const catalog = require('../../../../core/projects/concierge/helpers/catalog');
 
-describe('Smoke Test: C1249 Opening and Closing Functionality', () => {
+describe('Smoke Test: C1249 Opening and Closing Functionality.', () => {
 
   before((done) => {
     common.goTo(done);
@@ -31,19 +31,31 @@ describe('Smoke Test: C1249 Opening and Closing Functionality', () => {
 
   describe('Pausing', () => {
     it('Should pause the test for 10 seconds', (done) => {
-      common.pause(done, 1500);
+      common.pause(done, 10000);
     });
   });
 
   describe('Click the product catalog menu icon in the left navigation bar.', () => {
-    it('Product catalog menu drawer pops open and a list of categories is displayed. ', (done) => {
+    it('Product catalog menu drawer pops open.', (done) => {
       landing.navigateIcons(done, "catalogMenuIcon", true);
     });
   });
 
   describe('Pausing', () => {
     it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done, 2500);
+      common.pause(done, 5000);
+    });
+  });
+
+  describe('Click the product catalog menu icon in the left navigation bar.', () => {
+    it('A list of categories is displayed.', (done) => {
+      landing.navigateTree(done, "catalogMenuIcon", true);
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 5000);
     });
   });
 
@@ -55,32 +67,104 @@ describe('Smoke Test: C1249 Opening and Closing Functionality', () => {
 
   describe('Pausing', () => {
     it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done, 1500);
+      common.pause(done, 5000);
     });
   });
 
-//  describe('Click the product catalog menu icon in the left navigation bar.', () => {
-//    it('Product catalog menu drawer closes.', (done) => {
-//      landing.navigateIcons(done, "catalogMenuIcon", true);
-//    });
-//  });
-//
-//  describe('Pausing', () => {
-//    it('Should pause the test for 5 seconds', (done) => {
-//      common.pause(done, 2500);
-//    });
-//  });
+  describe('Click the product catalog menu icon in the left navigation bar.', () => {
+    it('Product catalog menu drawer closes.', (done) => {
+      landing.navigateIcons(done, "catalogMenuIcon", true);
+    });
+  });
 
-//  describe('Click the product catalog menu icon in the left navigation bar.', () => {
-//    it('The product catalog menu icon is again in inactive state.', (done) => {
-//      landing.navigateActiveIcons(done, "catalogMenuIcon", "catalogMenuIconActive",  "-1");
-//    });
-//  });
-//
-//  describe('Pausing', () => {
-//    it('Should pause the test for 5 seconds', (done) => {
-//      common.pause(done, 1500);
-//    });
-//  });
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 5000);
+    });
+  });
+
+  describe('Click the product catalog menu icon in the left navigation bar.', () => {
+    it('The product catalog menu icon is again in inactive state.', (done) => {
+      landing.navigateActiveIcons(done, "catalogMenuIcon", "catalogMenuIconInActive",  "-1");
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 5000);
+    });
+  });
+
+  describe('Click the product catalog menu icon in the left navigation bar.', () => {
+    it('Product catalog menu drawer pops open.', (done) => {
+      landing.navigateIcons(done, "catalogMenuIcon", true);
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 5000);
+    });
+  });
+
+  describe('Click the product catalog menu icon in the left navigation bar.', () => {
+    it('A list of categories is displayed.', (done) => {
+      landing.navigateTree(done, "catalogMenuTitle", true);
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 5000);
+    });
+  });
+
+  describe('Click the product catalog menu icon in the left navigation bar.', () => {
+    it('Product catalog menu icon is in active state.', (done) => {
+      landing.navigateActiveIcons(done, "catalogMenuIcon", "catalogMenuIconActive",  "-1");
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 5000);
+    });
+  });
+
+  describe('Click into the gray mask anywhere in the application that is not the product catalog menu drawer.', () => {
+    it('Product catalog menu drawer closes.', (done) => {
+      catalog.overlay(done, "catalogMenuTitle", true);
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 5000);
+    });
+  });
+
+  describe('Click into the gray mask anywhere in the application that is not the product catalog menu drawer.', () => {
+    it('A list of categories is not displayed.', (done) => {
+      landing.navigateTree(done, "catalogMenuTitle", false);
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 5000);
+    });
+  });
+
+  describe('Click into the gray mask anywhere in the application that is not the product catalog menu drawer.', () => {
+    it('The product catalog menu icon is again in inactive state.', (done) => {
+      landing.navigateActiveIcons(done, "catalogMenuIcon", "catalogMenuIconInActive",  "-1");
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 5000);
+    });
+  });
 
 })

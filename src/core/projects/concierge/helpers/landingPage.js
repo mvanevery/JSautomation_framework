@@ -19,7 +19,7 @@ module.exports = {
     client.isVisible(landingPage.helpers.headerImage)
       .then(function(isVisible) {
         try {
-          assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
+          assert.equal(expected, isVisible, 'The expected value was not equal to the actual value.')
         }  catch (err) {
           done(err);
         }
@@ -37,15 +37,15 @@ module.exports = {
 
   // landing.navigateIcons(done, "catalogMenuIcon", true);
   navigateIcons(done, selector, expected) {
-    client.isVisible(landingPage.helpers[selector])
+    client.isVisible(landingPage.helpers.catalog[selector])
       .then(function(isVisible) {
         try {
-          assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
+          assert.equal(expected, isVisible, 'The expected value was not equal to the actual value.')
         }  catch (err) {
           done(err)
         }
         if(isVisible == true) {
-          client.click(landingPage.helpers[selector]);
+          client.click(landingPage.helpers.catalog[selector]);
         }
     })
     done()
@@ -57,7 +57,7 @@ module.exports = {
     .then(function(html){
     var idx = html.toLowerCase().indexOf(landingPage.helpers.catalog[selectorActive]);
       try {
-        assert.notEqual(expected, idx, 'The expected value was not equal to the actual value');
+        assert.notEqual(expected, idx, 'The expected value was not equal to the actual value.');
       } catch (err) {
         done(err)
       }
@@ -70,7 +70,7 @@ module.exports = {
      client.isVisible(landingPage.helpers.catalog[selector])
        .then(function(isVisible) {
          try {
-           assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
+           assert.equal(expected, isVisible, 'The expected value was not equal to the actual value.')
          }  catch (err) {
            done(err)
          }
@@ -85,7 +85,7 @@ module.exports = {
           client.getText(landingPage.helpers.createLabel)
             .then((text) => {
               try {
-                assert.equal(expected, text, 'The expected value was not equal to the text');
+                assert.equal(expected, text, 'The expected value was not equal to the text.');
               } catch (err) {
                 done(err);
               }

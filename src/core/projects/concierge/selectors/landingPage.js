@@ -18,7 +18,7 @@ module.exports = {
         email: '//div[@data-id="email"]',
         fulfillment:'//div[@data-id="fulfillment"]',
         sales:'//div[@data-id="lookbuilder"]',
-        leftDrawerOverlay:'//div[@data-id="closeLeftDrawerOverlay"]',
+        closeOverlay:'//div[@data-id="overlay"]',
         headerImage:'//img[@data-id="headerImage"]',
         //expertIcon: '//div[@class="mm-o-icon icon-year-to-date"]',
         broke:'null',
@@ -27,6 +27,7 @@ module.exports = {
           {
             catalogMenuIcon: '//div[@data-id="catalog"]',
             catalogMenuIconActive:  'color: rgb(255, 255, 255)',
+            catalogMenuIconInActive:  'color: rgb(147, 147, 163)',
             catalogMenuTitle: '//div[contains(text(),"Catalog")]',
             catalogClickCategory: '//div[contains(text(),"New Arrivals")]'
           }

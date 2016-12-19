@@ -50,23 +50,33 @@ module.exports = {
     }
   },
 
-  leftDrawerOverlay(done) {
-    if (client.isVisible(catalog.helpers.productCategories.shoes, done)) {
-     client.click(landingPage.helpers.leftDrawerOverlay);
-    }
+  //catalog.overlay(done, "catalogMenuTitle", true);
+  overlay(done, selector, expected) {
+      client.isVisible(landingPage.helpers[selector])
+        .then(function(isVisible) {
+          try {
+            assert.equal(expected, isVisible, 'The expected value was not equal to the actual value.')
+          }  catch (err) {
+            done(err)
+          }
+          if(isVisible == true) {
+            client.click(landingPage.helpers.closeOverlay);
+          }
+      })
+      done()
   },
 
-  leftDrawerOverlayCheck(done, catalogExists) {
-    client.isExisting(catalog.helpers.productCategories.shoes)
-      .then((isExisting) => {
-        try {
-          assert.equal(catalogExists, isExisting, 'The Catalog Left Drawer is not closed.');
-        } catch (err) {
-          done(err);
-        }
-      });
-     done();
-  },
+//  leftDrawerOverlayCheck(done, catalogExists) {
+//    client.isExisting(catalog.helpers.productCategories.shoes)
+//      .then((isExisting) => {
+//        try {
+//          assert.equal(catalogExists, isExisting, 'The Catalog Left Drawer is not closed.');
+//        } catch (err) {
+//          done(err);
+//        }
+//      });
+//     done();
+//  },
 
   readMoreLink(done) {
      if(client.isVisible(catalog.helpers.products.readMoreLink, done)) {

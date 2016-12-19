@@ -16,9 +16,9 @@ const $ = require('chai-Jquery');
 
 module.exports = {
 
-  // catalog.navigateProducts(done, "hollyTartPlaidScarf", true);
-  navigateProducts(done,selector,expected) {
-     client.isVisible(catalog.helpers.products[selector])
+  // catalog.navigateDrawerProducts(done, "productCategory", true);
+  navigateDrawerProducts(done,selector,expected) {
+     client.isVisible(catalog.helpers.productCategories[selector])
        .then(function (isVisible) {
          try {
            assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
@@ -26,7 +26,52 @@ module.exports = {
            done(err);
          }
          if (isVisible == true) {
-           client.click(catalog.helpers.products[selector])
+           client.click(catalog.helpers.productCategories[selector])
+         }
+       })
+     done();
+  },
+
+  // catalog.navigateProducts(done, "prdi40280", true);
+//  navigateProducts(done,selector,expected) {
+//     client.isVisible(catalog.helpers.products[selector])
+//       .then(function (isVisible) {
+//         try {
+//           assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
+//         } catch (err) {
+//           done(err);
+//         }
+//         if (isVisible == true) {
+//           client.click(catalog.helpers.products[selector])
+//         }
+//       })
+//     done();
+//  },
+
+  // catalog.productListPage(done, "prdi40280", true);
+  productListPage(done,selector,expected) {
+     client.isVisible(catalog.helpers.products[selector])
+       .then(function (isVisible) {
+         try {
+           assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
+         } catch (err) {
+           done(err);
+         }
+         if(isVisible == true) {
+           client.click(catalog.helpers.products[selector]);
+         }
+       })
+     done();
+  },
+
+  // catalog.productListPageImages(done, "prdi40280", true);
+  productListPageImages(done,selector,expected) {
+     client.isVisible(catalog.helpers.products[selector])
+       .then(function (isVisible) {
+         try {
+           assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
+         } catch (err) {
+           done(err);
          }
        })
      done();

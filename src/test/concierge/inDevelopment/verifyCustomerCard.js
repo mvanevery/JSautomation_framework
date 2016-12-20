@@ -109,18 +109,6 @@ describe('Smoke Test: Search Customer', () => {
     });
   });
 
-  describe('Pausing', () => {
-    it('Should pause the test for 3 seconds', (done) => {
-      common.pause(done, 3000);
-    });
-  });
-
-  describe('Verify Customer Card Avatar is visible.', () => {
-    it('Should verify that the customer card avatar is visible.', (done) => {
-      blackbook.elementVisible(done, "cardAvatar", true );
-    });
-  });
-
   describe('Pausing.', () => {
     it('Should pause the test for 3 seconds.', (done) => {
       common.pause(done, 3000);

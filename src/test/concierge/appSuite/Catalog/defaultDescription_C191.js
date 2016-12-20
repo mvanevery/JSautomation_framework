@@ -11,7 +11,7 @@ const login = require('../../../../core/projects/concierge/helpers/loginPage');
 const landing = require('../../../../core/projects/concierge/helpers/landingPage');
 const catalog = require('../../../../core/projects/concierge/helpers/catalog');
 
-describe('Smoke Test: C191 Default Descriptiobn', () => {
+describe('Smoke Test: C191 Default Description.', () => {
   before((done) => {
     common.goTo(done);
   });
@@ -34,9 +34,9 @@ describe('Smoke Test: C191 Default Descriptiobn', () => {
     });
   });
 
-  describe('Click the Catalog menu option', () => {
-    it('Should open Catalog section', (done) => {
-      landing.navCatalog(done, "Catalog");
+  describe('Click the product catalog icon in the left navigation bar.', () => {
+    it('Product Catalog menu displays.', (done) => {
+      landing.navigateIcons(done, "catalogMenuIcon", true);
     });
   });
 
@@ -46,77 +46,65 @@ describe('Smoke Test: C191 Default Descriptiobn', () => {
     });
   });
 
-    describe('Click the Shoes menu option', () => {
-      it('Should open Shoes section', (done) => {
-        catalog.LeftDrawer(done, "Shoes");
-      });
+  describe('Click the product catalog icon in the left navigation bar.', () => {
+  it('Product Catalog menu displays.', (done) => {
+      landing.navigateTree(done, "catalogMenuTitle", true);
     });
+  });
 
-    describe('Pausing', () => {
-      it('Should pause the test for 5 seconds', (done) => {
-        common.pause(done, 5000);
-      });
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 5000);
     });
+  });
 
-    describe('Click the Shoes -> Flats menu option', () => {
-      it('Should open Shoes -> Flats section', (done) => {
-        catalog.LeftDrawer(done, "Flats");
-      });
-    });
+  describe('Continue to go through branches of the product catalog menu tree until you click a leaf of the tree.', () => {
+     it('The PLP of that leaf category displays.', (done) => {
+       catalog.navigateDrawerProducts(done, "productCategory", true);
+     });
+   });
 
-    describe('Pausing', () => {
-      it('Should pause the test for 5 seconds', (done) => {
-        common.pause(done, 5000);
-      });
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 5000);
     });
+  });
 
-    describe('Click on a Shoes -> Flats product.', () => {
-      it('Should open Flats product details page.', (done) => {
-        catalog.openProductDetailsPage(done);
-      });
-    });
+  describe('Continue to go through branches of the product catalog menu tree until you click a leaf of the tree.', () => {
+     it('The PLP of that leaf category displays', (done) => {
+       catalog.navigateDrawerProducts(done, "productSubCategory", true);
+     });
+   });
 
-    describe('Pausing', () => {
-      it('Should pause the test for 5 seconds', (done) => {
-        common.pause(done, 5000);
-      });
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 5000);
     });
+  });
 
-    describe('See a Shoes -> Flats product details.', () => {
-      it('Should see Shoes -> Flats product details page.', (done) => {
-        catalog.productDetailsPage(done, "Edison Flats-Roses");
-      });
-    });
+  describe('Click on one of the products on the PLP.', () => {
+     it('User is navigated to the PDP of that product.', (done) => {
+       catalog.productListPage(done, "prdi40280", true);
+     });
+   });
 
-    describe('Pausing', () => {
-      it('Should pause the test for 5 seconds', (done) => {
-        common.pause(done, 5000);
-      });
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 5000);
     });
+  });
 
-    describe('See read more... link', () => {
-      it('Should click read more... link.', (done) => {
-        catalog.readMoreLink(done);
-      });
+  describe('Click on one of the products on the PLP.', () => {
+    it('The description of that product is by default ellipsified and shortened. A toggle is displayed that allows the user to expand.', (done) => {
+      catalog.readMoreLink(done, "readMoreLink", true);
     });
+  });
 
-    describe('Pausing', () => {
-      it('Should pause the test for 5 seconds', (done) => {
-        common.pause(done, 5000);
-      });
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 5000);
     });
-
-    describe('See read less... link', () => {
-      it('Should see read less... link.', (done) => {
-        catalog.readLessLink(done,false);
-      });
-    });
-
-    describe('Pausing', () => {
-      it('Should pause the test for 5 seconds', (done) => {
-        common.pause(done, 5000);
-      });
-    });
+  });
 
   describe('Logout', () => {
     it('Should logout the current user', (done) => {

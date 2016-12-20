@@ -459,41 +459,6 @@ module.exports = {
     done();
   },
 
-  verifyEmailDisplayed(done, expected) {
-    if(client.isVisible(blackbook.helpers.email, done))
-      client.getAttribute(blackbook.helpers.email, 'name')
-        .then((text) => {
-          try {
-            assert.equal(expected, text, 'The expected value was not equal to the text');
-          } catch (err) {
-            done(err);
-          }
-        })
-  },
-
-  verifyZipcodeDisplayed(done, expected) {
-    if(client.isVisible(blackbook.helpers.zipcode, done))
-      client.getAttribute(blackbook.helpers.zipcode, 'name')
-        .then((text) => {
-          try {
-            assert.equal(expected, text, 'The expected value was not equal to the text');
-          } catch (err) {
-            done(err);
-          }
-        })
-  },
-
-  verifyCityDisplayed(done, expected) {
-    if(client.isVisible(blackbook.helpers.city, done))
-      client.getAttribute(blackbook.helpers.city, 'name')
-        .then((text) => {
-          try {
-            assert.equal(expected, text, 'The expected value was not equal to the text');
-          } catch (err) {
-            done(err);
-          }
-        })
-  },
 
 
 }

@@ -32,7 +32,7 @@ module.exports = {
      done();
   },
 
-  // catalog.productListPage(done, "prdi40280", true);
+  // catalog.productListPage(done, "product", true);
   productListPage(done,selector,expected) {
      client.isVisible(catalog.helpers.products[selector])
        .then(function (isVisible) {

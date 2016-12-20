@@ -84,7 +84,7 @@ describe('Smoke Test: C191 Default Description.', () => {
 
   describe('Click on one of the products on the PLP.', () => {
      it('User is navigated to the PDP of that product.', (done) => {
-       catalog.productListPage(done, "prdi40280", true);
+       catalog.productListPage(done, "product", true);
      });
    });
 

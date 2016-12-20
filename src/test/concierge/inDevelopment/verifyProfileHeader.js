@@ -210,5 +210,4 @@ describe('Smoke Test: Edit Customer', () => {
     });
   });
 
-
 })

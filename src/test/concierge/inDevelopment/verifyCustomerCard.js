@@ -9,10 +9,10 @@
  */
 
 
-const common = require('../../../../core/projects/concierge/helpers/common');
-const login = require('../../../../core/projects/concierge/helpers/loginPage');
-const blackbook = require('../../../../core/projects/concierge/helpers/blackbook');
-const landing = require('../../../../core/projects/concierge/helpers/landingPage');
+const common = require('../../../core/projects/concierge/helpers/common');
+const login = require('../../../core/projects/concierge/helpers/loginPage');
+const blackbook = require('../../../core/projects/concierge/helpers/blackbook');
+const landing = require('../../../core/projects/concierge/helpers/landingPage');
 
 describe('Smoke Test: Search Customer', () => {
   before((done) => {
@@ -48,6 +48,7 @@ describe('Smoke Test: Search Customer', () => {
       landing.navigateIcons(done, "blackbookIcon", true);
     });
   });
+
   describe('Pausing', () => {
     it('Should pause the test for 5 seconds', (done) => {
       common.pause(done, 5000);
@@ -87,6 +88,18 @@ describe('Smoke Test: Search Customer', () => {
   describe('Pausing', () => {
     it('Should pause the test for 3 seconds', (done) => {
       common.pause(done, 3000);
+    });
+  });
+
+  describe('Click the Search Customer button', () => {
+    it('Should click the search customer button', (done) => {
+      blackbook.searchCustomer(done, true);
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 5000);
     });
   });
 

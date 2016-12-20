@@ -70,11 +70,11 @@ describe('Smoke Test: C183 PLP Navigation to PDP.', () => {
     });
   });
 
-     describe('Select branches of the Product catalog menu until you come to the leaf of the tree and then select the leaf.', () => {
-       it('A grid of products displays. Each product has an image and that image can be seen.', (done) => {
-         catalog.productListPageImages(done, "imgprdi40280", true);
-       });
+   describe('Select branches of the Product catalog menu until you come to the leaf of the tree and then select the leaf.', () => {
+     it('A grid of products displays. Each product has an image and that image can be seen.', (done) => {
+       catalog.productListPageImages(done, "imgProduct", true);
      });
+   });
 
     describe('Pausing', () => {
       it('Should pause the test for 5 seconds', (done) => {
@@ -82,10 +82,9 @@ describe('Smoke Test: C183 PLP Navigation to PDP.', () => {
       });
     });
 
-
    describe('Click on one of the products listed in the grid.', () => {
      it('User is navigated to the PDP of the item selected.', (done) => {
-       catalog.productListPage(done, "prdi40280", true);
+       catalog.productListPage(done, "product", true);
      });
    });
 
@@ -95,104 +94,16 @@ describe('Smoke Test: C183 PLP Navigation to PDP.', () => {
     });
   });
 
-//   describe('Select branches of the Product catalog menu until you come to the leaf of the tree and then select the leaf.', () => {
-//     it('Each product has an image and that image can be seen.', (done) => {
-//       catalog.navigateProducts(done, "prdi40280", true);
-//     });
-//   });
-//
-//  describe('Pausing', () => {
-//    it('Should pause the test for 5 seconds', (done) => {
-//      common.pause(done, 5000);
-//    });
-//  });
+  describe('Logout', () => {
+    it('Should logout the current user', (done) => {
+      login.logoutUser(done, true, true);
+    });
+  });
 
-
-
-   //A grid of products displays. Each product has an image and that image can be seen.
-
-//     describe('Click the New Arrivals menu option', () => {
-//       it('Should open New Arrivals section', (done) => {
-//         catalog.LeftDrawer(done, "New Arrivals");
-//       });
-//     });
-//
-//     describe('Pausing', () => {
-//       it('Should pause the test for 5 seconds', (done) => {
-//         common.pause(done, 5000);
-//       });
-//     });
-//
-//     describe('Click the Catalog menu option', () => {
-//       it('Should open Catalog section', (done) => {
-//         landing.navCatalog(done, "Catalog");
-//       });
-//     });
-//
-//     describe('Pausing', () => {
-//       it('Should pause the test for 5 seconds', (done) => {
-//         common.pause(done, 5000);
-//       });
-//     });
-//
-//     describe('Click the Shoes menu option', () => {
-//       it('Should open Shoes section', (done) => {
-//         catalog.LeftDrawer(done, "Shoes");
-//       });
-//     });
-//
-//     describe('Pausing', () => {
-//       it('Should pause the test for 5 seconds', (done) => {
-//         common.pause(done, 5000);
-//       });
-//     });
-//
-//     describe('Click the Shoes -> Flats menu option', () => {
-//       it('Should open Shoes -> Flats section', (done) => {
-//         catalog.LeftDrawer(done, "Flats");
-//       });
-//     });
-//
-//     describe('Pausing', () => {
-//       it('Should pause the test for 5 seconds', (done) => {
-//         common.pause(done, 5000);
-//       });
-//     });
-//
-//     describe('Click on a Shoes -> Flats product.', () => {
-//       it('Should open Flats product details page.', (done) => {
-//         catalog.openProductDetailsPage(done);
-//       });
-//     });
-//
-//     describe('Pausing', () => {
-//       it('Should pause the test for 5 seconds', (done) => {
-//         common.pause(done, 5000);
-//       });
-//     });
-//
-//     describe('See a Shoes -> Flats product details.', () => {
-//       it('Should see Shoes -> Flats product details page.', (done) => {
-//         catalog.productDetailsPage(done, "Edison Flats-Roses");
-//       });
-//     });
-//
-//     describe('Pausing', () => {
-//       it('Should pause the test for 5 seconds', (done) => {
-//         common.pause(done, 5000);
-//       });
-//     });
-//
-//  describe('Logout', () => {
-//    it('Should logout the current user', (done) => {
-//      login.logoutUser(done, true, true);
-//    });
-//  });
-//
-//  describe('Test Completed: Cleaning up', () => {
-//    it('Should pause the test for 10 seconds', (done) => {
-//      common.pause(done, 10000);
-//    });
-//  });
+  describe('Test Completed: Cleaning up', () => {
+    it('Should pause the test for 10 seconds', (done) => {
+      common.pause(done, 10000);
+    });
+  });
 
 })

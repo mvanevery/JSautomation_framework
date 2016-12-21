@@ -59,10 +59,16 @@ module.exports = {
       //================================================== CUSTOMER PROFILE ============================================
 
       customerName: '//div[@data-id="contactFullName"]',
+      contactAddress1:'//div[@data-id="contactAddress1"]',
+      contactAddress2:'//div[@data-id="contactAddress2"]',
+      customerEmail:'//div[@data-id="customerEmail"]',
+      customerPhone:'//div[@data-id="customerPhone"]',
+      addAppointment:'//button[@data-id="createAppt"]',
       editIcon:'//button[@data-id="editCustomer"]',
       emailIcon: '//button[@data-id="email"]',
       blankEmailIcon: '//div[@class=:mm-o-icon icon-blank-template"]',
       birthdayEmailIcon: ''
+
 
 
 

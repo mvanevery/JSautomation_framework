@@ -20,7 +20,7 @@ function handleError(err) {
 
 module.exports = function (gulp, mocha) {
   return function () {
-    return gulp.src('./src/test/concierge/inDevelopment/verifyProfileHeader.js', {read: false})
+    return gulp.src('./src/test/concierge/appSuite/Blackbook/verifyProfileHeader.js', {read: false})
       .pipe(mocha(mochaOptions).on("error", handleError));
   }
 };

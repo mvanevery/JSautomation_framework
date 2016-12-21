@@ -76,12 +76,6 @@ describe('Smoke Test: C183 PLP Navigation to PDP.', () => {
      });
    });
 
-    describe('Pausing', () => {
-      it('Should pause the test for 5 seconds', (done) => {
-        common.pause(done, 5000);
-      });
-    });
-
    describe('Click on one of the products listed in the grid.', () => {
      it('User is navigated to the PDP of the item selected.', (done) => {
        catalog.productListPage(done, "prdi40280", true);

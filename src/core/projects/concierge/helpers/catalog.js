@@ -32,23 +32,7 @@ module.exports = {
      done();
   },
 
-  // catalog.navigateProducts(done, "prdi40280", true);
-//  navigateProducts(done,selector,expected) {
-//     client.isVisible(catalog.helpers.products[selector])
-//       .then(function (isVisible) {
-//         try {
-//           assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
-//         } catch (err) {
-//           done(err);
-//         }
-//         if (isVisible == true) {
-//           client.click(catalog.helpers.products[selector])
-//         }
-//       })
-//     done();
-//  },
-
-  // catalog.productListPage(done, "prdi40280", true);
+  // catalog.productListPage(done, "product", true);
   productListPage(done,selector,expected) {
      client.isVisible(catalog.helpers.products[selector])
        .then(function (isVisible) {
@@ -77,24 +61,6 @@ module.exports = {
      done();
   },
 
-  productDetailsPage(done,expected,results) {
-     client.isVisible(catalog.helpers.products[results])
-       .then(function (isVisible) {
-         try {
-           assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
-         } catch (err) {
-           done(err);
-         }
-       })
-     done();
-  },
-
-  catalogBackBtn(done) {
-    if(client.isVisible(catalog.helpers.catalogBackBtn, done)) {
-      client.click(catalog.helpers.catalogBackBtn)
-    }
-  },
-
   //catalog.overlay(done, "catalogMenuTitle", true);
   overlay(done, selector, expected) {
       client.isVisible(landingPage.helpers[selector])
@@ -111,22 +77,20 @@ module.exports = {
       done()
   },
 
-//  leftDrawerOverlayCheck(done, catalogExists) {
-//    client.isExisting(catalog.helpers.productCategories.shoes)
-//      .then((isExisting) => {
-//        try {
-//          assert.equal(catalogExists, isExisting, 'The Catalog Left Drawer is not closed.');
-//        } catch (err) {
-//          done(err);
-//        }
-//      });
-//     done();
-//  },
-
-  readMoreLink(done) {
-     if(client.isVisible(catalog.helpers.products.readMoreLink, done)) {
-        client.click(catalog.helpers.products.readMoreLink)
-     }
+  // catalog.readMoreLink(done, readMoreLink, true);
+  readMoreLink(done,selector,expected) {
+  client.isVisible(catalog.helpers.products[selector])
+          .then(function(isVisible) {
+            try {
+              assert.equal(expected, isVisible, 'The expected value was not equal to the actual value.')
+            }  catch (err) {
+              done(err)
+            }
+            if(isVisible == true) {
+              client.click(catalog.helpers.products[selector]);
+            }
+        })
+        done()
   },
 
   readLessLink(done, lessLink) {

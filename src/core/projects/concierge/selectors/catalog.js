@@ -15,8 +15,8 @@ module.exports = {
         productSubCategory: '//div[contains(text(),"Sweaters")]'
       },
       products: {
-        prdi40280: '//div[@data-id="prdi40280"]',
-        imgprdi40280: '//img[@data-id="prdi40280"]',
+        product: '//div[@data-id="product-prdi40827"]',
+        imgProduct: '//img[@data-id="product-prdi40827"]',
         readMoreLink: '//button[@data-id="readMoreLink"]',
         readLessLink: '//div[contains(text(),"read less")]'
       },

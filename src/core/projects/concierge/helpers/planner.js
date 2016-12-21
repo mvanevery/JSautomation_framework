@@ -20,163 +20,214 @@ module.exports = {
   //  }
   //},
 
-  addTask(done,expected) {
-    if(client.isVisible(planner.helpers.taskAddition)) {
-      client.click(planner.helpers.taskAddition)
-        .then(() => {
-          client.getText(planner.helpers.taskTitle)
-            .then((text) => {
-              try {
-                assert.equal(expected, text, 'The Task modal is not displayed');
-              } catch (err) {
-                done(err);
-              }
-            })
-        })
-    }
-  },
-  addAppointment(done,expected) {
-    if(client.isVisible(planner.helpers.apptAddition)) {
-      client.click(planner.helpers.apptAddition)
-        .then(() => {
-          client.getText(planner.helpers.apptTitle)
-            .then((text) => {
-              try {
-                assert.equal(expected, text, 'The Task modal is not displayed');
-              } catch (err) {
-                done(err);
-              }
-            })
-        })
-    }
+  enterValue(done, expected, selector, value) {
+    client.isVisible(planner.helpers[selector])
+      .then(function (isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the text');
+        } catch (err) {
+          done(err);
+        }
+        if (isVisible == true) {
+          client.setValue(planner.helpers[selector], value)
+        }
+      })
+    done();
   },
 
-  addSubject(done,subject) {
-    if (client.isVisible(planner.helpers.modalSubject, done)) {
-      client.setValue(planner.helpers.modalSubject, subject);
-    }
+  selectValue(done, expected, selector, value)  {
+    client.isVisible(planner.helpers[selector])
+      .then(function (isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the text');
+        } catch (err) {
+          done(err);
+        }
+        if (isVisible == true) {
+          client.selectByValue(planner.helpers[selector], value)
+        }
+      })
+    done();
   },
 
-  addType(done, type) {
-    if (client.isVisible(planner.helpers.modalType, done)) {
-      client.selectByValue(planner.helpers.modalType, type);
-    }
-  },
-
-  addStartDate(done, start) {
-    if (client.isVisible(planner.helpers.modalStartDateTime, done)) {
-      client.click(planner.helpers.modalStartDateTime)
-        .then(() => {
-          client.setValue(planner.helpers.modalStartDateTime, start);
-        });
-    }
-  },
-
-  addEndDate(done, end) {
-    if (client.isVisible(planner.helpers.modalEndDateTime, done)) {
-      client.setValue(planner.helpers.modalEndDateTime, end);
-    }
-  },
-
-  addStatus(done, status) {
-    if (client.isVisible(planner.helpers.modalStatus, done)) {
-      client.selectByValue(planner.helpers.modalStatus, status);
-    }
-  },
-
-  addPriority(done, priority) {
-    if (client.isVisible(planner.helpers.modalPriority, done)) {
-      client.selectByValue(planner.helpers.modalPriority, priority)
-    }
-  },
-
-  save(done) {
-    if (client.isVisible(planner.helpers.saveButton, done)) {
-      client.click(planner.helpers.saveButton);
-    }
-  },
-
-  cancelTask(done) {
-    if (client.isVisible(planner.helpers.taskCancel, done)) {
-      client.click(planner.helpers.taskCancel)
-    }
-  },
-
-  apptToggle(done, expected) {
-    if (client.isVisible(planner.helpers.plannerTitle, done)) {
-      client.click(planner.helpers.taskToggleSwitch)
-        .then(() => {
-          client.click(planner.helpers.apptToggleSwitch)
-            .then(() => {
-              client.click(planner.helpers.addButton)
-                .then(() => {
-                  client.getText(planner.helpers.apptTitle)
-                    .then((text) => {
-                      try {
-                        assert.equal(expected, text, 'The expected value was not equal to the text');
-                      } catch (err) {
-                        done(err);
-                      }
-                    })
-                })
-            })
-        })
-
-    }
-  },
-  taskToggle(done, expected) {
-    if (client.isVisible(planner.helpers.plannerTitle, done)) {
-      client.click(planner.helpers.taskToggleSwitch)
-        .then(() => {
-          client.click(planner.helpers.addButton)
+  addTask(done, expected, title) {
+    client.isVisible(planner.helpers.taskAddition)
+      .then(function (isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the text');
+        } catch (err) {
+          done(err);
+        }
+        if (isVisible == true) {
+          client.click(planner.helpers.taskAddition)
             .then(() => {
               client.getText(planner.helpers.taskTitle)
                 .then((text) => {
                   try {
-                    assert.equal(expected, text, 'The expected value was not equal to the text');
+                    assert.equal(title, text, 'The Task modal is not displayed');
                   } catch (err) {
                     done(err);
                   }
                 })
+            });
+        }
+      });
+    done();
+  },
+
+
+  addAppointment(done, expected, title) {
+    client.isVisible(planner.helpers.apptAddition)
+      .then(function (isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the text');
+        } catch (err) {
+          done(err);
+        }
+        if (isVisible == true) {
+          client.click(planner.helpers.apptAddition)
+            .then(() => {
+              client.getText(planner.helpers.apptTitle)
+                .then((text) => {
+                  try {
+                    assert.equal(title, text, 'The Task modal is not displayed');
+                  } catch (err) {
+                    done(err);
+                  }
+                })
+            });
+        }
+      });
+    done();
+  },
+
+  save(done, expected) {
+  client.isVisible(planner.helpers.save)
+    .then(function (isVisible) {
+      try {
+        assert.equal(expected, isVisible, 'The expected value was not equal to the text');
+      } catch (err) {
+        done(err);
+      }
+      if (isVisible == true) {
+        client.click(planner.helpers.save)
+        }
+    })
+  done();
+},
+
+  cancel(done, expected) {
+    client.isVisible(planner.helpers.cancel)
+      .then(function (isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the text');
+        } catch (err) {
+          done(err);
+        }
+        if (isVisible == true) {
+          client.click(planner.helpers.cancel)
+        }
+      })
+    done();
+  },
+
+  apptToggle(done, expected, title) {
+    client.isVisible(planner.helpers.pageHeader)
+      .then(function (isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the text');
+        } catch (err) {
+          done(err);
+        }
+        if (isVisible == true) {
+          client.click(planner.helpers.apptToggleSwitch)
+            .then(() => {
+              client.click(planner.helpers.addButton)
             })
-        })
-
-    }
+            .then(() => {
+              client.getText(planner.helpers.apptTitle)
+                .then((text) => {
+                  console.log(text);
+                  try {
+                    assert.equal(title, text, 'The Task modal is not displayed');
+                  } catch (err) {
+                    done(err);
+                  }
+                })
+            });
+        }
+      });
+    done();
   },
 
-  verifyAddedTask(done, expected) {
-    if(client.isVisible(planner.helpers.plannerTitle, done)) {
-      client.getText(planner.helpers.addedTaskTitle)
-        .then((text) => {
-          try {
-            assert.equal(expected, text, 'The expected value was not equal to the text');
-          } catch (err) {
-            done(err);
-          }
-        })
-    }
+  taskToggle(done, expected, title) {
+    client.isVisible(planner.helpers.pageHeader)
+      .then(function (isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the text');
+        } catch (err) {
+          done(err);
+        }
+        if (isVisible == true) {
+          client.click(planner.helpers.taskToggleSwitch)
+            .then(() => {
+              client.click(planner.helpers.addButton)
+            })
+            .then(() => {
+              client.getText(planner.helpers.taskTitle)
+                .then((text) => {
+                  try {
+                    assert.equal(title, text, 'The Task modal is not displayed');
+                  } catch (err) {
+                    done(err);
+                  }
+                })
+            });
+        }
+      });
+    done();
   },
 
-  verifyAddedAppt(done, expected) {
-    if(client.isVisible(planner.helpers.plannerTitle, done)) {
-      client.getText(planner.helpers.addedTaskTitle)
-        .then((text) => {
-          try {
-            assert.equal(expected, text, 'The expected value was not equal to the text');
-          } catch (err) {
-            done(err);
-          }
-        })
-    }
+  verifyAddedTaskAppt(done, expected, value) {
+    client.isVisible(planner.helpers.pageHeader)
+      .then(function (isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the text');
+        } catch (err) {
+          done(err);
+        }
+        if (isVisible == true) {
+          client.getText(planner.helpers.taskApptsName)
+            .then((text) => {
+              try {
+                assert.equal(value, text, 'The expected value was not equal to the text');
+              } catch (err) {
+                done(err);
+              }
+            })
+        }
+      })
+    done();
   },
 
-  deleteTask(done) {
-    if(client.isVisible(planner.helpers.addedTaskTitle, done)) {
-      client.click(planner.helpers.removeTask)
-        .then(() => {
-          client.click(planner.helpers.yesButton);
-        })
-    }
+  deleteTask(done, expected) {
+    client.isVisible(planner.helpers.taskApptsName)
+      .then(function (isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the text');
+        } catch (err) {
+          done(err);
+        }
+        if (isVisible == true) {
+          client.click(planner.helpers.removeTask)
+            .then(() => {
+              client.click(planner.helpers.yesButton);
+            });
+        }
+      })
+    done();
   },
 
 }
+
+

@@ -14,9 +14,6 @@ const blackbook = require('../../../../core/projects/concierge/helpers/blackbook
 const landing = require('../../../../core/projects/concierge/helpers/landingPage');
 
 
-//export let CUSTOMERNAME;
-//const setName = (name) => CUSTOMERNAME = name;
-
 describe('Smoke Test: Verify Search Fields Displayed', () => {
   before((done) => {
     common.goTo(done);
@@ -24,13 +21,19 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
 
   describe('Verify Login Screen', () => {
     it('Should navigate to the login screen', (done) => {
-      login.verifyLoginScreen(done);
+      login.verifyLoginScreen(done, true);
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
   describe('Login', () => {
     it('Should login as "testauto"', (done) => {
-      login.loginUser(done, 'testauto', 'qaUser@123');
+      login.loginUser(done, true, 'testauto', 'qaUser@123');
     });
   });
 
@@ -42,7 +45,18 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
 
   describe('Click the Blackbook menu option', () => {
     it('Should open Blackbook sections', (done) => {
-      landing.navBlackbook(done, "My Clients");
+      landing.navigateIcons(done, "blackbookIcon", true);
+    });
+  });
+  describe('Pausing', () => {
+    it('Should pause the test for 5 seconds', (done) => {
+      common.pause(done, 5000);
+    });
+  });
+
+  describe('Verify Header', () => {
+    it('Should verify the header on the Blackbook page', (done) => {
+      blackbook.verifyPageHeader(done, true, 'My Clients');
     });
   });
 
@@ -54,7 +68,7 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
 
   describe('Verify the First Name field is displayed', () => {
     it('should verify the name and visibility of the field', (done) => {
-      blackbook.verifyFirstNameDisplayed(done, 'firstName');
+      blackbook.elementVisible(done, 'firstName', true);
     });
   });
 
@@ -66,7 +80,7 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
 
   describe('Verify the Last Name field is displayed', () => {
     it('should verify the name and visibility of the field', (done) => {
-      blackbook.verifyLastNameDisplayed(done, 'lastName');
+      blackbook.elementVisible(done, 'lastName', true);
     });
   });
 
@@ -78,7 +92,7 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
 
   describe('Verify the Phone field is displayed', () => {
     it('should verify the name and visibility of the field', (done) => {
-      blackbook.verifyPhoneDisplayed(done, 'phone');
+      blackbook.elementVisible(done, 'phone', true);
     });
   });
 
@@ -90,7 +104,7 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
 
   describe('Verify the Email field is displayed', () => {
     it('should verify the name and visibility of the field', (done) => {
-      blackbook.verifyEmailDisplayed(done, 'email');
+      blackbook.elementVisible(done, 'email', true);
     });
   });
 
@@ -102,7 +116,7 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
 
   describe('Verify the City field is displayed', () => {
     it('should verify the name and visibility of the field', (done) => {
-      blackbook.verifyCityDisplayed(done, 'city');
+      blackbook.elementVisible(done, 'city', true);
     });
   });
 
@@ -114,7 +128,7 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
 
   describe('Verify the Zipcode field is displayed', () => {
     it('should verify the name and visibility of the field', (done) => {
-      blackbook.verifyZipcodeDisplayed(done, 'postalCode');
+      blackbook.elementVisible(done, 'postalCode', true);
     });
   });
 
@@ -125,14 +139,16 @@ describe('Smoke Test: Verify Search Fields Displayed', () => {
   });
 
   describe('Logout', () => {
-    it('Should Logout from the current user', (done) => {
-      login.logoutUser(done);
+    it('Should logout the current user', (done) => {
+      login.logoutUser(done, true, true);
     });
   });
-  describe('Pausing', () => {
-    it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done, 5000);
+
+  describe('Test Completed: Cleaning up', () => {
+    it('Should pause the test for 10 seconds', (done) => {
+      common.pause(done, 10000);
     });
   });
+
 
 })

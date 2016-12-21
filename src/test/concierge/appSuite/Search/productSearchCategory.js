@@ -8,38 +8,44 @@
  * Date:        11/16/2016/
 */
 
-const common = require('../../../core/projects/concierge/helpers/common');
-const login = require('../../../core/projects/concierge/helpers/loginPage');
-const blackbook = require('../../../core/projects/concierge/helpers/blackbook');
-const landing = require('../../../core/projects/concierge/helpers/landingPage');
-const search = require('../../../core/projects/concierge/helpers/productSearch');
+const common = require('../../../../core/projects/concierge/helpers/common');
+const login = require('../../../../core/projects/concierge/helpers/loginPage');
+const blackbook = require('../../../../core/projects/concierge/helpers/blackbook');
+const landing = require('../../../../core/projects/concierge/helpers/landingPage');
+const search = require('../../../../core/projects/concierge/helpers/productSearch');
 
-describe('Smoke Test: Search Customer', () => {
+describe('Smoke Test: Search Product by Category', () => {
   before((done) => {
     common.goTo(done);
   });
 
   describe('Verify Login Screen', () => {
     it('Should navigate to the login screen', (done) => {
-      login.verifyLoginScreen(done);
+      login.verifyLoginScreen(done, true);
+    });
+  });
+
+  describe('Pausing', () => {
+    it('Should pause the test for 3 seconds', (done) => {
+      common.pause(done, 3000);
     });
   });
 
   describe('Login', () => {
     it('Should login as "testauto"', (done) => {
-      login.loginUser(done, 'testauto', 'qaUser@123');
+      login.loginUser(done, true, 'testauto', 'qaUser@123');
     });
   });
 
   describe('Pausing', () => {
     it('Should pause the test for 10 seconds', (done) => {
-      common.pause(done, 10000);
+      common.pause(done, 15000);
     });
   });
 
-  describe('Click the Blackbook menu option', () => {
-    it('Should open Blackbook sections', (done) => {
-      landing.navSearch(done, "Product Search");
+  describe('Click the Product Search icon', () => {
+    it('Should open product search drawer', (done) => {
+      landing.navigateIcons(done, "searchIcon", true);
     });
   });
 
@@ -51,7 +57,7 @@ describe('Smoke Test: Search Customer', () => {
 
   describe('Verify Search drawer is open', () => {
     it('should verify that the drawer is open', (done) => {
-      search.verifySearchOpen(done);
+      search.verifySearchOpen(done, true, "Product Search");
     });
   });
 
@@ -63,19 +69,19 @@ describe('Smoke Test: Search Customer', () => {
 
   describe('Enter search criteria', () => {
     it('Should enter search criteria and search', (done) => {
-      search.enterSearchCriteria(done, 'Shoes');
+      search.enterSearchCriteria(done, true, 'Shoes');
     });
   });
 
   describe('Pausing', () => {
-    it('Should pause the test for 2 seconds', (done) => {
-      common.pause(done, 5000);
+    it('Should pause the test for 8 seconds', (done) => {
+      common.pause(done, 8000);
     });
   });
 
   describe('Verify PLP Header', () => {
     it('should verify the PLP header', (done) => {
-      search.verifySearchPLP(done,'Searching "Shoes"');
+      search.verifySearchPLP(done, true, 'Searching "Shoes"');
     });
   });
 
@@ -86,13 +92,13 @@ describe('Smoke Test: Search Customer', () => {
   });
 
   describe('Logout', () => {
-    it('Should Logout from the current user', (done) => {
-      login.logoutUser(done);
+    it('Should logout the current user', (done) => {
+      login.logoutUser(done, true, true);
     });
   });
-  describe('Pausing', () => {
-    it('Should pause the test for 5 seconds', (done) => {
-      common.pause(done, 5000);
+  describe('Test Completed: Cleaning up', () => {
+    it('Should pause the test for 10 seconds', (done) => {
+      common.pause(done, 10000);
     });
   });
 

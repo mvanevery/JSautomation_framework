@@ -2,23 +2,21 @@
  * Created by mvanevery on 10/10/16.
  */
 
-//import CUSTOMERNAME from '../../../../test/concierge/appSuite/Planner/addAppointment.js';
-
 module.exports = {
   routes: {
     baseUrl: 'localhost:3000/'
   },
   helpers: {
     //===================================== GLOBAL ================================
-    plannerTitle: `//div[contains(text(),"Planner")]`,
+    pageHeader: '//div[@data-id="pageHeader"]',
     addButton: '//div[@class="mm-o-icon icon-plus"]',
+    //addButton: '//button[@data-id="apptTasks-add"]',
     yesButton:'//div[contains(text(),"Yes")]',
-    Cancel: '//button[@data-id="cancel"]',
-    //Cancel: '//div[contains(text(),"Cancel")]',
-    Discard:'//div[contains(text(),"Discard")]',
-    continueEdit:'//div[contains(text(),"Continue Editing")]',
-    //Save:'//button[@data-id="done]',
-    saveButton:'//div[contains(text(),"Done")]',
+    cancel: '//button[@data-id="cancel"]',
+    discard:'//button[@data-id="Discard"]',
+    continueEdit:'//button[@data-id="Continue"]',
+    save:'//button[@data-id="done"]',
+    modalHeader:'//div[@data-id="modalHeader"]',
     modalType: '//select[@name="type"]',
     modalSubject: '//input[@name="subject"]',
     modalStartDateTime:'//input[@name="startDateTime"]',
@@ -28,6 +26,8 @@ module.exports = {
     forwardMonth:'//div[@class="mm-o-icon icon-planner-arrow-right"]',
     backMonth:'//div[@class="mm-o-icon icon-planner-arrow-left"]',
     calendarMonth:'div > div > div > span',
+    taskApptsName: '//div[@data-id="taskApptsName]',
+    editApptTask:'//button[@data-id="apptTask-edit"]',
 
     //============================================= TASK ==================================
     taskAddition:'a > button[type="button"]',
@@ -35,7 +35,8 @@ module.exports = {
     taskTitle: '//div[contains(text(),"Create Task")]',
     taskToggleSwitch:'//div[contains(text(),"Task")]',
     addedTaskTitle: '//div[contains(text(),"Automation Test Task")]',
-    removeTask:'//div[contains(text(),"Done")]',
+    removeTask:'//button[@data-id="apptTask-delete"]',
+    yesButton:'//button[@data-id="Confirm"]',
 
     //=========================================== APPOINTMENT ==============================
     apptAddition:'//button[@type="button"])[5]',

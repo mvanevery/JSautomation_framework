@@ -6,24 +6,30 @@ module.exports = {
         baseUrl: 'localhost:3000/'
     },
     helpers:{
-        homeIcon: 'span.mm-c-nav__logo-img',
+        homeIcon: '//a[@data-id="home"]',
         bagIcon:'//a[@data-id="bag"]',
         iconList: 'mm-c-nav__list',
         iconListTitle:'h2',
-        plannerIcon: '//div[@class="mm-o-icon icon-year-to-date"]',
-        //plannerIcon:'//div[@data-id="planner"]',
-        blackbookIcon: '//div[@class="mm-o-icon icon-black-book"]',
-        //blackbookIcon:'//Icon[@data-id="blackbook"]',
-        expertIcon: '//div[@class="mm-o-icon icon-year-to-date"]',
-        searchIcon: '//div[@class="mm-o-icon icon-search"]',
+        plannerIcon:'//div[@data-id="planner"]',
+        blackbookIcon:'//div[@data-id="blackbook"]',
+        searchIcon: '//div[@data-id="search"]',
         addIcon: 'mm-o-icon mm-c-nav__icon icon-create-fill',
-        productSearchField: '//input[@name="Product Search"]',
-        productIcon: '//div[@class="mm-o-icon icon-hamburger-menu"]',
         menu: '//a[contains(@href, "/")]',
-        email: '//div[@class="mm-o-icon icon-email-fill"]',
-        leftDrawerOverlay:'//div[@data-id="closeLeftDrawerOverlay"]',
+        email: '//div[@data-id="email"]',
+        fulfillment:'//div[@data-id="fulfillment"]',
+        sales:'//div[@data-id="lookbuilder"]',
+        closeOverlay:'//div[@data-id="overlay"]',
+        headerImage:'//img[@data-id="headerImage"]',
+        //expertIcon: '//div[@class="mm-o-icon icon-year-to-date"]',
+        broke:'null',
+
+//        catalog:
+//          {
+            catalogMenuIcon: '//div[@data-id="catalog"]',
+            catalogMenuIconActive:  'color: rgb(255, 255, 255)',
+            catalogMenuIconInActive:  'color: rgb(147, 147, 163)',
+            catalogMenuTitle: '//div[contains(text(),"Catalog")]',
+            catalogClickCategory: '//div[contains(text(),"New Arrivals")]'
+//          }
     }
 }
-
-
-//li[contains(@span="New Arrivals")]

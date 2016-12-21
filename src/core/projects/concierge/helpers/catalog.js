@@ -15,124 +15,118 @@ const $ = require('chai-Jquery');
 
 
 module.exports = {
-  LeftDrawer(done, catalogLabel) {
-    if (client.isVisible(catalog.helpers.productCategories.newArrivals, done)) {
-      if (catalogLabel == 'New Arrivals')
-      {
-        client.click(catalog.helpers.productCategories.newArrivals)
-          .then (() => {
-            client.getText(catalog.helpers.productCategories.newArrivals)
-              .then((text) => {
-                try {
-                  assert.equal(catalogLabel, text, 'The New Arrivals page is not displayed');
-                } catch (err) {
-                  done(err);
-                }
-              });
-          });
-      }
-      else if (catalogLabel == 'Shoes')
-      {
-        client.click(catalog.helpers.productCategories.shoes)
-      }
-      else if (catalogLabel == 'Flats')
-      {
-        client.click(catalog.helpers.productCategories.flats)
-          .then (() => {
-            client.getText(catalog.helpers.productCategories.flats)
-              .then((text) => {
-                try {
-                  assert.equal(catalogLabel, text, 'The Flats page is not displayed');
-                } catch (err) {
-                  done(err);
-                }
-              });
-          });
-      }
-      else
-      {
-        console.log('	ERROR: The New Arrivals or Shoes icon is not in the menu.');
-      }
-    } else {
-      console.log('	ERROR: The New Arrivals or Shoes icon is not in the menu.');
-    }
+
+  // catalog.navigateDrawerProducts(done, "productCategory", true);
+  navigateDrawerProducts(done,selector,expected) {
+     client.isVisible(catalog.helpers.productCategories[selector])
+       .then(function (isVisible) {
+         try {
+           assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
+         } catch (err) {
+           done(err);
+         }
+         if (isVisible == true) {
+           client.click(catalog.helpers.productCategories[selector])
+         }
+       })
+     done();
   },
-  openProductDetailsPage(done) {
-    if(client.isVisible(catalog.helpers.products.edisonFlatsRoses, done)) {
-      client.click(catalog.helpers.products.edisonFlatsRoses)
-    }
+
+  // catalog.productListPage(done, "product", true);
+  productListPage(done,selector,expected) {
+     client.isVisible(catalog.helpers.products[selector])
+       .then(function (isVisible) {
+         try {
+           assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
+         } catch (err) {
+           done(err);
+         }
+         if(isVisible == true) {
+           client.click(catalog.helpers.products[selector]);
+         }
+       })
+     done();
   },
-  productDetailsPage(done,productLabel) {
-      if(client.isVisible(catalog.helpers.products.edisonFlatsRoses, done)) {
-        client.getText(catalog.helpers.products.edisonFlatsRoses)
-          .then((text) => {
+
+  // catalog.productListPageImages(done, "prdi40280", true);
+  productListPageImages(done,selector,expected) {
+     client.isVisible(catalog.helpers.products[selector])
+       .then(function (isVisible) {
+         try {
+           assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
+         } catch (err) {
+           done(err);
+         }
+       })
+     done();
+  },
+
+  //catalog.overlay(done, "catalogMenuTitle", true);
+  overlay(done, selector, expected) {
+      client.isVisible(landingPage.helpers[selector])
+        .then(function(isVisible) {
+          try {
+            assert.equal(expected, isVisible, 'The expected value was not equal to the actual value.')
+          }  catch (err) {
+            done(err)
+          }
+          if(isVisible == true) {
+            client.click(landingPage.helpers.closeOverlay);
+          }
+      })
+      done()
+  },
+
+  // catalog.readMoreLink(done, readMoreLink, true);
+  readMoreLink(done,selector,expected) {
+  client.isVisible(catalog.helpers.products[selector])
+          .then(function(isVisible) {
             try {
-              assert.equal(productLabel, text, 'The Shoes -> Flats Products Detail page is not displayed correctly.');
-            } catch (err) {
-              done(err);
+              assert.equal(expected, isVisible, 'The expected value was not equal to the actual value.')
+            }  catch (err) {
+              done(err)
             }
-          });
-      }
-  },
-  catalogBackBtn(done) {
-    if(client.isVisible(catalog.helpers.catalogBackBtn, done)) {
-      client.click(catalog.helpers.catalogBackBtn)
-    }
+            if(isVisible == true) {
+              client.click(catalog.helpers.products[selector]);
+            }
+        })
+        done()
   },
 
-  leftDrawerOverlay(done) {
-    if (client.isVisible(catalog.helpers.productCategories.shoes, done)) {
-     client.click(landingPage.helpers.leftDrawerOverlay);
-    }
+  readLessLink(done, lessLink) {
+   client.isExisting(catalog.helpers.products.readLessLink)
+     .then((isExisting) => {
+       try {
+         assert.equal(lessLink, isExisting, 'The PDP read less link did not appear.');
+       } catch (err) {
+         done(err);
+       }
+     });
+    done();
   },
 
-  leftDrawerOverlayCheck(done, catalogExists) {
-    client.isVisible(catalog.helpers.productCategories.shoes)
-      .then((isVisible) => {
+  PDPVariantsShown(done, expected, results) {
+    client.isVisible(catalog.helpers.variants[results])
+      .then(function(isVisible){
+          try {
+            assert.equal(expected, isVisible, 'The expected value was not equal to the actual value');
+          } catch (err) {
+            done(err);
+          }
+        });
+    done();
+  },
+
+  PDPDefaultVariantShown(done, expected) {
+      client.getHTML(catalog.helpers.variants.defaultVariant).then(function(html) {
+      var idx = html.toLowerCase().indexOf(catalog.helpers.variants.variantSelectedValue);
         try {
-          assert.equal(catalogExists, isVisible, 'The Catalog Left Drawer is not closed.');
+          assert.notEqual(expected, idx, 'The expected value was not equal to the actual value');
         } catch (err) {
           done(err);
         }
       });
-     done();
-  },
-
-  readMoreLink(done) {
-     if(client.isVisible(catalog.helpers.products.readMoreLink, done)) {
-        client.click(catalog.helpers.products.readMoreLink)
-     }
-  },
-
-   readLessLinkChk(done, lessLink) {
-     client.isVisible(catalog.helpers.products.lessLinkLabel)
-       .then((isVisible) => {
-         try {
-           assert.equal(lessLink, isVisible, 'The PDP read less link did not appear after expanding the PDP description.');
-         } catch (err) {
-           done(err);
-         }
-       });
-      done();
-   },
-
-    readLessLink(done) {
-  if(client.isVisible(catalog.helpers.products.readLessLink, done)) {
-         client.click(catalog.helpers.products.readLessLink)
-      }
-     },
-
-   readMoreLinkChk(done, moreLink) {
-     client.isVisible(catalog.helpers.products.moreLinkLabel)
-       .then((isVisible) => {
-         try {
-           assert.equal(moreLink, isVisible, 'The PDP read more link did not appear after collapsing the PDP description.');
-         } catch (err) {
-           done(err);
-         }
-       });
-      done();
-   }
-
+    done();
+  }
 
 }

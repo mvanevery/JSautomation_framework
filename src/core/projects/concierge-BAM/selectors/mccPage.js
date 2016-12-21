@@ -3,9 +3,6 @@
  */
 
 module.exports = {
-    // routes: {
-    //   baseUrl: 'https://serviceqa.booksamillion.com/'
-    // },
     helpers: {
       fld_lastName:         '//input[@id="js-mcc-search-last"]',
       fld_zipCode:          '//input[@id="js-mcc-search-zip"]',
@@ -15,6 +12,8 @@ module.exports = {
       btn_reset:            '//div[@class="btn-reset-form"]',
       txt_customerName:     '//div[@class="name"]',
       txt_cardInfo:         '//div[@class="card-info"]',
-      txt_noResults:        '//p[@class="no-results"]',
+
+      txt_noResults:        '//section[@class="page-header"[contains(text(),"No Results")]]',
+      //txt_noResults:        '//h1[contains(text(),"No Results")]',
     },
 }

@@ -7,19 +7,25 @@ module.exports = {
     baseUrl: 'localhost:3000/'
   },
   helpers: {
-      catalogMenuTitle: '//div[contains(text(),"Catalog")]',
-      catalogBackBtn: '//div[@data-id="catalogBackBtn"]',
+      catalog: {
+        catalogBackBtn: '//div[@data-id="catalogBackBtn"]',
+      },
       productCategories: {
-        newArrivals: '//div[contains(text(),"New Arrivals")]',
-        shoes: '//div[contains(text(),"Shoes")]',
-        flats: '//div[contains(text(),"Flats")]',
+        productCategory: '//div[contains(text(),"Apparel")]',
+        productSubCategory: '//div[contains(text(),"Sweaters")]'
       },
       products: {
-        edisonFlatsRoses: '//div[contains(text(),"Edison Flats-Roses")]',
-        moreLinkLabel: '//div[contains(text(),"read more")]',
+        product: '//div[@data-id="product-prdi40827"]',
+        imgProduct: '//img[@data-id="product-prdi40827"]',
         readMoreLink: '//button[@data-id="readMoreLink"]',
-        lessLinkLabel: '//div[contains(text(),"read less")]',
-        readLessLink: '//button[@data-id="readMoreLink"]',
+        readLessLink: '//div[contains(text(),"read less")]'
+      },
+      variants: {
+        colorVariant:  '//div[@data-id="Color"]',
+        saleColorVariant:  '//div[@data-id="Sale Color"]',
+        defaultVariant:  '//div[@data-id="Size Type"]',
+        sizeVariant:  '//div[@data-id="Size"]',
+        variantSelectedValue:  'color: rgb(255, 48, 59)',
       }
   }
 }

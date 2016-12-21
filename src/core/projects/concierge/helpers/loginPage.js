@@ -17,50 +17,89 @@ const $ = require('chai-Jquery');
 
 module.exports = {
 
-  verifyLoginScreen(done) {
-    if (client.isVisible(loginPage.helpers.loginLogo, done)) {
-      client.getAttribute(loginPage.helpers.usernameField, 'placeholder')
+  verifyLoginScreen(done, expected) {
+    client.isVisible(loginPage.helpers.signIn)
+      .then(function (isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
+        } catch (err) {
+          done(err);
+        }
+      })
+    done();
+  },
+
+  loginUser(done, expected, username, password) {
+    client.isVisible(loginPage.helpers.signIn)
+      .then(function (isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the text');
+        } catch (err) {
+          done(err);
+        }
+        if (isVisible == true) {
+          client.setValue(loginPage.helpers.usernameField, username || loginPage.helpers.username)
+            .then(() => {
+              client.setValue(loginPage.helpers.passwordField, password || loginPage.helpers.password)
+                .then(() => {
+                  client.click(loginPage.helpers.signIn);
+                });
+            });
+        }
+      })
+    done();
+  },
+
+  verifyStoreId(done, expected, value) {
+    client.isVisible(loginPage.helpers.storeIdLabel)
+      .then(function (isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the text');
+        } catch (err) {
+          done(err);
+        }
+      })
+    if (isVisible == true) {
+      client.getText(loginPage.helpers.storeIdLabel)
         .then((text) => {
           try {
-            assert.equal(loginPage.helpers.userPlaceholder, text, 'Not on Login screen');
+            assert.equal(value, text, 'The expected number was not equal to the actual title');
           } catch (err) {
             done(err);
           }
         })
     }
-  },
-
-  loginUser(done, username, password) {
-    if (client.isVisible(loginPage.helpers.signIn, done)) {
-      client.setValue(loginPage.helpers.usernameField, username || loginPage.helpers.username)
-        .then(() => {
-          client.setValue(loginPage.helpers.passwordField, password || loginPage.helpers.password)
-            .then(() => {
-              client.click(loginPage.helpers.signIn);
-            });
-        });
-    } else {
-      console.log('	ERROR: Login page is not available.');
-    }
-  },
-
-  verifyStoreId(done) {
-    if (client.isVisible(loginPage.helpers.storeIdLabel)) {
-      console.log('	PASS: The Store ID is visible.');
-    } else {
-      console.log('	ERROR: The user failed to logout.');
-    }
     done();
   },
 
 
-  logoutUser(done) {
-    if (client.isVisible(loginPage.helpers.logout, done)) {
-      client.click(loginPage.helpers.logout)
-        .then(() => {
-          client.click(loginPage.helpers.logoutConfirm);
-        })
-    }
+  logoutUser(done, expected, expectedAgain) {
+    client.isVisible(loginPage.helpers.logout)
+      .then(function (isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the text');
+        } catch (err) {
+          done(err);
+        }
+        if (isVisible == true) {
+          client.click(loginPage.helpers.logout)
+            .then(() => {
+              client.isVisible(loginPage.helpers.logoutQuestion)
+                .then(function (isVisible) {
+                  try {
+                    assert.equal(expectedAgain, isVisible, 'The expected value was not equal to the text');
+                  } catch (err) {
+                    done(err);
+                  }
+                  if (isVisible == true) {
+                    client.click(loginPage.helpers.logoutConfirm);
+                  }
+                })
+            })
+        }
+      })
+    done();
+  },
 
-  }
 }
+

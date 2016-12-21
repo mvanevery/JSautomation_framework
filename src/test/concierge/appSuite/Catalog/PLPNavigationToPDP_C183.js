@@ -72,13 +72,19 @@ describe('Smoke Test: C183 PLP Navigation to PDP.', () => {
 
    describe('Select branches of the Product catalog menu until you come to the leaf of the tree and then select the leaf.', () => {
      it('A grid of products displays. Each product has an image and that image can be seen.', (done) => {
-       catalog.productListPageImages(done, "imgprdi40280", true);
+       catalog.productListPageImages(done, "imgProduct", true);
      });
    });
 
+    describe('Pausing', () => {
+      it('Should pause the test for 5 seconds', (done) => {
+        common.pause(done, 5000);
+      });
+    });
+
    describe('Click on one of the products listed in the grid.', () => {
      it('User is navigated to the PDP of the item selected.', (done) => {
-       catalog.productListPage(done, "prdi40280", true);
+       catalog.productListPage(done, "product", true);
      });
    });
 

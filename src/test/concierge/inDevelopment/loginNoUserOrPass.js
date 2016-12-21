@@ -12,7 +12,7 @@ const common = require('../../../core/projects/concierge/helpers/common');
 const login = require('../../../core/projects/concierge/helpers/loginPage');
 const landing = require('../../../core/projects/concierge/helpers/landingPage');
 
-describe('Smoke Test: Login and Logout as "testauto"', () => {
+describe('Smoke Test: Login with no username or password.', () => {
   before((done) => {
     common.goTo(done);
   });

@@ -11,12 +11,12 @@ module.exports = {
         catalogBackBtn: '//div[@data-id="catalogBackBtn"]',
       },
       productCategories: {
-        newArrivals: '//div[contains(text(),"New Arrivals")]',
-        shoes: '//div[contains(text(),"Shoes")]',
-        flats: '//div[contains(text(),"Flats")]',
+        productCategory: '//div[contains(text(),"Apparel")]',
+        productSubCategory: '//div[contains(text(),"Sweaters")]'
       },
       products: {
-        hollyTartPlaidScarf: '//div[contains(text(),"Holly Tartan Plaid Scarf")]',
+        product: '//div[@data-id="product-prdi40827"]',
+        imgProduct: '//img[@data-id="product-prdi40827"]',
         readMoreLink: '//button[@data-id="readMoreLink"]',
         readLessLink: '//div[contains(text(),"read less")]'
       },

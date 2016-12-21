@@ -16,9 +16,9 @@ const $ = require('chai-Jquery');
 
 module.exports = {
 
-  // catalog.navigateProducts(done, "hollyTartPlaidScarf", true);
-  navigateProducts(done,selector,expected) {
-     client.isVisible(catalog.helpers.products[selector])
+  // catalog.navigateDrawerProducts(done, "productCategory", true);
+  navigateDrawerProducts(done,selector,expected) {
+     client.isVisible(catalog.helpers.productCategories[selector])
        .then(function (isVisible) {
          try {
            assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
@@ -26,14 +26,31 @@ module.exports = {
            done(err);
          }
          if (isVisible == true) {
-           client.click(catalog.helpers.products[selector])
+           client.click(catalog.helpers.productCategories[selector])
          }
        })
      done();
   },
 
-  productDetailsPage(done,expected,results) {
-     client.isVisible(catalog.helpers.products[results])
+  // catalog.productListPage(done, "product", true);
+  productListPage(done,selector,expected) {
+     client.isVisible(catalog.helpers.products[selector])
+       .then(function (isVisible) {
+         try {
+           assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
+         } catch (err) {
+           done(err);
+         }
+         if(isVisible == true) {
+           client.click(catalog.helpers.products[selector]);
+         }
+       })
+     done();
+  },
+
+  // catalog.productListPageImages(done, "prdi40280", true);
+  productListPageImages(done,selector,expected) {
+     client.isVisible(catalog.helpers.products[selector])
        .then(function (isVisible) {
          try {
            assert.equal(expected, isVisible, 'The expected value was not equal to the actual value')
@@ -44,34 +61,36 @@ module.exports = {
      done();
   },
 
-  catalogBackBtn(done) {
-    if(client.isVisible(catalog.helpers.catalogBackBtn, done)) {
-      client.click(catalog.helpers.catalogBackBtn)
-    }
+  //catalog.overlay(done, "catalogMenuTitle", true);
+  overlay(done, selector, expected) {
+      client.isVisible(landingPage.helpers[selector])
+        .then(function(isVisible) {
+          try {
+            assert.equal(expected, isVisible, 'The expected value was not equal to the actual value.')
+          }  catch (err) {
+            done(err)
+          }
+          if(isVisible == true) {
+            client.click(landingPage.helpers.closeOverlay);
+          }
+      })
+      done()
   },
 
-  leftDrawerOverlay(done) {
-    if (client.isVisible(catalog.helpers.productCategories.shoes, done)) {
-     client.click(landingPage.helpers.leftDrawerOverlay);
-    }
-  },
-
-  leftDrawerOverlayCheck(done, catalogExists) {
-    client.isExisting(catalog.helpers.productCategories.shoes)
-      .then((isExisting) => {
-        try {
-          assert.equal(catalogExists, isExisting, 'The Catalog Left Drawer is not closed.');
-        } catch (err) {
-          done(err);
-        }
-      });
-     done();
-  },
-
-  readMoreLink(done) {
-     if(client.isVisible(catalog.helpers.products.readMoreLink, done)) {
-        client.click(catalog.helpers.products.readMoreLink)
-     }
+  // catalog.readMoreLink(done, readMoreLink, true);
+  readMoreLink(done,selector,expected) {
+  client.isVisible(catalog.helpers.products[selector])
+          .then(function(isVisible) {
+            try {
+              assert.equal(expected, isVisible, 'The expected value was not equal to the actual value.')
+            }  catch (err) {
+              done(err)
+            }
+            if(isVisible == true) {
+              client.click(catalog.helpers.products[selector]);
+            }
+        })
+        done()
   },
 
   readLessLink(done, lessLink) {

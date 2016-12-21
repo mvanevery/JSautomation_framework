@@ -23,10 +23,15 @@ module.exports = {
       searchToggle:'//div[contains(text(),"Search")]',
       listToggle:'//div[contains(text(),"List")]',
       addCustomerButton:'//button[@data-id="customer-add"]',
+      customerCard: '//div[@data-id="customerCard-0"]',
+      searchResults:'//div[@data-id="cardName-0"]',
+      cardAddress:'//div[@data-id="cardAddress-0"]',
+      cardPhone:'//div[@data-id="phoneNumber-0"]',
+      cardEmail:'//div[@data-id="emailAddress-0"]',
+      cardAvatar:'//div[@data-id="avatarImage-0"]',
 
 //================================================== Add Customer Modal ================================================
 
-      searchResults:'//div[@data-id="cardName-0"]',
       modalHeader:'//div[@data-id="modalHeader"]',
       firstNameModal:'//input[@data-id="firstNameAddModal"]',
       lastNameModal:'//input[@data-id="lastNameAddModal"]',
@@ -46,7 +51,6 @@ module.exports = {
       zipcodeModal:'//input[@data-id="modalZipcode"]',
       countryModal:'//input[@data-id="modalCountry"]',
       addressTypeModal:'//select[@data-id="addressType"]',
-      customerCard: '//div[@data-id="customerCard-0"]',
       save:'//button[@data-id="Done"]',
       cancel: '//button[@data-id="Cancel"]',
       continue:'//button[@data-id="Continue"]',
@@ -55,10 +59,16 @@ module.exports = {
       //================================================== CUSTOMER PROFILE ============================================
 
       customerName: '//div[@data-id="contactFullName"]',
+      contactAddress1:'//div[@data-id="contactAddress1"]',
+      contactAddress2:'//div[@data-id="contactAddress2"]',
+      customerEmail:'//div[@data-id="customerEmail"]',
+      customerPhone:'//div[@data-id="customerPhone"]',
+      addAppointment:'//button[@data-id="createAppt"]',
       editIcon:'//button[@data-id="editCustomer"]',
       emailIcon: '//button[@data-id="email"]',
       blankEmailIcon: '//div[@class=:mm-o-icon icon-blank-template"]',
       birthdayEmailIcon: ''
+
 
 
 

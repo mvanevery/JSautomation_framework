@@ -79,18 +79,31 @@ module.exports = {
 
   // catalog.readMoreLink(done, readMoreLink, true);
   readMoreLink(done,selector,expected) {
-  client.isVisible(catalog.helpers.products[selector])
-          .then(function(isVisible) {
-            try {
-              assert.equal(expected, isVisible, 'The expected value was not equal to the actual value.')
-            }  catch (err) {
-              done(err)
-            }
-            if(isVisible == true) {
-              client.click(catalog.helpers.products[selector]);
-            }
-        })
-        done()
+    client.isVisible(catalog.helpers.products[selector])
+      .then(function(isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the actual value.')
+        }  catch (err) {
+          done(err)
+        }
+    })
+    done()
+  },
+
+  // catalog.clickReadMoreLink(done, readMoreLink, true);
+  clickReadMoreLink(done,selector,expected) {
+    client.isVisible(catalog.helpers.products[selector])
+      .then(function(isVisible) {
+        try {
+          assert.equal(expected, isVisible, 'The expected value was not equal to the actual value.')
+        }  catch (err) {
+          done(err)
+        }
+        if(isVisible == true) {
+          client.click(catalog.helpers.products[selector]);
+        }
+    })
+    done()
   },
 
   readLessLink(done, lessLink) {

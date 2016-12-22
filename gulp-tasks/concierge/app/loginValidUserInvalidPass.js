@@ -1,5 +1,5 @@
 /**
- * Created by mvanevery on 10/14/16.
+ * Created by mvanevery on 10/11/16.
  */
 const mochaOptions = {
   timeout: '50000',
@@ -20,7 +20,7 @@ function handleError(err) {
 
 module.exports = function (gulp, mocha) {
   return function () {
-    return gulp.src('./src/test/concierge/appSuite/Blackbook/verifyProfileHeader.js', {read: false})
+    return gulp.src('./src/test/concierge/inDevelopment/loginValidUserInvalidPass.js', {read: false})
       .pipe(mocha(mochaOptions).on("error", handleError));
   }
 };

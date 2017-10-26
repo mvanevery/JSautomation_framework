@@ -1,7 +1,7 @@
 {
   "name": "archon",
   "version": "0.1.0",
-  "description": "Mad Mobile Automated Testing Framework",
+  "description": "JavaScript Automated Testing Framework",
   "main": "/src/core/client.js",
   "scripts": {
     "lint": "eslint src gulp-tasks --ext .js --ignore-path .gitignore --fix",

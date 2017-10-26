@@ -47,7 +47,7 @@
             client
             .isVisible(loginPage.helpers.signIn).then(function(isVisible) {
                 assert.equal(expected, isVisible, 'The expected value was not equal to the text');
-   On the next 4 lines, the function states that if the isVisible assertion was true to complete the setValue action to then 
+   On the next 4 lines, the function states that if the isVisible assertion was true to complete the setValue action to then
    do another setValue action
 
           if (isVisible == true) {

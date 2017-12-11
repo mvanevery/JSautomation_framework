@@ -25,7 +25,7 @@
     "mochawesome": "^1.4.0",
     "phantomjs-prebuilt": "~2.1.4",
     "selenium-standalone": "^5.6.1",
-    "webdriverio": "3.4.0"
+    "webdriverio": "4.0.0"
   },
   "devDependencies": {
     "eslint-plugin-import": "^1.8.1"
